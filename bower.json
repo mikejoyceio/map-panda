@@ -1,0 +1,21 @@
+{
+  "name": "map",
+  "version": "1.0.0",
+  "homepage": "https://github.com/mikejoyceio/map",
+  "authors": [
+    "Mike Joyce <contact@mikejoyce.me>"
+  ],
+  "description": "my mapp",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "knockout": "~3.3.0"
+  }
+}
