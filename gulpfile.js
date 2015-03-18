@@ -14,6 +14,7 @@ gulp.task('scripts', function() {
 		.pipe(plugins.concat('app.js'))
 		.pipe(plugins.uglify())
 		.pipe(gulp.dest('./app/js'))	
+		.pipe(plugins.livereload())
 });
 
 // Styles Task
@@ -27,7 +28,8 @@ gulp.task('compass', function() {
       style: 'compressed'
     }))
     .pipe(plugins.minifyCss())
-    .pipe(gulp.dest('../app/css'));
+    .pipe(gulp.dest('../app/css'))
+    .pipe(plugins.livereload())
 });
 
 // Watch Task
