@@ -31,7 +31,8 @@ gulp.task('compass', function() {
 });
 
 // Watch Task
-// Watches for Changes in JS / SASS Files
+// Watches for Changes in JS / SASS / HTML Files and reload
+// Requires the LiveReload browser extension: http://livereload.com
 gulp.task('watch', function() {
 
 	plugins.livereload.listen();
