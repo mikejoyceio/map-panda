@@ -22,7 +22,7 @@
 #####HTML
 
 - [HTML5 Doctor: The Main Element](http://html5doctor.com/the-main-element/)
-- [](http://w3c.github.io/aria-in-html/)
+- [Using WAI-ARIA in HTML](http://w3c.github.io/aria-in-htmlUsing WAI-ARIA in HTML/)
 
 #####JavaScript
 
