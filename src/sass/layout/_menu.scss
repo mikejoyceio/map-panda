@@ -5,7 +5,6 @@
 	background: $background-color;
     height: 100%;
     left: 0;
-		padding-top: 200px;
     position: absolute;
     top: 0;
     width: 200px;
@@ -22,7 +21,8 @@
 
     .options {
 			color: #fff;
-
+			margin-top: 200px;
+			
     	.option {
     		outline: none;
     	}
