@@ -15,6 +15,7 @@
 
 - [Compass: SASS Authoring Framework](http://compass-style.org/help/documentation/)
 - [Sitepoint: Architecture of a SASS Project](http://www.sitepoint.com/architecture-sass-project/)
+- [The SASS Way: How to Structure a SASS Project](http://thesassway.com/beginner/how-to-structure-a-sass-project)
 
 #####CSS
 
