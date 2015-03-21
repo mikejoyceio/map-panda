@@ -8,6 +8,14 @@
 	position: absolute;
 	top: 0;
 	left: 0;
+	z-index: 2;
+
+	h1 {
+		color: #fff;
+    left: 20px;
+    position: relative;
+    top: 20px;	
+	}
 
 	.search {
 	    background: #fefefe;
