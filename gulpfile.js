@@ -13,7 +13,7 @@ gulp.task('scripts', function() {
 		.pipe(plugins.filter('*.js'))
 		.pipe(plugins.concat('app.js'))
 		.pipe(plugins.uglify())
-		.pipe(gulp.dest('./app/js'))	
+		.pipe(gulp.dest('./build/js'))	
 		.pipe(plugins.livereload())
 });
 
@@ -23,12 +23,12 @@ gulp.task('compass', function() {
   gulp.src('./src/sass/*.scss')
     .pipe(plugins.compass({
       project: path.join(__dirname, './src'),
-      css: '../app/css',
+      css: '../build/css',
       sass: 'sass',
       style: 'compressed'
     }))
     .pipe(plugins.minifyCss())
-    .pipe(gulp.dest('../app/css'))
+    .pipe(gulp.dest('../build/css'))
     .pipe(plugins.livereload())
 });
 
