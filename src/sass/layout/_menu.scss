@@ -5,9 +5,11 @@
 	background: $background-color;
     height: 100%;
     left: 0;
+		padding-top: 200px;
     position: absolute;
     top: 0;
     width: 200px;
+    z-index: 1;
 
     .brand {
     	background: $accent-color;
@@ -19,7 +21,7 @@
     }
 
     .options {
-    	outline: none;
+			color: #fff;
 
     	.option {
     		outline: none;
