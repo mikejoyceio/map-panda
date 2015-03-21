@@ -13,7 +13,8 @@
 
 #####SASS
 
-- [Compass](http://compass-style.org/help/documentation/)
+- [Compass: SASS Authoring Framework](http://compass-style.org/help/documentation/)
+- [Sitepoint: Architecture of a SASS Project](http://www.sitepoint.com/architecture-sass-project/)
 
 #####CSS
 
