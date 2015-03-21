@@ -5,13 +5,15 @@
 	outline: none;
 
 	.info {
-	    margin-left: 200px;
+		left: 0;	
+		position: absolute;
+		top: 80px;
+		width: 100%;
 
 		.info-content {
+				height: 100px;
+				margin: 0 40px 0 240px;	
     		border-bottom: 1px solid #ecf0f1;
-		    height: 100px;
-		    margin: 80px auto;
-		    width: 95%;	
 		}
 	}
 }
