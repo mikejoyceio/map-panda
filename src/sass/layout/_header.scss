@@ -21,7 +21,7 @@
 	    top: 12px;
 	    width: 200px;
 
-	    &.focus: {
+	    &:focus {
 	    	outline-color: transparent;
 	    	outline-style: none;	
 	    }
