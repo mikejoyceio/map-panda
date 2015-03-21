@@ -1,14 +1,22 @@
 
 // Content 
 
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
 .content {
 	outline: none;
+	height: 100%;
 
 	.info {
 		left: 0;	
 		position: absolute;
 		top: 80px;
 		width: 100%;
+		z-index: 99999;
 
 		.info-content {
 				height: 100px;
