@@ -28,5 +28,7 @@
 
 #####JavaScript
 
-- [HTML5 Geo Location](http://html5demos.com/geo)
+- [HTML5 Geolocation](http://html5demos.com/geo)
+- [Caniuse: Geolocation](http://caniuse.com/#search=geo)
 - [Mozilla Developer Network: Array ForEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+- [The Top 10 Mistakes That KnockoutJS Developers Make](https://www.airpair.com/knockout/posts/top-10-mistakes-knockoutjs) By Mike Mellentin
