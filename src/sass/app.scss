@@ -3,13 +3,6 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "test.scss";
 @import "compass/reset";
-
-.test {
-	background: red;
-}
-
-.test2 {
-	background: green;
-}
+@import "modules/all";
+@import "layout/all";

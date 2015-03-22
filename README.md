@@ -13,7 +13,9 @@
 
 #####SASS
 
-- [Compass](http://compass-style.org/help/documentation/)
+- [Compass: SASS Authoring Framework](http://compass-style.org/help/documentation/)
+- [Sitepoint: Architecture of a SASS Project](http://www.sitepoint.com/architecture-sass-project/)
+- [The SASS Way: How to Structure a SASS Project](http://thesassway.com/beginner/how-to-structure-a-sass-project)
 
 #####CSS
 
@@ -21,7 +23,8 @@
 
 #####HTML
 
-- []()
+- [HTML5 Doctor: The Main Element](http://html5doctor.com/the-main-element/)
+- [Using WAI-ARIA in HTML](http://w3c.github.io/aria-in-htmlUsing WAI-ARIA in HTML/)
 
 #####JavaScript
 

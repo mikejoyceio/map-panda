@@ -1,0 +1,27 @@
+
+// Content 
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.content {
+	outline: none;
+	height: 100%;
+
+	.info {
+		left: 0;	
+		position: absolute;
+		top: 80px;
+		width: 100%;
+		z-index: 99999;
+
+		.info-content {
+				height: 100px;
+				margin: 0 40px 0 240px;	
+    		border-bottom: 1px solid #ecf0f1;
+		}
+	}
+}

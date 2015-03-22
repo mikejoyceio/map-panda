@@ -1,0 +1,30 @@
+
+// Menu
+
+.menu {
+	background: $background-color;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 200px;
+    z-index: 1;
+
+    .brand {
+    	background: $accent-color;
+    	height: 82px;
+    	left: 0;
+    	position: absolute;
+    	top: 60px;
+    	width: 100%;
+    }
+
+    .options {
+			color: #fff;
+			margin-top: 200px;
+			
+    	.option {
+    		outline: none;
+    	}
+    }
+}

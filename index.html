@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Map</title>
+	<!-- Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="build/css/app.css">
+	<!-- Scripts -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KC7nmHmDdz1n0H9xy9rm_B9YAUPeo_A"></script>
+	<script src="build/js/app.js" defer="defer"></script>
+</head>
+<body>
+
+	<!-- Header -->	
+	<header class="header" role="banner">
+		<h1 data-bind="text: appName"></h1>
+		<input type="text" class="search" placeholder="Search">
+	</header>
+	<!-- /Header -->
+
+	<!-- Menu -->
+	<div class="menu" role="menu">
+
+		<!-- Brand -->
+		<div class="brand">
+
+		</div>
+		<!-- /Brand -->
+
+		<!-- Options -->
+		<ul class="options">
+			<li class="option">Test</li>
+			<li class="option">Test</li>
+		</ul>
+		<!-- /Options -->
+
+	</div>
+	<!-- /Menu -->
+
+	<!-- Main Content -->
+	<div class="content" role="main">
+
+		<!-- Info -->
+		<div class="info">
+			<div class="info-content">
+				<h2 data-bind="text: contentName"></h2>	
+			</div>
+		</div>
+		<!-- /Info -->
+
+		<!-- Map -->
+		<div id="mapCanvas"></div>
+		<!-- /Map -->
+
+	</div>
+	<!-- /Main Content -->
+
+	<!-- Footer -->
+	<footer class="footer" role="contentinfo">
+
+	</footer>
+	<!-- /Footer -->
+
+</body>
+</html>
