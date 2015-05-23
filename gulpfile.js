@@ -12,7 +12,7 @@ gulp.task('scripts', function() {
 	gulp.src(plugins.mainBowerFiles().concat('src/js/*'))
 		.pipe(plugins.filter('*.js'))
 		.pipe(plugins.concat('app.js'))
-		.pipe(plugins.uglify())
+		//.pipe(plugins.uglify())
 		.pipe(gulp.dest('./build/js'))	
 		.pipe(plugins.livereload())
 });
@@ -25,7 +25,8 @@ gulp.task('compass', function() {
       project: path.join(__dirname, './src'),
       css: '../build/css',
       sass: 'sass',
-      style: 'compressed'
+      style: 'compressed',
+      import_path: 'vendor'
     }))
     .pipe(plugins.minifyCss())
     .pipe(gulp.dest('../build/css'))
