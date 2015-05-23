@@ -7,6 +7,21 @@
 	padding: 0;
 }
 
+// Zoom Buttons
+.zoom-button {
+	cursor: pointer;
+	position: absolute;
+	right: 20px;
+	z-index: 999;
+
+	&.zoom-in {
+		bottom: 200px;	
+	}
+	&.zoom-out {
+		bottom: 100px;
+	}
+}
+
 // Hide 'listings'
 .gm-style-cc:nth-child(n+8) {
     display: none;
