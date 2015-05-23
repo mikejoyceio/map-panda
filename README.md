@@ -39,6 +39,7 @@
 - [Map Icons](http://map-icons.com/)
 - [Snazzy Maps: Styles for Google Maps](https://snazzymaps.com/)
 - [Stack Overflow: Using Icon Fonts as Markers in Google Maps V3](http://stackoverflow.com/questions/16375077/using-icon-fonts-as-markers-in-google-maps-v3)
+- [Font Awesome Markers](https://github.com/nathan-muir/fontawesome-markers)
 
 #####Knockout JS
 
