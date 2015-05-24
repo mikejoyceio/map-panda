@@ -10,6 +10,7 @@
 - [Level Up Tuts: Learning Gulp](http://leveluptuts.com/tutorials/learning-gulp/)
 - [Automatically Load Gulp Plugins](http://andy-carter.com/blog/automatically-load-gulp-plugins-with-gulp-load-plugins) by Andy Carter
 - [A Beginners Guide to Using Bower & Gulp](http://andy-carter.com/blog/a-beginners-guide-to-package-manager-bower-and-using-gulp-to-manage-components) by Andy Carter
+- [Setting up Gulp, Bower, Bootstrap Sass, & FontAwesome](http://ericlbarnes.com/setting-gulp-bower-bootstrap-sass-fontawesome/) by Eric L. Barnes
 
 #####SASS
 
