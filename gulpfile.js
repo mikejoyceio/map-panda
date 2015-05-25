@@ -9,7 +9,7 @@ var path = require('path');
 // Scripts Task
 // Uglifies / Concats
 gulp.task('scripts', function() {
-	gulp.src(plugins.mainBowerFiles().concat('src/js/*'))
+	gulp.src(plugins.mainBowerFiles().concat(['src/js/mapMarkers.js', 'src/js/dataModel.js', 'src/js/viewModel.js'])) 		
 		.pipe(plugins.filter('*.js'))
 		.pipe(plugins.concat('app.js'))
 		//.pipe(plugins.uglify())
