@@ -12,6 +12,7 @@ var ViewModel = function() {
 	this.contentName = "Content Name";
 	this.latlang;
 	this.placeList = ko.observableArray([]); 
+	this.searchQuery = ko.observable('');
 
 	this.map = new Map();
 	this.map.init();
@@ -33,14 +34,20 @@ var ViewModel = function() {
 		log('select place');
 	}
 
-	// this.filterPlaces = ko.computed(function() {
-	// 	log(self.placeList);
-	// }), self);
-
-	this.filterPlace = function(value) {
-		log('filter');
-		log(value);
+	this.search = function(value) {
+	 for (i=0;i<self.placeList().length;i++) {
+	 	self.placeList()[i].isHidden(false);
+	 	if (value.toLowerCase() === self.placeList()[i].name().toLowerCase()) {
+	 		self.selectPlace(self.placeList()[i]);
+	 	} else if (value.length === 0) {
+	 		self.placeList()[i].isHidden(false);
+	 	} else {
+	 		self.placeList()[i].isHidden(true);
+	 	}
+	 }
 	}
+
+	this.searchQuery.subscribe(this.search);
   
 }
 
@@ -52,6 +59,7 @@ var Place = function(data) {
 	this.icon = ko.observable(data.icon);
 	this.marker = ko.observable(data.marker);
 	this.isActive = ko.observable(false);
+	this.isHidden = ko.observable(false);
 }
 
 // Google Map
