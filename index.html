@@ -51,10 +51,14 @@
 	<div class="content" role="main">
 
 		<!-- Info -->
-		<div class="info" data-bind="with: currentPlace">
+		<div class="info">
 			<div class="info-content">
-				<h2 data-bind="text: name"></h2>	
-				<span data-bind="text: description"></span>
+				<div data-bind="visible: info">
+					<!-- ko with: currentPlace -->
+					<h2 data-bind="text: name"></h2>	
+					<span data-bind="text: description"></span>
+					<!-- /ko -->
+				</div>
 			</div>
 		</div>
 		<!-- /Info -->
