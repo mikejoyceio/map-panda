@@ -34,6 +34,7 @@
 - [Mozilla Developer Network: Array ForEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 - [The Top 10 Mistakes That KnockoutJS Developers Make](https://www.airpair.com/knockout/posts/top-10-mistakes-knockoutjs) By Mike Mellentin
 - [Stack Overflow: jQuery - Check if DOM element already exists](http://stackoverflow.com/questions/5538961/jquery-check-if-dom-element-already-exists)
+- [Mozilla Developer Network - typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
 
 #####Google Maps
 
