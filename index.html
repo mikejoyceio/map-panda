@@ -26,14 +26,14 @@
 
 		<!-- Filter -->
 		<div class="filter">
-			<input type="text" id="filter" placeholder="Filter" data-bind="event: { keydown: filterPlace }">
+			<input type="text" id="filter" placeholder="Filter" data-bind="value: searchQuery, valueUpdate: 'keyup'">
 		</div>
 		<!-- /Filter -->
 
 		<!-- Options -->
 		<ul class="options">
 			<!-- ko foreach: placeList -->
-			<li class="option" data-bind="css: {active: isActive()}">
+			<li class="option" data-bind="css: {active: isActive(), hidden: isHidden()}">
 				<span class="fa-stack fa-sml">
 					<i class="fa fa-circle-o fa-stack-2x"></i>
 					<i class="fa fa-stack-1x fa-inverse" data-bind="css: icon"></i>
