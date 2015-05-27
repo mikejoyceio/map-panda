@@ -2,21 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>Map</title>
-	<!-- Fonts -->
-	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
-	<!-- Stylesheets -->
+	<!-- App CSS -->
 	<link rel="stylesheet" href="build/css/app.css">
-	<!-- Scripts -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KC7nmHmDdz1n0H9xy9rm_B9YAUPeo_A"></script>
-	<script src="build/js/app.js" defer="defer"></script>
 </head>
 <body>
 
 	<!-- Header -->	
 	<header class="header" role="banner">
 		<h1 data-bind="text: appName"></h1>
-		<input type="text" class="search" placeholder="Search">
 	</header>
 	<!-- /Header -->
 
@@ -29,10 +24,23 @@
 		</div>
 		<!-- /Brand -->
 
+		<!-- Filter -->
+		<div class="filter">
+			<input type="text" id="filter" placeholder="Filter" data-bind="event: { keydown: filterPlace }">
+		</div>
+		<!-- /Filter -->
+
 		<!-- Options -->
 		<ul class="options">
-			<li class="option">Test</li>
-			<li class="option">Test</li>
+			<!-- ko foreach: placeList -->
+			<li class="option" data-bind="css: {active: isActive()}">
+				<span class="fa-stack fa-sml">
+					<i class="fa fa-circle-o fa-stack-2x"></i>
+					<i class="fa fa-stack-1x fa-inverse" data-bind="css: icon"></i>
+				</span>
+				<span data-bind="text: name, click: $parent.selectPlace"></span>
+			</li>
+			<!-- /ko -->
 		</ul>
 		<!-- /Options -->
 
@@ -43,15 +51,20 @@
 	<div class="content" role="main">
 
 		<!-- Info -->
-		<div class="info">
+		<div class="info" data-bind="with: currentPlace">
 			<div class="info-content">
-				<h2 data-bind="text: contentName"></h2>	
+				<h2 data-bind="text: name"></h2>	
+				<span data-bind="text: description"></span>
 			</div>
 		</div>
 		<!-- /Info -->
 
 		<!-- Map -->
-		<div id="mapCanvas"></div>
+<!-- 		<div class="map" data-bind="map: { placeType: placeType }"></div> -->
+		<div id="mapCanvas" class="map"></div>
+		<!-- Map Zoom Buttons -->
+    <div id="zoomIn" class="zoom-button zoom-in">ZOOM IN</div>
+   	<div id="zoomOut" class="zoom-button zoom-out">ZOOM OUT</div>
 		<!-- /Map -->
 
 	</div>
@@ -62,6 +75,12 @@
 
 	</footer>
 	<!-- /Footer -->
-
+	
+	<!-- Google Maps API -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KC7nmHmDdz1n0H9xy9rm_B9YAUPeo_A&libraries=places"></script>
+	<!-- App JS -->
+	<script src="build/js/app.js"></script>
+	<!-- Knockout Mapping -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
 </body>
 </html>
