@@ -1,5 +1,6 @@
 
 // Data Model
+
 var placesData = [
 	{
 		name: 'Cafes',
@@ -18,7 +19,7 @@ var placesData = [
 		description: 'description text',
 		type: 'food',
 		icon: 'fa-plane',
-		marker: { path: 'M 0,-24 6,-7 24,-7 10,4 15,21 0,11 -15,21 -10,4 -24,-7 -6,-7 z',
+		marker: { path: fontawesome.markers.BUS,
 								fillColor: '#ffff00',
 								fillOpacity: 1,
 								scale: 1/4,
