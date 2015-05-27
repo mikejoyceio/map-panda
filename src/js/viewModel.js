@@ -281,7 +281,8 @@ var Map = function() {
 								name: place.name,
 								vicinity: place.vicinity,
 								phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'no number',
-								photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}): 'nophoto.jpg'
+								photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'nophoto.jpg',
+								rating: typeof place.rating !== 'undefined' ? place.rating : 'no rating'
 							}	
 
 					 		$('#modal'+data.id).append(
@@ -289,6 +290,7 @@ var Map = function() {
 					 			'<h4>'+placeInfo.name+'</h4>' +
 					 			'<div class="address">'+placeInfo.vicinity+'</div>' +
 					 			'<div class="phone">'+placeInfo.phone+'</div>' +
+					 			'<div class="rating">'+placeInfo.rating+'</div>' +
 					 			'<img class="photo" src="'+placeInfo.photo+'">' 
 					 		);
 
