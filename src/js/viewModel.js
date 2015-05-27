@@ -127,10 +127,15 @@ var Map = function() {
 		  }
 
 			function handleNoGeolocation(errorFlag) {
+
 			  if (errorFlag) {
+
 			    var content = 'Error: The Geolocation service failed.';
+
 			  } else {
+
 			    var content = 'Error: Your browser doesn\'t support geolocation.';
+
 			  }
 
 			  var options = {
@@ -234,69 +239,95 @@ var Map = function() {
 	 }
 
 	 function addInfoWindow(data) {
+
 	   	google.maps.event.addListener(data.marker, 'mouseover', function() {
+
 	    	infoWindow.setContent(
 	    		'<div class="info-window">' +
 	    		'<h5>'+data.name+'</h5>' +
 	    		'<img src="'+data.photo+'">' +
 	    		'<button id="openModal'+data.id+'">Button</button>' +
 	    		'</div>'
-	    		);
+	    	);
+
 	    	infoWindow.open(map, this);
+
 	    });
 	 }
 
 	 function addModal(data) {
 
-	 	if (!$("#modal"+data.id).html()) {
-	 		$('body').append('<div id="modal'+data.id+'" class="modal"></div>')
+	 	if ($("#modal"+data.id).length === 0) {
+
+	 		$('body').append('<div id="modal'+data.id+'" class="modal"></div>');	
+
+	 		$(document).on('click', '#openModal'+data.id, function() {
+	    
+		    if ($("#modal"+data.id).children().length === 0) {
+
+		 			var request = { 
+				  	placeId: data.placeId
+					};
+
+					var service = new google.maps.places.PlacesService(map);
+					service.getDetails(request, callback);
+
+					function callback(place, status) {
+
+					  if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+					  	var placeInfo = {
+								id: place.id,
+								name: place.name,
+								vicinity: place.vicinity,
+								phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'no number',
+								photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}): 'nophoto.jpg'
+							}	
+
+					 		$('#modal'+data.id).append(
+					 			'<span id="closeModal'+placeInfo.id+'">close</span>' +
+					 			'<h4>'+placeInfo.name+'</h4>' +
+					 			'<div class="address">'+placeInfo.vicinity+'</div>' +
+					 			'<div class="phone">'+placeInfo.phone+'</div>' +
+					 			'<img class="photo" src="'+placeInfo.photo+'">' 
+					 		);
+
+					 		$(document).on('click', '#closeModal'+placeInfo.id, function() {
+					 			$("#modal"+placeInfo.id).hide();
+					 		});
+
+					  } else {
+
+					  	log('Place details error'+status);
+
+					  }
+					}
+
+					$("#modal"+data.id).show();
+
+				} else {
+					 
+					$("#modal"+data.id).show();
+
+					}
+
+	  	});
+
 	 	}
 
-	  $(document).on('click', '#openModal'+data.id, function() {
-	    
-	    if(!$("#modal"+data.id).children().length) {
-
-	 			var request = { 
-			  	placeId: data.placeId
-				};
-
-				var service = new google.maps.places.PlacesService(map);
-				service.getDetails(request, callback);
-
-				function callback(place, status) {
-				  if (status == google.maps.places.PlacesServiceStatus.OK) {
-				 		$('#modal'+place.id).append(
-				 			'<span id="closeModal'+place.id+'">close</span>' +
-				 			'<h4>'+place.name+'</h4>' +
-				 			'<div class="address">'+place.vicinity+'</div>' +
-				 			'<div class="phone">'+place.formatted_phone_number+'</div>' +
-				 			'<img class="photo">' 
-				 		);
-				 		$(document).on('click', '#closeModal'+place.id, function() {
-				 			$("#modal"+place.id).hide();
-				 		});
-				  } else {
-				  	log('Place details error'+status);
-				  }
-				}
-
-				$("#modal"+data.id).show();
-
-			} else {
-				 
-				$("#modal"+data.id).show();
-
-				}
-
-	  });
 
 	 }
 
 	 function clearMarkers() {
+
 		for (var i=0; i < markers.length; i++) {
+
 			markers[i].setMap(null);
+
 		}
+
 		markers.length = 0;
+
 	 }
 
 	}
