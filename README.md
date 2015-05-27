@@ -26,6 +26,7 @@
 
 - [HTML5 Doctor: The Main Element](http://html5doctor.com/the-main-element/)
 - [Using WAI-ARIA in HTML](http://w3c.github.io/aria-in-htmlUsing WAI-ARIA in HTML/)
+- [Stack Overflow: How to you detect the clearing of a "search" HTML5 input?](http://stackoverflow.com/questions/2977023/how-do-you-detect-the-clearing-of-a-search-html5-input)
 
 #####JavaScript
 
