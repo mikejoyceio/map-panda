@@ -40,6 +40,9 @@
 - [Map Icons](http://map-icons.com/)
 - [Snazzy Maps: Styles for Google Maps](https://snazzymaps.com/)
 - [Stack Overflow: Using Icon Fonts as Markers in Google Maps V3](http://stackoverflow.com/questions/16375077/using-icon-fonts-as-markers-in-google-maps-v3)
+- [Stack Overflow: Custom Google Map API V3 Zoom Buttons ](http://stackoverflow.com/questions/7916555/custom-google-map-api-v3-zoom-buttons)
+- [Stack Overflow: Google Places getUrl() is breaking my JavaScript](http://stackoverflow.com/questions/22459910/google-places-photos-geturl-is-breaking-my-javascript)
+- [Stack Overflow: Google Maps API Over Query per second limit](http://stackoverflow.com/questions/14014074/google-maps-api-over-query-limit-per-second-limit)
 - [Font Awesome Markers](https://github.com/nathan-muir/fontawesome-markers)
 
 #####Knockout JS
