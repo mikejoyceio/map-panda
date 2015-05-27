@@ -29,6 +29,14 @@
 			
     	.option {
     		outline: none;
+
+    		&.active {
+    			outline: none;
+    		}
+
+    		&.hidden {
+    			display: none;
+    		}
     	}
     }
 }
