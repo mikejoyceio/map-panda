@@ -11,7 +11,6 @@ var ViewModel = function() {
 	this.appName = "App Name";
 	this.contentName = "Content Name";
 	this.info = ko.observable(false);
-	this.latlang;
 	this.placeList = ko.observableArray([]); 
 	this.searchQuery = ko.observable('');
 	this.searchRadii = ko.observable('5000');
