@@ -58,6 +58,10 @@ var ViewModel = function() {
 
 	this.searchRadii.subscribe(this.searchRadius);
 
+	this.panTo = function(place) {
+		self.map.panTo();
+	}
+
 	$('input[type=search]').on('search', function () {
 		for (i=0;i<self.placeList().length;i++) {
 			self.placeList()[i].isHidden(false);
@@ -170,6 +174,10 @@ var Map = function() {
 			  var infowindow = new google.maps.InfoWindow(options);
 			  map.setCenter(options.position);
 			}
+	}
+
+	this.panTo = function() {
+		map.panTo(pos);
 	}
 
 	this.update = function(place, placeIcon, radii) {
