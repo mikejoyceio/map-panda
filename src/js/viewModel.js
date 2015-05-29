@@ -88,11 +88,11 @@ var Place = function(data) {
 	this.isHidden = ko.observable(false);
 }
 
-// Google Map
+// Google Map Constructor
 var Map = function() {
 
 	var map;
-	var pos;
+	var latLang;
 	var places = [];
 	var markers = [];
 
@@ -110,19 +110,19 @@ var Map = function() {
 	  if(navigator.geolocation) {
 	    navigator.geolocation.getCurrentPosition(function(position) {
 	
-	      pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	      latLang = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 	 
 	      var infowindow = new google.maps.InfoWindow({
 	        map: map,
-	        position: pos,
-	        center: pos,
+	        position: latLang,
+	        center: latLang,
 	        content: 'Location found using HTML5.'
 	      });
 
-	      map.setCenter(pos);
+	      map.setCenter(latLang);
 
 		    var marker = new google.maps.Marker({
-		    	position: pos,
+		    	position: latLang,
 		    	map: map,
 		    	icon: { path: fontawesome.markers.MAP_MARKER,
 								fillColor: '#ffff00',
@@ -167,7 +167,7 @@ var Map = function() {
 	}
 
 	this.panTo = function() {
-		map.panTo(pos);
+		map.panTo(latLang);
 	}
 
 	this.zoomIn = function() {
@@ -194,7 +194,7 @@ var Map = function() {
     place = place.replace(/"/g, "");
 
     var request = {
-    	location: pos,
+    	location: latLang,
     	radius: radii,
     	types: []
     }
