@@ -9410,8 +9410,11 @@ var ViewModel = function() {
 
 	this.appName = "App Name";
 	this.contentName = "Content Name";
+	this.info = ko.observable(false);
 	this.latlang;
 	this.placeList = ko.observableArray([]); 
+	this.searchQuery = ko.observable('');
+	this.searchRadii = ko.observable('5000');
 
 	this.map = new Map();
 	this.map.init();
@@ -9426,20 +9429,51 @@ var ViewModel = function() {
 		self.currentPlace(place);
 		for(i=0;i<self.placeList().length;i++) {
 			self.placeList()[i].isActive(false);
+			self.info(false);
 		}
 		place.isActive(!place.isActive());
-		log('Place'+ko.toJSON(place.type));
-		self.map.update(ko.toJSON(place.type), ko.mapping.toJS(place.marker));
-		log('select place');
+		self.info(true);
+		self.map.update(ko.toJSON(place.type), ko.mapping.toJS(place.marker), self.searchRadii());
 	}
 
-	// this.filterPlaces = ko.computed(function() {
-	// 	log(self.placeList);
-	// }), self);
+	this.search = function(value) {
+	 for (i=0;i<self.placeList().length;i++) {
+	 	self.placeList()[i].isHidden(false);
+	 	if (value.toLowerCase() === self.placeList()[i].name().toLowerCase()) {
+	 		self.selectPlace(self.placeList()[i]);
+	 	} else if (value.length === 0) {
+	 		self.placeList()[i].isHidden(false);
+	 	} else {
+	 		self.placeList()[i].isHidden(true);
+	 	}
+	 }
+	}
 
-	this.filterPlace = function(value) {
-		log('filter');
-		log(value);
+	this.searchQuery.subscribe(this.search);
+
+	this.searchRadius = function(value) {	
+		self.searchRadii(value);
+		self.selectPlace(self.currentPlace());
+	}
+
+	this.searchRadii.subscribe(this.searchRadius);
+
+	this.panTo = function() {
+		self.map.panTo();
+	}
+
+	this.zoomIn = function() {
+		self.map.zoomIn();
+	}
+
+	this.zoomOut = function() {
+		self.map.zoomOut();
+	}
+
+	this.clearSearch = function() {
+		for (i=0;i<self.placeList().length;i++) {
+			self.placeList()[i].isHidden(false);
+		}
 	}
   
 }
@@ -9452,6 +9486,7 @@ var Place = function(data) {
 	this.icon = ko.observable(data.icon);
 	this.marker = ko.observable(data.marker);
 	this.isActive = ko.observable(false);
+	this.isHidden = ko.observable(false);
 }
 
 // Google Map
@@ -9465,29 +9500,12 @@ var Map = function() {
 	this.init = function() {
 
     var mapOptions = {
-      zoom: 14,
+      zoom: 13,
       styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}]
     };
 
-    function ZoomButtons(controlDiv, map) {
-
-		 google.maps.event.addDomListener(zoomOut, 'click', function() {
-		   var currentZoomLevel = map.getZoom();
-		   if(currentZoomLevel != 0){
-		     map.setZoom(currentZoomLevel - 1);}     
-		  });
-
-		   google.maps.event.addDomListener(zoomIn, 'click', function() {
-		   var currentZoomLevel = map.getZoom();
-		   if(currentZoomLevel != 21){
-		     map.setZoom(currentZoomLevel + 1);}
-		  });
-
-		}
-
     map = new google.maps.Map(document.getElementById('mapCanvas'), mapOptions);
-  	var zoomButtonsDiv = document.createElement('div');
-  	var zoomButtons = new ZoomButtons(zoomButtonsDiv, map);
+
 
 	  // Try HTML5 geolocation
 	  if(navigator.geolocation) {
@@ -9527,10 +9545,15 @@ var Map = function() {
 		  }
 
 			function handleNoGeolocation(errorFlag) {
+
 			  if (errorFlag) {
+
 			    var content = 'Error: The Geolocation service failed.';
+
 			  } else {
+
 			    var content = 'Error: Your browser doesn\'t support geolocation.';
+
 			  }
 
 			  var options = {
@@ -9544,11 +9567,28 @@ var Map = function() {
 			}
 	}
 
-	this.update = function(place, placeIcon) {
+	this.panTo = function() {
+		map.panTo(pos);
+	}
+
+	this.zoomIn = function() {
+		var currentZoomLevel = map.getZoom();
+		if(currentZoomLevel != 21){
+		map.setZoom(currentZoomLevel + 1);}
+	}
+
+	this.zoomOut = function() {
+		var currentZoomLevel = map.getZoom();
+		if(currentZoomLevel != 0){
+		map.setZoom(currentZoomLevel - 1);}  	
+	}
+
+	this.update = function(place, placeIcon, radii) {
 
 		if(!debug) {
 			log('Update');
 			log(place);
+			log(radii);
 		}	
 
 		// Strip quotes from JSON string
@@ -9556,7 +9596,7 @@ var Map = function() {
 
     var request = {
     	location: pos,
-    	radius: '5000',
+    	radius: radii,
     	types: []
     }
 
@@ -9634,69 +9674,97 @@ var Map = function() {
 	 }
 
 	 function addInfoWindow(data) {
+
 	   	google.maps.event.addListener(data.marker, 'mouseover', function() {
+
 	    	infoWindow.setContent(
 	    		'<div class="info-window">' +
 	    		'<h5>'+data.name+'</h5>' +
 	    		'<img src="'+data.photo+'">' +
 	    		'<button id="openModal'+data.id+'">Button</button>' +
 	    		'</div>'
-	    		);
+	    	);
+
 	    	infoWindow.open(map, this);
+
 	    });
 	 }
 
 	 function addModal(data) {
 
-	 	if (!$("#modal"+data.id).html()) {
-	 		$('body').append('<div id="modal'+data.id+'" class="modal"></div>')
+	 	if ($("#modal"+data.id).length === 0) {
+
+	 		$('body').append('<div id="modal'+data.id+'" class="modal"></div>');	
+
+	 		$(document).on('click', '#openModal'+data.id, function() {
+	    
+		    if ($("#modal"+data.id).children().length === 0) {
+
+		 			var request = { 
+				  	placeId: data.placeId
+					};
+
+					var service = new google.maps.places.PlacesService(map);
+					service.getDetails(request, callback);
+
+					function callback(place, status) {
+
+					  if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+					  	var placeInfo = {
+								id: place.id,
+								name: place.name,
+								vicinity: place.vicinity,
+								phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'no number',
+								photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'nophoto.jpg',
+								rating: typeof place.rating !== 'undefined' ? place.rating : 'no rating'
+							}	
+
+					 		$('#modal'+data.id).append(
+					 			'<span id="closeModal'+placeInfo.id+'">close</span>' +
+					 			'<h4>'+placeInfo.name+'</h4>' +
+					 			'<div class="address">'+placeInfo.vicinity+'</div>' +
+					 			'<div class="phone">'+placeInfo.phone+'</div>' +
+					 			'<div class="rating">'+placeInfo.rating+'</div>' +
+					 			'<img class="photo" src="'+placeInfo.photo+'">' 
+					 		);
+
+					 		$(document).on('click', '#closeModal'+placeInfo.id, function() {
+					 			$("#modal"+placeInfo.id).hide();
+					 		});
+
+					  } else {
+
+					  	log('Place details error'+status);
+
+					  }
+					}
+
+					$("#modal"+data.id).show();
+
+				} else {
+					 
+					$("#modal"+data.id).show();
+
+					}
+
+	  	});
+
 	 	}
 
-	  $(document).on('click', '#openModal'+data.id, function() {
-	    
-	    if(!$("#modal"+data.id).children().length) {
-
-	 			var request = { 
-			  	placeId: data.placeId
-				};
-
-				var service = new google.maps.places.PlacesService(map);
-				service.getDetails(request, callback);
-
-				function callback(place, status) {
-				  if (status == google.maps.places.PlacesServiceStatus.OK) {
-				 		$('#modal'+place.id).append(
-				 			'<span id="closeModal'+place.id+'">close</span>' +
-				 			'<h4>'+place.name+'</h4>' +
-				 			'<div class="address">'+place.vicinity+'</div>' +
-				 			'<div class="phone">'+place.formatted_phone_number+'</div>' +
-				 			'<img class="photo">' 
-				 		);
-				 		$(document).on('click', '#closeModal'+place.id, function() {
-				 			$("#modal"+place.id).hide();
-				 		});
-				  } else {
-				  	log('Place details error'+status);
-				  }
-				}
-
-				$("#modal"+data.id).show();
-
-			} else {
-				 
-				$("#modal"+data.id).show();
-
-				}
-
-	  });
 
 	 }
 
 	 function clearMarkers() {
+
 		for (var i=0; i < markers.length; i++) {
+
 			markers[i].setMap(null);
+
 		}
+
 		markers.length = 0;
+
 	 }
 
 	}
