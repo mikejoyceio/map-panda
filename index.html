@@ -26,7 +26,7 @@
 
 		<!-- Filter -->
 		<div class="filter">
-			<input type="search" id="filter" placeholder="Filter" data-bind="value: searchQuery, valueUpdate: 'keyup'">
+			<input type="search" id="filter" placeholder="Filter" data-bind="value: searchQuery, valueUpdate: 'keyup', event: { search: clearSearch }">
 		</div>
 		<!-- /Filter -->
 
