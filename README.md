@@ -55,5 +55,10 @@
 - [Stack Exchange: Getting the Object Data](http://stackoverflow.com/questions/13755220/knockout-js-getting-the-object-data)
 - [Live Search with KnockoutJS](http://opensoul.org/2011/06/23/live-search-with-knockoutjs/) By Brandon Keepers
 
+#####Foursquare API
+
+- [Foursquare for Developers: Foursquare API](https://developer.foursquare.com/)
+- [Foursquare for Developers: Api Docs - Search Venus](https://developer.foursquare.com/docs/venues/search)
+
 
 
