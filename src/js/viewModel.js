@@ -14,6 +14,7 @@ var ViewModel = function() {
 	this.latlang;
 	this.placeList = ko.observableArray([]); 
 	this.searchQuery = ko.observable('');
+	this.searchRadii = ko.observable('5000');
 
 	this.map = new Map();
 	this.map.init();
@@ -32,7 +33,7 @@ var ViewModel = function() {
 		}
 		place.isActive(!place.isActive());
 		self.info(true);
-		self.map.update(ko.toJSON(place.type), ko.mapping.toJS(place.marker));
+		self.map.update(ko.toJSON(place.type), ko.mapping.toJS(place.marker), self.searchRadii());
 	}
 
 	this.search = function(value) {
@@ -49,6 +50,13 @@ var ViewModel = function() {
 	}
 
 	this.searchQuery.subscribe(this.search);
+
+	this.searchRadius = function(value) {	
+		self.searchRadii(value);
+		self.selectPlace(self.currentPlace());
+	}
+
+	this.searchRadii.subscribe(this.searchRadius);
 
 	$('input[type=search]').on('search', function () {
 		for (i=0;i<self.placeList().length;i++) {
@@ -164,11 +172,12 @@ var Map = function() {
 			}
 	}
 
-	this.update = function(place, placeIcon) {
+	this.update = function(place, placeIcon, radii) {
 
 		if(!debug) {
 			log('Update');
 			log(place);
+			log(radii);
 		}	
 
 		// Strip quotes from JSON string
@@ -176,7 +185,7 @@ var Map = function() {
 
     var request = {
     	location: pos,
-    	radius: '5000',
+    	radius: radii,
     	types: []
     }
 
