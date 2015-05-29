@@ -58,8 +58,16 @@ var ViewModel = function() {
 
 	this.searchRadii.subscribe(this.searchRadius);
 
-	this.panTo = function(place) {
+	this.panTo = function() {
 		self.map.panTo();
+	}
+
+	this.zoomIn = function() {
+		self.map.zoomIn();
+	}
+
+	this.zoomOut = function() {
+		self.map.zoomOut();
 	}
 
 	$('input[type=search]').on('search', function () {
@@ -96,25 +104,8 @@ var Map = function() {
       styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}]
     };
 
-    function ZoomButtons(controlDiv, map) {
-
-		 google.maps.event.addDomListener(zoomOut, 'click', function() {
-		   var currentZoomLevel = map.getZoom();
-		   if(currentZoomLevel != 0){
-		     map.setZoom(currentZoomLevel - 1);}     
-		  });
-
-		   google.maps.event.addDomListener(zoomIn, 'click', function() {
-		   var currentZoomLevel = map.getZoom();
-		   if(currentZoomLevel != 21){
-		     map.setZoom(currentZoomLevel + 1);}
-		  });
-
-		}
-
     map = new google.maps.Map(document.getElementById('mapCanvas'), mapOptions);
-  	var zoomButtonsDiv = document.createElement('div');
-  	var zoomButtons = new ZoomButtons(zoomButtonsDiv, map);
+
 
 	  // Try HTML5 geolocation
 	  if(navigator.geolocation) {
@@ -178,6 +169,18 @@ var Map = function() {
 
 	this.panTo = function() {
 		map.panTo(pos);
+	}
+
+	this.zoomIn = function() {
+		var currentZoomLevel = map.getZoom();
+		if(currentZoomLevel != 21){
+		map.setZoom(currentZoomLevel + 1);}
+	}
+
+	this.zoomOut = function() {
+		var currentZoomLevel = map.getZoom();
+		if(currentZoomLevel != 0){
+		map.setZoom(currentZoomLevel - 1);}  	
 	}
 
 	this.update = function(place, placeIcon, radii) {
