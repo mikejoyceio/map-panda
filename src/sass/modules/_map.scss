@@ -22,6 +22,13 @@
 	}
 }
 
+// Pan To Button
+.pan-to {
+	position:absolute; 
+	right: 20px; 
+	top: 200px
+}
+
 // Hide 'listings'
 .gm-style-cc:nth-child(n+8) {
     display: none;
