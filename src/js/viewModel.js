@@ -70,11 +70,11 @@ var ViewModel = function() {
 		self.map.zoomOut();
 	}
 
-	$('input[type=search]').on('search', function () {
+	this.clearSearch = function() {
 		for (i=0;i<self.placeList().length;i++) {
 			self.placeList()[i].isHidden(false);
 		}
-	});
+	}
   
 }
 
