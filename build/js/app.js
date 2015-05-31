@@ -9417,7 +9417,7 @@ var globals = {
 
 		this.appName = "App Name";
 		this.contentName = "Content Name";
-		this.info = ko.observable(false);
+		this.placeInfo = ko.observable(false);
 		this.placeList = ko.observableArray([]); 
 		this.searchQuery = ko.observable();
 		this.searchRadius = ko.observable('5000');
@@ -9432,10 +9432,10 @@ var globals = {
 			self.currentPlace(place);
 			for(i=0;i<self.placeList().length;i++) {
 				self.placeList()[i].isActive(false);
-				self.info(false);
+				self.placeInfo(false);
 			}
 			place.isActive(!place.isActive());
-			self.info(true);
+			self.placeInfo(true);
 		}
 
 		this.search = function(value) {
