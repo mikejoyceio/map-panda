@@ -31,7 +31,7 @@
 		<!-- /Filter -->
 
 		<!-- Search Radii -->
-		<input id="slider" type="range" min="1000" max="10000" step="1000" value="5000" data-bind="value: searchRadii, valueUpdate: 'change'"/>
+		<input id="slider" type="range" min="1000" max="10000" step="1000" value="5000" data-bind="value: searchRadius, valueUpdate: 'change'"/>
 		<!-- /Search Radii -->
 
 		<!-- Options -->
@@ -54,10 +54,10 @@
 	<!-- Main Content -->
 	<div class="content" role="main">
 
-		<!-- Info -->
-		<div class="info">
-			<div class="info-content">
-				<div data-bind="visible: info">
+		<!-- Map Info -->
+		<div class="map-info">
+			<div class="map-info-content">
+				<div data-bind="visible: mapInfo">
 					<!-- ko with: currentPlace -->
 					<h2 data-bind="text: name"></h2>	
 					<span data-bind="text: description"></span>
@@ -65,15 +65,15 @@
 				</div>
 			</div>
 		</div>
-		<!-- /Info -->
+		<!-- /Map Info -->
 
 		<!-- Map -->
-<!-- 		<div class="map" data-bind="map: { placeType: placeType }"></div> -->
-		<div id="mapCanvas" class="map"></div>
-		<!-- Map Zoom Buttons -->
+		<div class="map" data-bind="map: { currentPlace: currentPlace, searchRadius: searchRadius }"></div>
+		<!-- Map Controls -->
 		<div class="pan-to" data-bind="click: panTo">my loc</div>
     <div id="zoomIn" class="zoom-button zoom-in" data-bind="click: zoomIn">ZOOM IN</div>
    	<div id="zoomOut" class="zoom-button zoom-out" data-bind="click: zoomOut">ZOOM OUT</div>
+   	<!-- /Map Controls -->
 		<!-- /Map -->
 
 	</div>
