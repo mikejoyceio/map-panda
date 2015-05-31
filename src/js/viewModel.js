@@ -90,7 +90,6 @@ var globals = {
 	// KO Custom Binding
 	ko.bindingHandlers.map = {
 
-
 	  init: function(element, valueAccessor, allBindings) {
 
 	    var mapOptions = {
@@ -314,7 +313,6 @@ var globals = {
 				  	});
 
 				 	}
-
 
 				}
 
