@@ -11,7 +11,7 @@ html, body {
 	outline: none;
 	height: 100%;
 
-	.place-info {
+	.map-info {
 		background: rgba(255, 255, 255, 0.5);
 		left: 0;	
 		position: absolute;
@@ -19,7 +19,7 @@ html, body {
 		width: 100%;
 		z-index: 1;
 
-		.place-info-content {
+		.map-info-content {
 				height: 81px;
 				margin: 0 40px 0 240px;	
     		border-bottom: 1px solid #ecf0f1;
