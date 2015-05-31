@@ -54,10 +54,10 @@
 	<!-- Main Content -->
 	<div class="content" role="main">
 
-		<!-- Info -->
-		<div class="info">
-			<div class="info-content">
-				<div data-bind="visible: info">
+		<!-- Place Info -->
+		<div class="place-info">
+			<div class="place-info-content">
+				<div data-bind="visible: placeInfo">
 					<!-- ko with: currentPlace -->
 					<h2 data-bind="text: name"></h2>	
 					<span data-bind="text: description"></span>
@@ -65,7 +65,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- /Info -->
+		<!-- /Place Info -->
 
 		<!-- Map -->
 		<div class="map" data-bind="map: { currentPlace: currentPlace, searchRadius: searchRadius }"></div>
