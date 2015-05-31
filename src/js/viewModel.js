@@ -17,7 +17,6 @@ var ViewModel = function() {
 	this.placeList = ko.observableArray([]); 
 	this.searchQuery = ko.observable();
 	this.searchRadius = ko.observable('5000');
-	this.mapZoom = ko.observable();
 
 	placesData.forEach(function(placeItem) {
 		this.placeList.push(new Place(placeItem));
