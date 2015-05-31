@@ -9417,7 +9417,6 @@ var ViewModel = function() {
 	this.placeList = ko.observableArray([]); 
 	this.searchQuery = ko.observable();
 	this.searchRadius = ko.observable('5000');
-	this.mapZoom = ko.observable();
 
 	placesData.forEach(function(placeItem) {
 		this.placeList.push(new Place(placeItem));
@@ -9467,9 +9466,9 @@ var ViewModel = function() {
 	}
 
 	this.clearSearch = function() {
-		// for (i=0;i<self.placeList().length;i++) {
-		// 	self.placeList()[i].isHidden(false);
-		// }
+		for (i=0;i<self.placeList().length;i++) {
+			self.placeList()[i].isHidden(false);
+		}
 	}
   
 }
