@@ -163,174 +163,173 @@ ko.bindingHandlers.map = {
 	  	
 	  	var value = valueAccessor();
 
-	    var request = {
-	    	location: latLang,
-	    	radius: value.searchRadius(),
-	    	types: []
-	    }
+	  	if (value.currentPlace().isActive()) {
 
-	    request.types.push(value.currentPlace().type());
-
-	    var infoWindow = new google.maps.InfoWindow();
-	    var mapPlaces = new google.maps.places.PlacesService(map);
-	    mapPlaces.nearbySearch(request, callback);
-
-	    function callback(results, status) {
-	    	if (status === google.maps.places.PlacesServiceStatus.OK) {
-	    		clearMarkers();
-	    		places.length = 0;
-	    		if(!debug) {
-	    			log(results);
-	    		}
-	    		for (var i=0; i < results.length; i++) {
-	    			places.push(results[i]);
-	    		}
-	    		setPlaces();
-	    	} else if (status === google.maps.places.PlacesServiceStatus.ERROR) {
-	    		log(status+' There was a problem contacting the Google servers.');
-	    		log(status);
-	    	} else if (status === google.maps.places.PlacesServiceStatus.INVALID_REQUEST) {
-	    		log(status+' This request was invalid.');
-	    		log(status);
-	    	} else if (status === google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
-	    		log(status+' The webpage has gone over its request quota.');
-	    	} else if (status === google.maps.places.PlacesServiceStatus.REQUEST_DENIED) {
-	    		log(status+' The webpage is not allowed to use the PlacesService.');
-	    	} else if (status === google.maps.places.PlacesServiceStatus.UNKNOWN_ERROR) {
-	    		log(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.');
-	    	} else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
-	    		log(status+' No result was found for this request.');
-	    	}
-	    }
-
-	    function setPlaces() {
-
-		    for (var i=0; i < places.length; i++) {
-
-		    	if(!debug) {
-		    		log(places[i].types[0]);
-		    	}
-
-		    	markers[i] = new google.maps.Marker({
-		    		map: map,
-		    		position: places[i].geometry.location,
-		    		icon: value.currentPlace().marker()
-		    	});
-
-		    	markers[i].setMap(map);
-
-		    	var placeData = {
-		    		marker: markers[i],
-		    		id: places[i].id,
-		    		placeId: places[i].place_id,
-		    		name: places[i].name,
-		    		vicinity: places[i].vicinity,
-		    		rating: places[i].rating,
-		    		photo: typeof places[i].photos !== 'undefined'
-		    					 ? places[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
-		    					 : 'nophoto.jpg'
-		    	}
-
-		    	addInfoWindow(placeData);
-		    	addModal(placeData);
-
+		    var request = {
+		    	location: latLang,
+		    	radius: value.searchRadius(),
+		    	types: []
 		    }
 
-		 }
+		    request.types.push(value.currentPlace().type());
 
-		 function addInfoWindow(data) {
+		    var infoWindow = new google.maps.InfoWindow();
+		    var mapPlaces = new google.maps.places.PlacesService(map);
+		    mapPlaces.nearbySearch(request, callback);
 
-		   	google.maps.event.addListener(data.marker, 'mouseover', function() {
+		    function callback(results, status) {
+		    	if (status === google.maps.places.PlacesServiceStatus.OK) {
+		    		clearMarkers();
+		    		places.length = 0;
+		    		if(!debug) {
+		    			log(results);
+		    		}
+		    		for (var i=0; i < results.length; i++) {
+		    			places.push(results[i]);
+		    		}
+		    		setPlaces();
+		    	} else if (status === google.maps.places.PlacesServiceStatus.ERROR) {
+		    		log(status+' There was a problem contacting the Google servers.');
+		    		log(status);
+		    	} else if (status === google.maps.places.PlacesServiceStatus.INVALID_REQUEST) {
+		    		log(status+' This request was invalid.');
+		    		log(status);
+		    	} else if (status === google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
+		    		log(status+' The webpage has gone over its request quota.');
+		    	} else if (status === google.maps.places.PlacesServiceStatus.REQUEST_DENIED) {
+		    		log(status+' The webpage is not allowed to use the PlacesService.');
+		    	} else if (status === google.maps.places.PlacesServiceStatus.UNKNOWN_ERROR) {
+		    		log(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.');
+		    	} else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
+		    		log(status+' No result was found for this request.');
+		    	}
+		    }
 
-		    	infoWindow.setContent(
-		    		'<div class="info-window">' +
-		    		'<h5>'+data.name+'</h5>' +
-		    		'<img src="'+data.photo+'">' +
-		    		'<button id="openModal'+data.id+'">Button</button>' +
-		    		'</div>'
-		    	);
+		    function setPlaces() {
 
-		    	infoWindow.open(map, this);
+			    for (var i=0; i < places.length; i++) {
 
-		    });
-		 }
+			    	if(!debug) {
+			    		log(places[i].types[0]);
+			    	}
 
-		 function addModal(data) {
+			    	markers[i] = new google.maps.Marker({
+			    		map: map,
+			    		position: places[i].geometry.location,
+			    		icon: value.currentPlace().marker()
+			    	});
 
-		 	if ($("#modal"+data.id).length === 0) {
+			    	markers[i].setMap(map);
 
-		 		$('body').append('<div id="modal'+data.id+'" class="modal"></div>');	
+			    	var placeData = {
+			    		marker: markers[i],
+			    		id: places[i].id,
+			    		placeId: places[i].place_id,
+			    		name: places[i].name,
+			    		vicinity: places[i].vicinity,
+			    		rating: places[i].rating,
+			    		photo: typeof places[i].photos !== 'undefined'
+			    					 ? places[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
+			    					 : 'nophoto.jpg'
+			    	}
 
-		 		$(document).on('click', '#openModal'+data.id, function() {
-		    
-			    if ($("#modal"+data.id).children().length === 0) {
+			    	addInfoWindow(placeData);
+			    	addModal(placeData);
 
-			 			var request = { 
-					  	placeId: data.placeId
-						};
+			    }
 
-						var service = new google.maps.places.PlacesService(map);
-						service.getDetails(request, callback);
+			 }
 
-						function callback(place, status) {
+			 function addInfoWindow(data) {
 
-						  if (status == google.maps.places.PlacesServiceStatus.OK) {
+			   	google.maps.event.addListener(data.marker, 'mouseover', function() {
 
-						  	var placeInfo = {
-									id: place.id,
-									name: place.name,
-									vicinity: place.vicinity,
-									phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'no number',
-									photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'nophoto.jpg',
-									rating: typeof place.rating !== 'undefined' ? place.rating : 'no rating'
-								}	
+			    	infoWindow.setContent(
+			    		'<div class="info-window">' +
+			    		'<h5>'+data.name+'</h5>' +
+			    		'<img src="'+data.photo+'">' +
+			    		'<button id="openModal'+data.id+'">Button</button>' +
+			    		'</div>'
+			    	);
 
-						 		$('#modal'+data.id).append(
-						 			'<span id="closeModal'+placeInfo.id+'">close</span>' +
-						 			'<h4>'+placeInfo.name+'</h4>' +
-						 			'<div class="address">'+placeInfo.vicinity+'</div>' +
-						 			'<div class="phone">'+placeInfo.phone+'</div>' +
-						 			'<div class="rating">'+placeInfo.rating+'</div>' +
-						 			'<img class="photo" src="'+placeInfo.photo+'">' 
-						 		);
+			    	infoWindow.open(map, this);
 
-						 		$(document).on('click', '#closeModal'+placeInfo.id, function() {
-						 			$("#modal"+placeInfo.id).hide();
-						 		});
+			    });
+			 }
 
-						  } else {
+			 function addModal(data) {
 
-						  	log('Place details error'+status);
+			 	if ($("#modal"+data.id).length === 0) {
 
-						  }
-						}
+			 		$('body').append('<div id="modal'+data.id+'" class="modal"></div>');	
 
-						$("#modal"+data.id).show();
+			 		$(document).on('click', '#openModal'+data.id, function() {
+			    
+				    if ($("#modal"+data.id).children().length === 0) {
 
-					} else {
-						 
-						$("#modal"+data.id).show();
+				 			var request = { 
+						  	placeId: data.placeId
+							};
 
-						}
+							var service = new google.maps.places.PlacesService(map);
+							service.getDetails(request, callback);
 
-		  	});
+							function callback(place, status) {
 
-		 	}
+							  if (status == google.maps.places.PlacesServiceStatus.OK) {
 
+							  	var placeInfo = {
+										id: place.id,
+										name: place.name,
+										vicinity: place.vicinity,
+										phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'no number',
+										photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'nophoto.jpg',
+										rating: typeof place.rating !== 'undefined' ? place.rating : 'no rating'
+									}	
 
-		 }
+							 		$('#modal'+data.id).append(
+							 			'<span id="closeModal'+placeInfo.id+'">close</span>' +
+							 			'<h4>'+placeInfo.name+'</h4>' +
+							 			'<div class="address">'+placeInfo.vicinity+'</div>' +
+							 			'<div class="phone">'+placeInfo.phone+'</div>' +
+							 			'<div class="rating">'+placeInfo.rating+'</div>' +
+							 			'<img class="photo" src="'+placeInfo.photo+'">' 
+							 		);
 
-		 function clearMarkers() {
+							 		$(document).on('click', '#closeModal'+placeInfo.id, function() {
+							 			$("#modal"+placeInfo.id).hide();
+							 		});
 
-			for (var i=0; i < markers.length; i++) {
+							  } else {
 
-				markers[i].setMap(null);
+							  	log('Place details error'+status);
+
+							  }
+							}
+
+							$("#modal"+data.id).show();
+
+						} else {
+							 
+							$("#modal"+data.id).show();
+
+							}
+
+			  	});
+
+			 	}
+
 
 			}
 
-			markers.length = 0;
+			function clearMarkers() {
+				for (var i=0; i < markers.length; i++) {
+					markers[i].setMap(null);
+				}
+				markers.length = 0;
+			}
 
-		 }
+		}
 
 	}
 
