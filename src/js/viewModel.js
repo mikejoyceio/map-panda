@@ -267,7 +267,7 @@ var globals = {
 							  	placeId: data.placeId
 								};
 
-								var service = new google.maps.places.PlacesService(map);
+								var service = new google.maps.places.PlacesService(global.map);
 								service.getDetails(request, callback);
 
 								function callback(place, status) {
