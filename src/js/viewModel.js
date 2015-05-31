@@ -19,8 +19,8 @@ var ViewModel = function() {
 	this.searchRadius = ko.observable('5000');
 
 	placesData.forEach(function(placeItem) {
-		this.placeList.push(new Place(placeItem));
-	}, this);
+		self.placeList.push(new Place(placeItem));
+	});
 
 	this.currentPlace = ko.observable( this.placeList()[0] );
 
@@ -46,7 +46,6 @@ var ViewModel = function() {
 	 	}
 	 }
 	}
-
 	this.searchQuery.subscribe(this.search);
 
 	this.panTo = function() {
