@@ -172,7 +172,7 @@ var globals = {
 			    	location: global.latLang,
 			    	radius: value.searchRadius(),
 			    	types: []
-			    }
+			    };
 
 			    request.types.push(value.currentPlace().type());
 
@@ -281,7 +281,7 @@ var globals = {
 											phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'no number',
 											photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'nophoto.jpg',
 											rating: typeof place.rating !== 'undefined' ? place.rating : 'no rating'
-										}	
+										};
 
 								 		$('#modal'+data.id).append(
 								 			'<span id="closeModal'+placeInfo.id+'">close</span>' +
