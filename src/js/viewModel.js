@@ -67,9 +67,9 @@ var ViewModel = function() {
 	}
 
 	this.clearSearch = function() {
-		// for (i=0;i<self.placeList().length;i++) {
-		// 	self.placeList()[i].isHidden(false);
-		// }
+		for (i=0;i<self.placeList().length;i++) {
+			self.placeList()[i].isHidden(false);
+		}
 	}
   
 }
