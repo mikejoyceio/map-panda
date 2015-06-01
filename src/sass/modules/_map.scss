@@ -50,6 +50,7 @@
 	@include border-radius(3px);
 	@include transition(all .5s linear);
 	background: #fff;
+	border: 1px solid #999;
 	height: 50px;
 	position:absolute; 
 	right: 20px; 
