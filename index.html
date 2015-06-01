@@ -69,12 +69,15 @@
 
 		<!-- Map -->
 		<div class="map" data-bind="map: { currentPlace: currentPlace, searchRadius: searchRadius }"></div>
+		<!-- /Map -->
+
 		<!-- Map Controls -->
-		<div class="pan-to" data-bind="click: panTo">my loc</div>
+		<div class="pan-to" data-bind="click: panTo">
+			<span class="icon fa fa-crosshairs"></span>
+		</div>
     <div id="zoomIn" class="zoom-button zoom-in" data-bind="click: zoomIn">ZOOM IN</div>
    	<div id="zoomOut" class="zoom-button zoom-out" data-bind="click: zoomOut">ZOOM OUT</div>
    	<!-- /Map Controls -->
-		<!-- /Map -->
 
 	</div>
 	<!-- /Main Content -->
