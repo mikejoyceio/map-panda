@@ -24,9 +24,23 @@
 
 // Pan To Button
 .pan-to {
+	background: #fff;
+	@include border-radius(3px);
+	width: 50px; 
+	height: 50px;
 	position:absolute; 
 	right: 20px; 
-	top: 200px
+	top: 165px;
+	text-align: center;
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	.icon {
+		font-size: 24px;
+		margin: 12px;
+	}
 }
 
 // Hide 'listings'
