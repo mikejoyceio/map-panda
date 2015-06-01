@@ -12,7 +12,7 @@ var placesData = [
 								fillOpacity: 1,
 								scale: 1/4,
 								strokeColor: '#bd8d2c',
-								strokeWeight: 1}
+								strokeWeight: 1 }
 	},
 	{
 		name: 'Food',
@@ -24,7 +24,7 @@ var placesData = [
 								fillOpacity: 1,
 								scale: 1/4,
 								strokeColor: '#bd8d2c',
-								strokeWeight: 1}
+								strokeWeight: 1 }
 	},
 	{
 		name: 'Bars',
@@ -36,7 +36,7 @@ var placesData = [
 								fillOpacity: 1,
 								scale: 1/4,
 								strokeColor: '#bd8d2c',
-								strokeWeight: 1}
+								strokeWeight: 1 }
 	},
 	{
 		name: 'Takeaways',
@@ -48,7 +48,7 @@ var placesData = [
 								fillOpacity: 1,
 								scale: 1/4,
 								strokeColor: '#bd8d2c',
-								strokeWeight: 1}
+								strokeWeight: 1 }
 	},
 	{
 		name: 'Food Delivery',
@@ -60,7 +60,7 @@ var placesData = [
 								fillOpacity: 1,
 								scale: 1/4,
 								strokeColor: '#bd8d2c',
-								strokeWeight: 1}
+								strokeWeight: 1 }
 	},
 	{
 		name: 'Grocery Stores',
@@ -72,6 +72,6 @@ var placesData = [
 								fillOpacity: 1,
 								scale: 1/4,
 								strokeColor: '#bd8d2c',
-								strokeWeight: 1}
+								strokeWeight: 1 }
 	}
 ]
