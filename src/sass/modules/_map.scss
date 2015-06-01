@@ -47,16 +47,18 @@
 
 // Pan To Button
 .pan-to {
-	background: #fff;
 	@include border-radius(3px);
-	width: 50px; 
+	@include transition(all .5s linear);
+	background: #fff;
 	height: 50px;
 	position:absolute; 
 	right: 20px; 
-	top: 165px;
 	text-align: center;
+	top: 165px;
+	width: 50px; 
 
 	&:hover {
+		background: #f1f1f1;
 		cursor: pointer;
 	}
 
