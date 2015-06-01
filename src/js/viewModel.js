@@ -1,3 +1,8 @@
+/**
+ * @file overview : 
+ * @author : contact@mikejoyce.io (Mike Joyce)
+ */
+
 // Global namespace
 var globals = {
 	map: '',
