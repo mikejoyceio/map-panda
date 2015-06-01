@@ -11,7 +11,7 @@
 .zoom-buttons {
 	@include border-radius(3px);
 	background: #fff;
-	border: 1px solid;
+	border: 1px solid #999;
 	bottom: 70px;
 	height: 60px;
 	position: absolute;
@@ -34,12 +34,12 @@
 		}
 
 		&.zoom-in {
-			border-bottom: 1px solid;
+			border-bottom: 1px solid #999;
 			top: 0;	
 		}
 
 		&.zoom-out {
-			border-top: 1px solid;
+			border-top: 1px solid #999;
 			bottom: 0;	
 		}
 	}
