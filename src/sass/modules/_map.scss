@@ -8,17 +8,40 @@
 }
 
 // Zoom Buttons
-.zoom-button {
-	cursor: pointer;
+.zoom-buttons {
+	@include border-radius(3px);
+	background: #fff;
+	border: 1px solid;
+	bottom: 70px;
+	height: 60px;
 	position: absolute;
 	right: 20px;
+	text-align: center;
+	width: 25px;
 	z-index: 999;
 
-	&.zoom-in {
-		bottom: 200px;	
-	}
-	&.zoom-out {
-		bottom: 100px;
+	.zoom-button {
+		height: 29px;
+		left: 0;
+		line-height: 1.8;
+		position: absolute;
+		width: 100%;
+
+		&:hover {
+			@include transition(all .5s linear);
+			background: #f1f1f1;
+			cursor: pointer;
+		}
+
+		&.zoom-in {
+			border-bottom: 1px solid;
+			top: 0;	
+		}
+
+		&.zoom-out {
+			border-top: 1px solid;
+			bottom: 0;	
+		}
 	}
 }
 
