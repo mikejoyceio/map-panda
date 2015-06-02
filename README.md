@@ -41,6 +41,7 @@
 - [Stack Overflow: jQuery - Check if DOM element already exists](http://stackoverflow.com/questions/5538961/jquery-check-if-dom-element-already-exists)
 - [Programmers Stack Exchange: How can we protect the namespace of an object in JavaScript](http://programmers.stackexchange.com/questions/161436/how-can-we-protect-the-namespace-of-an-object-in-javascript)
 - [Mozilla Developer Network - typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+- [Ion Range Slider](https://github.com/IonDen)
 
 #####Google Maps
 
