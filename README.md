@@ -28,6 +28,10 @@
 - [Using WAI-ARIA in HTML](http://w3c.github.io/aria-in-htmlUsing WAI-ARIA in HTML/)
 - [Stack Overflow: How to you detect the clearing of a "search" HTML5 input?](http://stackoverflow.com/questions/2977023/how-do-you-detect-the-clearing-of-a-search-html5-input)
 
+#####Images
+
+- [Daturi - Convert images to base64](http://www.daturi.me/)
+
 #####JavaScript
 
 - [HTML5 Geolocation](http://html5demos.com/geo)
