@@ -8,25 +8,65 @@
 }
 
 // Zoom Buttons
-.zoom-button {
-	cursor: pointer;
+.zoom-buttons {
+	@include border-radius(3px);
+	background: #fff;
+	border: 1px solid #999;
+	bottom: 70px;
+	height: 60px;
 	position: absolute;
 	right: 20px;
+	text-align: center;
+	width: 25px;
 	z-index: 999;
 
-	&.zoom-in {
-		bottom: 200px;	
-	}
-	&.zoom-out {
-		bottom: 100px;
+	.zoom-button {
+		@include transition(all .5s linear);
+		height: 29px;
+		left: 0;
+		line-height: 1.8;
+		position: absolute;
+		width: 100%;
+
+		&:hover {
+			background: #f1f1f1;
+			cursor: pointer;
+		}
+
+		&.zoom-in {
+			border-bottom: 1px solid #999;
+			top: 0;	
+		}
+
+		&.zoom-out {
+			border-top: 1px solid #999;
+			bottom: 0;	
+		}
 	}
 }
 
 // Pan To Button
 .pan-to {
+	@include border-radius(3px);
+	@include transition(all .5s linear);
+	background: #fff;
+	border: 1px solid #999;
+	height: 30px;
 	position:absolute; 
 	right: 20px; 
-	top: 200px
+	text-align: center;
+	top: 165px;
+	width: 30px; 
+
+	&:hover {
+		background: #f1f1f1;
+		cursor: pointer;
+	}
+
+	.icon {
+		font-size: 18px;
+		line-height: 1.7;
+	}
 }
 
 // Hide 'listings'

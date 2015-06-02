@@ -25,7 +25,7 @@ gulp.task('compass', function() {
       project: path.join(__dirname, './src'),
       css: '../build/css',
       sass: 'sass',
-      style: 'compressed',
+      // style: 'compressed',
       import_path: 'vendor'
     }))
     .pipe(plugins.minifyCss())

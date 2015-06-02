@@ -35,12 +35,12 @@
 		<!-- /Search Radii -->
 
 		<!-- Options -->
-		<ul class="options">
+		<ul class="place-list">
 			<!-- ko foreach: placeList -->
-			<li class="option" data-bind="css: {active: isActive(), hidden: isHidden()}">
-				<span class="fa-stack fa-sml">
-					<i class="fa fa-circle-o fa-stack-2x"></i>
-					<i class="fa fa-stack-1x fa-inverse" data-bind="css: icon"></i>
+			<li class="item" data-bind="css: {active: isActive(), hidden: isHidden()}">
+				<span class="icon fa-stack fa-sml">
+					<i class="icon-outer fa fa-circle-o fa-stack-2x"></i>
+					<i class="icon-inner fa fa-stack-1x fa-inverse" data-bind="css: icon"></i>
 				</span>
 				<span data-bind="text: name, click: $parent.selectPlace"></span>
 			</li>
@@ -69,12 +69,22 @@
 
 		<!-- Map -->
 		<div class="map" data-bind="map: { currentPlace: currentPlace, searchRadius: searchRadius }"></div>
-		<!-- Map Controls -->
-		<div class="pan-to" data-bind="click: panTo">my loc</div>
-    <div id="zoomIn" class="zoom-button zoom-in" data-bind="click: zoomIn">ZOOM IN</div>
-   	<div id="zoomOut" class="zoom-button zoom-out" data-bind="click: zoomOut">ZOOM OUT</div>
-   	<!-- /Map Controls -->
 		<!-- /Map -->
+
+		<!-- Map Controls -->
+		<div class="pan-to" data-bind="click: panTo">
+			<span class="icon fa fa-crosshairs"></span>
+		</div>
+
+		<div class="zoom-buttons">
+	    <div class="zoom-button zoom-in" data-bind="click: zoomIn">
+  			<span class="fa fa-plus"></span>	
+  		</div>	
+  		<div class="zoom-button zoom-out" data-bind="click: zoomOut">
+   			<span class="fa fa-minus"></span>	
+   		</div>
+		</div>
+   	<!-- /Map Controls -->
 
 	</div>
 	<!-- /Main Content -->
@@ -89,7 +99,5 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KC7nmHmDdz1n0H9xy9rm_B9YAUPeo_A&libraries=places"></script>
 	<!-- App JS -->
 	<script src="build/js/app.js"></script>
-	<!-- Knockout Mapping -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout.mapping/2.4.1/knockout.mapping.min.js"></script>
 </body>
 </html>

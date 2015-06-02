@@ -1,3 +1,8 @@
+/**
+ * @file overview : 
+ * @author : contact@mikejoyce.io (Mike Joyce)
+ */
+
 // Global namespace
 var globals = {
 	map: '',
@@ -99,7 +104,6 @@ var globals = {
 
 	    global.map = new google.maps.Map(element, mapOptions);
 
-
 		  // Try HTML5 geolocation
 		  if(navigator.geolocation) {
 		    navigator.geolocation.getCurrentPosition(function(position) {
@@ -123,7 +127,7 @@ var globals = {
 									fillOpacity: 1,
 									scale: 1/4,
 									strokeColor: '#bd8d2c',
-									strokeWeight: 1},
+									strokeWeight: 1 },
 			    	title: "You are here!"
 			    });
 
