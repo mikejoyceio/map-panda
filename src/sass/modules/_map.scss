@@ -51,12 +51,12 @@
 	@include transition(all .5s linear);
 	background: #fff;
 	border: 1px solid #999;
-	height: 50px;
+	height: 30px;
 	position:absolute; 
 	right: 20px; 
 	text-align: center;
 	top: 165px;
-	width: 50px; 
+	width: 30px; 
 
 	&:hover {
 		background: #f1f1f1;
@@ -64,8 +64,8 @@
 	}
 
 	.icon {
-		font-size: 24px;
-		margin: 12px;
+		font-size: 18px;
+		line-height: 1.7;
 	}
 }
 
