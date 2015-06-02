@@ -26,6 +26,7 @@ var globals = {
 		this.placeList = ko.observableArray([]); 
 		this.searchQuery = ko.observable();
 		this.searchRadius = ko.observable('5000');
+		this.rangeSlider = $('#rangeSlider');
 
 		placesData.forEach(function(placeItem) {
 			self.placeList.push(new Place(placeItem));
@@ -78,6 +79,20 @@ var globals = {
 				self.placeList()[i].isHidden(false);
 			}
 		}
+
+		$(rangeSlider).ionRangeSlider({
+				grid: true,
+		    min: 1000,
+		    max: 5000,
+		    from: 2000,
+		    step: 1000,
+		    postfix: ' km',
+		    hide_min_max: true,
+		    prettify_enabled: true,
+		    prettify: function(num) {
+		    	return num / 1000;
+		    }
+		});
 	  
 	}
 
