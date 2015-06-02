@@ -38,9 +38,9 @@
 		<ul class="place-list">
 			<!-- ko foreach: placeList -->
 			<li class="item" data-bind="css: {active: isActive(), hidden: isHidden()}">
-				<span class="fa-stack fa-sml">
-					<i class="fa fa-circle-o fa-stack-2x"></i>
-					<i class="fa fa-stack-1x fa-inverse" data-bind="css: icon"></i>
+				<span class="icon fa-stack fa-sml">
+					<i class="icon-outer fa fa-circle-o fa-stack-2x"></i>
+					<i class="icon-inner fa fa-stack-1x fa-inverse" data-bind="css: icon"></i>
 				</span>
 				<span data-bind="text: name, click: $parent.selectPlace"></span>
 			</li>
