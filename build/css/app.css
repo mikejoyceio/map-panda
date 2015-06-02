@@ -2415,6 +2415,29 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 0;
 }
 
+.map-info {
+  background: rgba(255, 255, 255, 0.5);
+  left: 0;
+  position: absolute;
+  top: 60px;
+  width: 100%;
+  z-index: 1;
+}
+.map-info .content {
+  height: 67px;
+  padding: 15px 0 0 240px;
+  border-bottom: 1px solid #ecf0f1;
+}
+.map-info .content .content-header {
+  font-size: 30px;
+  font-weight: bold;
+}
+.map-info .content .content-description {
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 2;
+}
+
 .zoom-buttons {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -2454,9 +2477,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 .pan-to {
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
+  -moz-border-radius: 999px;
+  -webkit-border-radius: 999px;
+  border-radius: 999px;
   -moz-transition: all 0.5s linear;
   -o-transition: all 0.5s linear;
   -webkit-transition: all 0.5s linear;
@@ -2525,22 +2548,9 @@ html, body {
   padding: 0;
 }
 
-.content {
+.main-content {
   outline: none;
   height: 100%;
-}
-.content .map-info {
-  background: rgba(255, 255, 255, 0.5);
-  left: 0;
-  position: absolute;
-  top: 60px;
-  width: 100%;
-  z-index: 1;
-}
-.content .map-info .map-info-content {
-  height: 81px;
-  margin: 0 40px 0 240px;
-  border-bottom: 1px solid #ecf0f1;
 }
 
 .footer {
