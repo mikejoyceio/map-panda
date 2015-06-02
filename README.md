@@ -28,6 +28,10 @@
 - [Using WAI-ARIA in HTML](http://w3c.github.io/aria-in-htmlUsing WAI-ARIA in HTML/)
 - [Stack Overflow: How to you detect the clearing of a "search" HTML5 input?](http://stackoverflow.com/questions/2977023/how-do-you-detect-the-clearing-of-a-search-html5-input)
 
+#####Images
+
+- [Daturi - Convert images to base64](http://www.daturi.me/)
+
 #####JavaScript
 
 - [HTML5 Geolocation](http://html5demos.com/geo)
@@ -37,6 +41,7 @@
 - [Stack Overflow: jQuery - Check if DOM element already exists](http://stackoverflow.com/questions/5538961/jquery-check-if-dom-element-already-exists)
 - [Programmers Stack Exchange: How can we protect the namespace of an object in JavaScript](http://programmers.stackexchange.com/questions/161436/how-can-we-protect-the-namespace-of-an-object-in-javascript)
 - [Mozilla Developer Network - typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
+- [Ion Range Slider](https://github.com/IonDen)
 
 #####Google Maps
 

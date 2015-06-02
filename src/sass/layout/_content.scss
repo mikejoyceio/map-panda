@@ -7,22 +7,7 @@ html, body {
 	padding: 0;
 }
 
-.content {
+.main-content {
 	outline: none;
 	height: 100%;
-
-	.map-info {
-		background: rgba(255, 255, 255, 0.5);
-		left: 0;	
-		position: absolute;
-		top: 60px;
-		width: 100%;
-		z-index: 1;
-
-		.map-info-content {
-				height: 81px;
-				margin: 0 40px 0 240px;	
-    		border-bottom: 1px solid #ecf0f1;
-		}
-	}
 }

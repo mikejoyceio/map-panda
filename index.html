@@ -30,9 +30,9 @@
 		</div>
 		<!-- /Filter -->
 
-		<!-- Search Radii -->
-		<input id="slider" type="range" min="1000" max="10000" step="1000" value="5000" data-bind="value: searchRadius, valueUpdate: 'change'"/>
-		<!-- /Search Radii -->
+		<!-- Search Radius -->
+		<input type="text" id="rangeSlider" class="hidden" data-bind="value: searchRadius, valueUpdate: 'change'">
+		<!-- /Search Radius -->
 
 		<!-- Options -->
 		<ul class="place-list">
@@ -52,15 +52,15 @@
 	<!-- /Menu -->
 
 	<!-- Main Content -->
-	<div class="content" role="main">
+	<div class="main-content" role="main">
 
 		<!-- Map Info -->
 		<div class="map-info">
-			<div class="map-info-content">
+			<div class="content">
 				<div data-bind="visible: mapInfo">
 					<!-- ko with: currentPlace -->
-					<h2 data-bind="text: name"></h2>	
-					<span data-bind="text: description"></span>
+					<h2 class="content-header" data-bind="text: name"></h2>	
+					<span class="content-description" data-bind="text: description"></span>
 					<!-- /ko -->
 				</div>
 			</div>
