@@ -28,15 +28,45 @@
 			margin-top: 20px;
 			
     	.item {
-    		outline: none;
+			  color: #667174;
+			  line-height: 1;
+			  margin: 0 0 0 13px;
+    		@include transition(all .2s linear);
 
-    		&.active {
-    			outline: none;
-    		}
+			  &:hover,
+			  &.active {
+					cursor: pointer;
+			  	color: #fff;
+
+			  	.icon {
+			  		.icon-outer {
+			  			color: #fff;
+			  		}
+			  	 	.icon-inner {
+			  			color: #2eb398;
+			  		}
+			  	}
+			  }
 
     		&.hidden {
     			display: none;
     		}
+
+				.icon {
+					@include transition(all .5s ease-in-out);
+					margin-right: 5px;
+
+	    		.icon-inner {
+						color: #667174;
+						font-size: 11px;
+						line-height: 2.7;
+	    		}
+
+	    		.icon-outer {
+						color: #6f7b7e;
+						font-size: 28px;
+	    		}
+    		}	
     	}
     }
 }
