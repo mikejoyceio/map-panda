@@ -83,7 +83,7 @@ var globals = {
 		$(rangeSlider).ionRangeSlider({
 		    min: 1000,
 		    max: 10000,
-		    from: 3000,
+		    from: 5000,
 		    step: 1000,
 		    postfix: ' km',
 		    hide_min_max: true,
