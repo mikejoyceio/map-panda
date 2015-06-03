@@ -81,7 +81,6 @@ var globals = {
 		}
 
 		$(rangeSlider).ionRangeSlider({
-				grid: true,
 		    min: 1000,
 		    max: 5000,
 		    from: 3000,
