@@ -5,6 +5,7 @@
 		background: #232b2d;
     height: 100%;
     left: 0;
+    padding-top: 150px;
     position: absolute;
     top: 0;
     width: 200px;
@@ -19,8 +20,27 @@
     	width: 100%;
     }
 
-    .filter {
-    	margin-top: 180px;
+    .search-filter {
+    	padding: 10px;
+
+			.search-input {
+		    @include border-radius(3px);
+		    background: #fefefe;
+		    border: 2px solid #fff;
+		    height: 23px;
+		    outline: none;
+		    padding: 0 2px;
+		    width: 100%;
+
+		    &:focus {
+		    	outline-color: transparent;
+		    	outline-style: none;	
+		    }
+			}
+    }
+
+    .search-radius {
+  		padding: 10px 10px 5px 10px;
     }
 
     .place-list {

@@ -16,22 +16,4 @@
     position: absolute;
     top: 20px;	
 	}
-
-	.search {
-	    background: #fefefe;
-	    border-radius: 20px;
-	    border: 2px solid #fff;
-	    height: 33px;
-	    outline: none;
-	    padding: 0 10px;
-	    position: absolute;
-	    right: 20px;
-	    top: 12px;
-	    width: 200px;
-
-	    &:focus {
-	    	outline-color: transparent;
-	    	outline-style: none;	
-	    }
-	}
 }

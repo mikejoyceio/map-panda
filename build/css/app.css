@@ -2874,27 +2874,12 @@ html, body {
   position: absolute;
   top: 20px;
 }
-.header .search {
-  background: #fefefe;
-  border-radius: 20px;
-  border: 2px solid #fff;
-  height: 33px;
-  outline: none;
-  padding: 0 10px;
-  position: absolute;
-  right: 20px;
-  top: 12px;
-  width: 200px;
-}
-.header .search:focus {
-  outline-color: transparent;
-  outline-style: none;
-}
 
 .menu {
   background: #232b2d;
   height: 100%;
   left: 0;
+  padding-top: 150px;
   position: absolute;
   top: 0;
   width: 200px;
@@ -2908,8 +2893,26 @@ html, body {
   top: 60px;
   width: 100%;
 }
-.menu .filter {
-  margin-top: 180px;
+.menu .search-filter {
+  padding: 10px;
+}
+.menu .search-filter .search-input {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: #fefefe;
+  border: 2px solid #fff;
+  height: 23px;
+  outline: none;
+  padding: 0 2px;
+  width: 100%;
+}
+.menu .search-filter .search-input:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+.menu .search-radius {
+  padding: 10px 10px 5px 10px;
 }
 .menu .place-list {
   color: #fff;
