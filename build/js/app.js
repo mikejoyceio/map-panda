@@ -11365,7 +11365,7 @@ var globals = {
 		this.mapInfo = ko.observable(false);
 		this.placeList = ko.observableArray([]); 
 		this.searchQuery = ko.observable();
-		this.searchRadius = ko.observable('3000');
+		this.searchRadius = ko.observable('5000');
 		this.rangeSlider = $('#rangeSlider');
 
 		placesData.forEach(function(placeItem) {
@@ -11421,10 +11421,9 @@ var globals = {
 		}
 
 		$(rangeSlider).ionRangeSlider({
-				grid: true,
 		    min: 1000,
-		    max: 5000,
-		    from: 3000,
+		    max: 10000,
+		    from: 5000,
 		    step: 1000,
 		    postfix: ' km',
 		    hide_min_max: true,
