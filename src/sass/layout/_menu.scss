@@ -21,7 +21,22 @@
     }
 
     .search-filter {
-    	outline: none;
+    	padding: 10px;
+
+			.search-input {
+		    @include border-radius(3px);
+		    background: #fefefe;
+		    border: 2px solid #fff;
+		    height: 23px;
+		    outline: none;
+		    padding: 0 2px;
+		    width: 100%;
+
+		    &:focus {
+		    	outline-color: transparent;
+		    	outline-style: none;	
+		    }
+			}
     }
 
     .search-radius {
