@@ -66,5 +66,3 @@
 - [Foursquare for Developers: Foursquare API](https://developer.foursquare.com/)
 - [Foursquare for Developers: Api Docs - Search Venus](https://developer.foursquare.com/docs/venues/search)
 
-
-
