@@ -2518,18 +2518,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* 1025px, 1440px */
 /* 1441px, 1920px */
 /* 1921px */
-.modal {
-  background: #fff;
-  display: none;
-  width: 300px;
-  height: 350px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  top: 30%;
-  position: absolute;
-}
-
 .irs {
   position: relative;
   display: block;
