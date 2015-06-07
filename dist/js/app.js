@@ -11453,6 +11453,9 @@ var globals = {
 
 	    var mapOptions = {
 	      zoom: 13,
+	      zoomControl: false,
+	      streetViewControl: false,
+	      panControl: false,
 	      styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}]
 	    };
 
@@ -11587,7 +11590,6 @@ var globals = {
 				    	}
 
 				    	addInfoWindow(placeData);
-				    	addModal(placeData);
 
 				    }
 
@@ -11595,30 +11597,15 @@ var globals = {
 
 				 function addInfoWindow(data) {
 
-				   	google.maps.event.addListener(data.marker, 'mouseover', function() {
+					if ($("#infoWindow"+data.id).length === 0) {
 
-				    	infoWindow.setContent(
-				    		'<div class="info-window">' +
-				    		'<h5>'+data.name+'</h5>' +
-				    		'<img src="'+data.photo+'">' +
-				    		'<button id="openModal'+data.id+'">Button</button>' +
-				    		'</div>'
-				    	);
+						$('body').append('<div id="infoWindow'+data.id+'" class="info-window"></div>');	
 
-				    	infoWindow.open(global.map, this);
+					}
 
-				    });
-				 }
-
-				 function addModal(data) {
-
-				 	if ($("#modal"+data.id).length === 0) {
-
-				 		$('body').append('<div id="modal'+data.id+'" class="modal"></div>');	
-
-				 		$(document).on('click', '#openModal'+data.id, function() {
+				   google.maps.event.addListener(data.marker, 'click', function() {
 				    
-					    if ($("#modal"+data.id).children().length === 0) {
+					    if ($("#infoWindow"+data.id).children().length === 0) {
 
 					 			var request = { 
 							  	placeId: data.placeId
@@ -11640,8 +11627,8 @@ var globals = {
 											rating: typeof place.rating !== 'undefined' ? place.rating : 'no rating'
 										};
 
-								 		$('#modal'+data.id).append(
-								 			'<span id="closeModal'+placeInfo.id+'">close</span>' +
+								 		$('#infoWindow'+data.id).append(
+								 			'<span id="closeInfoWindow'+placeInfo.id+'">close</span>' +
 								 			'<h4>'+placeInfo.name+'</h4>' +
 								 			'<div class="address">'+placeInfo.vicinity+'</div>' +
 								 			'<div class="phone">'+placeInfo.phone+'</div>' +
@@ -11649,8 +11636,8 @@ var globals = {
 								 			'<img class="photo" src="'+placeInfo.photo+'">' 
 								 		);
 
-								 		$(document).on('click', '#closeModal'+placeInfo.id, function() {
-								 			$("#modal"+placeInfo.id).hide();
+								 		$(document).on('click', '#closeInfoWindow'+placeInfo.id, function() {
+								 			$("#infoWindow"+placeInfo.id).hide();
 								 		});
 
 								  } else {
@@ -11660,17 +11647,15 @@ var globals = {
 								  }
 								}
 
-								$("#modal"+data.id).show();
+								$("#infoWindow"+data.id).show();
 
 							} else {
 								 
-								$("#modal"+data.id).show();
+								$("#infoWindow"+data.id).show();
 
 								}
 
 				  	});
-
-				 	}
 
 				}
 
