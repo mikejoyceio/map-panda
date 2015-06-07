@@ -140,10 +140,10 @@ var globals = {
 			    	position: global.latLang,
 			    	map: global.map,
 			    	icon: { path: fontawesome.markers.MAP_MARKER,
-									fillColor: '#ffff00',
+									fillColor: '#ed5565',
 									fillOpacity: 1,
 									scale: 1/4,
-									strokeColor: '#bd8d2c',
+									strokeColor: '#ed5565',
 									strokeWeight: 1 },
 			    	title: "You are here!"
 			    });
