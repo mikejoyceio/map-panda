@@ -2,5 +2,13 @@
 // Info Window
 
 .info-window {
-	outline: none;
+	background: #fff;
+	display: none;
+	width: 300px;
+	height: 350px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	top: 30%;
+	position: absolute;
 }
