@@ -11584,6 +11584,7 @@ var globals = {
 				    		name: global.places[i].name,
 				    		vicinity: global.places[i].vicinity,
 				    		rating: global.places[i].rating,
+				    		position: global.places[i].geometry.location,
 				    		photo: typeof global.places[i].photos !== 'undefined'
 				    					 ? global.places[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
 				    					 : 'nophoto.jpg'
@@ -11604,6 +11605,8 @@ var globals = {
 					}
 
 				   google.maps.event.addListener(data.marker, 'click', function() {
+
+				   		global.map.panTo(data.position);
 				    
 					    if ($("#infoWindow"+data.id).children().length === 0) {
 
