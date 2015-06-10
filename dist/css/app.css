@@ -2404,7 +2404,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   content: "";
 }
 
-.info-window {
+.info-modal {
   background: #fff;
   display: none;
   width: 300px;
@@ -2414,6 +2414,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin: auto;
   top: 30%;
   position: absolute;
+}
+
+.info-window {
+  outline: none;
 }
 
 .map {
