@@ -259,13 +259,19 @@ var globals = {
 
 				 function addInfoWindow(data) {
 
-				 	var infowindow = new google.maps.InfoWindow({
-				 		content: '<h1>'+data.name+'</h1>'
-				 	});
+				   	google.maps.event.addListener(data.marker, 'mouseover', function() {
 
-				 	google.maps.event.addListener(data.marker, 'hover', function() {
-				 		infowindow.open(global.map, data.marker);	
-				 	});
+				    	infoWindow.setContent(
+				    		'<div class="info-window">' +
+				    		'<h5>'+data.name+'</h5>' +
+				    		'<img src="'+data.photo+'">' +
+				    		'<button id="openModal'+data.id+'">Button</button>' +
+				    		'</div>'
+				    	);
+
+				    	infoWindow.open(global.map, this);
+
+				    });
 
 				 }
 
