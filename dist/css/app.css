@@ -2404,16 +2404,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   content: "";
 }
 
-.info-window {
+.info-modal {
   background: #fff;
   display: none;
   width: 300px;
   height: 350px;
-  left: 0;
+  left: 220px;
   right: 0;
-  margin: auto;
-  top: 30%;
+  top: 165px;
   position: absolute;
+}
+
+.info-window {
+  outline: none;
 }
 
 .map {

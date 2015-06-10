@@ -251,6 +251,7 @@ var globals = {
 				    	}
 
 				    	addInfoWindow(placeData);
+				    	addInfoModal(placeData);
 
 				    }
 
@@ -258,9 +259,27 @@ var globals = {
 
 				 function addInfoWindow(data) {
 
-					if ($("#infoWindow"+data.id).length === 0) {
+				   	google.maps.event.addListener(data.marker, 'mouseover', function() {
 
-						$('body').append('<div id="infoWindow'+data.id+'" class="info-window"></div>');	
+				    	infoWindow.setContent(
+				    		'<div class="info-window">' +
+				    		'<h5>'+data.name+'</h5>' +
+				    		'<img src="'+data.photo+'">' +
+				    		'<button id="openModal'+data.id+'">Button</button>' +
+				    		'</div>'
+				    	);
+
+				    	infoWindow.open(global.map, this);
+
+				    });
+
+				 }
+
+				 function addInfoModal(data) {
+
+					if ($("#infoModal"+data.id).length === 0) {
+
+						$('body').append('<div id="infoModal'+data.id+'" class="info-modal"></div>');	
 
 					}
 
@@ -268,7 +287,7 @@ var globals = {
 
 				   		global.map.panTo(data.position);
 				    
-					    if ($("#infoWindow"+data.id).children().length === 0) {
+					    if ($("#infoModal"+data.id).children().length === 0) {
 
 					 			var request = { 
 							  	placeId: data.placeId
@@ -290,8 +309,8 @@ var globals = {
 											rating: typeof place.rating !== 'undefined' ? place.rating : 'no rating'
 										};
 
-								 		$('#infoWindow'+data.id).append(
-								 			'<span id="closeInfoWindow'+placeInfo.id+'">close</span>' +
+								 		$('#infoModal'+data.id).append(
+								 			'<span id="closeInfoModal'+placeInfo.id+'">close</span>' +
 								 			'<h4>'+placeInfo.name+'</h4>' +
 								 			'<div class="address">'+placeInfo.vicinity+'</div>' +
 								 			'<div class="phone">'+placeInfo.phone+'</div>' +
@@ -299,8 +318,8 @@ var globals = {
 								 			'<img class="photo" src="'+placeInfo.photo+'">' 
 								 		);
 
-								 		$(document).on('click', '#closeInfoWindow'+placeInfo.id, function() {
-								 			$("#infoWindow"+placeInfo.id).hide();
+								 		$(document).on('click', '#closeInfoModal'+placeInfo.id, function() {
+								 			$("#infoModal"+placeInfo.id).hide();
 								 		});
 
 								  } else {
@@ -310,11 +329,11 @@ var globals = {
 								  }
 								}
 
-								$("#infoWindow"+data.id).show();
+								$("#infoModal"+data.id).show();
 
 							} else {
 								 
-								$("#infoWindow"+data.id).show();
+								$("#infoModal"+data.id).show();
 
 								}
 
