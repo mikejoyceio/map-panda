@@ -250,9 +250,22 @@ var globals = {
 				    					 : 'nophoto.jpg'
 				    	}
 
+				    	addInfoWindow(placeData);
 				    	addInfoModal(placeData);
 
 				    }
+
+				 }
+
+				 function addInfoWindow(data) {
+
+				 	var infowindow = new google.maps.InfoWindow({
+				 		content: '<h1>'+data.name+'</h1>'
+				 	});
+
+				 	google.maps.event.addListener(data.marker, 'hover', function() {
+				 		infowindow.open(global.map, data.marker);	
+				 	});
 
 				 }
 
