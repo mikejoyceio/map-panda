@@ -265,7 +265,7 @@ var globals = {
 				    	infoWindow.setContent(
 				    		'<div class="info-window">' +
 				    		'<h5>'+data.name+'</h5>' +
-				    		'<img src="'+data.photo+'">'
+				    		'<img src="'+data.photo+'">' +
 				    		'</div>'
 				    	);
 
