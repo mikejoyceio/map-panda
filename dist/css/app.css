@@ -2500,7 +2500,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   position: absolute;
   right: 20px;
   text-align: center;
-  top: 165px;
+  top: 100px;
   width: 30px;
 }
 .pan-to:hover {
@@ -2865,7 +2865,7 @@ html, body {
   background: #232b2d;
   height: 100%;
   left: 0;
-  padding-top: 150px;
+  padding-top: 85px;
   position: absolute;
   top: 0;
   width: 200px;
