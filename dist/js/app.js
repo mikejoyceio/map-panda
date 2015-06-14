@@ -11606,12 +11606,15 @@ var globals = {
 				    		'<div class="info-window">' +
 				    		'<h5>'+data.name+'</h5>' +
 				    		'<img src="'+data.photo+'">' +
-				    		'<button id="openModal'+data.id+'">Button</button>' +
 				    		'</div>'
 				    	);
 
 				    	infoWindow.open(global.map, this);
 
+				    });
+
+				    google.maps.event.addListener(data.marker, 'mouseout', function() {
+				    	infoWindow.close(global.map, this);
 				    });
 
 				 }
