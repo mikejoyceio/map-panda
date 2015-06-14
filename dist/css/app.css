@@ -2429,7 +2429,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: rgba(255, 255, 255, 0.5);
   left: 0;
   position: absolute;
-  top: 60px;
+  top: 0;
   width: 100%;
   z-index: 1;
 }
@@ -2876,7 +2876,7 @@ html, body {
   height: 82px;
   left: 0;
   position: absolute;
-  top: 60px;
+  top: 0;
   width: 100%;
 }
 .menu .search-filter {
