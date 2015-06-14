@@ -273,6 +273,10 @@ var globals = {
 
 				    });
 
+				    google.maps.event.addListener(data.marker, 'mouseout', function() {
+				    	infoWindow.close(global.map, this);
+				    });
+
 				 }
 
 				 function addInfoModal(data) {
