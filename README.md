@@ -1,8 +1,10 @@
 #Map
 
+######Project Overview
+
 Project #5 of the [Front-End Web Developer Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001).
 
-The task was to develop a single-page application with KnockoutJS featuring a map of your neighborhood or a neighborhood you would like to visit. Requirements were add additional functionality to this application, including: map markers to identify popular locations, a search function to easily discover these locations, and a listview to support simple browsing of all locations. Research was also required to implement third-party APIs that provide additional information about each location (such as StreetView images, Wikipedia articles, Yelp reviews, etc).
+Develop a single-page application with KnockoutJS featuring a map of your neighborhood or a neighborhood you would like to visit. Requirements were add additional functionality to this application, including: map markers to identify popular locations, a search function to easily discover these locations, and a listview to support simple browsing of all locations. Research was also required to implement third-party APIs that provide additional information about each location (such as StreetView images, Wikipedia articles, Yelp reviews, etc).
 
 ##Resources
 
