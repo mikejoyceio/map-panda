@@ -40,8 +40,8 @@ gulp.task('watch', function() {
 
 	plugins.livereload.listen();
 
-	gulp.watch('src/js/*.js', ['scripts']);
-	gulp.watch('src/sass/*.scss', ['compass']);
+	gulp.watch('./src/js/*.js', ['scripts']);
+	gulp.watch('./src/sass/*.scss', ['compass']);
 	gulp.watch('*.html').on('change', function(file) {
 		plugins.livereload.changed(file.path);
 	});
