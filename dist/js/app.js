@@ -11466,38 +11466,43 @@ var globals = {
 		  if(navigator.geolocation) {
 		    navigator.geolocation.getCurrentPosition(function(position) {
 		
-		      global.latLang = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-		 
-		      var infowindow = new google.maps.InfoWindow({
-		        map: global.map,
-		        position: global.latLang,
-		        center: global.latLang,
-		        content: 'Location found using HTML5.'
-		      });
+			      global.latLang = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			 
+			      var infowindow = new google.maps.InfoWindow({
+			        map: global.map,
+			        position: global.latLang,
+			        center: global.latLang,
+			        content: 'Location found using HTML5.'
+			      });
 
-		      global.map.setCenter(global.latLang);
+			      global.map.setCenter(global.latLang);
 
-			    var marker = new google.maps.Marker({
-			    	position: global.latLang,
-			    	map: global.map,
-			    	icon: { path: fontawesome.markers.MAP_MARKER,
-									fillColor: '#ed5565',
-									fillOpacity: 1,
-									scale: 1/4,
-									strokeColor: '#ed5565',
-									strokeWeight: 1 },
-			    	title: "You are here!"
-			    });
+				    var marker = new google.maps.Marker({
+				    	position: global.latLang,
+				    	map: global.map,
+				    	icon: { path: fontawesome.markers.MAP_MARKER,
+										fillColor: '#ed5565',
+										fillOpacity: 1,
+										scale: 1/4,
+										strokeColor: '#ed5565',
+										strokeWeight: 1 },
+				    	title: "You are here!"
+				    });
 
-			    marker.setAnimation(google.maps.Animation.BOUNCE);
+				    marker.setAnimation(google.maps.Animation.BOUNCE);
+
 
 			  }, function() {
-			      handleNoGeolocation(true);
-			   	 });
-			  } else {
-			    // Browser doesn't support Geolocation
-			    handleNoGeolocation(false);
-			  }
+		  		// Browser supports Geolocation but hasn't been enabled
+		      handleNoGeolocation(true);
+			}, 
+				// Enable high accuracy 
+				{maximumAge:600000, timeout:5000, enableHighAccuracy: true});
+			  
+			} else {
+		    // Browser doesn't support Geolocation
+		    handleNoGeolocation(false);
+			}
 
 				function handleNoGeolocation(errorFlag) {
 
@@ -11659,7 +11664,7 @@ var globals = {
 								 			'<div class="address">'+placeInfo.vicinity+'</div>' +
 								 			'<div class="phone">'+placeInfo.phone+'</div>' +
 								 			'<div class="rating">'+placeInfo.rating+'</div>' +
-								 			'<img class="photo" src="'+placeInfo.photo+'">' 
+								 			'<div class="photo" style="background-image:url('+placeInfo.photo+')">' 
 								 		);
 
 								 		$(document).on('click', '#closeInfoModal'+placeInfo.id, function() {
