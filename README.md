@@ -22,7 +22,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 
 ######CSS
 
-- []()
+- [Nuttify: “before” pseudo element with Fontawesome ](http://nuttify.com/help/developer-manual/coding-style-guide/css-style-guide/css-tricks-before-pseudo-element-with-fontawesome/) by Ajax McKerral
 
 ######HTML
 
