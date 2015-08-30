@@ -49,6 +49,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 ######Google Maps
 
 - [Google Maps JavaScript Api](https://developers.google.com/maps/documentation/javascript)
+- [Google Places Api](https://developers.google.com/places/supported_types)
 - [Map Icons](http://map-icons.com/)
 - [Snazzy Maps: Styles for Google Maps](https://snazzymaps.com/)
 - [Stack Overflow: Using Icon Fonts as Markers in Google Maps V3](http://stackoverflow.com/questions/16375077/using-icon-fonts-as-markers-in-google-maps-v3)
