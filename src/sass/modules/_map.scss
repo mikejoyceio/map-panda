@@ -17,19 +17,14 @@
 	z-index: 1;
 
 	.content {
-		height: 67px;
-		padding: 15px 0 0 240px;
+		height: 56px;
+		padding: 25px 0 0 240px;
 		border-bottom: 1px solid #ecf0f1;
 
 		.content-header {
-		  font-size: 30px;
-		  font-weight: bold;
-		}
-
-		.content-description {
-			font-weight: 300;
-			font-size: 17px;
-			line-height: 2;
+			color: #132b2d;
+		  font-size: 32px;
+		  font-weight: 300;
 		}
 	}
 }
