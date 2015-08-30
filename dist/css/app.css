@@ -2570,16 +2570,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-border-radius: 3px;
   border-radius: 3px;
   background: #232b2d;
-  bottom: 70px;
+  bottom: 50px;
   height: 60px;
   position: absolute;
-  right: 20px;
+  right: 23px;
   text-align: center;
   width: 25px;
   z-index: 999;
 }
 .zoom-buttons .zoom-button {
-  color: #fff;
+  color: #667174;
   -moz-transition: all 0.5s linear;
   -o-transition: all 0.5s linear;
   -webkit-transition: all 0.5s linear;
@@ -2591,15 +2591,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   width: 100%;
 }
 .zoom-buttons .zoom-button:hover {
-  background: #f1f1f1;
+  color: #ffffff;
   cursor: pointer;
 }
 .zoom-buttons .zoom-button.zoom-in {
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #667174;
   top: 0;
 }
 .zoom-buttons .zoom-button.zoom-out {
-  border-top: 1px solid #999;
+  border-top: 1px solid #667174;
   bottom: 0;
 }
 
@@ -2612,16 +2612,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-transition: all 0.5s linear;
   transition: all 0.5s linear;
   background: #232b2d;
-  color: #fff;
+  color: #ed5565;
   height: 30px;
   position: absolute;
   right: 20px;
   text-align: center;
-  top: 100px;
+  top: 105px;
   width: 30px;
 }
 .pan-to:hover {
-  background: #f1f1f1;
+  color: #ffffff;
   cursor: pointer;
 }
 .pan-to .icon {
