@@ -2480,7 +2480,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   position: relative;
 }
 .info-modal .content .info {
-  padding: 15px 5px 15px 35px;
+  padding: 15px 8px 15px 32px;
 }
 .info-modal .content .info:before {
   content: "\f14e";
@@ -2495,7 +2495,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transform: translate(0, 0);
-  font-size: 19px;
 }
 .info-modal .content .info .place-name {
   color: #404040;
@@ -2617,6 +2616,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -webkit-transition: all 0.5s linear;
   transition: all 0.5s linear;
   background: #232b2d;
+  color: #fff;
   height: 30px;
   position: absolute;
   right: 20px;
