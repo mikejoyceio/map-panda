@@ -11449,7 +11449,7 @@ var globals = {
 	// KO Custom Binding
 	ko.bindingHandlers.map = {
 
-	  init: function(element, valueAccessor, allBindings) {
+	  init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
 	    var mapOptions = {
 	      zoom: 13,
@@ -11504,31 +11504,31 @@ var globals = {
 		    handleNoGeolocation(false);
 			}
 
-				function handleNoGeolocation(errorFlag) {
+			function handleNoGeolocation(errorFlag) {
 
-				  if (errorFlag) {
+			  if (errorFlag) {
 
-				    var content = 'Error: The Geolocation service failed.';
+			    var content = 'Error: The Geolocation service failed.';
 
-				  } else {
+			  } else {
 
-				    var content = 'Error: Your browser doesn\'t support geolocation.';
+			    var content = 'Error: Your browser doesn\'t support geolocation.';
 
-				  }
+			  }
 
-				  var options = {
-				    map: global.map,
-				    position: new google.maps.LatLng(60, 105),
-				    content: content
-				  };
+			  var options = {
+			    map: global.map,
+			    position: new google.maps.LatLng(60, 105),
+			    content: content
+			  };
 
-				  var infowindow = new google.maps.InfoWindow(options);
-				  map.setCenter(options.position);
-				}
+			  var infowindow = new google.maps.InfoWindow(options);
+			  map.setCenter(options.position);
+			}
 
 		},
 
-		update: function(element, valueAccessor, allBindings) {
+		update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 		  	
 		  	var value = valueAccessor();
 
@@ -11627,9 +11627,7 @@ var globals = {
 				 function addInfoModal(data) {
 
 					if ($("#infoModal"+data.id).length === 0) {
-
-						$('body').append('<div id="infoModal'+data.id+'" class="info-modal"></div>');	
-
+						$('body').append('<div id="infoModal'+data.id+'" class="info-modal modal"></div>');	
 					}
 
 				   google.maps.event.addListener(data.marker, 'click', function() {
@@ -11659,12 +11657,35 @@ var globals = {
 										};
 
 								 		$('#infoModal'+data.id).append(
-								 			'<span id="closeInfoModal'+placeInfo.id+'">close</span>' +
-								 			'<h4>'+placeInfo.name+'</h4>' +
-								 			'<div class="address">'+placeInfo.vicinity+'</div>' +
-								 			'<div class="phone">'+placeInfo.phone+'</div>' +
-								 			'<div class="rating">'+placeInfo.rating+'</div>' +
-								 			'<div class="photo" style="background-image:url('+placeInfo.photo+')">' 
+								 			'<div class="modal-header">' +
+								 				'<div class="top-bar">' +
+								 					'<span id="closeInfoModal'+placeInfo.id+'" class="close-modal">' + 
+														'<span class="icon fa-stack fa-sml">' +
+															'<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>' +
+															'<i class="icon-inner fa fa-close fa-stack-1x fa-inverse"></i>' +
+														'</span>' +
+								 					'</span>' +
+								 				'</div>'+
+								 				'<div class="image" style="background-image:url('+placeInfo.photo+')">' +
+								 				'<div class="bottom-bar">' +
+								 					'<div class="place-rating">'+placeInfo.rating+'</div>' +
+								 				'</div>' +
+								 			'</div>' +
+								 			'<div class="modal-content">' +
+								 				'<div class="">' +
+								 				'</div>' +
+								 				'<div class="info">' +
+								 					'<p class="place-name">'+placeInfo.name+'</p>' +
+								 					'<p class="place-address">'+placeInfo.vicinity+'</p>' +
+								 					'<p class="place-phone">'+placeInfo.phone+'</p>' +
+								 				'</div>' +
+								 			'</div>' +
+								 			'<div class="modal-footer">' +
+								 				'<a href="#" class="button-foursquare">' +
+								 					'<span class="icon fa fa-foursquare"></span>' +
+								 					'<span>View in Foursquare</span>' +
+								 				'</a>' +
+								 			'</div>'
 								 		);
 
 								 		$(document).on('click', '#closeInfoModal'+placeInfo.id, function() {
@@ -11678,13 +11699,15 @@ var globals = {
 								  }
 								}
 
+								$(".info-modal").hide();
 								$("#infoModal"+data.id).show();
 
 							} else {
-								 
+								
+								$(".info-modal").hide(); 
 								$("#infoModal"+data.id).show();
 
-								}
+							}
 
 				  	});
 

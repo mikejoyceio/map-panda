@@ -2401,7 +2401,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   content: "";
 }
 
-.info-modal {
+.modal {
   background: #fff;
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
@@ -2416,11 +2416,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   overflow: hidden;
   z-index: 1000;
 }
-.info-modal .header {
+.modal .modal-header {
   position: relative;
   height: 130px;
 }
-.info-modal .header .top-bar {
+.modal .modal-header .top-bar {
   background: #2eb398;
   position: absolute;
   top: 0;
@@ -2428,28 +2428,28 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   height: 25px;
   width: 100%;
 }
-.info-modal .header .top-bar .close-modal {
+.modal .modal-header .top-bar .close-modal {
   font-size: 10px;
   position: absolute;
   top: 0px;
   right: 3px;
 }
-.info-modal .header .top-bar .close-modal:hover {
+.modal .modal-header .top-bar .close-modal:hover {
   cursor: pointer;
 }
-.info-modal .header .top-bar .close-modal .icon-outer {
+.modal .modal-header .top-bar .close-modal .icon-outer {
   color: #fff;
 }
-.info-modal .header .top-bar .close-modal .icon-inner {
+.modal .modal-header .top-bar .close-modal .icon-inner {
   color: #fff;
   top: -1px;
 }
-.info-modal .header .image {
+.modal .modal-header .image {
   background-size: cover;
   background-position: center center;
   height: 100%;
 }
-.info-modal .header .bottom-bar {
+.modal .modal-header .bottom-bar {
   background: #2eb398;
   height: 3px;
   position: absolute;
@@ -2457,7 +2457,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   left: 0;
   width: 100%;
 }
-.info-modal .header .bottom-bar .place-rating {
+.modal .modal-header .bottom-bar .place-rating {
   background: #2eb398;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -2476,13 +2476,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   top: -11px;
   width: 22px;
 }
-.info-modal .content {
+.modal .modal-content {
   position: relative;
 }
-.info-modal .content .info {
+.modal .modal-content .info {
   padding: 15px 8px 15px 32px;
 }
-.info-modal .content .info:before {
+.modal .modal-content .info:before {
   content: "\f14e";
   position: absolute;
   top: 14px;
@@ -2496,28 +2496,28 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -moz-osx-font-smoothing: grayscale;
   transform: translate(0, 0);
 }
-.info-modal .content .info .place-name {
+.modal .modal-content .info .place-name {
   color: #404040;
   margin-bottom: 4px;
   font-weight: 600;
 }
-.info-modal .content .info .place-address {
+.modal .modal-content .info .place-address {
   outline: none;
 }
-.info-modal .content .info .place-phone {
+.modal .modal-content .info .place-phone {
   outline: none;
 }
-.info-modal .content .info p {
+.modal .modal-content .info p {
   color: #727b7f;
   font-size: 11px;
   line-height: 1.2;
 }
-.info-modal .footer {
+.modal .modal-footer {
   border-top: 1px solid #e8e6e4;
   margin: 0 10px;
   padding: 14px 0;
 }
-.info-modal .footer .button-foursquare {
+.modal .modal-footer .button-foursquare {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
   border-radius: 20px;
@@ -2531,7 +2531,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   text-decoration: none;
   width: 230px;
 }
-.info-modal .footer .button-foursquare .icon {
+.modal .modal-footer .button-foursquare .icon {
   font-size: 13px;
   margin-right: 6px;
 }
