@@ -2555,18 +2555,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   z-index: 1;
 }
 .map-info .content {
-  height: 67px;
-  padding: 15px 0 0 240px;
+  height: 56px;
+  padding: 25px 0 0 240px;
   border-bottom: 1px solid #ecf0f1;
 }
 .map-info .content .content-header {
-  font-size: 30px;
-  font-weight: bold;
-}
-.map-info .content .content-description {
+  color: #132b2d;
+  font-size: 32px;
   font-weight: 300;
-  font-size: 17px;
-  line-height: 2;
 }
 
 .zoom-buttons {
@@ -2978,7 +2974,7 @@ html, body {
 
 .menu {
   background: #232b2d;
-  height: 100%;
+  height: 88.7%;
   left: 0;
   padding-top: 85px;
   position: absolute;
@@ -2993,6 +2989,14 @@ html, body {
   position: absolute;
   top: 0;
   width: 100%;
+}
+.menu .brand .brand-image {
+  background: url(../images/panda.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  margin: 20px auto;
 }
 .menu .search-filter {
   padding: 10px;
