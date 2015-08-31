@@ -11482,7 +11482,7 @@ var globals = {
 	latLang: '',
 	places: [],
 	markers: [],
-	debug: false
+	debug: true
 };
 
 (function(global) {
@@ -11495,6 +11495,9 @@ var globals = {
 
 		this.appName = "App Name";
 		this.contentName = "Content Name";
+		this.notificationMessage = ko.observable('');
+		this.notificationKeepAlive = ko.observable(false);
+		this.notificationFadeDuration = ko.observable(1000);
 		this.mapInfo = ko.observable(false);
 		this.placeList = ko.observableArray([]); 
 		this.searchQuery = ko.observable();
@@ -11508,6 +11511,8 @@ var globals = {
 		this.currentPlace = ko.observable( this.placeList()[0] );
 
 		this.selectPlace = function(place) {
+			self.notificationKeepAlive(false);
+			self.notificationFadeDuration(0);
 			self.currentPlace(place);
 			for(i=0;i<self.placeList().length;i++) {
 				self.placeList()[i].isActive(false);
@@ -11579,13 +11584,13 @@ var globals = {
 		this.isHidden = ko.observable(false);
 	}
 
-	// KO Custom Binding
+	// KO Custom Binding for Map
 	ko.bindingHandlers.map = {
 
 	  init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
 	    var mapOptions = {
-	      zoom: 13,
+	      zoom: 15,
 	      zoomControl: false,
 	      mapTypeControl: false,
 	      streetViewControl: false,
@@ -11641,11 +11646,15 @@ var globals = {
 
 			  if (errorFlag) {
 
-			    var content = 'Error: The Geolocation service failed.';
+					if (global.debug) console.log('Error: The Geolocation service failed.');
+					bindingContext.$root.notificationKeepAlive(true);
+					bindingContext.$root.notificationMessage('Error: The Geolocation service failed.');
 
 			  } else {
 
-			    var content = 'Error: Your browser doesn\'t support geolocation.';
+					if (global.debug) console.log('Error: Your browser doesn\'t support geolocation.');
+					bindingContext.$root.notificationKeepAlive(true);
+					bindingContext.$root.notificationMessage('Error: Your browser doesn\'t support geolocation.');
 
 			  }
 
@@ -11665,6 +11674,8 @@ var globals = {
 		  	
 		  	var value = valueAccessor();
 
+				clearMarkers();
+
 		  	if (value.currentPlace().isActive()) {
 
 			    var request = {
@@ -11683,24 +11694,40 @@ var globals = {
 			    	if (status === google.maps.places.PlacesServiceStatus.OK) {
 			    		clearMarkers();
 			    		global.places.length = 0;
+			    		bindingContext.$root.notificationKeepAlive(false);
+			    		bindingContext.$root.notificationFadeDuration(0);
 			    		for (var i=0; i < results.length; i++) {
 			    			global.places.push(results[i]);
-			    		}
+			    		}	
 			    		setPlaces();
 			    	} else if (status === google.maps.places.PlacesServiceStatus.ERROR) {
-			    		log(status+' There was a problem contacting the Google servers.');
-			    		log(status);
+			    		if (global.debug) console.log(status+' There was a problem contacting the Google servers.');
+			    		bindingContext.$root.notificationKeepAlive(true);
+			    		bindingContext.$root.notificationMessage('There was a problem contacting the Google servers.');
 			    	} else if (status === google.maps.places.PlacesServiceStatus.INVALID_REQUEST) {
-			    		log(status+' This request was invalid.');
-			    		log(status);
+			    		if (global.debug) console.log(status+' This request was invalid.');
+			    		bindingContext.$root.notificationKeepAlive(true);
+			    		bindingContext.$root.notificationMessage('The request was invalid');
 			    	} else if (status === google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
-			    		log(status+' The webpage has gone over its request quota.');
+			    		if (global.debug) console.log(status+' The webpage has gone over its request quota.');
+			    		bindingContext.$root.notificationKeepAlive(true);
+			    		bindingContext.$root.notificationMessage('This webpage has gone over its request quota.')
 			    	} else if (status === google.maps.places.PlacesServiceStatus.REQUEST_DENIED) {
-			    		log(status+' The webpage is not allowed to use the PlacesService.');
+			    		if (global.debug) console.log(status+' This webpage is not allowed to use the PlacesService.')
+			    		bindingContext.$root.notificationKeepAlive(true);
+			    		bindingContext.$root.notificationMessage('This webpage is not allowed to use the PlacesService.')
 			    	} else if (status === google.maps.places.PlacesServiceStatus.UNKNOWN_ERROR) {
-			    		log(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.');
+			    		if (global.debug) console.log(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.')
+			    		bindingContext.$root.notificationKeepAlive(true);
+			    		bindingContext.$root.notificationMessage('Server Error. Please try again.')
 			    	} else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
-			    		log(status+' No result was found for this request.');
+			    		if (global.debug) console.log(status+' No result was found for this request.');
+			    		bindingContext.$root.notificationKeepAlive(true);
+			    		bindingContext.$root.notificationMessage('No results.');
+			    	} else {
+			    		if (global.debug) console.log('Error');
+					   	bindingContext.$root.notificationKeepAlive(true);
+			    		bindingContext.$root.notificationMessage('Error');	    		
 			    	}
 			    }
 
@@ -11785,7 +11812,7 @@ var globals = {
 											name: place.name,
 											vicinity: place.vicinity,
 											phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'no number',
-											photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'nophoto.jpg',
+											photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default.png',
 											rating: typeof place.rating !== 'undefined' ? place.rating : 'no rating'
 										};
 
@@ -11827,7 +11854,7 @@ var globals = {
 
 								  } else {
 
-								  	log('Place details error'+status);
+						    		if (global.debug) console.log(status);
 
 								  }
 								}
@@ -11859,12 +11886,67 @@ var globals = {
 
 	}
 
+	// KO Custom Binding for Notifications
+	ko.bindingHandlers.notification = {
+		update: function(element, valueAccessor, allBindingsAccessor, viewModel) {
+			var rawValue = valueAccessor(),
+				//notification can be passed an object with properties 'message', 'duration', 'fadeoutDuration', 'hide', 'fade', and 'callback', or it can be given just a string
+				options = typeof rawValue == 'object' ? rawValue : {message: rawValue},
+				message = ko.utils.unwrapObservable(options.message),
+				duration = options.duration !== undefined ? ko.utils.unwrapObservable(options.duration) : 5000, //5 seconds is default fade out
+				fadeoutDuration = options.fadeoutDuration !== undefined ? ko.utils.unwrapObservable(options.fadeoutDuration) : 200, //default is 200 ms
+				hide = options.hide !== undefined ? ko.utils.unwrapObservable(options.hide) : true, //default is to hide it
+				fade = options.fade !== undefined ? ko.utils.unwrapObservable(options.fade) : true, //default is to fade it out in presence of jquery
+	            callback = options.callback !== undefined ? ko.utils.unwrapObservable(options.callback) : function() {},
+				jQueryExists = typeof jQuery != 'undefined';
+
+			//set the element's text to the value of the message
+			if (message === null || message === undefined)
+				message = "";
+
+			element.innerHTML = message;
+
+			//clear any outstanding timeouts
+			clearTimeout(element.notificationTimer);
+
+			if (message == '') {
+				element.style.display = 'none';
+				return;
+			}
+
+			//if there are any animations going on, stop them and show the element. otherwise just show the element
+			if (jQueryExists)
+				jQuery(element).stop(true, true).show();
+			else
+				element.style.display = '';
+
+			if (!hide) {
+				//run a timeout to make it disappear
+				element.notificationTimer = setTimeout(function() {
+					//if jQuery is there, run the fadeOut, otherwise do old-timey js
+					if (jQueryExists) {
+						if (fade)
+							jQuery(element).fadeOut(fadeoutDuration, function() {
+	                            options.message('');
+	                            callback();
+	                        });
+						else {
+							jQuery(element).hide();
+							options.message('');
+	                        callback();
+						}
+					} else {
+						element.style.display = 'none';
+	                    callback();
+					}
+				}, duration);
+			} else {
+	            callback();
+			}
+		}
+	};
+
 	// Apply Knockout Bindings
 	ko.applyBindings(new ViewModel());
-
-	// I'm lazy :)
-	function log(data) {
-		 return console.log(data);	
-	}
 
 })(globals);
