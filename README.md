@@ -38,6 +38,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 
 - [HTML5 Geolocation](http://html5demos.com/geo)
 - [Caniuse: Geolocation](http://caniuse.com/#search=geo)
+- [Stack Overflow: HTML Geolocation High Accuracy](http://stackoverflow.com/questions/16202077/high-accuracy-geolocation-html5)
 - [HTML Goodies: HTML5 Geolocation](http://www.htmlgoodies.com/html5/Web-Developer-Class-HTML5-Geolocation-3917596.htm#fbid=H6Q5EbyzCoF)
 - [Mozilla Developer Network: Array ForEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 - [The Top 10 Mistakes That KnockoutJS Developers Make](https://www.airpair.com/knockout/posts/top-10-mistakes-knockoutjs) By Mike Mellentin
