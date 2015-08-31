@@ -22,7 +22,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 
 ######CSS
 
-- []()
+- [Nuttify: “before” pseudo element with Fontawesome ](http://nuttify.com/help/developer-manual/coding-style-guide/css-style-guide/css-tricks-before-pseudo-element-with-fontawesome/) by Ajax McKerral
 
 ######HTML
 
@@ -38,6 +38,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 
 - [HTML5 Geolocation](http://html5demos.com/geo)
 - [Caniuse: Geolocation](http://caniuse.com/#search=geo)
+- [Stack Overflow: HTML Geolocation High Accuracy](http://stackoverflow.com/questions/16202077/high-accuracy-geolocation-html5)
 - [HTML Goodies: HTML5 Geolocation](http://www.htmlgoodies.com/html5/Web-Developer-Class-HTML5-Geolocation-3917596.htm#fbid=H6Q5EbyzCoF)
 - [Mozilla Developer Network: Array ForEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 - [The Top 10 Mistakes That KnockoutJS Developers Make](https://www.airpair.com/knockout/posts/top-10-mistakes-knockoutjs) By Mike Mellentin
@@ -49,6 +50,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 ######Google Maps
 
 - [Google Maps JavaScript Api](https://developers.google.com/maps/documentation/javascript)
+- [Google Places Api](https://developers.google.com/places/supported_types)
 - [Map Icons](http://map-icons.com/)
 - [Snazzy Maps: Styles for Google Maps](https://snazzymaps.com/)
 - [Stack Overflow: Using Icon Fonts as Markers in Google Maps V3](http://stackoverflow.com/questions/16375077/using-icon-fonts-as-markers-in-google-maps-v3)
@@ -56,11 +58,13 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Stack Overflow: Google Places getUrl() is breaking my JavaScript](http://stackoverflow.com/questions/22459910/google-places-photos-geturl-is-breaking-my-javascript)
 - [Stack Overflow: Google Maps API Over Query per second limit](http://stackoverflow.com/questions/14014074/google-maps-api-over-query-limit-per-second-limit)
 - [Font Awesome Markers](https://github.com/nathan-muir/fontawesome-markers)
+- [SVGO: An Nodejs-based tool for optimizing SVG vector graphics files.](https://github.com/nathan-muir/svgo/tree/nathan-svgo)
 
 ######Knockout JS
 
 - [KnockoutJS Docs](http://knockoutjs.com/documentation/introduction.html)
 - [KnockoutJS: Mapping Plugin](http://knockoutjs.com/documentation/plugins-mapping.html)
+- [KnockoutJS: Notification Plugin](https://github.com/janhartigan/Knockout-Notification)
 - [Stack Exchange: Getting the Object Data](http://stackoverflow.com/questions/13755220/knockout-js-getting-the-object-data)
 - [Live Search with KnockoutJS](http://opensoul.org/2011/06/23/live-search-with-knockoutjs/) By Brandon Keepers
 

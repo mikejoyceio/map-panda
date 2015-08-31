@@ -1,7 +1,4 @@
 @charset "UTF-8";
-/* App.scss
- * Centralize imports.
- */
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -2404,15 +2401,139 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   content: "";
 }
 
-.info-modal {
+.modal {
   background: #fff;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  border-radius: 7px;
   display: none;
-  width: 300px;
+  width: 270px;
   height: 350px;
   left: 220px;
   right: 0;
-  top: 165px;
+  top: 105px;
   position: absolute;
+  overflow: hidden;
+  z-index: 1000;
+}
+.modal .modal-header {
+  position: relative;
+  height: 130px;
+}
+.modal .modal-header .top-bar {
+  background: #2eb398;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 100%;
+}
+.modal .modal-header .top-bar .close-modal {
+  font-size: 10px;
+  position: absolute;
+  top: 0px;
+  right: 3px;
+}
+.modal .modal-header .top-bar .close-modal:hover {
+  cursor: pointer;
+}
+.modal .modal-header .top-bar .close-modal .icon-outer {
+  color: #fff;
+}
+.modal .modal-header .top-bar .close-modal .icon-inner {
+  color: #fff;
+  top: -1px;
+}
+.modal .modal-header .image {
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+}
+.modal .modal-header .bottom-bar {
+  background: #2eb398;
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.modal .modal-header .bottom-bar .place-rating {
+  background: #2eb398;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 300;
+  height: 20px;
+  left: 0;
+  line-height: 1.8;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: -11px;
+  width: 22px;
+}
+.modal .modal-content {
+  position: relative;
+}
+.modal .modal-content .info {
+  padding: 15px 8px 15px 32px;
+}
+.modal .modal-content .info:before {
+  content: "\f14e";
+  position: absolute;
+  top: 14px;
+  left: 10px;
+  color: #a3a8ab;
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+.modal .modal-content .info .place-name {
+  color: #404040;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.modal .modal-content .info .place-address {
+  outline: none;
+}
+.modal .modal-content .info .place-phone {
+  outline: none;
+}
+.modal .modal-content .info p {
+  color: #727b7f;
+  font-size: 11px;
+  line-height: 1.2;
+}
+.modal .modal-footer {
+  border-top: 1px solid #e8e6e4;
+  margin: 0 10px;
+  padding: 14px 0;
+}
+.modal .modal-footer .button-foursquare {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  border: 1px solid;
+  color: #f84777;
+  display: block;
+  font-weight: 400;
+  margin: auto;
+  padding: 5px;
+  text-align: center;
+  text-decoration: none;
+  width: 230px;
+}
+.modal .modal-footer .button-foursquare .icon {
+  font-size: 13px;
+  margin-right: 6px;
 }
 
 .info-window {
@@ -2434,35 +2555,31 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   z-index: 1;
 }
 .map-info .content {
-  height: 67px;
-  padding: 15px 0 0 240px;
+  height: 56px;
+  padding: 25px 0 0 240px;
   border-bottom: 1px solid #ecf0f1;
 }
 .map-info .content .content-header {
-  font-size: 30px;
-  font-weight: bold;
-}
-.map-info .content .content-description {
+  color: #132b2d;
+  font-size: 32px;
   font-weight: 300;
-  font-size: 17px;
-  line-height: 2;
 }
 
 .zoom-buttons {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
-  background: #fff;
-  border: 1px solid #999;
-  bottom: 70px;
+  background: #232b2d;
+  bottom: 50px;
   height: 60px;
   position: absolute;
-  right: 20px;
+  right: 23px;
   text-align: center;
   width: 25px;
   z-index: 999;
 }
 .zoom-buttons .zoom-button {
+  color: #667174;
   -moz-transition: all 0.5s linear;
   -o-transition: all 0.5s linear;
   -webkit-transition: all 0.5s linear;
@@ -2474,15 +2591,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   width: 100%;
 }
 .zoom-buttons .zoom-button:hover {
-  background: #f1f1f1;
+  color: #ffffff;
   cursor: pointer;
 }
 .zoom-buttons .zoom-button.zoom-in {
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #667174;
   top: 0;
 }
 .zoom-buttons .zoom-button.zoom-out {
-  border-top: 1px solid #999;
+  border-top: 1px solid #667174;
   bottom: 0;
 }
 
@@ -2494,17 +2611,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   -o-transition: all 0.5s linear;
   -webkit-transition: all 0.5s linear;
   transition: all 0.5s linear;
-  background: #fff;
-  border: 1px solid #999;
+  background: #232b2d;
+  color: #ed5565;
   height: 30px;
   position: absolute;
   right: 20px;
   text-align: center;
-  top: 100px;
+  top: 105px;
   width: 30px;
 }
 .pan-to:hover {
-  background: #f1f1f1;
+  color: #ffffff;
   cursor: pointer;
 }
 .pan-to .icon {
@@ -2521,6 +2638,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* 1025px, 1440px */
 /* 1441px, 1920px */
 /* 1921px */
+.notification {
+  background: #ed5565;
+  border-radius: 5px;
+  color: #fff;
+  height: 20px;
+  line-height: 1.2;
+  min-width: 100px;
+  padding: 5px;
+  position: absolute;
+  right: 200px;
+  text-align: center;
+  top: 105px;
+  z-index: 1000;
+}
+
 .irs {
   position: relative;
   display: block;
@@ -2846,13 +2978,7 @@ html, body {
 }
 
 .header {
-  background: #1b2224;
-  width: 100%;
-  height: 60px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
+  outline: none;
 }
 .header h1 {
   color: #fff;
@@ -2863,7 +2989,7 @@ html, body {
 
 .menu {
   background: #232b2d;
-  height: 100%;
+  height: 88.7%;
   left: 0;
   padding-top: 85px;
   position: absolute;
@@ -2878,6 +3004,14 @@ html, body {
   position: absolute;
   top: 0;
   width: 100%;
+}
+.menu .brand .brand-image {
+  background: url(../images/panda.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  margin: 20px auto;
 }
 .menu .search-filter {
   padding: 10px;

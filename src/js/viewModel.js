@@ -9,7 +9,7 @@ var globals = {
 	latLang: '',
 	places: [],
 	markers: [],
-	debug: false
+	debug: true
 };
 
 (function(global) {
@@ -22,10 +22,13 @@ var globals = {
 
 		this.appName = "App Name";
 		this.contentName = "Content Name";
+		this.notificationMessage = ko.observable('');
+		this.notificationKeepAlive = ko.observable(false);
+		this.notificationFadeDuration = ko.observable(1000);
 		this.mapInfo = ko.observable(false);
 		this.placeList = ko.observableArray([]); 
 		this.searchQuery = ko.observable();
-		this.searchRadius = ko.observable('5000');
+		this.searchRadius = ko.observable(5000);
 		this.rangeSlider = $('#rangeSlider');
 
 		placesData.forEach(function(placeItem) {
@@ -35,6 +38,8 @@ var globals = {
 		this.currentPlace = ko.observable( this.placeList()[0] );
 
 		this.selectPlace = function(place) {
+			self.notificationKeepAlive(false);
+			self.notificationFadeDuration(0);
 			self.currentPlace(place);
 			for(i=0;i<self.placeList().length;i++) {
 				self.placeList()[i].isActive(false);
@@ -106,13 +111,13 @@ var globals = {
 		this.isHidden = ko.observable(false);
 	}
 
-	// KO Custom Binding
+	// KO Custom Binding for Map
 	ko.bindingHandlers.map = {
 
-	  init: function(element, valueAccessor, allBindings) {
+	  init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
 	    var mapOptions = {
-	      zoom: 13,
+	      zoom: 15,
 	      zoomControl: false,
 	      mapTypeControl: false,
 	      streetViewControl: false,
@@ -126,66 +131,77 @@ var globals = {
 		  if(navigator.geolocation) {
 		    navigator.geolocation.getCurrentPosition(function(position) {
 		
-		      global.latLang = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-		 
-		      var infowindow = new google.maps.InfoWindow({
-		        map: global.map,
-		        position: global.latLang,
-		        center: global.latLang,
-		        content: 'Location found using HTML5.'
-		      });
+			      global.latLang = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+			 
+			      var infowindow = new google.maps.InfoWindow({
+			        map: global.map,
+			        position: global.latLang,
+			        center: global.latLang,
+			        content: 'Location found using HTML5.'
+			      });
 
-		      global.map.setCenter(global.latLang);
+			      global.map.setCenter(global.latLang);
 
-			    var marker = new google.maps.Marker({
-			    	position: global.latLang,
-			    	map: global.map,
-			    	icon: { path: fontawesome.markers.MAP_MARKER,
-									fillColor: '#ed5565',
-									fillOpacity: 1,
-									scale: 1/4,
-									strokeColor: '#ed5565',
-									strokeWeight: 1 },
-			    	title: "You are here!"
-			    });
+				    var marker = new google.maps.Marker({
+				    	position: global.latLang,
+				    	map: global.map,
+				    	icon: { path: fontawesome.markers.MAP_MARKER,
+										fillColor: '#ed5565',
+										fillOpacity: 1,
+										scale: 1/4,
+										strokeColor: '#ed5565',
+										strokeWeight: 1 },
+				    	title: "You are here!"
+				    });
 
-			    marker.setAnimation(google.maps.Animation.BOUNCE);
+				    marker.setAnimation(google.maps.Animation.BOUNCE);
+
 
 			  }, function() {
-			      handleNoGeolocation(true);
-			   	 });
+		  		// Browser supports Geolocation but hasn't been enabled
+		      handleNoGeolocation(true);
+			}, 
+				// Enable high accuracy 
+				{maximumAge:600000, timeout:5000, enableHighAccuracy: true});
+			  
+			} else {
+		    // Browser doesn't support Geolocation
+		    handleNoGeolocation(false);
+			}
+
+			function handleNoGeolocation(errorFlag) {
+
+			  if (errorFlag) {
+
+					if (global.debug) console.log('Error: The Geolocation service failed.');
+					bindingContext.$root.notificationKeepAlive(true);
+					bindingContext.$root.notificationMessage('Error: The Geolocation service failed.');
+
 			  } else {
-			    // Browser doesn't support Geolocation
-			    handleNoGeolocation(false);
+
+					if (global.debug) console.log('Error: Your browser doesn\'t support geolocation.');
+					bindingContext.$root.notificationKeepAlive(true);
+					bindingContext.$root.notificationMessage('Error: Your browser doesn\'t support geolocation.');
+
 			  }
 
-				function handleNoGeolocation(errorFlag) {
+			  var options = {
+			    map: global.map,
+			    position: new google.maps.LatLng(60, 105),
+			    content: content
+			  };
 
-				  if (errorFlag) {
-
-				    var content = 'Error: The Geolocation service failed.';
-
-				  } else {
-
-				    var content = 'Error: Your browser doesn\'t support geolocation.';
-
-				  }
-
-				  var options = {
-				    map: global.map,
-				    position: new google.maps.LatLng(60, 105),
-				    content: content
-				  };
-
-				  var infowindow = new google.maps.InfoWindow(options);
-				  map.setCenter(options.position);
-				}
+			  var infowindow = new google.maps.InfoWindow(options);
+			  map.setCenter(options.position);
+			}
 
 		},
 
-		update: function(element, valueAccessor, allBindings) {
+		update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 		  	
 		  	var value = valueAccessor();
+
+				clearMarkers();
 
 		  	if (value.currentPlace().isActive()) {
 
@@ -205,24 +221,40 @@ var globals = {
 			    	if (status === google.maps.places.PlacesServiceStatus.OK) {
 			    		clearMarkers();
 			    		global.places.length = 0;
+			    		bindingContext.$root.notificationKeepAlive(false);
+			    		bindingContext.$root.notificationFadeDuration(0);
 			    		for (var i=0; i < results.length; i++) {
 			    			global.places.push(results[i]);
-			    		}
+			    		}	
 			    		setPlaces();
 			    	} else if (status === google.maps.places.PlacesServiceStatus.ERROR) {
-			    		log(status+' There was a problem contacting the Google servers.');
-			    		log(status);
+			    		if (global.debug) console.log(status+' There was a problem contacting the Google servers.');
+			    		bindingContext.$root.notificationKeepAlive(true);
+			    		bindingContext.$root.notificationMessage('There was a problem contacting the Google servers.');
 			    	} else if (status === google.maps.places.PlacesServiceStatus.INVALID_REQUEST) {
-			    		log(status+' This request was invalid.');
-			    		log(status);
+			    		if (global.debug) console.log(status+' This request was invalid.');
+			    		bindingContext.$root.notificationKeepAlive(true);
+			    		bindingContext.$root.notificationMessage('The request was invalid');
 			    	} else if (status === google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
-			    		log(status+' The webpage has gone over its request quota.');
+			    		if (global.debug) console.log(status+' The webpage has gone over its request quota.');
+			    		bindingContext.$root.notificationKeepAlive(true);
+			    		bindingContext.$root.notificationMessage('This webpage has gone over its request quota.')
 			    	} else if (status === google.maps.places.PlacesServiceStatus.REQUEST_DENIED) {
-			    		log(status+' The webpage is not allowed to use the PlacesService.');
+			    		if (global.debug) console.log(status+' This webpage is not allowed to use the PlacesService.')
+			    		bindingContext.$root.notificationKeepAlive(true);
+			    		bindingContext.$root.notificationMessage('This webpage is not allowed to use the PlacesService.')
 			    	} else if (status === google.maps.places.PlacesServiceStatus.UNKNOWN_ERROR) {
-			    		log(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.');
+			    		if (global.debug) console.log(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.')
+			    		bindingContext.$root.notificationKeepAlive(true);
+			    		bindingContext.$root.notificationMessage('Server Error. Please try again.')
 			    	} else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
-			    		log(status+' No result was found for this request.');
+			    		if (global.debug) console.log(status+' No result was found for this request.');
+			    		bindingContext.$root.notificationKeepAlive(true);
+			    		bindingContext.$root.notificationMessage('No results.');
+			    	} else {
+			    		if (global.debug) console.log('Error');
+					   	bindingContext.$root.notificationKeepAlive(true);
+			    		bindingContext.$root.notificationMessage('Error');	    		
 			    	}
 			    }
 
@@ -282,9 +314,7 @@ var globals = {
 				 function addInfoModal(data) {
 
 					if ($("#infoModal"+data.id).length === 0) {
-
-						$('body').append('<div id="infoModal'+data.id+'" class="info-modal"></div>');	
-
+						$('body').append('<div id="infoModal'+data.id+'" class="info-modal modal"></div>');	
 					}
 
 				   google.maps.event.addListener(data.marker, 'click', function() {
@@ -309,17 +339,40 @@ var globals = {
 											name: place.name,
 											vicinity: place.vicinity,
 											phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'no number',
-											photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'nophoto.jpg',
+											photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default.png',
 											rating: typeof place.rating !== 'undefined' ? place.rating : 'no rating'
 										};
 
 								 		$('#infoModal'+data.id).append(
-								 			'<span id="closeInfoModal'+placeInfo.id+'">close</span>' +
-								 			'<h4>'+placeInfo.name+'</h4>' +
-								 			'<div class="address">'+placeInfo.vicinity+'</div>' +
-								 			'<div class="phone">'+placeInfo.phone+'</div>' +
-								 			'<div class="rating">'+placeInfo.rating+'</div>' +
-								 			'<img class="photo" src="'+placeInfo.photo+'">' 
+								 			'<div class="modal-header">' +
+								 				'<div class="top-bar">' +
+								 					'<span id="closeInfoModal'+placeInfo.id+'" class="close-modal">' + 
+														'<span class="icon fa-stack fa-sml">' +
+															'<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>' +
+															'<i class="icon-inner fa fa-close fa-stack-1x fa-inverse"></i>' +
+														'</span>' +
+								 					'</span>' +
+								 				'</div>'+
+								 				'<div class="image" style="background-image:url('+placeInfo.photo+')">' +
+								 				'<div class="bottom-bar">' +
+								 					'<div class="place-rating">'+placeInfo.rating+'</div>' +
+								 				'</div>' +
+								 			'</div>' +
+								 			'<div class="modal-content">' +
+								 				'<div class="">' +
+								 				'</div>' +
+								 				'<div class="info">' +
+								 					'<p class="place-name">'+placeInfo.name+'</p>' +
+								 					'<p class="place-address">'+placeInfo.vicinity+'</p>' +
+								 					'<p class="place-phone">'+placeInfo.phone+'</p>' +
+								 				'</div>' +
+								 			'</div>' +
+								 			'<div class="modal-footer">' +
+								 				'<a href="#" class="button-foursquare">' +
+								 					'<span class="icon fa fa-foursquare"></span>' +
+								 					'<span>View in Foursquare</span>' +
+								 				'</a>' +
+								 			'</div>'
 								 		);
 
 								 		$(document).on('click', '#closeInfoModal'+placeInfo.id, function() {
@@ -328,18 +381,20 @@ var globals = {
 
 								  } else {
 
-								  	log('Place details error'+status);
+						    		if (global.debug) console.log(status);
 
 								  }
 								}
 
+								$(".info-modal").hide();
 								$("#infoModal"+data.id).show();
 
 							} else {
-								 
+								
+								$(".info-modal").hide(); 
 								$("#infoModal"+data.id).show();
 
-								}
+							}
 
 				  	});
 
@@ -358,12 +413,67 @@ var globals = {
 
 	}
 
+	// KO Custom Binding for Notifications
+	ko.bindingHandlers.notification = {
+		update: function(element, valueAccessor, allBindingsAccessor, viewModel) {
+			var rawValue = valueAccessor(),
+				//notification can be passed an object with properties 'message', 'duration', 'fadeoutDuration', 'hide', 'fade', and 'callback', or it can be given just a string
+				options = typeof rawValue == 'object' ? rawValue : {message: rawValue},
+				message = ko.utils.unwrapObservable(options.message),
+				duration = options.duration !== undefined ? ko.utils.unwrapObservable(options.duration) : 5000, //5 seconds is default fade out
+				fadeoutDuration = options.fadeoutDuration !== undefined ? ko.utils.unwrapObservable(options.fadeoutDuration) : 200, //default is 200 ms
+				hide = options.hide !== undefined ? ko.utils.unwrapObservable(options.hide) : true, //default is to hide it
+				fade = options.fade !== undefined ? ko.utils.unwrapObservable(options.fade) : true, //default is to fade it out in presence of jquery
+	            callback = options.callback !== undefined ? ko.utils.unwrapObservable(options.callback) : function() {},
+				jQueryExists = typeof jQuery != 'undefined';
+
+			//set the element's text to the value of the message
+			if (message === null || message === undefined)
+				message = "";
+
+			element.innerHTML = message;
+
+			//clear any outstanding timeouts
+			clearTimeout(element.notificationTimer);
+
+			if (message == '') {
+				element.style.display = 'none';
+				return;
+			}
+
+			//if there are any animations going on, stop them and show the element. otherwise just show the element
+			if (jQueryExists)
+				jQuery(element).stop(true, true).show();
+			else
+				element.style.display = '';
+
+			if (!hide) {
+				//run a timeout to make it disappear
+				element.notificationTimer = setTimeout(function() {
+					//if jQuery is there, run the fadeOut, otherwise do old-timey js
+					if (jQueryExists) {
+						if (fade)
+							jQuery(element).fadeOut(fadeoutDuration, function() {
+	                            options.message('');
+	                            callback();
+	                        });
+						else {
+							jQuery(element).hide();
+							options.message('');
+	                        callback();
+						}
+					} else {
+						element.style.display = 'none';
+	                    callback();
+					}
+				}, duration);
+			} else {
+	            callback();
+			}
+		}
+	};
+
 	// Apply Knockout Bindings
 	ko.applyBindings(new ViewModel());
-
-	// I'm lazy :)
-	function log(data) {
-		 return console.log(data);	
-	}
 
 })(globals);

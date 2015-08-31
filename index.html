@@ -9,18 +9,18 @@
 </head>
 <body>
 
-	<!-- Header
-	<header class="header" role="banner">
-		<h1 data-bind="text: appName"></h1>
-	</header>
-	/Header -->
+	<!-- Status Message -->
+	<div class="notification" data-bind="notification: {message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
+	<!-- /Status Message -->
 
 	<!-- Menu -->
 	<div class="menu" role="menu">
 
 		<!-- Brand -->
 		<div class="brand">
-
+			<a href="/">
+				<div class="brand-image"></div>
+			</a>
 		</div>
 		<!-- /Brand -->
 
@@ -41,7 +41,7 @@
 			<!-- ko foreach: placeList -->
 			<li class="item" data-bind="css: {active: isActive(), hidden: isHidden()}">
 				<span class="icon fa-stack fa-sml">
-					<i class="icon-outer fa fa-circle-o fa-stack-2x"></i>
+					<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>
 					<i class="icon-inner fa fa-stack-1x fa-inverse" data-bind="css: icon"></i>
 				</span>
 				<span data-bind="text: name, click: $parent.selectPlace"></span>
@@ -62,7 +62,6 @@
 				<div data-bind="visible: mapInfo">
 					<!-- ko with: currentPlace -->
 					<h2 class="content-header" data-bind="text: name"></h2>	
-					<span class="content-description" data-bind="text: description"></span>
 					<!-- /ko -->
 				</div>
 			</div>

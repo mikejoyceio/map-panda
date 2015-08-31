@@ -1,3 +1,7 @@
+
+// Bower.json
+// Bower is a package manager for the web. Further info can be found here: http://bower.io/
+
 {
   "name": "map",
   "version": "1.0.0",
