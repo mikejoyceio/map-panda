@@ -112,7 +112,7 @@ var globals = {
 	  init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
 	    var mapOptions = {
-	      zoom: 13,
+	      zoom: 15,
 	      zoomControl: false,
 	      mapTypeControl: false,
 	      streetViewControl: false,
