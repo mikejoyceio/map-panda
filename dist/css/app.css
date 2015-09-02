@@ -2891,10 +2891,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 .irs-slider {
-  width: 16px;
+  width: 10px;
   height: 18px;
   top: 22px;
   background-position: 0 -120px;
+  background: #ed5565;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
 }
 
 .irs-slider.state_hover, .irs-slider:hover {

@@ -200,9 +200,12 @@
 }
 
 .irs-slider {
-    width: 16px; height: 18px;
-    top: 22px;
-    background-position: 0 -120px;
+  width: 10px;
+  height: 18px;
+  top: 22px;
+  background-position: 0 -120px;
+  background: #ed5565;
+  @include border-radius(2px);
 }
 .irs-slider.state_hover, .irs-slider:hover {
     background-position: 0 -150px;
