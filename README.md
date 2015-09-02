@@ -57,6 +57,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Stack Overflow: Custom Google Map API V3 Zoom Buttons ](http://stackoverflow.com/questions/7916555/custom-google-map-api-v3-zoom-buttons)
 - [Stack Overflow: Google Places getUrl() is breaking my JavaScript](http://stackoverflow.com/questions/22459910/google-places-photos-geturl-is-breaking-my-javascript)
 - [Stack Overflow: Google Maps API Over Query per second limit](http://stackoverflow.com/questions/14014074/google-maps-api-over-query-limit-per-second-limit)
+- [Stack Overflow: HTML Geolocation stopped working in Google Chrome Version 44.0.2403.157 (64-bit)](http://stackoverflow.com/questions/32328133/in-new-chrome-44-0-2403-157-geolocations-doesnt-works)
 - [Font Awesome Markers](https://github.com/nathan-muir/fontawesome-markers)
 - [SVGO: An Nodejs-based tool for optimizing SVG vector graphics files.](https://github.com/nathan-muir/svgo/tree/nathan-svgo)
 

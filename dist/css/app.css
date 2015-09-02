@@ -2556,7 +2556,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .map-info .content {
   height: 56px;
-  padding: 25px 0 0 240px;
+  padding: 25px 0 0 218px;
   border-bottom: 1px solid #ecf0f1;
 }
 .map-info .content .content-header {
@@ -2640,16 +2640,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* 1921px */
 .notification {
   background: #ed5565;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
   border-radius: 5px;
   color: #fff;
   height: 20px;
+  left: 0;
   line-height: 1.2;
-  min-width: 100px;
+  margin: auto;
   padding: 5px;
   position: absolute;
-  right: 200px;
+  right: -200px;
   text-align: center;
   top: 105px;
+  width: 200px;
   z-index: 1000;
 }
 
@@ -2963,6 +2967,7 @@ h3 {
 }
 
 html, body {
+  background: #505050;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -2989,10 +2994,10 @@ html, body {
 
 .menu {
   background: #232b2d;
-  height: 88.7%;
+  height: 100%;
   left: 0;
   padding-top: 85px;
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 200px;
   z-index: 2;
