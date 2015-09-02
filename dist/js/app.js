@@ -11606,12 +11606,12 @@ var globals = {
 		
 			      global.latLang = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 			 
-			      var infowindow = new google.maps.InfoWindow({
-			        map: global.map,
-			        position: global.latLang,
-			        center: global.latLang,
-			        content: 'Location found using HTML5.'
-			      });
+			      // var infowindow = new google.maps.InfoWindow({
+			      //   map: global.map,
+			      //   position: global.latLang,
+			      //   center: global.latLang,
+			      //   content: 'Location found using HTML5.'
+			      // });
 
 			      global.map.setCenter(global.latLang);
 
