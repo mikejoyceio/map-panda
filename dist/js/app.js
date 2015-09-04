@@ -11502,7 +11502,6 @@ var globals = {
 		this.placeList = ko.observableArray([]); 
 		this.searchQuery = ko.observable();
 		this.searchRadius = ko.observable(5000);
-		this.rangeSlider = $('#rangeSlider');
 
 		placesData.forEach(function(placeItem) {
 			self.placeList.push(new Place(placeItem));
@@ -11557,19 +11556,6 @@ var globals = {
 				self.placeList()[i].isHidden(false);
 			}
 		}
-
-		$(rangeSlider).ionRangeSlider({
-		    min: 1000,
-		    max: 10000,
-		    from: 5000,
-		    step: 1000,
-		    postfix: ' km',
-		    hide_min_max: true,
-		    prettify_enabled: true,
-		    prettify: function(num) {
-		    	return num / 1000;
-		    }
-		});
 	  
 	}
 
@@ -11884,7 +11870,7 @@ var globals = {
 
 		}
 
-	}
+	};
 
 	// KO Custom Binding for Notifications
 	ko.bindingHandlers.notification = {
@@ -11943,6 +11929,30 @@ var globals = {
 			} else {
 	            callback();
 			}
+		}
+	};
+
+	// KO Custom Binding for Range Slider
+	ko.bindingHandlers.rangeSlider = {
+		init: function(element, valueAccessor, allBindingsAccessor) {
+			$(element).ionRangeSlider({
+			    min: 1000,
+			    max: 10000,
+			    from: 5000,
+			    step: 1000,
+			    postfix: ' km',
+			    hide_min_max: true,
+			    prettify_enabled: true,
+			    prettify: function(num) {
+			    	return num / 1000;
+			    }
+			});
+			ko.bindingHandlers.value.init(element, valueAccessor, allBindingsAccessor);
+		},
+		update: function(element, valueAccessor) {
+			var value = valueAccessor();
+			if (global.debug) console.log(ko.unwrap(value));
+			ko.bindingHandlers.value.update(element, valueAccessor)
 		}
 	};
 
