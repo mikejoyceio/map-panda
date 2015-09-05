@@ -14,135 +14,139 @@
 	overflow: hidden;
 	z-index: 1000;
 
-	.modal-header {
-		position: relative;
-		height: 130px;
-
-		.top-bar {
-			background: $accent-color;
-			position: absolute;
-			top: 0;
-			left: 0;
-			height: 25px;
-			width: 100%;
-
-			.close-modal {
-				font-size: 10px;
-				position: absolute;
-				top: 0px;
-				right: 3px;
-				&:hover {
-					cursor: pointer;
-				}
-
-				.icon-outer {
-					color: #fff;
-				}
-
-				.icon-inner {
-					color: #fff;
-					top: -1px;
-				}
-			}
-		}
-
-		.image {
-			background-size: cover;
-			background-position: center center;
-			height: 100%;
-		}
-
-		.bottom-bar {
-			background: $accent-color;
-			height: 3px;
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-
-			.place-rating {
-			  background: $accent-color;
-			  @include border-radius(4px);
-			  border: 2px solid #fff;
-			  color: #fff;
-			  font-size: 10px;
-			  font-weight: 300;
-			  height: 20px;
-			  left: 0;
-			  line-height: 1.8;
-			  margin: auto;
-			  position: absolute;
-			  right: 0;
-			  text-align: center;
-			  top: -11px;
-			  width: 22px;
-			}
-		}
-	}
-
 	.modal-content {
-		position: relative;
 
-		.info {
-  		padding: 15px 8px 15px 32px;
-			&:before {
-			  content: "\f14e";
-			  position: absolute;
-			  top: 14px;
-			  left: 10px;
-			  color: #a3a8ab;
-			  display: inline-block;
-			  font: normal normal normal 14px/1 FontAwesome;
-			  font-size: inherit;
-			  text-rendering: auto;
-			  -webkit-font-smoothing: antialiased;
-			  -moz-osx-font-smoothing: grayscale;
-			  transform: translate(0, 0);
+		.modal-header {
+			position: relative;
+			height: 130px;
+
+			.top-bar {
+				background: $accent-color;
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 25px;
+				width: 100%;
+
+				.close-modal {
+					font-size: 10px;
+					position: absolute;
+					top: 0px;
+					right: 3px;
+					&:hover {
+						cursor: pointer;
+					}
+
+					.icon-outer {
+						color: #fff;
+					}
+
+					.icon-inner {
+						color: #fff;
+						top: -1px;
+					}
+				}
 			}
 
-			.place-name {
-			  color: #404040;
-			  margin-bottom: 4px;
-			  font-weight: 600;
+			.image {
+				background-size: cover;
+				background-position: center center;
+				height: 100%;
 			}
 
-			.place-address {
-				outline: none;
-			}
+			.bottom-bar {
+				background: $accent-color;
+				height: 3px;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
 
-			.place-phone {
-				outline: none;
-			}
-
-			p {
-			  color: #727b7f;
-			  font-size: 11px;
-			  line-height: 1.2;
+				.place-rating {
+				  background: $accent-color;
+				  @include border-radius(4px);
+				  border: 2px solid #fff;
+				  color: #fff;
+				  font-size: 10px;
+				  font-weight: 300;
+				  height: 20px;
+				  left: 0;
+				  line-height: 1.8;
+				  margin: auto;
+				  position: absolute;
+				  right: 0;
+				  text-align: center;
+				  top: -11px;
+				  width: 22px;
+				}
 			}
 		}
-	}
 
-	.modal-footer {
-	  border-top: 1px solid #e8e6e4;
-	  margin: 0 10px;
-	  padding: 14px 0;
+		.modal-body {
+			position: relative;
+			margin: 10px;
 
-		.button-foursquare {
-		  @include border-radius(20px);
-		  border: 1px solid;
-		  color: #f84777;
-		  display: block;
-		  font-weight: 400;
-		  margin: auto;
-		  padding: 5px;
-		  text-align: center;
-		  text-decoration: none;
-		  width: 230px;
+			.info {
+	  		padding: 15px 5px 0 25px;
+	  		position: relative;
+				&:before {
+				  content: "\f14e";
+				  position: absolute;
+				  top: 14px;
+				  left: 0;
+				  color: #a3a8ab;
+				  display: inline-block;
+				  font: normal normal normal 14px/1 FontAwesome;
+				  font-size: inherit;
+				  text-rendering: auto;
+				  -webkit-font-smoothing: antialiased;
+				  -moz-osx-font-smoothing: grayscale;
+				  transform: translate(0, 0);
+				}
 
-		  .icon {
-		  	font-size: 13px;
-		  	margin-right: 6px;
-		  }
+				.place-name {
+				  color: #404040;
+				  margin-bottom: 4px;
+				  font-weight: 600;
+				}
+
+				.place-address {
+					outline: none;
+				}
+
+				p {
+				  color: #727b7f;
+				  font-size: 11px;
+				  line-height: 1.2;
+				}
+			}
+		}
+
+		.modal-footer {
+		  border-top: 1px solid #e8e6e4;
+		  margin: 0 10px;
+		  padding: 14px 0;
+		  position: absolute;
+		  bottom: 0;
+		  left: 0;
+
+			.button-foursquare {
+			  @include border-radius(20px);
+			  border: 1px solid;
+			  color: #f84777;
+			  display: block;
+			  font-weight: 400;
+			  margin: auto;
+			  padding: 5px;
+			  text-align: center;
+			  text-decoration: none;
+			  width: 230px;
+
+			  .icon {
+			  	font-size: 13px;
+			  	margin-right: 6px;
+			  }
+			}
 		}
 	}
 }
