@@ -39,12 +39,12 @@
 		<!-- Options -->
 		<ul class="place-list">
 			<!-- ko foreach: placeList -->
-			<li class="item" data-bind="css: {active: isActive(), hidden: isHidden()}">
+			<li class="item" data-bind="css: {active: isActive(), hidden: isHidden()}, click: $parent.selectPlace">
 				<span class="icon fa-stack fa-sml">
 					<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>
 					<i class="icon-inner fa fa-stack-1x fa-inverse" data-bind="css: icon"></i>
 				</span>
-				<span data-bind="text: name, click: $parent.selectPlace"></span>
+				<span data-bind="text: name"></span>
 			</li>
 			<!-- /ko -->
 		</ul>
