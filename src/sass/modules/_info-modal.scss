@@ -86,6 +86,30 @@
 			position: relative;
 			margin: 10px;
 
+			.actions {
+				border-bottom: 1px solid #e8e6e4;
+				height: 50px;
+
+				.place-phone,
+				.place-uber {
+				  padding: 5px 7px;
+				  width: 110px;
+				  text-align: center;
+				  font-size: 25px;
+				  top: 5px;
+				  position: absolute;
+				}
+
+				.place-phone {
+					border-right: 1px solid #e8e6e4;
+					left: 0;
+				}
+				.place-uber {
+					border-left: 1px solid #e8e6e4;
+					right: 0;
+				}
+			}
+
 			.info {
 	  		padding: 15px 5px 0 25px;
 	  		position: relative;
