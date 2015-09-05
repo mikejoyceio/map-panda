@@ -11502,6 +11502,13 @@ var globals = {
 		this.placeList = ko.observableArray([]); 
 		this.searchQuery = ko.observable();
 		this.searchRadius = ko.observable(5000);
+		this.modalVisibilty = ko.observable(false);
+		this.modalLoading = ko.observable(true);
+		this.infoPhoto = ko.observable();
+		this.infoRating = ko.observable();
+		this.infoName = ko.observable();
+		this.infoVicinity = ko.observable();
+		this.infoPhone = ko.observable();
 
 		placesData.forEach(function(placeItem) {
 			self.placeList.push(new Place(placeItem));
@@ -11556,7 +11563,11 @@ var globals = {
 				self.placeList()[i].isHidden(false);
 			}
 		}
-	  
+	 
+	 	this.closeModal = function() {
+	 		self.modalVisibilty(false);
+	 	} 
+
 	}
 
 	// Place Constructor
@@ -11660,6 +11671,7 @@ var globals = {
 		  	
 		  	var value = valueAccessor();
 
+		  	// ToDo: check if markers are defined before clearing
 				clearMarkers();
 
 		  	if (value.currentPlace().isActive()) {
@@ -11772,90 +11784,48 @@ var globals = {
 
 				 function addInfoModal(data) {
 
-					if ($("#infoModal"+data.id).length === 0) {
-						$('body').append('<div id="infoModal'+data.id+'" class="info-modal modal"></div>');	
-					}
+				  google.maps.event.addListener(data.marker, 'click', function() {
 
-				   google.maps.event.addListener(data.marker, 'click', function() {
+			   		global.map.panTo(data.position);
 
-				   		global.map.panTo(data.position);
-				    
-					    if ($("#infoModal"+data.id).children().length === 0) {
+			   		bindingContext.$root.modalVisibilty(true);
+			   		bindingContext.$root.modalLoading(true);
 
-					 			var request = { 
-							  	placeId: data.placeId
+			 			var request = { 
+					  	placeId: data.placeId
+						};
+
+						var service = new google.maps.places.PlacesService(global.map);
+						service.getDetails(request, callback);
+
+						function callback(place, status) {
+
+						  if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+						  	var placeInfo = {
+									id: place.id,
+									name: place.name,
+									vicinity: place.vicinity,
+									phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'no number',
+									photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default.png',
+									rating: typeof place.rating !== 'undefined' ? place.rating : '-'
 								};
 
-								var service = new google.maps.places.PlacesService(global.map);
-								service.getDetails(request, callback);
+								bindingContext.$root.infoPhoto("url('"+placeInfo.photo+"')");
+								bindingContext.$root.infoRating(placeInfo.rating);
+								bindingContext.$root.infoName(placeInfo.name);
+								bindingContext.$root.infoVicinity(placeInfo.vicinity);
+								bindingContext.$root.infoPhone(placeInfo.phone);
+								bindingContext.$root.modalLoading(false);
 
-								function callback(place, status) {
+						  } else {
 
-								  if (status == google.maps.places.PlacesServiceStatus.OK) {
+				    		if (global.debug) console.log(status);
 
-								  	var placeInfo = {
-											id: place.id,
-											name: place.name,
-											vicinity: place.vicinity,
-											phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'no number',
-											photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default.png',
-											rating: typeof place.rating !== 'undefined' ? place.rating : 'no rating'
-										};
+						  }
+						}
 
-								 		$('#infoModal'+data.id).append(
-								 			'<div class="modal-header">' +
-								 				'<div class="top-bar">' +
-								 					'<span id="closeInfoModal'+placeInfo.id+'" class="close-modal">' + 
-														'<span class="icon fa-stack fa-sml">' +
-															'<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>' +
-															'<i class="icon-inner fa fa-close fa-stack-1x fa-inverse"></i>' +
-														'</span>' +
-								 					'</span>' +
-								 				'</div>'+
-								 				'<div class="image" style="background-image:url('+placeInfo.photo+')">' +
-								 				'<div class="bottom-bar">' +
-								 					'<div class="place-rating">'+placeInfo.rating+'</div>' +
-								 				'</div>' +
-								 			'</div>' +
-								 			'<div class="modal-content">' +
-								 				'<div class="">' +
-								 				'</div>' +
-								 				'<div class="info">' +
-								 					'<p class="place-name">'+placeInfo.name+'</p>' +
-								 					'<p class="place-address">'+placeInfo.vicinity+'</p>' +
-								 					'<p class="place-phone">'+placeInfo.phone+'</p>' +
-								 				'</div>' +
-								 			'</div>' +
-								 			'<div class="modal-footer">' +
-								 				'<a href="#" class="button-foursquare">' +
-								 					'<span class="icon fa fa-foursquare"></span>' +
-								 					'<span>View in Foursquare</span>' +
-								 				'</a>' +
-								 			'</div>'
-								 		);
-
-								 		$(document).on('click', '#closeInfoModal'+placeInfo.id, function() {
-								 			$("#infoModal"+placeInfo.id).hide();
-								 		});
-
-								  } else {
-
-						    		if (global.debug) console.log(status);
-
-								  }
-								}
-
-								$(".info-modal").hide();
-								$("#infoModal"+data.id).show();
-
-							} else {
-								
-								$(".info-modal").hide(); 
-								$("#infoModal"+data.id).show();
-
-							}
-
-				  	});
+				 	});
 
 				}
 
@@ -11955,6 +11925,28 @@ var globals = {
 			ko.bindingHandlers.value.update(element, valueAccessor)
 		}
 	};
+
+	// KO Custom Binding for Modal
+	ko.bindingHandlers.modal = {
+		update: function(element, valueAccessor) {
+			var values = valueAccessor();
+			var visibility = values.visibility();
+			var loading = values.loading();
+
+			if (visibility) {
+				$(element).show();
+			} else {
+				$(element).hide();
+			}
+
+			if (loading) {
+				//$(element).children();
+			} else {
+				//$(element).children().fadeIn();
+			}
+
+		}
+	}
 
 	// Apply Knockout Bindings
 	ko.applyBindings(new ViewModel());
