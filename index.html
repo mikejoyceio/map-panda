@@ -90,6 +90,40 @@
 	</div>
 	<!-- /Main Content -->
 
+	<!-- Info Modal -->
+	<div class="modal" data-bind="modal: { visibility: modalVisibilty, loading: modalLoading }">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="top-bar">
+					<span class="close-modal" data-bind="click: closeModal">
+					<span class="icon fa-stack fa-sml">
+						<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>
+						<i class="icon-inner fa fa-close fa-stack-1x fa-inverse"></i>
+					</span>
+					</span>
+				</div>
+				<div class="image" data-bind="style: { backgroundImage: infoPhoto }"></div>
+				<div class="bottom-bar">
+					<div class="place-rating" data-bind="text: infoRating"></div>
+				</div>
+			</div>
+			<div class="modal-body">
+				<div class="info">
+					<p class="place-name" data-bind="text: infoName"></p>
+					<p class="place-address" data-bind="text: infoVicinity"></p>
+					<p class="place-phone" data-bind="text: infoPhone"></p>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="button-foursquare">
+					<span class="icon fa fa-foursquare"></span>
+					<span>View in Foursquare</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<!-- /Info Modal -->
+
 	<!-- Footer -->
 	<footer class="footer" role="contentinfo">
 
