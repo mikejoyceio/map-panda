@@ -2636,11 +2636,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .modal .modal-content .modal-footer {
   border-top: 1px solid #e8e6e4;
-  margin: 0 10px;
-  padding: 14px 0;
+  margin: auto 10px;
+  padding: 10px 0 12px;
   position: absolute;
   bottom: 0;
   left: 0;
+  right: 0;
 }
 .modal .modal-content .modal-footer .button-foursquare {
   -moz-border-radius: 20px;
