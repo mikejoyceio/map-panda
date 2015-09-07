@@ -195,13 +195,12 @@ var globals = {
 		},
 
 		update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-		  	
-		  	var value = valueAccessor();
+		  
+	  	var value = valueAccessor();
 
-		  	// ToDo: check if markers are defined before clearing
-				clearMarkers();
+	  	if (value.currentPlace().isActive()) {
 
-		  	if (value.currentPlace().isActive()) {
+	  		var performSearch = function() {
 
 			    var request = {
 			    	location: global.latLang,
@@ -286,82 +285,85 @@ var globals = {
 
 				    }
 
-				 }
+				 	}
 
-				 function addInfoWindow(data) {
+					function addInfoWindow(data) {
 
-				   	google.maps.event.addListener(data.marker, 'mouseover', function() {
+					 	google.maps.event.addListener(data.marker, 'mouseover', function() {
 
-				    	infoWindow.setContent(
-				    		'<div class="info-window">' +
-				    		'<h5>'+data.name+'</h5>' +
-				    		'<img src="'+data.photo+'">' +
-				    		'</div>'
-				    	);
+					  	infoWindow.setContent(
+					  		'<div class="info-window">' +
+					  		'<h5>'+data.name+'</h5>' +
+					  		'<img src="'+data.photo+'">' +
+					  		'</div>'
+					  	);
 
-				    	infoWindow.open(global.map, this);
+					  	infoWindow.open(global.map, this);
 
-				    });
+					  });
 
-				    google.maps.event.addListener(data.marker, 'mouseout', function() {
-				    	infoWindow.close(global.map, this);
-				    });
+					  google.maps.event.addListener(data.marker, 'mouseout', function() {
+					  	infoWindow.close(global.map, this);
+					  });
 
-				 }
-
-				 function addInfoModal(data) {
-
-				  google.maps.event.addListener(data.marker, 'click', function() {
-
-			   		global.map.panTo(data.position);
-
-			   		bindingContext.$root.modalVisibilty(true);
-			   		bindingContext.$root.modalLoading(true);
-
-			 			var request = { 
-					  	placeId: data.placeId
-						};
-
-						var service = new google.maps.places.PlacesService(global.map);
-						service.getDetails(request, callback);
-
-						function callback(place, status) {
-
-						  if (status == google.maps.places.PlacesServiceStatus.OK) {
-
-						  	var placeInfo = {
-									id: place.id,
-									name: place.name,
-									vicinity: place.vicinity,
-									phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'no number',
-									photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default.png',
-									rating: typeof place.rating !== 'undefined' ? place.rating : '-'
-								};
-
-								bindingContext.$root.infoPhoto("url('"+placeInfo.photo+"')");
-								bindingContext.$root.infoRating(placeInfo.rating);
-								bindingContext.$root.infoName(placeInfo.name);
-								bindingContext.$root.infoVicinity(placeInfo.vicinity);
-								bindingContext.$root.infoPhone(placeInfo.phone);
-								bindingContext.$root.modalLoading(false);
-
-						  } else {
-
-				    		if (global.debug) console.log(status);
-
-						  }
-						}
-
-				 	});
-
-				}
-
-				function clearMarkers() {
-					for (var i=0; i < global.markers.length; i++) {
-						global.markers[i].setMap(null);
 					}
-					global.markers.length = 0;
-				}
+
+					function addInfoModal(data) {
+
+						google.maps.event.addListener(data.marker, 'click', function() {
+
+							global.map.panTo(data.position);
+
+							bindingContext.$root.modalVisibilty(true);
+							bindingContext.$root.modalLoading(true);
+
+							var request = { 
+					  		placeId: data.placeId
+							};
+
+							var service = new google.maps.places.PlacesService(global.map);
+							service.getDetails(request, callback);
+
+							function callback(place, status) {
+
+							  if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+							  	var placeInfo = {
+										id: place.id,
+										name: place.name,
+										vicinity: place.vicinity,
+										phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'no number',
+										photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default.png',
+										rating: typeof place.rating !== 'undefined' ? place.rating : '-'
+									};
+
+									bindingContext.$root.infoPhoto("url('"+placeInfo.photo+"')");
+									bindingContext.$root.infoRating(placeInfo.rating);
+									bindingContext.$root.infoName(placeInfo.name);
+									bindingContext.$root.infoVicinity(placeInfo.vicinity);
+									bindingContext.$root.infoPhone(placeInfo.phone);
+									bindingContext.$root.modalLoading(false);
+
+							  } else {
+
+						  		if (global.debug) console.log(status);
+
+							  }
+							}
+
+						});
+
+					}
+
+					function clearMarkers() {
+						for (var i=0; i < global.markers.length; i++) {
+							global.markers[i].setMap(null);
+						}
+						global.markers.length = 0;
+					}
+
+				} 
+				performSearch();
 
 			}
 
