@@ -292,6 +292,12 @@ var globals = {
 
 				    }
 
+				    var bounds = new google.maps.LatLngBounds();
+				    for(i=0; i<global.markers.length; i++) {
+				    	bounds.extend(global.markers[i].getPosition());
+				    }
+				    global.map.fitBounds(bounds);
+
 				 	}
 
 					function addInfoWindow(data) {
