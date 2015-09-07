@@ -198,6 +198,13 @@ var globals = {
 		  
 	  	var value = valueAccessor();
 
+	  	if (global.markers) {
+	  		for (var i=0; i < global.markers.length; i++) {
+					global.markers[i].setMap(null);
+				}
+				global.markers.length = 0;
+	  	}
+
 	  	if (value.currentPlace().isActive()) {
 
 	  		var performSearch = function() {
