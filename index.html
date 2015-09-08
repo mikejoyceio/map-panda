@@ -9,9 +9,9 @@
 </head>
 <body>
 
-	<!-- Status Message -->
+	<!-- Notification -->
 	<div class="notification" data-bind="notification: {message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
-	<!-- /Status Message -->
+	<!-- /Notification -->
 
 	<!-- Menu -->
 	<div class="menu" role="menu">
@@ -26,7 +26,7 @@
 
 		<!-- Search Radius -->
 		<div class="search-radius">
-			<input type="text" id="rangeSlider" class="hidden" data-bind="value: searchRadius, valueUpdate: 'change'">
+			<input type="text" class="hidden" data-bind="rangeSlider: searchRadius">
 		</div>
 		<!-- /Search Radius -->
 
@@ -39,12 +39,12 @@
 		<!-- Options -->
 		<ul class="place-list">
 			<!-- ko foreach: placeList -->
-			<li class="item" data-bind="css: {active: isActive(), hidden: isHidden()}">
+			<li class="item" data-bind="css: {active: isActive(), hidden: isHidden()}, click: $parent.selectPlace">
 				<span class="icon fa-stack fa-sml">
 					<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>
 					<i class="icon-inner fa fa-stack-1x fa-inverse" data-bind="css: icon"></i>
 				</span>
-				<span data-bind="text: name, click: $parent.selectPlace"></span>
+				<span data-bind="text: name"></span>
 			</li>
 			<!-- /ko -->
 		</ul>
@@ -90,6 +90,48 @@
 	</div>
 	<!-- /Main Content -->
 
+	<!-- Info Modal -->
+	<div class="modal" data-bind="modal: { visibility: modalVisibilty, loading: modalLoading }">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="top-bar">
+					<span class="close-modal" data-bind="click: closeModal">
+					<span class="icon fa-stack fa-sml">
+						<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>
+						<i class="icon-inner fa fa-close fa-stack-1x fa-inverse"></i>
+					</span>
+					</span>
+				</div>
+				<div class="image" data-bind="style: { backgroundImage: infoPhoto }"></div>
+				<div class="bottom-bar">
+					<div class="place-rating" data-bind="text: infoRating"></div>
+				</div>
+			</div>
+			<div class="modal-body">
+				<div class="actions">
+					<div class="place-phone">
+						<span class="fa fa-phone"></span>	
+					</div>	
+					<div class="place-uber">
+						<span class="fa fa-car"></span>
+					</div>
+				</div>
+				<div class="info">
+					<p class="place-name" data-bind="text: infoName"></p>
+					<p class="place-address" data-bind="text: infoVicinity"></p>
+					<p class="place-phone" data-bind="text: infoPhone"></p>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="button-foursquare">
+					<span class="icon fa fa-foursquare"></span>
+					<span>View in Foursquare</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<!-- /Info Modal -->
+
 	<!-- Footer -->
 	<footer class="footer" role="contentinfo">
 
@@ -100,5 +142,6 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KC7nmHmDdz1n0H9xy9rm_B9YAUPeo_A&libraries=places"></script>
 	<!-- App JS -->
 	<script src="dist/js/app.js"></script>
+
 </body>
 </html>

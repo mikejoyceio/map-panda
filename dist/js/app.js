@@ -11502,7 +11502,13 @@ var globals = {
 		this.placeList = ko.observableArray([]); 
 		this.searchQuery = ko.observable();
 		this.searchRadius = ko.observable(5000);
-		this.rangeSlider = $('#rangeSlider');
+		this.modalVisibilty = ko.observable(false);
+		this.modalLoading = ko.observable(true);
+		this.infoPhoto = ko.observable();
+		this.infoRating = ko.observable();
+		this.infoName = ko.observable();
+		this.infoVicinity = ko.observable();
+		this.infoPhone = ko.observable();
 
 		placesData.forEach(function(placeItem) {
 			self.placeList.push(new Place(placeItem));
@@ -11557,20 +11563,11 @@ var globals = {
 				self.placeList()[i].isHidden(false);
 			}
 		}
+	 
+	 	this.closeModal = function() {
+	 		self.modalVisibilty(false);
+	 	} 
 
-		$(rangeSlider).ionRangeSlider({
-		    min: 1000,
-		    max: 10000,
-		    from: 5000,
-		    step: 1000,
-		    postfix: ' km',
-		    hide_min_max: true,
-		    prettify_enabled: true,
-		    prettify: function(num) {
-		    	return num / 1000;
-		    }
-		});
-	  
 	}
 
 	// Place Constructor
@@ -11671,12 +11668,19 @@ var globals = {
 		},
 
 		update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-		  	
-		  	var value = valueAccessor();
+		  
+	  	var value = valueAccessor();
 
-				clearMarkers();
+	  	if (global.markers) {
+	  		for (var i=0; i < global.markers.length; i++) {
+					global.markers[i].setMap(null);
+				}
+				global.markers.length = 0;
+	  	}
 
-		  	if (value.currentPlace().isActive()) {
+	  	if (value.currentPlace().isActive()) {
+
+	  		var performSearch = function() {
 
 			    var request = {
 			    	location: global.latLang,
@@ -11761,130 +11765,97 @@ var globals = {
 
 				    }
 
-				 }
+				    var bounds = new google.maps.LatLngBounds();
+				    for(i=0; i<global.markers.length; i++) {
+				    	bounds.extend(global.markers[i].getPosition());
+				    }
+				    global.map.fitBounds(bounds);
 
-				 function addInfoWindow(data) {
+				 	}
 
-				   	google.maps.event.addListener(data.marker, 'mouseover', function() {
+					function addInfoWindow(data) {
 
-				    	infoWindow.setContent(
-				    		'<div class="info-window">' +
-				    		'<h5>'+data.name+'</h5>' +
-				    		'<img src="'+data.photo+'">' +
-				    		'</div>'
-				    	);
+					 	google.maps.event.addListener(data.marker, 'mouseover', function() {
 
-				    	infoWindow.open(global.map, this);
+					  	infoWindow.setContent(
+					  		'<div class="info-window">' +
+					  		'<h5>'+data.name+'</h5>' +
+					  		'<img src="'+data.photo+'">' +
+					  		'</div>'
+					  	);
 
-				    });
+					  	infoWindow.open(global.map, this);
 
-				    google.maps.event.addListener(data.marker, 'mouseout', function() {
-				    	infoWindow.close(global.map, this);
-				    });
+					  });
 
-				 }
+					  google.maps.event.addListener(data.marker, 'mouseout', function() {
+					  	infoWindow.close(global.map, this);
+					  });
 
-				 function addInfoModal(data) {
-
-					if ($("#infoModal"+data.id).length === 0) {
-						$('body').append('<div id="infoModal'+data.id+'" class="info-modal modal"></div>');	
 					}
 
-				   google.maps.event.addListener(data.marker, 'click', function() {
+					function addInfoModal(data) {
 
-				   		global.map.panTo(data.position);
-				    
-					    if ($("#infoModal"+data.id).children().length === 0) {
+						google.maps.event.addListener(data.marker, 'click', function() {
 
-					 			var request = { 
-							  	placeId: data.placeId
-								};
+							global.map.panTo(data.position);
 
-								var service = new google.maps.places.PlacesService(global.map);
-								service.getDetails(request, callback);
+							bindingContext.$root.modalVisibilty(true);
+							bindingContext.$root.modalLoading(true);
 
-								function callback(place, status) {
+							var request = { 
+					  		placeId: data.placeId
+							};
 
-								  if (status == google.maps.places.PlacesServiceStatus.OK) {
+							var service = new google.maps.places.PlacesService(global.map);
+							service.getDetails(request, callback);
 
-								  	var placeInfo = {
-											id: place.id,
-											name: place.name,
-											vicinity: place.vicinity,
-											phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'no number',
-											photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default.png',
-											rating: typeof place.rating !== 'undefined' ? place.rating : 'no rating'
-										};
+							function callback(place, status) {
 
-								 		$('#infoModal'+data.id).append(
-								 			'<div class="modal-header">' +
-								 				'<div class="top-bar">' +
-								 					'<span id="closeInfoModal'+placeInfo.id+'" class="close-modal">' + 
-														'<span class="icon fa-stack fa-sml">' +
-															'<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>' +
-															'<i class="icon-inner fa fa-close fa-stack-1x fa-inverse"></i>' +
-														'</span>' +
-								 					'</span>' +
-								 				'</div>'+
-								 				'<div class="image" style="background-image:url('+placeInfo.photo+')">' +
-								 				'<div class="bottom-bar">' +
-								 					'<div class="place-rating">'+placeInfo.rating+'</div>' +
-								 				'</div>' +
-								 			'</div>' +
-								 			'<div class="modal-content">' +
-								 				'<div class="">' +
-								 				'</div>' +
-								 				'<div class="info">' +
-								 					'<p class="place-name">'+placeInfo.name+'</p>' +
-								 					'<p class="place-address">'+placeInfo.vicinity+'</p>' +
-								 					'<p class="place-phone">'+placeInfo.phone+'</p>' +
-								 				'</div>' +
-								 			'</div>' +
-								 			'<div class="modal-footer">' +
-								 				'<a href="#" class="button-foursquare">' +
-								 					'<span class="icon fa fa-foursquare"></span>' +
-								 					'<span>View in Foursquare</span>' +
-								 				'</a>' +
-								 			'</div>'
-								 		);
+							  if (status == google.maps.places.PlacesServiceStatus.OK) {
 
-								 		$(document).on('click', '#closeInfoModal'+placeInfo.id, function() {
-								 			$("#infoModal"+placeInfo.id).hide();
-								 		});
+							  	var placeInfo = {
+										id: place.id,
+										name: place.name,
+										vicinity: place.vicinity,
+										phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'no number',
+										photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default.png',
+										rating: typeof place.rating !== 'undefined' ? place.rating : '-'
+									};
 
-								  } else {
+									bindingContext.$root.infoPhoto("url('"+placeInfo.photo+"')");
+									bindingContext.$root.infoRating(placeInfo.rating);
+									bindingContext.$root.infoName(placeInfo.name);
+									bindingContext.$root.infoVicinity(placeInfo.vicinity);
+									bindingContext.$root.infoPhone(placeInfo.phone);
+									bindingContext.$root.modalLoading(false);
 
-						    		if (global.debug) console.log(status);
+							  } else {
 
-								  }
-								}
+						  		if (global.debug) console.log(status);
 
-								$(".info-modal").hide();
-								$("#infoModal"+data.id).show();
-
-							} else {
-								
-								$(".info-modal").hide(); 
-								$("#infoModal"+data.id).show();
-
+							  }
 							}
 
-				  	});
+						});
 
-				}
-
-				function clearMarkers() {
-					for (var i=0; i < global.markers.length; i++) {
-						global.markers[i].setMap(null);
 					}
-					global.markers.length = 0;
-				}
+
+					function clearMarkers() {
+						for (var i=0; i < global.markers.length; i++) {
+							global.markers[i].setMap(null);
+						}
+						global.markers.length = 0;
+					}
+
+				} 
+				performSearch();
 
 			}
 
 		}
 
-	}
+	};
 
 	// KO Custom Binding for Notifications
 	ko.bindingHandlers.notification = {
@@ -11945,6 +11916,52 @@ var globals = {
 			}
 		}
 	};
+
+	// KO Custom Binding for Range Slider
+	ko.bindingHandlers.rangeSlider = {
+		init: function(element, valueAccessor, allBindingsAccessor) {
+			$(element).ionRangeSlider({
+			    min: 1000,
+			    max: 10000,
+			    from: 5000,
+			    step: 1000,
+			    postfix: ' km',
+			    hide_min_max: true,
+			    prettify_enabled: true,
+			    prettify: function(num) {
+			    	return num / 1000;
+			    }
+			});
+			ko.bindingHandlers.value.init(element, valueAccessor, allBindingsAccessor);
+		},
+		update: function(element, valueAccessor) {
+			var value = valueAccessor();
+			if (global.debug) console.log(ko.unwrap(value));
+			ko.bindingHandlers.value.update(element, valueAccessor)
+		}
+	};
+
+	// KO Custom Binding for Modal
+	ko.bindingHandlers.modal = {
+		update: function(element, valueAccessor) {
+			var values = valueAccessor();
+			var visibility = values.visibility();
+			var loading = values.loading();
+
+			if (visibility) {
+				$(element).show();
+			} else {
+				$(element).hide();
+			}
+
+			if (loading) {
+				//$(element).children();
+			} else {
+				//$(element).children().fadeIn();
+			}
+
+		}
+	}
 
 	// Apply Knockout Bindings
 	ko.applyBindings(new ViewModel());
