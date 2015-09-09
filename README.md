@@ -13,6 +13,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Automatically Load Gulp Plugins](http://andy-carter.com/blog/automatically-load-gulp-plugins-with-gulp-load-plugins) by Andy Carter
 - [A Beginners Guide to Using Bower & Gulp](http://andy-carter.com/blog/a-beginners-guide-to-package-manager-bower-and-using-gulp-to-manage-components) by Andy Carter
 - [Setting up Gulp, Bower, Bootstrap Sass, & FontAwesome](http://ericlbarnes.com/setting-gulp-bower-bootstrap-sass-fontawesome/) by Eric L. Barnes
+- [Stack Overflow: Installing a dependency with Bower from URL and specify version](http://stackoverflow.com/questions/19348076/installing-a-dependency-with-bower-from-url-and-specify-version)
 
 ######SASS
 
