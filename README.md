@@ -63,6 +63,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Stack Overflow: HTML Geolocation stopped working in Google Chrome Version 44.0.2403.157 (64-bit)](http://stackoverflow.com/questions/32328133/in-new-chrome-44-0-2403-157-geolocations-doesnt-works)
 - [Font Awesome Markers](https://github.com/nathan-muir/fontawesome-markers)
 - [SVGO: An Nodejs-based tool for optimizing SVG vector graphics files.](https://github.com/nathan-muir/svgo/tree/nathan-svgo)
+- [RichMarker – A Google Maps JavaScript API utility library](https://github.com/mikejoyceio/js-rich-marker)
 
 ######Knockout JS
 
