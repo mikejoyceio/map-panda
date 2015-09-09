@@ -1,0 +1,17 @@
+{
+  "name": "js-rich-marker",
+  "homepage": "https://github.com/googlemaps/js-rich-marker",
+  "_release": "2c655e82d9",
+  "_resolution": {
+    "type": "branch",
+    "branch": "gh-pages",
+    "commit": "2c655e82d95fb809d66c4de93f0dab845508aebe"
+  },
+  "_source": "https://github.com/googlemaps/js-rich-marker.git",
+  "_target": "gh-pages",
+  "_originalSource": "https://github.com/googlemaps/js-rich-marker.git",
+  "_direct": true,
+	"main": [
+		"src/richmarker.js"
+	]
+}

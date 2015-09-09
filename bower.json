@@ -1,6 +1,3 @@
-
-
-
 {
   "name": "map",
   "version": "1.0.0",
@@ -22,6 +19,7 @@
     "knockout": "~3.3.0",
     "jquery": "~2.1.3",
     "font-awesome": "4.3.0",
-    "ionrangeslider": "~2.0.9"
+    "ionrangeslider": "~2.0.9",
+    "js-rich-marker": "https://github.com/googlemaps/js-rich-marker.git#gh-pages"
   }
 }
