@@ -1,5 +1,5 @@
 ﻿// Ion.RangeSlider
-// version 2.0.9 Build: 321
+// version 2.0.13 Build: 335
 // © Denis Ineshin, 2015
 // https://github.com/IonDen
 //
@@ -137,8 +137,16 @@
     // =================================================================================================================
     // Core
 
+    /**
+     * Main plugin constructor
+     *
+     * @param input {object}
+     * @param options {object}
+     * @param plugin_count {number}
+     * @constructor
+     */
     var IonRangeSlider = function (input, options, plugin_count) {
-        this.VERSION = "2.0.9";
+        this.VERSION = "2.0.13";
         this.input = input;
         this.plugin_count = plugin_count;
         this.current_plugin = 0;
@@ -152,6 +160,7 @@
         this.is_key = false;
         this.is_update = false;
         this.is_start = true;
+        this.is_finish = false;
         this.is_active = false;
         this.is_resize = false;
         this.is_click = false;
@@ -175,6 +184,7 @@
             shad_single: null,
             shad_from: null,
             shad_to: null,
+            edge: null,
             grid: null,
             grid_labels: []
         };
@@ -402,16 +412,14 @@
                 this.force_redraw = true;
                 this.calc(true);
 
-                if (this.options.onUpdate && typeof this.options.onUpdate === "function") {
-                    this.options.onUpdate(this.result);
-                }
+                // callbacks called
+                this.callOnUpdate();
             } else {
                 this.force_redraw = true;
                 this.calc(true);
 
-                if (this.options.onStart && typeof this.options.onStart === "function") {
-                    this.options.onStart(this.result);
-                }
+                // callbacks called
+                this.callOnStart();
             }
 
             this.updateScene();
@@ -437,6 +445,7 @@
 
             if (this.options.type === "single") {
                 this.$cache.cont.append(single_html);
+                this.$cache.edge = this.$cache.cont.find(".irs-bar-edge");
                 this.$cache.s_single = this.$cache.cont.find(".single");
                 this.$cache.from[0].style.visibility = "hidden";
                 this.$cache.to[0].style.visibility = "hidden";
@@ -532,18 +541,28 @@
             }
 
             if (this.options.type === "single") {
+                this.$cache.single.on("touchstart.irs_" + this.plugin_count, this.pointerDown.bind(this, "single"));
                 this.$cache.s_single.on("touchstart.irs_" + this.plugin_count, this.pointerDown.bind(this, "single"));
                 this.$cache.shad_single.on("touchstart.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
 
+                this.$cache.single.on("mousedown.irs_" + this.plugin_count, this.pointerDown.bind(this, "single"));
                 this.$cache.s_single.on("mousedown.irs_" + this.plugin_count, this.pointerDown.bind(this, "single"));
+                this.$cache.edge.on("mousedown.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
                 this.$cache.shad_single.on("mousedown.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
             } else {
+                this.$cache.single.on("touchstart.irs_" + this.plugin_count, this.pointerDown.bind(this, "from"));
+                this.$cache.single.on("mousedown.irs_" + this.plugin_count, this.pointerDown.bind(this, "from"));
+
+                this.$cache.from.on("touchstart.irs_" + this.plugin_count, this.pointerDown.bind(this, "from"));
                 this.$cache.s_from.on("touchstart.irs_" + this.plugin_count, this.pointerDown.bind(this, "from"));
+                this.$cache.to.on("touchstart.irs_" + this.plugin_count, this.pointerDown.bind(this, "to"));
                 this.$cache.s_to.on("touchstart.irs_" + this.plugin_count, this.pointerDown.bind(this, "to"));
                 this.$cache.shad_from.on("touchstart.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
                 this.$cache.shad_to.on("touchstart.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
 
+                this.$cache.from.on("mousedown.irs_" + this.plugin_count, this.pointerDown.bind(this, "from"));
                 this.$cache.s_from.on("mousedown.irs_" + this.plugin_count, this.pointerDown.bind(this, "from"));
+                this.$cache.to.on("mousedown.irs_" + this.plugin_count, this.pointerDown.bind(this, "to"));
                 this.$cache.s_to.on("mousedown.irs_" + this.plugin_count, this.pointerDown.bind(this, "to"));
                 this.$cache.shad_from.on("mousedown.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
                 this.$cache.shad_to.on("mousedown.irs_" + this.plugin_count, this.pointerClick.bind(this, "click"));
@@ -581,11 +600,10 @@
                 return;
             }
 
-            var is_function = this.options.onFinish && typeof this.options.onFinish === "function",
-                is_original = $.contains(this.$cache.cont[0], e.target) || this.dragging;
-
-            if (is_function && is_original) {
-                this.options.onFinish(this.result);
+            // callbacks call
+            if ($.contains(this.$cache.cont[0], e.target) || this.dragging) {
+                this.is_finish = true;
+                this.callOnFinish();
             }
 
             this.$cache.cont.find(".state_hover").removeClass("state_hover");
@@ -600,24 +618,7 @@
             this.updateScene();
         },
 
-        pointerDown: function (target, e) {
-            e.preventDefault();
-            var x = e.pageX || e.originalEvent.touches && e.originalEvent.touches[0].pageX;
-            if (e.button === 2) {
-                return;
-            }
-
-            this.current_plugin = this.plugin_count;
-            this.target = target;
-
-            this.is_active = true;
-            this.dragging = true;
-
-            this.coords.x_gap = this.$cache.rs.offset().left;
-            this.coords.x_pointer = x - this.coords.x_gap;
-
-            this.calcPointer();
-
+        changeLevel: function (target) {
             switch (target) {
                 case "single":
                     this.coords.p_gap = this.toFixed(this.coords.p_pointer - this.coords.p_single);
@@ -641,6 +642,26 @@
                     this.$cache.s_from.removeClass("type_last");
                     break;
             }
+        },
+
+        pointerDown: function (target, e) {
+            e.preventDefault();
+            var x = e.pageX || e.originalEvent.touches && e.originalEvent.touches[0].pageX;
+            if (e.button === 2) {
+                return;
+            }
+
+            this.current_plugin = this.plugin_count;
+            this.target = target;
+
+            this.is_active = true;
+            this.dragging = true;
+
+            this.coords.x_gap = this.$cache.rs.offset().left;
+            this.coords.x_pointer = x - this.coords.x_gap;
+
+            this.calcPointer();
+            this.changeLevel(target);
 
             if (is_old_ie) {
                 $("*").prop("unselectable", true);
@@ -769,7 +790,8 @@
                 real_x = this.toFixed(this.coords.p_pointer - this.coords.p_gap);
 
             if (this.target === "click") {
-                real_x = this.toFixed(this.coords.p_pointer - (this.coords.p_handle / 2));
+                this.coords.p_gap = this.coords.p_handle / 2;
+                real_x = this.toFixed(this.coords.p_pointer - this.coords.p_gap);
                 this.target = this.chooseHandle(real_x);
             }
 
@@ -1073,24 +1095,45 @@
                 this.old_from = this.result.from;
                 this.old_to = this.result.to;
 
-                var is_function = this.options.onChange && typeof this.options.onChange === "function" && !this.is_resize;
-                if (is_function && !this.is_update && !this.is_start) {
-                    this.options.onChange(this.result);
+                // callbacks call
+                if (!this.is_resize && !this.is_update && !this.is_start && !this.is_finish) {
+                    this.callOnChange();
                 }
-
-                var is_finish = this.options.onFinish && typeof this.options.onFinish === "function";
-                if (is_finish && (this.is_key || this.is_click)) {
-                    this.options.onFinish(this.result);
+                if (this.is_key || this.is_click) {
+                    this.callOnFinish();
                 }
 
                 this.is_update = false;
                 this.is_resize = false;
+                this.is_finish = false;
             }
 
             this.is_start = false;
             this.is_key = false;
             this.is_click = false;
             this.force_redraw = false;
+        },
+
+        // callbacks
+        callOnStart: function () {
+            if (this.options.onStart && typeof this.options.onStart === "function") {
+                this.options.onStart(this.result);
+            }
+        },
+        callOnChange: function () {
+            if (this.options.onChange && typeof this.options.onChange === "function") {
+                this.options.onChange(this.result);
+            }
+        },
+        callOnFinish: function () {
+            if (this.options.onFinish && typeof this.options.onFinish === "function") {
+                this.options.onFinish(this.result);
+            }
+        },
+        callOnUpdate: function () {
+            if (this.options.onUpdate && typeof this.options.onUpdate === "function") {
+                this.options.onUpdate(this.result);
+            }
         },
 
         drawLabels: function () {
@@ -1226,8 +1269,8 @@
 
             if (o.type === "single") {
                 if (o.from_shadow && (is_from_min || is_from_max)) {
-                    from_min = this.calcPercent(o.from_min || o.min);
-                    from_max = this.calcPercent(o.from_max || o.max) - from_min;
+                    from_min = this.calcPercent(is_from_min ? o.from_min : o.min);
+                    from_max = this.calcPercent(is_from_max ? o.from_max : o.max) - from_min;
                     from_min = this.toFixed(from_min - (this.coords.p_handle / 100 * from_min));
                     from_max = this.toFixed(from_max - (this.coords.p_handle / 100 * from_max));
                     from_min = from_min + (this.coords.p_handle / 2);
@@ -1240,8 +1283,8 @@
                 }
             } else {
                 if (o.from_shadow && (is_from_min || is_from_max)) {
-                    from_min = this.calcPercent(o.from_min || o.min);
-                    from_max = this.calcPercent(o.from_max || o.max) - from_min;
+                    from_min = this.calcPercent(is_from_min ? o.from_min : o.min);
+                    from_max = this.calcPercent(is_from_max ? o.from_max : o.max) - from_min;
                     from_min = this.toFixed(from_min - (this.coords.p_handle / 100 * from_min));
                     from_max = this.toFixed(from_max - (this.coords.p_handle / 100 * from_max));
                     from_min = from_min + (this.coords.p_handle / 2);
@@ -1254,8 +1297,8 @@
                 }
 
                 if (o.to_shadow && (is_to_min || is_to_max)) {
-                    to_min = this.calcPercent(o.to_min || o.min);
-                    to_max = this.calcPercent(o.to_max || o.max) - to_min;
+                    to_min = this.calcPercent(is_to_min ? o.to_min : o.min);
+                    to_max = this.calcPercent(is_to_max ? o.to_max : o.max) - to_min;
                     to_min = this.toFixed(to_min - (this.coords.p_handle / 100 * to_min));
                     to_max = this.toFixed(to_max - (this.coords.p_handle / 100 * to_max));
                     to_min = to_min + (this.coords.p_handle / 2);
@@ -1288,12 +1331,36 @@
         calcReal: function (percent) {
             var min = this.options.min,
                 max = this.options.max,
+                min_decimals = min.toString().split(".")[1],
+                max_decimals = max.toString().split(".")[1],
+                min_length, max_length,
+                avg_decimals = 0,
                 abs = 0;
+
+            if (percent === 0) {
+                return this.options.min;
+            }
+            if (percent === 100) {
+                return this.options.max;
+            }
+
+
+            if (min_decimals) {
+                min_length = min_decimals.length;
+                avg_decimals = min_length;
+            }
+            if (max_decimals) {
+                max_length = max_decimals.length;
+                avg_decimals = max_length;
+            }
+            if (min_length && max_length) {
+                avg_decimals = (min_length >= max_length) ? min_length : max_length;
+            }
 
             if (min < 0) {
                 abs = Math.abs(min);
-                min = min + abs;
-                max = max + abs;
+                min = +(min + abs).toFixed(avg_decimals);
+                max = +(max + abs).toFixed(avg_decimals);
             }
 
             var number = ((max - min) / 100 * percent) + min,
@@ -1305,6 +1372,7 @@
             } else {
                 number = number / this.options.step;
                 number = number * this.options.step;
+
                 number = +number.toFixed(0);
             }
 
@@ -1402,11 +1470,11 @@
             var num = this.calcReal(p_num),
                 o = this.options;
 
-            if (!min || typeof min !== "number") {
+            if (typeof min !== "number") {
                 min = o.min;
             }
 
-            if (!max || typeof max !== "number") {
+            if (typeof max !== "number") {
                 max = o.max;
             }
 
@@ -1422,7 +1490,7 @@
         },
 
         toFixed: function (num) {
-            num = num.toFixed(5);
+            num = num.toFixed(9);
             return +num;
         },
 
@@ -1551,19 +1619,19 @@
                 o.keyboard_step = 5;
             }
 
-            if (o.from_min && o.from < o.from_min) {
+            if (typeof o.from_min === "number" && o.from < o.from_min) {
                 o.from = o.from_min;
             }
 
-            if (o.from_max && o.from > o.from_max) {
+            if (typeof o.from_max === "number" && o.from > o.from_max) {
                 o.from = o.from_max;
             }
 
-            if (o.to_min && o.to < o.to_min) {
+            if (typeof o.to_min === "number" && o.to < o.to_min) {
                 o.to = o.to_min;
             }
 
-            if (o.to_max && o.from > o.to_max) {
+            if (typeof o.to_max === "number" && o.from > o.to_max) {
                 o.to = o.to_max;
             }
 
@@ -1709,6 +1777,7 @@
                 local_small_max = small_max;
 
                 big_w = this.toFixed(big_p * i);
+
                 if (big_w > 100) {
                     big_w = 100;
 

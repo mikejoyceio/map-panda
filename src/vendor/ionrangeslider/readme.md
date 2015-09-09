@@ -1,12 +1,15 @@
-# Ion.Range Slider 2.0.9
+# Ion.Range Slider 2.0.13
+
+[![](https://pledgie.com/campaigns/25694.png?skin_name=chrome)](https://pledgie.com/campaigns/25694)
 
 > English description | <a href="readme.ru.md">Описание на русском</a>
 
 Easy, flexible and responsive range slider
 * <a href="http://ionden.com/a/plugins/ion.rangeSlider/en.html">Project page and demos</a>
-* <a href="http://ionden.com/a/plugins/ion.rangeSlider/ion.rangeSlider-2.0.9.zip">Download ion.rangeSlider-2.0.9.zip</a>
+* <a href="http://ionden.com/a/plugins/ion.rangeSlider/ion.rangeSlider-2.0.13.zip">Download ion.rangeSlider-2.0.13.zip</a>
 
 ***
+*<sup><a href="https://github.com/IonDen/ion.rangeSlider/blob/master/designer.md">Designer wanted to create a logo</a></sup>*
 
 ## Description
 * Ion.RangeSlider — cool, comfortable, responsive and easily customizable range slider
@@ -391,10 +394,10 @@ Obj: {
     "slider": object,   // jQuery-link to sliders container
     "min": 0,           // MIN value
     "max": 1000,        // MAX values
-    "from": 100,        // FROM value
+    "from": 100,        // FROM value (left or single handle)
     "from_percent": 10, // FROM value in percents
     "from_value": 0,    // FROM index in values array (if used)
-    "to": 900,          // TO value
+    "to": 900,          // TO value (right handle in double type)
     "to_percent": 90,   // TO value in percents
     "to_value": 0       // TO index in values array (if used)
 }
