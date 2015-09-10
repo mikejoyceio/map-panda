@@ -460,6 +460,13 @@ var globals = {
 		}
 	};
 
+	// KO Custom Binding for Scroll Bar
+	ko.bindingHandlers.scrollBar = {
+		init: function(element, valueAccessor, allBindingsAccessor) {
+			$(element).mCustomScrollbar();
+		}
+	};
+
 	// KO Custom Binding for Modal
 	ko.bindingHandlers.modal = {
 		update: function(element, valueAccessor) {
