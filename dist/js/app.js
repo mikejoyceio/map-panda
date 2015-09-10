@@ -12512,7 +12512,7 @@ var globals = {
 				    	position: global.latLang,
 				    	map: global.map,
 				    	flat: true,
-				    	content: '<div class="gm-current-location"><div class="pulse"></div></div>'
+				    	content: '<div class="gm-current-location"><div class="radial-pulse"></div></div>'
 				    });
 
 			  }, function() {
