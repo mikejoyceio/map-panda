@@ -463,7 +463,12 @@ var globals = {
 	// KO Custom Binding for Scroll Bar
 	ko.bindingHandlers.scrollBar = {
 		init: function(element, valueAccessor, allBindingsAccessor) {
-			$(element).mCustomScrollbar();
+			$(element).mCustomScrollbar({
+				keyboard:{scrollType:"stepped"},
+				mouseWheel:{scrollAmount:188},
+				snapAmount:188,
+				snapOffset:65
+			});
 		}
 	};
 
