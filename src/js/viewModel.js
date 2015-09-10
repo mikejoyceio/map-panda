@@ -139,20 +139,12 @@ var globals = {
 
 			      global.map.setCenter(global.latLang);
 
-				    var marker = new google.maps.Marker({
+				    var marker = new RichMarker({
 				    	position: global.latLang,
 				    	map: global.map,
-				    	icon: { path: fontawesome.markers.MAP_MARKER,
-										fillColor: '#ed5565',
-										fillOpacity: 1,
-										scale: 1/4,
-										strokeColor: '#ed5565',
-										strokeWeight: 1 },
-				    	title: "You are here!"
+				    	flat: true,
+				    	content: '<div class="gm-current-location"><div class="pulse"></div></div>'
 				    });
-
-				    marker.setAnimation(google.maps.Animation.BOUNCE);
-
 
 			  }, function() {
 		  		// Browser supports Geolocation but hasn't been enabled
