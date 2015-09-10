@@ -13,16 +13,19 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Automatically Load Gulp Plugins](http://andy-carter.com/blog/automatically-load-gulp-plugins-with-gulp-load-plugins) by Andy Carter
 - [A Beginners Guide to Using Bower & Gulp](http://andy-carter.com/blog/a-beginners-guide-to-package-manager-bower-and-using-gulp-to-manage-components) by Andy Carter
 - [Setting up Gulp, Bower, Bootstrap Sass, & FontAwesome](http://ericlbarnes.com/setting-gulp-bower-bootstrap-sass-fontawesome/) by Eric L. Barnes
+- [Stack Overflow: Installing a dependency with Bower from URL and specify version](http://stackoverflow.com/questions/19348076/installing-a-dependency-with-bower-from-url-and-specify-version)
 
 ######SASS
 
 - [Compass: SASS Authoring Framework](http://compass-style.org/help/documentation/)
+- [Compass: Keyframe animation example](http://codepen.io/dwarcher/pen/yinsq)
 - [Sitepoint: Architecture of a SASS Project](http://www.sitepoint.com/architecture-sass-project/)
 - [The SASS Way: How to Structure a SASS Project](http://thesassway.com/beginner/how-to-structure-a-sass-project)
 
 ######CSS
 
 - [Nuttify: “before” pseudo element with Fontawesome ](http://nuttify.com/help/developer-manual/coding-style-guide/css-style-guide/css-tricks-before-pseudo-element-with-fontawesome/) by Ajax McKerral
+- [CSS Transforms and Z-Index](http://daneden.me/2012/04/22/css-transforms-and-z-index/) by Daniel Eden
 
 ######HTML
 
@@ -63,6 +66,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Stack Overflow: HTML Geolocation stopped working in Google Chrome Version 44.0.2403.157 (64-bit)](http://stackoverflow.com/questions/32328133/in-new-chrome-44-0-2403-157-geolocations-doesnt-works)
 - [Font Awesome Markers](https://github.com/nathan-muir/fontawesome-markers)
 - [SVGO: An Nodejs-based tool for optimizing SVG vector graphics files.](https://github.com/nathan-muir/svgo/tree/nathan-svgo)
+- [RichMarker – A Google Maps JavaScript API utility library](https://github.com/mikejoyceio/js-rich-marker)
 
 ######Knockout JS
 

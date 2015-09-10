@@ -91,6 +91,29 @@
 	}
 }
 
+.gm-current-location {
+		@include box-shadow(1px 0px 5px 3px rgba(50, 50, 50, 0.15));
+		@include border-radius(999px);
+		@include animation(pulse 2s linear infinite);
+  background: #3395ff;
+  width: 10px;
+  height: 10px;
+  border: 4px solid #fff;
+  position: relative;
+
+  .pulse {
+	@include border-radius(999px);
+	@include animation(pulse-fade 1.9s ease-in-out infinite);
+  background: rgba(51, 149, 255, 0.3);
+  border-radius: 999px;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  margin: -44px;
+  z-index: -1;
+  }
+}
+
 // Hide 'listings'
 .gm-style-cc:nth-child(n+8) {
     display: none;
