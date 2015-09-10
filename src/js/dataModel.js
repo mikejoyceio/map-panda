@@ -99,6 +99,18 @@ var placesData = [
 								strokeWeight: 0.4 }
 	},
 	{
+		name: 'Fire Stations',
+		description: 'description text',
+		type: 'fire_station',
+		icon: 'fa-fire-extinguisher',
+		marker: { path: fontawesome.markers.FIRE_EXTINGUISHER,
+								fillColor: '#e74c3c',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#ffffff',
+								strokeWeight: 1 }
+	},	
+	{
 		name: 'Groceries',
 		description: 'description text',
 		type: 'grocery_or_supermarket',
@@ -111,6 +123,18 @@ var placesData = [
 								strokeWeight: 0.2 }
 	},
 	{
+		name: 'Hairdressers',
+		description: 'description text',
+		type: 'hair_care',
+		icon: 'fa-scissors',
+		marker: { path: fontawesome.markers.SCISSORS,
+								fillColor: '#e74c3c',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#ffffff',
+								strokeWeight: 1 }
+	},
+	{
 		name: 'Hospitals',
 		description: 'description text',
 		type: 'hospital',
@@ -120,6 +144,30 @@ var placesData = [
 								fillOpacity: 1,
 								scale: 0.3,
 								strokeColor: '#f9f9f9',
+								strokeWeight: 1 }
+	},
+	{
+		name: 'Jewelry Stores',
+		description: 'description text',
+		type: 'jewelry_store',
+		icon: 'fa-diamond',
+		marker: { path: fontawesome.markers.DIAMOND,
+								fillColor: '#9b59b6',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#ffffff',
+								strokeWeight: 1 }
+	},
+	{
+		name: 'Lawyers',
+		description: 'description text',
+		type: 'lawyer',
+		icon: 'fa-legal',
+		marker: { path: fontawesome.markers.LEGAL,
+								fillColor: '#404040',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#ffffff',
 								strokeWeight: 1 }
 	},
 	{
@@ -171,6 +219,18 @@ var placesData = [
 								strokeWeight: 0.4 }
 	},
 	{
+		name: 'Restaurants',
+		description: 'description text',
+		type: 'restaurant',
+		icon: 'fa-cutlery',
+		marker: { path: fontawesome.markers.CUTLERY,
+								fillColor: '#d35400',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#ffffff',
+								strokeWeight: 1 }
+	},
+	{
 		name: 'Subway Stations',
 		description: 'description text',
 		type: 'pharmacy',
@@ -201,6 +261,18 @@ var placesData = [
 		icon: 'fa-train',
 		marker: { path: fontawesome.markers.TRAIN,
 								fillColor: '#34495e',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#ffffff',
+								strokeWeight: 1 }
+	},
+	{
+		name: 'Vets',
+		description: 'description text',
+		type: 'veterinary_care',
+		icon: 'fa-paw',
+		marker: { path: fontawesome.markers.PAW,
+								fillColor: '#966F33',
 								fillOpacity: 1,
 								scale: 0.3,
 								strokeColor: '#ffffff',
