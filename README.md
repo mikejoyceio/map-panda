@@ -50,8 +50,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Programmers Stack Exchange: How can we protect the namespace of an object in JavaScript](http://programmers.stackexchange.com/questions/161436/how-can-we-protect-the-namespace-of-an-object-in-javascript)
 - [Mozilla Developer Network - typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
 - [Ion Range Slider](https://github.com/IonDen/ion.rangeSlider)
-- [Named Function Expressions Demystified](http://kangax.github.io/nfe/) by Juriy "Kangax" Zaytsev
--
+- [Named Function Expressions Demystified](http://kangax.github.io/nfe/) by Juriy "Kangax" Zaytsev)
 
 ######Google Maps
 
