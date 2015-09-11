@@ -4800,6 +4800,7 @@ html, body {
   top: 0;
   width: 200px;
   z-index: 2;
+  overflow: hidden;
 }
 .menu .brand {
   background: #2eb398;
