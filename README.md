@@ -51,6 +51,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Mozilla Developer Network - typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
 - [Ion Range Slider](https://github.com/IonDen/ion.rangeSlider)
 - [Named Function Expressions Demystified](http://kangax.github.io/nfe/) by Juriy "Kangax" Zaytsev)
+- [iNoBounce - Stop your iOS webapp from bouncing around when scrolling](https://github.com/lazd/iNoBounce)
 
 ######Google Maps
 
