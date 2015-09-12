@@ -469,7 +469,6 @@ var globals = {
 				snapAmount:188,
 				snapOffset:65
 			});
-			bouncefix.add('place-list');
 		}
 	};
 
