@@ -4845,7 +4845,7 @@ html, body {
   color: #fff;
   margin-top: 20px;
   height: 510px;
-  overflow: scroll;
+  overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
 .menu .place-list .item {
