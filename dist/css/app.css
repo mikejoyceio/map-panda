@@ -4800,6 +4800,7 @@ html, body {
   width: 200px;
   z-index: 2;
   overflow: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 .menu .brand {
   background: #2eb398;
