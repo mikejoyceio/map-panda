@@ -4762,14 +4762,20 @@ h3 {
   font-size: 21px;
 }
 
-html, body {
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
   background: #505050;
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
   position: fixed;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .main-content {
