@@ -60,6 +60,8 @@
 			color: #fff;
 			margin-top: 20px;
 			height: 510px;
+			overflow: scroll;
+			-webkit-overflow-scrolling: touch;
 			
     	.item {
 			  color: #667174;
