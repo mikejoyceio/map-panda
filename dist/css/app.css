@@ -4795,7 +4795,6 @@ html, body {
   background: #232b2d;
   height: 100%;
   left: 0;
-  padding-top: 85px;
   position: absolute;
   top: 0;
   width: 200px;
@@ -4806,17 +4805,20 @@ html, body {
   background: #2eb398;
   height: 82px;
   left: 0;
-  position: absolute;
   top: 0;
+  position: relative;
   width: 100%;
 }
 .menu .brand .brand-image {
   background: url(../images/panda.png);
   background-size: 100%;
   background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 20px auto;
   width: 50px;
   height: 50px;
-  margin: 20px auto;
 }
 .menu .search-filter {
   padding: 10px;
