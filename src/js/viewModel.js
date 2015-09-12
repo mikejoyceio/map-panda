@@ -470,6 +470,9 @@ var globals = {
 				snapOffset:65
 			});
 		}
+		$('.menu').on('touchstart', function(element) {
+			element.preventDefault();
+		}); 
 	};
 
 	// KO Custom Binding for Modal
