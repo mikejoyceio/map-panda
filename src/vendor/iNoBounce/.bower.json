@@ -1,7 +1,7 @@
 {
   "name": "inobounce",
   "main": "inobounce.js",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "homepage": "https://github.com/lazd/iNoBounce",
   "authors": [
     "Larry Davis <lazdnet@gmail.com>"
@@ -17,5 +17,15 @@
     "scrolling",
     "bounce"
   ],
-  "license": "BSD"
+  "license": "BSD",
+  "_release": "0.1.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.2",
+    "commit": "3fda666124f105c14114779038b5149fb2875d5b"
+  },
+  "_source": "git://github.com/lazd/iNoBounce.git",
+  "_target": "~0.1.2",
+  "_originalSource": "iNoBounce",
+  "_direct": true
 }
