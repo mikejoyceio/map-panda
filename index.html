@@ -37,7 +37,7 @@
 		<!-- /Search Filter -->
 
 		<!-- Options -->
-		<ul class="place-list">
+		<ul class="place-list" data-bind="scrollBar">
 			<!-- ko foreach: placeList -->
 			<li class="item" data-bind="css: {active: isActive(), hidden: isHidden()}, event: { click: $parent.selectPlace, touchend: $parent.selectPlace }">
 				<span class="icon fa-stack fa-sml">
