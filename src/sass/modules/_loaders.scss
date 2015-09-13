@@ -12,7 +12,7 @@
   position: absolute;
 }
 
-.loader-main {
+.main-loader {
 	@extend .loader;
 	width: 80px;
   height: 80px;
@@ -21,7 +21,7 @@
   margin: auto;
 }
 
-.loader-modal {
+.modal-loader {
 	@extend .loader;
 	width: 40px;
   height: 40px;
@@ -33,7 +33,7 @@
   z-index: 9999;
 }
 
-.loader-map {
+.map-loader {
 	display: table;
 	height: 100%;
 	left: 0;

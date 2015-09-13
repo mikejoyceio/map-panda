@@ -73,22 +73,22 @@
 		<!-- /Map -->
 
 		<!-- Map Controls -->
-		<div class="pan-to" data-bind="event: { click: panTo, touchend: panTo }">
+		<div class="map-pan-to" data-bind="event: { click: panTo, touchend: panTo }">
 			<span class="icon fa fa-map-marker"></span>
 		</div>
 
-		<div class="zoom-buttons">
-	    <div class="zoom-button zoom-in" data-bind="event: { click: zoomIn, touchstart: zoomIn }">
+		<div class="map-zoom-buttons">
+	    <div class="map-zoom-button zoom-in" data-bind="event: { click: zoomIn, touchstart: zoomIn }">
   			<span class="fa fa-plus"></span>	
   		</div>	
-  		<div class="zoom-button zoom-out" data-bind="event: { click: zoomOut, touchstart: zoomOut }">
+  		<div class="map-zoom-button zoom-out" data-bind="event: { click: zoomOut, touchstart: zoomOut }">
    			<span class="fa fa-minus"></span>	
    		</div>
 		</div>
    	<!-- /Map Controls -->
 
 	  <!-- Main Loader -->
-		<div class="loader-map" data-bind="visible: showMapLoader">
+		<div class="map-loader" data-bind="visible: showMapLoader">
 			<div class="content">
 				<div class="icon">
 					<span class="fa fa-compass fa-spin fa-3x"></span>
