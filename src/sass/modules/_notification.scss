@@ -2,8 +2,9 @@
 // Notification
 
 .notification {
-  background: #ed5565;
+  @include animation(buzz .2s infinite linear);
   @include border-radius(5px);
+  background: #ed5565;
   color: #fff;
   height: 20px;
   left: 0;
