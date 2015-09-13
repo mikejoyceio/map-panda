@@ -2884,7 +2884,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   vertical-align: middle;
 }
 .loader-map .content .icon {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
   color: #ed5565;
+  margin: auto;
+  padding: 5px;
+  width: 50px;
 }
 
 .map {
