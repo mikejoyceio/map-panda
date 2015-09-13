@@ -137,16 +137,70 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     opacity: 0;
   }
 }
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes buzz {
+  50% {
+    -moz-transform: translateX(1px) rotate(1deg);
+    transform: translateX(1px) rotate(1deg);
+  }
+  100% {
+    -moz-transform: translateX(-1px) rotate(-1deg);
+    transform: translateX(-1px) rotate(-1deg);
+  }
+}
+@-webkit-keyframes buzz {
+  50% {
+    -webkit-transform: translateX(1px) rotate(1deg);
+    transform: translateX(1px) rotate(1deg);
+  }
+  100% {
+    -webkit-transform: translateX(-1px) rotate(-1deg);
+    transform: translateX(-1px) rotate(-1deg);
+  }
+}
+@keyframes buzz {
+  50% {
+    -moz-transform: translateX(1px) rotate(1deg);
+    -ms-transform: translateX(1px) rotate(1deg);
+    -webkit-transform: translateX(1px) rotate(1deg);
+    transform: translateX(1px) rotate(1deg);
+  }
+  100% {
+    -moz-transform: translateX(-1px) rotate(-1deg);
+    -ms-transform: translateX(-1px) rotate(-1deg);
+    -webkit-transform: translateX(-1px) rotate(-1deg);
+    transform: translateX(-1px) rotate(-1deg);
+  }
+}
 /*!
- *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  Font Awesome 4.4.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 /* FONT PATH
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.eot?v=4.3.0");
-  src: url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
+  src: url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.eot?v=4.4.0");
+  src: url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.4.0") format("embedded-opentype"), url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.woff2?v=4.4.0") format("woff2"), url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.woff?v=4.4.0") format("woff"), url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.ttf?v=4.4.0") format("truetype"), url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -157,7 +211,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transform: translate(0, 0);
 }
 
 /* makes the font 33% larger relative to the icon container */
@@ -214,6 +267,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border-radius: .1em;
 }
 
+.fa-pull-left {
+  float: left;
+}
+
+.fa-pull-right {
+  float: right;
+}
+
+.fa.fa-pull-left {
+  margin-right: .3em;
+}
+.fa.fa-pull-right {
+  margin-left: .3em;
+}
+
+/* Deprecated as of 4.4.0 */
 .pull-right {
   float: right;
 }
@@ -941,6 +1010,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   content: "";
 }
 
+.fa-feed:before,
 .fa-rss:before {
   content: "";
 }
@@ -2098,6 +2168,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   content: "";
 }
 
+.fa-y-combinator-square:before,
+.fa-yc-square:before,
 .fa-hacker-news:before {
   content: "";
 }
@@ -2129,7 +2201,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   content: "";
 }
 
-.fa-genderless:before,
 .fa-circle-thin:before {
   content: "";
 }
@@ -2401,6 +2472,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   content: "";
 }
 
+.fa-intersex:before,
 .fa-transgender:before {
   content: "";
 }
@@ -2435,6 +2507,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 .fa-neuter:before {
   content: "";
+}
+
+.fa-genderless:before {
+  content: "";
 }
 
 .fa-facebook-official:before {
@@ -2482,13 +2558,337 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   content: "";
 }
 
+.fa-yc:before,
+.fa-y-combinator:before {
+  content: "";
+}
+
+.fa-optin-monster:before {
+  content: "";
+}
+
+.fa-opencart:before {
+  content: "";
+}
+
+.fa-expeditedssl:before {
+  content: "";
+}
+
+.fa-battery-4:before,
+.fa-battery-full:before {
+  content: "";
+}
+
+.fa-battery-3:before,
+.fa-battery-three-quarters:before {
+  content: "";
+}
+
+.fa-battery-2:before,
+.fa-battery-half:before {
+  content: "";
+}
+
+.fa-battery-1:before,
+.fa-battery-quarter:before {
+  content: "";
+}
+
+.fa-battery-0:before,
+.fa-battery-empty:before {
+  content: "";
+}
+
+.fa-mouse-pointer:before {
+  content: "";
+}
+
+.fa-i-cursor:before {
+  content: "";
+}
+
+.fa-object-group:before {
+  content: "";
+}
+
+.fa-object-ungroup:before {
+  content: "";
+}
+
+.fa-sticky-note:before {
+  content: "";
+}
+
+.fa-sticky-note-o:before {
+  content: "";
+}
+
+.fa-cc-jcb:before {
+  content: "";
+}
+
+.fa-cc-diners-club:before {
+  content: "";
+}
+
+.fa-clone:before {
+  content: "";
+}
+
+.fa-balance-scale:before {
+  content: "";
+}
+
+.fa-hourglass-o:before {
+  content: "";
+}
+
+.fa-hourglass-1:before,
+.fa-hourglass-start:before {
+  content: "";
+}
+
+.fa-hourglass-2:before,
+.fa-hourglass-half:before {
+  content: "";
+}
+
+.fa-hourglass-3:before,
+.fa-hourglass-end:before {
+  content: "";
+}
+
+.fa-hourglass:before {
+  content: "";
+}
+
+.fa-hand-grab-o:before,
+.fa-hand-rock-o:before {
+  content: "";
+}
+
+.fa-hand-stop-o:before,
+.fa-hand-paper-o:before {
+  content: "";
+}
+
+.fa-hand-scissors-o:before {
+  content: "";
+}
+
+.fa-hand-lizard-o:before {
+  content: "";
+}
+
+.fa-hand-spock-o:before {
+  content: "";
+}
+
+.fa-hand-pointer-o:before {
+  content: "";
+}
+
+.fa-hand-peace-o:before {
+  content: "";
+}
+
+.fa-trademark:before {
+  content: "";
+}
+
+.fa-registered:before {
+  content: "";
+}
+
+.fa-creative-commons:before {
+  content: "";
+}
+
+.fa-gg:before {
+  content: "";
+}
+
+.fa-gg-circle:before {
+  content: "";
+}
+
+.fa-tripadvisor:before {
+  content: "";
+}
+
+.fa-odnoklassniki:before {
+  content: "";
+}
+
+.fa-odnoklassniki-square:before {
+  content: "";
+}
+
+.fa-get-pocket:before {
+  content: "";
+}
+
+.fa-wikipedia-w:before {
+  content: "";
+}
+
+.fa-safari:before {
+  content: "";
+}
+
+.fa-chrome:before {
+  content: "";
+}
+
+.fa-firefox:before {
+  content: "";
+}
+
+.fa-opera:before {
+  content: "";
+}
+
+.fa-internet-explorer:before {
+  content: "";
+}
+
+.fa-tv:before,
+.fa-television:before {
+  content: "";
+}
+
+.fa-contao:before {
+  content: "";
+}
+
+.fa-500px:before {
+  content: "";
+}
+
+.fa-amazon:before {
+  content: "";
+}
+
+.fa-calendar-plus-o:before {
+  content: "";
+}
+
+.fa-calendar-minus-o:before {
+  content: "";
+}
+
+.fa-calendar-times-o:before {
+  content: "";
+}
+
+.fa-calendar-check-o:before {
+  content: "";
+}
+
+.fa-industry:before {
+  content: "";
+}
+
+.fa-map-pin:before {
+  content: "";
+}
+
+.fa-map-signs:before {
+  content: "";
+}
+
+.fa-map-o:before {
+  content: "";
+}
+
+.fa-map:before {
+  content: "";
+}
+
+.fa-commenting:before {
+  content: "";
+}
+
+.fa-commenting-o:before {
+  content: "";
+}
+
+.fa-houzz:before {
+  content: "";
+}
+
+.fa-vimeo:before {
+  content: "";
+}
+
+.fa-black-tie:before {
+  content: "";
+}
+
+.fa-fonticons:before {
+  content: "";
+}
+
 .info-window {
   outline: none;
 }
 
+.loader, .loader-main, .loader-modal {
+  -webkit-box-sizing: border-box;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.2);
+  border-width: 10px;
+  border-top-color: #FFF;
+  -moz-border-radius: 40px;
+  -webkit-border-radius: 40px;
+  border-radius: 40px;
+  -moz-animation: spin 1s infinite linear;
+  -webkit-animation: spin 1s infinite linear;
+  animation: spin 1s infinite linear;
+  position: absolute;
+}
+
+.loader-main {
+  width: 80px;
+  height: 80px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.loader-modal {
+  width: 40px;
+  height: 40px;
+  border-width: 6px;
+  top: 47%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 9999;
+}
+
+.loader-map {
+  display: table;
+  height: 100%;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+.loader-map .content {
+  display: table-cell;
+  vertical-align: middle;
+}
+.loader-map .content .icon {
+  color: #ed5565;
+}
+
 .map {
   height: 100%;
-  margin: 0 0 0 200px;
   padding: 0;
 }
 
@@ -2502,7 +2902,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 .map-info .content {
   height: 56px;
-  padding: 25px 0 0 218px;
+  padding: 25px 0 0 28px;
   border-bottom: 1px solid #ecf0f1;
 }
 .map-info .content .content-header {
@@ -2625,7 +3025,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: none;
   width: 270px;
   height: 350px;
-  left: 220px;
+  left: 230px;
   right: 0;
   top: 105px;
   position: absolute;
@@ -2777,10 +3177,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 .notification {
-  background: #ed5565;
+  -moz-animation: buzz 0.2s infinite linear;
+  -webkit-animation: buzz 0.2s infinite linear;
+  animation: buzz 0.2s infinite linear;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
+  background: #ed5565;
   color: #fff;
   height: 20px;
   left: 0;
@@ -4775,6 +5178,8 @@ html, body {
 .main-content {
   outline: none;
   height: 100%;
+  margin: 0 0 0 200px;
+  position: relative;
 }
 
 .footer {
@@ -4797,7 +5202,7 @@ html, body {
   left: 0;
   position: absolute;
   top: 0;
-  width: 200px;
+  width: 203px;
   z-index: 2;
   overflow: hidden;
 }
@@ -4852,7 +5257,7 @@ html, body {
   color: #667174;
   font-size: 15px;
   line-height: 1;
-  margin: 0 0 0 13px;
+  margin: 0 0 0 8px;
   -moz-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;
   -webkit-transition: all 0.2s linear;

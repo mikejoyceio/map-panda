@@ -14881,6 +14881,17 @@ var placesData = [
 								strokeWeight: 1 }
 	},
 	{
+		name: 'Amusement Parks',
+		description: 'description text',
+		type: 'amusement_park',
+		icon: 'fa-ticket',
+		marker: { path: fontawesome.markers.TICKET,
+								fillColor: '#2980b9',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#f9f9f9',
+								strokeWeight: 1 }
+	},	{
 		name: 'Art Galleries',
 		description: 'description text',
 		type: 'art_gallery',
@@ -14929,6 +14940,30 @@ var placesData = [
 								strokeWeight: 1 }
 	},
 	{
+		name: 'Bicycle Stores',
+		description: 'description text',
+		type: 'bicycle_store',
+		icon: 'fa-bicycle',
+		marker: { path: fontawesome.markers.BICYCLE,
+								fillColor: '#966F33',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#ffffff',
+								strokeWeight: 1 }
+	},
+	{
+		name: 'Book Stores',
+		description: 'description text',
+		type: 'book_store',
+		icon: 'fa-book',
+		marker: { path: fontawesome.markers.BOOK,
+								fillColor: '#966F33',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#ffffff',
+								strokeWeight: 1 }
+	},
+	{
 		name: 'Bus Stations',
 		description: 'description text',
 		type: 'bus_station',
@@ -14953,11 +14988,83 @@ var placesData = [
 								strokeWeight: 1 }
 	},
 	{
+		name: 'Car Parks',
+		description: 'description text',
+		type: 'parking',
+		icon: 'fa-car',
+		marker: { path: fontawesome.markers.CAR,
+								fillColor: '#966F33',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#ffffff',
+								strokeWeight: 1 }
+	},
+	{
+		name: 'Car Repair',
+		description: 'description text',
+		type: 'car_repair',
+		icon: 'fa-wrench',
+		marker: { path: fontawesome.markers.WRENCH,
+								fillColor: '#966F33',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#ffffff',
+								strokeWeight: 1 }
+	},
+	{
+		name: 'Car Washes',
+		description: 'description text',
+		type: 'car_wash',
+		icon: 'fa-tint',
+		marker: { path: fontawesome.markers.TINT,
+								fillColor: '#966F33',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#ffffff',
+								strokeWeight: 1 }
+	},
+	{
+		name: 'Department Stores',
+		description: 'description text',
+		type: 'department_store',
+		icon: 'fa-building-o',
+		marker: { path: fontawesome.markers.BUILDING_O,
+								fillColor: '#e74c3c',
+								fillOpacity: 1,
+								scale: 0.4,
+								strokeColor: '#ffffff',
+								strokeWeight: 0.4 }
+	},
+	{
 		name: 'Doctors',
 		description: 'description text',
 		type: 'doctor',
 		icon: 'fa-stethoscope',
 		marker: { path: fontawesome.markers.STETHOSCOPE,
+								fillColor: '#e74c3c',
+								fillOpacity: 1,
+								scale: 0.4,
+								strokeColor: '#ffffff',
+								strokeWeight: 0.4 }
+	},
+	{
+		name: 'Electricians',
+		description: 'description text',
+		type: 'electrician',
+		icon: 'fa-flash',
+		marker: { path: fontawesome.markers.FLASH,
+								fillColor: '#e74c3c',
+								fillOpacity: 1,
+								scale: 0.4,
+								strokeColor: '#ffffff',
+								strokeWeight: 0.4 }
+	},
+	{
+		name: 'Electronic Stores',
+		description: 'description text',
+		type: 'electronics_store',
+		icon: 'fa-tv',
+		marker: { path: fontawesome.markers.TV,
 								fillColor: '#e74c3c',
 								fillOpacity: 1,
 								scale: 0.4,
@@ -15037,6 +15144,18 @@ var placesData = [
 								strokeWeight: 1 }
 	},
 	{
+		name: 'Locksmiths',
+		description: 'description text',
+		type: 'locksmith',
+		icon: 'fa-key',
+		marker: { path: fontawesome.markers.KEY,
+								fillColor: '#404040',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#ffffff',
+								strokeWeight: 1 }
+	},
+	{
 		name: 'Lodgings',
 		description: 'description text',
 		type: 'lodging',
@@ -15054,6 +15173,30 @@ var placesData = [
 		type: 'movie_theater',
 		icon: 'fa-film',
 		marker: { path: fontawesome.markers.FILM,
+								fillColor: '#22313F',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#ffffff',
+								strokeWeight: 0 }
+	},
+	{
+		name: 'Moving Companies',
+		description: 'description text',
+		type: 'moving_company',
+		icon: 'fa-truck',
+		marker: { path: fontawesome.markers.TRUCK,
+								fillColor: '#34495e',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#ffffff',
+								strokeWeight: 1 }
+	},
+	{
+		name: 'Night Clubs',
+		description: 'description text',
+		type: 'night_club',
+		icon: 'fa-glass',
+		marker: { path: fontawesome.markers.GLASS,
 								fillColor: '#22313F',
 								fillOpacity: 1,
 								scale: 0.3,
@@ -15133,6 +15276,30 @@ var placesData = [
 								strokeWeight: 1 }
 	},
 	{
+		name: 'Travel Agencies',
+		description: 'description text',
+		type: 'travel_agency',
+		icon: 'fa-map-signs',
+		marker: { path: fontawesome.markers.MAP_SIGNS,
+								fillColor: '#34495e',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#ffffff',
+								strokeWeight: 1 }
+	},
+	{
+		name: 'Universities',
+		description: 'description text',
+		type: 'university',
+		icon: 'fa-mortar-board',
+		marker: { path: fontawesome.markers.MORTAR_BOARD,
+								fillColor: '#34495e',
+								fillOpacity: 1,
+								scale: 0.3,
+								strokeColor: '#ffffff',
+								strokeWeight: 1 }
+	},
+	{
 		name: 'Vets',
 		description: 'description text',
 		type: 'veterinary_care',
@@ -15170,6 +15337,7 @@ var globals = {
 
 		this.appName = "App Name";
 		this.contentName = "Content Name";
+		this.showMapLoader = ko.observable(false);
 		this.notificationMessage = ko.observable('');
 		this.notificationKeepAlive = ko.observable(false);
 		this.notificationFadeDuration = ko.observable(1000);
@@ -15359,7 +15527,12 @@ var globals = {
 
 			    var infoWindow = new google.maps.InfoWindow();
 			    var mapPlaces = new google.maps.places.PlacesService(global.map);
+			    var statusMessage;
+			    var notificationMessage;
+
 			    mapPlaces.nearbySearch(request, callback);
+
+			    showMapLoader();
 
 			    function callback(results, status) {
 			    	if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -15371,35 +15544,41 @@ var globals = {
 			    			global.places.push(results[i]);
 			    		}	
 			    		setPlaces();
+			    		hideMapLoader();
 			    	} else if (status === google.maps.places.PlacesServiceStatus.ERROR) {
-			    		if (global.debug) console.log(status+' There was a problem contacting the Google servers.');
-			    		bindingContext.$root.notificationKeepAlive(true);
-			    		bindingContext.$root.notificationMessage('There was a problem contacting the Google servers.');
+			    		statusMessage = status+' There was a problem contacting the Google servers.';
+			    		notificationMessage = 'There was a problem contacting the Google servers.';
+			    		callbackError(statusMessage, notificationMessage);
 			    	} else if (status === google.maps.places.PlacesServiceStatus.INVALID_REQUEST) {
-			    		if (global.debug) console.log(status+' This request was invalid.');
-			    		bindingContext.$root.notificationKeepAlive(true);
-			    		bindingContext.$root.notificationMessage('The request was invalid');
+			    		statusMessage = status+' This request was invalid.';
+			    		notificationMessage = 'This request was invalid.';
+			    		callbackError(statusMessage, notificationMessage);
 			    	} else if (status === google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
-			    		if (global.debug) console.log(status+' The webpage has gone over its request quota.');
-			    		bindingContext.$root.notificationKeepAlive(true);
-			    		bindingContext.$root.notificationMessage('This webpage has gone over its request quota.')
+				    	statusMessage = status+' The webpage has gone over its request quota.';
+			    		notificationMessage = 'This webpage has gone over its request quota.';
+			    		callbackError(statusMessage, notificationMessage);		    		
 			    	} else if (status === google.maps.places.PlacesServiceStatus.REQUEST_DENIED) {
-			    		if (global.debug) console.log(status+' This webpage is not allowed to use the PlacesService.')
-			    		bindingContext.$root.notificationKeepAlive(true);
-			    		bindingContext.$root.notificationMessage('This webpage is not allowed to use the PlacesService.')
+			    		statusMessage = status+' This webpage is not allowed to use the PlacesService.';
+			    		notificationMessage = 'This webpage is not allowed to use the PlacesService.';
+			    		callbackError(statusMessage, notificationMessage);	
 			    	} else if (status === google.maps.places.PlacesServiceStatus.UNKNOWN_ERROR) {
-			    		if (global.debug) console.log(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.')
-			    		bindingContext.$root.notificationKeepAlive(true);
-			    		bindingContext.$root.notificationMessage('Server Error. Please try again.')
-			    	} else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
-			    		if (global.debug) console.log(status+' No result was found for this request.');
-			    		bindingContext.$root.notificationKeepAlive(true);
-			    		bindingContext.$root.notificationMessage('No results.');
+			    		statusMessage = status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.';
+			    		notificationMessage = 'Server Error. Please try again.';
+			    		callbackError(statusMessage, notificationMessage);	
+			    	} else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) { 
+			    		statusMessage = status+' No result was found for this request.';
+			    		notificationMessage = 'No Results';
+			    		callbackError(statusMessage, notificationMessage);	
 			    	} else {
-			    		if (global.debug) console.log('Error');
-					   	bindingContext.$root.notificationKeepAlive(true);
-			    		bindingContext.$root.notificationMessage('Error');	    		
+			    		callbackError('Error', 'Error');
 			    	}
+			    }
+
+			    function callbackError(statusMessage, notificationMessage) {
+			    	if (global.debug) console.log(statusMessage);
+				    bindingContext.$root.showMapLoader(false);
+				   	bindingContext.$root.notificationKeepAlive(true);
+		    		bindingContext.$root.notificationMessage(notificationMessage);	  	    	
 			    }
 
 			    function setPlaces() {
@@ -15518,9 +15697,21 @@ var globals = {
 				} 
 				performSearch();
 
+				function showMapLoader() {
+			    bindingContext.$root.showMapLoader(true);
+			   }
+
+			  function hideMapLoader() {
+	    		google.maps.event.addListener(global.map, 'idle', function() {
+	    			setTimeout(function() {
+	    				bindingContext.$root.showMapLoader(false);
+	    			}, 1000);
+	    		});
+			  }
+
 			}
 
-		}
+		} 
 
 	};
 
@@ -15616,9 +15807,7 @@ var globals = {
 			if (!isMobile) {
 				$(element).mCustomScrollbar({
 					keyboard:{scrollType:"stepped"},
-					mouseWheel:{scrollAmount:188},
-					snapAmount:188,
-					snapOffset:65
+					mouseWheel:{scrollAmount:10}
 				});
 			}
 		}

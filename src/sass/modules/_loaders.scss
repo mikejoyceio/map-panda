@@ -1,0 +1,55 @@
+
+// Loaders
+
+.loader {
+  -webkit-box-sizing: border-box;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.2);
+  border-width: 10px;
+  border-top-color: #FFF;
+  @include border-radius(40px);
+  @include animation(spin 1.0s infinite linear);
+  position: absolute;
+}
+
+.loader-main {
+	@extend .loader;
+	width: 80px;
+  height: 80px;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.loader-modal {
+	@extend .loader;
+	width: 40px;
+  height: 40px;
+	border-width: 6px;
+  top: 47%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 9999;
+}
+
+.loader-map {
+	display: table;
+	height: 100%;
+	left: 0;
+	margin: auto;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 0;
+	width: 100%;
+
+	.content {
+		display: table-cell;
+		vertical-align: middle;
+
+		.icon {
+			color: #ed5565;
+		}
+	}
+}
