@@ -212,6 +212,9 @@ var globals = {
 
 			    var infoWindow = new google.maps.InfoWindow();
 			    var mapPlaces = new google.maps.places.PlacesService(global.map);
+			    var statusMessage;
+			    var notificationMessage;
+
 			    mapPlaces.nearbySearch(request, callback);
 
 			    showMapLoader();
@@ -228,41 +231,39 @@ var globals = {
 			    		setPlaces();
 			    		hideMapLoader();
 			    	} else if (status === google.maps.places.PlacesServiceStatus.ERROR) {
-			    		if (global.debug) console.log(status+' There was a problem contacting the Google servers.');
-			    		bindingContext.$root.showMapLoader(false);
-			    		bindingContext.$root.notificationKeepAlive(true);
-			    		bindingContext.$root.notificationMessage('There was a problem contacting the Google servers.');
+			    		statusMessage = status+' There was a problem contacting the Google servers.';
+			    		notificationMessage = 'There was a problem contacting the Google servers.';
+			    		callbackError(statusMessage, notificationMessage);
 			    	} else if (status === google.maps.places.PlacesServiceStatus.INVALID_REQUEST) {
-			    		if (global.debug) console.log(status+' This request was invalid.');
-			    		bindingContext.$root.showMapLoader(false);
-			    		bindingContext.$root.notificationKeepAlive(true);
-			    		bindingContext.$root.notificationMessage('The request was invalid');
+			    		statusMessage = status+' This request was invalid.';
+			    		notificationMessage = 'This request was invalid.';
+			    		callbackError(statusMessage, notificationMessage);
 			    	} else if (status === google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
-			    		if (global.debug) console.log(status+' The webpage has gone over its request quota.');
-			    		bindingContext.$root.showMapLoader(false);
-			    		bindingContext.$root.notificationKeepAlive(true);
-			    		bindingContext.$root.notificationMessage('This webpage has gone over its request quota.')
+				    	statusMessage = status+' The webpage has gone over its request quota.';
+			    		notificationMessage = 'This webpage has gone over its request quota.';
+			    		callbackError(statusMessage, notificationMessage);		    		
 			    	} else if (status === google.maps.places.PlacesServiceStatus.REQUEST_DENIED) {
-			    		if (global.debug) console.log(status+' This webpage is not allowed to use the PlacesService.')
-			    		bindingContext.$root.showMapLoader(false);
-			    		bindingContext.$root.notificationKeepAlive(true);
-			    		bindingContext.$root.notificationMessage('This webpage is not allowed to use the PlacesService.')
+			    		statusMessage = status+' This webpage is not allowed to use the PlacesService.';
+			    		notificationMessage = 'This webpage is not allowed to use the PlacesService.';
+			    		callbackError(statusMessage, notificationMessage);	
 			    	} else if (status === google.maps.places.PlacesServiceStatus.UNKNOWN_ERROR) {
-			    		if (global.debug) console.log(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.')
-			    		bindingContext.$root.showMapLoader(false);
-			    		bindingContext.$root.notificationKeepAlive(true);
-			    		bindingContext.$root.notificationMessage('Server Error. Please try again.')
-			    	} else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
-			    		if (global.debug) console.log(status+' No result was found for this request.');
-			    		bindingContext.$root.showMapLoader(false);
-			    		bindingContext.$root.notificationKeepAlive(true);
-			    		bindingContext.$root.notificationMessage('No results.');
+			    		statusMessage = status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.';
+			    		notificationMessage = 'Server Error. Please try again.';
+			    		callbackError(statusMessage, notificationMessage);	
+			    	} else if (status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) { 
+			    		statusMessage = status+' No result was found for this request.';
+			    		notificationMessage = 'No Results';
+			    		callbackError(statusMessage, notificationMessage);	
 			    	} else {
-			    		if (global.debug) console.log('Error');
-			    		bindingContext.$root.showMapLoader(false);
-					   	bindingContext.$root.notificationKeepAlive(true);
-			    		bindingContext.$root.notificationMessage('Error');	    		
+			    		callbackError('Error', 'Error');
 			    	}
+			    }
+
+			    function callbackError(statusMessage, notificationMessage) {
+			    	if (global.debug) console.log(statusMessage);
+				    bindingContext.$root.showMapLoader(false);
+				   	bindingContext.$root.notificationKeepAlive(true);
+		    		bindingContext.$root.notificationMessage(notificationMessage);	  	    	
 			    }
 
 			    function setPlaces() {
