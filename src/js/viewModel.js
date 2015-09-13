@@ -492,9 +492,7 @@ var globals = {
 			if (!isMobile) {
 				$(element).mCustomScrollbar({
 					keyboard:{scrollType:"stepped"},
-					mouseWheel:{scrollAmount:188},
-					snapAmount:188,
-					snapOffset:65
+					mouseWheel:{scrollAmount:10}
 				});
 			}
 		}
