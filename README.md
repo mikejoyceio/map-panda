@@ -53,6 +53,10 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Named Function Expressions Demystified](http://kangax.github.io/nfe/) by Juriy "Kangax" Zaytsev)
 - [iNoBounce - Stop your iOS webapp from bouncing around when scrolling](https://github.com/lazd/iNoBounce)
 
+######General Programming
+
+- [Stack Exchange: What is abstraction?](http://programmers.stackexchange.com/questions/16070/what-is-abstraction)
+
 ######Google Maps
 
 - [Google Maps JavaScript Api](https://developers.google.com/maps/documentation/javascript)
