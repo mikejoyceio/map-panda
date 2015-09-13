@@ -68,6 +68,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Stack Overflow: Google Places getUrl() is breaking my JavaScript](http://stackoverflow.com/questions/22459910/google-places-photos-geturl-is-breaking-my-javascript)
 - [Stack Overflow: Google Maps API Over Query per second limit](http://stackoverflow.com/questions/14014074/google-maps-api-over-query-limit-per-second-limit)
 - [Stack Overflow: HTML Geolocation stopped working in Google Chrome Version 44.0.2403.157 (64-bit)](http://stackoverflow.com/questions/32328133/in-new-chrome-44-0-2403-157-geolocations-doesnt-works)
+- [Stack Overflow: How to check if Google maps is fully loaded](http://stackoverflow.com/questions/832692/how-can-i-check-whether-google-maps-is-fully-loaded)
 - [Font Awesome Markers](https://github.com/nathan-muir/fontawesome-markers)
 - [SVGO: An Nodejs-based tool for optimizing SVG vector graphics files.](https://github.com/nathan-muir/svgo/tree/nathan-svgo)
 - [RichMarker – A Google Maps JavaScript API utility library](https://github.com/mikejoyceio/js-rich-marker)
