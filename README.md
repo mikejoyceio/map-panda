@@ -27,6 +27,10 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Nuttify: “before” pseudo element with Fontawesome ](http://nuttify.com/help/developer-manual/coding-style-guide/css-style-guide/css-tricks-before-pseudo-element-with-fontawesome/) by Ajax McKerral
 - [CSS Transforms and Z-Index](http://daneden.me/2012/04/22/css-transforms-and-z-index/) by Daniel Eden
 
+######Icon Font
+
+- [Font Awesome](https://fortawesome.github.io/Font-Awesome/examples/#animated)
+
 ######HTML
 
 - [HTML5 Doctor: The Main Element](http://html5doctor.com/the-main-element/)
