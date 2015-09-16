@@ -87,7 +87,7 @@
 		</div>
    	<!-- /Map Controls -->
 
-	  <!-- Main Loader -->
+	  <!-- Map Loader -->
 		<div class="map-loader" data-bind="visible: showMapLoader">
 			<div class="content">
 				<div class="icon">
@@ -95,13 +95,13 @@
 				</div>
 			</div>
 		</div>
-		<!-- /Main Loader -->
+		<!-- /Map Loader -->
 
 	</div>
 	<!-- /Main Content -->
 
 	<!-- Info Modal -->
-	<div class="modal" data-bind="modal: { visibility: modalVisibilty, loading: modalLoading }">
+	<div class="modal" data-bind="modal: { modal: modalVisibilty, overlay: modalOverlayVisibility, loading: modalLoading }">
 		<div class="modal-content">
 			<div class="modal-header">
 				<div class="top-bar">
@@ -119,17 +119,26 @@
 			</div>
 			<div class="modal-body">
 				<div class="actions">
-					<div class="place-phone">
-						<span class="fa fa-phone"></span>	
+					<div class="action-phone" data-bind="event: { click: openModalOverlay, touchstart: openModalOverlay }">
+						<span class="icon fa fa-phone"></span>	
 					</div>	
-					<div class="place-uber">
-						<span class="fa fa-car"></span>
+					<div class="action-uber">
+						<span class="icon fa fa-car"></span>
 					</div>
 				</div>
 				<div class="info">
 					<p class="place-name" data-bind="text: infoName"></p>
 					<p class="place-address" data-bind="text: infoVicinity"></p>
-					<p class="place-phone" data-bind="text: infoPhone"></p>
+				</div>
+			</div>
+			<div class="modal-overlay">
+				<div class="place-phone" data-bind="text: infoPhone"></div>			
+				<div class="actions">
+					<div class="button-group two" data-bind="visible: infoPhoneCall()">
+						<button class="button default radius">Copy</button>
+						<a class="button action radius" data-bind="attr: { href: 'tel:'+infoPhoneCall() }">Call</a>
+					</div>
+					<button class="button cancel radius expand" data-bind="event: { click: closeModalOverlay, touchstart: closeModalOverlay }">Close</button>
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -138,6 +147,7 @@
 					<span>View in Foursquare</span>
 				</a>
 			</div>
+			<div class="modal-loader"></div>
 		</div>
 	</div>
 	<!-- /Info Modal -->
