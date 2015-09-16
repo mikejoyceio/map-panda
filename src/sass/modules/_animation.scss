@@ -39,3 +39,8 @@
 		@include transform(translateX(-1px) rotate(-1deg));
 	}
 }
+
+@include keyframes(fade-in) {
+	0% 	 { opacity: 0 }	
+	100% { opacity: 1 }
+}
