@@ -15346,12 +15346,14 @@ var globals = {
 		this.searchQuery = ko.observable();
 		this.searchRadius = ko.observable(5000);
 		this.modalVisibilty = ko.observable(false);
+		this.modalOverlayVisibility = ko.observable(false);
 		this.modalLoading = ko.observable(true);
 		this.infoPhoto = ko.observable();
 		this.infoRating = ko.observable();
 		this.infoName = ko.observable();
 		this.infoVicinity = ko.observable();
 		this.infoPhone = ko.observable();
+		this.infoPhoneCall = ko.observable();
 
 		placesData.forEach(function(placeItem) {
 			self.placeList.push(new Place(placeItem));
@@ -15368,6 +15370,11 @@ var globals = {
 				self.mapInfo(false);
 			}
 			place.isActive(!place.isActive());
+			// if (self.showMapLoader()) {
+			// 	$('.place-list li').click(false);
+			// } else {
+			// 	console('false');
+			// }
 			self.mapInfo(true);
 		}
 
@@ -15410,6 +15417,14 @@ var globals = {
 	 	this.closeModal = function() {
 	 		self.modalVisibilty(false);
 	 	} 
+
+	 	this.openModalOverlay = function() {
+	 		self.modalOverlayVisibility(true);
+	 	}
+
+	 	this.closeModalOverlay = function() {
+	 		self.modalOverlayVisibility(false);
+	 	}
 
 	}
 
@@ -15664,7 +15679,8 @@ var globals = {
 										id: place.id,
 										name: place.name,
 										vicinity: place.vicinity,
-										phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'no number',
+										phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'No Number',
+										phoneCall: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number.replace(/ /g, '') : false,
 										photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default.png',
 										rating: typeof place.rating !== 'undefined' ? place.rating : '-'
 									};
@@ -15674,6 +15690,7 @@ var globals = {
 									bindingContext.$root.infoName(placeInfo.name);
 									bindingContext.$root.infoVicinity(placeInfo.vicinity);
 									bindingContext.$root.infoPhone(placeInfo.phone);
+									bindingContext.$root.infoPhoneCall(placeInfo.phoneCall);
 									bindingContext.$root.modalLoading(false);
 
 							  } else {
@@ -15816,20 +15833,38 @@ var globals = {
 	// KO Custom Binding for Modal
 	ko.bindingHandlers.modal = {
 		update: function(element, valueAccessor) {
-			var values = valueAccessor();
-			var visibility = values.visibility();
-			var loading = values.loading();
 
-			if (visibility) {
+			var stage01 = 'modal-stage-01';
+			var stage02 = 'modal-stage-02';
+			var stage03 = 'modal-stage-03';
+			var loader = '.modal-loader';
+			var overlay = '.modal-overlay';
+			var overlayOpen = 'modal-overlay-open';
+
+			if (valueAccessor().modal()) {	
 				$(element).show();
 			} else {
 				$(element).hide();
+				valueAccessor().loading(false);
 			}
 
-			if (loading) {
-				//$(element).children();
+			if (valueAccessor().overlay()) {
+				$(element).find(overlay).addClass(overlayOpen);
 			} else {
-				//$(element).children().fadeIn();
+				$(element).find(overlay).removeClass(overlayOpen);
+			}
+
+			if (valueAccessor().loading()) {
+				$(element).removeClass(stage01+' '+stage02+' '+stage03);
+				$(element).find(loader).show();
+				valueAccessor().overlay(false);
+			} else {
+				$(element).addClass(stage01);
+				setTimeout(function() {
+					$(element).find(loader).hide().promise().done(function() {
+						$(element).addClass(stage02+' '+stage03);
+					});
+				}, 1000);
 			}
 
 		}

@@ -6,19 +6,56 @@
 	@include border-radius(7px);
 	display: none;
 	width: 270px;
-	height: 350px;
+	height: 115px;
 	left: 230px;
 	right: 0;
-	top: 105px;
+	top: 100%;
 	position: absolute;
 	overflow: hidden;
 	z-index: 1000;
 
+	&.modal-stage-01 {
+		@include transition(all .15s linear);
+		top: 105px;
+
+		.image {
+			opacity: 0;
+		}
+
+		.modal-body,
+		.modal-footer {
+			display: none;
+			opacity: 0;
+		}
+	}
+
+	&.modal-stage-02 {
+		@include transition(all .05s linear);
+		height: 350px;
+
+		.image {
+			opacity: 1;
+		}
+	}
+
+	&.modal-stage-03 {
+		
+		.modal-body,
+		.modal-footer {
+			display: block;
+			@include animation(fade-in 0.4s 0.3s normal forwards);	
+		}
+	}
+
 	.modal-content {
+		height: 100%;
+		position: relative;
 
 		.modal-header {
+			background: #505050;
 			position: relative;
 			height: 130px;
+			z-index: 2;
 
 			.top-bar {
 				background: $accent-color;
@@ -27,6 +64,7 @@
 				left: 0;
 				height: 25px;
 				width: 100%;
+				z-index: 3;
 
 				.close-modal {
 					font-size: 10px;
@@ -85,13 +123,14 @@
 		.modal-body {
 			position: relative;
 			margin: 10px;
+			z-index: 1;
 
 			.actions {
 				border-bottom: 1px solid #e8e6e4;
 				height: 50px;
 
-				.place-phone,
-				.place-uber {
+				.action-phone,
+				.action-uber {
 				  padding: 5px 7px;
 				  width: 110px;
 				  text-align: center;
@@ -100,11 +139,13 @@
 				  position: absolute;
 				}
 
-				.place-phone {
+				.action-phone {
 					border-right: 1px solid #e8e6e4;
+					cursor: pointer;
 					left: 0;
 				}
-				.place-uber {
+
+				.action-uber {
 					border-left: 1px solid #e8e6e4;
 					right: 0;
 				}
@@ -146,6 +187,50 @@
 			}
 		}
 
+		.modal-overlay {
+		  @include transition(all 0.2s linear);
+		  background: rgba(255, 255, 255, 0.95);
+		  border: 8px solid rgba(218, 222, 227, 0.9);
+		  box-sizing: border-box;
+		  height: 100%;
+		  opacity: 0;
+		  padding: 5px;
+		  position: absolute;
+		  top: 350px;
+		  width: 100%;
+		  z-index: 3;
+
+		  &.modal-overlay-open {
+		  	top: 0;
+		  	opacity: 1;
+		  }
+
+		  .place-phone {
+		  	height: 110px;
+			  font-family: 'Lato', sans-serif;
+			  font-size: 25px;
+			  font-weight: 300;
+			  margin: 65px 0;
+			  text-align: center;
+		  }
+
+		  .actions {
+			  position: relative;
+			  bottom: -5px;
+			  height: 90px;
+
+			  .button-group {
+					position: absolute;
+					top: 0;
+			  }
+
+			  .button.cancel {
+				  position: absolute;
+				  bottom: 0;
+			  }
+		  }
+		}
+
 		.modal-footer {
 		  border-top: 1px solid #e8e6e4;
 		  margin: auto 10px;
@@ -154,6 +239,7 @@
 		  bottom: 0;
 		  left: 0;
 		  right: 0;
+		  z-index: 1;
 
 			.button-foursquare {
 			  @include border-radius(20px);
