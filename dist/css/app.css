@@ -191,6 +191,90 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     transform: translateX(-1px) rotate(-1deg);
   }
 }
+@-moz-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 1px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  font-family: 'Lato', sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: normal;
+  margin: 0 0 15px;
+  padding: 7px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+}
+.button.default {
+  background-color: #dadee3;
+  border-color: #dadee3;
+  color: #666;
+}
+.button.action {
+  background-color: #70b68d;
+  color: #fff;
+  border-color: #70b68d;
+}
+.button.cancel {
+  background-color: #ed5565;
+  color: #fff;
+  border-color: #ed5565;
+}
+.button.radius {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.button.expand {
+  width: 100%;
+}
+
+.button-icon {
+  left: 20px;
+  position: absolute;
+  top: 10px;
+}
+
+.button-group {
+  width: 100%;
+}
+.button-group.two {
+  outline: none;
+}
+.button-group.two .button {
+  display: inline-block;
+  width: 49.3%;
+}
+
 /*!
  *  Font Awesome 4.4.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -2834,12 +2918,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   outline: none;
 }
 
-.loader, .loader-main, .loader-modal {
+.loader, .main-loader, .modal-loader {
   -webkit-box-sizing: border-box;
   border-style: solid;
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
   border-width: 10px;
-  border-top-color: #FFF;
+  border-top-color: transparent;
   -moz-border-radius: 40px;
   -webkit-border-radius: 40px;
   border-radius: 40px;
@@ -2849,7 +2933,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   position: absolute;
 }
 
-.loader-main {
+.main-loader {
   width: 80px;
   height: 80px;
   left: 0;
@@ -2857,18 +2941,18 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   margin: auto;
 }
 
-.loader-modal {
+.modal-loader {
   width: 40px;
   height: 40px;
   border-width: 6px;
-  top: 47%;
+  top: 50px;
   left: 0;
   right: 0;
   margin: auto;
   z-index: 9999;
 }
 
-.loader-map {
+.map-loader {
   display: table;
   height: 100%;
   left: 0;
@@ -2879,11 +2963,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   top: 0;
   width: 100%;
 }
-.loader-map .content {
+.map-loader .content {
   display: table-cell;
   vertical-align: middle;
 }
-.loader-map .content .icon {
+.map-loader .content .icon {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
@@ -2918,7 +3002,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-weight: 300;
 }
 
-.zoom-buttons {
+.map-zoom-buttons {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -2931,7 +3015,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   width: 25px;
   z-index: 999;
 }
-.zoom-buttons .zoom-button {
+.map-zoom-buttons .map-zoom-button {
   color: #667174;
   -moz-transition: all 0.5s linear;
   -o-transition: all 0.5s linear;
@@ -2943,20 +3027,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   position: absolute;
   width: 100%;
 }
-.zoom-buttons .zoom-button:hover {
+.map-zoom-buttons .map-zoom-button:hover {
   color: #ffffff;
   cursor: pointer;
 }
-.zoom-buttons .zoom-button.zoom-in {
+.map-zoom-buttons .map-zoom-button.zoom-in {
   border-bottom: 1px solid #667174;
   top: 0;
 }
-.zoom-buttons .zoom-button.zoom-out {
+.map-zoom-buttons .map-zoom-button.zoom-out {
   border-top: 1px solid #667174;
   bottom: 0;
 }
 
-.pan-to {
+.map-pan-to {
   -moz-border-radius: 999px;
   -webkit-border-radius: 999px;
   border-radius: 999px;
@@ -2973,11 +3057,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   top: 105px;
   width: 30px;
 }
-.pan-to:hover {
+.map-pan-to:hover {
   color: #ffffff;
   cursor: pointer;
 }
-.pan-to .icon {
+.map-pan-to .icon {
   font-size: 18px;
   line-height: 1.7;
 }
@@ -3031,17 +3115,55 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border-radius: 7px;
   display: none;
   width: 270px;
-  height: 350px;
+  height: 115px;
   left: 230px;
   right: 0;
-  top: 105px;
+  top: 100%;
   position: absolute;
   overflow: hidden;
   z-index: 1000;
 }
+.modal.modal-stage-01 {
+  -moz-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+  -webkit-transition: all 0.15s linear;
+  transition: all 0.15s linear;
+  top: 105px;
+}
+.modal.modal-stage-01 .image {
+  opacity: 0;
+}
+.modal.modal-stage-01 .modal-body,
+.modal.modal-stage-01 .modal-footer {
+  display: none;
+  opacity: 0;
+}
+.modal.modal-stage-02 {
+  -moz-transition: all 0.05s linear;
+  -o-transition: all 0.05s linear;
+  -webkit-transition: all 0.05s linear;
+  transition: all 0.05s linear;
+  height: 350px;
+}
+.modal.modal-stage-02 .image {
+  opacity: 1;
+}
+.modal.modal-stage-03 .modal-body,
+.modal.modal-stage-03 .modal-footer {
+  display: block;
+  -moz-animation: fade-in 0.4s 0.3s normal forwards;
+  -webkit-animation: fade-in 0.4s 0.3s normal forwards;
+  animation: fade-in 0.4s 0.3s normal forwards;
+}
+.modal .modal-content {
+  height: 100%;
+  position: relative;
+}
 .modal .modal-content .modal-header {
+  background: #505050;
   position: relative;
   height: 130px;
+  z-index: 2;
 }
 .modal .modal-content .modal-header .top-bar {
   background: #2eb398;
@@ -3050,6 +3172,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   left: 0;
   height: 25px;
   width: 100%;
+  z-index: 3;
 }
 .modal .modal-content .modal-header .top-bar .close-modal {
   font-size: 10px;
@@ -3102,13 +3225,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .modal .modal-content .modal-body {
   position: relative;
   margin: 10px;
+  z-index: 1;
 }
 .modal .modal-content .modal-body .actions {
   border-bottom: 1px solid #e8e6e4;
   height: 50px;
 }
-.modal .modal-content .modal-body .actions .place-phone,
-.modal .modal-content .modal-body .actions .place-uber {
+.modal .modal-content .modal-body .actions .action-phone,
+.modal .modal-content .modal-body .actions .action-uber {
   padding: 5px 7px;
   width: 110px;
   text-align: center;
@@ -3116,11 +3240,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   top: 5px;
   position: absolute;
 }
-.modal .modal-content .modal-body .actions .place-phone {
+.modal .modal-content .modal-body .actions .action-phone {
   border-right: 1px solid #e8e6e4;
+  cursor: pointer;
   left: 0;
 }
-.modal .modal-content .modal-body .actions .place-uber {
+.modal .modal-content .modal-body .actions .action-uber {
   border-left: 1px solid #e8e6e4;
   right: 0;
 }
@@ -3155,6 +3280,47 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 11px;
   line-height: 1.2;
 }
+.modal .modal-content .modal-overlay {
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  background: rgba(255, 255, 255, 0.95);
+  border: 8px solid rgba(218, 222, 227, 0.9);
+  box-sizing: border-box;
+  height: 100%;
+  opacity: 0;
+  padding: 5px;
+  position: absolute;
+  top: 350px;
+  width: 100%;
+  z-index: 3;
+}
+.modal .modal-content .modal-overlay.modal-overlay-open {
+  top: 0;
+  opacity: 1;
+}
+.modal .modal-content .modal-overlay .place-phone {
+  height: 110px;
+  font-family: 'Lato', sans-serif;
+  font-size: 25px;
+  font-weight: 300;
+  margin: 65px 0;
+  text-align: center;
+}
+.modal .modal-content .modal-overlay .actions {
+  position: relative;
+  bottom: -5px;
+  height: 90px;
+}
+.modal .modal-content .modal-overlay .actions .button-group {
+  position: absolute;
+  top: 0;
+}
+.modal .modal-content .modal-overlay .actions .button.cancel {
+  position: absolute;
+  bottom: 0;
+}
 .modal .modal-content .modal-footer {
   border-top: 1px solid #e8e6e4;
   margin: auto 10px;
@@ -3163,6 +3329,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 1;
 }
 .modal .modal-content .modal-footer .button-foursquare {
   -moz-border-radius: 20px;
