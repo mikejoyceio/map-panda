@@ -1,0 +1,68 @@
+
+// Buttons
+
+.button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border-radius:0;
+	border-style: solid;
+	border-width: 1px;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: block;
+	font-family: 'Lato', sans-serif;
+	font-size: 15px;
+	font-weight: normal;
+	line-height: normal;
+	margin: 0 0 15px;
+	padding: 7px;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+
+	&.default {
+		background-color: #dadee3;
+		border-color: #dadee3;
+		color: #666;
+	}
+
+	&.action {
+		background-color: #70b68d;
+		color: #fff;
+		border-color: #70b68d;
+	}
+
+	&.cancel {
+		background-color: #ed5565;
+		color: #fff;
+		border-color: #ed5565;
+	}
+
+	&.radius {
+		@include border-radius(3px);
+	}
+
+	&.expand {
+		width: 100%;
+	}
+
+}
+
+.button-icon {
+  left: 20px;
+  position: absolute;
+  top: 10px;
+}
+
+.button-group {
+  width: 100%;
+
+	&.two {
+		outline: none;
+
+		.button {
+		  display: inline-block;
+		  width: 49.3%
+		}
+	}
+}
