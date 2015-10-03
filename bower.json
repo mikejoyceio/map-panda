@@ -1,11 +1,11 @@
 {
-  "name": "map",
+  "name": "App Name",
   "version": "1.0.0",
   "homepage": "https://github.com/mikejoyceio/map",
   "authors": [
-    "Mike Joyce <contact@mikejoyce.me>"
+    "Mike Joyce <hello@mikejoyce.io>"
   ],
-  "description": "my mapp",
+  "description": "App Description",
   "license": "MIT",
   "private": true,
   "ignore": [

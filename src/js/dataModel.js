@@ -1,6 +1,18 @@
 
 // Data Model
 
+/* Places Data
+ * - Name: The name of the place
+ * - Description: A short description of the place
+ * - Type: The has to be from the Google Places API
+ * - Icon: Font Awesome CSS class
+ * - Marker: Font Awesome SVG map marker
+ */
+
+// var dataModel = {};
+
+// dataModel.places = [];
+
 var placesData = [
 	{
 		name: 'Airports',

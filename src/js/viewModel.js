@@ -1,9 +1,20 @@
+
+// View Model
+
 /**
- * @file overview : 
+ * @file overview : Map project for Udacity's FEND
  * @author : contact@mikejoyce.io (Mike Joyce)
  */
 
-// Global namespace
+/* TODO:
+ * - Set default notication keep alive to 'true' 
+ * - Remove redundant code
+ * - Rename modal info observables
+ * - Move menu SCSS partial to modules
+ * - Set map location when Geo Location fails
+ */
+
+// Global Namespace
 var globals = {
 	map: '',
 	latLang: '',
@@ -12,6 +23,7 @@ var globals = {
 	debug: true
 };
 
+// Encapsulate the ViewModel
 (function(global) {
 
 	// View Model 
@@ -20,16 +32,27 @@ var globals = {
 		// Save a pointer reference to 'this'
 		var self = this;
 
+		// App Observables
 		this.appName = "App Name";
-		this.contentName = "Content Name";
-		this.showMapLoader = ko.observable(false);
+		this.appDescription = "App Description";
+
+		// Notifcation Observables
 		this.notificationMessage = ko.observable('');
 		this.notificationKeepAlive = ko.observable(false);
 		this.notificationFadeDuration = ko.observable(1000);
+
+		// Map Observables
 		this.mapInfo = ko.observable(false);
+		this.showMapLoader = ko.observable(false);
+
+		// Place List Observable
 		this.placeList = ko.observableArray([]); 
+
+		// Search Observables
 		this.searchQuery = ko.observable();
 		this.searchRadius = ko.observable(5000);
+
+		// Modal Observables
 		this.modalVisibilty = ko.observable(false);
 		this.modalOverlayVisibility = ko.observable(false);
 		this.modalLoading = ko.observable(true);
@@ -40,12 +63,15 @@ var globals = {
 		this.infoPhone = ko.observable();
 		this.infoPhoneCall = ko.observable();
 
+		// Loop through each place object in the placesData array
 		placesData.forEach(function(placeItem) {
 			self.placeList.push(new Place(placeItem));
 		});
 
+		// Set the current place
 		this.currentPlace = ko.observable( this.placeList()[0] );
 
+		// Select the current place
 		this.selectPlace = function(place) {
 			self.notificationKeepAlive(false);
 			self.notificationFadeDuration(0);
@@ -63,6 +89,7 @@ var globals = {
 			self.mapInfo(true);
 		}
 
+		// Filter place types in the place list
 		this.search = function(value) {
 		 for (i=0;i<self.placeList().length;i++) {
 		 	self.placeList()[i].isHidden(false);
@@ -77,36 +104,43 @@ var globals = {
 		}
 		this.searchQuery.subscribe(this.search);
 
+		// Clear the filter
+		this.clearSearch = function() {
+			for (i=0;i<self.placeList().length;i++) {
+				self.placeList()[i].isHidden(false);
+			}
+		}
+
+		// Pan to the current location on the map
 		this.panTo = function() {
 			global.map.panTo(global.latLang);
 		}
 
+		// Zoom the map in
 		this.zoomIn = function() {
 			var currentZoomLevel = global.map.getZoom();
 			if(currentZoomLevel != 21){
 			global.map.setZoom(currentZoomLevel + 1);}
 		}
 
+		// Zoom the map out
 		this.zoomOut = function() {
 			var currentZoomLevel = global.map.getZoom();
 			if(currentZoomLevel != 0){
 			global.map.setZoom(currentZoomLevel - 1);}
 		}
-
-		this.clearSearch = function() {
-			for (i=0;i<self.placeList().length;i++) {
-				self.placeList()[i].isHidden(false);
-			}
-		}
-	 
+	
+		// Close modal 
 	 	this.closeModal = function() {
 	 		self.modalVisibilty(false);
 	 	} 
 
+	 	// Open modal overlay
 	 	this.openModalOverlay = function() {
 	 		self.modalOverlayVisibility(true);
 	 	}
 
+	 	// Close modal overlay
 	 	this.closeModalOverlay = function() {
 	 		self.modalOverlayVisibility(false);
 	 	}
@@ -127,6 +161,7 @@ var globals = {
 	// KO Custom Binding for Map
 	ko.bindingHandlers.map = {
 
+		// Init function - ran once
 	  init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
 	    var mapOptions = {
@@ -144,6 +179,7 @@ var globals = {
 		  if(navigator.geolocation) {
 		    navigator.geolocation.getCurrentPosition(function(position) {
 		
+						// Instantiate a new Google Map object	
 			      global.latLang = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 			 
 			      // var infowindow = new google.maps.InfoWindow({
@@ -153,8 +189,10 @@ var globals = {
 			      //   content: 'Location found using HTML5.'
 			      // });
 
+		    		// Center map on current location
 			      global.map.setCenter(global.latLang);
 
+			      // Add a custom HTML current position marker to the map
 				    var marker = new RichMarker({
 				    	position: global.latLang,
 				    	map: global.map,
@@ -163,49 +201,56 @@ var globals = {
 				    });
 
 			  }, function() {
-		  		// Browser supports Geolocation but hasn't been enabled
+		  		// Browser supports Geo-location but hasn't been enabled
 		      handleNoGeolocation(true);
 			}, 
-				// Enable high accuracy 
+				// Enable high accuracy Geo-location
 				{maximumAge:600000, timeout:5000, enableHighAccuracy: true});
 			  
 			} else {
-		    // Browser doesn't support Geolocation
+		    // Browser doesn't support Geo-location
 		    handleNoGeolocation(false);
 			}
 
+			// Handle no Geo-location
 			function handleNoGeolocation(errorFlag) {
 
 			  if (errorFlag) {
 
+			  	// If the global.debug variable is set to true, console.log the error
 					if (global.debug) console.log('Error: The Geolocation service failed.');
+					// Show the user notification message 
 					bindingContext.$root.notificationKeepAlive(true);
 					bindingContext.$root.notificationMessage('Error: The Geolocation service failed.');
 
 			  } else {
 
+			  	// If the global.debug variable is set to true, console.log the error
 					if (global.debug) console.log('Error: Your browser doesn\'t support geolocation.');
+					// Show the user notification message 
 					bindingContext.$root.notificationKeepAlive(true);
 					bindingContext.$root.notificationMessage('Error: Your browser doesn\'t support geolocation.');
 
 			  }
 
-			  var options = {
-			    map: global.map,
-			    position: new google.maps.LatLng(60, 105),
-			    content: content
-			  };
+			  // var options = {
+			  //   map: global.map,
+			  //   position: new google.maps.LatLng(60, 105),
+			  //   content: content
+			  // };
 
-			  var infowindow = new google.maps.InfoWindow(options);
-			  map.setCenter(options.position);
+			  // var infowindow = new google.maps.InfoWindow(options);
+			  // map.setCenter(options.position);
 			}
 
 		},
 
+		// Update function - ran every times an observable changes
 		update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 		  
 	  	var value = valueAccessor();
 
+	  	// If the markers array contains values, clear them from the map
 	  	if (global.markers) {
 	  		for (var i=0; i < global.markers.length; i++) {
 					global.markers[i].setMap(null);
@@ -213,38 +258,68 @@ var globals = {
 				global.markers.length = 0;
 	  	}
 
+	  	// If the current place is active, perform a search
 	  	if (value.currentPlace().isActive()) {
 
 	  		var performSearch = function() {
 
+	  			// Google Maps places search request object
 			    var request = {
 			    	location: global.latLang,
 			    	radius: value.searchRadius(),
 			    	types: []
 			    };
 
+			    // Push the current place type into the request object types array
 			    request.types.push(value.currentPlace().type());
 
+			    // Instatiate a new Google Maps info window
 			    var infoWindow = new google.maps.InfoWindow();
+
+			    // Instantiate a new places service object
 			    var mapPlaces = new google.maps.places.PlacesService(global.map);
+
+			    // Set a variable to hold error messages for debugging purposes
 			    var statusMessage;
+
+			    // Set a variable to hold error messages visible to the user
 			    var notificationMessage;
 
+			    // Search nearby places
 			    mapPlaces.nearbySearch(request, callback);
 
+			    // Show the map loading animation
 			    showMapLoader();
 
+			    // Google Maps places search callback function
 			    function callback(results, status) {
 			    	if (status === google.maps.places.PlacesServiceStatus.OK) {
+
+			    		// Clear all markers from the map
 			    		clearMarkers();
+
+			    		// Set the places array length to 0
 			    		global.places.length = 0;
+
+			    		// Hide user notification messages
 			    		bindingContext.$root.notificationKeepAlive(false);
 			    		bindingContext.$root.notificationFadeDuration(0);
+
+			    		// Loop through the results and push intot the places array
 			    		for (var i=0; i < results.length; i++) {
 			    			global.places.push(results[i]);
 			    		}	
+
+			    		// Set place markers, info windows and modals	
 			    		setPlaces();
+
+			    		// Hide the map loading animation
 			    		hideMapLoader();
+
+			    	/* Callback Error Handling
+						 * Error status and messages will be passed the the callbackError function.
+						 */
+
 			    	} else if (status === google.maps.places.PlacesServiceStatus.ERROR) {
 			    		statusMessage = status+' There was a problem contacting the Google servers.';
 			    		notificationMessage = 'There was a problem contacting the Google servers.';
@@ -274,25 +349,37 @@ var globals = {
 			    	}
 			    }
 
+
+			    /* Callback Error Function
+			     * This function will create both an error message for debugging purposes and a
+					 * more readable, jargon-free error message for the user.
+			     */
 			    function callbackError(statusMessage, notificationMessage) {
+			    	// If the global.debug variable is set to true, console log the error
 			    	if (global.debug) console.log(statusMessage);
+			    	// Show the user notification message
 				    bindingContext.$root.showMapLoader(false);
 				   	bindingContext.$root.notificationKeepAlive(true);
 		    		bindingContext.$root.notificationMessage(notificationMessage);	  	    	
 			    }
 
+			    // Set places function
 			    function setPlaces() {
 
+			    	// Loop thought the places array
 				    for (var i=0; i < global.places.length; i++) {
 
+				    	// Create a marker and set marker's icon
 				    	global.markers[i] = new google.maps.Marker({
 				    		map: global.map,
 				    		position: global.places[i].geometry.location,
 				    		icon: value.currentPlace().marker()
 				    	});
 
+				    	// Add the marker to the map
 				    	global.markers[i].setMap(global.map);
 
+				    	// Create an object to hold data for the place
 				    	var placeData = {
 				    		marker: global.markers[i],
 				    		id: global.places[i].id,
@@ -306,11 +393,15 @@ var globals = {
 				    					 : 'nophoto.jpg'
 				    	}
 
+				    	// Add an Info Window 
 				    	addInfoWindow(placeData);
+
+				    	// Add an Info Modal
 				    	addInfoModal(placeData);
 
 				    }
 
+				    // Automagically zoom the map in / out to show all the markers 
 				    var bounds = new google.maps.LatLngBounds();
 				    for(i=0; i<global.markers.length; i++) {
 				    	bounds.extend(global.markers[i].getPosition());
@@ -319,10 +410,13 @@ var globals = {
 
 				 	}
 
+				 	// Add Info Window function
 					function addInfoWindow(data) {
 
+						// Add event listener to show Info Window on marker mouseover
 					 	google.maps.event.addListener(data.marker, 'mouseover', function() {
 
+					 		// Set Info Window content
 					  	infoWindow.setContent(
 					  		'<div class="info-window">' +
 					  		'<h5>'+data.name+'</h5>' +
@@ -334,30 +428,40 @@ var globals = {
 
 					  });
 
+					 	// Add event listener to hide Info Window on marker mouseout
 					  google.maps.event.addListener(data.marker, 'mouseout', function() {
 					  	infoWindow.close(global.map, this);
 					  });
 
 					}
 
+					// Add Info Modal function
 					function addInfoModal(data) {
 
+						// Add event listener to show Info Modal on marker click
 						google.maps.event.addListener(data.marker, 'click', function() {
 
+							// Pan to the markers position on the map
 							global.map.panTo(data.position);
 
+							// Show the modal
 							bindingContext.$root.modalVisibilty(true);
+							// Show the modal loading animation
 							bindingContext.$root.modalLoading(true);
 
+							// Google Maps places search request object 
 							var request = { 
 					  		placeId: data.placeId
 							};
 
+							// Instatiate a Google Maps Places Service object
 							var service = new google.maps.places.PlacesService(global.map);
 							service.getDetails(request, callback);
 
+							// Google Maps places search callback function
 							function callback(place, status) {
 
+								// If the request if OK, set the Info Window content
 							  if (status == google.maps.places.PlacesServiceStatus.OK) {
 
 							  	var placeInfo = {
@@ -378,6 +482,7 @@ var globals = {
 									bindingContext.$root.infoPhoneCall(placeInfo.phoneCall);
 									bindingContext.$root.modalLoading(false);
 
+								// If the request failed, console log the error if the global.debug variable is set to true
 							  } else {
 
 						  		if (global.debug) console.log(status);
@@ -389,6 +494,7 @@ var globals = {
 
 					}
 
+					// Clear map markers function
 					function clearMarkers() {
 						for (var i=0; i < global.markers.length; i++) {
 							global.markers[i].setMap(null);
@@ -399,10 +505,12 @@ var globals = {
 				} 
 				performSearch();
 
+				// Show map loader function
 				function showMapLoader() {
 			    bindingContext.$root.showMapLoader(true);
 			   }
 
+			  // Hide map loader function
 			  function hideMapLoader() {
 	    		google.maps.event.addListener(global.map, 'idle', function() {
 	    			setTimeout(function() {
@@ -419,25 +527,36 @@ var globals = {
 
 	// KO Custom Binding for Notifications
 	ko.bindingHandlers.notification = {
-		update: function(element, valueAccessor, allBindingsAccessor, viewModel) {
-			var rawValue = valueAccessor(),
-				//notification can be passed an object with properties 'message', 'duration', 'fadeoutDuration', 'hide', 'fade', and 'callback', or it can be given just a string
-				options = typeof rawValue == 'object' ? rawValue : {message: rawValue},
-				message = ko.utils.unwrapObservable(options.message),
-				duration = options.duration !== undefined ? ko.utils.unwrapObservable(options.duration) : 5000, //5 seconds is default fade out
-				fadeoutDuration = options.fadeoutDuration !== undefined ? ko.utils.unwrapObservable(options.fadeoutDuration) : 200, //default is 200 ms
-				hide = options.hide !== undefined ? ko.utils.unwrapObservable(options.hide) : true, //default is to hide it
-				fade = options.fade !== undefined ? ko.utils.unwrapObservable(options.fade) : true, //default is to fade it out in presence of jquery
-	            callback = options.callback !== undefined ? ko.utils.unwrapObservable(options.callback) : function() {},
-				jQueryExists = typeof jQuery != 'undefined';
 
-			//set the element's text to the value of the message
+		// Update function - ran everytime an observable changes
+		update: function(element, valueAccessor, allBindingsAccessor, viewModel) {
+
+			var rawValue = valueAccessor(),
+
+			/* The Notification binding can be passed a string or an object with properties: 
+			 * - message
+			 * - duration (default fade out is 4 seconds)
+			 * - fadeoutDuration (default duration is 200 miliseconds)
+			 * - hide (hidden by default)
+			 * - fade (fade out by default if jQuery is present)
+			 * - callback 
+			 */
+			options = typeof rawValue == 'object' ? rawValue : {message: rawValue},
+			message = ko.utils.unwrapObservable(options.message),
+			duration = options.duration !== undefined ? ko.utils.unwrapObservable(options.duration) : 5000,
+			fadeoutDuration = options.fadeoutDuration !== undefined ? ko.utils.unwrapObservable(options.fadeoutDuration) : 200,
+			hide = options.hide !== undefined ? ko.utils.unwrapObservable(options.hide) : true, 
+			fade = options.fade !== undefined ? ko.utils.unwrapObservable(options.fade) : true,
+            callback = options.callback !== undefined ? ko.utils.unwrapObservable(options.callback) : function() {},
+			jQueryExists = typeof jQuery != 'undefined';
+
+			// Set the element's text to the value of the message
 			if (message === null || message === undefined)
 				message = "";
 
 			element.innerHTML = message;
 
-			//clear any outstanding timeouts
+			// Clear any outstanding timeouts
 			clearTimeout(element.notificationTimer);
 
 			if (message == '') {
@@ -445,40 +564,44 @@ var globals = {
 				return;
 			}
 
-			//if there are any animations going on, stop them and show the element. otherwise just show the element
+			// If there are any animations going on, stop them and show the element, otherwise just show the element
 			if (jQueryExists)
 				jQuery(element).stop(true, true).show();
 			else
 				element.style.display = '';
 
 			if (!hide) {
-				//run a timeout to make it disappear
+
+				// Run a timeout to make it disappear
 				element.notificationTimer = setTimeout(function() {
-					//if jQuery is there, run the fadeOut, otherwise do old-timey js
+
+					// If jQuery is there, run the fadeOut, otherwise do old-timey js
 					if (jQueryExists) {
 						if (fade)
 							jQuery(element).fadeOut(fadeoutDuration, function() {
-	                            options.message('');
-	                            callback();
-	                        });
+                options.message('');
+                callback();
+	            });
 						else {
 							jQuery(element).hide();
 							options.message('');
-	                        callback();
+	            callback();
 						}
 					} else {
 						element.style.display = 'none';
-	                    callback();
+	          callback();
 					}
 				}, duration);
 			} else {
-	            callback();
+	      callback();
 			}
 		}
 	};
 
 	// KO Custom Binding for Range Slider
 	ko.bindingHandlers.rangeSlider = {
+
+		// Init function - ran once
 		init: function(element, valueAccessor, allBindingsAccessor) {
 			$(element).ionRangeSlider({
 			    min: 1000,
@@ -494,6 +617,8 @@ var globals = {
 			});
 			ko.bindingHandlers.value.init(element, valueAccessor, allBindingsAccessor);
 		},
+
+		// Update function - ran everytime an observable is updated
 		update: function(element, valueAccessor) {
 			var value = valueAccessor();
 			if (global.debug) console.log(ko.unwrap(value));
@@ -503,9 +628,14 @@ var globals = {
 
 	// KO Custom Binding for Scroll Bar
 	ko.bindingHandlers.scrollBar = {
+
+		// Init function - ran once
 		init: function(element, valueAccessor, allBindingsAccessor) {
+
+			// Check for mobile devices
 			var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
 
+			// If the device not a mobile device, instatiate the custom scroll bar
 			if (!isMobile) {
 				$(element).mCustomScrollbar({
 					keyboard:{scrollType:"stepped"},
@@ -517,6 +647,8 @@ var globals = {
 
 	// KO Custom Binding for Modal
 	ko.bindingHandlers.modal = {
+
+		// Update function - ran everytime an observable changes
 		update: function(element, valueAccessor) {
 
 			var stage01 = 'modal-stage-01';
