@@ -15,7 +15,7 @@
 	z-index: 1000;
 
 	&.modal-stage-01 {
-		@include transition(all .15s linear);
+		@include transition(all .15s ease-in-out);
 		top: 105px;
 
 		.image {
