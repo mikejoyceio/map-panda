@@ -112,9 +112,9 @@
 					</span>
 					</span>
 				</div>
-				<div class="image" data-bind="style: { backgroundImage: infoPhoto }"></div>
+				<div class="image" data-bind="style: { backgroundImage: modalInfoPhoto }"></div>
 				<div class="bottom-bar">
-					<div class="place-rating" data-bind="text: infoRating"></div>
+					<div class="place-rating" data-bind="text: modalInfoRating"></div>
 				</div>
 			</div>
 			<div class="modal-body">
@@ -127,16 +127,16 @@
 					</div>
 				</div>
 				<div class="info">
-					<p class="place-name" data-bind="text: infoName"></p>
-					<p class="place-address" data-bind="text: infoVicinity"></p>
+					<p class="place-name" data-bind="text: modalInfoName"></p>
+					<p class="place-address" data-bind="text: modalInfoVicinity"></p>
 				</div>
 			</div>
 			<div class="modal-overlay">
-				<div class="place-phone" data-bind="text: infoPhone"></div>			
+				<div class="place-phone" data-bind="text: modalInfoPhone"></div>			
 				<div class="actions">
-					<div class="button-group two" data-bind="visible: infoPhoneCall()">
+					<div class="button-group two" data-bind="visible: modalInfoPhoneCall()">
 						<button class="button default radius">Copy</button>
-						<a class="button action radius" data-bind="attr: { href: 'tel:'+infoPhoneCall() }">Call</a>
+						<a class="button action radius" data-bind="attr: { href: 'tel:'+modalInfoPhoneCall() }">Call</a>
 					</div>
 					<button class="button cancel radius expand" data-bind="event: { click: closeModalOverlay, touchstart: closeModalOverlay }">Close</button>
 				</div>

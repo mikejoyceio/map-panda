@@ -56,12 +56,12 @@ var globals = {
 		this.modalVisibilty = ko.observable(false);
 		this.modalOverlayVisibility = ko.observable(false);
 		this.modalLoading = ko.observable(true);
-		this.infoPhoto = ko.observable();
-		this.infoRating = ko.observable();
-		this.infoName = ko.observable();
-		this.infoVicinity = ko.observable();
-		this.infoPhone = ko.observable();
-		this.infoPhoneCall = ko.observable();
+		this.modalInfoPhoto = ko.observable();
+		this.modalInfoRating = ko.observable();
+		this.modalInfoName = ko.observable();
+		this.modalInfoVicinity = ko.observable();
+		this.modalInfoPhone = ko.observable();
+		this.modalInfoPhoneCall = ko.observable();
 
 		// Loop through each place object in the placesData array
 		placesData.forEach(function(placeItem) {
@@ -474,12 +474,12 @@ var globals = {
 										rating: typeof place.rating !== 'undefined' ? place.rating : '-'
 									};
 
-									bindingContext.$root.infoPhoto("url('"+placeInfo.photo+"')");
-									bindingContext.$root.infoRating(placeInfo.rating);
-									bindingContext.$root.infoName(placeInfo.name);
-									bindingContext.$root.infoVicinity(placeInfo.vicinity);
-									bindingContext.$root.infoPhone(placeInfo.phone);
-									bindingContext.$root.infoPhoneCall(placeInfo.phoneCall);
+									bindingContext.$root.modalInfoPhoto("url('"+placeInfo.photo+"')");
+									bindingContext.$root.modalInfoRating(placeInfo.rating);
+									bindingContext.$root.modalInfoName(placeInfo.name);
+									bindingContext.$root.modalInfoVicinity(placeInfo.vicinity);
+									bindingContext.$root.modalInfoPhone(placeInfo.phone);
+									bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);
 									bindingContext.$root.modalLoading(false);
 
 								// If the request failed, console log the error if the global.debug variable is set to true
