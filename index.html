@@ -128,7 +128,7 @@
 				</div>
 				<div class="info">
 					<p class="place-name" data-bind="text: modalInfoName"></p>
-					<p class="place-address" data-bind="text: modalInfoVicinity"></p>
+					<p class="place-address" data-bind="text: modalInfoAddress"></p>
 				</div>
 			</div>
 			<div class="modal-overlay" data-bind="cssAnimateVisible: modalOverlayVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
@@ -142,7 +142,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<a href="#" class="button-foursquare">
+				<a class="button-foursquare" data-bind="visible: modalInfoFoursquareVisibility(), attr: { href: modalInfoFoursquareURL() }" target="_blank">
 					<span class="icon fa fa-foursquare"></span>
 					<span>View in Foursquare</span>
 				</a>

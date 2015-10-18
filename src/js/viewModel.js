@@ -60,8 +60,31 @@ var globals = {
 		this.modalInfoRating = ko.observable();
 		this.modalInfoName = ko.observable();
 		this.modalInfoAddress = ko.observable();
+		this.modalInfoLat = ko.observable();
+		this.modalInfoLng = ko.observable();
 		this.modalInfoPhone = ko.observable();
 		this.modalInfoPhoneCall = ko.observable();
+		this.modalInfoFoursquareVisibility = ko.observable(false);
+		this.modalInfoFoursquareURL = ko.observable();
+
+		this.searchFoursquare = ko.computed(function() {
+			var request = {
+				venueLat: self.modalInfoLat(),
+				venueLng: self.modalInfoLng(),
+				venueName: self.modalInfoName()
+			}
+
+		  var response = dataModel.foursquare(request);
+
+		  if (response) {
+		  	self.modalInfoFoursquareURL(response.url);
+		  	self.modalInfoFoursquareVisibility(true);
+			} else {
+				self.modalInfoFoursquareURL('#');
+				self.modalInfoFoursquareVisibility(false);
+			}
+
+		}).extend({ notify: 'always', rateLimit: 500 });
 
 		// Loop through each place object in the dataModel.places array
 		dataModel.places.forEach(function(placeItem) {
@@ -463,11 +486,13 @@ var globals = {
 
 								// If the request if OK, set the Info Window content
 							  if (status == google.maps.places.PlacesServiceStatus.OK) {
-							  	console.log(place);
+
 							  	var placeInfo = {
 										id: place.id,
 										name: place.name,
 										address: place.formatted_address,
+										lat: place.geometry.location.lat(),
+										lng: place.geometry.location.lng(),
 										phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'No Number',
 										phoneCall: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number.replace(/ /g, '') : false,
 										photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default.png',
@@ -478,6 +503,8 @@ var globals = {
 									bindingContext.$root.modalInfoRating(placeInfo.rating);
 									bindingContext.$root.modalInfoName(placeInfo.name);
 									bindingContext.$root.modalInfoAddress(placeInfo.address);
+									bindingContext.$root.modalInfoLat(placeInfo.lat);							
+									bindingContext.$root.modalInfoLng(placeInfo.lng);
 									bindingContext.$root.modalInfoPhone(placeInfo.phone);
 									bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);
 
