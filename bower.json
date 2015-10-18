@@ -22,6 +22,7 @@
     "js-rich-marker": "https://github.com/googlemaps/js-rich-marker.git#gh-pages",
     "malihu-custom-scrollbar-plugin": "~3.0.9",
     "iNoBounce": "~0.1.2",
-    "font-awesome": "~4.4.0"
+    "font-awesome": "~4.4.0",
+    "Knockout-Animate": "git://github.com/TheGAFF/Knockout-Animate"
   }
 }
