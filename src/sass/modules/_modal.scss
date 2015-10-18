@@ -4,48 +4,14 @@
 .modal {
 	background: #fff;
 	@include border-radius(7px);
-	display: none;
 	width: 270px;
-	height: 115px;
+	height: 350px;
 	left: 230px;
 	right: 0;
-	top: 100%;
+	top: 105px;
 	position: absolute;
 	overflow: hidden;
 	z-index: 1000;
-
-	&.modal-stage-01 {
-		@include transition(all .15s ease-in-out);
-		top: 105px;
-
-		.image {
-			opacity: 0;
-		}
-
-		.modal-body,
-		.modal-footer {
-			display: none;
-			opacity: 0;
-		}
-	}
-
-	&.modal-stage-02 {
-		@include transition(all .05s linear);
-		height: 350px;
-
-		.image {
-			opacity: 1;
-		}
-	}
-
-	&.modal-stage-03 {
-		
-		.modal-body,
-		.modal-footer {
-			display: block;
-			@include animation(fade-in 0.4s 0.3s normal forwards);	
-		}
-	}
 
 	.modal-content {
 		height: 100%;
@@ -188,22 +154,15 @@
 		}
 
 		.modal-overlay {
-		  @include transition(all 0.2s linear);
 		  background: rgba(255, 255, 255, 0.95);
 		  border: 8px solid rgba(218, 222, 227, 0.9);
 		  box-sizing: border-box;
 		  height: 100%;
-		  opacity: 0.5;
 		  padding: 5px;
 		  position: absolute;
-		  top: 350px;
+		  top: 0;
 		  width: 100%;
 		  z-index: 3;
-
-		  &.modal-overlay-open {
-		  	top: 0;
-		  	opacity: 1;
-		  }
 
 		  .place-phone {
 		  	height: 110px;
