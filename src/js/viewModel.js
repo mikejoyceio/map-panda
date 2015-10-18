@@ -480,7 +480,10 @@ var globals = {
 									bindingContext.$root.modalInfoVicinity(placeInfo.vicinity);
 									bindingContext.$root.modalInfoPhone(placeInfo.phone);
 									bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);
-									bindingContext.$root.modalLoading(false);
+
+									setTimeout(function() {
+										bindingContext.$root.modalLoading(false);
+									}, 1000);
 
 								// If the request failed, console log the error if the global.debug variable is set to true
 							  } else {
@@ -645,47 +648,49 @@ var globals = {
 		}
 	};
 
-	// KO Custom Binding for Modal
-	ko.bindingHandlers.modal = {
+	// // KO Custom Binding for Modal
+	// ko.bindingHandlers.modal = {
 
-		// Update function - ran everytime an observable changes
-		update: function(element, valueAccessor) {
+	// 	// Update function - ran everytime an observable changes
+	// 	update: function(element, valueAccessor) {
 
-			var stage01 = 'modal-stage-01';
-			var stage02 = 'modal-stage-02';
-			var stage03 = 'modal-stage-03';
-			var loader = '.modal-loader';
-			var overlay = '.modal-overlay';
-			var overlayOpen = 'modal-overlay-open';
 
-			if (valueAccessor().modal()) {	
-				$(element).show();
-			} else {
-				$(element).hide();
-				valueAccessor().loading(false);
-			}
 
-			if (valueAccessor().overlay()) {
-				$(element).find(overlay).addClass(overlayOpen);
-			} else {
-				$(element).find(overlay).removeClass(overlayOpen);
-			}
+	// 		// var stage01 = 'modal-stage-01';
+	// 		// var stage02 = 'modal-stage-02';
+	// 		// var stage03 = 'modal-stage-03';
+	// 		// var loader = '.modal-loader';
+	// 		// var overlay = '.modal-overlay';
+	// 		// var overlayOpen = 'modal-overlay-open';
 
-			if (valueAccessor().loading()) {
-				$(element).removeClass(stage01+' '+stage02+' '+stage03);
-				$(element).find(loader).show();
-				valueAccessor().overlay(false);
-			} else {
-				$(element).addClass(stage01);
-				setTimeout(function() {
-					$(element).find(loader).hide().promise().done(function() {
-						$(element).addClass(stage02+' '+stage03);
-					});
-				}, 1000);
-			}
+	// 		if (valueAccessor().modal()) {	
+	// 			console.log('true');
+	// 		} else {
+	// 			console.log('false');
+	// 			valueAccessor().loading(false);
+	// 		}
 
-		}
-	}
+	// 		// if (valueAccessor().overlay()) {
+	// 		// 	$(element).find(overlay).addClass(overlayOpen);
+	// 		// } else {
+	// 		// 	$(element).find(overlay).removeClass(overlayOpen);
+	// 		// }
+
+	// 		// if (valueAccessor().loading()) {
+	// 		// 	$(element).removeClass(stage01+' '+stage02+' '+stage03);
+	// 		// 	$(element).find(loader).show();
+	// 		// 	valueAccessor().overlay(false);
+	// 		// } else {
+	// 		// 	$(element).addClass(stage01);
+	// 		// 	setTimeout(function() {
+	// 		// 		$(element).find(loader).hide().promise().done(function() {
+	// 		// 			$(element).addClass(stage02+' '+stage03);
+	// 		// 		});
+	// 		// 	}, 1000);
+	// 		// }
+
+	// 	}
+	// }
 
 	// Apply Knockout Bindings
 	ko.applyBindings(new ViewModel());
