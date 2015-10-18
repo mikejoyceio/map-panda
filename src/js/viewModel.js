@@ -63,8 +63,8 @@ var globals = {
 		this.modalInfoPhone = ko.observable();
 		this.modalInfoPhoneCall = ko.observable();
 
-		// Loop through each place object in the placesData array
-		placesData.forEach(function(placeItem) {
+		// Loop through each place object in the dataModel.places array
+		dataModel.places.forEach(function(placeItem) {
 			self.placeList.push(new Place(placeItem));
 		});
 
