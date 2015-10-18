@@ -86,6 +86,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [KnockoutJS Docs](http://knockoutjs.com/documentation/introduction.html)
 - [KnockoutJS: Mapping Plugin](http://knockoutjs.com/documentation/plugins-mapping.html)
 - [KnockoutJS: Notification Plugin](https://github.com/janhartigan/Knockout-Notification)
+- [KnockoutJS: Animate Plugin](https://github.com/TheGAFF/Knockout-Animate)
 - [Stack Exchange: Getting the Object Data](http://stackoverflow.com/questions/13755220/knockout-js-getting-the-object-data)
 - [Live Search with KnockoutJS](http://opensoul.org/2011/06/23/live-search-with-knockoutjs/) By Brandon Keepers
 
