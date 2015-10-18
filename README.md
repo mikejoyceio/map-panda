@@ -96,3 +96,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Foursquare for Developers: Foursquare API](https://developer.foursquare.com/)
 - [Foursquare for Developers: Api Docs - Search Venus](https://developer.foursquare.com/docs/venues/search)
 
+######Uber API
+
+- [Uber Developer: Tutorials](https://developer.uber.com/v1/tutorials/)
+- [Thinkful: Uber API Tutorial](https://www.thinkful.com/learn/uber-api/)
