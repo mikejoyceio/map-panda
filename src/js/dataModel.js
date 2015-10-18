@@ -456,3 +456,28 @@ dataModel.places = [
 								strokeWeight: 1 }
 	}
 ]
+
+// Foursquare Data
+
+dataModel.foursquare = function(request) {
+
+	var foursquareAPI = 'https://api.foursquare.com/v2/venues/search?ll='+request.venueLat+','+request.venueLng+'&query='+request.venueName+'&intent=match&client_id=T3NSPSCOLUQ5R0OGEZCKUX0MOEUOEPW1HGFXYOF3ZKCYDQXD&client_secret=J2LN1WHKPT2MAQAP3POZP1REU2AWLYGM3S24B0DSLHZNHKJR&v=20151230&m=foursquare';
+	var response = {};
+
+	$.ajax({
+		url: foursquareAPI,
+		async: false,
+		dataType: 'json',
+		success: function(data) {
+			if (data.response.venues.length > 0) {
+				response.name = data.response.venues[0]['name'];
+				response.url = 'https://foursquare.com/v/'+data.response.venues[0]['id'];			
+			}	else {
+				response = false;
+			}
+		}
+	});
+
+	return response;
+
+}
