@@ -1,6 +1,8 @@
 
 // Data Model
 
+var dataModel = {};
+
 /* Places Data
  * - Name: The name of the place
  * - Description: A short description of the place
@@ -9,11 +11,7 @@
  * - Marker: Font Awesome SVG map marker
  */
 
-// var dataModel = {};
-
-// dataModel.places = [];
-
-var placesData = [
+dataModel.places = [
 	{
 		name: 'Airports',
 		description: 'description text',
