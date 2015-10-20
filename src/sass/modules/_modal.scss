@@ -114,6 +114,25 @@
 				.action-uber {
 					border-left: 1px solid #e8e6e4;
 					right: 0;
+
+					.icon {
+						background-position: 5px;
+						background-repeat: no-repeat;
+						background-size: 17px;
+					  @include border-radius(4px);
+					  background-color: #09091a;
+					  background-image: url(../images/uber-badge.png);
+					  height: 25px;
+					  position: relative;
+					}
+
+					.text {
+					  color: #fff;
+					  font-size: 10px;
+					  position:  absolute;
+					  top: 0;
+					  left: 30px;
+					}
 				}
 			}
 
