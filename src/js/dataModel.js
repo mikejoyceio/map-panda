@@ -458,7 +458,6 @@ dataModel.places = [
 ]
 
 // Foursquare Data
-
 dataModel.foursquare = function(request) {
 
 	var foursquareAPI = 'https://api.foursquare.com/v2/venues/search?ll='+request.venueLat+','+request.venueLng+'&query='+request.venueName+'&intent=match&client_id=T3NSPSCOLUQ5R0OGEZCKUX0MOEUOEPW1HGFXYOF3ZKCYDQXD&client_secret=J2LN1WHKPT2MAQAP3POZP1REU2AWLYGM3S24B0DSLHZNHKJR&v=20151230&m=foursquare';
@@ -479,5 +478,27 @@ dataModel.foursquare = function(request) {
 	});
 
 	return response;
+
+}
+
+// Uber Data 
+dataModel.uber = function(request) {
+
+	var uberAPI = 'https://api.uber.com/v1/estimates/price';
+	var uberClientId = 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn';
+	var uberServerToken = 'YXPNrYuvPMqZT5LYF_xIWzjs-yxFQfCRSLbve56l';
+
+	return Promise.resolve($.ajax({
+		url: uberAPI,
+		headers: {
+			Authorization: "Token "	+ uberServerToken
+		},
+		data: {
+			start_latitude: request.startLat,
+			start_longitude: request.startLng,
+			end_latitude: request.endLat,
+			end_longitude: request.endLng
+		}
+	}));
 
 }
