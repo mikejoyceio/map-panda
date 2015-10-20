@@ -12495,6 +12495,638 @@ window['RichMarkerPosition'] = RichMarkerPosition;
 	}
 }(this));
 
+
+//#region "Defaults"
+
+var koAnimate =
+{
+    defaults:
+    {
+        hoverScale:
+        {
+            duration: 250,
+            scaleOut: 1.0,
+            durationOut: 100,
+            durationFinal: 100,
+            easing: 'ease-in',
+            easingOut: 'ease-out'
+        },
+        
+        hoverRotate:
+        {
+            degrees: 30,
+            duration: 250,
+            degreesOut: 0,
+            durationOut: 100,
+            easing: 'ease-in',
+            easingOut: 'ease-out'
+        },
+        
+        fadeVisible:
+        {
+            duration: 500,
+            durationOut: 500,
+            easing: 'ease-in',
+            easingOut: 'ease-out',
+            delay: 50,
+            delayOut: 0
+        },
+        
+        scaleVisible:
+        {
+            scale: 1.0,
+            scaleHide: 0,
+            scaleHideOut: 0,
+            duration: 500,
+            durationOut: 500,
+            easing: 'ease-in',
+            easingOut: 'ease-out',
+            delay: 50,
+            delayOut: 0
+        },
+        
+        slideVisible:
+        {
+            duration: 500,
+            durationOut: 500,
+            direction: 'left',
+            directionOut: 'left',
+            easing: 'ease-in',
+            easingOut: 'ease-out',
+            delay: 50,
+            delayOut: 50
+        },
+        
+        cssAnimate:
+        {
+            animation: 'tada',
+            event: 'click',
+            duration: 1000,
+            callback: null
+        },
+        
+        cssAnimateVisible:
+        {
+            animation: 'bounceIn',
+            animationOut: 'bounceOut',
+            duration: 1000,
+            durationOut: 1000,
+            delay: 1,
+            delayOut: 1
+        },
+
+
+        cssAnimateReveal:
+        {
+            animation: 'bounceIn',
+            duration: 1000,
+            offset: 0,
+            callback: null,
+            delay: 1
+        }
+        
+    }
+
+};
+
+
+//#endregion "Defaults"
+
+//#region "Helpers"
+
+koAnimate.helpers =
+{
+    cssVendors: ['-webkit-', '-moz-', '-o-,', '-ms-', ''],
+
+    getDirectionX: function(direction)
+    {
+        switch (direction)
+        {
+            case "left":
+                return "-2000px";
+            case "right":
+                return "2000px";
+            default:
+                return '0px';
+        }
+    },
+
+    getDirectionY: function(direction)
+    {
+        switch (direction)
+        {
+            case "top":
+                return "-2000px";
+            case "bottom":
+                return "2000px";
+            default:
+                return '0px';
+        }
+    },
+
+    isElementInViewport: function(element, offset)
+    {
+        var rectangle = element.getBoundingClientRect();
+
+        return (
+            rectangle.top >= 0 &&
+            rectangle.left >= 0 &&
+            rectangle.bottom <= ((window.innerHeight || document.documentElement.clientHeight) - offset) &&
+            rectangle.right <= (window.innerWidth || document.documentElement.clientWidth) 
+        );
+    }
+
+};
+
+//#endregion "Helpers"
+
+//#region "Animations"
+
+koAnimate.animations =
+{
+    animationEnd: 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+    
+    transitionEnd: 'transitionend webkitTransitionEnd oTransitionEnd otransitionend',
+    
+    animationInitializationName: 'ko-animate-initialization',
+    
+    setDuration: function (element, duration)
+    {
+        //Overrides the Animate.css animated class
+
+        var seconds = duration / 1000;
+
+        $("#koAnimateAnimated").remove();
+        var style = $('<style id="koAnimateAnimated">.animated { ' +
+            '-webkit-animation-duration: ' + seconds + 's !important; ' +
+            'animation-duration: ' + seconds + 's !important' +
+            ' }</style>');
+        $('html > head').append(style);
+    },
+
+    removeDuration: function (element)
+    {
+        $.each(koAnimate.helpers.cssVendors, function (index, item)
+        {
+            $(element).css(item + 'transition-duration', '');
+            $(element).css(item + 'animation-fill-mode', '');
+        });
+    },
+
+    stopAnimation: function (element)
+    {
+        $(element).css('-moz-transition', 'none');
+        $(element).css('-webkit-transition', 'none');
+        $(element).css('-o-transition', 'color 0 ease-in');
+        $(element).css('transition', 'none');
+    },
+
+    scale: function (element, scale, duration, easing)
+    {
+        var seconds = duration / 1000;
+        $.each(koAnimate.helpers.cssVendors, function (index, item)
+        {
+            $(element).css(item + 'transform', 'scale(' + scale + ')').css(item + 'transition', seconds + 's ' + easing);
+        });
+    },
+
+    rotate: function (element, degrees, duration, easing)
+    {
+        var seconds = duration / 1000;
+        $.each(koAnimate.helpers.cssVendors, function (index, item)
+        {
+            $(element).css(item + 'transform', 'rotate(' + degrees + 'deg)').css(item + 'transition', seconds + 's ' + easing);
+        });
+    },
+
+    opacity: function (element, opacity, duration, easing)
+    {
+        var seconds = duration / 1000;
+        $.each(koAnimate.helpers.cssVendors, function (index, item)
+        {
+            $(element).css("opacity", opacity).css(item + 'transition', 'opacity ' + seconds + 's ' + easing);
+        });
+    },
+
+    slide: function (element, pixelsX, pixelsY, duration, easing)
+    {
+        var seconds = duration / 1000;
+        $.each(koAnimate.helpers.cssVendors, function (index, item)
+        {
+            $(element).css(item + 'transform', 'translate(' + pixelsX + ',' + pixelsY + ')').css(item + 'transition', seconds + 's ' + easing);
+        });
+    },
+
+    cssAnimateReveal: function (element, animation, offset, delay, duration, callback) {
+
+        if (koAnimate.helpers.isElementInViewport($(element)[0], offset) && !$(element).hasClass("animated")) {
+            
+            setTimeout(function () {
+                element.style.visibility = "";
+                koAnimate.animations.setDuration(element, duration);
+                $(element).addClass("animated " + animation);
+
+                $(element).one(koAnimate.animations.animationEnd, function () {
+                    if (callback) {
+                        callback();
+                    }
+
+                    $(window).off("scroll", element.koAnimateScrollHandler);
+                });
+
+            }, delay);
+        }
+    }
+
+
+};
+
+//#endregion "Animations"
+
+//#region "Hovering"
+
+ko.bindingHandlers.hoverScale =
+{
+    init: function (element, valueAccessor, allBindings)
+    {
+        var duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.hoverScale.duration;
+        var durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.hoverScale.durationOut;
+        var easing = allBindings['has']('easing') ? allBindings.get('easing') : koAnimate.defaults.hoverScale.easing;
+        var easingOut = allBindings['has']('easingOut') ? allBindings.get('easingOut') : koAnimate.defaults.hoverScale.easingOut;
+        var scale = valueAccessor();
+        var scaleOut = allBindings['has']('scaleOut') ? allBindings.get('scaleOut') : koAnimate.defaults.hoverScale.scaleOut;
+
+        ko.utils.registerEventHandler(element, "mouseenter", function ()
+        {
+
+            koAnimate.animations.scale(element, scale, duration, easing);
+        });
+
+        ko.utils.registerEventHandler(element, "mouseleave", function ()
+        {
+            koAnimate.animations.scale(element, scaleOut, durationOut, easingOut);
+        });
+    }
+};
+
+ko.bindingHandlers.hoverRotate =
+{
+    init: function (element, valueAccessor, allBindings)
+    {
+        var degrees = valueAccessor();
+        var degreesOut = allBindings['has']('degreesOut') ? allBindings.get('degreesOut') : koAnimate.defaults.hoverRotate.degreesOut;
+        var duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.hoverRotate.duration;
+        var durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.hoverRotate.durationOut;
+        var easing = allBindings['has']('easing') ? allBindings.get('easing') : koAnimate.defaults.hoverRotate.easing;
+        var easingOut = allBindings['has']('easingOut') ? allBindings.get('easingOut') : koAnimate.defaults.hoverRotate.easingOut;
+
+        ko.utils.registerEventHandler(element, "mouseenter", function ()
+        {
+            koAnimate.animations.rotate(element, degrees, duration, easing);
+        });
+
+        ko.utils.registerEventHandler(element, "mouseleave", function ()
+        {
+            koAnimate.animations.rotate(element, degreesOut, durationOut, easingOut);
+        });
+    }
+};
+
+
+//#endregion "Hovering"
+
+//#region "Visibility"
+
+ko.bindingHandlers.fadeVisible =
+{
+    init: function (element, valueAccessor)
+    {
+        if (ko.utils.unwrapObservable(valueAccessor()))
+        {
+            $(element).show();
+        }
+        else
+        {
+            $(element).hide();
+            
+            //Set initial opacity
+            koAnimate.animations.opacity(element, 0, 0, 'ease');
+        }
+    },
+    update: function (element, valueAccessor, allBindings)
+    {
+        var duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.fadeVisible.duration;
+        var durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.fadeVisible.durationOut;
+        var easing = allBindings['has']('easing') ? allBindings.get('easing') : koAnimate.defaults.fadeVisible.easing;
+        var easingOut = allBindings['has']('easingOut') ? allBindings.get('easingOut') : koAnimate.defaults.fadeVisible.easingOut;
+        var delay = allBindings['has']('delay') ? allBindings.get('delay') : koAnimate.defaults.fadeVisible.delay;
+        var delayOut = allBindings['has']('delayOut') ? allBindings.get('delayOut') : koAnimate.defaults.fadeVisible.delayOut;
+        
+        $(element).off(koAnimate.animations.transitionEnd);
+        clearTimeout(element.koAnimateFadeVisible);
+        
+        if (ko.utils.unwrapObservable(valueAccessor()))
+        {
+            $(element).show();
+            
+            element.koAnimateFadeVisible = setTimeout(function()
+            {
+                koAnimate.animations.opacity(element, 1, duration, easing);
+                
+                $(element).on(koAnimate.animations.transitionEnd, function ()
+                {
+                    $(element).show();
+                });
+                
+            }, delay);
+
+        }
+        else
+        {
+            setTimeout(function()
+            {
+                $(element).show();
+            
+                koAnimate.animations.opacity(element, 0, durationOut, easingOut);
+            
+                $(element).on(koAnimate.animations.transitionEnd, function ()
+                {
+                    $(element).hide();
+                });
+            }, delayOut);
+        }
+    }
+};
+
+ko.bindingHandlers.scaleVisible =
+{
+    init: function (element, valueAccessor)
+    {
+        if (ko.utils.unwrapObservable(valueAccessor()))
+        {
+            $(element).show();
+        }
+        else
+        {
+            $(element).hide();
+        }
+
+    },
+    update: function (element, valueAccessor, allBindings)
+    {
+        var duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.scaleVisible.duration;
+        var durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.scaleVisible.durationOut;
+        var easing = allBindings['has']('easing') ? allBindings.get('easing') : koAnimate.defaults.scaleVisible.easing;
+        var easingOut = allBindings['has']('easingOut') ? allBindings.get('easingOut') : koAnimate.defaults.scaleVisible.easingOut;
+        var scale = allBindings['has']('scale') ? allBindings.get('scale') : koAnimate.defaults.scaleVisible.scale;
+        var scaleHide = allBindings['has']('scaleHide') ? allBindings.get('scaleHide') : koAnimate.defaults.scaleVisible.scaleHide;
+        var scaleHideOut = allBindings['has']('scaleHideOut') ? allBindings.get('scaleHideOut') : koAnimate.defaults.scaleVisible.scaleHideOut;
+        var delay = allBindings['has']('delay') ? allBindings.get('delay') : koAnimate.defaults.scaleVisible.delay;
+        var delayOut = allBindings['has']('delayOut') ? allBindings.get('delayOut') : koAnimate.defaults.scaleVisible.delayOut;
+        
+        $(element).off(koAnimate.animations.transitionEnd);
+        
+        clearTimeout(element.koAnimateScaleVisible);
+
+        if (ko.utils.unwrapObservable(valueAccessor()))
+        {
+            koAnimate.animations.scale(element, scaleHide, 0);
+            $(element).show();
+            koAnimate.animations.stopAnimation(element);
+
+            element.koAnimateScaleVisible = setTimeout(function ()
+            {
+
+                koAnimate.animations.scale(element, scale, duration, easing);
+
+                $(element).on(koAnimate.animations.transitionEnd, function ()
+                {
+                    $(element).show();
+                });
+
+
+            }, delay);
+        }
+        else
+        {
+            setTimeout(function()
+            {
+
+                koAnimate.animations.scale(element, scaleHideOut, durationOut, easingOut);
+
+                $(element).on(koAnimate.animations.transitionEnd, function()
+                {
+                    $(element).hide();
+                });
+            }, delayOut);
+        }
+
+    }
+};
+
+ko.bindingHandlers.slideVisible =
+{
+    init: function (element, valueAccessor, allBindings)
+    {
+        if (ko.utils.unwrapObservable(valueAccessor()))
+        {
+            $(element).show();
+        }
+        else
+        {
+            $(element).hide();
+        }
+    },
+    update: function (element, valueAccessor, allBindings)
+    {
+        var value = ko.utils.unwrapObservable(valueAccessor());
+        
+        var duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.slideVisible.duration;
+        var durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.slideVisible.durationOut;
+        var easing = allBindings['has']('easing') ? allBindings.get('easing') : koAnimate.defaults.slideVisible.easing;
+        var easingOut = allBindings['has']('easingOut') ? allBindings.get('easingOut') : koAnimate.defaults.slideVisible.easingOut;
+        var directionOut = allBindings['has']('directionOut') ? allBindings.get('directionOut') : koAnimate.defaults.slideVisible.directionOut;
+        var delay = allBindings['has']('delay') ? allBindings.get('delay') : koAnimate.defaults.slideVisible.delay;
+        var delayOut = allBindings['has']('delayOut') ? allBindings.get('delayOut') : koAnimate.defaults.slideVisible.delayOut;
+        
+        $(element).off(koAnimate.animations.transitionEnd);
+        clearTimeout(element.koAnimateSlideVisible);
+        clearTimeout(element.koAnimateSlideVisible2);
+
+        element.koAnimateSlideVisible = setTimeout(function ()
+        {
+            if (value)
+            {
+                $(element).show();
+
+                element.koAnimateSlideVisible2 = setTimeout(function ()
+                {
+                    koAnimate.animations.slide(element, '0px', '0px', duration, easing);
+                }, delay);
+            }
+            else
+            {
+                element.koAnimateSlideVisible2 = setTimeout(function ()
+                {
+                    koAnimate.animations.slide(element, koAnimate.helpers.getDirectionX(directionOut), koAnimate.helpers.getDirectionY(directionOut), durationOut, easingOut);
+
+                    $(element).on(koAnimate.animations.transitionEnd, function ()
+                    {
+                        $(element).hide();
+                    });
+
+                }, delayOut);
+
+            }
+
+        }, 50);
+
+    }
+};
+
+//#endregion "Visibility
+
+//#region "Animate.CSS"
+
+ko.bindingHandlers.cssAnimate =
+{
+    init: function (element, valueAccessor, allBindings)
+    {
+        var event = allBindings['has']('event') ? allBindings.get('event') : koAnimate.defaults.cssAnimate.event;
+        var callback = allBindings['has']('callback') ? allBindings.get('callback') : koAnimate.defaults.cssAnimate.callback;
+        var duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.cssAnimate.duration;
+        var animation = valueAccessor();        
+
+        $(element).on(event, function()
+        {
+            koAnimate.animations.setDuration(element, duration);
+
+
+            $(element).addClass("animated " + animation);
+
+            $(element).one(koAnimate.animations.animationEnd, function ()
+            {
+                $(element).removeClass("animated " + animation);
+                koAnimate.animations.removeDuration(element);
+                
+                if (callback)
+                {
+                    callback();
+                }
+                
+            });
+
+        });
+
+    }
+};
+
+ko.bindingHandlers.cssAnimateVisible =
+{
+    init: function (element, valueAccessor, allBindings)
+    {
+        var value = ko.utils.unwrapObservable(valueAccessor());
+        if (value)
+        {
+            $(element).show();
+        }
+        else
+        {
+            $(element).hide();
+        }
+    },
+
+    update: function (element, valueAccessor, allBindings)
+    {
+        var duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.cssAnimateVisible.duration;
+        var durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.cssAnimateVisible.durationOut;
+        var animation = allBindings['has']('animation') ? allBindings.get('animation') : koAnimate.defaults.cssAnimateVisible.animation;
+        var animationOut = allBindings['has']('animationOut') ? allBindings.get('animationOut') : koAnimate.defaults.cssAnimateVisible.animationOut;
+        var delay = allBindings['has']('delay') ? allBindings.get('delay') : koAnimate.defaults.cssAnimateVisible.delay;
+        var delayOut = allBindings['has']('delayOut') ? allBindings.get('delayOut') : koAnimate.defaults.cssAnimateVisible.delayOut;
+
+        var value = ko.utils.unwrapObservable(valueAccessor());
+        var isCurrentlyVisible = !(element.style.display == "none");
+
+
+        $(element).off(koAnimate.animations.animationEnd);
+        $(element).removeClass(animation);
+        $(element).removeClass(animationOut);
+
+        setTimeout(function()
+        {
+            if (value)
+            {
+                $(element).hide(); 
+
+                koAnimate.animations.setDuration(element, duration);
+                
+                setTimeout(function ()
+                {
+                    $(element).show();
+                    $(element).addClass("animated " + animation);
+
+                    $(element).on(koAnimate.animations.animationEnd, function ()
+                    {
+                        $(element).removeClass("animated " + animation);
+                        koAnimate.animations.removeDuration(element);
+                    });
+                }, delay);
+
+            }
+            else if ($(element).is(':visible') && value === false)
+            {
+
+                koAnimate.animations.setDuration(element, durationOut);
+                setTimeout(function ()
+                {
+                    $(element).addClass("animated " + animationOut);
+
+                    $(element).on(koAnimate.animations.animationEnd, function ()
+                    {
+                        $(element).removeClass("animated " + animationOut);
+                        koAnimate.animations.removeDuration(element);
+                        $(element).hide();
+                    });
+                }, delayOut);
+            }
+
+
+        }, 1);
+    }
+};
+
+ko.bindingHandlers.cssAnimateReveal =
+{
+    init: function (element, valueAccessor, allBindings)
+    {
+        var callback = allBindings['has']('callback') ? allBindings.get('callback') : koAnimate.defaults.cssAnimateReveal.callback;
+        var duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.cssAnimateReveal.duration;
+        var offset = allBindings['has']('offset') ? allBindings.get('offset') : koAnimate.defaults.cssAnimateReveal.offset;
+        var delay = allBindings['has']('delay') ? allBindings.get('delay') : koAnimate.defaults.cssAnimateReveal.delay;
+        var animation = valueAccessor() || koAnimate.defaults.cssAnimateReveal.animation;
+
+        element.style.visibility = "hidden";
+
+        element.koAnimateScrollTimeout = null;
+
+       element.koAnimateScrollHandler = $(window).scroll(function ()
+       {
+           if (element.koAnimateScrollTimeout) {
+
+               clearTimeout(element.koAnimateScrollTimeout);
+               element.koAnimateScrollTimeout = null;
+           }
+
+           element.koAnimateScrollTimeout = setTimeout(koAnimate.animations.cssAnimateReveal(element, animation, offset, delay, duration, callback), 60);
+
+        });
+    }
+};
+
+//#endregion "Animate.CSS
+
+
 /*
 == malihu jquery custom scrollbar plugin == 
 Version: 3.0.9 
@@ -14874,6 +15506,8 @@ var fontawesome={};fontawesome.markers={"GLASS":"M60.68-57.357q0 1.25-1.537 2.78
 
 // Data Model
 
+var dataModel = {};
+
 /* Places Data
  * - Name: The name of the place
  * - Description: A short description of the place
@@ -14882,11 +15516,7 @@ var fontawesome={};fontawesome.markers={"GLASS":"M60.68-57.357q0 1.25-1.537 2.78
  * - Marker: Font Awesome SVG map marker
  */
 
-// var dataModel = {};
-
-// dataModel.places = [];
-
-var placesData = [
+dataModel.places = [
 	{
 		name: 'Airports',
 		description: 'description text',
@@ -15332,6 +15962,52 @@ var placesData = [
 	}
 ]
 
+// Foursquare Data
+dataModel.foursquare = function(request) {
+
+	var foursquareAPI = 'https://api.foursquare.com/v2/venues/search?ll='+request.venueLat+','+request.venueLng+'&query='+request.venueName+'&intent=match&client_id=T3NSPSCOLUQ5R0OGEZCKUX0MOEUOEPW1HGFXYOF3ZKCYDQXD&client_secret=J2LN1WHKPT2MAQAP3POZP1REU2AWLYGM3S24B0DSLHZNHKJR&v=20151230&m=foursquare';
+	var response = {};
+
+	$.ajax({
+		url: foursquareAPI,
+		async: false,
+		dataType: 'json',
+		success: function(data) {
+			if (data.response.venues.length > 0) {
+				response.name = data.response.venues[0]['name'];
+				response.url = 'https://foursquare.com/v/'+data.response.venues[0]['id'];			
+			}	else {
+				response = false;
+			}
+		}
+	});
+
+	return response;
+
+}
+
+// Uber Data 
+dataModel.uber = function(request) {
+
+	var uberAPI = 'https://api.uber.com/v1/estimates/price';
+	var uberClientId = 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn';
+	var uberServerToken = 'YXPNrYuvPMqZT5LYF_xIWzjs-yxFQfCRSLbve56l';
+
+	return Promise.resolve($.ajax({
+		url: uberAPI,
+		headers: {
+			Authorization: "Token "	+ uberServerToken
+		},
+		data: {
+			start_latitude: request.startLat,
+			start_longitude: request.startLng,
+			end_latitude: request.endLat,
+			end_longitude: request.endLng
+		}
+	}));
+
+}
+
 
 // View Model
 
@@ -15378,6 +16054,8 @@ var globals = {
 		// Map Observables
 		this.mapInfo = ko.observable(false);
 		this.showMapLoader = ko.observable(false);
+		this.mapCurrentLat = ko.observable();
+		this.mapCurrentLng = ko.observable();
 
 		// Place List Observable
 		this.placeList = ko.observableArray([]); 
@@ -15390,15 +16068,65 @@ var globals = {
 		this.modalVisibilty = ko.observable(false);
 		this.modalOverlayVisibility = ko.observable(false);
 		this.modalLoading = ko.observable(true);
-		this.infoPhoto = ko.observable();
-		this.infoRating = ko.observable();
-		this.infoName = ko.observable();
-		this.infoVicinity = ko.observable();
-		this.infoPhone = ko.observable();
-		this.infoPhoneCall = ko.observable();
+		this.modalInfoPhoto = ko.observable();
+		this.modalInfoRating = ko.observable();
+		this.modalInfoName = ko.observable();
+		this.modalInfoAddress = ko.observable();
+		this.modalInfoLat = ko.observable();
+		this.modalInfoLng = ko.observable();
+		this.modalInfoPhone = ko.observable();
+		this.modalInfoPhoneCall = ko.observable();
+		this.modalInfoFoursquareVisibility = ko.observable(false);
+		this.modalInfoFoursquareURL = ko.observable();
+		this.modalUberEstimate = ko.observable();
+		this.modalUberLoading = ko.observable(false);
 
-		// Loop through each place object in the placesData array
-		placesData.forEach(function(placeItem) {
+
+		this.searchFoursquare = ko.computed(function() {
+
+			var request = {
+				venueLat: self.modalInfoLat(),
+				venueLng: self.modalInfoLng(),
+				venueName: self.modalInfoName()
+			}
+
+		  var response = dataModel.foursquare(request);
+
+		  if (response) {
+		  	self.modalInfoFoursquareURL(response.url);
+		  	self.modalInfoFoursquareVisibility(true);
+			} else {
+				self.modalInfoFoursquareURL('#');
+				self.modalInfoFoursquareVisibility(false);
+			}
+
+		}).extend({ notify: 'always', rateLimit: 500 });
+
+
+		this.uberRide = ko.computed(function() {
+			self.modalUberLoading(true);
+
+			var request = {
+				startLat: self.mapCurrentLat(),
+				startLng: self.mapCurrentLng(),
+				endLat: self.modalInfoLat(),
+				endLng: self.modalInfoLng() 
+			}
+
+			var response = dataModel.uber(request);
+
+			response.then(function(data) {
+				var estimate = data['prices'][0]['estimate'];
+				self.modalUberEstimate(estimate);
+				self.modalUberLoading(false);
+			}, function(xhrObj) {
+				console.log(xhrObj);
+			});
+
+		}).extend({ notify: 'always', rateLimit: 500 });
+
+		// Loop through each place object in the dataModel.places array
+		dataModel.places.forEach(function(placeItem) {
 			self.placeList.push(new Place(placeItem));
 		});
 
@@ -15512,6 +16240,10 @@ var globals = {
 		  // Try HTML5 geolocation
 		  if(navigator.geolocation) {
 		    navigator.geolocation.getCurrentPosition(function(position) {
+
+		    		// Update the current lat / long
+		    		bindingContext.$root.mapCurrentLat(position.coords.latitude);
+		    		bindingContext.$root.mapCurrentLng(position.coords.longitude);
 		
 						// Instantiate a new Google Map object	
 			      global.latLang = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -15801,20 +16533,27 @@ var globals = {
 							  	var placeInfo = {
 										id: place.id,
 										name: place.name,
-										vicinity: place.vicinity,
+										address: place.formatted_address,
+										lat: place.geometry.location.lat(),
+										lng: place.geometry.location.lng(),
 										phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'No Number',
 										phoneCall: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number.replace(/ /g, '') : false,
 										photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default.png',
 										rating: typeof place.rating !== 'undefined' ? place.rating : '-'
 									};
 
-									bindingContext.$root.infoPhoto("url('"+placeInfo.photo+"')");
-									bindingContext.$root.infoRating(placeInfo.rating);
-									bindingContext.$root.infoName(placeInfo.name);
-									bindingContext.$root.infoVicinity(placeInfo.vicinity);
-									bindingContext.$root.infoPhone(placeInfo.phone);
-									bindingContext.$root.infoPhoneCall(placeInfo.phoneCall);
-									bindingContext.$root.modalLoading(false);
+									bindingContext.$root.modalInfoPhoto("url('"+placeInfo.photo+"')");
+									bindingContext.$root.modalInfoRating(placeInfo.rating);
+									bindingContext.$root.modalInfoName(placeInfo.name);
+									bindingContext.$root.modalInfoAddress(placeInfo.address);
+									bindingContext.$root.modalInfoLat(placeInfo.lat);							
+									bindingContext.$root.modalInfoLng(placeInfo.lng);
+									bindingContext.$root.modalInfoPhone(placeInfo.phone);
+									bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);
+
+									setTimeout(function() {
+										bindingContext.$root.modalLoading(false);
+									}, 1000);
 
 								// If the request failed, console log the error if the global.debug variable is set to true
 							  } else {
@@ -15979,47 +16718,49 @@ var globals = {
 		}
 	};
 
-	// KO Custom Binding for Modal
-	ko.bindingHandlers.modal = {
+	// // KO Custom Binding for Modal
+	// ko.bindingHandlers.modal = {
 
-		// Update function - ran everytime an observable changes
-		update: function(element, valueAccessor) {
+	// 	// Update function - ran everytime an observable changes
+	// 	update: function(element, valueAccessor) {
 
-			var stage01 = 'modal-stage-01';
-			var stage02 = 'modal-stage-02';
-			var stage03 = 'modal-stage-03';
-			var loader = '.modal-loader';
-			var overlay = '.modal-overlay';
-			var overlayOpen = 'modal-overlay-open';
 
-			if (valueAccessor().modal()) {	
-				$(element).show();
-			} else {
-				$(element).hide();
-				valueAccessor().loading(false);
-			}
 
-			if (valueAccessor().overlay()) {
-				$(element).find(overlay).addClass(overlayOpen);
-			} else {
-				$(element).find(overlay).removeClass(overlayOpen);
-			}
+	// 		// var stage01 = 'modal-stage-01';
+	// 		// var stage02 = 'modal-stage-02';
+	// 		// var stage03 = 'modal-stage-03';
+	// 		// var loader = '.modal-loader';
+	// 		// var overlay = '.modal-overlay';
+	// 		// var overlayOpen = 'modal-overlay-open';
 
-			if (valueAccessor().loading()) {
-				$(element).removeClass(stage01+' '+stage02+' '+stage03);
-				$(element).find(loader).show();
-				valueAccessor().overlay(false);
-			} else {
-				$(element).addClass(stage01);
-				setTimeout(function() {
-					$(element).find(loader).hide().promise().done(function() {
-						$(element).addClass(stage02+' '+stage03);
-					});
-				}, 1000);
-			}
+	// 		if (valueAccessor().modal()) {	
+	// 			console.log('true');
+	// 		} else {
+	// 			console.log('false');
+	// 			valueAccessor().loading(false);
+	// 		}
 
-		}
-	}
+	// 		// if (valueAccessor().overlay()) {
+	// 		// 	$(element).find(overlay).addClass(overlayOpen);
+	// 		// } else {
+	// 		// 	$(element).find(overlay).removeClass(overlayOpen);
+	// 		// }
+
+	// 		// if (valueAccessor().loading()) {
+	// 		// 	$(element).removeClass(stage01+' '+stage02+' '+stage03);
+	// 		// 	$(element).find(loader).show();
+	// 		// 	valueAccessor().overlay(false);
+	// 		// } else {
+	// 		// 	$(element).addClass(stage01);
+	// 		// 	setTimeout(function() {
+	// 		// 		$(element).find(loader).hide().promise().done(function() {
+	// 		// 			$(element).addClass(stage02+' '+stage03);
+	// 		// 		});
+	// 		// 	}, 1000);
+	// 		// }
+
+	// 	}
+	// }
 
 	// Apply Knockout Bindings
 	ko.applyBindings(new ViewModel());
