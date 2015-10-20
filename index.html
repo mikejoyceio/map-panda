@@ -123,7 +123,10 @@
 						<span class="icon fa fa-phone"></span>	
 					</div>	
 					<div class="action-uber">
-						<span class="icon fa fa-car"></span>
+						<div class="icon uber">
+							<span class="text" data-bind="text: modalUberEstimate"></span>
+							<span class="uber-loader" data-bind="visible: modalUberLoading()"></span>
+						</div>
 					</div>
 				</div>
 				<div class="info">

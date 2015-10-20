@@ -44,6 +44,8 @@ var globals = {
 		// Map Observables
 		this.mapInfo = ko.observable(false);
 		this.showMapLoader = ko.observable(false);
+		this.mapCurrentLat = ko.observable();
+		this.mapCurrentLng = ko.observable();
 
 		// Place List Observable
 		this.placeList = ko.observableArray([]); 
@@ -66,8 +68,12 @@ var globals = {
 		this.modalInfoPhoneCall = ko.observable();
 		this.modalInfoFoursquareVisibility = ko.observable(false);
 		this.modalInfoFoursquareURL = ko.observable();
+		this.modalUberEstimate = ko.observable();
+		this.modalUberLoading = ko.observable(false);
+
 
 		this.searchFoursquare = ko.computed(function() {
+
 			var request = {
 				venueLat: self.modalInfoLat(),
 				venueLng: self.modalInfoLng(),
@@ -83,6 +89,29 @@ var globals = {
 				self.modalInfoFoursquareURL('#');
 				self.modalInfoFoursquareVisibility(false);
 			}
+
+		}).extend({ notify: 'always', rateLimit: 500 });
+
+
+		this.uberRide = ko.computed(function() {
+			self.modalUberLoading(true);
+
+			var request = {
+				startLat: self.mapCurrentLat(),
+				startLng: self.mapCurrentLng(),
+				endLat: self.modalInfoLat(),
+				endLng: self.modalInfoLng() 
+			}
+
+			var response = dataModel.uber(request);
+
+			response.then(function(data) {
+				var estimate = data['prices'][0]['estimate'];
+				self.modalUberEstimate(estimate);
+				self.modalUberLoading(false);
+			}, function(xhrObj) {
+				console.log(xhrObj);
+			});
 
 		}).extend({ notify: 'always', rateLimit: 500 });
 
@@ -201,6 +230,10 @@ var globals = {
 		  // Try HTML5 geolocation
 		  if(navigator.geolocation) {
 		    navigator.geolocation.getCurrentPosition(function(position) {
+
+		    		// Update the current lat / long
+		    		bindingContext.$root.mapCurrentLat(position.coords.latitude);
+		    		bindingContext.$root.mapCurrentLng(position.coords.longitude);
 		
 						// Instantiate a new Google Map object	
 			      global.latLang = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
