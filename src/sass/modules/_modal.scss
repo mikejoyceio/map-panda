@@ -4,48 +4,14 @@
 .modal {
 	background: #fff;
 	@include border-radius(7px);
-	display: none;
 	width: 270px;
-	height: 115px;
+	height: 350px;
 	left: 230px;
 	right: 0;
-	top: 100%;
+	top: 105px;
 	position: absolute;
 	overflow: hidden;
 	z-index: 1000;
-
-	&.modal-stage-01 {
-		@include transition(all .15s linear);
-		top: 105px;
-
-		.image {
-			opacity: 0;
-		}
-
-		.modal-body,
-		.modal-footer {
-			display: none;
-			opacity: 0;
-		}
-	}
-
-	&.modal-stage-02 {
-		@include transition(all .05s linear);
-		height: 350px;
-
-		.image {
-			opacity: 1;
-		}
-	}
-
-	&.modal-stage-03 {
-		
-		.modal-body,
-		.modal-footer {
-			display: block;
-			@include animation(fade-in 0.4s 0.3s normal forwards);	
-		}
-	}
 
 	.modal-content {
 		height: 100%;
@@ -148,6 +114,25 @@
 				.action-uber {
 					border-left: 1px solid #e8e6e4;
 					right: 0;
+
+					.icon {
+						background-position: 5px;
+						background-repeat: no-repeat;
+						background-size: 17px;
+					  @include border-radius(4px);
+					  background-color: #09091a;
+					  background-image: url(../images/uber-badge.png);
+					  height: 25px;
+					  position: relative;
+					}
+
+					.text {
+					  color: #fff;
+					  font-size: 10px;
+					  position:  absolute;
+					  top: 0;
+					  left: 30px;
+					}
 				}
 			}
 
@@ -188,22 +173,15 @@
 		}
 
 		.modal-overlay {
-		  @include transition(all 0.2s linear);
 		  background: rgba(255, 255, 255, 0.95);
 		  border: 8px solid rgba(218, 222, 227, 0.9);
 		  box-sizing: border-box;
 		  height: 100%;
-		  opacity: 0.5;
 		  padding: 5px;
 		  position: absolute;
-		  top: 350px;
+		  top: 0;
 		  width: 100%;
 		  z-index: 3;
-
-		  &.modal-overlay-open {
-		  	top: 0;
-		  	opacity: 1;
-		  }
 
 		  .place-phone {
 		  	height: 110px;

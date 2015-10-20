@@ -1,11 +1,11 @@
 {
-  "name": "map",
+  "name": "App Name",
   "version": "1.0.0",
   "homepage": "https://github.com/mikejoyceio/map",
   "authors": [
-    "Mike Joyce <contact@mikejoyce.me>"
+    "Mike Joyce <hello@mikejoyce.io>"
   ],
-  "description": "my mapp",
+  "description": "App Description",
   "license": "MIT",
   "private": true,
   "ignore": [
@@ -22,6 +22,7 @@
     "js-rich-marker": "https://github.com/googlemaps/js-rich-marker.git#gh-pages",
     "malihu-custom-scrollbar-plugin": "~3.0.9",
     "iNoBounce": "~0.1.2",
-    "font-awesome": "~4.4.0"
+    "font-awesome": "~4.4.0",
+    "Knockout-Animate": "git://github.com/TheGAFF/Knockout-Animate"
   }
 }

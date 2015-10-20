@@ -33,6 +33,17 @@
   z-index: 9999;
 }
 
+.uber-loader {
+	@extend .loader;
+	width: 12px;
+	height: 12px;
+	border-width: 2px;
+	top: 7px;
+  right: 20px;
+  margin: auto;
+  z-index: 9999;
+}
+
 .map-loader {
 	display: table;
 	height: 100%;

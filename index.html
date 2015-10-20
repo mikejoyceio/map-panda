@@ -101,7 +101,7 @@
 	<!-- /Main Content -->
 
 	<!-- Info Modal -->
-	<div class="modal" data-bind="modal: { modal: modalVisibilty, overlay: modalOverlayVisibility, loading: modalLoading }">
+	<div class="modal" data-bind="modal: { modal: modalVisibilty, overlay: modalOverlayVisibility, loading: modalLoading }, cssAnimateVisible: modalVisibilty, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 200, durationOut: 100">
 		<div class="modal-content">
 			<div class="modal-header">
 				<div class="top-bar">
@@ -112,9 +112,9 @@
 					</span>
 					</span>
 				</div>
-				<div class="image" data-bind="style: { backgroundImage: infoPhoto }"></div>
+				<div class="image" data-bind="style: { backgroundImage: modalInfoPhoto }"></div>
 				<div class="bottom-bar">
-					<div class="place-rating" data-bind="text: infoRating"></div>
+					<div class="place-rating" data-bind="text: modalInfoRating"></div>
 				</div>
 			</div>
 			<div class="modal-body">
@@ -123,31 +123,34 @@
 						<span class="icon fa fa-phone"></span>	
 					</div>	
 					<div class="action-uber">
-						<span class="icon fa fa-car"></span>
+						<div class="icon uber">
+							<span class="text" data-bind="text: modalUberEstimate"></span>
+							<span class="uber-loader" data-bind="visible: modalUberLoading()"></span>
+						</div>
 					</div>
 				</div>
 				<div class="info">
-					<p class="place-name" data-bind="text: infoName"></p>
-					<p class="place-address" data-bind="text: infoVicinity"></p>
+					<p class="place-name" data-bind="text: modalInfoName"></p>
+					<p class="place-address" data-bind="text: modalInfoAddress"></p>
 				</div>
 			</div>
-			<div class="modal-overlay">
-				<div class="place-phone" data-bind="text: infoPhone"></div>			
+			<div class="modal-overlay" data-bind="cssAnimateVisible: modalOverlayVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
+				<div class="place-phone" data-bind="text: modalInfoPhone"></div>			
 				<div class="actions">
-					<div class="button-group two" data-bind="visible: infoPhoneCall()">
+					<div class="button-group two" data-bind="visible: modalInfoPhoneCall()">
 						<button class="button default radius">Copy</button>
-						<a class="button action radius" data-bind="attr: { href: 'tel:'+infoPhoneCall() }">Call</a>
+						<a class="button action radius" data-bind="attr: { href: 'tel:'+modalInfoPhoneCall() }">Call</a>
 					</div>
 					<button class="button cancel radius expand" data-bind="event: { click: closeModalOverlay, touchstart: closeModalOverlay }">Close</button>
 				</div>
 			</div>
 			<div class="modal-footer">
-				<a href="#" class="button-foursquare">
+				<a class="button-foursquare" data-bind="visible: modalInfoFoursquareVisibility(), attr: { href: modalInfoFoursquareURL() }" target="_blank">
 					<span class="icon fa fa-foursquare"></span>
 					<span>View in Foursquare</span>
 				</a>
 			</div>
-			<div class="modal-loader"></div>
+			<div class="modal-loader" data-bind="visible: modalLoading()"></div>
 		</div>
 	</div>
 	<!-- /Info Modal -->

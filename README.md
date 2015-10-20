@@ -47,6 +47,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Caniuse: Geolocation](http://caniuse.com/#search=geo)
 - [Stack Overflow: HTML Geolocation High Accuracy](http://stackoverflow.com/questions/16202077/high-accuracy-geolocation-html5)
 - [Stack Overflow: JavaScript Hoisting in Chrome & Firefox](http://stackoverflow.com/questions/14242399/javascript-hoisting-in-chrome-and-firefox)
+- [Stack Overflow: Returning a variable from $.getJSON](http://stackoverflow.com/questions/31129/how-can-i-return-a-variable-from-a-getjson-function)
 - [HTML Goodies: HTML5 Geolocation](http://www.htmlgoodies.com/html5/Web-Developer-Class-HTML5-Geolocation-3917596.htm#fbid=H6Q5EbyzCoF)
 - [Mozilla Developer Network: Array ForEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 - [The Top 10 Mistakes That KnockoutJS Developers Make](https://www.airpair.com/knockout/posts/top-10-mistakes-knockoutjs) By Mike Mellentin
@@ -56,6 +57,8 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Ion Range Slider](https://github.com/IonDen/ion.rangeSlider)
 - [Named Function Expressions Demystified](http://kangax.github.io/nfe/) by Juriy "Kangax" Zaytsev)
 - [iNoBounce - Stop your iOS webapp from bouncing around when scrolling](https://github.com/lazd/iNoBounce)
+- [jQuery: Return data after ajax call success](http://stackoverflow.com/questions/5316697/jquery-return-data-after-ajax-call-success)
+- [HTML5 Rocks: JavaScript Promises](http://www.html5rocks.com/en/tutorials/es6/promises/#toc-javascript-promises)
 
 ######jQuery 
 
@@ -86,6 +89,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [KnockoutJS Docs](http://knockoutjs.com/documentation/introduction.html)
 - [KnockoutJS: Mapping Plugin](http://knockoutjs.com/documentation/plugins-mapping.html)
 - [KnockoutJS: Notification Plugin](https://github.com/janhartigan/Knockout-Notification)
+- [KnockoutJS: Animate Plugin](https://github.com/TheGAFF/Knockout-Animate)
 - [Stack Exchange: Getting the Object Data](http://stackoverflow.com/questions/13755220/knockout-js-getting-the-object-data)
 - [Live Search with KnockoutJS](http://opensoul.org/2011/06/23/live-search-with-knockoutjs/) By Brandon Keepers
 
@@ -94,3 +98,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Foursquare for Developers: Foursquare API](https://developer.foursquare.com/)
 - [Foursquare for Developers: Api Docs - Search Venus](https://developer.foursquare.com/docs/venues/search)
 
+######Uber API
+
+- [Uber Developer: Tutorials](https://developer.uber.com/v1/tutorials/)
+- [Thinkful: Uber API Tutorial](https://www.thinkful.com/learn/uber-api/)
