@@ -82,13 +82,17 @@ var globals = {
 
 		  var response = dataModel.foursquare(request);
 
-		  if (response) {
-		  	self.modalInfoFoursquareURL(response.url);
-		  	self.modalInfoFoursquareVisibility(true);
-			} else {
-				self.modalInfoFoursquareURL('#');
-				self.modalInfoFoursquareVisibility(false);
-			}
+		  response.then(function(data) {
+				if (data.response.venues.length > 0) {		
+					self.modalInfoFoursquareURL('https://foursquare.com/v/'+data.response.venues[0]['id']);
+			  	self.modalInfoFoursquareVisibility(true);
+				}	else {
+					self.modalInfoFoursquareURL('#');
+					self.modalInfoFoursquareVisibility(false);
+				}
+		  }, function(xhrObj) {
+		  	console.log(xhrObj);
+		  });
 
 		}).extend({ notify: 'always', rateLimit: 500 });
 
