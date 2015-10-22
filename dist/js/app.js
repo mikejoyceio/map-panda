@@ -15965,24 +15965,21 @@ dataModel.places = [
 // Foursquare Data
 dataModel.foursquare = function(request) {
 
-	var foursquareAPI = 'https://api.foursquare.com/v2/venues/search?ll='+request.venueLat+','+request.venueLng+'&query='+request.venueName+'&intent=match&client_id=T3NSPSCOLUQ5R0OGEZCKUX0MOEUOEPW1HGFXYOF3ZKCYDQXD&client_secret=J2LN1WHKPT2MAQAP3POZP1REU2AWLYGM3S24B0DSLHZNHKJR&v=20151230&m=foursquare';
-	var response = {};
+	var foursquareAPI = 'https://api.foursquare.com/v2/venues/search';
 
-	$.ajax({
+	return Promise.resolve($.ajax({
 		url: foursquareAPI,
-		async: false,
 		dataType: 'json',
-		success: function(data) {
-			if (data.response.venues.length > 0) {
-				response.name = data.response.venues[0]['name'];
-				response.url = 'https://foursquare.com/v/'+data.response.venues[0]['id'];			
-			}	else {
-				response = false;
-			}
+		data: {
+			ll: request.venueLat+','+request.venueLng,
+			query: request.venueName,
+			intent: 'match',
+			client_id: 'T3NSPSCOLUQ5R0OGEZCKUX0MOEUOEPW1HGFXYOF3ZKCYDQXD',
+			client_secret: 'J2LN1WHKPT2MAQAP3POZP1REU2AWLYGM3S24B0DSLHZNHKJR',
+			v: '20151230',
+			m: 'foursquare' 
 		}
-	});
-
-	return response;
+	}));
 
 }
 
@@ -16092,13 +16089,17 @@ var globals = {
 
 		  var response = dataModel.foursquare(request);
 
-		  if (response) {
-		  	self.modalInfoFoursquareURL(response.url);
-		  	self.modalInfoFoursquareVisibility(true);
-			} else {
-				self.modalInfoFoursquareURL('#');
-				self.modalInfoFoursquareVisibility(false);
-			}
+		  response.then(function(data) {
+				if (data.response.venues.length > 0) {		
+					self.modalInfoFoursquareURL('https://foursquare.com/v/'+data.response.venues[0]['id']);
+			  	self.modalInfoFoursquareVisibility(true);
+				}	else {
+					self.modalInfoFoursquareURL('#');
+					self.modalInfoFoursquareVisibility(false);
+				}
+		  }, function(xhrObj) {
+		  	console.log(xhrObj);
+		  });
 
 		}).extend({ notify: 'always', rateLimit: 500 });
 
