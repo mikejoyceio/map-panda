@@ -110,7 +110,10 @@ var globals = {
 			var response = dataModel.uber(request);
 
 			response.then(function(data) {
-				var estimate = data['prices'][0]['estimate'];
+				var estimate;
+
+				data['prices'].length > 0 ? estimate = data['prices'][0]['estimate'] : estimate = 'Unavailable';
+
 				self.modalUberEstimate(estimate);
 				self.modalUberLoading(false);
 			}, function(xhrObj) {
