@@ -483,7 +483,7 @@ var globals = {
 							alignBottom: true,
 							disableAutoPan: false,
 							maxWidth: 0,
-							pixelOffset: new google.maps.Size(-90, -30),
+							pixelOffset: new google.maps.Size(-89, -30),
 							zIndex: null,
 							boxStyle: { 
 							  opacity: 0.75,
