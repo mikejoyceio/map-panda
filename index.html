@@ -130,8 +130,21 @@
 					</div>
 				</div>
 				<div class="info">
-					<p class="place-name" data-bind="text: modalInfoName"></p>
+					<div class="info-item place-address">
+						<span class="icon fa fa-compass"></span>
+						<p class="place-name" data-bind="text: modalInfoName"></p>
+						<p data-bind="text: modalInfoAddress"></p>	
+					</div>
+					<div class="info-item place-website" data-bind="visible: modalInfoWebsite">
+						<span class="icon fa fa-globe"></span>
+						<p><a data-bind="attr: { href: modalInfoWebsite }">Website</a></p>
+					</div>
+<!-- 					<p class="place-name" data-bind="text: modalInfoName"></p>
 					<p class="place-address" data-bind="text: modalInfoAddress"></p>
+					<p class="place-website" data-bind="visible: modalInfoWebsite">
+						<span class="fa fa-globe"></span>
+						<a data-bind="attr: { href: modalInfoWebsite }">Website</a>
+					</p> -->
 				</div>
 			</div>
 			<div class="modal-overlay" data-bind="cssAnimateVisible: modalOverlayVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
