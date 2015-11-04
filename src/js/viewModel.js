@@ -515,6 +515,20 @@ var globals = {
 						// Add event listener to show Info Modal on marker click
 						google.maps.event.addListener(data.marker, 'click', function() {
 
+							// Reset the marker icons
+							for (i=0; i < global.markers.length; i++) {
+								global.markers[i].setIcon(value.currentPlace().marker());
+							}
+
+							// Set the selected marker icon
+					 		data.marker.setIcon({ path: fontawesome.markers.CIRCLE_O,
+								fillColor: '#ed5565',
+								fillOpacity: 1,
+								scale: 0.4,
+								strokeColor: '#ffffff',
+								strokeWeight: 1.5
+							});
+
 							// Pan to the markers position on the map
 							global.map.panTo(data.position);
 
