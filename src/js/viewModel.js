@@ -480,9 +480,10 @@ var globals = {
 						var infoBoxOptions = {
 							boxClass: 'info-box',
 							content: '<div class="info-box-content">' + '<div class="info-box-title">'+data.name+'</div>' + '<div class="info-box-image" style="background-image: url('+data.photo+');"></div>' + '<i class="info-box-icon fa '+value.currentPlace().icon()+'"></i></div>',
+							alignBottom: true,
 							disableAutoPan: false,
 							maxWidth: 0,
-							pixelOffset: new google.maps.Size(-90, 0),
+							pixelOffset: new google.maps.Size(-90, -30),
 							zIndex: null,
 							boxStyle: { 
 							  opacity: 0.75,

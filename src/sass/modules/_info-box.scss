@@ -9,12 +9,12 @@
 		width: 0;
 		height: 0;
 		border-style: solid;
-		border-width: 0 10px 10px 10px;
-		border-color: transparent transparent rgba(255,255,255,0.75) transparent;
+		border-width: 10px 10px 0 10px;
+		border-color: rgba(255,255,255,0.95) transparent transparent transparent;
 		position: absolute;
 		left: 0;
 		right: 0;
-		top: -10px;
+		bottom: -10px;
 		margin: auto;
 	}
 
