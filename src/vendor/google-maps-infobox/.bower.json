@@ -1,0 +1,29 @@
+{
+  "name": "google-maps-infobox",
+  "description": "An InfoBox behaves like a google.maps.InfoWindow, but it supports several additional properties for advanced styling. An InfoBox can also be used as a map label.",
+  "authors": [
+    "Fabian Aumiller <mail@kmpkt.com>"
+  ],
+  "license": "Apache 2.0",
+  "main": "infobox.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "tests",
+    "generate",
+    "Gruntfile.js",
+    "package.json",
+    "*.iml"
+  ],
+  "homepage": "https://github.com/mikejoyceio/google-maps-infobox",
+  "_release": "7a465cdaed",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "7a465cdaed37ff6c7e2cdceb6feeb04d1862089b"
+  },
+  "_source": "git://github.com/mikejoyceio/google-maps-infobox.git",
+  "_target": "*",
+  "_originalSource": "git://github.com/mikejoyceio/google-maps-infobox",
+  "_direct": true
+}
