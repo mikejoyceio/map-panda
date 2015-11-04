@@ -336,8 +336,8 @@ var globals = {
 			    // Push the current place type into the request object types array
 			    request.types.push(value.currentPlace().type());
 
-			    // Instatiate a new Google Maps info window
-			    var infoWindow = new google.maps.InfoWindow();
+			    // // Instatiate a new Google Maps info window
+			    // var infoBox = new InfoBox();
 
 			    // Instantiate a new places service object
 			    var mapPlaces = new google.maps.places.PlacesService(global.map);
@@ -356,6 +356,7 @@ var globals = {
 
 			    // Google Maps places search callback function
 			    function callback(results, status) {
+			    	console.log(results);
 			    	if (status === google.maps.places.PlacesServiceStatus.OK) {
 
 			    		// Clear all markers from the map
@@ -456,8 +457,8 @@ var globals = {
 				    					 : 'nophoto.jpg'
 				    	}
 
-				    	// Add an Info Window 
-				    	addInfoWindow(placeData);
+				    	// Add an Info Box
+				    	addInfoBox(placeData);
 
 				    	// Add an Info Modal
 				    	addInfoModal(placeData);
@@ -473,27 +474,37 @@ var globals = {
 
 				 	}
 
-				 	// Add Info Window function
-					function addInfoWindow(data) {
+				 	// Add Info Box function
+					function addInfoBox(data) {
 
-						// Add event listener to show Info Window on marker mouseover
+						var infoBoxOptions = {
+							boxClass: 'info-box',
+							content: '<div class="info-box-content">' + '<div class="info-box-title">'+data.name+'</div>' + '<div class="info-box-image" style="background-image: url('+data.photo+');"></div>' + '<i class="info-box-icon fa '+value.currentPlace().icon()+'"></i></div>',
+							disableAutoPan: false,
+							maxWidth: 0,
+							pixelOffset: new google.maps.Size(-90, 0),
+							zIndex: null,
+							boxStyle: { 
+							  opacity: 0.75,
+							  width: "200px"
+							 },
+							closeBoxURL: "",
+							infoBoxClearance: new google.maps.Size(1, 1),
+							isHidden: false,
+							pane: "floatPane",
+							enableEventPropagation: false
+						};
+
+						var infoBox = new InfoBox(infoBoxOptions);
+
+						// Add event listener to show Info Box on marker mouseover
 					 	google.maps.event.addListener(data.marker, 'mouseover', function() {
-
-					 		// Set Info Window content
-					  	infoWindow.setContent(
-					  		'<div class="info-window">' +
-					  		'<h5>'+data.name+'</h5>' +
-					  		'<img src="'+data.photo+'">' +
-					  		'</div>'
-					  	);
-
-					  	infoWindow.open(global.map, this);
-
+					 		infoBox.open(global.map, this);
 					  });
 
-					 	// Add event listener to hide Info Window on marker mouseout
+					 	// Add event listener to hide Info Box on marker mouseout
 					  google.maps.event.addListener(data.marker, 'mouseout', function() {
-					  	infoWindow.close(global.map, this);
+					  	infoBox.close(global.map, this);
 					  });
 
 					}
