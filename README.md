@@ -26,6 +26,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 
 - [Nuttify: “before” pseudo element with Fontawesome ](http://nuttify.com/help/developer-manual/coding-style-guide/css-style-guide/css-tricks-before-pseudo-element-with-fontawesome/) by Ajax McKerral
 - [CSS Transforms and Z-Index](http://daneden.me/2012/04/22/css-transforms-and-z-index/) by Daniel Eden
+- [CSS Triangle Generator](http://apps.eky.hk/css-triangle-generator/)
 
 ######Icon Font
 
@@ -82,7 +83,8 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Stack Overflow: How to check if Google maps is fully loaded](http://stackoverflow.com/questions/832692/how-can-i-check-whether-google-maps-is-fully-loaded)
 - [Font Awesome Markers](https://github.com/nathan-muir/fontawesome-markers)
 - [SVGO: An Nodejs-based tool for optimizing SVG vector graphics files.](https://github.com/nathan-muir/svgo/tree/nathan-svgo)
-- [RichMarker – A Google Maps JavaScript API utility library](https://github.com/mikejoyceio/js-rich-marker)
+- [RichMarker – A Google Maps JavaScript API utility library component](https://github.com/mikejoyceio/js-rich-marker)
+- [InfoBox - A Google Maps JavaScript API utility library component](https://github.com/mikejoyceio/google-maps-infobox)
 
 ######Knockout JS
 
