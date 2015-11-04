@@ -62,6 +62,7 @@ var globals = {
 		this.modalInfoRating = ko.observable();
 		this.modalInfoName = ko.observable();
 		this.modalInfoAddress = ko.observable();
+		this.modalInfoWebsite = ko.observable();
 		this.modalInfoLat = ko.observable();
 		this.modalInfoLng = ko.observable();
 		this.modalInfoPhone = ko.observable();
@@ -356,7 +357,7 @@ var globals = {
 
 			    // Google Maps places search callback function
 			    function callback(results, status) {
-			    	console.log(results);
+
 			    	if (status === google.maps.places.PlacesServiceStatus.OK) {
 
 			    		// Clear all markers from the map
@@ -552,11 +553,12 @@ var globals = {
 
 								// If the request if OK, set the Info Window content
 							  if (status == google.maps.places.PlacesServiceStatus.OK) {
-
+							  	console.log(place);
 							  	var placeInfo = {
 										id: place.id,
 										name: place.name,
 										address: place.formatted_address,
+										website: typeof place.website !== 'undefined' ? place.website : false,
 										lat: place.geometry.location.lat(),
 										lng: place.geometry.location.lng(),
 										phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'No Number',
@@ -569,6 +571,7 @@ var globals = {
 									bindingContext.$root.modalInfoRating(placeInfo.rating);
 									bindingContext.$root.modalInfoName(placeInfo.name);
 									bindingContext.$root.modalInfoAddress(placeInfo.address);
+									bindingContext.$root.modalInfoWebsite(placeInfo.website);
 									bindingContext.$root.modalInfoLat(placeInfo.lat);							
 									bindingContext.$root.modalInfoLng(placeInfo.lng);
 									bindingContext.$root.modalInfoPhone(placeInfo.phone);
