@@ -70,7 +70,7 @@ var globals = {
 		this.modalFoursquareVisibility = ko.observable(false);
 		this.modalFoursquareURL = ko.observable();
 		this.modalUberEstimate = ko.observable();
-		this.modalUberDeepLink = ko.observable();
+		this.modalUberDeepLink = ko.observable(false);
 		this.modalUberLoading = ko.observable(false);
 
 
@@ -117,6 +117,9 @@ var globals = {
 				data['prices'].length > 0 ? uberEstimate = data['prices'][0]['estimate'] : uberEstimate = 'Unavailable';
 
 				self.modalUberEstimate(uberEstimate);
+
+				uberEstimate !== 'Unavailable' ? self.modalUberDeepLink(true) : self.modalUberDeepLink(false);
+
 				self.modalUberLoading(false);
 			}, function(xhrObj) {
 				console.log(xhrObj);
@@ -135,9 +138,12 @@ var globals = {
 			uberDeepLink += 'dropoff_longitude=' + self.modalInfoLng();
 			uberDeepLink += 'dropoff_nickname=' + self.modalInfoName();
 
-			self.modalUberDeepLink(uberDeepLink);
+			if (self.modalUberDeepLink()) {
+				window.open(uberDeepLink);
+			} else {
+				return false
+			}
 
-			window.open(self.modalUberDeepLink());
 		}
 
 		// Loop through each place object in the dataModel.places array
