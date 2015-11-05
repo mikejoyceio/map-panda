@@ -5979,13 +5979,14 @@ Copyright (c) 2015 Daniel Eden
   width: 100%;
 }
 .modal .modal-content .modal-header .bottom-bar .place-rating {
-  background: #2eb398;
+  unicode-bidi: bidi-override;
+  background: #ebeef7;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  border: 2px solid #fff;
+  border: 2px solid #2eb398;
   color: #fff;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 300;
   height: 20px;
   left: 0;
@@ -5995,7 +5996,45 @@ Copyright (c) 2015 Daniel Eden
   right: 0;
   text-align: center;
   top: -11px;
-  width: 22px;
+  width: 95px;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating span.star {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating span.star:before {
+  content: "\f006";
+  padding-right: 2px;
+  color: #777777;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating.rating-00 .star {
+  display: none;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating.rating-00:before {
+  content: 'No Ratings';
+  color: #404040;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating.rating-01 .star-01:before {
+  content: "\f005";
+  color: #e3cf7a;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating.rating-02 .star-01:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-02 .star-02:before {
+  content: "\f005";
+  color: #e3cf7a;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating.rating-03 .star-01:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-03 .star-02:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-03 .star-03:before {
+  content: "\f005";
+  color: #e3cf7a;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating.rating-04 .star-01:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-04 .star-02:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-04 .star-03:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-04 .star-04:before {
+  content: "\f005";
+  color: #e3cf7a;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating.rating-05 .star-01:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-05 .star-02:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-05 .star-03:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-05 .star-04:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-05 .star-05:before {
+  content: "\f005";
+  color: #e3cf7a;
 }
 .modal .modal-content .modal-body {
   position: relative;
