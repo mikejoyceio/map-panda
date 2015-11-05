@@ -5754,11 +5754,13 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .uber-loader {
-  width: 12px;
-  height: 12px;
+  background: #1d1e27;
+  width: 15px;
+  height: 15px;
   border-width: 2px;
-  top: 7px;
-  right: 20px;
+  top: 5px;
+  right: 0;
+  left: 0;
   margin: auto;
   z-index: 9999;
 }
@@ -5920,7 +5922,7 @@ Copyright (c) 2015 Daniel Eden
   -webkit-border-radius: 7px;
   border-radius: 7px;
   width: 270px;
-  height: 350px;
+  height: 370px;
   left: 230px;
   right: 0;
   top: 105px;
@@ -6006,6 +6008,7 @@ Copyright (c) 2015 Daniel Eden
 }
 .modal .modal-content .modal-body .actions .action-phone,
 .modal .modal-content .modal-body .actions .action-uber {
+  cursor: pointer;
   padding: 5px 7px;
   width: 110px;
   text-align: center;
@@ -6015,62 +6018,69 @@ Copyright (c) 2015 Daniel Eden
 }
 .modal .modal-content .modal-body .actions .action-phone {
   border-right: 1px solid #e8e6e4;
-  cursor: pointer;
   left: 0;
 }
 .modal .modal-content .modal-body .actions .action-uber {
   border-left: 1px solid #e8e6e4;
   right: 0;
 }
+.modal .modal-content .modal-body .actions .action-uber .url {
+  outline: none;
+}
 .modal .modal-content .modal-body .actions .action-uber .icon {
-  background-position: 5px;
+  background-position: 3px;
   background-repeat: no-repeat;
-  background-size: 17px;
+  background-size: 22px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  background-color: #09091a;
   background-image: url(../images/uber-badge.png);
   height: 25px;
+  width: 27px;
   position: relative;
 }
 .modal .modal-content .modal-body .actions .action-uber .text {
-  color: #fff;
-  font-size: 10px;
+  font-size: 13px;
   position: absolute;
-  top: 0;
-  left: 30px;
+  top: 5px;
+  left: 50px;
+  color: #727b7f;
 }
 .modal .modal-content .modal-body .info {
-  padding: 15px 5px 0 25px;
   position: relative;
 }
-.modal .modal-content .modal-body .info:before {
-  content: "\f14e";
-  position: absolute;
-  top: 14px;
-  left: 0;
-  color: #a3a8ab;
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transform: translate(0, 0);
+.modal .modal-content .modal-body .info .info-item {
+  position: relative;
+  padding: 7px 5px 7px 25px;
 }
-.modal .modal-content .modal-body .info .place-name {
+.modal .modal-content .modal-body .info .info-item .icon {
+  color: #a3a8ab;
+  position: absolute;
+  left: 0;
+  top: 6px;
+}
+.modal .modal-content .modal-body .info .info-item p {
+  color: #727b7f;
+  font-size: 11px;
+  line-height: 1.2;
+}
+.modal .modal-content .modal-body .info .info-item.place-address {
+  min-height: 40px;
+}
+.modal .modal-content .modal-body .info .info-item.place-address .place-name {
   color: #404040;
   margin-bottom: 4px;
   font-weight: 600;
 }
-.modal .modal-content .modal-body .info .place-address {
-  outline: none;
+.modal .modal-content .modal-body .info .info-item.place-website {
+  border-top: 1px solid #e8e6e4;
 }
-.modal .modal-content .modal-body .info p {
-  color: #727b7f;
-  font-size: 11px;
-  line-height: 1.2;
+.modal .modal-content .modal-body .info .info-item.place-website .url {
+  color: #404040;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  width: 100%;
 }
 .modal .modal-content .modal-overlay {
   background: rgba(255, 255, 255, 0.95);

@@ -16886,6 +16886,7 @@ var globals = {
 		this.modalInfoRating = ko.observable();
 		this.modalInfoName = ko.observable();
 		this.modalInfoAddress = ko.observable();
+		this.modalInfoWebsite = ko.observable();
 		this.modalInfoLat = ko.observable();
 		this.modalInfoLng = ko.observable();
 		this.modalInfoPhone = ko.observable();
@@ -16893,6 +16894,7 @@ var globals = {
 		this.modalInfoFoursquareVisibility = ko.observable(false);
 		this.modalInfoFoursquareURL = ko.observable();
 		this.modalUberEstimate = ko.observable();
+		this.modalUberDeepLink = ko.observable();
 		this.modalUberLoading = ko.observable(false);
 
 
@@ -16934,17 +16936,33 @@ var globals = {
 			var response = dataModel.uber(request);
 
 			response.then(function(data) {
-				var estimate;
+				var uberEstimate;
 
-				data['prices'].length > 0 ? estimate = data['prices'][0]['estimate'] : estimate = 'Unavailable';
+				data['prices'].length > 0 ? uberEstimate = data['prices'][0]['estimate'] : uberEstimate = 'Unavailable';
 
-				self.modalUberEstimate(estimate);
+				self.modalUberEstimate(uberEstimate);
 				self.modalUberLoading(false);
 			}, function(xhrObj) {
 				console.log(xhrObj);
 			});
 
 		}).extend({ notify: 'always', rateLimit: 500 });
+
+		this.uberRideRequest = function() {
+			var uberDeepLink;
+
+			uberDeepLink = 'https://m.uber.com/sign-up?';
+			uberDeepLink += 'client_id=' + 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn';
+			uberDeepLink += 'pickup_latitude=' + self.mapCurrentLat();
+			uberDeepLink += 'pickup_longitude=' + self.mapCurrentLng();
+			uberDeepLink += 'dropoff_latitude=' + self.modalInfoLat();
+			uberDeepLink += 'dropoff_longitude=' + self.modalInfoLng();
+			uberDeepLink += 'dropoff_nickname=' + self.modalInfoName();
+
+			self.modalUberDeepLink(uberDeepLink);
+
+			window.open(self.modalUberDeepLink());
+		}
 
 		// Loop through each place object in the dataModel.places array
 		dataModel.places.forEach(function(placeItem) {
@@ -17180,7 +17198,7 @@ var globals = {
 
 			    // Google Maps places search callback function
 			    function callback(results, status) {
-			    	console.log(results);
+
 			    	if (status === google.maps.places.PlacesServiceStatus.OK) {
 
 			    		// Clear all markers from the map
@@ -17307,7 +17325,7 @@ var globals = {
 							alignBottom: true,
 							disableAutoPan: false,
 							maxWidth: 0,
-							pixelOffset: new google.maps.Size(-90, -30),
+							pixelOffset: new google.maps.Size(-89, -30),
 							zIndex: null,
 							boxStyle: { 
 							  opacity: 0.75,
@@ -17376,11 +17394,12 @@ var globals = {
 
 								// If the request if OK, set the Info Window content
 							  if (status == google.maps.places.PlacesServiceStatus.OK) {
-
+							  	console.log(place);
 							  	var placeInfo = {
 										id: place.id,
 										name: place.name,
 										address: place.formatted_address,
+										website: typeof place.website !== 'undefined' ? place.website : false,
 										lat: place.geometry.location.lat(),
 										lng: place.geometry.location.lng(),
 										phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'No Number',
@@ -17393,6 +17412,7 @@ var globals = {
 									bindingContext.$root.modalInfoRating(placeInfo.rating);
 									bindingContext.$root.modalInfoName(placeInfo.name);
 									bindingContext.$root.modalInfoAddress(placeInfo.address);
+									bindingContext.$root.modalInfoWebsite(placeInfo.website);
 									bindingContext.$root.modalInfoLat(placeInfo.lat);							
 									bindingContext.$root.modalInfoLng(placeInfo.lng);
 									bindingContext.$root.modalInfoPhone(placeInfo.phone);
