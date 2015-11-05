@@ -70,6 +70,7 @@ var globals = {
 		this.modalFoursquareVisibility = ko.observable(false);
 		this.modalFoursquareURL = ko.observable();
 		this.modalUberEstimate = ko.observable();
+		this.modalUberEstimateVisibility = ko.observable(false);
 		this.modalUberDeepLink = ko.observable(false);
 		this.modalUberLoading = ko.observable(false);
 
@@ -101,6 +102,7 @@ var globals = {
 
 		this.uberRide = ko.computed(function() {
 			self.modalUberLoading(true);
+			self.modalUberEstimateVisibility(false);
 
 			var request = {
 				startLat: self.mapCurrentLat(),
@@ -121,6 +123,7 @@ var globals = {
 				uberEstimate !== 'Unavailable' ? self.modalUberDeepLink(true) : self.modalUberDeepLink(false);
 
 				self.modalUberLoading(false);
+				self.modalUberEstimateVisibility(true);
 			}, function(xhrObj) {
 				console.log(xhrObj);
 			});

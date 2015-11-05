@@ -186,16 +186,19 @@
 					  @include border-radius(4px);
 					  background-image: url(../images/uber-badge.png);
 					  height: 25px;
-					  width: 27px;
+					  width: 28px;
 					  position: relative;
+					  margin: auto;
 					}
 
-					.text {
-					  font-size: 13px;
+					.estimate {
+					  font-size: 9px;
 					  position: absolute;
-					  top: 5px;
-					  left: 50px;
+					  top: 13px;
+					  text-align: left;
+					  left: 77px;
 					  color: #727b7f;
+					  line-height: 1.2;
 					}
 				}
 			}
