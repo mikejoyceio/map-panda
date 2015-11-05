@@ -7,11 +7,12 @@
  */
 
 /* TODO:
- * - Set default notication keep alive to 'true' 
- * - Remove redundant code
  * - Rename modal info observables
- * - Move menu SCSS partial to modules
- * - Set map location when Geo Location fails
+ * - Add javascript promise polypill
+ * - Add copy phone number function for desktops
+ * - Add help panel
+ * - Add SASS partial for global variables
+ * - Refactor pushing into obervable arrays
  */
 
 // Global Namespace
