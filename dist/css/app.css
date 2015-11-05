@@ -6094,7 +6094,7 @@ Copyright (c) 2015 Daniel Eden
   z-index: 3;
 }
 .modal .modal-content .modal-overlay .place-phone {
-  height: 110px;
+  height: 130px;
   font-family: 'Lato', sans-serif;
   font-size: 25px;
   font-weight: 300;
@@ -6116,6 +6116,7 @@ Copyright (c) 2015 Daniel Eden
 }
 .modal .modal-content .modal-footer {
   border-top: 1px solid #e8e6e4;
+  height: 35px;
   margin: auto 10px;
   padding: 10px 0 12px;
   position: absolute;
@@ -6141,6 +6142,15 @@ Copyright (c) 2015 Daniel Eden
 .modal .modal-content .modal-footer .button-foursquare .icon {
   font-size: 13px;
   margin-right: 6px;
+}
+.modal .modal-content .modal-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
 }
 
 .notification {

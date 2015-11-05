@@ -16891,10 +16891,10 @@ var globals = {
 		this.modalInfoLng = ko.observable();
 		this.modalInfoPhone = ko.observable();
 		this.modalInfoPhoneCall = ko.observable();
-		this.modalInfoFoursquareVisibility = ko.observable(false);
-		this.modalInfoFoursquareURL = ko.observable();
+		this.modalFoursquareVisibility = ko.observable(false);
+		this.modalFoursquareURL = ko.observable();
 		this.modalUberEstimate = ko.observable();
-		this.modalUberDeepLink = ko.observable();
+		this.modalUberDeepLink = ko.observable(false);
 		this.modalUberLoading = ko.observable(false);
 
 
@@ -16910,11 +16910,11 @@ var globals = {
 
 		  response.then(function(data) {
 				if (data.response.venues.length > 0) {		
-					self.modalInfoFoursquareURL('https://foursquare.com/v/'+data.response.venues[0]['id']);
-			  	self.modalInfoFoursquareVisibility(true);
+					self.modalFoursquareURL('https://foursquare.com/v/'+data.response.venues[0]['id']);
+			  	self.modalFoursquareVisibility(true);
 				}	else {
-					self.modalInfoFoursquareURL('#');
-					self.modalInfoFoursquareVisibility(false);
+					self.modalFoursquareURL('#');
+					self.modalFoursquareVisibility(false);
 				}
 		  }, function(xhrObj) {
 		  	console.log(xhrObj);
@@ -16941,6 +16941,9 @@ var globals = {
 				data['prices'].length > 0 ? uberEstimate = data['prices'][0]['estimate'] : uberEstimate = 'Unavailable';
 
 				self.modalUberEstimate(uberEstimate);
+
+				uberEstimate !== 'Unavailable' ? self.modalUberDeepLink(true) : self.modalUberDeepLink(false);
+
 				self.modalUberLoading(false);
 			}, function(xhrObj) {
 				console.log(xhrObj);
@@ -16959,9 +16962,12 @@ var globals = {
 			uberDeepLink += 'dropoff_longitude=' + self.modalInfoLng();
 			uberDeepLink += 'dropoff_nickname=' + self.modalInfoName();
 
-			self.modalUberDeepLink(uberDeepLink);
+			if (self.modalUberDeepLink()) {
+				window.open(uberDeepLink);
+			} else {
+				return false
+			}
 
-			window.open(self.modalUberDeepLink());
 		}
 
 		// Loop through each place object in the dataModel.places array
