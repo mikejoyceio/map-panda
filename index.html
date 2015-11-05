@@ -165,7 +165,9 @@
 					<span>View in Foursquare</span>
 				</a>
 			</div>
-			<div class="modal-loader" data-bind="visible: modalLoading()"></div>
+			<div class="modal-loading" data-bind="cssAnimateVisible: modalLoading, animation: 'slideInDown', animationOut: 'zoomOut', duration: 300, durationOut: 300">
+				<div class="modal-loader"></div>
+			</div>
 		</div>
 	</div>
 	<!-- /Info Modal -->
