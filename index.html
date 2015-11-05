@@ -114,7 +114,13 @@
 				</div>
 				<div class="image" data-bind="style: { backgroundImage: modalInfoPhoto }"></div>
 				<div class="bottom-bar">
-					<div class="place-rating" data-bind="text: modalInfoRating"></div>
+					<div class="place-rating" data-bind="css: modalInfoRating">
+						<span class="star star-01"></span>
+						<span class="star star-02"></span>
+						<span class="star star-03"></span>
+						<span class="star star-04"></span>
+						<span class="star star-05"></span>	
+					</div>
 				</div>
 			</div>
 			<div class="modal-body">
@@ -122,16 +128,31 @@
 					<div class="action-phone" data-bind="event: { click: openModalOverlay, touchstart: openModalOverlay }">
 						<span class="icon fa fa-phone"></span>	
 					</div>	
-					<div class="action-uber">
-						<div class="icon uber">
-							<span class="text" data-bind="text: modalUberEstimate"></span>
-							<span class="uber-loader" data-bind="visible: modalUberLoading()"></span>
+					<div class="action-uber" data-bind="click: uberRideRequest">
+						<div class="icon">
+							<span class="uber-loader" data-bind="visible: modalUberLoading"></span>
+						</div>
+						<div class="estimate" data-bind="cssAnimateVisible: modalUberEstimateVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
+							<span data-bind="text: modalUberEstimate"></span>
 						</div>
 					</div>
 				</div>
 				<div class="info">
-					<p class="place-name" data-bind="text: modalInfoName"></p>
+					<div class="info-item place-address">
+						<span class="icon fa fa-compass"></span>
+						<p class="place-name" data-bind="text: modalInfoName"></p>
+						<p data-bind="text: modalInfoAddress"></p>	
+					</div>
+					<div class="info-item place-website" data-bind="visible: modalInfoWebsite">
+						<span class="icon fa fa-globe"></span>
+						<p><a class="url" data-bind="attr: { href: modalInfoWebsite }" target="_blank">Website</a></p>
+					</div>
+<!-- 					<p class="place-name" data-bind="text: modalInfoName"></p>
 					<p class="place-address" data-bind="text: modalInfoAddress"></p>
+					<p class="place-website" data-bind="visible: modalInfoWebsite">
+						<span class="fa fa-globe"></span>
+						<a data-bind="attr: { href: modalInfoWebsite }">Website</a>
+					</p> -->
 				</div>
 			</div>
 			<div class="modal-overlay" data-bind="cssAnimateVisible: modalOverlayVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
@@ -145,12 +166,14 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<a class="button-foursquare" data-bind="visible: modalInfoFoursquareVisibility(), attr: { href: modalInfoFoursquareURL() }" target="_blank">
+				<a class="button-foursquare" data-bind="visible: modalFoursquareVisibility(), attr: { href: modalFoursquareURL() }" target="_blank">
 					<span class="icon fa fa-foursquare"></span>
 					<span>View in Foursquare</span>
 				</a>
 			</div>
-			<div class="modal-loader" data-bind="visible: modalLoading()"></div>
+			<div class="modal-loading" data-bind="cssAnimateVisible: modalLoading, animation: 'bounceIn', animationOut: 'zoomOut', duration: 300, durationOut: 300">
+				<div class="modal-loader"></div>
+			</div>
 		</div>
 	</div>
 	<!-- /Info Modal -->

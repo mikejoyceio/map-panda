@@ -5673,8 +5673,50 @@ Copyright (c) 2015 Daniel Eden
   content: "";
 }
 
-.info-window {
-  outline: none;
+.info-box {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.info-box:before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 10px 0 10px;
+  border-color: rgba(255, 255, 255, 0.95) transparent transparent transparent;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  margin: auto;
+}
+.info-box .info-box-content {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: #fff;
+  padding: 2px 40px 2px 40px;
+  position: relative;
+  min-height: 35px;
+}
+.info-box .info-box-content .info-box-title {
+  line-height: 1.2;
+  margin: 2px;
+}
+.info-box .info-box-content .info-box-image {
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+.info-box .info-box-content .info-box-icon {
+  font-size: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .loader, .main-loader, .modal-loader, .uber-loader {
@@ -5712,11 +5754,13 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .uber-loader {
-  width: 12px;
-  height: 12px;
-  border-width: 2px;
-  top: 7px;
-  right: 20px;
+  background: #1d1e27;
+  width: 16px;
+  height: 16px;
+  border-width: 3px;
+  top: 5px;
+  right: 0;
+  left: 0;
   margin: auto;
   z-index: 9999;
 }
@@ -5878,7 +5922,7 @@ Copyright (c) 2015 Daniel Eden
   -webkit-border-radius: 7px;
   border-radius: 7px;
   width: 270px;
-  height: 350px;
+  height: 370px;
   left: 230px;
   right: 0;
   top: 105px;
@@ -5935,23 +5979,64 @@ Copyright (c) 2015 Daniel Eden
   width: 100%;
 }
 .modal .modal-content .modal-header .bottom-bar .place-rating {
-  background: #2eb398;
+  unicode-bidi: bidi-override;
+  background: #ffffff;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  border: 2px solid #fff;
+  border: 2px solid #2eb398;
   color: #fff;
   font-size: 10px;
   font-weight: 300;
-  height: 20px;
+  height: 15px;
   left: 0;
-  line-height: 1.8;
+  line-height: 1.6;
   margin: auto;
   position: absolute;
   right: 0;
   text-align: center;
-  top: -11px;
-  width: 22px;
+  top: -8px;
+  width: 75px;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating span.star {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating span.star:before {
+  content: "\f006";
+  padding: 1px;
+  color: #777777;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating.rating-00 .star {
+  display: none;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating.rating-00:before {
+  content: 'No Ratings';
+  color: #404040;
+  line-height: 1.5;
+  display: block;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating.rating-01 .star-01:before {
+  content: "\f005";
+  color: #e3cf7a;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating.rating-02 .star-01:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-02 .star-02:before {
+  content: "\f005";
+  color: #e3cf7a;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating.rating-03 .star-01:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-03 .star-02:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-03 .star-03:before {
+  content: "\f005";
+  color: #e3cf7a;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating.rating-04 .star-01:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-04 .star-02:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-04 .star-03:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-04 .star-04:before {
+  content: "\f005";
+  color: #e3cf7a;
+}
+.modal .modal-content .modal-header .bottom-bar .place-rating.rating-05 .star-01:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-05 .star-02:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-05 .star-03:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-05 .star-04:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-05 .star-05:before {
+  content: "\f005";
+  color: #e3cf7a;
 }
 .modal .modal-content .modal-body {
   position: relative;
@@ -5964,6 +6049,7 @@ Copyright (c) 2015 Daniel Eden
 }
 .modal .modal-content .modal-body .actions .action-phone,
 .modal .modal-content .modal-body .actions .action-uber {
+  cursor: pointer;
   padding: 5px 7px;
   width: 110px;
   text-align: center;
@@ -5973,62 +6059,72 @@ Copyright (c) 2015 Daniel Eden
 }
 .modal .modal-content .modal-body .actions .action-phone {
   border-right: 1px solid #e8e6e4;
-  cursor: pointer;
   left: 0;
 }
 .modal .modal-content .modal-body .actions .action-uber {
   border-left: 1px solid #e8e6e4;
   right: 0;
 }
+.modal .modal-content .modal-body .actions .action-uber .url {
+  outline: none;
+}
 .modal .modal-content .modal-body .actions .action-uber .icon {
-  background-position: 5px;
+  background-position: 3px;
   background-repeat: no-repeat;
-  background-size: 17px;
+  background-size: 22px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  background-color: #09091a;
   background-image: url(../images/uber-badge.png);
   height: 25px;
+  width: 28px;
   position: relative;
+  margin: auto;
 }
-.modal .modal-content .modal-body .actions .action-uber .text {
-  color: #fff;
-  font-size: 10px;
+.modal .modal-content .modal-body .actions .action-uber .estimate {
+  font-size: 9px;
   position: absolute;
-  top: 0;
-  left: 30px;
+  top: 13px;
+  text-align: left;
+  left: 77px;
+  color: #727b7f;
+  line-height: 1.2;
 }
 .modal .modal-content .modal-body .info {
-  padding: 15px 5px 0 25px;
   position: relative;
 }
-.modal .modal-content .modal-body .info:before {
-  content: "\f14e";
-  position: absolute;
-  top: 14px;
-  left: 0;
-  color: #a3a8ab;
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transform: translate(0, 0);
+.modal .modal-content .modal-body .info .info-item {
+  position: relative;
+  padding: 7px 5px 7px 25px;
 }
-.modal .modal-content .modal-body .info .place-name {
+.modal .modal-content .modal-body .info .info-item .icon {
+  color: #a3a8ab;
+  position: absolute;
+  left: 0;
+  top: 6px;
+}
+.modal .modal-content .modal-body .info .info-item p {
+  color: #727b7f;
+  font-size: 11px;
+  line-height: 1.2;
+}
+.modal .modal-content .modal-body .info .info-item.place-address {
+  min-height: 40px;
+}
+.modal .modal-content .modal-body .info .info-item.place-address .place-name {
   color: #404040;
   margin-bottom: 4px;
   font-weight: 600;
 }
-.modal .modal-content .modal-body .info .place-address {
-  outline: none;
+.modal .modal-content .modal-body .info .info-item.place-website {
+  border-top: 1px solid #e8e6e4;
 }
-.modal .modal-content .modal-body .info p {
-  color: #727b7f;
-  font-size: 11px;
-  line-height: 1.2;
+.modal .modal-content .modal-body .info .info-item.place-website .url {
+  color: #404040;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  width: 100%;
 }
 .modal .modal-content .modal-overlay {
   background: rgba(255, 255, 255, 0.95);
@@ -6042,7 +6138,7 @@ Copyright (c) 2015 Daniel Eden
   z-index: 3;
 }
 .modal .modal-content .modal-overlay .place-phone {
-  height: 110px;
+  height: 130px;
   font-family: 'Lato', sans-serif;
   font-size: 25px;
   font-weight: 300;
@@ -6064,6 +6160,7 @@ Copyright (c) 2015 Daniel Eden
 }
 .modal .modal-content .modal-footer {
   border-top: 1px solid #e8e6e4;
+  height: 35px;
   margin: auto 10px;
   padding: 10px 0 12px;
   position: absolute;
@@ -6089,6 +6186,15 @@ Copyright (c) 2015 Daniel Eden
 .modal .modal-content .modal-footer .button-foursquare .icon {
   font-size: 13px;
   margin-right: 6px;
+}
+.modal .modal-content .modal-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
 }
 
 .notification {

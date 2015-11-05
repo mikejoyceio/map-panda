@@ -1,0 +1,49 @@
+
+// Info Window
+
+.info-box {
+	@include border-radius(3px);	
+
+	&:before {
+		content: '';
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 10px 10px 0 10px;
+		border-color: rgba(255,255,255,0.95) transparent transparent transparent;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -10px;
+		margin: auto;
+	}
+
+	.info-box-content {
+		@include border-radius(3px);	
+		background: #fff;
+		padding: 2px 40px 2px 40px;
+		position: relative;
+		min-height: 35px;
+
+		.info-box-title {
+			line-height: 1.2;
+			margin: 2px;
+		}
+
+		.info-box-image {
+			width: 30px;
+			height: 30px;
+			background-size: cover;
+			position: absolute;
+			top: 5px;
+			left: 5px;
+		}
+
+		.info-box-icon {
+			font-size: 20px;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+		}
+	}
+}

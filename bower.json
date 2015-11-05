@@ -23,6 +23,7 @@
     "malihu-custom-scrollbar-plugin": "~3.0.9",
     "iNoBounce": "~0.1.2",
     "font-awesome": "~4.4.0",
-    "Knockout-Animate": "git://github.com/TheGAFF/Knockout-Animate"
+    "Knockout-Animate": "git://github.com/TheGAFF/Knockout-Animate",
+    "google-maps-infobox": "git://github.com/mikejoyceio/google-maps-infobox"
   }
 }

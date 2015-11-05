@@ -59,16 +59,19 @@ var globals = {
 		this.modalOverlayVisibility = ko.observable(false);
 		this.modalLoading = ko.observable(true);
 		this.modalInfoPhoto = ko.observable();
-		this.modalInfoRating = ko.observable();
+		this.modalInfoRating = ko.observable('one');
 		this.modalInfoName = ko.observable();
 		this.modalInfoAddress = ko.observable();
+		this.modalInfoWebsite = ko.observable();
 		this.modalInfoLat = ko.observable();
 		this.modalInfoLng = ko.observable();
 		this.modalInfoPhone = ko.observable();
 		this.modalInfoPhoneCall = ko.observable();
-		this.modalInfoFoursquareVisibility = ko.observable(false);
-		this.modalInfoFoursquareURL = ko.observable();
+		this.modalFoursquareVisibility = ko.observable(false);
+		this.modalFoursquareURL = ko.observable();
 		this.modalUberEstimate = ko.observable();
+		this.modalUberEstimateVisibility = ko.observable(false);
+		this.modalUberDeepLink = ko.observable(false);
 		this.modalUberLoading = ko.observable(false);
 
 
@@ -82,19 +85,24 @@ var globals = {
 
 		  var response = dataModel.foursquare(request);
 
-		  if (response) {
-		  	self.modalInfoFoursquareURL(response.url);
-		  	self.modalInfoFoursquareVisibility(true);
-			} else {
-				self.modalInfoFoursquareURL('#');
-				self.modalInfoFoursquareVisibility(false);
-			}
+		  response.then(function(data) {
+				if (data.response.venues.length > 0) {		
+					self.modalFoursquareURL('https://foursquare.com/v/'+data.response.venues[0]['id']);
+			  	self.modalFoursquareVisibility(true);
+				}	else {
+					self.modalFoursquareURL('#');
+					self.modalFoursquareVisibility(false);
+				}
+		  }, function(xhrObj) {
+		  	console.log(xhrObj);
+		  });
 
 		}).extend({ notify: 'always', rateLimit: 500 });
 
 
 		this.uberRide = ko.computed(function() {
 			self.modalUberLoading(true);
+			self.modalUberEstimateVisibility(false);
 
 			var request = {
 				startLat: self.mapCurrentLat(),
@@ -106,14 +114,40 @@ var globals = {
 			var response = dataModel.uber(request);
 
 			response.then(function(data) {
-				var estimate = data['prices'][0]['estimate'];
-				self.modalUberEstimate(estimate);
+				var uberEstimate;
+
+				data['prices'].length > 0 ? uberEstimate = data['prices'][0]['estimate'] : uberEstimate = 'Unavailable';
+
+				self.modalUberEstimate(uberEstimate);
+
+				uberEstimate !== 'Unavailable' ? self.modalUberDeepLink(true) : self.modalUberDeepLink(false);
+
 				self.modalUberLoading(false);
+				self.modalUberEstimateVisibility(true);
 			}, function(xhrObj) {
 				console.log(xhrObj);
 			});
 
 		}).extend({ notify: 'always', rateLimit: 500 });
+
+		this.uberRideRequest = function() {
+			var uberDeepLink;
+
+			uberDeepLink = 'https://m.uber.com/sign-up?';
+			uberDeepLink += 'client_id=' + 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn';
+			uberDeepLink += 'pickup_latitude=' + self.mapCurrentLat();
+			uberDeepLink += 'pickup_longitude=' + self.mapCurrentLng();
+			uberDeepLink += 'dropoff_latitude=' + self.modalInfoLat();
+			uberDeepLink += 'dropoff_longitude=' + self.modalInfoLng();
+			uberDeepLink += 'dropoff_nickname=' + self.modalInfoName();
+
+			if (self.modalUberDeepLink()) {
+				window.open(uberDeepLink);
+			} else {
+				return false
+			}
+
+		}
 
 		// Loop through each place object in the dataModel.places array
 		dataModel.places.forEach(function(placeItem) {
@@ -329,8 +363,8 @@ var globals = {
 			    // Push the current place type into the request object types array
 			    request.types.push(value.currentPlace().type());
 
-			    // Instatiate a new Google Maps info window
-			    var infoWindow = new google.maps.InfoWindow();
+			    // // Instatiate a new Google Maps info window
+			    // var infoBox = new InfoBox();
 
 			    // Instantiate a new places service object
 			    var mapPlaces = new google.maps.places.PlacesService(global.map);
@@ -349,6 +383,7 @@ var globals = {
 
 			    // Google Maps places search callback function
 			    function callback(results, status) {
+
 			    	if (status === google.maps.places.PlacesServiceStatus.OK) {
 
 			    		// Clear all markers from the map
@@ -449,8 +484,8 @@ var globals = {
 				    					 : 'nophoto.jpg'
 				    	}
 
-				    	// Add an Info Window 
-				    	addInfoWindow(placeData);
+				    	// Add an Info Box
+				    	addInfoBox(placeData);
 
 				    	// Add an Info Modal
 				    	addInfoModal(placeData);
@@ -466,27 +501,38 @@ var globals = {
 
 				 	}
 
-				 	// Add Info Window function
-					function addInfoWindow(data) {
+				 	// Add Info Box function
+					function addInfoBox(data) {
 
-						// Add event listener to show Info Window on marker mouseover
+						var infoBoxOptions = {
+							boxClass: 'info-box',
+							content: '<div class="info-box-content">' + '<div class="info-box-title">'+data.name+'</div>' + '<div class="info-box-image" style="background-image: url('+data.photo+');"></div>' + '<i class="info-box-icon fa '+value.currentPlace().icon()+'"></i></div>',
+							alignBottom: true,
+							disableAutoPan: false,
+							maxWidth: 0,
+							pixelOffset: new google.maps.Size(-89, -30),
+							zIndex: null,
+							boxStyle: { 
+							  opacity: 0.75,
+							  width: "200px"
+							 },
+							closeBoxURL: "",
+							infoBoxClearance: new google.maps.Size(1, 1),
+							isHidden: false,
+							pane: "floatPane",
+							enableEventPropagation: false
+						};
+
+						var infoBox = new InfoBox(infoBoxOptions);
+
+						// Add event listener to show Info Box on marker mouseover
 					 	google.maps.event.addListener(data.marker, 'mouseover', function() {
-
-					 		// Set Info Window content
-					  	infoWindow.setContent(
-					  		'<div class="info-window">' +
-					  		'<h5>'+data.name+'</h5>' +
-					  		'<img src="'+data.photo+'">' +
-					  		'</div>'
-					  	);
-
-					  	infoWindow.open(global.map, this);
-
+					 		infoBox.open(global.map, this);
 					  });
 
-					 	// Add event listener to hide Info Window on marker mouseout
+					 	// Add event listener to hide Info Box on marker mouseout
 					  google.maps.event.addListener(data.marker, 'mouseout', function() {
-					  	infoWindow.close(global.map, this);
+					  	infoBox.close(global.map, this);
 					  });
 
 					}
@@ -496,6 +542,20 @@ var globals = {
 
 						// Add event listener to show Info Modal on marker click
 						google.maps.event.addListener(data.marker, 'click', function() {
+
+							// Reset the marker icons
+							for (i=0; i < global.markers.length; i++) {
+								global.markers[i].setIcon(value.currentPlace().marker());
+							}
+
+							// Set the selected marker icon
+					 		data.marker.setIcon({ path: fontawesome.markers.CIRCLE_O,
+								fillColor: '#ed5565',
+								fillOpacity: 1,
+								scale: 0.4,
+								strokeColor: '#ffffff',
+								strokeWeight: 1.5
+							});
 
 							// Pan to the markers position on the map
 							global.map.panTo(data.position);
@@ -519,23 +579,25 @@ var globals = {
 
 								// If the request if OK, set the Info Window content
 							  if (status == google.maps.places.PlacesServiceStatus.OK) {
-
+							  	console.log(place);
 							  	var placeInfo = {
 										id: place.id,
 										name: place.name,
 										address: place.formatted_address,
+										website: typeof place.website !== 'undefined' ? place.website : false,
 										lat: place.geometry.location.lat(),
 										lng: place.geometry.location.lng(),
 										phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'No Number',
 										phoneCall: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number.replace(/ /g, '') : false,
 										photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default.png',
-										rating: typeof place.rating !== 'undefined' ? place.rating : '-'
+										rating: typeof place.rating !== 'undefined' ? Math.round(place.rating) : 0
 									};
 
 									bindingContext.$root.modalInfoPhoto("url('"+placeInfo.photo+"')");
-									bindingContext.$root.modalInfoRating(placeInfo.rating);
+									bindingContext.$root.modalInfoRating('rating-0'+placeInfo.rating);
 									bindingContext.$root.modalInfoName(placeInfo.name);
 									bindingContext.$root.modalInfoAddress(placeInfo.address);
+									bindingContext.$root.modalInfoWebsite(placeInfo.website);
 									bindingContext.$root.modalInfoLat(placeInfo.lat);							
 									bindingContext.$root.modalInfoLng(placeInfo.lng);
 									bindingContext.$root.modalInfoPhone(placeInfo.phone);
