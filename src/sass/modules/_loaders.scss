@@ -35,11 +35,13 @@
 
 .uber-loader {
 	@extend .loader;
-	width: 12px;
-	height: 12px;
+	background: #1d1e27;
+	width: 15px;
+	height: 15px;
 	border-width: 2px;
-	top: 7px;
-  right: 20px;
+	top: 5px;
+  right: 0;
+  left: 0;
   margin: auto;
   z-index: 9999;
 }

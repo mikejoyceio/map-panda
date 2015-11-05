@@ -70,6 +70,7 @@ var globals = {
 		this.modalInfoFoursquareVisibility = ko.observable(false);
 		this.modalInfoFoursquareURL = ko.observable();
 		this.modalUberEstimate = ko.observable();
+		this.modalUberDeepLink = ko.observable();
 		this.modalUberLoading = ko.observable(false);
 
 
@@ -111,17 +112,33 @@ var globals = {
 			var response = dataModel.uber(request);
 
 			response.then(function(data) {
-				var estimate;
+				var uberEstimate;
 
-				data['prices'].length > 0 ? estimate = data['prices'][0]['estimate'] : estimate = 'Unavailable';
+				data['prices'].length > 0 ? uberEstimate = data['prices'][0]['estimate'] : uberEstimate = 'Unavailable';
 
-				self.modalUberEstimate(estimate);
+				self.modalUberEstimate(uberEstimate);
 				self.modalUberLoading(false);
 			}, function(xhrObj) {
 				console.log(xhrObj);
 			});
 
 		}).extend({ notify: 'always', rateLimit: 500 });
+
+		this.uberRideRequest = function() {
+			var uberDeepLink;
+
+			uberDeepLink = 'https://m.uber.com/sign-up?';
+			uberDeepLink += 'client_id=' + 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn';
+			uberDeepLink += 'pickup_latitude=' + self.mapCurrentLat();
+			uberDeepLink += 'pickup_longitude=' + self.mapCurrentLng();
+			uberDeepLink += 'dropoff_latitude=' + self.modalInfoLat();
+			uberDeepLink += 'dropoff_longitude=' + self.modalInfoLng();
+			uberDeepLink += 'dropoff_nickname=' + self.modalInfoName();
+
+			self.modalUberDeepLink(uberDeepLink);
+
+			window.open(self.modalUberDeepLink());
+		}
 
 		// Loop through each place object in the dataModel.places array
 		dataModel.places.forEach(function(placeItem) {

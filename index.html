@@ -122,10 +122,12 @@
 					<div class="action-phone" data-bind="event: { click: openModalOverlay, touchstart: openModalOverlay }">
 						<span class="icon fa fa-phone"></span>	
 					</div>	
-					<div class="action-uber">
-						<div class="icon uber">
-							<span class="text" data-bind="text: modalUberEstimate"></span>
-							<span class="uber-loader" data-bind="visible: modalUberLoading()"></span>
+					<div class="action-uber" data-bind="click: uberRideRequest">
+						<div class="icon">
+							<span class="uber-loader" data-bind="visible: modalUberLoading"></span>
+						</div>
+						<div class="text">
+							<span data-bind="text: modalUberEstimate"></span>
 						</div>
 					</div>
 				</div>
@@ -137,7 +139,7 @@
 					</div>
 					<div class="info-item place-website" data-bind="visible: modalInfoWebsite">
 						<span class="icon fa fa-globe"></span>
-						<p><a data-bind="attr: { href: modalInfoWebsite }">Website</a></p>
+						<p><a class="url" data-bind="attr: { href: modalInfoWebsite }">Website</a></p>
 					</div>
 <!-- 					<p class="place-name" data-bind="text: modalInfoName"></p>
 					<p class="place-address" data-bind="text: modalInfoAddress"></p>
