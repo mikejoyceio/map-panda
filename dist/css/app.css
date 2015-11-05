@@ -5755,8 +5755,8 @@ Copyright (c) 2015 Daniel Eden
 
 .uber-loader {
   background: #1d1e27;
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   border-width: 2px;
   top: 5px;
   right: 0;
@@ -5980,23 +5980,23 @@ Copyright (c) 2015 Daniel Eden
 }
 .modal .modal-content .modal-header .bottom-bar .place-rating {
   unicode-bidi: bidi-override;
-  background: #ebeef7;
+  background: #ffffff;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
   border: 2px solid #2eb398;
   color: #fff;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 300;
-  height: 20px;
+  height: 15px;
   left: 0;
-  line-height: 1.8;
+  line-height: 1.6;
   margin: auto;
   position: absolute;
   right: 0;
   text-align: center;
-  top: -11px;
-  width: 95px;
+  top: -8px;
+  width: 75px;
 }
 .modal .modal-content .modal-header .bottom-bar .place-rating span.star {
   font-family: FontAwesome;
@@ -6006,7 +6006,7 @@ Copyright (c) 2015 Daniel Eden
 }
 .modal .modal-content .modal-header .bottom-bar .place-rating span.star:before {
   content: "\f006";
-  padding-right: 2px;
+  padding: 1px;
   color: #777777;
 }
 .modal .modal-content .modal-header .bottom-bar .place-rating.rating-00 .star {
@@ -6075,15 +6075,18 @@ Copyright (c) 2015 Daniel Eden
   border-radius: 4px;
   background-image: url(../images/uber-badge.png);
   height: 25px;
-  width: 27px;
+  width: 28px;
   position: relative;
+  margin: auto;
 }
-.modal .modal-content .modal-body .actions .action-uber .text {
-  font-size: 13px;
+.modal .modal-content .modal-body .actions .action-uber .estimate {
+  font-size: 9px;
   position: absolute;
-  top: 5px;
-  left: 50px;
+  top: 13px;
+  text-align: left;
+  left: 77px;
   color: #727b7f;
+  line-height: 1.2;
 }
 .modal .modal-content .modal-body .info {
   position: relative;
