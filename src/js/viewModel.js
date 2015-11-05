@@ -167,11 +167,6 @@ var globals = {
 				self.mapInfo(false);
 			}
 			place.isActive(!place.isActive());
-			// if (self.showMapLoader()) {
-			// 	$('.place-list li').click(false);
-			// } else {
-			// 	console('false');
-			// }
 			self.mapInfo(true);
 		}
 
@@ -270,14 +265,7 @@ var globals = {
 		    		bindingContext.$root.mapCurrentLng(position.coords.longitude);
 		
 						// Instantiate a new Google Map object	
-			      global.latLang = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-			 
-			      // var infowindow = new google.maps.InfoWindow({
-			      //   map: global.map,
-			      //   position: global.latLang,
-			      //   center: global.latLang,
-			      //   content: 'Location found using HTML5.'
-			      // });
+			      global.latLang = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);	
 
 		    		// Center map on current location
 			      global.map.setCenter(global.latLang);
@@ -769,50 +757,6 @@ var globals = {
 			}
 		}
 	};
-
-	// // KO Custom Binding for Modal
-	// ko.bindingHandlers.modal = {
-
-	// 	// Update function - ran everytime an observable changes
-	// 	update: function(element, valueAccessor) {
-
-
-
-	// 		// var stage01 = 'modal-stage-01';
-	// 		// var stage02 = 'modal-stage-02';
-	// 		// var stage03 = 'modal-stage-03';
-	// 		// var loader = '.modal-loader';
-	// 		// var overlay = '.modal-overlay';
-	// 		// var overlayOpen = 'modal-overlay-open';
-
-	// 		if (valueAccessor().modal()) {	
-	// 			console.log('true');
-	// 		} else {
-	// 			console.log('false');
-	// 			valueAccessor().loading(false);
-	// 		}
-
-	// 		// if (valueAccessor().overlay()) {
-	// 		// 	$(element).find(overlay).addClass(overlayOpen);
-	// 		// } else {
-	// 		// 	$(element).find(overlay).removeClass(overlayOpen);
-	// 		// }
-
-	// 		// if (valueAccessor().loading()) {
-	// 		// 	$(element).removeClass(stage01+' '+stage02+' '+stage03);
-	// 		// 	$(element).find(loader).show();
-	// 		// 	valueAccessor().overlay(false);
-	// 		// } else {
-	// 		// 	$(element).addClass(stage01);
-	// 		// 	setTimeout(function() {
-	// 		// 		$(element).find(loader).hide().promise().done(function() {
-	// 		// 			$(element).addClass(stage02+' '+stage03);
-	// 		// 		});
-	// 		// 	}, 1000);
-	// 		// }
-
-	// 	}
-	// }
 
 	// Apply Knockout Bindings
 	ko.applyBindings(new ViewModel());
