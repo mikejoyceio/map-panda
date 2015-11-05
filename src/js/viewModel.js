@@ -67,8 +67,8 @@ var globals = {
 		this.modalInfoLng = ko.observable();
 		this.modalInfoPhone = ko.observable();
 		this.modalInfoPhoneCall = ko.observable();
-		this.modalInfoFoursquareVisibility = ko.observable(false);
-		this.modalInfoFoursquareURL = ko.observable();
+		this.modalFoursquareVisibility = ko.observable(false);
+		this.modalFoursquareURL = ko.observable();
 		this.modalUberEstimate = ko.observable();
 		this.modalUberDeepLink = ko.observable();
 		this.modalUberLoading = ko.observable(false);
@@ -86,11 +86,11 @@ var globals = {
 
 		  response.then(function(data) {
 				if (data.response.venues.length > 0) {		
-					self.modalInfoFoursquareURL('https://foursquare.com/v/'+data.response.venues[0]['id']);
-			  	self.modalInfoFoursquareVisibility(true);
+					self.modalFoursquareURL('https://foursquare.com/v/'+data.response.venues[0]['id']);
+			  	self.modalFoursquareVisibility(true);
 				}	else {
-					self.modalInfoFoursquareURL('#');
-					self.modalInfoFoursquareVisibility(false);
+					self.modalFoursquareURL('#');
+					self.modalFoursquareVisibility(false);
 				}
 		  }, function(xhrObj) {
 		  	console.log(xhrObj);
