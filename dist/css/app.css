@@ -5757,7 +5757,7 @@ Copyright (c) 2015 Daniel Eden
   background: #1d1e27;
   width: 16px;
   height: 16px;
-  border-width: 2px;
+  border-width: 3px;
   top: 5px;
   right: 0;
   left: 0;
@@ -6015,6 +6015,8 @@ Copyright (c) 2015 Daniel Eden
 .modal .modal-content .modal-header .bottom-bar .place-rating.rating-00:before {
   content: 'No Ratings';
   color: #404040;
+  line-height: 1.5;
+  display: block;
 }
 .modal .modal-content .modal-header .bottom-bar .place-rating.rating-01 .star-01:before {
   content: "\f005";
