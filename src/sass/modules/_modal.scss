@@ -72,17 +72,17 @@
 				  @include border-radius(4px);
 				  border: 2px solid $accent-color;
 				  color: #fff;
-				  font-size: 12px;
+				  font-size: 10px;
 				  font-weight: 300;
-				  height: 20px;
+				  height: 15px;
 				  left: 0;
-				  line-height: 1.8;
+				  line-height: 1.6;
 				  margin: auto;
 				  position: absolute;
 				  right: 0;
 				  text-align: center;
-				  top: -11px;
-				  width: 95px;
+				  top: -8px;
+				  width: 75px;
 
 					span.star {
 						font-family: FontAwesome;
@@ -92,7 +92,7 @@
 
 						&:before {
 						  content: "\f006";
-						  padding-right: 2px;
+						  padding: 1px;
 						  color: #777777;
 						}
 					}
