@@ -40,7 +40,7 @@
 		}
 
 		.info-box-icon {
-		  border-radius: 3px;
+		  @include border-radius(2px);
 		  border: 1px solid;
 		  color: #909090;
 		  font-size: 14px;
@@ -51,6 +51,7 @@
 		  text-align: center;
 		  top: 4px;
 		  width: 13px;
+		  padding: 1px;
 		}
 	}
 }
