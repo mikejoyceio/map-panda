@@ -92,7 +92,6 @@
 
 // Current Location Marker
 .gm-current-location {
-	@include animation(pulse 1.7s ease infinite alternate);
 	@include border-radius(999px);
 	@include box-shadow(1px 0px 5px 3px rgba(50, 50, 50, 0.15));
 	background: #3395ff;
