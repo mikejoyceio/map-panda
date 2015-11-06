@@ -132,7 +132,7 @@
 						<div class="icon">
 							<span class="uber-loader" data-bind="visible: modalUberLoading"></span>
 						</div>
-						<div class="estimate" data-bind="cssAnimateVisible: modalUberEstimateVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
+						<div class="estimate" data-bind="cssAnimateVisible: modalUberEstimateVisibility, animation: 'slideInDown', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
 							<span data-bind="text: modalUberEstimate"></span>
 						</div>
 					</div>
@@ -147,12 +147,6 @@
 						<span class="icon fa fa-globe"></span>
 						<p><a class="url" data-bind="attr: { href: modalInfoWebsite }" target="_blank">Website</a></p>
 					</div>
-<!-- 					<p class="place-name" data-bind="text: modalInfoName"></p>
-					<p class="place-address" data-bind="text: modalInfoAddress"></p>
-					<p class="place-website" data-bind="visible: modalInfoWebsite">
-						<span class="fa fa-globe"></span>
-						<a data-bind="attr: { href: modalInfoWebsite }">Website</a>
-					</p> -->
 				</div>
 			</div>
 			<div class="modal-overlay" data-bind="cssAnimateVisible: modalOverlayVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
