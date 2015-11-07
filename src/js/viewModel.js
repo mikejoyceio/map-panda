@@ -58,6 +58,10 @@ var globals = {
 		// Modal Observables
 		this.modalVisibilty = ko.observable(false);
 		this.modalOverlayVisibility = ko.observable(false);
+		this.modalOverlayMessage = ko.observable();
+		this.modalOverlayMessageVisibility = ko.observable(false);
+		this.modalOverlayCopyButtonVisibility = ko.observable();
+		this.modalOverlayGroupButtons = ko.observable();
 		this.modalLoading = ko.observable(true);
 		this.modalInfoPhoto = ko.observable();
 		this.modalInfoRating = ko.observable('one');
@@ -757,6 +761,50 @@ var globals = {
 				});
 			}
 		}
+	};
+
+	// KO Custom Binding for Clipboard
+	ko.bindingHandlers.clipboard = {
+
+		// Init function - ran once
+		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+		
+			// Check for mobile devices
+			var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;	
+
+
+			if (!isMobile) {
+
+				bindingContext.$root.modalOverlayCopyButtonVisibility(true);
+				bindingContext.$root.modalOverlayGroupButtons('two')
+
+				var clipboard = new Clipboard(element);	
+
+				clipboard.on('success', function(e) {
+					bindingContext.$root.modalOverlayMessage('Copied!');
+					bindingContext.$root.modalOverlayMessageVisibility(true);
+					setTimeout(function() {
+						bindingContext.$root.modalOverlayMessageVisibility(false);					
+					}, 1000);
+				});
+
+				clipboard.on('error', function(e) {
+					if (navigator.appVersion.indexOf("Mac")!=-1) {
+						bindingContext.$root.modalOverlayMessage('Press ⌘+C to copy');
+					} else {
+						bindingContext.$root.modalOverlayMessage('Press Ctrl+C to copy');	
+					}
+					bindingContext.$root.modalOverlayMessageVisibility(true);
+					setTimeout(function() {
+						bindingContext.$root.modalOverlayMessageVisibility(false);					
+					}, 2000);
+				});
+
+			} else {
+				bindingContext.$root.modalOverlayCopyButtonVisibility(false);
+				bindingContext.$root.modalOverlayGroupButtons('one')
+			}
+		}	
 	};
 
 	// Apply Knockout Bindings

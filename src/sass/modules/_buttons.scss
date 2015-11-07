@@ -57,12 +57,19 @@
 .button-group {
   width: 100%;
 
-	&.two {
-		outline: none;
-
+	&.one {
 		.button {
-		  display: inline-block;
+			width: 100%;
+		}
+	}
+
+	&.two {
+		.button {
 		  width: 49.3%
 		}
+	}
+
+	.button {
+		display: inline-block;
 	}
 }

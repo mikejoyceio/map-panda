@@ -261,6 +261,15 @@
 		  width: 100%;
 		  z-index: 3;
 
+		  .modal-overlay-message {
+				left: 0;
+				margin: auto;
+				position: absolute;
+				right: 0;
+				text-align: center;
+				top: 150px;
+		  }
+
 		  .place-phone {
 		  	height: 130px;
 			  font-family: 'Lato', sans-serif;
@@ -268,6 +277,14 @@
 			  font-weight: 300;
 			  margin: 65px 0;
 			  text-align: center;
+
+			  &::selection {
+			  	background: none;
+			  }
+
+			  &::-moz-selection {
+			  	background: none;
+			  }
 		  }
 
 		  .actions {
