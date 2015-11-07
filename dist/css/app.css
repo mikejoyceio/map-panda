@@ -3026,12 +3026,14 @@ Copyright (c) 2015 Daniel Eden
 .button-group {
   width: 100%;
 }
-.button-group.two {
-  outline: none;
+.button-group.one .button {
+  width: 100%;
 }
 .button-group.two .button {
-  display: inline-block;
   width: 49.3%;
+}
+.button-group .button {
+  display: inline-block;
 }
 
 /*!
@@ -6144,6 +6146,14 @@ Copyright (c) 2015 Daniel Eden
   width: 100%;
   z-index: 3;
 }
+.modal .modal-content .modal-overlay .modal-overlay-message {
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 150px;
+}
 .modal .modal-content .modal-overlay .place-phone {
   height: 130px;
   font-family: 'Lato', sans-serif;
@@ -6151,6 +6161,12 @@ Copyright (c) 2015 Daniel Eden
   font-weight: 300;
   margin: 65px 0;
   text-align: center;
+}
+.modal .modal-content .modal-overlay .place-phone::selection {
+  background: none;
+}
+.modal .modal-content .modal-overlay .place-phone::-moz-selection {
+  background: none;
 }
 .modal .modal-content .modal-overlay .actions {
   position: relative;
