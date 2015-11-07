@@ -5979,6 +5979,47 @@ Copyright (c) 2015 Daniel Eden
   background-position: center center;
   height: 100%;
 }
+.modal .modal-content .modal-header .place-price {
+  position: absolute;
+  top: 25px;
+  left: 10px;
+}
+.modal .modal-content .modal-header .place-price span.dollar {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+}
+.modal .modal-content .modal-header .place-price span.dollar:before {
+  content: "\f155";
+  padding: 1px;
+  color: #777777;
+}
+.modal .modal-content .modal-header .place-price.dollar-00 .star {
+  display: none;
+}
+.modal .modal-content .modal-header .place-price.dollar-00:before {
+  content: 'No Ratings';
+  color: #404040;
+  line-height: 1.3;
+  display: block;
+}
+.modal .modal-content .modal-header .place-price.price-01 .dollar-01:before {
+  content: "\f155";
+  color: #e3cf7a;
+}
+.modal .modal-content .modal-header .place-price.price-02 .dollar-01:before, .modal .modal-content .modal-header .place-price.price-02 .dollar-02:before {
+  content: "\f155";
+  color: #e3cf7a;
+}
+.modal .modal-content .modal-header .place-price.price-03 .dollar-01:before, .modal .modal-content .modal-header .place-price.price-03 .dollar-02:before, .modal .modal-content .modal-header .place-price.price-03 .dollar-03:before {
+  content: "\f155";
+  color: #e3cf7a;
+}
+.modal .modal-content .modal-header .place-price.price-04 .dollar-01:before, .modal .modal-content .modal-header .place-price.price-04 .dollar-02:before, .modal .modal-content .modal-header .place-price.price-04 .dollar-03:before, .modal .modal-content .modal-header .place-price.price-04 .dollar-04:before {
+  content: "\f155";
+  color: #e3cf7a;
+}
 .modal .modal-content .modal-header .bottom-bar {
   background: #2eb398;
   height: 3px;
