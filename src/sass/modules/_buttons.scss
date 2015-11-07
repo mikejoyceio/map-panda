@@ -20,6 +20,10 @@
 	text-align: center;
 	text-decoration: none;
 
+	&:focus {
+		outline: 0;
+	}
+
 	&.default {
 		background-color: #dadee3;
 		border-color: #dadee3;
