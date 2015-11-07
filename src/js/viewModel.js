@@ -64,6 +64,7 @@ var globals = {
 		this.modalOverlayGroupButtons = ko.observable();
 		this.modalLoading = ko.observable(true);
 		this.modalInfoPhoto = ko.observable();
+		this.modalInfoPrice = ko.observable();
 		this.modalInfoRating = ko.observable('one');
 		this.modalInfoName = ko.observable();
 		this.modalInfoAddress = ko.observable();
@@ -583,10 +584,12 @@ var globals = {
 										phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'No Number',
 										phoneCall: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number.replace(/ /g, '') : false,
 										photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default.png',
-										rating: typeof place.rating !== 'undefined' ? Math.round(place.rating) : 0
+										rating: typeof place.rating !== 'undefined' ? Math.round(place.rating) : 0,
+										price: typeof place.price_level !== 'undefined' ? place.price_level : 0
 									};
 
 									bindingContext.$root.modalInfoPhoto("url('"+placeInfo.photo+"')");
+									bindingContext.$root.modalInfoPrice('price-0'+placeInfo.price);
 									bindingContext.$root.modalInfoRating('rating-0'+placeInfo.rating);
 									bindingContext.$root.modalInfoName(placeInfo.name);
 									bindingContext.$root.modalInfoAddress(placeInfo.address);
