@@ -58,6 +58,64 @@
 				height: 100%;
 			}
 
+			.place-price {
+			  @include border-radius(3px);
+			  background: rgba(255,255,255,0.3);
+			  font-size: 11px;
+			  height: 17px;
+			  left: 7px;
+			  line-height: 1.6;
+			  position: absolute;
+			  text-align: center;
+			  top: 30px;
+			  width: 50px;
+
+				span.dollar {
+					font-family: FontAwesome;
+					font-weight: normal;
+					font-style: normal;
+					display: inline-block;
+
+					&:before {
+					  content: "\f155";
+					  padding: 1px;
+					  color: #777777;
+					}
+				}
+
+				&.price-00 {
+					display: none;
+				}
+
+				&.price-01 {
+			  	.dollar-01:before {
+			  		content: "\f155";
+						color: #e3cf7a;
+			  	}
+			  }
+
+			  &.price-02 {
+				  .dollar-01:before, .dollar-02:before {
+			  		content: "\f155";
+						color: #e3cf7a;
+			  	}			  	
+			  }
+
+			  &.price-03 {
+				  .dollar-01:before, .dollar-02:before, .dollar-03:before {
+			  		content: "\f155";
+						color: #e3cf7a;
+			  	}					  	
+			  }
+
+			  &.price-04 {
+				  .dollar-01:before, .dollar-02:before, .dollar-03:before, .dollar-04:before {
+			  		content: "\f155";
+						color: #e3cf7a;
+			  	}				  	
+			  }				
+			}
+
 			.bottom-bar {
 				background: $accent-color;
 				height: 3px;
@@ -261,6 +319,15 @@
 		  width: 100%;
 		  z-index: 3;
 
+		  .modal-overlay-message {
+				left: 0;
+				margin: auto;
+				position: absolute;
+				right: 0;
+				text-align: center;
+				top: 150px;
+		  }
+
 		  .place-phone {
 		  	height: 130px;
 			  font-family: 'Lato', sans-serif;
@@ -268,6 +335,14 @@
 			  font-weight: 300;
 			  margin: 65px 0;
 			  text-align: center;
+
+			  &::selection {
+			  	background: none;
+			  }
+
+			  &::-moz-selection {
+			  	background: none;
+			  }
 		  }
 
 		  .actions {

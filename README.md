@@ -27,6 +27,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Nuttify: “before” pseudo element with Fontawesome ](http://nuttify.com/help/developer-manual/coding-style-guide/css-style-guide/css-tricks-before-pseudo-element-with-fontawesome/) by Ajax McKerral
 - [CSS Transforms and Z-Index](http://daneden.me/2012/04/22/css-transforms-and-z-index/) by Daniel Eden
 - [CSS Triangle Generator](http://apps.eky.hk/css-triangle-generator/)
+- [Change Browser Highlight Colour](http://www.paulund.co.uk/change-browser-highlight-colour) by Paul Lund
 
 ######Icon Font
 
@@ -61,6 +62,8 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [jQuery: Return data after ajax call success](http://stackoverflow.com/questions/5316697/jquery-return-data-after-ajax-call-success)
 - [HTML5 Rocks: JavaScript Promises](http://www.html5rocks.com/en/tutorials/es6/promises/#toc-javascript-promises)
 - [Mozilla Developer Network: Math.round()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round)
+- [Clipboard.js: A modern approach to copy text to clipboard](https://zenorocha.github.io/clipboard.js/)
+- [Detecting operating system with JavaScript](http://www.javascripter.net/faq/operatin.htm)
 
 ######jQuery 
 

@@ -58,8 +58,13 @@ var globals = {
 		// Modal Observables
 		this.modalVisibilty = ko.observable(false);
 		this.modalOverlayVisibility = ko.observable(false);
+		this.modalOverlayMessage = ko.observable();
+		this.modalOverlayMessageVisibility = ko.observable(false);
+		this.modalOverlayCopyButtonVisibility = ko.observable();
+		this.modalOverlayGroupButtons = ko.observable();
 		this.modalLoading = ko.observable(true);
 		this.modalInfoPhoto = ko.observable();
+		this.modalInfoPrice = ko.observable();
 		this.modalInfoRating = ko.observable('one');
 		this.modalInfoName = ko.observable();
 		this.modalInfoAddress = ko.observable();
@@ -579,10 +584,12 @@ var globals = {
 										phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'No Number',
 										phoneCall: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number.replace(/ /g, '') : false,
 										photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default.png',
-										rating: typeof place.rating !== 'undefined' ? Math.round(place.rating) : 0
+										rating: typeof place.rating !== 'undefined' ? Math.round(place.rating) : 0,
+										price: typeof place.price_level !== 'undefined' ? place.price_level : 0
 									};
 
 									bindingContext.$root.modalInfoPhoto("url('"+placeInfo.photo+"')");
+									bindingContext.$root.modalInfoPrice('price-0'+placeInfo.price);
 									bindingContext.$root.modalInfoRating('rating-0'+placeInfo.rating);
 									bindingContext.$root.modalInfoName(placeInfo.name);
 									bindingContext.$root.modalInfoAddress(placeInfo.address);
@@ -757,6 +764,50 @@ var globals = {
 				});
 			}
 		}
+	};
+
+	// KO Custom Binding for Clipboard
+	ko.bindingHandlers.clipboard = {
+
+		// Init function - ran once
+		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+		
+			// Check for mobile devices
+			var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;	
+
+
+			if (!isMobile) {
+
+				bindingContext.$root.modalOverlayCopyButtonVisibility(true);
+				bindingContext.$root.modalOverlayGroupButtons('two')
+
+				var clipboard = new Clipboard(element);	
+
+				clipboard.on('success', function(e) {
+					bindingContext.$root.modalOverlayMessage('Copied!');
+					bindingContext.$root.modalOverlayMessageVisibility(true);
+					setTimeout(function() {
+						bindingContext.$root.modalOverlayMessageVisibility(false);					
+					}, 1000);
+				});
+
+				clipboard.on('error', function(e) {
+					if (navigator.appVersion.indexOf("Mac")!=-1) {
+						bindingContext.$root.modalOverlayMessage('Press ⌘+C to copy');
+					} else {
+						bindingContext.$root.modalOverlayMessage('Press Ctrl+C to copy');	
+					}
+					bindingContext.$root.modalOverlayMessageVisibility(true);
+					setTimeout(function() {
+						bindingContext.$root.modalOverlayMessageVisibility(false);					
+					}, 2000);
+				});
+
+			} else {
+				bindingContext.$root.modalOverlayCopyButtonVisibility(false);
+				bindingContext.$root.modalOverlayGroupButtons('one')
+			}
+		}	
 	};
 
 	// Apply Knockout Bindings
