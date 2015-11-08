@@ -2993,6 +2993,9 @@ Copyright (c) 2015 Daniel Eden
   text-align: center;
   text-decoration: none;
 }
+.button:focus {
+  outline: 0;
+}
 .button.default {
   background-color: #dadee3;
   border-color: #dadee3;
@@ -5946,7 +5949,7 @@ Copyright (c) 2015 Daniel Eden
 .modal .modal-content .modal-header {
   background: #505050;
   position: relative;
-  height: 130px;
+  height: 140px;
   z-index: 2;
 }
 .modal .modal-content .modal-header .top-bar {
@@ -6093,7 +6096,7 @@ Copyright (c) 2015 Daniel Eden
 }
 .modal .modal-content .modal-body {
   position: relative;
-  margin: 10px;
+  margin: 5px 10px;
   z-index: 1;
 }
 .modal .modal-content .modal-body .actions {
