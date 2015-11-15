@@ -28,10 +28,12 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [CSS Transforms and Z-Index](http://daneden.me/2012/04/22/css-transforms-and-z-index/) by Daniel Eden
 - [CSS Triangle Generator](http://apps.eky.hk/css-triangle-generator/)
 - [Change Browser Highlight Colour](http://www.paulund.co.uk/change-browser-highlight-colour) by Paul Lund
+- [CSS Ellipsis](http://html5hub.com/ellipse-my-text/)
 
 ######Icon Font
 
 - [Font Awesome](https://fortawesome.github.io/Font-Awesome/examples/#animated)
+- [Font Awesome to PNG Converter](http://fa2png.io/)
 
 ######HTML
 
