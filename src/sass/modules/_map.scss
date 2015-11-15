@@ -16,14 +16,22 @@
 	z-index: 1;
 
 	.content {
-		height: 56px;
-		padding: 25px 0 0 28px;
-		border-bottom: 1px solid #ecf0f1;
+		height: 32px;
+  	padding: 10px 0 0 58px;
+
+		@media #{$medium-up} {
+			height: 57px;
+			padding: 25px 0 0 28px;
+		}
 
 		.content-header {
 			color: #132b2d;
-		  font-size: 32px;
+		  font-size: 22px;
 		  font-weight: 300;
+
+		  @media #{$medium-up} {
+		  	font-size: 32px;
+		  }
 		}
 	}
 }
@@ -76,8 +84,12 @@
 	position:absolute; 
 	right: 20px; 
 	text-align: center;
-	top: 105px;
+	top: 70px;
 	width: 30px; 
+
+	@media #{$medium-up} {
+		top: 105px;		
+	}
 
 	&:hover {
 		color: #ffffff;

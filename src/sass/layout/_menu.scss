@@ -5,33 +5,12 @@
 		background: #232b2d;
     height: 100%;
     left: 0;
+    margin-top: 82px;
     position: absolute;
     top: 0;
     width: 203px;
     z-index: 2;
     overflow: hidden;
-
-    .brand {
-    	background: $accent-color;
-    	height: 82px;
-    	left: 0;
-    	top: 0;
-    	position: relative;
-    	width: 100%;
-
-    	.brand-image {
-			  background: url(../images/panda.png);
-			  background-size: 100%;
-			  background-repeat: no-repeat;
-			  position: absolute;
-			  left: 0;
-			  right: 0;
-			  margin: 20px auto;
-			  width: 50px;
-			  height: 50px;
-
-    	}
-    }
 
     .search-filter {
     	padding: 10px;

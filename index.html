@@ -13,16 +13,16 @@
 	<div class="notification" data-bind="notification: {message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
 	<!-- /Notification -->
 
+	<!-- Brand -->
+	<div class="brand">
+		<a href="/">
+			<div class="brand-image"></div>
+		</a>
+	</div>
+	<!-- /Brand -->
+
 	<!-- Menu -->
 	<div class="menu" role="menu">
-
-		<!-- Brand -->
-		<div class="brand">
-			<a href="/">
-				<div class="brand-image"></div>
-			</a>
-		</div>
-		<!-- /Brand -->
 
 		<!-- Search Radius -->
 		<div class="search-radius">
@@ -112,7 +112,7 @@
 					</span>
 					</span>
 				</div>
-				<div class="image" data-bind="style: { backgroundImage: modalInfoPhoto }"></div>
+				<div class="image" data-bind="style: { backgroundImage: modalInfoPhoto }, cssAnimateVisible: modalInfoPhotoVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300"></div>
 				<div class="place-price" data-bind="css: modalInfoPrice">
 					<span class="dollar dollar-01"></span>
 					<span class="dollar dollar-02"></span>
@@ -120,16 +120,16 @@
 					<span class="dollar dollar-04"></span>	
 				</div>
 				<div class="bottom-bar">
-					<div class="place-rating rating" data-bind="css: modalInfoRating">
-						<span class="star star-01"></span>
-						<span class="star star-02"></span>
-						<span class="star star-03"></span>
-						<span class="star star-04"></span>
-						<span class="star star-05"></span>	
-					</div>
 				</div>
 			</div>
 			<div class="modal-body">
+				<div class="place-rating rating" data-bind="css: modalInfoRating">
+					<span class="star star-01"></span>
+					<span class="star star-02"></span>
+					<span class="star star-03"></span>
+					<span class="star star-04"></span>
+					<span class="star star-05"></span>	
+				</div>
 				<div class="actions">
 					<div class="action-phone" data-bind="event: { click: openModalOverlay, touchstart: openModalOverlay }">
 						<span class="icon fa fa-phone"></span>	

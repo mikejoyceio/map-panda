@@ -21,6 +21,7 @@
 			background: #505050;
 			position: relative;
 			height: 140px;
+			overflow: hidden;
 			z-index: 2;
 
 			.top-bar {
@@ -54,7 +55,6 @@
 
 			.image {
 				background-size: cover;
-				background-position: center 45px;
 				height: 100%;
 			}
 
@@ -123,31 +123,31 @@
 				bottom: 0;
 				left: 0;
 				width: 100%;
-
-				.place-rating {
-				  background: #ffffff;
-				  @include border-radius(4px);
-				  border: 2px solid $accent-color;
-				  color: #fff;
-				  font-size: 9px;
-				  font-weight: 300;
-				  height: 11px;
-				  left: 0;
-				  line-height: 1.4;
-				  margin: auto;
-				  position: absolute;
-				  right: 0;
-				  text-align: center;
-				  top: -7px;
-				  width: 75px;
-				}
 			}
 		}
 
 		.modal-body {
 			position: relative;
 			margin: 5px 10px;
-			z-index: 1;
+
+			.place-rating {
+			  background: #ffffff;
+			  @include border-radius(4px);
+			  border: 2px solid $accent-color;
+			  color: #fff;
+			  font-size: 9px;
+			  font-weight: 300;
+			  height: 11px;
+			  left: 0;
+			  line-height: 1.4;
+			  margin: auto;
+			  position: absolute;
+			  right: 0;
+			  text-align: center;
+			  top: -11px;
+			  width: 75px;
+			  z-index: 2;
+			}
 
 			.actions {
 				border-bottom: 1px solid #e8e6e4;

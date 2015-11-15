@@ -9,8 +9,11 @@
 @import "compass/css3/transition";
 @import "compass/reset";
 
-// Modules
-@import "modules/all";
+// Base
+@import "base/all";
 
 // Layout
 @import "layout/all";
+
+// Modules
+@import "modules/all";

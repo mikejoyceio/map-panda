@@ -64,6 +64,7 @@ var globals = {
 		this.modalOverlayGroupButtons = ko.observable();
 		this.modalLoading = ko.observable(true);
 		this.modalInfoPhoto = ko.observable();
+		this.modalInfoPhotoVisibility = ko.observable(false);
 		this.modalInfoPrice = ko.observable();
 		this.modalInfoRating = ko.observable('one');
 		this.modalInfoName = ko.observable();
@@ -570,6 +571,10 @@ var globals = {
 
 							// Show the modal
 							bindingContext.$root.modalVisibilty(true);
+
+							// Hide the modal photo
+							bindingContext.$root.modalInfoPhotoVisibility(false);
+
 							// Show the modal loading animation
 							bindingContext.$root.modalLoading(true);
 
@@ -615,6 +620,7 @@ var globals = {
 
 									setTimeout(function() {
 										bindingContext.$root.modalLoading(false);
+										bindingContext.$root.modalInfoPhotoVisibility(true);
 									}, 1000);
 
 								// If the request failed, console log the error if the global.debug variable is set to true

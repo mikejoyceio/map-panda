@@ -2,18 +2,24 @@
 // Content 
 
 html, body {
-	background: #505050;
-	height: 100%;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	position: fixed;
-	overflow: hidden;
+  background-image: url(/dist/images/default-large.png);
+  background-repeat: repeat;
+  background-size: 15%;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  overflow: hidden;
 }
 
 .main-content {
 	outline: none;
 	height: 100%;
-	margin: 0 0 0 200px;
+	margin: 0;
 	position: relative;
+
+	@media #{$medium-up} {
+		margin: 0 0 0 203px;
+	}
 }
