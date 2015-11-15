@@ -18042,7 +18042,7 @@ var globals = {
 				    		position: global.places[i].geometry.location,
 				    		photo: typeof global.places[i].photos !== 'undefined'
 				    					 ? global.places[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
-				    					 : 'nophoto.jpg'
+				    					 : 'dist/images/default-small.png'
 				    	}
 
 				    	// Add an Info Box
@@ -18104,10 +18104,10 @@ var globals = {
 					 		infoBox.open(global.map, this);
 					  });
 
-					 	// // Add event listener to hide Info Box on marker mouseout
-					  // google.maps.event.addListener(data.marker, 'mouseout', function() {
-					  // 	infoBox.close(global.map, this);
-					  // });
+					 	// Add event listener to hide Info Box on marker mouseout
+					  google.maps.event.addListener(data.marker, 'mouseout', function() {
+					  	infoBox.close(global.map, this);
+					  });
 
 					}
 
@@ -18163,7 +18163,7 @@ var globals = {
 										lng: place.geometry.location.lng(),
 										phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'No Number',
 										phoneCall: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number.replace(/ /g, '') : false,
-										photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default.png',
+										photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default-large.png',
 										rating: typeof place.rating !== 'undefined' ? Math.round(place.rating) : 0,
 										price: typeof place.price_level !== 'undefined' ? place.price_level : 0
 									};

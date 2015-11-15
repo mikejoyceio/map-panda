@@ -5991,7 +5991,7 @@ Copyright (c) 2015 Daniel Eden
 }
 .modal .modal-content .modal-header .image {
   background-size: cover;
-  background-position: center center;
+  background-position: center 45px;
   height: 100%;
 }
 .modal .modal-content .modal-header .place-price {
