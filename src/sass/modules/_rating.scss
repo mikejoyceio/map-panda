@@ -1,0 +1,67 @@
+
+// Rating
+
+.rating {
+	unicode-bidi: bidi-override;	
+
+	span.star {
+		font-family: FontAwesome;
+		font-weight: normal;
+		font-style: normal;
+		display: inline-block;
+
+		&:before {
+		  content: "\f005";
+		  padding: 1px;
+		  color: #c3c5c9;
+		}
+	}
+
+	&.rating-00 {
+		.star {
+			display: none;
+		}
+
+		&:before {
+			content: 'No Ratings';
+			color: #404040;
+		  line-height: 1.3;
+		  display: block;
+		}
+	}
+
+	&.rating-01 {
+  	.star-01:before {
+  		content: "\f005";
+			color: #e3cf7a;
+  	}
+  }
+
+  &.rating-02 {
+	  .star-01:before, .star-02:before {
+  		content: "\f005";
+			color: #e3cf7a;
+  	}			  	
+  }
+
+  &.rating-03 {
+	  .star-01:before, .star-02:before, .star-03:before {
+  		content: "\f005";
+			color: #e3cf7a;
+  	}					  	
+  }
+
+  &.rating-04 {
+	  .star-01:before, .star-02:before, .star-03:before, .star-04:before {
+  		content: "\f005";
+			color: #e3cf7a;
+  	}				  	
+  }
+
+  &.rating-05 {
+	  .star-01:before, .star-02:before, .star-03:before, .star-04:before, .star-05:before {
+  		content: "\f005";
+			color: #e3cf7a;
+  	}						  	
+  }	
+}
