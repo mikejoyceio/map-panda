@@ -471,7 +471,7 @@ var globals = {
 				    		placeId: global.places[i].place_id,
 				    		name: global.places[i].name,
 				    		vicinity: global.places[i].vicinity,
-				    		rating: global.places[i].rating,
+				    		rating: typeof global.places[i].rating !== 'undefined' ? Math.round(global.places[i].rating) : 0,
 				    		position: global.places[i].geometry.location,
 				    		photo: typeof global.places[i].photos !== 'undefined'
 				    					 ? global.places[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
@@ -497,8 +497,6 @@ var globals = {
 
 				 	// Add Info Box function
 					function addInfoBox(data) {
-
-						data.rating = typeof data.rating !== 'undefined' ? Math.round(data.rating) : 0;
 
 						var content = '<div class="info-box-content">' + 
 														'<div class="info-box-title">'+data.name+'</div>' + 
