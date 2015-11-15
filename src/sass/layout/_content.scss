@@ -16,6 +16,10 @@ html, body {
 .main-content {
 	outline: none;
 	height: 100%;
-	margin: 0 0 0 200px;
+	margin: 0;
 	position: relative;
+
+	@media #{$medium-up} {
+		margin: 0 0 0 203px;
+	}
 }
