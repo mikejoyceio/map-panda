@@ -20,7 +20,7 @@
 		.modal-header {
 			background: #505050;
 			position: relative;
-			height: 130px;
+			height: 140px;
 			z-index: 2;
 
 			.top-bar {
@@ -54,7 +54,7 @@
 
 			.image {
 				background-size: cover;
-				background-position: center center;
+				background-position: center 45px;
 				height: 100%;
 			}
 
@@ -125,7 +125,6 @@
 				width: 100%;
 
 				.place-rating {
-					unicode-bidi: bidi-override;
 				  background: #ffffff;
 				  @include border-radius(4px);
 				  border: 2px solid $accent-color;
@@ -141,74 +140,13 @@
 				  text-align: center;
 				  top: -7px;
 				  width: 75px;
-
-					span.star {
-						font-family: FontAwesome;
-						font-weight: normal;
-						font-style: normal;
-						display: inline-block;
-
-						&:before {
-						  content: "\f006";
-						  padding: 1px;
-						  color: #777777;
-						}
-					}
-
-					&.rating-00 {
-						.star {
-							display: none;
-						}
-
-						&:before {
-							content: 'No Ratings';
-							color: #404040;
-						  line-height: 1.3;
-						  display: block;
-						}
-					}
-
-					&.rating-01 {
-				  	.star-01:before {
-				  		content: "\f005";
-  						color: #e3cf7a;
-				  	}
-				  }
-
-				  &.rating-02 {
-					  .star-01:before, .star-02:before {
-				  		content: "\f005";
-  						color: #e3cf7a;
-				  	}			  	
-				  }
-
-				  &.rating-03 {
-					  .star-01:before, .star-02:before, .star-03:before {
-				  		content: "\f005";
-  						color: #e3cf7a;
-				  	}					  	
-				  }
-
-				  &.rating-04 {
-					  .star-01:before, .star-02:before, .star-03:before, .star-04:before {
-				  		content: "\f005";
-  						color: #e3cf7a;
-				  	}				  	
-				  }
-
-				  &.rating-05 {
-					  .star-01:before, .star-02:before, .star-03:before, .star-04:before, .star-05:before {
-				  		content: "\f005";
-  						color: #e3cf7a;
-				  	}						  	
-				  }
 				}
 			}
 		}
 
 		.modal-body {
 			position: relative;
-			margin: 10px;
+			margin: 5px 10px;
 			z-index: 1;
 
 			.actions {

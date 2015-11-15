@@ -2993,6 +2993,9 @@ Copyright (c) 2015 Daniel Eden
   text-align: center;
   text-decoration: none;
 }
+.button:focus {
+  outline: 0;
+}
 .button.default {
   background-color: #dadee3;
   border-color: #dadee3;
@@ -5703,8 +5706,20 @@ Copyright (c) 2015 Daniel Eden
   min-height: 35px;
 }
 .info-box .info-box-content .info-box-title {
-  line-height: 1.2;
+  line-height: 1.3;
   margin: 2px;
+  width: 160px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #565656;
+  font-size: 12px;
+  font-weight: 500;
+}
+.info-box .info-box-content .info-box-rating {
+  position: absolute;
+  top: 16px;
+  left: 41px;
 }
 .info-box .info-box-content .info-box-image {
   width: 30px;
@@ -5946,7 +5961,7 @@ Copyright (c) 2015 Daniel Eden
 .modal .modal-content .modal-header {
   background: #505050;
   position: relative;
-  height: 130px;
+  height: 140px;
   z-index: 2;
 }
 .modal .modal-content .modal-header .top-bar {
@@ -5976,7 +5991,7 @@ Copyright (c) 2015 Daniel Eden
 }
 .modal .modal-content .modal-header .image {
   background-size: cover;
-  background-position: center center;
+  background-position: center 45px;
   height: 100%;
 }
 .modal .modal-content .modal-header .place-price {
@@ -6032,7 +6047,6 @@ Copyright (c) 2015 Daniel Eden
   width: 100%;
 }
 .modal .modal-content .modal-header .bottom-bar .place-rating {
-  unicode-bidi: bidi-override;
   background: #ffffff;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -6051,49 +6065,9 @@ Copyright (c) 2015 Daniel Eden
   top: -7px;
   width: 75px;
 }
-.modal .modal-content .modal-header .bottom-bar .place-rating span.star {
-  font-family: FontAwesome;
-  font-weight: normal;
-  font-style: normal;
-  display: inline-block;
-}
-.modal .modal-content .modal-header .bottom-bar .place-rating span.star:before {
-  content: "\f006";
-  padding: 1px;
-  color: #777777;
-}
-.modal .modal-content .modal-header .bottom-bar .place-rating.rating-00 .star {
-  display: none;
-}
-.modal .modal-content .modal-header .bottom-bar .place-rating.rating-00:before {
-  content: 'No Ratings';
-  color: #404040;
-  line-height: 1.3;
-  display: block;
-}
-.modal .modal-content .modal-header .bottom-bar .place-rating.rating-01 .star-01:before {
-  content: "\f005";
-  color: #e3cf7a;
-}
-.modal .modal-content .modal-header .bottom-bar .place-rating.rating-02 .star-01:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-02 .star-02:before {
-  content: "\f005";
-  color: #e3cf7a;
-}
-.modal .modal-content .modal-header .bottom-bar .place-rating.rating-03 .star-01:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-03 .star-02:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-03 .star-03:before {
-  content: "\f005";
-  color: #e3cf7a;
-}
-.modal .modal-content .modal-header .bottom-bar .place-rating.rating-04 .star-01:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-04 .star-02:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-04 .star-03:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-04 .star-04:before {
-  content: "\f005";
-  color: #e3cf7a;
-}
-.modal .modal-content .modal-header .bottom-bar .place-rating.rating-05 .star-01:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-05 .star-02:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-05 .star-03:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-05 .star-04:before, .modal .modal-content .modal-header .bottom-bar .place-rating.rating-05 .star-05:before {
-  content: "\f005";
-  color: #e3cf7a;
-}
 .modal .modal-content .modal-body {
   position: relative;
-  margin: 10px;
+  margin: 5px 10px;
   z-index: 1;
 }
 .modal .modal-content .modal-body .actions {
@@ -6578,6 +6552,49 @@ Copyright (c) 2015 Daniel Eden
 
 .irs-grid-text {
   color: #999;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+}
+.rating span.star {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+}
+.rating span.star:before {
+  content: "\f005";
+  padding: 1px;
+  color: #c3c5c9;
+}
+.rating.rating-00 .star {
+  display: none;
+}
+.rating.rating-00:before {
+  content: 'No Ratings';
+  color: #8c8c8c;
+  display: block;
+}
+.rating.rating-01 .star-01:before {
+  content: "\f005";
+  color: #e3cf7a;
+}
+.rating.rating-02 .star-01:before, .rating.rating-02 .star-02:before {
+  content: "\f005";
+  color: #e3cf7a;
+}
+.rating.rating-03 .star-01:before, .rating.rating-03 .star-02:before, .rating.rating-03 .star-03:before {
+  content: "\f005";
+  color: #e3cf7a;
+}
+.rating.rating-04 .star-01:before, .rating.rating-04 .star-02:before, .rating.rating-04 .star-03:before, .rating.rating-04 .star-04:before {
+  content: "\f005";
+  color: #e3cf7a;
+}
+.rating.rating-05 .star-01:before, .rating.rating-05 .star-02:before, .rating.rating-05 .star-03:before, .rating.rating-05 .star-04:before, .rating.rating-05 .star-05:before {
+  content: "\f005";
+  color: #e3cf7a;
 }
 
 /*

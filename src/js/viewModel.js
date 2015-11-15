@@ -470,12 +470,13 @@ var globals = {
 				    		id: global.places[i].id,
 				    		placeId: global.places[i].place_id,
 				    		name: global.places[i].name,
+				    		icon: value.currentPlace().icon(),
 				    		vicinity: global.places[i].vicinity,
-				    		rating: global.places[i].rating,
+				    		rating: typeof global.places[i].rating !== 'undefined' ? Math.round(global.places[i].rating) : 0,
 				    		position: global.places[i].geometry.location,
 				    		photo: typeof global.places[i].photos !== 'undefined'
 				    					 ? global.places[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
-				    					 : 'nophoto.jpg'
+				    					 : 'dist/images/default-small.png'
 				    	}
 
 				    	// Add an Info Box
@@ -498,17 +499,30 @@ var globals = {
 				 	// Add Info Box function
 					function addInfoBox(data) {
 
+						var content = '<div class="info-box-content">' + 
+														'<div class="info-box-title">'+data.name+'</div>' + 
+														'<div class="info-box-image" style="background-image: url('+data.photo+');"></div>' + 
+														'<div class="info-box-rating rating rating-0'+data.rating+'">' +
+															'<span class="star star-01"></span>' +
+															'<span class="star star-02"></span>' +
+															'<span class="star star-03"></span>' +
+															'<span class="star star-04"></span>' +
+															'<span class="star star-05"></span>' +
+														'</div>' +
+														'<i class="info-box-icon fa '+data.icon+'"></i>' +
+											 		'</div>';
+
 						var infoBoxOptions = {
 							boxClass: 'info-box',
-							content: '<div class="info-box-content">' + '<div class="info-box-title">'+data.name+'</div>' + '<div class="info-box-image" style="background-image: url('+data.photo+');"></div>' + '<i class="info-box-icon fa '+value.currentPlace().icon()+'"></i></div>',
+							content: content,
 							alignBottom: true,
 							disableAutoPan: false,
 							maxWidth: 0,
-							pixelOffset: new google.maps.Size(-100, -30),
+							pixelOffset: new google.maps.Size(-105, -30),
 							zIndex: null,
 							boxStyle: { 
 							  opacity: 0.75,
-							  width: "220px"
+							  width: "230px"
 							 },
 							closeBoxURL: "",
 							infoBoxClearance: new google.maps.Size(1, 1),
@@ -583,7 +597,7 @@ var globals = {
 										lng: place.geometry.location.lng(),
 										phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'No Number',
 										phoneCall: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number.replace(/ /g, '') : false,
-										photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default.png',
+										photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default-large.png',
 										rating: typeof place.rating !== 'undefined' ? Math.round(place.rating) : 0,
 										price: typeof place.price_level !== 'undefined' ? place.price_level : 0
 									};
