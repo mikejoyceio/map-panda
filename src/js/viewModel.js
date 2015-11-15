@@ -470,6 +470,7 @@ var globals = {
 				    		id: global.places[i].id,
 				    		placeId: global.places[i].place_id,
 				    		name: global.places[i].name,
+				    		icon: value.currentPlace().icon(),
 				    		vicinity: global.places[i].vicinity,
 				    		rating: typeof global.places[i].rating !== 'undefined' ? Math.round(global.places[i].rating) : 0,
 				    		position: global.places[i].geometry.location,
@@ -508,7 +509,7 @@ var globals = {
 															'<span class="star star-04"></span>' +
 															'<span class="star star-05"></span>' +
 														'</div>' +
-														'<i class="info-box-icon fa '+value.currentPlace().icon()+'"></i>' +
+														'<i class="info-box-icon fa '+data.icon+'"></i>' +
 											 		'</div>';
 
 						var infoBoxOptions = {
