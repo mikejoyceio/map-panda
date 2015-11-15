@@ -518,11 +518,11 @@ var globals = {
 							alignBottom: true,
 							disableAutoPan: false,
 							maxWidth: 0,
-							pixelOffset: new google.maps.Size(-100, -30),
+							pixelOffset: new google.maps.Size(-105, -30),
 							zIndex: null,
 							boxStyle: { 
 							  opacity: 0.75,
-							  width: "220px"
+							  width: "230px"
 							 },
 							closeBoxURL: "",
 							infoBoxClearance: new google.maps.Size(1, 1),
