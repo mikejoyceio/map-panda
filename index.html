@@ -161,7 +161,7 @@
 				<div class="actions">
 					<div class="button-group" data-bind="visible: modalInfoPhoneCall, css: modalOverlayGroupButtons">
 						<button class="button default radius" data-bind="visible: modalOverlayCopyButtonVisibility, clipboard" data-clipboard-target="#clipboardTarget">Copy</button>
-						<a class="button action radius" data-bind="attr: { href: 'tel:'+modalInfoPhoneCall }">Call</a>
+						<a class="button action radius" data-bind="attr: { href: 'tel:'+modalInfoPhoneCall() }">Call</a>
 					</div>
 					<button class="button cancel radius expand" data-bind="event: { click: closeModalOverlay, touchstart: closeModalOverlay }">Close</button>
 				</div>
