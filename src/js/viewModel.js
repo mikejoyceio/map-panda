@@ -498,9 +498,24 @@ var globals = {
 				 	// Add Info Box function
 					function addInfoBox(data) {
 
+						data.rating = typeof data.rating !== 'undefined' ? Math.round(data.rating) : 0;
+
+						var content = '<div class="info-box-content">' + 
+														'<div class="info-box-title">'+data.name+'</div>' + 
+														'<div class="info-box-image" style="background-image: url('+data.photo+');"></div>' + 
+														'<div class="info-box-rating rating rating-0'+data.rating+'">' +
+															'<span class="star star-01"></span>' +
+															'<span class="star star-02"></span>' +
+															'<span class="star star-03"></span>' +
+															'<span class="star star-04"></span>' +
+															'<span class="star star-05"></span>' +
+														'</div>' +
+														'<i class="info-box-icon fa '+value.currentPlace().icon()+'"></i>' +
+											 		'</div>';
+
 						var infoBoxOptions = {
 							boxClass: 'info-box',
-							content: '<div class="info-box-content">' + '<div class="info-box-title">'+data.name+'</div>' + '<div class="info-box-image" style="background-image: url('+data.photo+');"></div>' + '<i class="info-box-icon fa '+value.currentPlace().icon()+'"></i></div>',
+							content: content,
 							alignBottom: true,
 							disableAutoPan: false,
 							maxWidth: 0,
@@ -524,10 +539,10 @@ var globals = {
 					 		infoBox.open(global.map, this);
 					  });
 
-					 	// Add event listener to hide Info Box on marker mouseout
-					  google.maps.event.addListener(data.marker, 'mouseout', function() {
-					  	infoBox.close(global.map, this);
-					  });
+					 	// // Add event listener to hide Info Box on marker mouseout
+					  // google.maps.event.addListener(data.marker, 'mouseout', function() {
+					  // 	infoBox.close(global.map, this);
+					  // });
 
 					}
 
