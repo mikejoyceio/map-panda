@@ -56,6 +56,147 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
+/* 0, 640px */
+/* 641px, 1024px */
+/* 1025px, 1440px */
+/* 1441px, 1920px */
+/* 1921px, ... */
+body {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 21px;
+}
+
+html, body {
+  background-image: url(/dist/images/default-large.png);
+  background-repeat: repeat;
+  background-size: 15%;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  overflow: hidden;
+}
+
+.main-content {
+  outline: none;
+  height: 100%;
+  margin: 0;
+  position: relative;
+}
+@media only screen and (min-width: 40.0625em) {
+  .main-content {
+    margin: 0 0 0 203px;
+  }
+}
+
+.footer {
+  outline: none;
+}
+
+.header {
+  outline: none;
+}
+.header h1 {
+  color: #fff;
+  left: 20px;
+  position: absolute;
+  top: 20px;
+}
+
+.menu {
+  background: #232b2d;
+  height: 100%;
+  left: 0;
+  margin-top: 82px;
+  position: absolute;
+  top: 0;
+  width: 203px;
+  z-index: 2;
+  overflow: hidden;
+}
+.menu .search-filter {
+  padding: 10px;
+}
+.menu .search-filter .search-input {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background: #fefefe;
+  border: 2px solid #fff;
+  height: 23px;
+  outline: none;
+  padding: 0 2px;
+  width: 100%;
+}
+.menu .search-filter .search-input:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+.menu .search-radius {
+  padding: 10px 10px 5px 10px;
+}
+.menu .place-list {
+  color: #fff;
+  margin-top: 20px;
+  height: 510px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.menu .place-list .item {
+  color: #667174;
+  font-size: 15px;
+  line-height: 1;
+  margin: 0 0 0 8px;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.menu .place-list .item:hover, .menu .place-list .item.active {
+  cursor: pointer;
+  color: #fff;
+}
+.menu .place-list .item:hover .icon .icon-outer, .menu .place-list .item.active .icon .icon-outer {
+  color: #fff;
+}
+.menu .place-list .item:hover .icon .icon-inner, .menu .place-list .item.active .icon .icon-inner {
+  color: #2eb398;
+}
+.menu .place-list .item.hidden {
+  display: none;
+}
+.menu .place-list .item .icon {
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  margin-right: 5px;
+}
+.menu .place-list .item .icon .icon-inner {
+  color: #667174;
+  font-size: 11px;
+  line-height: 2.7;
+}
+.menu .place-list .item .icon .icon-outer {
+  color: #6f7b7e;
+  font-size: 28px;
+}
+
 @-moz-keyframes pulse {
   from {
     border: 3px solid #fff;
@@ -2974,6 +3115,40 @@ Copyright (c) 2015 Daniel Eden
   animation-name: slideOutUp;
 }
 
+.brand {
+  background: #2eb398;
+  height: 42px;
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 42px;
+  z-index: 2;
+}
+@media only screen and (min-width: 40.0625em) {
+  .brand {
+    height: 82px;
+    width: 203px;
+  }
+}
+.brand .brand-image {
+  background: url(../images/panda.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 12px auto;
+  width: 24px;
+  height: 24px;
+}
+@media only screen and (min-width: 40.0625em) {
+  .brand .brand-image {
+    margin: 20px auto;
+    width: 50px;
+    height: 50px;
+  }
+}
+
 .button {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -5832,14 +6007,24 @@ Copyright (c) 2015 Daniel Eden
   z-index: 1;
 }
 .map-info .content {
-  height: 56px;
-  padding: 25px 0 0 28px;
-  border-bottom: 1px solid #ecf0f1;
+  height: 32px;
+  padding: 10px 0 0 58px;
+}
+@media only screen and (min-width: 40.0625em) {
+  .map-info .content {
+    height: 57px;
+    padding: 25px 0 0 28px;
+  }
 }
 .map-info .content .content-header {
   color: #132b2d;
-  font-size: 32px;
+  font-size: 22px;
   font-weight: 300;
+}
+@media only screen and (min-width: 40.0625em) {
+  .map-info .content .content-header {
+    font-size: 32px;
+  }
 }
 
 .map-zoom-buttons {
@@ -5894,8 +6079,13 @@ Copyright (c) 2015 Daniel Eden
   position: absolute;
   right: 20px;
   text-align: center;
-  top: 105px;
+  top: 70px;
   width: 30px;
+}
+@media only screen and (min-width: 40.0625em) {
+  .map-pan-to {
+    top: 105px;
+  }
 }
 .map-pan-to:hover {
   color: #ffffff;
@@ -5962,6 +6152,7 @@ Copyright (c) 2015 Daniel Eden
   background: #505050;
   position: relative;
   height: 140px;
+  overflow: hidden;
   z-index: 2;
 }
 .modal .modal-content .modal-header .top-bar {
@@ -5991,7 +6182,6 @@ Copyright (c) 2015 Daniel Eden
 }
 .modal .modal-content .modal-header .image {
   background-size: cover;
-  background-position: center 45px;
   height: 100%;
 }
 .modal .modal-content .modal-header .place-price {
@@ -6046,7 +6236,11 @@ Copyright (c) 2015 Daniel Eden
   left: 0;
   width: 100%;
 }
-.modal .modal-content .modal-header .bottom-bar .place-rating {
+.modal .modal-content .modal-body {
+  position: relative;
+  margin: 5px 10px;
+}
+.modal .modal-content .modal-body .place-rating {
   background: #ffffff;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -6062,13 +6256,9 @@ Copyright (c) 2015 Daniel Eden
   position: absolute;
   right: 0;
   text-align: center;
-  top: -7px;
+  top: -11px;
   width: 75px;
-}
-.modal .modal-content .modal-body {
-  position: relative;
-  margin: 5px 10px;
-  z-index: 1;
+  z-index: 2;
 }
 .modal .modal-content .modal-body .actions {
   border-bottom: 1px solid #e8e6e4;
@@ -8251,149 +8441,3 @@ yx-axis
 }
 
 /* ---------------------------------------- */
-body {
-  font-family: "Lato", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-}
-
-h1 {
-  font-size: 36px;
-}
-
-h2 {
-  font-size: 24px;
-}
-
-h3 {
-  font-size: 21px;
-}
-
-html, body {
-  background: #505050;
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  overflow: hidden;
-}
-
-.main-content {
-  outline: none;
-  height: 100%;
-  margin: 0 0 0 200px;
-  position: relative;
-}
-
-.footer {
-  outline: none;
-}
-
-.header {
-  outline: none;
-}
-.header h1 {
-  color: #fff;
-  left: 20px;
-  position: absolute;
-  top: 20px;
-}
-
-.menu {
-  background: #232b2d;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 203px;
-  z-index: 2;
-  overflow: hidden;
-}
-.menu .brand {
-  background: #2eb398;
-  height: 82px;
-  left: 0;
-  top: 0;
-  position: relative;
-  width: 100%;
-}
-.menu .brand .brand-image {
-  background: url(../images/panda.png);
-  background-size: 100%;
-  background-repeat: no-repeat;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: 20px auto;
-  width: 50px;
-  height: 50px;
-}
-.menu .search-filter {
-  padding: 10px;
-}
-.menu .search-filter .search-input {
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-  background: #fefefe;
-  border: 2px solid #fff;
-  height: 23px;
-  outline: none;
-  padding: 0 2px;
-  width: 100%;
-}
-.menu .search-filter .search-input:focus {
-  outline-color: transparent;
-  outline-style: none;
-}
-.menu .search-radius {
-  padding: 10px 10px 5px 10px;
-}
-.menu .place-list {
-  color: #fff;
-  margin-top: 20px;
-  height: 510px;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-}
-.menu .place-list .item {
-  color: #667174;
-  font-size: 15px;
-  line-height: 1;
-  margin: 0 0 0 8px;
-  -moz-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-  -webkit-transition: all 0.2s linear;
-  transition: all 0.2s linear;
-}
-.menu .place-list .item:hover, .menu .place-list .item.active {
-  cursor: pointer;
-  color: #fff;
-}
-.menu .place-list .item:hover .icon .icon-outer, .menu .place-list .item.active .icon .icon-outer {
-  color: #fff;
-}
-.menu .place-list .item:hover .icon .icon-inner, .menu .place-list .item.active .icon .icon-inner {
-  color: #2eb398;
-}
-.menu .place-list .item.hidden {
-  display: none;
-}
-.menu .place-list .item .icon {
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  -webkit-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-  margin-right: 5px;
-}
-.menu .place-list .item .icon .icon-inner {
-  color: #667174;
-  font-size: 11px;
-  line-height: 2.7;
-}
-.menu .place-list .item .icon .icon-outer {
-  color: #6f7b7e;
-  font-size: 28px;
-}
