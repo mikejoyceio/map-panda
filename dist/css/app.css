@@ -162,9 +162,9 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: scroll;
-  width: 100%;
-  -webkit-overflow-scrolling: touch;
+  width: 200px;
   white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
 }
 @media only screen and (min-width: 40.0625em) {
   .menu .place-list {
