@@ -46,6 +46,8 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 ######Images
 
 - [Daturi - Convert images to base64](http://www.daturi.me/)
+- [Make Use Of - Convert Raster Images to Vector](http://www.makeuseof.com/tag/convert-images-to-svg-format-with-inkscape/)
+- [Favicon Generator](http://realfavicongenerator.net/)
 
 ######JavaScript
 
