@@ -58,7 +58,7 @@
     .place-list {
 			color: #fff;
 			margin: 0;
-			padding: 0;
+			padding: 0 0 10px 0;
 			width: 100%;
 			overflow-y: hidden;
 			overflow-x: scroll;
@@ -68,6 +68,7 @@
 			@media #{$medium-up} {
 				height: 510px;
 				margin-top: 20px;
+				padding: 0;
 				width: 200px;				
 				overflow: auto;
 			}
