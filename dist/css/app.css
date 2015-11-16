@@ -169,6 +169,11 @@ html, body {
   padding: 10px;
   display: none;
 }
+@media only screen and (min-width: 40.0625em) {
+  .menu .search-filter {
+    display: block;
+  }
+}
 .menu .search-filter .search-input {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -3194,7 +3199,7 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .brand .brand-image {
-  background: url(../images/panda.png);
+  background: url(../images/panda-small.png);
   background-size: 100%;
   background-repeat: no-repeat;
   position: absolute;

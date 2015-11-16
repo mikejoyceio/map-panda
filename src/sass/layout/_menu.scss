@@ -51,6 +51,10 @@
     	padding: 10px;
     	display: none;
 
+    	@media #{$medium-up} {
+    		display: block;
+    	}
+
 			.search-input {
 		    @include border-radius(3px);
 		    background: #fefefe;
