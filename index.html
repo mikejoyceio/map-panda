@@ -37,7 +37,7 @@
 		<!-- /Search Filter -->
 
 		<!-- Options -->
-		<div class="place-list-wrapper" style="width: 100%; overflow: scroll;">
+		<div class="place-list-wrapper" style="width: 100%; overflow: hidden; overflow-x: auto;">
 			<ul class="place-list" data-bind="scrollBar">
 				<!-- ko foreach: placeList -->
 				<li class="item" data-bind="css: {active: isActive(), hidden: isHidden()}, event: { click: $parent.selectPlace, touchend: $parent.selectPlace }">
