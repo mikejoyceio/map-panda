@@ -120,9 +120,10 @@ html, body {
 
 .menu {
   background: #232b2d;
-  height: 80px;
+  height: 28px;
   left: 0;
-  margin-top: 82px;
+  margin: 0;
+  padding: 10px;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -132,12 +133,15 @@ html, body {
   .menu {
     height: 100%;
     top: 0;
+    margin-top: 82px;
+    padding: 0;
     width: 203px;
     overflow: hidden;
   }
 }
 .menu .search-filter {
   padding: 10px;
+  display: none;
 }
 .menu .search-filter .search-input {
   -moz-border-radius: 3px;
@@ -155,21 +159,12 @@ html, body {
   outline-style: none;
 }
 .menu .search-radius {
-  padding: 0;
-  position: absolute;
-  top: -300px;
-  left: 0;
-  transform: rotate(-90deg);
-  width: 280px;
-  height: 270px;
+  padding: 10px 10px 5px 10px;
+  display: none;
 }
 @media only screen and (min-width: 40.0625em) {
   .menu .search-radius {
-    padding: 10px 10px 5px 10px;
-    position: static;
-    transform: none;
-    width: auto;
-    height: auto;
+    display: block;
   }
 }
 .menu .place-list {
@@ -194,9 +189,9 @@ html, body {
 .menu .place-list .item {
   color: #667174;
   display: inline;
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1;
-  margin: 0 0 0 8px;
+  margin: 0 0 0 18px;
   -moz-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;
   -webkit-transition: all 0.2s linear;
@@ -205,6 +200,8 @@ html, body {
 @media only screen and (min-width: 40.0625em) {
   .menu .place-list .item {
     display: block;
+    font-size: 15px;
+    margin: 0 0 0 8px;
   }
 }
 .menu .place-list .item:hover, .menu .place-list .item.active {
