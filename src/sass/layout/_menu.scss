@@ -46,8 +46,10 @@
 			margin: 0;
 			padding: 0;
 			width: 100%;
-			white-space: nowrap;
+			overflow-y: hidden;
+			overflow-x: scroll;
 			-webkit-overflow-scrolling: touch;
+			white-space: nowrap;
 
 			@media #{$medium-up} {
 				height: 510px;
