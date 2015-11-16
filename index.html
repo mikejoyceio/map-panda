@@ -160,8 +160,8 @@
 				<div id="clipboardTarget" class="place-phone" data-bind="text: modalInfoPhone"></div>			
 				<div class="actions">
 					<div class="button-group" data-bind="visible: modalInfoPhoneCall, css: modalOverlayGroupButtons">
-						<button class="button default radius" data-bind="visible: modalOverlayCopyButtonVisibility, clipboard" data-clipboard-target="#clipboardTarget">Copy</button>
-						<a class="button action radius" data-bind="attr: { href: 'tel:'+modalInfoPhoneCall() }">Call</a>
+						<button class="button copy default radius" data-bind="visible: modalOverlayCopyButtonVisibility, clipboard" data-clipboard-target="#clipboardTarget">Copy</button>
+						<a class="button call action radius" data-bind="attr: { href: 'tel:'+modalInfoPhoneCall() }">Call</a>
 					</div>
 					<button class="button cancel radius expand" data-bind="event: { click: closeModalOverlay, touchstart: closeModalOverlay }">Close</button>
 				</div>
