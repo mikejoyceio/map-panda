@@ -3,14 +3,20 @@
 
 .menu {
 		background: #232b2d;
-    height: 100%;
+    height: 150px;
     left: 0;
     margin-top: 82px;
     position: absolute;
-    top: 0;
-    width: 203px;
+    bottom: 0;
+    width: 100%;
     z-index: 2;
     overflow: hidden;
+
+    @media #{$medium-up} {
+    	height: 100%;
+    	top: 0;	
+    	width: 203px;
+    }
 
     .search-filter {
     	padding: 10px;
@@ -37,17 +43,31 @@
 
     .place-list {
 			color: #fff;
-			margin-top: 20px;
-			height: 510px;
-			overflow: auto;
+			margin: 0;
+			padding: 0;
+			overflow: scroll;
+			width: 100%;
 			-webkit-overflow-scrolling: touch;
+			white-space: nowrap;
+
+			@media #{$medium-up} {
+				height: 510px;
+				margin-top: 20px;
+				width: 200px;				
+				overflow: auto;
+			}
 			
     	.item {
 			  color: #667174;
+			  display: inline;
 			  font-size: 15px;
 			  line-height: 1;
 			  margin: 0 0 0 8px;
     		@include transition(all .2s linear);
+
+    		@media #{$medium-up} {
+    			display: block;
+    		}
 
 			  &:hover,
 			  &.active {
