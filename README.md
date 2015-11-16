@@ -29,6 +29,8 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [CSS Triangle Generator](http://apps.eky.hk/css-triangle-generator/)
 - [Change Browser Highlight Colour](http://www.paulund.co.uk/change-browser-highlight-colour) by Paul Lund
 - [CSS Ellipsis](http://html5hub.com/ellipse-my-text/)
+- [MDN: CSS Position](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
+- [MDN: CSS Transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
 
 ######Icon Font
 

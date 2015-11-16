@@ -120,20 +120,20 @@ html, body {
 
 .menu {
   background: #232b2d;
-  height: 150px;
+  height: 80px;
   left: 0;
   margin-top: 82px;
   position: absolute;
   bottom: 0;
   width: 100%;
   z-index: 2;
-  overflow: hidden;
 }
 @media only screen and (min-width: 40.0625em) {
   .menu {
     height: 100%;
     top: 0;
     width: 203px;
+    overflow: hidden;
   }
 }
 .menu .search-filter {
@@ -155,12 +155,27 @@ html, body {
   outline-style: none;
 }
 .menu .search-radius {
-  padding: 10px 10px 5px 10px;
+  padding: 0;
+  position: absolute;
+  top: -300px;
+  left: 0;
+  transform: rotate(-90deg);
+  width: 280px;
+  height: 270px;
+}
+@media only screen and (min-width: 40.0625em) {
+  .menu .search-radius {
+    padding: 10px 10px 5px 10px;
+    position: static;
+    transform: none;
+    width: auto;
+    height: auto;
+  }
 }
 .menu .place-list {
   color: #fff;
   margin: 0;
-  padding: 0;
+  padding: 0 0 10px 0;
   width: 100%;
   overflow-y: hidden;
   overflow-x: scroll;
@@ -171,6 +186,7 @@ html, body {
   .menu .place-list {
     height: 510px;
     margin-top: 20px;
+    padding: 0;
     width: 200px;
     overflow: auto;
   }
@@ -5984,11 +6000,16 @@ Copyright (c) 2015 Daniel Eden
   width: 16px;
   height: 16px;
   border-width: 3px;
-  top: 5px;
+  top: 3px;
   right: 0;
-  left: 0;
+  left: 1px;
   margin: auto;
   z-index: 9999;
+}
+@media only screen and (min-width: 40.0625em) {
+  .uber-loader {
+    top: 5px;
+  }
 }
 
 .map-loader {
@@ -6056,13 +6077,18 @@ Copyright (c) 2015 Daniel Eden
   -webkit-border-radius: 3px;
   border-radius: 3px;
   background: #232b2d;
-  bottom: 50px;
+  bottom: 110px;
   height: 60px;
   position: absolute;
   right: 23px;
   text-align: center;
   width: 25px;
   z-index: 999;
+}
+@media only screen and (min-width: 40.0625em) {
+  .map-zoom-buttons {
+    bottom: 50px;
+  }
 }
 .map-zoom-buttons .map-zoom-button {
   color: #667174;
@@ -6159,14 +6185,23 @@ Copyright (c) 2015 Daniel Eden
   -moz-border-radius: 7px;
   -webkit-border-radius: 7px;
   border-radius: 7px;
-  width: 270px;
-  height: 370px;
-  left: 230px;
-  right: 0;
-  top: 105px;
+  width: 200px;
+  height: 290px;
+  left: 20px;
+  right: auto;
+  top: 75px;
   position: absolute;
   overflow: hidden;
   z-index: 1000;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal {
+    width: 270px;
+    height: 370px;
+    left: 230px;
+    right: auto;
+    top: 110px;
+  }
 }
 .modal .modal-content {
   height: 100%;
@@ -6175,34 +6210,49 @@ Copyright (c) 2015 Daniel Eden
 .modal .modal-content .modal-header {
   background: #505050;
   position: relative;
-  height: 140px;
+  height: 100px;
   overflow: hidden;
   z-index: 2;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-header {
+    height: 140px;
+  }
 }
 .modal .modal-content .modal-header .top-bar {
   background: #2eb398;
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
+  height: 20px;
   width: 100%;
   z-index: 3;
 }
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-header .top-bar {
+    height: 25px;
+  }
+}
 .modal .modal-content .modal-header .top-bar .close-modal {
-  font-size: 10px;
+  font-size: 8px;
   position: absolute;
-  top: 0px;
+  top: -3px;
   right: 3px;
 }
 .modal .modal-content .modal-header .top-bar .close-modal:hover {
   cursor: pointer;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-header .top-bar .close-modal {
+    font-size: 10px;
+    top: 0;
+  }
 }
 .modal .modal-content .modal-header .top-bar .close-modal .icon-outer {
   color: #fff;
 }
 .modal .modal-content .modal-header .top-bar .close-modal .icon-inner {
   color: #fff;
-  top: -1px;
 }
 .modal .modal-content .modal-header .image {
   background-size: cover;
@@ -6271,36 +6321,63 @@ Copyright (c) 2015 Daniel Eden
   border-radius: 4px;
   border: 2px solid #2eb398;
   color: #fff;
-  font-size: 9px;
+  font-size: 7px;
   font-weight: 300;
-  height: 11px;
+  height: 9px;
   left: 0;
-  line-height: 1.4;
+  line-height: 1.3;
   margin: auto;
   position: absolute;
   right: 0;
   text-align: center;
   top: -11px;
-  width: 75px;
+  width: 60px;
   z-index: 2;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-body .place-rating {
+    font-size: 9px;
+    line-height: 1.4;
+    height: 11px;
+    width: 75px;
+  }
 }
 .modal .modal-content .modal-body .actions {
   border-bottom: 1px solid #e8e6e4;
-  height: 50px;
+  height: 35px;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-body .actions {
+    height: 50px;
+  }
 }
 .modal .modal-content .modal-body .actions .action-phone,
 .modal .modal-content .modal-body .actions .action-uber {
   cursor: pointer;
-  padding: 5px 7px;
-  width: 110px;
+  padding: 5px 5px;
+  width: 80px;
   text-align: center;
   font-size: 25px;
-  top: 5px;
+  top: 1px;
   position: absolute;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-body .actions .action-phone,
+  .modal .modal-content .modal-body .actions .action-uber {
+    padding: 5px 7px;
+    width: 110px;
+    top: 5px;
+  }
 }
 .modal .modal-content .modal-body .actions .action-phone {
   border-right: 1px solid #e8e6e4;
+  font-size: 20px;
   left: 0;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-body .actions .action-phone {
+    font-size: 25px;
+  }
 }
 .modal .modal-content .modal-body .actions .action-uber {
   border-left: 1px solid #e8e6e4;
@@ -6312,42 +6389,71 @@ Copyright (c) 2015 Daniel Eden
 .modal .modal-content .modal-body .actions .action-uber .icon {
   background-position: 3px;
   background-repeat: no-repeat;
-  background-size: 22px;
+  background-size: 18px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
   background-image: url(../images/uber-badge.png);
-  height: 25px;
-  width: 28px;
+  height: 22px;
+  width: 22px;
   position: relative;
   margin: auto;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-body .actions .action-uber .icon {
+    background-size: 22px;
+    height: 25px;
+    width: 28px;
+  }
 }
 .modal .modal-content .modal-body .actions .action-uber .estimate {
   font-size: 9px;
   position: absolute;
-  top: 13px;
+  top: 11px;
   text-align: left;
-  left: 77px;
+  left: 58px;
   color: #727b7f;
   line-height: 1.2;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-body .actions .action-uber .estimate {
+    top: 13px;
+    left: 77px;
+  }
 }
 .modal .modal-content .modal-body .info {
   position: relative;
 }
 .modal .modal-content .modal-body .info .info-item {
   position: relative;
-  padding: 7px 5px 7px 25px;
+  padding: 7px 5px 7px 20px;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-body .info .info-item {
+    padding: 7px 5px 7px 25px;
+  }
 }
 .modal .modal-content .modal-body .info .info-item .icon {
   color: #a3a8ab;
+  font-size: 14px;
   position: absolute;
   left: 0;
   top: 6px;
 }
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-body .info .info-item .icon {
+    font-size: 15px;
+  }
+}
 .modal .modal-content .modal-body .info .info-item p {
   color: #727b7f;
-  font-size: 11px;
+  font-size: 10px;
   line-height: 1.2;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-body .info .info-item p {
+    font-size: 11px;
+  }
 }
 .modal .modal-content .modal-body .info .info-item.place-address {
   min-height: 40px;
@@ -6389,7 +6495,7 @@ Copyright (c) 2015 Daniel Eden
 .modal .modal-content .modal-overlay .place-phone {
   height: 130px;
   font-family: 'Lato', sans-serif;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 300;
   margin: 65px 0;
   text-align: center;
@@ -6399,6 +6505,11 @@ Copyright (c) 2015 Daniel Eden
 }
 .modal .modal-content .modal-overlay .place-phone::-moz-selection {
   background: none;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-overlay .place-phone {
+    font-size: 25px;
+  }
 }
 .modal .modal-content .modal-overlay .actions {
   position: relative;
@@ -6415,14 +6526,20 @@ Copyright (c) 2015 Daniel Eden
 }
 .modal .modal-content .modal-footer {
   border-top: 1px solid #e8e6e4;
-  height: 35px;
+  height: 28px;
   margin: auto 10px;
-  padding: 10px 0 12px;
+  padding: 6px 0;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 1;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-footer {
+    height: 35px;
+    padding: 10px 0 12px;
+  }
 }
 .modal .modal-content .modal-footer .button-foursquare {
   -moz-border-radius: 20px;
@@ -6431,12 +6548,20 @@ Copyright (c) 2015 Daniel Eden
   border: 1px solid;
   color: #f84777;
   display: block;
+  font-size: 13px;
   font-weight: 400;
   margin: auto;
-  padding: 5px;
+  padding: 1px;
   text-align: center;
   text-decoration: none;
-  width: 230px;
+  width: 175px;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-footer .button-foursquare {
+    font-size: 14px;
+    width: 230px;
+    padding: 5px;
+  }
 }
 .modal .modal-content .modal-footer .button-foursquare .icon {
   font-size: 13px;
@@ -6461,17 +6586,29 @@ Copyright (c) 2015 Daniel Eden
   border-radius: 5px;
   background: #ed5565;
   color: #fff;
-  height: 20px;
+  font-size: 13px;
+  height: 10px;
   left: 0;
-  line-height: 1.2;
+  line-height: 0.8;
   margin: auto;
   padding: 5px;
   position: absolute;
-  right: -200px;
+  right: 0;
   text-align: center;
-  top: 105px;
+  top: 75px;
   width: 200px;
   z-index: 1000;
+}
+@media only screen and (min-width: 40.0625em) {
+  .notification {
+    font-size: 14px;
+    font-size: 14px;
+    height: 15px;
+    left: 203px;
+    line-height: 1.1;
+    right: 0;
+    top: 105px;
+  }
 }
 
 .irs {

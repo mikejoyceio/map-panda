@@ -3,19 +3,19 @@
 
 .menu {
 		background: #232b2d;
-    height: 150px;
+    height: 80px;
     left: 0;
     margin-top: 82px;
     position: absolute;
     bottom: 0;
     width: 100%;
     z-index: 2;
-    overflow: hidden;
 
     @media #{$medium-up} {
     	height: 100%;
     	top: 0;	
     	width: 203px;
+    	overflow: hidden;
     }
 
     .search-filter {
@@ -38,13 +38,27 @@
     }
 
     .search-radius {
-  		padding: 10px 10px 5px 10px;
+  		padding: 0;
+		  position: absolute;
+		  top: -300px;
+		  left: 0;
+		  transform: rotate(-90deg);
+		  width: 280px;
+		  height: 270px;
+
+		  @media #{$medium-up} {
+  			padding: 10px 10px 5px 10px;		  	
+  			position: static;	
+  			transform: none;
+  			width: auto;
+  			height: auto;
+		  }
     }
 
     .place-list {
 			color: #fff;
 			margin: 0;
-			padding: 0;
+			padding: 0 0 10px 0;
 			width: 100%;
 			overflow-y: hidden;
 			overflow-x: scroll;
@@ -54,6 +68,7 @@
 			@media #{$medium-up} {
 				height: 510px;
 				margin-top: 20px;
+				padding: 0;
 				width: 200px;				
 				overflow: auto;
 			}

@@ -6,15 +6,26 @@
   @include border-radius(5px);
   background: #ed5565;
   color: #fff;
-  height: 20px;
+  font-size: 13px;
+  height: 10px;
   left: 0;
-  line-height: 1.2;
+  line-height: 0.8;
   margin: auto;
   padding: 5px;
   position: absolute;
-  right: -200px;
+  right: 0;
   text-align: center;
-  top: 105px;
+  top: 75px;
   width: 200px;
   z-index: 1000;
+
+  @media #{$medium-up} {
+    font-size: 14px;
+    font-size: 14px;
+    height: 15px;
+    left: 203px;
+    line-height: 1.1;
+    right: 0;
+    top: 105px;
+  }
 }
