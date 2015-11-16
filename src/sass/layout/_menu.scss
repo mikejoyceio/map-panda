@@ -10,12 +10,12 @@
     bottom: 0;
     width: 100%;
     z-index: 2;
-    overflow: hidden;
 
     @media #{$medium-up} {
     	height: 100%;
     	top: 0;	
     	width: 203px;
+    	overflow: hidden;
     }
 
     .search-filter {
@@ -38,7 +38,21 @@
     }
 
     .search-radius {
-  		padding: 10px 10px 5px 10px;
+  		padding: 0;
+		  position: absolute;
+		  top: -300px;
+		  left: 0;
+		  transform: rotate(-90deg);
+		  width: 280px;
+		  height: 270px;
+
+		  @media #{$medium-up} {
+  			padding: 10px 10px 5px 10px;		  	
+  			position: static;	
+  			transform: none;
+  			width: auto;
+  			height: auto;
+		  }
     }
 
     .place-list {
