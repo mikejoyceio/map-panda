@@ -15,19 +15,23 @@
 		&:before {
 			@include box-shadow(inset -4px 0 5px -5px #404040);
 			@include text-shadow(#404040 1px 1px 0px);
-			border-right: 1px solid #1e1e1e;
-			color: #1e1e1e;
-			content: "\f041";
-			display: inline-block;
-			font-family: FontAwesome;
-			font-size: 26px;
-			font-style: normal;
-			font-weight: normal;
-			height: 100%;
-			left: 0;
-			padding: 11px 18px;
-			position: absolute;
-			top: 0;
+		  background: #232b2d;
+		  border-right: 1px solid #1e1e1e;
+		  color: #1e1e1e;
+		  content: "\f041";
+		  display: inline-block;
+		  font-family: FontAwesome;
+		  font-size: 26px;
+		  font-style: normal;
+		  font-weight: normal;
+		  height: 100%;
+		  left: 0;
+		  padding: 11px 0;
+		  position: absolute;
+		  text-align: center;
+		  top: 0;
+		  width: 52px;
+		  z-index: 1;
 		}
 
     @media #{$medium-up} {
