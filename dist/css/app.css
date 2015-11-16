@@ -129,6 +129,29 @@ html, body {
   width: 100%;
   z-index: 2;
 }
+.menu:before {
+  -moz-box-shadow: inset -4px 0 5px -5px #404040;
+  -webkit-box-shadow: inset -4px 0 5px -5px #404040;
+  box-shadow: inset -4px 0 5px -5px #404040;
+  text-shadow: #404040 1px 1px 0px;
+  background: #232b2d;
+  border-right: 1px solid #1e1e1e;
+  color: #1e1e1e;
+  content: "\f041";
+  display: inline-block;
+  font-family: FontAwesome;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: normal;
+  height: 100%;
+  left: 0;
+  padding: 11px 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 52px;
+  z-index: 1;
+}
 @media only screen and (min-width: 40.0625em) {
   .menu {
     height: 100%;
@@ -137,6 +160,9 @@ html, body {
     padding: 0;
     width: 203px;
     overflow: hidden;
+  }
+  .menu:before {
+    display: none;
   }
 }
 .menu .search-filter {
@@ -169,7 +195,7 @@ html, body {
 }
 .menu .place-list {
   color: #fff;
-  margin: 0;
+  margin: 0 0 0 32px;
   padding: 0 0 10px 0;
   width: 100%;
   overflow-y: hidden;
@@ -180,7 +206,7 @@ html, body {
 @media only screen and (min-width: 40.0625em) {
   .menu .place-list {
     height: 510px;
-    margin-top: 20px;
+    margin: 20px 0 0 0;
     padding: 0;
     width: 200px;
     overflow: auto;
