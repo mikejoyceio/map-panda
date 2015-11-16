@@ -120,14 +120,21 @@ html, body {
 
 .menu {
   background: #232b2d;
-  height: 100%;
+  height: 150px;
   left: 0;
   margin-top: 82px;
   position: absolute;
-  top: 0;
-  width: 203px;
+  bottom: 0;
+  width: 100%;
   z-index: 2;
   overflow: hidden;
+}
+@media only screen and (min-width: 40.0625em) {
+  .menu {
+    height: 100%;
+    top: 0;
+    width: 203px;
+  }
 }
 .menu .search-filter {
   padding: 10px;
@@ -152,13 +159,24 @@ html, body {
 }
 .menu .place-list {
   color: #fff;
-  margin-top: 20px;
-  height: 510px;
-  overflow: auto;
+  margin: 0;
+  padding: 0;
+  overflow: scroll;
+  width: 100%;
   -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+}
+@media only screen and (min-width: 40.0625em) {
+  .menu .place-list {
+    height: 510px;
+    margin-top: 20px;
+    width: 200px;
+    overflow: auto;
+  }
 }
 .menu .place-list .item {
   color: #667174;
+  display: inline;
   font-size: 15px;
   line-height: 1;
   margin: 0 0 0 8px;
@@ -166,6 +184,11 @@ html, body {
   -o-transition: all 0.2s linear;
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
+}
+@media only screen and (min-width: 40.0625em) {
+  .menu .place-list .item {
+    display: block;
+  }
 }
 .menu .place-list .item:hover, .menu .place-list .item.active {
   cursor: pointer;
