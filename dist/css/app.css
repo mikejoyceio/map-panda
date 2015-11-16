@@ -3157,11 +3157,11 @@ Copyright (c) 2015 Daniel Eden
 
 .brand {
   background: #2eb398;
-  height: 42px;
+  height: 52px;
   left: 0;
   top: 0;
   position: absolute;
-  width: 42px;
+  width: 52px;
   z-index: 2;
 }
 @media only screen and (min-width: 40.0625em) {
@@ -3177,9 +3177,9 @@ Copyright (c) 2015 Daniel Eden
   position: absolute;
   left: 0;
   right: 0;
-  margin: 12px auto;
-  width: 24px;
-  height: 24px;
+  margin: 16px auto;
+  width: 28px;
+  height: 28px;
 }
 @media only screen and (min-width: 40.0625em) {
   .brand .brand-image {
@@ -5985,14 +5985,22 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .modal-loader {
-  width: 40px;
-  height: 40px;
-  border-width: 6px;
-  top: 50px;
+  width: 30px;
+  height: 30px;
+  border-width: 4px;
+  top: 40px;
   left: 0;
   right: 0;
   margin: auto;
   z-index: 9999;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal-loader {
+    width: 40px;
+    height: 40px;
+    border-width: 5px;
+    top: 57px;
+  }
 }
 
 .uber-loader {
@@ -6052,19 +6060,20 @@ Copyright (c) 2015 Daniel Eden
   z-index: 1;
 }
 .map-info .content {
-  height: 32px;
-  padding: 10px 0 0 58px;
+  height: 52px;
+  padding: 0 70px;
 }
 @media only screen and (min-width: 40.0625em) {
   .map-info .content {
-    height: 57px;
-    padding: 25px 0 0 28px;
+    height: 82px;
+    padding: 0 28px;
   }
 }
 .map-info .content .content-header {
   color: #132b2d;
   font-size: 22px;
   font-weight: 300;
+  line-height: 2.4;
 }
 @media only screen and (min-width: 40.0625em) {
   .map-info .content .content-header {
