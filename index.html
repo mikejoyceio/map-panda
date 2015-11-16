@@ -37,17 +37,19 @@
 		<!-- /Search Filter -->
 
 		<!-- Options -->
-		<ul class="place-list" data-bind="scrollBar">
-			<!-- ko foreach: placeList -->
-			<li class="item" data-bind="css: {active: isActive(), hidden: isHidden()}, event: { click: $parent.selectPlace, touchend: $parent.selectPlace }">
-				<span class="icon fa-stack fa-sml">
-					<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>
-					<i class="icon-inner fa fa-stack-1x fa-inverse" data-bind="css: icon"></i>
-				</span>
-				<span data-bind="text: name"></span>
-			</li>
-			<!-- /ko -->
-		</ul>
+		<div class="place-list-wrapper" style="width: 100%; overflow: scroll;">
+			<ul class="place-list" data-bind="scrollBar">
+				<!-- ko foreach: placeList -->
+				<li class="item" data-bind="css: {active: isActive(), hidden: isHidden()}, event: { click: $parent.selectPlace, touchend: $parent.selectPlace }">
+					<span class="icon fa-stack fa-sml">
+						<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>
+						<i class="icon-inner fa fa-stack-1x fa-inverse" data-bind="css: icon"></i>
+					</span>
+					<span data-bind="text: name"></span>
+				</li>
+				<!-- /ko -->
+			</ul>
+		</div>
 		<!-- /Options -->
 
 	</div>
