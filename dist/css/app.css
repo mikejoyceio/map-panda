@@ -3248,7 +3248,12 @@ Copyright (c) 2015 Daniel Eden
   width: 100%;
 }
 .button-group.two .button {
-  width: 49.3%;
+  width: 100%;
+}
+@media only screen and (min-width: 40.0625em) {
+  .button-group.two .button {
+    width: 49.3%;
+  }
 }
 .button-group .button {
   display: inline-block;
@@ -6491,7 +6496,7 @@ Copyright (c) 2015 Daniel Eden
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 3;
+  z-index: 9999;
 }
 .modal .modal-content .modal-overlay .modal-overlay-message {
   left: 0;
@@ -6522,12 +6527,26 @@ Copyright (c) 2015 Daniel Eden
 }
 .modal .modal-content .modal-overlay .actions {
   position: relative;
-  bottom: -5px;
-  height: 90px;
+  bottom: 70px;
+  height: 88px;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-overlay .actions {
+    bottom: -5px;
+    height: 90px;
+  }
 }
 .modal .modal-content .modal-overlay .actions .button-group {
   position: absolute;
   top: 0;
+}
+.modal .modal-content .modal-overlay .actions .button-group .button.copy {
+  display: none;
+}
+@media only screen and (min-width: 40.0625em) {
+  .modal .modal-content .modal-overlay .actions .button-group .button.copy {
+    display: inline-block;
+  }
 }
 .modal .modal-content .modal-overlay .actions .button.cancel {
   position: absolute;

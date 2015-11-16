@@ -322,7 +322,7 @@
 		  position: absolute;
 		  top: 0;
 		  width: 100%;
-		  z-index: 3;
+		  z-index: 9999;
 
 		  .modal-overlay-message {
 				left: 0;
@@ -356,12 +356,27 @@
 
 		  .actions {
 			  position: relative;
-			  bottom: -5px;
-			  height: 90px;
+			  bottom: 70px;
+			  height:88px;
+
+			  @media #{$medium-up} {
+			  	bottom: -5px;
+			  	height: 90px;
+			  }
 
 			  .button-group {
 					position: absolute;
 					top: 0;
+
+					.button.copy {
+						display: none;
+					}
+
+					@media #{$medium-up} {
+						.button.copy {
+							display: inline-block;
+						}
+					}
 			  }
 
 			  .button.cancel {

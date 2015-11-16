@@ -69,7 +69,10 @@
 
 	&.two {
 		.button {
-		  width: 49.3%
+			width: 100%;
+			@media #{$medium-up} {
+	  		width: 49.3%
+	  	}
 		}
 	}
 
