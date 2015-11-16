@@ -11,6 +11,24 @@
     bottom: 0;
     width: 100%;
     z-index: 2;
+		
+		&:before {
+			@include box-shadow(inset -4px 0 5px -5px #404040);
+			@include text-shadow(#404040 1px 1px 0px);
+			border-right: 1px solid #1e1e1e;
+			color: #1e1e1e;
+			content: "\f041";
+			display: inline-block;
+			font-family: FontAwesome;
+			font-size: 26px;
+			font-style: normal;
+			font-weight: normal;
+			height: 100%;
+			left: 0;
+			padding: 11px 18px;
+			position: absolute;
+			top: 0;
+		}
 
     @media #{$medium-up} {
     	height: 100%;
@@ -19,6 +37,10 @@
     	padding: 0;
     	width: 203px;
     	overflow: hidden;
+
+    	&:before {
+    		display: none;
+    	}
     }
 
     .search-filter {
@@ -52,7 +74,7 @@
 
     .place-list {
 			color: #fff;
-			margin: 0;
+			margin: 0 0 0 32px;
 			padding: 0 0 10px 0;
 			width: 100%;
 			overflow-y: hidden;
@@ -62,7 +84,7 @@
 
 			@media #{$medium-up} {
 				height: 510px;
-				margin-top: 20px;
+				margin: 20px 0 0 0;
 				padding: 0;
 				width: 200px;				
 				overflow: auto;
