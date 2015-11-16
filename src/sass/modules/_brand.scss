@@ -3,11 +3,11 @@
 
 .brand {
 	background: $accent-color;
-  height: 42px;
+  height: 52px;
   left: 0;
   top: 0;
   position: absolute;
-  width: 42px;
+  width: 52px;
   z-index: 2;
 
   @media #{$medium-up} {
@@ -22,9 +22,9 @@
 		position: absolute;
 		left: 0;
 		right: 0;
-		margin: 12px auto;
-		width: 24px;
-		height: 24px;
+		margin: 16px auto;
+		width: 28px;
+		height: 28px;
 
 		@media #{$medium-up} {
 			margin: 20px auto;

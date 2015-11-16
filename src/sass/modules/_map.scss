@@ -16,18 +16,19 @@
 	z-index: 1;
 
 	.content {
-		height: 32px;
-  	padding: 10px 0 0 58px;
+		height: 52px;
+  	padding: 0 70px;
 
 		@media #{$medium-up} {
-			height: 57px;
-			padding: 25px 0 0 28px;
+			height: 82px;
+			padding: 0 28px;
 		}
 
 		.content-header {
 			color: #132b2d;
 		  font-size: 22px;
 		  font-weight: 300;
+		  line-height: 2.4;
 
 		  @media #{$medium-up} {
 		  	font-size: 32px;

@@ -23,14 +23,21 @@
 
 .modal-loader {
 	@extend .loader;
-	width: 40px;
-  height: 40px;
-	border-width: 6px;
-  top: 50px;
+	width: 30px;
+  height: 30px;
+	border-width: 4px;
+  top: 40px;
   left: 0;
   right: 0;
   margin: auto;
   z-index: 9999;
+
+  @media #{$medium-up} {
+  	width: 40px;
+  	height: 40px;
+  	border-width: 5px;
+  	top: 57px;
+  }
 }
 
 .uber-loader {
