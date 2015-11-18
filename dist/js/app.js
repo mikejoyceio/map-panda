@@ -21811,8 +21811,8 @@ var globals = {
 								strokeWeight: 1.5
 							});
 
-							// Pan to the markers position on the map
-							global.map.panTo(data.position);
+							// // Pan to the markers position on the map
+							// global.map.panTo(data.position);
 
 							// Show the modal
 							bindingContext.$root.modalVisibilty(true);
@@ -22088,10 +22088,10 @@ var globals = {
 		// Init function - ran once
 		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 			global.wheelNav = new wheelnav(element.id);
-			global.wheelNav.spreaderEnable = true;
-			global.wheelNav.spreaderInTitle = icon.plus;
-			global.wheelNav.spreaderOutTitle = icon.cross;
-			global.wheelNav.spreaderRaius = 85;
+			// global.wheelNav.spreaderEnable = true;
+			// global.wheelNav.spreaderInTitle = icon.plus;
+			// global.wheelNav.spreaderOutTitle = icon.cross;
+			// global.wheelNav.spreaderRaius = 85;
       global.wheelNav.slicePathFunction = slicePath().DonutSlice;
  			global.wheelNav.sliceInitPathFunction = global.wheelNav.slicePathFunction;
       global.wheelNav.initPercent = 0.1;
@@ -22099,8 +22099,8 @@ var globals = {
 			global.wheelNav.wheelRadius = global.wheelNav.wheelRadius * 0.83;
 			global.wheelNav.cssMode = true;
 			global.wheelNav.markerEnable = true;
-			global.wheelNav.markerPathFunction = markerPath().LineMarker;
-      global.wheelNav.createWheel(['1km','2km','3km','4km','5km','6km','7km','8km','9km','10km']);
+			global.wheelNav.markerPathFunction = markerPath().DropMarker;
+      global.wheelNav.createWheel(['1','2','3','4','5','6','7','8','9','10']);
       global.wheelNav.navItems[0].navigateFunction = function () { bindingContext.$root.searchRadius(1000) };
       global.wheelNav.navItems[1].navigateFunction = function () { bindingContext.$root.searchRadius(2000) };
       global.wheelNav.navItems[2].navigateFunction = function () { bindingContext.$root.searchRadius(3000) };

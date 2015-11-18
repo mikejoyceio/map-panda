@@ -8667,11 +8667,24 @@ yx-axis
   width: 150px;
   z-index: 9999;
 }
+.wheel-nav:before {
+  content: '(KM)';
+  font-family: "Lato", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  text-align: center;
+  top: -10px;
+  width: 100%;
+}
 @media only screen and (min-width: 40.0625em) {
   .wheel-nav {
     bottom: 10px;
     height: 200px;
     width: 200px;
+  }
+  .wheel-nav:before {
+    font-size: 15px;
   }
 }
 .wheel-nav svg {
@@ -8716,8 +8729,9 @@ yx-axis
   }
 }
 .wheel-nav .wheelnav-wheelNav-marker {
+  fill: #232b2d;
   stroke: #232b2d;
-  stroke-width: 3;
+  stroke-width: 2;
 }
 .wheel-nav .wheelnav-wheelNav-spreader-in,
 .wheel-nav .wheelnav-wheelNav-spreader-out {
