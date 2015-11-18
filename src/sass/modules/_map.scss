@@ -41,7 +41,7 @@
 .map-zoom-buttons {
 	@include border-radius(3px);
 	background: #232b2d;
-	bottom: 110px;
+	top: 130px;
 	height: 60px;
 	position: absolute;
 	right: 23px;
@@ -50,7 +50,7 @@
 	z-index: 999;
 
 	@media #{$medium-up} {
-		bottom: 50px;
+		top: 160px;
 	}
 
 	.map-zoom-button {
