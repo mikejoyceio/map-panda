@@ -44,7 +44,7 @@
 	top: 70px;
 	height: 60px;
 	position: absolute;
-	left: 20px;
+	right: 10px;
 	text-align: center;
 	width: 25px;
 	z-index: 999;
@@ -89,13 +89,15 @@
 	color: #ed5565;
 	height: 30px;
 	position:absolute; 
-	right: 20px; 
+	left: 10px; 
 	text-align: center;
 	top: 70px;
 	width: 30px; 
 
 	@media #{$medium-up} {
 		top: 105px;		
+		left: auto;
+		right: 20px;
 	}
 
 	&:hover {
