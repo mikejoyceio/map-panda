@@ -562,7 +562,7 @@ var globals = {
 					 		data.marker.setIcon({ path: fontawesome.markers.CIRCLE,
 								fillColor: '#ed5565',
 								fillOpacity: 1,
-								scale: 0.35,
+								scale: 0.32,
 								strokeColor: '#ffffff',
 								strokeWeight: 3
 							});
