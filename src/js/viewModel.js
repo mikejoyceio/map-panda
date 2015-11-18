@@ -567,8 +567,8 @@ var globals = {
 								strokeWeight: 1.5
 							});
 
-							// Pan to the markers position on the map
-							global.map.panTo(data.position);
+							// // Pan to the markers position on the map
+							// global.map.panTo(data.position);
 
 							// Show the modal
 							bindingContext.$root.modalVisibilty(true);
