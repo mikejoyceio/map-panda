@@ -26,6 +26,10 @@
   	height: 180px;
   	right: 5px;
   	width: 180px;
+
+  	&:before {
+  		font-size: 14px;
+  	}
   }
 
 	@media #{$large-up} {
