@@ -98,7 +98,7 @@ html, body {
   margin: 0;
   position: relative;
 }
-@media only screen and (min-width: 40.0625em) {
+@media only screen and (min-width: 64.0625em) {
   .main-content {
     margin: 0 0 0 203px;
   }
@@ -154,6 +154,16 @@ html, body {
 }
 @media only screen and (min-width: 40.0625em) {
   .menu {
+    height: 39px;
+  }
+  .menu:before {
+    font-size: 36px;
+    padding: 15px 0;
+    width: 63px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
+  .menu {
     height: 100%;
     top: 0;
     margin-top: 82px;
@@ -169,7 +179,7 @@ html, body {
   padding: 10px;
   display: none;
 }
-@media only screen and (min-width: 40.0625em) {
+@media only screen and (min-width: 64.0625em) {
   .menu .search-filter {
     display: block;
   }
@@ -193,7 +203,7 @@ html, body {
   padding: 10px 10px 5px 10px;
   display: none;
 }
-@media only screen and (min-width: 40.0625em) {
+@media only screen and (min-width: 64.0625em) {
   .menu .search-radius {
     display: block;
   }
@@ -209,6 +219,11 @@ html, body {
   white-space: nowrap;
 }
 @media only screen and (min-width: 40.0625em) {
+  .menu .place-list {
+    margin: 0 0 0 42px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
   .menu .place-list {
     height: 510px;
     margin: 20px 0 0 0;
@@ -229,6 +244,11 @@ html, body {
   transition: all 0.2s linear;
 }
 @media only screen and (min-width: 40.0625em) {
+  .menu .place-list .item {
+    font-size: 18px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
   .menu .place-list .item {
     display: block;
     font-size: 15px;
@@ -253,7 +273,17 @@ html, body {
   -o-transition: all 0.5s ease-in-out;
   -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
-  margin-right: 5px;
+  margin: 0 5px 0 0;
+}
+@media only screen and (min-width: 40.0625em) {
+  .menu .place-list .item .icon {
+    margin: 6px 5px 0 0;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
+  .menu .place-list .item .icon {
+    margin: 0 5px 0 0;
+  }
 }
 .menu .place-list .item .icon .icon-inner {
   color: #667174;
@@ -3194,6 +3224,12 @@ Copyright (c) 2015 Daniel Eden
 }
 @media only screen and (min-width: 40.0625em) {
   .brand {
+    height: 72px;
+    width: 72px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
+  .brand {
     height: 82px;
     width: 203px;
   }
@@ -3210,6 +3246,12 @@ Copyright (c) 2015 Daniel Eden
   height: 28px;
 }
 @media only screen and (min-width: 40.0625em) {
+  .brand .brand-image {
+    height: 48px;
+    width: 48px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
   .brand .brand-image {
     margin: 20px auto;
     width: 50px;
@@ -6098,6 +6140,12 @@ Copyright (c) 2015 Daniel Eden
 }
 @media only screen and (min-width: 40.0625em) {
   .map-info .content {
+    height: 71px;
+    padding: 0 90px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
+  .map-info .content {
     height: 82px;
     padding: 0 28px;
   }
@@ -6110,6 +6158,11 @@ Copyright (c) 2015 Daniel Eden
 }
 @media only screen and (min-width: 40.0625em) {
   .map-info .content .content-header {
+    font-size: 28px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
+  .map-info .content .content-header {
     font-size: 32px;
   }
 }
@@ -6119,6 +6172,7 @@ Copyright (c) 2015 Daniel Eden
   -webkit-border-radius: 3px;
   border-radius: 3px;
   background: #232b2d;
+  display: none;
   top: 130px;
   height: 60px;
   position: absolute;
@@ -6127,8 +6181,9 @@ Copyright (c) 2015 Daniel Eden
   width: 25px;
   z-index: 999;
 }
-@media only screen and (min-width: 40.0625em) {
+@media only screen and (min-width: 64.0625em) {
   .map-zoom-buttons {
+    display: block;
     top: 160px;
   }
 }
@@ -6166,7 +6221,7 @@ Copyright (c) 2015 Daniel Eden
   -webkit-transition: all 0.5s linear;
   transition: all 0.5s linear;
   background: #232b2d;
-  color: #ed5565;
+  color: #ffffff;
   height: 30px;
   position: absolute;
   right: 20px;
@@ -6175,6 +6230,11 @@ Copyright (c) 2015 Daniel Eden
   width: 30px;
 }
 @media only screen and (min-width: 40.0625em) {
+  .map-pan-to {
+    top: 90px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
   .map-pan-to {
     top: 105px;
   }
@@ -8679,8 +8739,17 @@ yx-axis
 }
 @media only screen and (min-width: 40.0625em) {
   .wheel-nav {
+    bottom: 65px;
+    height: 180px;
+    right: 5px;
+    width: 180px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
+  .wheel-nav {
     bottom: 10px;
     height: 200px;
+    right: -5px;
     width: 200px;
   }
   .wheel-nav:before {
@@ -8724,6 +8793,11 @@ yx-axis
   font-weight: 600;
 }
 @media only screen and (min-width: 40.0625em) {
+  .wheel-nav [class|=wheelnav-wheelNav-title] > tspan {
+    font-size: 10px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
   .wheel-nav [class|=wheelnav-wheelNav-title] > tspan {
     font-size: 12px;
   }
