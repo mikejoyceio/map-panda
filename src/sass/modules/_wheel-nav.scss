@@ -6,14 +6,12 @@
   height: 150px;
   margin: 0;
   position: absolute;
-  left: -5px;
+  right: -5px;
   width: 150px;
   z-index: 9999;
 
 	@media #{$medium-up} {
 		bottom: 10px;
-		left: auto;
-		right: -5px;
 		height: 200px;
 		width: 200px;
 	}
