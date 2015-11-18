@@ -22099,6 +22099,7 @@ var globals = {
 			global.wheelNav.wheelRadius = global.wheelNav.wheelRadius * 0.83;
 			global.wheelNav.cssMode = true;
 			global.wheelNav.markerEnable = true;
+			global.wheelNav.markerPathFunction = markerPath().LineMarker;
       global.wheelNav.createWheel(['1km','2km','3km','4km','5km','6km','7km','8km','9km','10km']);
       global.wheelNav.navItems[0].navigateFunction = function () { bindingContext.$root.searchRadius(1000) };
       global.wheelNav.navItems[1].navigateFunction = function () { bindingContext.$root.searchRadius(2000) };
