@@ -20,6 +20,11 @@
   	padding: 0 70px;
 
 		@media #{$medium-up} {
+			height: 71px;
+			padding: 0 90px;
+		}
+
+		@media #{$large-up} {
 			height: 82px;
 			padding: 0 28px;
 		}
@@ -30,7 +35,11 @@
 		  font-weight: 300;
 		  line-height: 2.4;
 
-		  @media #{$medium-up} {
+			@media #{$medium-up} {
+				font-size: 28px;
+			}
+
+		  @media #{$large-up} {
 		  	font-size: 32px;
 		  }
 		}
@@ -50,7 +59,7 @@
 	width: 25px;
 	z-index: 999;
 
-	@media #{$medium-up} {
+	@media #{$large-up} {
 		display: block;
 		top: 160px;
 	}
@@ -95,6 +104,10 @@
 	width: 30px; 
 
 	@media #{$medium-up} {
+		top: 90px;
+	}
+
+	@media #{$large-up} {
 		top: 105px;		
 	}
 
