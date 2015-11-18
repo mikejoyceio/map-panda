@@ -10,10 +10,25 @@
   width: 150px;
   z-index: 9999;
 
+  &:before {
+		content: '(KM)';
+		font-family: $base-font-family;
+		font-size: 12px;
+		font-weight: $font-regular;
+		position: absolute;
+		text-align: center;
+		top: -10px;
+		width: 100%;
+  }
+
 	@media #{$medium-up} {
 		bottom: 10px;
 		height: 200px;
 		width: 200px;
+
+		&:before {
+			font-size: 15px;
+		}
 	}
 		
 	svg {
@@ -64,8 +79,9 @@
 	}
 
 	.wheelnav-wheelNav-marker { 
+		fill: #232b2d; 
 		stroke: #232b2d; 
-		stroke-width: 3; 
+		stroke-width: 2;
 	}
 
 	.wheelnav-wheelNav-spreader-in,
