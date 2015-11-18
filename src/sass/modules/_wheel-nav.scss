@@ -2,11 +2,11 @@
 // Wheel Nav
 
 .wheel-nav {
-  bottom: 60px;
+  bottom: 50px;
   height: 150px;
   margin: 0;
   position: absolute;
-  right: 0;
+  right: -5px;
   width: 150px;
   z-index: 9999;
 
@@ -55,7 +55,7 @@
 	
 	[class|=wheelnav-wheelNav-title] > tspan { 
 		font-family: $base-font-family; 
-		font-size: 11px;
+		font-size: 9px;
 		font-weight: $font-bold;
 
 		@media #{$medium-up} {
