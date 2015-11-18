@@ -8663,15 +8663,13 @@ yx-axis
   height: 150px;
   margin: 0;
   position: absolute;
-  left: -5px;
+  right: -5px;
   width: 150px;
   z-index: 9999;
 }
 @media only screen and (min-width: 40.0625em) {
   .wheel-nav {
     bottom: 10px;
-    left: auto;
-    right: -5px;
     height: 200px;
     width: 200px;
   }
