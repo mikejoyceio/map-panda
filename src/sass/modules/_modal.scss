@@ -14,13 +14,13 @@
 	z-index: 1000;
 
 	@media #{$medium-up} {
+		width: 270px;
+		height: 370px;	
 		left: 20px;
-		top: 75px;
+		top: 95px;
 	}
 
 	@media #{$large-up} {
-		width: 270px;
-		height: 370px;	
 		left: 230px;
 		right: auto;
 		top: 110px;
