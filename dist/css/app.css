@@ -8659,11 +8659,11 @@ yx-axis
 
 /* ---------------------------------------- */
 .wheel-nav {
-  bottom: 60px;
+  bottom: 50px;
   height: 150px;
   margin: 0;
   position: absolute;
-  right: 0;
+  right: -5px;
   width: 150px;
   z-index: 9999;
 }
@@ -8707,7 +8707,7 @@ yx-axis
 }
 .wheel-nav [class|=wheelnav-wheelNav-title] > tspan {
   font-family: "Lato", sans-serif;
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 600;
 }
 @media only screen and (min-width: 40.0625em) {
