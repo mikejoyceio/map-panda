@@ -24,6 +24,7 @@
     "font-awesome": "~4.4.0",
     "Knockout-Animate": "git://github.com/TheGAFF/Knockout-Animate",
     "google-maps-infobox": "git://github.com/mikejoyceio/google-maps-infobox",
-    "clipboard": "~1.5.3"
+    "clipboard": "~1.5.3",
+    "wheelnav": "~1.6.1"
   }
 }
