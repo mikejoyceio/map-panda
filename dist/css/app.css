@@ -158,7 +158,7 @@ html, body {
   }
   .menu:before {
     font-size: 36px;
-    padding: 15px 0;
+    padding: 17px 0;
     width: 63px;
   }
 }
@@ -6300,6 +6300,12 @@ Copyright (c) 2015 Daniel Eden
   .modal {
     width: 270px;
     height: 370px;
+    left: 20px;
+    top: 95px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
+  .modal {
     left: 230px;
     right: auto;
     top: 110px;
@@ -8743,6 +8749,9 @@ yx-axis
     height: 180px;
     right: 5px;
     width: 180px;
+  }
+  .wheel-nav:before {
+    font-size: 14px;
   }
 }
 @media only screen and (min-width: 64.0625em) {

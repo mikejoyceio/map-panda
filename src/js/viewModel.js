@@ -559,12 +559,12 @@ var globals = {
 							}
 
 							// Set the selected marker icon
-					 		data.marker.setIcon({ path: fontawesome.markers.CIRCLE_O,
+					 		data.marker.setIcon({ path: fontawesome.markers.CIRCLE,
 								fillColor: '#ed5565',
 								fillOpacity: 1,
-								scale: 0.4,
+								scale: 0.32,
 								strokeColor: '#ffffff',
-								strokeWeight: 1.5
+								strokeWeight: 3
 							});
 
 							// // Pan to the markers position on the map

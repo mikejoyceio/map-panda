@@ -16,6 +16,11 @@
 	@media #{$medium-up} {
 		width: 270px;
 		height: 370px;	
+		left: 20px;
+		top: 95px;
+	}
+
+	@media #{$large-up} {
 		left: 230px;
 		right: auto;
 		top: 110px;
