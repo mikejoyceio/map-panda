@@ -21,9 +21,17 @@
 		width: 100%;
   }
 
-	@media #{$medium-up} {
+  @media #{$medium-up} {
+  	bottom: 65px;
+  	height: 180px;
+  	right: 5px;
+  	width: 180px;
+  }
+
+	@media #{$large-up} {
 		bottom: 10px;
 		height: 200px;
+		right: -5px;
 		width: 200px;
 
 		&:before {
@@ -74,6 +82,10 @@
 		font-weight: $font-bold;
 
 		@media #{$medium-up} {
+			font-size: 10px;
+		}
+
+		@media #{$large-up} {
 			font-size: 12px; 
 		}
 	}

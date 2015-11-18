@@ -19,7 +19,7 @@ html, body {
 	margin: 0;
 	position: relative;
 
-	@media #{$medium-up} {
+	@media #{$large-up} {
 		margin: 0 0 0 203px;
 	}
 }
