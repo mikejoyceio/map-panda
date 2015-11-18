@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>Map Panda</title>
 	<!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="57x57" href="/dist/images/apple-touch-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="/dist/images/apple-touch-icon-60x60.png">
@@ -23,7 +24,6 @@
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="msapplication-TileImage" content="/dist/images/mstile-144x144.png">
 	<meta name="theme-color" content="#ffffff">
-	<title>Map</title>
 	<!-- App CSS -->
 	<link rel="stylesheet" href="dist/css/app.css">
 </head>
@@ -87,6 +87,13 @@
 			</div>
 		</div>
 		<!-- /Map Info -->
+
+		<!-- Wheel Nav -->
+		<div class="wheel-nav">
+			<div data-bind="wheelNav: searchRadius" id="wheelNav">
+			</div>
+		</div>
+		<!-- /Wheel Nav -->
 
 		<!-- Map -->
 		<div class="map" data-bind="map: { currentPlace: currentPlace, searchRadius: searchRadius }"></div>

@@ -21,7 +21,8 @@ var globals = {
 	latLang: '',
 	places: [],
 	markers: [],
-	debug: true
+	debug: true,
+	wheelNav: ''
 };
 
 // Encapsulate the ViewModel
@@ -763,6 +764,13 @@ var globals = {
 		update: function(element, valueAccessor) {
 			var value = valueAccessor();
 			if (global.debug) console.log(ko.unwrap(value));
+
+			var rangeSlider = $(element).data('ionRangeSlider');
+
+			rangeSlider.update({
+				from: ko.unwrap(value)
+			});
+
 			ko.bindingHandlers.value.update(element, valueAccessor)
 		}
 	};
@@ -828,6 +836,45 @@ var globals = {
 				bindingContext.$root.modalOverlayGroupButtons('one')
 			}
 		}	
+	};
+
+	// KO Custom Binding for WheelNav
+	ko.bindingHandlers.wheelNav = {
+
+		// Init function - ran once
+		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+			global.wheelNav = new wheelnav(element.id);
+			global.wheelNav.spreaderEnable = true;
+			global.wheelNav.spreaderInTitle = icon.plus;
+			global.wheelNav.spreaderOutTitle = icon.cross;
+			global.wheelNav.spreaderRaius = 85;
+      global.wheelNav.slicePathFunction = slicePath().DonutSlice;
+ 			global.wheelNav.sliceInitPathFunction = global.wheelNav.slicePathFunction;
+      global.wheelNav.initPercent = 0.1;
+      global.wheelNav.navAngle = 270;
+			global.wheelNav.wheelRadius = global.wheelNav.wheelRadius * 0.83;
+			global.wheelNav.cssMode = true;
+			global.wheelNav.markerEnable = true;
+      global.wheelNav.createWheel(['1km','2km','3km','4km','5km','6km','7km','8km','9km','10km']);
+      global.wheelNav.navItems[0].navigateFunction = function () { bindingContext.$root.searchRadius(1000) };
+      global.wheelNav.navItems[1].navigateFunction = function () { bindingContext.$root.searchRadius(2000) };
+      global.wheelNav.navItems[2].navigateFunction = function () { bindingContext.$root.searchRadius(3000) };
+      global.wheelNav.navItems[3].navigateFunction = function () { bindingContext.$root.searchRadius(4000) };
+      global.wheelNav.navItems[4].navigateFunction = function () { bindingContext.$root.searchRadius(5000) };
+      global.wheelNav.navItems[5].navigateFunction = function () { bindingContext.$root.searchRadius(6000) };
+    	global.wheelNav.navItems[6].navigateFunction = function () { bindingContext.$root.searchRadius(7000) };
+   	 	global.wheelNav.navItems[7].navigateFunction = function () { bindingContext.$root.searchRadius(8000) };
+   	 	global.wheelNav.navItems[8].navigateFunction = function () { bindingContext.$root.searchRadius(9000) };
+   	  global.wheelNav.navItems[9].navigateFunction = function () { bindingContext.$root.searchRadius(10000) };
+		},
+
+		update: function(element, valueAccessor) {
+
+     	var searchRadius = ko.unwrap(valueAccessor()) / 1000 - 1;
+
+			global.wheelNav.navigateWheel(searchRadius);
+               
+		}
 	};
 
 	// Apply Knockout Bindings
