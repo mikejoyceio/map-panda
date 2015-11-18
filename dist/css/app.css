@@ -6119,7 +6119,7 @@ Copyright (c) 2015 Daniel Eden
   -webkit-border-radius: 3px;
   border-radius: 3px;
   background: #232b2d;
-  bottom: 110px;
+  top: 130px;
   height: 60px;
   position: absolute;
   right: 23px;
@@ -6129,7 +6129,7 @@ Copyright (c) 2015 Daniel Eden
 }
 @media only screen and (min-width: 40.0625em) {
   .map-zoom-buttons {
-    bottom: 50px;
+    top: 160px;
   }
 }
 .map-zoom-buttons .map-zoom-button {
@@ -8658,3 +8658,77 @@ yx-axis
 }
 
 /* ---------------------------------------- */
+.wheel-nav {
+  bottom: 60px;
+  height: 150px;
+  margin: 0;
+  position: absolute;
+  right: 0;
+  width: 150px;
+  z-index: 9999;
+}
+@media only screen and (min-width: 40.0625em) {
+  .wheel-nav {
+    bottom: 10px;
+    height: 200px;
+    width: 200px;
+  }
+}
+.wheel-nav svg {
+  width: 100%;
+  height: 100%;
+}
+.wheel-nav [class|=wheelnav-wheelNav-slice-basic] {
+  fill: #2eb398;
+  stroke: none;
+}
+.wheel-nav [class|=wheelnav-wheelNav-slice-selected] {
+  fill: #2eb398;
+  stroke: none;
+}
+.wheel-nav [class|=wheelnav-wheelNav-slice-hover] {
+  fill: #2eb398;
+  stroke: none;
+  fill-opacity: 0.77;
+  cursor: pointer;
+}
+.wheel-nav [class|=wheelnav-wheelNav-title-basic] {
+  fill: #333;
+  stroke: none;
+}
+.wheel-nav [class|=wheelnav-wheelNav-title-selected] {
+  fill: #fff;
+  stroke: none;
+}
+.wheel-nav [class|=wheelnav-wheelNav-title-hover] {
+  fill: #222;
+  stroke: none;
+  cursor: pointer;
+}
+.wheel-nav [class|=wheelnav-wheelNav-title] > tspan {
+  font-family: "Lato", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+}
+@media only screen and (min-width: 40.0625em) {
+  .wheel-nav [class|=wheelnav-wheelNav-title] > tspan {
+    font-size: 12px;
+  }
+}
+.wheel-nav .wheelnav-wheelNav-marker {
+  stroke: #232b2d;
+  stroke-width: 3;
+}
+.wheel-nav .wheelnav-wheelNav-spreader-in,
+.wheel-nav .wheelnav-wheelNav-spreader-out {
+  fill: #232b2d;
+  stroke: #232b2d;
+  stroke-width: 2;
+  cursor: pointer;
+}
+.wheel-nav .wheelnav-wheelNav-spreadertitle-in,
+.wheel-nav .wheelnav-wheelNav-spreadertitle-out {
+  fill: #eee;
+  stroke: #232b2d;
+  cursor: pointer;
+}
