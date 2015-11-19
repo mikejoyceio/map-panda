@@ -3329,13 +3329,8 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .map-compass {
-  display: none;
-  -moz-border-radius: 999px;
-  -webkit-border-radius: 999px;
-  border-radius: 999px;
-  border: 4px solid #232b2d;
   height: 40px;
-  left: 15px;
+  left: 6px;
   margin: 20px auto 0 auto;
   position: absolute;
   top: 50px;
@@ -3349,9 +3344,12 @@ Copyright (c) 2015 Daniel Eden
   width: 8px;
 }
 .map-compass .north {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -webkit-border-top-left-radius: 5px;
+  border-top-left-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-top-right-radius: 5px;
+  border-top-right-radius: 5px;
   background: #ed5565;
   color: #fff;
   font-size: 11px;
@@ -3361,12 +3359,14 @@ Copyright (c) 2015 Daniel Eden
   top: 1px;
 }
 .map-compass .south {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  border-bottom-right-radius: 5px;
   background: #232b2d;
-  height: 23px;
-  top: 16px;
+  top: 18px;
 }
 
 /*!
