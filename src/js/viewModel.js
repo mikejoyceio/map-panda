@@ -45,6 +45,7 @@ var globals = {
 
 		// Map Observables
 		this.mapInfo = ko.observable(false);
+		this.mapCompass = ko.observable();
 		this.showMapLoader = ko.observable(false);
 		this.mapCurrentLat = ko.observable();
 		this.mapCurrentLng = ko.observable();
@@ -890,6 +891,20 @@ var globals = {
 			global.wheelNav.navigateWheel(searchRadius);
                
 		}
+	};
+
+	// KO Custom Binding for Compass
+	ko.bindingHandlers.compass = {
+
+		// Init function - ran once
+		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+
+			Compass.watch(function (heading) {
+				$(element).show();
+			  $(element.id).css('transform', 'rotate(' + (-heading) + 'deg)');
+			});
+
+		}	
 	};
 
 	// Apply Knockout Bindings
