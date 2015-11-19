@@ -238,10 +238,6 @@ html, body {
   font-size: 17px;
   line-height: 1;
   margin: 0 0 0 18px;
-  -moz-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-  -webkit-transition: all 0.2s linear;
-  transition: all 0.2s linear;
 }
 @media only screen and (min-width: 40.0625em) {
   .menu .place-list .item {
