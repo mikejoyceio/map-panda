@@ -222,6 +222,7 @@ var globals = {
 	 	this.closeModal = function() {
 	 		self.modalVisibilty(false);
 	 		self.modalInfoPhotoVisibility(false);
+	 		self.modalFoursquareVisibility(false);
 	 	} 
 
 	 	// Open modal overlay
