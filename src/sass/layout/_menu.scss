@@ -117,13 +117,13 @@
 			  font-size: 17px;
 			  line-height: 1;
 			  margin: 0 0 0 18px;
-    		@include transition(all .2s linear);
 				
 				@media #{$medium-up} {
 					font-size: 18px;
 				}
 
     		@media #{$large-up} {
+    			@include transition(all .2s linear);
     			display: block;
     			font-size: 15px;
     			margin: 0 0 0 8px;
