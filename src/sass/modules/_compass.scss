@@ -4,31 +4,37 @@
 .map-compass {
 	display: none;
 	@include border-radius(999px);
-	width: 200px;
-	height: 200px;
-	position: absolute;
-	margin: 20px auto 0 auto;
-	border: 1px solid #ccc;
-	top: 100px;
-	left: 0;
-	z-index: 1000;	
+  border: 4px solid #232b2d;
+  height: 40px;
+  left: 15px;
+  margin: 20px auto 0 auto;
+  position: absolute;
+  top: 50px;
+  width: 40px;
+  z-index: 1000;	
 
   .north, .south {
-    position: absolute;
-    left: 94px;
-    width: 12px;
-    height: 100px;
+	  height: 18px;
+	  left: 16px;
+	  position: absolute;
+	  width: 8px;
   }
 
   .north {
-    top: 0;
-    background: red;
-    text-align: center;
-    font-size: 11px;
+	  @include border-radius(5px);
+	  background: #ed5565;
+	  color: #fff;
+	  font-size: 11px;
+	  font-size: 8px;
+	  line-height: 2;
+	  text-align: center;
+	  top: 1px;
   }
 
   .south {
-    top: 100px;
-    background: black;
+	  @include border-radius(5px);
+  	background: #232b2d;
+  	height:23px;
+  	top: 16px;
   }
 }
