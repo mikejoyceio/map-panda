@@ -901,7 +901,7 @@ var globals = {
 
 			Compass.watch(function (heading) {
 				$(element).show();
-			  $(element.id).css('transform', 'rotate(' + (-heading) + 'deg)');
+			  $(element).css('-webkit-transform', 'rotate(' + (-heading) + 'deg)');
 			});
 
 		}	
