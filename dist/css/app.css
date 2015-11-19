@@ -3328,6 +3328,37 @@ Copyright (c) 2015 Daniel Eden
   display: inline-block;
 }
 
+.map-compass {
+  display: none;
+  -moz-border-radius: 999px;
+  -webkit-border-radius: 999px;
+  border-radius: 999px;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  margin: 20px auto 0 auto;
+  border: 1px solid #ccc;
+  top: 100px;
+  left: 0;
+  z-index: 1000;
+}
+.map-compass .north, .map-compass .south {
+  position: absolute;
+  left: 94px;
+  width: 12px;
+  height: 100px;
+}
+.map-compass .north {
+  top: 0;
+  background: red;
+  text-align: center;
+  font-size: 11px;
+}
+.map-compass .south {
+  top: 100px;
+  background: black;
+}
+
 /*!
  *  Font Awesome 4.4.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
