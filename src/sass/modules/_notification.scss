@@ -5,6 +5,7 @@
   @include animation(buzz .2s infinite linear);
   @include border-radius(5px);
   background: #ed5565;
+  display: none;
   color: #fff;
   font-size: 13px;
   height: 10px;
