@@ -578,6 +578,9 @@ var globals = {
 							// Hide the modal photo
 							bindingContext.$root.modalInfoPhotoVisibility(false);
 
+							// Hide the modal overlay
+							bindingContext.$root.modalOverlayVisibility(false);
+							
 							// Show the modal loading animation
 							bindingContext.$root.modalLoading(true);
 
