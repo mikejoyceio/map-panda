@@ -11,14 +11,20 @@
   z-index: 1000;
 
   &:before {
+  	@include border-radius(999px);
+  	background: #232b2d;
+  	color: #fff;
 		content: '(KM)';
 		font-family: $base-font-family;
 		font-size: 12px;
 		font-weight: $font-regular;
+		height: 32px;
+		line-height: 2.6;
 		position: absolute;
 		text-align: center;
 		top: -10px;
-		width: 100%;
+		left: 0;
+		width: 32px;
   }
 
   @media #{$medium-up} {
@@ -29,6 +35,8 @@
 
   	&:before {
   		font-size: 14px;
+  		height: 38px;
+  		width: 38px;
   	}
   }
 
@@ -40,6 +48,8 @@
 
 		&:before {
 			font-size: 15px;
+			height: 40px;
+			width: 40px;
 		}
 	}
 		
