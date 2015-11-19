@@ -3,6 +3,7 @@
 
 .modal {
 	background: #fff;
+	display: none;
 	@include border-radius(7px);
 	width: 200px;
 	height: 290px;
