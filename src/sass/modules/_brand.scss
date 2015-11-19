@@ -8,7 +8,7 @@
   top: 0;
   position: absolute;
   width: 52px;
-  z-index: 2;
+  z-index: 3000;
 
 	@media #{$medium-up} {
 		height: 72px;
