@@ -83,7 +83,7 @@ var globals = {
 		this.modalUberLoading = ko.observable(false);
 
 
-		this.searchFoursquare = ko.computed(function() {
+		this.searchFoursquare = function() {
 
 			var request = {
 				venueLat: self.modalInfoLat(),
@@ -105,10 +105,9 @@ var globals = {
 		  	console.log(xhrObj);
 		  });
 
-		}).extend({ notify: 'always', rateLimit: 500 });
+		}
 
-
-		this.uberRide = ko.computed(function() {
+		this.uberRideEstimate = function() {
 			self.modalUberLoading(true);
 			self.modalUberEstimateVisibility(false);
 
@@ -136,7 +135,7 @@ var globals = {
 				console.log(xhrObj);
 			});
 
-		}).extend({ notify: 'always', rateLimit: 500 });
+		};
 
 		this.uberRideRequest = function() {
 			var uberDeepLink;
@@ -618,6 +617,12 @@ var globals = {
 									bindingContext.$root.modalInfoLng(placeInfo.lng);
 									bindingContext.$root.modalInfoPhone(placeInfo.phone);
 									bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);
+
+									// Search Foursquare
+									bindingContext.$root.searchFoursquare();
+
+									// Uber ride estimate 
+									bindingContext.$root.uberRideEstimate();
 
 									setTimeout(function() {
 										bindingContext.$root.modalLoading(false);
