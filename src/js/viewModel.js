@@ -223,6 +223,7 @@ var globals = {
 	 		self.modalVisibilty(false);
 	 		self.modalInfoPhotoVisibility(false);
 	 		self.modalFoursquareVisibility(false);
+	 		self.modalUberEstimateVisibility(false);
 	 	} 
 
 	 	// Open modal overlay
