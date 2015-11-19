@@ -535,16 +535,6 @@ var globals = {
 
 						var infoBox = new InfoBox(infoBoxOptions);
 
-						// Add event listener to show Info Box on touchstart
-					 	google.maps.event.addListener(data.marker, 'touchstart', function() {
-					 		infoBox.open(global.map, this);
-					  });
-
-					 	// Add event listener to hide Info Box on touchend
-					  google.maps.event.addListener(data.marker, 'touchend', function() {
-					  	infoBox.close(global.map, this);
-					  });
-
 						// Add event listener to show Info Box on marker mouseover
 					 	google.maps.event.addListener(data.marker, 'mouseover', function() {
 					 		infoBox.open(global.map, this);
