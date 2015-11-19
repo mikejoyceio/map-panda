@@ -580,6 +580,9 @@ var globals = {
 
 							// Hide the modal overlay
 							bindingContext.$root.modalOverlayVisibility(false);
+
+							// Hide Uber estimate
+							bindingContext.$root.modalUberEstimateVisibility(false);
 							
 							// Show the modal loading animation
 							bindingContext.$root.modalLoading(true);
