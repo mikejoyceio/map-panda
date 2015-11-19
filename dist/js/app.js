@@ -21327,7 +21327,7 @@ var globals = {
 		this.modalUberLoading = ko.observable(false);
 
 
-		this.searchFoursquare = ko.computed(function() {
+		this.searchFoursquare = function() {
 
 			var request = {
 				venueLat: self.modalInfoLat(),
@@ -21349,10 +21349,9 @@ var globals = {
 		  	console.log(xhrObj);
 		  });
 
-		}).extend({ notify: 'always', rateLimit: 500 });
+		}
 
-
-		this.uberRide = ko.computed(function() {
+		this.uberRideEstimate = function() {
 			self.modalUberLoading(true);
 			self.modalUberEstimateVisibility(false);
 
@@ -21380,7 +21379,7 @@ var globals = {
 				console.log(xhrObj);
 			});
 
-		}).extend({ notify: 'always', rateLimit: 500 });
+		};
 
 		this.uberRideRequest = function() {
 			var uberDeepLink;
@@ -21466,6 +21465,9 @@ var globals = {
 		// Close modal 
 	 	this.closeModal = function() {
 	 		self.modalVisibilty(false);
+	 		self.modalInfoPhotoVisibility(false);
+	 		self.modalFoursquareVisibility(false);
+	 		self.modalUberEstimateVisibility(false);
 	 	} 
 
 	 	// Open modal overlay
@@ -21779,16 +21781,6 @@ var globals = {
 
 						var infoBox = new InfoBox(infoBoxOptions);
 
-						// Add event listener to show Info Box on touchstart
-					 	google.maps.event.addListener(data.marker, 'touchstart', function() {
-					 		infoBox.open(global.map, this);
-					  });
-
-					 	// Add event listener to hide Info Box on touchend
-					  google.maps.event.addListener(data.marker, 'touchend', function() {
-					  	infoBox.close(global.map, this);
-					  });
-
 						// Add event listener to show Info Box on marker mouseover
 					 	google.maps.event.addListener(data.marker, 'mouseover', function() {
 					 		infoBox.open(global.map, this);
@@ -21830,6 +21822,12 @@ var globals = {
 							// Hide the modal photo
 							bindingContext.$root.modalInfoPhotoVisibility(false);
 
+							// Hide the modal overlay
+							bindingContext.$root.modalOverlayVisibility(false);
+
+							// Hide Uber estimate
+							bindingContext.$root.modalUberEstimateVisibility(false);
+							
 							// Show the modal loading animation
 							bindingContext.$root.modalLoading(true);
 
@@ -21872,6 +21870,12 @@ var globals = {
 									bindingContext.$root.modalInfoLng(placeInfo.lng);
 									bindingContext.$root.modalInfoPhone(placeInfo.phone);
 									bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);
+
+									// Search Foursquare
+									bindingContext.$root.searchFoursquare();
+
+									// Uber ride estimate 
+									bindingContext.$root.uberRideEstimate();
 
 									setTimeout(function() {
 										bindingContext.$root.modalLoading(false);
