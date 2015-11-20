@@ -3330,16 +3330,36 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .map-compass {
+  -moz-border-radius: 999px;
+  -webkit-border-radius: 999px;
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid #ed5565;
   height: 40px;
-  left: 6px;
+  right: 10px;
   margin: 20px auto 0 auto;
   position: absolute;
-  top: 50px;
+  top: 45px;
   width: 40px;
+  opacity: 0.9;
   z-index: 1000;
 }
+@media only screen and (min-width: 40.0625em) {
+  .map-compass {
+    left: 13px;
+    right: auto;
+    top: 68px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
+  .map-compass {
+    left: 13px;
+    right: auto;
+    top: 78px;
+  }
+}
 .map-compass .north, .map-compass .south {
-  height: 18px;
+  height: 17px;
   left: 16px;
   position: absolute;
   width: 8px;
@@ -3357,7 +3377,7 @@ Copyright (c) 2015 Daniel Eden
   font-size: 8px;
   line-height: 2;
   text-align: center;
-  top: 1px;
+  top: 3px;
 }
 .map-compass .south {
   -moz-border-radius-bottomleft: 5px;
@@ -3367,7 +3387,7 @@ Copyright (c) 2015 Daniel Eden
   -webkit-border-bottom-right-radius: 5px;
   border-bottom-right-radius: 5px;
   background: #232b2d;
-  top: 18px;
+  top: 20px;
 }
 
 /*!
@@ -6265,18 +6285,21 @@ Copyright (c) 2015 Daniel Eden
   color: #ffffff;
   height: 30px;
   position: absolute;
-  right: 20px;
+  left: 10px;
   text-align: center;
-  top: 70px;
+  top: 72px;
   width: 30px;
 }
 @media only screen and (min-width: 40.0625em) {
   .map-pan-to {
-    top: 90px;
+    left: auto;
+    right: 15px;
+    top: 95px;
   }
 }
 @media only screen and (min-width: 64.0625em) {
   .map-pan-to {
+    right: 21px;
     top: 105px;
   }
 }
@@ -8784,15 +8807,16 @@ yx-axis
   color: #fff;
   content: '(KM)';
   font-family: "Lato", sans-serif;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 400;
   height: 32px;
-  line-height: 2.6;
+  line-height: 3;
   position: absolute;
   text-align: center;
-  top: -10px;
-  left: 0;
+  top: 59px;
+  left: 59px;
   width: 32px;
+  z-index: 2000;
 }
 @media only screen and (min-width: 40.0625em) {
   .wheel-nav {
@@ -8805,6 +8829,9 @@ yx-axis
     font-size: 14px;
     height: 38px;
     width: 38px;
+    top: -5px;
+    left: 0;
+    line-height: 2.7;
   }
 }
 @media only screen and (min-width: 64.0625em) {
@@ -8818,6 +8845,7 @@ yx-axis
     font-size: 15px;
     height: 40px;
     width: 40px;
+    line-height: 2.6;
   }
 }
 .wheel-nav svg {
