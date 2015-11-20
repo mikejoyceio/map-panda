@@ -377,13 +377,12 @@ var globals = {
 			    // Search nearby places
 			    mapPlaces.nearbySearch(request, callback);
 
-			    // Show the map loading animation
-			    mapLoaderVisibility();
-
 			    // Google Maps places search callback function
 			    function callback(results, status) {
 
 			    	if (status === google.maps.places.PlacesServiceStatus.OK) {
+
+			    		bindingContext.$root.mapLoaderVisibility(true);
 
 			    		// Clear all markers from the map
 			    		clearMarkers();
@@ -404,7 +403,9 @@ var globals = {
 			    		setPlaces();
 
 			    		// Hide the map loading animation
-			    		hideMapLoader();
+		    			setTimeout(function() {
+		    				bindingContext.$root.mapLoaderVisibility(false);
+		    			}, 1000);
 
 			    	/* Callback Error Handling
 						 * Error status and messages will be passed the the callbackError function.
@@ -661,20 +662,6 @@ var globals = {
 
 				} 
 				performSearch();
-
-				// Show map loader function
-				function mapLoaderVisibility() {
-			    bindingContext.$root.mapLoaderVisibility(true);
-			   }
-
-			  // Hide map loader function
-			  function hideMapLoader() {
-	    		google.maps.event.addListener(global.map, 'idle', function() {
-	    			setTimeout(function() {
-	    				bindingContext.$root.mapLoaderVisibility(false);
-	    			}, 1000);
-	    		});
-			  }
 
 			}
 
