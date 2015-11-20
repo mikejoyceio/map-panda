@@ -2,16 +2,32 @@
 // Compass
 
 .map-compass {
+	@include border-radius(999px);
+	background: #fff;
+	border: 2px solid #ed5565;
   height: 40px;
-  left: 6px;
+  right: 10px;
   margin: 20px auto 0 auto;
   position: absolute;
-  top: 50px;
+  top: 45px;
   width: 40px;
+  opacity: 0.9;
   z-index: 1000;	
 
+  @media #{$medium-up} {
+  	left: 13px;
+ 		right: auto;
+ 		top: 68px;
+  }
+
+  @media #{$large-up} {
+  	left: 13px;
+  	right: auto;
+  	top: 78px;	
+  }
+
   .north, .south {
-	  height: 18px;
+	  height: 17px;
 	  left: 16px;
 	  position: absolute;
 	  width: 8px;
@@ -25,12 +41,12 @@
 	  font-size: 8px;
 	  line-height: 2;
 	  text-align: center;
-	  top: 1px;
+	  top: 3px;
   }
 
   .south {
 		@include border-bottom-radius(5px);
 	  background: #232b2d;
-	  top: 18px;
+	  top: 20px;
   }
 }
