@@ -322,14 +322,6 @@ var globals = {
 
 			  }
 
-			  // var options = {
-			  //   map: global.map,
-			  //   position: new google.maps.LatLng(60, 105),
-			  //   content: content
-			  // };
-
-			  // var infowindow = new google.maps.InfoWindow(options);
-			  // map.setCenter(options.position);
 			}
 
 		},
@@ -846,10 +838,6 @@ var globals = {
 		// Init function - ran once
 		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 			global.wheelNav = new wheelnav(element.id);
-			// global.wheelNav.spreaderEnable = true;
-			// global.wheelNav.spreaderInTitle = icon.plus;
-			// global.wheelNav.spreaderOutTitle = icon.cross;
-			// global.wheelNav.spreaderRaius = 85;
       global.wheelNav.slicePathFunction = slicePath().DonutSlice;
  			global.wheelNav.sliceInitPathFunction = global.wheelNav.slicePathFunction;
       global.wheelNav.initPercent = 0.1;
