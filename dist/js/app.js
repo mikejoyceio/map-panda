@@ -21627,12 +21627,8 @@ dataModel.uber = function(request) {
  */
 
 /* TODO:
- * - Rename modal info observables
  * - Add javascript promise polypill
- * - Add copy phone number function for desktops
  * - Add help panel
- * - Add SASS partial for global variables
- * - Refactor pushing into obervable arrays
  */
 
 // Global Namespace
@@ -21702,80 +21698,6 @@ var globals = {
 		this.modalUberEstimateVisibility = ko.observable(false);
 		this.modalUberDeepLink = ko.observable(false);
 		this.modalUberLoading = ko.observable(false);
-
-
-		this.searchFoursquare = function() {
-
-			var request = {
-				venueLat: self.modalInfoLat(),
-				venueLng: self.modalInfoLng(),
-				venueName: self.modalInfoName()
-			}
-
-		  var response = dataModel.foursquare(request);
-
-		  response.then(function(data) {
-				if (data.response.venues.length > 0) {		
-					self.modalFoursquareURL('https://foursquare.com/v/'+data.response.venues[0]['id']);
-			  	self.modalFoursquareVisibility(true);
-				}	else {
-					self.modalFoursquareURL('#');
-					self.modalFoursquareVisibility(false);
-				}
-		  }, function(xhrObj) {
-		  	console.log(xhrObj);
-		  });
-
-		}
-
-		this.uberRideEstimate = function() {
-			self.modalUberLoading(true);
-			self.modalUberEstimateVisibility(false);
-
-			var request = {
-				startLat: self.mapCurrentLat(),
-				startLng: self.mapCurrentLng(),
-				endLat: self.modalInfoLat(),
-				endLng: self.modalInfoLng() 
-			}
-
-			var response = dataModel.uber(request);
-
-			response.then(function(data) {
-				var uberEstimate;
-
-				data['prices'].length > 0 ? uberEstimate = data['prices'][0]['estimate'] : uberEstimate = 'Unavailable';
-
-				self.modalUberEstimate(uberEstimate);
-
-				uberEstimate !== 'Unavailable' ? self.modalUberDeepLink(true) : self.modalUberDeepLink(false);
-
-				self.modalUberLoading(false);
-				self.modalUberEstimateVisibility(true);
-			}, function(xhrObj) {
-				console.log(xhrObj);
-			});
-
-		};
-
-		this.uberRideRequest = function() {
-			var uberDeepLink;
-
-			uberDeepLink = 'https://m.uber.com/sign-up?';
-			uberDeepLink += 'client_id=' + 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn';
-			uberDeepLink += 'pickup_latitude=' + self.mapCurrentLat();
-			uberDeepLink += 'pickup_longitude=' + self.mapCurrentLng();
-			uberDeepLink += 'dropoff_latitude=' + self.modalInfoLat();
-			uberDeepLink += 'dropoff_longitude=' + self.modalInfoLng();
-			uberDeepLink += 'dropoff_nickname=' + self.modalInfoName();
-
-			if (self.modalUberDeepLink()) {
-				window.open(uberDeepLink);
-			} else {
-				return false
-			}
-
-		}
 
 		// Loop through each place object in the dataModel.places array
 		dataModel.places.forEach(function(placeItem) {
@@ -21857,6 +21779,79 @@ var globals = {
 	 		self.modalOverlayVisibility(false);
 	 	}
 
+		this.searchFoursquare = function() {
+
+			var request = {
+				venueLat: self.modalInfoLat(),
+				venueLng: self.modalInfoLng(),
+				venueName: self.modalInfoName()
+			}
+
+		  var response = dataModel.foursquare(request);
+
+		  response.then(function(data) {
+				if (data.response.venues.length > 0) {		
+					self.modalFoursquareURL('https://foursquare.com/v/'+data.response.venues[0]['id']);
+			  	self.modalFoursquareVisibility(true);
+				}	else {
+					self.modalFoursquareURL('#');
+					self.modalFoursquareVisibility(false);
+				}
+		  }, function(xhrObj) {
+		  	console.log(xhrObj);
+		  });
+
+		}
+
+		this.uberRideEstimate = function() {
+			self.modalUberLoading(true);
+			self.modalUberEstimateVisibility(false);
+
+			var request = {
+				startLat: self.mapCurrentLat(),
+				startLng: self.mapCurrentLng(),
+				endLat: self.modalInfoLat(),
+				endLng: self.modalInfoLng() 
+			}
+
+			var response = dataModel.uber(request);
+
+			response.then(function(data) {
+				var uberEstimate;
+
+				data['prices'].length > 0 ? uberEstimate = data['prices'][0]['estimate'] : uberEstimate = 'Unavailable';
+
+				self.modalUberEstimate(uberEstimate);
+
+				uberEstimate !== 'Unavailable' ? self.modalUberDeepLink(true) : self.modalUberDeepLink(false);
+
+				self.modalUberLoading(false);
+				self.modalUberEstimateVisibility(true);
+			}, function(xhrObj) {
+				console.log(xhrObj);
+			});
+
+		};
+
+		this.uberRideRequest = function() {
+			var uberDeepLink;
+
+			uberDeepLink = 'https://m.uber.com/sign-up?';
+			uberDeepLink += 'client_id=' + 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn';
+			uberDeepLink += 'pickup_latitude=' + self.mapCurrentLat();
+			uberDeepLink += 'pickup_longitude=' + self.mapCurrentLng();
+			uberDeepLink += 'dropoff_latitude=' + self.modalInfoLat();
+			uberDeepLink += 'dropoff_longitude=' + self.modalInfoLng();
+			uberDeepLink += 'dropoff_nickname=' + self.modalInfoName();
+
+			if (self.modalUberDeepLink()) {
+				window.open(uberDeepLink);
+			} else {
+				return false
+			}
+
+		}
+
 	}
 
 	// Place Constructor
@@ -21927,29 +21922,23 @@ var globals = {
 			  if (errorFlag) {
 
 			  	// If the global.debug variable is set to true, console.log the error
-					if (global.debug) console.log('Error: The Geolocation service failed.');
+					if (global.debug) console.log('Error: Geolocation service failed.');
+
 					// Show the user notification message 
 					bindingContext.$root.notificationKeepAlive(true);
-					bindingContext.$root.notificationMessage('Error: The Geolocation service failed.');
+					bindingContext.$root.notificationMessage('Geolocation failed.');
 
 			  } else {
 
 			  	// If the global.debug variable is set to true, console.log the error
-					if (global.debug) console.log('Error: Your browser doesn\'t support geolocation.');
+					if (global.debug) console.log('Error: Browser doesn\'t support geolocation.');
+
 					// Show the user notification message 
 					bindingContext.$root.notificationKeepAlive(true);
-					bindingContext.$root.notificationMessage('Error: Your browser doesn\'t support geolocation.');
+					bindingContext.$root.notificationMessage('Gelocation unsupported');
 
 			  }
 
-			  // var options = {
-			  //   map: global.map,
-			  //   position: new google.maps.LatLng(60, 105),
-			  //   content: content
-			  // };
-
-			  // var infowindow = new google.maps.InfoWindow(options);
-			  // map.setCenter(options.position);
 			}
 
 		},
@@ -22033,19 +22022,19 @@ var globals = {
 
 			    	} else if (status === google.maps.places.PlacesServiceStatus.ERROR) {
 			    		statusMessage = status+' There was a problem contacting the Google servers.';
-			    		notificationMessage = 'There was a problem contacting the Google servers.';
+			    		notificationMessage = 'Connection error';
 			    		callbackError(statusMessage, notificationMessage);
 			    	} else if (status === google.maps.places.PlacesServiceStatus.INVALID_REQUEST) {
 			    		statusMessage = status+' This request was invalid.';
-			    		notificationMessage = 'This request was invalid.';
+			    		notificationMessage = 'Error. Please try again.';
 			    		callbackError(statusMessage, notificationMessage);
 			    	} else if (status === google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
 				    	statusMessage = status+' The webpage has gone over its request quota.';
-			    		notificationMessage = 'This webpage has gone over its request quota.';
+			    		notificationMessage = 'Slow down!';
 			    		callbackError(statusMessage, notificationMessage);		    		
 			    	} else if (status === google.maps.places.PlacesServiceStatus.REQUEST_DENIED) {
 			    		statusMessage = status+' This webpage is not allowed to use the PlacesService.';
-			    		notificationMessage = 'This webpage is not allowed to use the PlacesService.';
+			    		notificationMessage = 'Error. Please try again.';
 			    		callbackError(statusMessage, notificationMessage);	
 			    	} else if (status === google.maps.places.PlacesServiceStatus.UNKNOWN_ERROR) {
 			    		statusMessage = status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.';
@@ -22056,7 +22045,7 @@ var globals = {
 			    		notificationMessage = 'No Results';
 			    		callbackError(statusMessage, notificationMessage);	
 			    	} else {
-			    		callbackError('Error', 'Error');
+			    		callbackError('Unknown error', 'Error. Please try again.');
 			    	}
 			    }
 
@@ -22066,12 +22055,15 @@ var globals = {
 					 * more readable, jargon-free error message for the user.
 			     */
 			    function callbackError(statusMessage, notificationMessage) {
+
 			    	// If the global.debug variable is set to true, console log the error
 			    	if (global.debug) console.log(statusMessage);
+
 			    	// Show the user notification message
 				    bindingContext.$root.mapLoaderVisibility(false);
 				   	bindingContext.$root.notificationKeepAlive(true);
 		    		bindingContext.$root.notificationMessage(notificationMessage);	  	    	
+
 			    }
 
 			    // Set places function
@@ -22223,7 +22215,7 @@ var globals = {
 
 								// If the request if OK, set the Info Window content
 							  if (status == google.maps.places.PlacesServiceStatus.OK) {
-							  	console.log(place);
+		
 							  	var placeInfo = {
 										id: place.id,
 										name: place.name,
@@ -22233,21 +22225,21 @@ var globals = {
 										lng: place.geometry.location.lng(),
 										phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'No Number',
 										phoneCall: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number.replace(/ /g, '') : false,
-										photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default-large.png',
-										rating: typeof place.rating !== 'undefined' ? Math.round(place.rating) : 0,
-										price: typeof place.price_level !== 'undefined' ? place.price_level : 0
+										photo: typeof place.photos !== 'undefined' ? "url('"+place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300})+"')" : 'url("dist/images/default-large.png")',
+										rating: typeof place.rating !== 'undefined' ? 'rating-0'+Math.round(place.rating) : 'rating-00',
+										price: typeof place.price_level !== 'undefined' ? 'price-0'+place.price_level : 'price-00'
 									};
 
-									bindingContext.$root.modalInfoPhoto("url('"+placeInfo.photo+"')");
-									bindingContext.$root.modalInfoPrice('price-0'+placeInfo.price);
-									bindingContext.$root.modalInfoRating('rating-0'+placeInfo.rating);
 									bindingContext.$root.modalInfoName(placeInfo.name);
 									bindingContext.$root.modalInfoAddress(placeInfo.address);
 									bindingContext.$root.modalInfoWebsite(placeInfo.website);
 									bindingContext.$root.modalInfoLat(placeInfo.lat);							
 									bindingContext.$root.modalInfoLng(placeInfo.lng);
 									bindingContext.$root.modalInfoPhone(placeInfo.phone);
-									bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);
+									bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);									
+									bindingContext.$root.modalInfoPhoto(placeInfo.photo);
+									bindingContext.$root.modalInfoPrice(placeInfo.price);
+									bindingContext.$root.modalInfoRating(placeInfo.rating);
 
 									// Search Foursquare
 									bindingContext.$root.searchFoursquare();
@@ -22466,10 +22458,6 @@ var globals = {
 		// Init function - ran once
 		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 			global.wheelNav = new wheelnav(element.id);
-			// global.wheelNav.spreaderEnable = true;
-			// global.wheelNav.spreaderInTitle = icon.plus;
-			// global.wheelNav.spreaderOutTitle = icon.cross;
-			// global.wheelNav.spreaderRaius = 85;
       global.wheelNav.slicePathFunction = slicePath().DonutSlice;
  			global.wheelNav.sliceInitPathFunction = global.wheelNav.slicePathFunction;
       global.wheelNav.initPercent = 0.1;
