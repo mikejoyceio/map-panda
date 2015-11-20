@@ -595,7 +595,7 @@ var globals = {
 
 								// If the request if OK, set the Info Window content
 							  if (status == google.maps.places.PlacesServiceStatus.OK) {
-							  	console.log(place);
+		
 							  	var placeInfo = {
 										id: place.id,
 										name: place.name,
@@ -605,21 +605,21 @@ var globals = {
 										lng: place.geometry.location.lng(),
 										phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'No Number',
 										phoneCall: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number.replace(/ /g, '') : false,
-										photo: typeof place.photos !== 'undefined' ? place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'dist/images/default-large.png',
-										rating: typeof place.rating !== 'undefined' ? Math.round(place.rating) : 0,
-										price: typeof place.price_level !== 'undefined' ? place.price_level : 0
+										photo: typeof place.photos !== 'undefined' ? "url('"+place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300})+"')" : 'url("dist/images/default-large.png")',
+										rating: typeof place.rating !== 'undefined' ? 'rating-0'+Math.round(place.rating) : 'rating-00',
+										price: typeof place.price_level !== 'undefined' ? 'price-0'+place.price_level : 'price-00'
 									};
 
-									bindingContext.$root.modalInfoPhoto("url('"+placeInfo.photo+"')");
-									bindingContext.$root.modalInfoPrice('price-0'+placeInfo.price);
-									bindingContext.$root.modalInfoRating('rating-0'+placeInfo.rating);
 									bindingContext.$root.modalInfoName(placeInfo.name);
 									bindingContext.$root.modalInfoAddress(placeInfo.address);
 									bindingContext.$root.modalInfoWebsite(placeInfo.website);
 									bindingContext.$root.modalInfoLat(placeInfo.lat);							
 									bindingContext.$root.modalInfoLng(placeInfo.lng);
 									bindingContext.$root.modalInfoPhone(placeInfo.phone);
-									bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);
+									bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);									
+									bindingContext.$root.modalInfoPhoto(placeInfo.photo);
+									bindingContext.$root.modalInfoPrice(placeInfo.price);
+									bindingContext.$root.modalInfoRating(placeInfo.rating);
 
 									// Search Foursquare
 									bindingContext.$root.searchFoursquare();
