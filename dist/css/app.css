@@ -3333,15 +3333,15 @@ Copyright (c) 2015 Daniel Eden
   -moz-border-radius: 999px;
   -webkit-border-radius: 999px;
   border-radius: 999px;
+  display: none;
   background: #fff;
   border: 2px solid #ed5565;
   height: 40px;
-  right: 10px;
+  left: 10px;
   margin: 20px auto 0 auto;
   position: absolute;
   top: 45px;
   width: 40px;
-  opacity: 0.9;
   z-index: 1000;
 }
 @media only screen and (min-width: 40.0625em) {
@@ -6285,7 +6285,7 @@ Copyright (c) 2015 Daniel Eden
   color: #ffffff;
   height: 30px;
   position: absolute;
-  left: 10px;
+  right: 10px;
   text-align: center;
   top: 72px;
   width: 30px;
