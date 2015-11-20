@@ -211,7 +211,7 @@ html, body {
 .menu .place-list {
   color: #fff;
   margin: 0 0 0 32px;
-  padding: 0 0 10px 0;
+  padding: 0 32px 10px 0;
   overflow-y: hidden;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
@@ -220,6 +220,7 @@ html, body {
 @media only screen and (min-width: 40.0625em) {
   .menu .place-list {
     margin: 0 0 0 42px;
+    padding: 0 42px 10px 0;
   }
 }
 @media only screen and (min-width: 64.0625em) {
@@ -233,7 +234,7 @@ html, body {
 }
 .menu .place-list .item {
   color: #667174;
-  display: inline;
+  display: inline-block;
   font-size: 17px;
   line-height: 1;
   margin: 0 0 0 18px;
@@ -253,19 +254,6 @@ html, body {
     font-size: 15px;
     margin: 0 0 0 8px;
   }
-}
-.menu .place-list .item:hover, .menu .place-list .item.active {
-  cursor: pointer;
-  color: #fff;
-}
-.menu .place-list .item:hover .icon .icon-outer, .menu .place-list .item.active .icon .icon-outer {
-  color: #fff;
-}
-.menu .place-list .item:hover .icon .icon-inner, .menu .place-list .item.active .icon .icon-inner {
-  color: #2eb398;
-}
-.menu .place-list .item.hidden {
-  display: none;
 }
 .menu .place-list .item .icon {
   -moz-transition: all 0.5s ease-in-out;
@@ -292,6 +280,19 @@ html, body {
 .menu .place-list .item .icon .icon-outer {
   color: #6f7b7e;
   font-size: 28px;
+}
+.menu .place-list .item:hover, .menu .place-list .item.active {
+  cursor: pointer;
+  color: #fff;
+}
+.menu .place-list .item:hover .icon .icon-outer, .menu .place-list .item.active .icon .icon-outer {
+  color: #fff;
+}
+.menu .place-list .item:hover .icon .icon-inner, .menu .place-list .item.active .icon .icon-inner {
+  color: #2eb398;
+}
+.menu .place-list .item.hidden {
+  display: none;
 }
 
 @-moz-keyframes pulse {
