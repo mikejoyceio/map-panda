@@ -46,7 +46,7 @@ var globals = {
 		// Map Observables
 		this.mapInfo = ko.observable(false);
 		this.mapCompass = ko.observable();
-		this.showMapLoader = ko.observable(false);
+		this.mapLoaderVisibility = ko.observable(false);
 		this.mapCurrentLat = ko.observable();
 		this.mapCurrentLng = ko.observable();
 
@@ -378,7 +378,7 @@ var globals = {
 			    mapPlaces.nearbySearch(request, callback);
 
 			    // Show the map loading animation
-			    showMapLoader();
+			    mapLoaderVisibility();
 
 			    // Google Maps places search callback function
 			    function callback(results, status) {
@@ -448,7 +448,7 @@ var globals = {
 			    	// If the global.debug variable is set to true, console log the error
 			    	if (global.debug) console.log(statusMessage);
 			    	// Show the user notification message
-				    bindingContext.$root.showMapLoader(false);
+				    bindingContext.$root.mapLoaderVisibility(false);
 				   	bindingContext.$root.notificationKeepAlive(true);
 		    		bindingContext.$root.notificationMessage(notificationMessage);	  	    	
 			    }
@@ -663,15 +663,15 @@ var globals = {
 				performSearch();
 
 				// Show map loader function
-				function showMapLoader() {
-			    bindingContext.$root.showMapLoader(true);
+				function mapLoaderVisibility() {
+			    bindingContext.$root.mapLoaderVisibility(true);
 			   }
 
 			  // Hide map loader function
 			  function hideMapLoader() {
 	    		google.maps.event.addListener(global.map, 'idle', function() {
 	    			setTimeout(function() {
-	    				bindingContext.$root.showMapLoader(false);
+	    				bindingContext.$root.mapLoaderVisibility(false);
 	    			}, 1000);
 	    		});
 			  }
