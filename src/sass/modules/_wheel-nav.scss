@@ -16,15 +16,16 @@
   	color: #fff;
 		content: '(KM)';
 		font-family: $base-font-family;
-		font-size: 12px;
+		font-size: 10px;
 		font-weight: $font-regular;
 		height: 32px;
-		line-height: 2.6;
+		line-height: 3;
 		position: absolute;
 		text-align: center;
-		top: -10px;
-		left: 0;
+		top: 59px;
+		left: 59px;
 		width: 32px;
+		z-index: 2000;
   }
 
   @media #{$medium-up} {
@@ -37,6 +38,9 @@
   		font-size: 14px;
   		height: 38px;
   		width: 38px;
+  		top: -5px;
+  		left: 0;
+  		line-height: 2.7;
   	}
   }
 
@@ -50,6 +54,7 @@
 			font-size: 15px;
 			height: 40px;
 			width: 40px;
+			line-height: 2.6;
 		}
 	}
 		
