@@ -20,7 +20,11 @@
   width: 200px;
   z-index: 1000;
 
-  @media #{$medium-up} {
+	@media #{$medium-up} {
+		top: 99px;
+	}
+
+  @media #{$large-up} {
     font-size: 14px;
     font-size: 14px;
     height: 15px;
