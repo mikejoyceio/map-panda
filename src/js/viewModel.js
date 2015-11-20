@@ -307,18 +307,20 @@ var globals = {
 			  if (errorFlag) {
 
 			  	// If the global.debug variable is set to true, console.log the error
-					if (global.debug) console.log('Error: The Geolocation service failed.');
+					if (global.debug) console.log('Error: Geolocation service failed.');
+
 					// Show the user notification message 
 					bindingContext.$root.notificationKeepAlive(true);
-					bindingContext.$root.notificationMessage('Error: The Geolocation service failed.');
+					bindingContext.$root.notificationMessage('Geolocation failed.');
 
 			  } else {
 
 			  	// If the global.debug variable is set to true, console.log the error
-					if (global.debug) console.log('Error: Your browser doesn\'t support geolocation.');
+					if (global.debug) console.log('Error: Browser doesn\'t support geolocation.');
+
 					// Show the user notification message 
 					bindingContext.$root.notificationKeepAlive(true);
-					bindingContext.$root.notificationMessage('Error: Your browser doesn\'t support geolocation.');
+					bindingContext.$root.notificationMessage('Gelocation unsupported');
 
 			  }
 
@@ -405,19 +407,19 @@ var globals = {
 
 			    	} else if (status === google.maps.places.PlacesServiceStatus.ERROR) {
 			    		statusMessage = status+' There was a problem contacting the Google servers.';
-			    		notificationMessage = 'There was a problem contacting the Google servers.';
+			    		notificationMessage = 'Connection error';
 			    		callbackError(statusMessage, notificationMessage);
 			    	} else if (status === google.maps.places.PlacesServiceStatus.INVALID_REQUEST) {
 			    		statusMessage = status+' This request was invalid.';
-			    		notificationMessage = 'This request was invalid.';
+			    		notificationMessage = 'Error. Please try again.';
 			    		callbackError(statusMessage, notificationMessage);
 			    	} else if (status === google.maps.places.PlacesServiceStatus.OVER_QUERY_LIMIT) {
 				    	statusMessage = status+' The webpage has gone over its request quota.';
-			    		notificationMessage = 'This webpage has gone over its request quota.';
+			    		notificationMessage = 'Slow down!';
 			    		callbackError(statusMessage, notificationMessage);		    		
 			    	} else if (status === google.maps.places.PlacesServiceStatus.REQUEST_DENIED) {
 			    		statusMessage = status+' This webpage is not allowed to use the PlacesService.';
-			    		notificationMessage = 'This webpage is not allowed to use the PlacesService.';
+			    		notificationMessage = 'Error. Please try again.';
 			    		callbackError(statusMessage, notificationMessage);	
 			    	} else if (status === google.maps.places.PlacesServiceStatus.UNKNOWN_ERROR) {
 			    		statusMessage = status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.';
@@ -428,7 +430,7 @@ var globals = {
 			    		notificationMessage = 'No Results';
 			    		callbackError(statusMessage, notificationMessage);	
 			    	} else {
-			    		callbackError('Error', 'Error');
+			    		callbackError('Unknown error', 'Error. Please try again.');
 			    	}
 			    }
 
@@ -438,12 +440,15 @@ var globals = {
 					 * more readable, jargon-free error message for the user.
 			     */
 			    function callbackError(statusMessage, notificationMessage) {
+
 			    	// If the global.debug variable is set to true, console log the error
 			    	if (global.debug) console.log(statusMessage);
+
 			    	// Show the user notification message
 				    bindingContext.$root.mapLoaderVisibility(false);
 				   	bindingContext.$root.notificationKeepAlive(true);
 		    		bindingContext.$root.notificationMessage(notificationMessage);	  	    	
+
 			    }
 
 			    // Set places function
