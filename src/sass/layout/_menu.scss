@@ -113,7 +113,7 @@
 			
     	.item {
 			  color: #667174;
-			  display: inline;
+			  display: inline-block;
 			  font-size: 17px;
 			  line-height: 1;
 			  margin: 0 0 0 18px;
@@ -127,25 +127,6 @@
     			display: block;
     			font-size: 15px;
     			margin: 0 0 0 8px;
-    		}
-
-			  &:hover,
-			  &.active {
-					cursor: pointer;
-			  	color: #fff;
-
-			  	.icon {
-			  		.icon-outer {
-			  			color: #fff;
-			  		}
-			  	 	.icon-inner {
-			  			color: #2eb398;
-			  		}
-			  	}
-			  }
-
-    		&.hidden {
-    			display: none;
     		}
 
 				.icon {
@@ -171,6 +152,26 @@
 						font-size: 28px;
 	    		}
     		}	
+
+			  &:hover,
+			  &.active {
+					cursor: pointer;
+			  	color: #fff;
+
+			  	.icon {
+			  		// width: 33px;	
+			  		.icon-outer {
+			  			color: #fff;
+			  		}
+			  	 	.icon-inner {
+			  			color: #2eb398;
+			  		}
+			  	}
+			  }
+
+    		&.hidden {
+    			display: none;
+    		}
     	}
     }
 }
