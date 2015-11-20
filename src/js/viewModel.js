@@ -79,80 +79,6 @@ var globals = {
 		this.modalUberDeepLink = ko.observable(false);
 		this.modalUberLoading = ko.observable(false);
 
-
-		this.searchFoursquare = function() {
-
-			var request = {
-				venueLat: self.modalInfoLat(),
-				venueLng: self.modalInfoLng(),
-				venueName: self.modalInfoName()
-			}
-
-		  var response = dataModel.foursquare(request);
-
-		  response.then(function(data) {
-				if (data.response.venues.length > 0) {		
-					self.modalFoursquareURL('https://foursquare.com/v/'+data.response.venues[0]['id']);
-			  	self.modalFoursquareVisibility(true);
-				}	else {
-					self.modalFoursquareURL('#');
-					self.modalFoursquareVisibility(false);
-				}
-		  }, function(xhrObj) {
-		  	console.log(xhrObj);
-		  });
-
-		}
-
-		this.uberRideEstimate = function() {
-			self.modalUberLoading(true);
-			self.modalUberEstimateVisibility(false);
-
-			var request = {
-				startLat: self.mapCurrentLat(),
-				startLng: self.mapCurrentLng(),
-				endLat: self.modalInfoLat(),
-				endLng: self.modalInfoLng() 
-			}
-
-			var response = dataModel.uber(request);
-
-			response.then(function(data) {
-				var uberEstimate;
-
-				data['prices'].length > 0 ? uberEstimate = data['prices'][0]['estimate'] : uberEstimate = 'Unavailable';
-
-				self.modalUberEstimate(uberEstimate);
-
-				uberEstimate !== 'Unavailable' ? self.modalUberDeepLink(true) : self.modalUberDeepLink(false);
-
-				self.modalUberLoading(false);
-				self.modalUberEstimateVisibility(true);
-			}, function(xhrObj) {
-				console.log(xhrObj);
-			});
-
-		};
-
-		this.uberRideRequest = function() {
-			var uberDeepLink;
-
-			uberDeepLink = 'https://m.uber.com/sign-up?';
-			uberDeepLink += 'client_id=' + 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn';
-			uberDeepLink += 'pickup_latitude=' + self.mapCurrentLat();
-			uberDeepLink += 'pickup_longitude=' + self.mapCurrentLng();
-			uberDeepLink += 'dropoff_latitude=' + self.modalInfoLat();
-			uberDeepLink += 'dropoff_longitude=' + self.modalInfoLng();
-			uberDeepLink += 'dropoff_nickname=' + self.modalInfoName();
-
-			if (self.modalUberDeepLink()) {
-				window.open(uberDeepLink);
-			} else {
-				return false
-			}
-
-		}
-
 		// Loop through each place object in the dataModel.places array
 		dataModel.places.forEach(function(placeItem) {
 			self.placeList.push(new Place(placeItem));
@@ -232,6 +158,79 @@ var globals = {
 	 	this.closeModalOverlay = function() {
 	 		self.modalOverlayVisibility(false);
 	 	}
+
+		this.searchFoursquare = function() {
+
+			var request = {
+				venueLat: self.modalInfoLat(),
+				venueLng: self.modalInfoLng(),
+				venueName: self.modalInfoName()
+			}
+
+		  var response = dataModel.foursquare(request);
+
+		  response.then(function(data) {
+				if (data.response.venues.length > 0) {		
+					self.modalFoursquareURL('https://foursquare.com/v/'+data.response.venues[0]['id']);
+			  	self.modalFoursquareVisibility(true);
+				}	else {
+					self.modalFoursquareURL('#');
+					self.modalFoursquareVisibility(false);
+				}
+		  }, function(xhrObj) {
+		  	console.log(xhrObj);
+		  });
+
+		}
+
+		this.uberRideEstimate = function() {
+			self.modalUberLoading(true);
+			self.modalUberEstimateVisibility(false);
+
+			var request = {
+				startLat: self.mapCurrentLat(),
+				startLng: self.mapCurrentLng(),
+				endLat: self.modalInfoLat(),
+				endLng: self.modalInfoLng() 
+			}
+
+			var response = dataModel.uber(request);
+
+			response.then(function(data) {
+				var uberEstimate;
+
+				data['prices'].length > 0 ? uberEstimate = data['prices'][0]['estimate'] : uberEstimate = 'Unavailable';
+
+				self.modalUberEstimate(uberEstimate);
+
+				uberEstimate !== 'Unavailable' ? self.modalUberDeepLink(true) : self.modalUberDeepLink(false);
+
+				self.modalUberLoading(false);
+				self.modalUberEstimateVisibility(true);
+			}, function(xhrObj) {
+				console.log(xhrObj);
+			});
+
+		};
+
+		this.uberRideRequest = function() {
+			var uberDeepLink;
+
+			uberDeepLink = 'https://m.uber.com/sign-up?';
+			uberDeepLink += 'client_id=' + 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn';
+			uberDeepLink += 'pickup_latitude=' + self.mapCurrentLat();
+			uberDeepLink += 'pickup_longitude=' + self.mapCurrentLng();
+			uberDeepLink += 'dropoff_latitude=' + self.modalInfoLat();
+			uberDeepLink += 'dropoff_longitude=' + self.modalInfoLng();
+			uberDeepLink += 'dropoff_nickname=' + self.modalInfoName();
+
+			if (self.modalUberDeepLink()) {
+				window.open(uberDeepLink);
+			} else {
+				return false
+			}
+
+		}
 
 	}
 
