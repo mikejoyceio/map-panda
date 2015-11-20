@@ -93,7 +93,7 @@
     .place-list {
 			color: #fff;
 			margin: 0 0 0 32px;
-			padding: 0 0 10px 0;
+			padding: 0 32px 10px 0;
 			overflow-y: hidden;
 			overflow-x: scroll;
 			-webkit-overflow-scrolling: touch;
@@ -101,6 +101,7 @@
 
 			@media #{$medium-up} {
   			margin: 0 0 0 42px; 
+  			padding: 0 42px 10px 0;
 			}
 
 			@media #{$large-up} {
@@ -113,7 +114,7 @@
 			
     	.item {
 			  color: #667174;
-			  display: inline;
+			  display: inline-block;
 			  font-size: 17px;
 			  line-height: 1;
 			  margin: 0 0 0 18px;
@@ -127,25 +128,6 @@
     			display: block;
     			font-size: 15px;
     			margin: 0 0 0 8px;
-    		}
-
-			  &:hover,
-			  &.active {
-					cursor: pointer;
-			  	color: #fff;
-
-			  	.icon {
-			  		.icon-outer {
-			  			color: #fff;
-			  		}
-			  	 	.icon-inner {
-			  			color: #2eb398;
-			  		}
-			  	}
-			  }
-
-    		&.hidden {
-    			display: none;
     		}
 
 				.icon {
@@ -171,6 +153,26 @@
 						font-size: 28px;
 	    		}
     		}	
+
+			  &:hover,
+			  &.active {
+					cursor: pointer;
+			  	color: #fff;
+
+			  	.icon {
+			  		// width: 33px;	
+			  		.icon-outer {
+			  			color: #fff;
+			  		}
+			  	 	.icon-inner {
+			  			color: #2eb398;
+			  		}
+			  	}
+			  }
+
+    		&.hidden {
+    			display: none;
+    		}
     	}
     }
 }
