@@ -7,12 +7,8 @@
  */
 
 /* TODO:
- * - Rename modal info observables
  * - Add javascript promise polypill
- * - Add copy phone number function for desktops
  * - Add help panel
- * - Add SASS partial for global variables
- * - Refactor pushing into obervable arrays
  */
 
 // Global Namespace
