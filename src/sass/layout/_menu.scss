@@ -93,7 +93,7 @@
     .place-list {
 			color: #fff;
 			margin: 0 0 0 32px;
-			padding: 0 0 10px 0;
+			padding: 0 32px 10px 0;
 			overflow-y: hidden;
 			overflow-x: scroll;
 			-webkit-overflow-scrolling: touch;
@@ -101,6 +101,7 @@
 
 			@media #{$medium-up} {
   			margin: 0 0 0 42px; 
+  			padding: 0 42px 10px 0;
 			}
 
 			@media #{$large-up} {
