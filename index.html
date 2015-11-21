@@ -27,7 +27,7 @@
 	<!-- App CSS -->
 	<link rel="stylesheet" href="dist/css/app.css">
 </head>
-<body data-bind="event: { touchmove: dragTrue, touchstart: dragFalse }">
+<body data-bind="preventScrollTap">
 
 	<!-- Notification -->
 	<div class="notification" data-bind="notification: {message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>

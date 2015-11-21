@@ -70,6 +70,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Mozilla Developer Network: Math.round()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/round)
 - [Clipboard.js: A modern approach to copy text to clipboard](https://zenorocha.github.io/clipboard.js/)
 - [Detecting operating system with JavaScript](http://www.javascripter.net/faq/operatin.htm)
+- [How to emulate touch events in Chrome](https://frontify.com/blog/how-to-emulate-touch-events-in-chrome/)
 
 ######jQuery 
 

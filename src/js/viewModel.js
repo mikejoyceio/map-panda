@@ -33,6 +33,7 @@ var globals = {
 		// App Observables
 		this.appName = "App Name";
 		this.appDescription = "App Description";
+		this.appDragging = ko.observable(false);
 
 		// Notifcation Observables
 		this.notificationMessage = ko.observable('');
@@ -86,28 +87,10 @@ var globals = {
 		// Set the current place
 		this.currentPlace = ko.observable( this.placeList()[0] );
 
-		var dragging = false;
-
-		this.dragTrue = function() {
-			dragging = true;
-		}
-
-		this.dragFalse = function() {
-			dragging = false;
-		}
-
-		// $("body").on("touchmove", function(){
-  // 		dragging = true;
-		// });
-
-		// $("body").on("touchstart", function(){
-  //   	dragging = false;
-		// });
-
 		// Select the current place
 		this.selectPlace = function(place) {
 
-			if (dragging) 
+			if (self.appDragging()) 
 				return;
 
 			self.notificationKeepAlive(false);
@@ -898,6 +881,23 @@ var globals = {
 			Compass.watch(function (heading) {
 				$(element).show();
 			  $(element).css('-webkit-transform', 'rotate(' + (-heading) + 'deg)');
+			});
+
+		}	
+	};
+
+		// KO Custom Binding for preventing scroll tap
+	ko.bindingHandlers.preventScrollTap = {
+
+		// Init function - ran once
+		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+
+			$(element).on("touchmove", function(){
+				bindingContext.$root.appDragging(true);
+			});
+
+			$(element).on("touchstart", function(){
+		  	bindingContext.$root.appDragging(false);
 			});
 
 		}	
