@@ -21160,7 +21160,7 @@ dataModel.places = [
 		type: 'art_gallery',
 		icon: 'fa-paint-brush',
 		marker: { path: fontawesome.markers.PAINT_BRUSH,
-								fillColor: '#8e44ad',
+								fillColor: '#2c3e50',
 								fillOpacity: 1,
 								scale: 0.28,
 								strokeColor: '#ffffff',
