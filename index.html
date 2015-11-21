@@ -112,10 +112,10 @@
 		</div>
 
 		<div class="map-zoom-buttons">
-	    <div class="map-zoom-button zoom-in" data-bind="event: { click: zoomIn, touchstart: zoomIn }">
+	    <div class="map-zoom-button zoom-in" data-bind="event: { click: zoomIn, touchend: zoomIn }">
   			<span class="fa fa-plus"></span>	
   		</div>	
-  		<div class="map-zoom-button zoom-out" data-bind="event: { click: zoomOut, touchstart: zoomOut }">
+  		<div class="map-zoom-button zoom-out" data-bind="event: { click: zoomOut, touchend: zoomOut }">
    			<span class="fa fa-minus"></span>	
    		</div>
 		</div>
@@ -139,7 +139,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<div class="top-bar">
-					<span class="close-modal" data-bind="event: { click: closeModal, touchstart: closeModal }">
+					<span class="close-modal" data-bind="event: { click: closeModal, touchend: closeModal }">
 					<span class="icon fa-stack fa-sml">
 						<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>
 						<i class="icon-inner fa fa-close fa-stack-1x fa-inverse"></i>
@@ -165,7 +165,7 @@
 					<span class="star star-05"></span>	
 				</div>
 				<div class="actions">
-					<div class="action-phone" data-bind="event: { click: openModalOverlay, touchstart: openModalOverlay }">
+					<div class="action-phone" data-bind="event: { click: openModalOverlay, touchend: openModalOverlay }">
 						<span class="icon fa fa-phone"></span>	
 					</div>	
 					<div class="action-uber" data-bind="click: uberRideRequest">
@@ -197,7 +197,7 @@
 						<button class="button copy default radius" data-bind="visible: modalOverlayCopyButtonVisibility, clipboard" data-clipboard-target="#clipboardTarget">Copy</button>
 						<a class="button call action radius" data-bind="attr: { href: 'tel:'+modalInfoPhoneCall() }">Call</a>
 					</div>
-					<button class="button cancel radius expand" data-bind="event: { click: closeModalOverlay, touchstart: closeModalOverlay }">Close</button>
+					<button class="button cancel radius expand" data-bind="event: { click: closeModalOverlay, touchend: closeModalOverlay }">Close</button>
 				</div>
 			</div>
 			<div class="modal-footer">
