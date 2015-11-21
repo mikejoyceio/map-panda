@@ -41,7 +41,6 @@ var globals = {
 
 		// Map Observables
 		this.mapInfo = ko.observable(false);
-		this.mapCompass = ko.observable();
 		this.mapLoaderVisibility = ko.observable(false);
 		this.mapCurrentLat = ko.observable();
 		this.mapCurrentLng = ko.observable();
