@@ -21721,13 +21721,21 @@ var globals = {
 
 		var dragging = false;
 
-		$("body").on("touchmove", function(){
-  		dragging = true;
-		});
+		this.dragTrue = function() {
+			dragging = true;
+		}
 
-		$("body").on("touchstart", function(){
-    	dragging = false;
-		});
+		this.dragFalse = function() {
+			dragging = false;
+		}
+
+		// $("body").on("touchmove", function(){
+  // 		dragging = true;
+		// });
+
+		// $("body").on("touchstart", function(){
+  //   	dragging = false;
+		// });
 
 		// Select the current place
 		this.selectPlace = function(place) {
