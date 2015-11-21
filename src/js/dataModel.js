@@ -385,6 +385,18 @@ dataModel.places = [
 								strokeWeight: 0.1 }
 	},
 	{
+		name: 'Stadiums',
+		description: 'description text',
+		type: 'stadium',
+		icon: 'fa-trophy',
+		marker: { path: fontawesome.markers.TROPHY,
+								fillColor: '#34495e',
+								fillOpacity: 1,
+								scale: 0.27,
+								strokeColor: '#ffffff',
+								strokeWeight: 0.1 }
+	},
+	{
 		name: 'Subway Stations',
 		description: 'description text',
 		type: 'pharmacy',
