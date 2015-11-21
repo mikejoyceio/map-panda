@@ -884,7 +884,13 @@ var globals = {
 
 			Compass.watch(function (heading) {
 				$(element).show();
-			  $(element).css('-webkit-transform', 'rotate(' + (-heading) + 'deg)');
+			  $(element).css({
+			  	'-webkit-transform': 'rotate(' + (-heading) + 'deg)',
+			  	'-moz-transform': 'rotate(' + (-heading) + 'deg)',
+			  	'-ms-transform': 'rotate(' + (-heading) + 'deg)',
+			  	'-o-transform': 'rotate(' + (-heading) + 'deg)',
+			  	'transform': 'rotate(' + (-heading) + 'deg)'
+			  });
 			});
 
 		}	
