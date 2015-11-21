@@ -225,7 +225,7 @@ html, body {
 }
 @media only screen and (min-width: 64.0625em) {
   .menu .place-list {
-    height: 510px;
+    height: 70vh;
     margin: 20px 0 0 0;
     padding: 0;
     width: 200px;
