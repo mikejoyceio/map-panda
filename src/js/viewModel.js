@@ -86,15 +86,15 @@ var globals = {
 		// Set the current place
 		this.currentPlace = ko.observable( this.placeList()[0] );
 
-		var dragging = false;
+		var dragging = true;
 
-		$("body").on("touchmove", function(){
-  		dragging = true;
-		});
+		// $("body").on("touchmove", function(){
+  // 		dragging = true;
+		// });
 
-		$("body").on("touchstart", function(){
-    	dragging = false;
-		});
+		// $("body").on("touchstart", function(){
+  //   	dragging = false;
+		// });
 
 		// Select the current place
 		this.selectPlace = function(place) {
