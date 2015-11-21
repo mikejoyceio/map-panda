@@ -1,10 +1,11 @@
 
-// Compass
+// Map Compass
 
 .map-compass {
 	@include border-radius(999px);
 	background: #fff;
 	border: 2px solid #ed5565;
+	display: none;
   height: 40px;
   left: 10px;
   margin: 20px auto 0 auto;

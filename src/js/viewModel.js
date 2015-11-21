@@ -41,7 +41,6 @@ var globals = {
 
 		// Map Observables
 		this.mapInfo = ko.observable(false);
-		this.mapCompass = ko.observable();
 		this.mapLoaderVisibility = ko.observable(false);
 		this.mapCurrentLat = ko.observable();
 		this.mapCurrentLng = ko.observable();
@@ -87,8 +86,22 @@ var globals = {
 		// Set the current place
 		this.currentPlace = ko.observable( this.placeList()[0] );
 
+		var dragging = false;
+
+		$("body").on("touchmove", function(){
+  		dragging = true;
+		});
+
+		$("body").on("touchstart", function(){
+    	dragging = false;
+		});
+
 		// Select the current place
 		this.selectPlace = function(place) {
+
+			if (dragging) 
+				return;
+
 			self.notificationKeepAlive(false);
 			self.notificationFadeDuration(0);
 			self.currentPlace(place);
@@ -281,7 +294,7 @@ var globals = {
 				    	position: global.latLang,
 				    	map: global.map,
 				    	flat: true,
-				    	content: '<div class="gm-current-location"><div class="radial-pulse"></div></div>'
+				    	content: '<div class="map-current-location"><div class="radial-pulse"></div></div>'
 				    });
 
 			  }, function() {
@@ -480,8 +493,8 @@ var globals = {
 				    	// Add an Info Box
 				    	addInfoBox(placeData);
 
-				    	// Add an Info Modal
-				    	addInfoModal(placeData);
+				    	// Add a Modal
+				    	addModal(placeData);
 
 				    }
 
@@ -543,10 +556,10 @@ var globals = {
 
 					}
 
-					// Add Info Modal function
-					function addInfoModal(data) {
+					// Add Modal function
+					function addModal(data) {
 
-						// Add event listener to show Info Modal on marker click
+						// Add event listener to show Modal on marker click
 						google.maps.event.addListener(data.marker, 'click', function() {
 
 							// Reset the marker icons

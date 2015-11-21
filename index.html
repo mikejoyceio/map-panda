@@ -41,8 +41,8 @@
 	</div>
 	<!-- /Brand -->
 
-	<!-- Menu -->
-	<div class="menu" role="menu">
+	<!-- Main Menu -->
+	<div class="menu-main" role="menu">
 
 		<!-- Search Radius -->
 		<div class="search-radius">
@@ -59,7 +59,7 @@
 		<!-- Options -->
 		<ul class="place-list" data-bind="scrollBar">
 			<!-- ko foreach: placeList -->
-			<li class="item" data-bind="css: {active: isActive(), hidden: isHidden()}, event: { click: $parent.selectPlace }">
+			<li class="item" data-bind="css: {active: isActive(), hidden: isHidden()}, event: { click: $parent.selectPlace, touchend: $parent.selectPlace }">
 				<span class="icon fa-stack fa-sml">
 					<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>
 					<i class="icon-inner fa fa-stack-1x fa-inverse" data-bind="css: icon"></i>
@@ -71,14 +71,14 @@
 		<!-- /Options -->
 
 	</div>
-	<!-- /Menu -->
+	<!-- /Main Menu -->
 
-	<!-- Wheel Nav -->
-	<div class="wheel-nav">
+	<!-- Wheel Menu -->
+	<div class="menu-wheel">
 		<div data-bind="wheelNav: searchRadius" id="wheelNav">
 		</div>
 	</div>
-	<!-- /Wheel Nav -->
+	<!-- /Wheel Menu -->
 
 	<!-- Main Content -->
 	<div class="main-content" role="main">
@@ -96,7 +96,7 @@
 		<!-- /Map Info -->
 
 		<!-- Map Compass -->
-		<div id="compass" class="map-compass" data-bind="compass: mapCompass">
+		<div class="map-compass" data-bind="compass">
      	<div class="north">N</div>
     	<div class="south"></div>
     </div>
@@ -134,7 +134,7 @@
 	</div>
 	<!-- /Main Content -->
 
-	<!-- Info Modal -->
+	<!-- Modal -->
 	<div class="modal" data-bind="modal: { modal: modalVisibilty, overlay: modalOverlayVisibility, loading: modalLoading }, cssAnimateVisible: modalVisibilty, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 200, durationOut: 100">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -211,7 +211,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- /Info Modal -->
+	<!-- /Modal -->
 
 	<!-- Footer -->
 	<footer class="footer" role="contentinfo">
