@@ -33,7 +33,7 @@ var globals = {
 		// App Observables
 		this.appName = "App Name";
 		this.appDescription = "App Description";
-		this.appDragging = ko.observable(false);
+		this.appSwiping = ko.observable(false);
 
 		// Notifcation Observables
 		this.notificationMessage = ko.observable('');
@@ -90,16 +90,20 @@ var globals = {
 		// Select the current place
 		this.selectPlace = function(place) {
 
-			if (self.appDragging()) 
+			// If the user is swiping, prevent place from being selected
+			if (self.appSwiping()) {
 				return;
+			}
 
 			self.notificationKeepAlive(false);
 			self.notificationFadeDuration(0);
 			self.currentPlace(place);
+
 			for(i=0;i<self.placeList().length;i++) {
 				self.placeList()[i].isActive(false);
 				self.mapInfo(false);
 			}
+
 			place.isActive(!place.isActive());
 			self.mapInfo(true);
 		}
@@ -886,18 +890,18 @@ var globals = {
 		}	
 	};
 
-		// KO Custom Binding for preventing scroll tap
-	ko.bindingHandlers.preventScrollTap = {
+	// KO Custom Binding for preventing swipe tap
+	ko.bindingHandlers.preventSwipeTap = {
 
 		// Init function - ran once
 		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
 			$(element).on("touchmove", function(){
-				bindingContext.$root.appDragging(true);
+				bindingContext.$root.appSwiping(true);
 			});
 
 			$(element).on("touchstart", function(){
-		  	bindingContext.$root.appDragging(false);
+		  	bindingContext.$root.appSwiping(false);
 			});
 
 		}	
