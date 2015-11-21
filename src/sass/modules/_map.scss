@@ -6,8 +6,7 @@
 	padding: 0;
 }
 
-// Current Location Marker
-.gm-current-location {
+.map-current-location {
 	@include border-radius(999px);
 	@include box-shadow(1px 0px 5px 3px rgba(50, 50, 50, 0.15));
 	background: #3395ff;
@@ -30,7 +29,6 @@
   }
 }
 
-// Hide 'listings'
 .gm-style-cc:nth-child(n+8) {
     display: none;
 }
