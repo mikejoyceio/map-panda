@@ -149,7 +149,7 @@ html, body {
   position: absolute;
   text-align: center;
   top: 0;
-  width: 52px;
+  width: 63px;
   z-index: 1;
 }
 @media only screen and (min-width: 40.0625em) {
@@ -159,7 +159,6 @@ html, body {
   .menu:before {
     font-size: 36px;
     padding: 17px 0;
-    width: 63px;
   }
 }
 @media only screen and (min-width: 64.0625em) {
@@ -210,7 +209,7 @@ html, body {
 }
 .menu .place-list {
   color: #fff;
-  margin: 0 0 0 32px;
+  margin: 0 0 0 43px;
   padding: 0 32px 10px 0;
   overflow-y: hidden;
   overflow-x: scroll;
@@ -3219,7 +3218,7 @@ Copyright (c) 2015 Daniel Eden
   left: 0;
   top: 0;
   position: absolute;
-  width: 52px;
+  width: 63px;
   z-index: 3000;
 }
 @media only screen and (min-width: 40.0625em) {
@@ -3241,13 +3240,14 @@ Copyright (c) 2015 Daniel Eden
   position: absolute;
   left: 0;
   right: 0;
-  margin: 16px auto;
-  width: 28px;
-  height: 28px;
+  margin: 13px auto;
+  width: 35px;
+  height: 35px;
 }
 @media only screen and (min-width: 40.0625em) {
   .brand .brand-image {
     height: 48px;
+    margin: 17px auto;
     width: 48px;
   }
 }
@@ -3333,7 +3333,6 @@ Copyright (c) 2015 Daniel Eden
   -moz-border-radius: 999px;
   -webkit-border-radius: 999px;
   border-radius: 999px;
-  display: none;
   background: #fff;
   border: 2px solid #ed5565;
   height: 40px;
@@ -6197,7 +6196,7 @@ Copyright (c) 2015 Daniel Eden
 }
 .map-info .content {
   height: 52px;
-  padding: 0 70px;
+  padding: 0 82px;
 }
 @media only screen and (min-width: 40.0625em) {
   .map-info .content {
