@@ -480,8 +480,8 @@ var globals = {
 				    	// Add an Info Box
 				    	addInfoBox(placeData);
 
-				    	// Add an Info Modal
-				    	addInfoModal(placeData);
+				    	// Add a Modal
+				    	addModal(placeData);
 
 				    }
 
@@ -543,10 +543,10 @@ var globals = {
 
 					}
 
-					// Add Info Modal function
-					function addInfoModal(data) {
+					// Add Modal function
+					function addModal(data) {
 
-						// Add event listener to show Info Modal on marker click
+						// Add event listener to show Modal on marker click
 						google.maps.event.addListener(data.marker, 'click', function() {
 
 							// Reset the marker icons
