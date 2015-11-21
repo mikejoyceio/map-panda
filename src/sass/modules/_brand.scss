@@ -7,7 +7,7 @@
   left: 0;
   top: 0;
   position: absolute;
-  width: 52px;
+  width: 63px;
   z-index: 3000;
 
 	@media #{$medium-up} {
@@ -27,12 +27,13 @@
 		position: absolute;
 		left: 0;
 		right: 0;
-		margin: 16px auto;
-		width: 28px;
-		height: 28px;
+		margin: 13px auto;
+		width: 35px;
+		height: 35px;
 		
 		@media #{$medium-up} {
 			height: 48px;
+			margin: 17px auto;
 			width: 48px;
 		}
 
