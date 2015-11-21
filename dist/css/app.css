@@ -6435,6 +6435,7 @@ Copyright (c) 2015 Daniel Eden
   -webkit-border-radius: 3px;
   border-radius: 3px;
   background: rgba(255, 255, 255, 0.3);
+  display: none;
   font-size: 11px;
   height: 17px;
   left: 7px;
@@ -6461,18 +6462,22 @@ Copyright (c) 2015 Daniel Eden
 .modal .modal-content .modal-header .place-price.price-01 .dollar-01:before {
   content: "\f155";
   color: #e3cf7a;
+  display: block;
 }
 .modal .modal-content .modal-header .place-price.price-02 .dollar-01:before, .modal .modal-content .modal-header .place-price.price-02 .dollar-02:before {
   content: "\f155";
   color: #e3cf7a;
+  display: block;
 }
 .modal .modal-content .modal-header .place-price.price-03 .dollar-01:before, .modal .modal-content .modal-header .place-price.price-03 .dollar-02:before, .modal .modal-content .modal-header .place-price.price-03 .dollar-03:before {
   content: "\f155";
   color: #e3cf7a;
+  display: block;
 }
 .modal .modal-content .modal-header .place-price.price-04 .dollar-01:before, .modal .modal-content .modal-header .place-price.price-04 .dollar-02:before, .modal .modal-content .modal-header .place-price.price-04 .dollar-03:before, .modal .modal-content .modal-header .place-price.price-04 .dollar-04:before {
   content: "\f155";
   color: #e3cf7a;
+  display: block;
 }
 .modal .modal-content .modal-header .bottom-bar {
   background: #2eb398;
@@ -8814,7 +8819,7 @@ yx-axis
   font-size: 10px;
   font-weight: 400;
   height: 32px;
-  line-height: 3;
+  line-height: 3.1;
   position: absolute;
   text-align: center;
   top: 59px;
