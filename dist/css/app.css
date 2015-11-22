@@ -5940,9 +5940,17 @@ Copyright (c) 2015 Daniel Eden
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.5);
   color: #ed5565;
+  font-size: 35px;
   margin: auto;
-  padding: 5px;
-  width: 50px;
+  padding: 3px 5px;
+  width: 30px;
+}
+@media only screen and (min-width: 40.0625em) {
+  .map-loader .content .icon {
+    font-size: 45px;
+    padding: 3px 7px;
+    width: 40px;
+  }
 }
 
 .map {
