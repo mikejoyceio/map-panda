@@ -73,12 +73,19 @@
 		vertical-align: middle;
 
 		.icon {
-		  @include border-radius(10px);
-		  background: rgba(255, 255, 255, 0.5);
-		  color: #ed5565;
-		  margin: auto;
-		  padding: 5px;
-		  width: 50px;
+			@include border-radius(10px);
+			background: rgba(255, 255, 255, 0.5);
+			color: #ed5565;
+			font-size: 35px;
+			margin: auto;
+			padding: 3px 5px;
+			width: 30px;
+
+		  @media #{$medium-up} {
+				font-size: 45px;
+				padding: 3px 7px;
+				width: 40px;
+		  }
 		}
 	}
 }
