@@ -27,7 +27,7 @@
 	<!-- App CSS -->
 	<link rel="stylesheet" href="dist/css/app.css">
 </head>
-<body data-bind="preventSwipeTap">
+<body data-bind="viewportWidth, preventSwipeTap">
 
 	<!-- Notification -->
 	<div class="notification" data-bind="notification: {message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
@@ -57,7 +57,7 @@
 		<!-- /Search Filter -->
 
 		<!-- Options -->
-		<ul class="place-list" data-bind="scrollBar">
+		<ul class="place-list" data-bind="scrollBar: appViewportWidth">
 			<!-- ko foreach: placeList -->
 			<li class="item" data-bind="css: {active: isActive(), hidden: isHidden()}, event: { click: $parent.selectPlace, touchend: $parent.selectPlace }, hover">
 				<span class="icon fa-stack fa-sml">
