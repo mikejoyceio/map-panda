@@ -22546,6 +22546,23 @@ var globals = {
 		}	
 	};
 
+	// KO Custom Binding for Hover state
+	ko.bindingHandlers.hover = { 
+
+		// Init function - ran once
+		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+
+			$(element).on("mouseover", function(){
+				$(element).addClass('hover');
+			});
+
+			$(element).on("mouseout", function(){
+		  	$(element).removeClass('hover');
+			});
+
+		}	
+	};
+
 	// Apply Knockout Bindings
 	ko.applyBindings(new ViewModel());
 
