@@ -17,7 +17,7 @@
 	width: 18px;
 
   .radial-pulse {
-		@include animation(pulse-fade 4.1s ease-out infinite);
+		@include animation(pulse-fade 3.1s ease-out infinite);
 		@include border-radius(999px);
 	  background: rgba(51, 149, 255, 0.3);
 	  border-radius: 999px;
