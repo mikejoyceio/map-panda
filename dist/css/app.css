@@ -6332,14 +6332,14 @@ Copyright (c) 2015 Daniel Eden
   color: #6f7b7e;
   font-size: 28px;
 }
-.menu-main .place-list .item:hover, .menu-main .place-list .item.active {
+.menu-main .place-list .item.hover, .menu-main .place-list .item.active {
   cursor: pointer;
   color: #fff;
 }
-.menu-main .place-list .item:hover .icon .icon-outer, .menu-main .place-list .item.active .icon .icon-outer {
+.menu-main .place-list .item.hover .icon .icon-outer, .menu-main .place-list .item.active .icon .icon-outer {
   color: #fff;
 }
-.menu-main .place-list .item:hover .icon .icon-inner, .menu-main .place-list .item.active .icon .icon-inner {
+.menu-main .place-list .item.hover .icon .icon-inner, .menu-main .place-list .item.active .icon .icon-inner {
   color: #2eb398;
 }
 .menu-main .place-list .item.hidden {
