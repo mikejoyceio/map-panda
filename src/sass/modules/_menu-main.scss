@@ -100,17 +100,22 @@
 	
 			&:after {
 				@include border-radius(999px);
-				background: #ed5565;
-				content:'';
-				display: inline-block;
-				height: 10px;
-				margin: 0 0 0 15px;;
-				width: 10px;
+			  background: #ed5565;
+			  content: '';
+			  display: inline-block;
+			  height: 25px;
+			  margin: 0 0 -6px 17px;
+			  width: 3px;
 			}
 
 			@media #{$medium-up} {
   			margin: 0 0 0 42px; 
   			padding: 0 42px 10px 0;
+
+  			&:after {
+					margin: 0 0 -6px 18px;
+					width: 4px;
+  			}
 			}
 
 			@media #{$large-up} {
