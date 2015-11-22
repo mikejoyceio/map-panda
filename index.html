@@ -122,10 +122,10 @@
    	<!-- /Map Controls -->
 
 	  <!-- Map Loader -->
-		<div class="map-loader" data-bind="visible: mapLoaderVisibility">
+		<div class="map-loader" data-bind="cssAnimateVisible: mapLoaderVisibility, animation: 'bounceIn', animationOut: 'fadeOut', duration: 300, durationOut: 200">
 			<div class="content">
 				<div class="icon">
-					<span class="fa fa-compass fa-spin fa-3x"></span>
+					<span class="fa fa-compass fa-spin"></span>
 				</div>
 			</div>
 		</div>
