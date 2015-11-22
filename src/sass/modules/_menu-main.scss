@@ -97,6 +97,16 @@
 			overflow-x: scroll;
 			-webkit-overflow-scrolling: touch;
 			white-space: nowrap;
+	
+			&:after {
+				@include border-radius(999px);
+				background: #ed5565;
+				content:'';
+				display: inline-block;
+				height: 10px;
+				margin: 0 0 0 15px;;
+				width: 10px;
+			}
 
 			@media #{$medium-up} {
   			margin: 0 0 0 42px; 
@@ -109,6 +119,10 @@
 				padding: 0;
 				width: 200px;				
 				overflow: auto;
+
+				&:after {
+					display: none;
+				}
 			}
 			
     	.item {
