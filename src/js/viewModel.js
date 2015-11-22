@@ -34,6 +34,7 @@ var globals = {
 		this.appName = "App Name";
 		this.appDescription = "App Description";
 		this.appSwiping = ko.observable(false);
+		this.appViewportWidth = ko.observable();
 
 		// Notifcation Observables
 		this.notificationMessage = ko.observable('');
@@ -894,6 +895,18 @@ var globals = {
 			});
 
 		}	
+	};
+
+	// KO Custom Binding for Viewport Width
+	ko.bindingHandlers.viewportWidth = {
+
+		// Init function - ran once
+		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+			$(window).resize(function() {
+				var viewportWidth = $(this).width();
+				bindingContext.$root.appViewportWidth(viewportWidth);
+			});
+		}
 	};
 
 	// KO Custom Binding for preventing swipe tap
