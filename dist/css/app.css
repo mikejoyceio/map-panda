@@ -5965,9 +5965,9 @@ Copyright (c) 2015 Daniel Eden
   width: 18px;
 }
 .map-current-location .radial-pulse {
-  -moz-animation: pulse-fade 4.1s ease-out infinite;
-  -webkit-animation: pulse-fade 4.1s ease-out infinite;
-  animation: pulse-fade 4.1s ease-out infinite;
+  -moz-animation: pulse-fade 3.1s ease-out infinite;
+  -webkit-animation: pulse-fade 3.1s ease-out infinite;
+  animation: pulse-fade 3.1s ease-out infinite;
   -moz-border-radius: 999px;
   -webkit-border-radius: 999px;
   border-radius: 999px;
