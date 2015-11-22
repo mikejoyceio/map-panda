@@ -21667,6 +21667,7 @@ var globals = {
 		this.appName = "App Name";
 		this.appDescription = "App Description";
 		this.appSwiping = ko.observable(false);
+		this.appViewportWidth = ko.observable();
 
 		// Notifcation Observables
 		this.notificationMessage = ko.observable('');
@@ -22413,18 +22414,19 @@ var globals = {
 	// KO Custom Binding for Scroll Bar
 	ko.bindingHandlers.scrollBar = {
 
-		// Init function - ran once
-		init: function(element, valueAccessor, allBindingsAccessor) {
+		// Update function - ran everytime an observable is updated
+		update: function(element, valueAccessor, allBindingsAccessor) {
 
-			// Check for mobile devices
-			var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
+			var viewportWidth = ko.unwrap(valueAccessor());
 
-			// If the device not a mobile device, instatiate the custom scroll bar
-			if (!isMobile) {
+			// If the viewport width is greater than 1024px instantiate the custom scrollbar, else destroy it
+			if (viewportWidth > 1024) {
 				$(element).mCustomScrollbar({
-					keyboard:{scrollType:"stepped"},
-					mouseWheel:{scrollAmount:10}
+					keyboard: { scrollType:'stepped' },
+					mouseWheel: { scrollAmount:10 }
 				});
+			} else {
+				$(element).mCustomScrollbar('destroy');
 			}
 		}
 	};
@@ -22527,6 +22529,18 @@ var globals = {
 			});
 
 		}	
+	};
+
+	// KO Custom Binding for Viewport Width
+	ko.bindingHandlers.viewportWidth = {
+
+		// Init function - ran once
+		init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+			$(window).resize(function() {
+				var viewportWidth = $(this).width();
+				bindingContext.$root.appViewportWidth(viewportWidth);
+			});
+		}
 	};
 
 	// KO Custom Binding for preventing swipe tap
