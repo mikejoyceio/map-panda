@@ -71,6 +71,8 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Clipboard.js: A modern approach to copy text to clipboard](https://zenorocha.github.io/clipboard.js/)
 - [Detecting operating system with JavaScript](http://www.javascripter.net/faq/operatin.htm)
 - [How to emulate touch events in Chrome](https://frontify.com/blog/how-to-emulate-touch-events-in-chrome/)
+- [Reddit: JavaScript - Naming conventions for AJAX request callbacks](https://www.reddit.com/r/javascript/comments/16zuth/what_are_your_conventions_for_naming_callbacks/)
+- [Pragmatic Standards: JavaScript Coding Standards and Best Practices](https://github.com/stevekwan/best-practices/blob/master/javascript/best-practices.md)
 
 ######jQuery 
 
@@ -105,6 +107,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [KnockoutJS: Animate Plugin](https://github.com/TheGAFF/Knockout-Animate)
 - [Stack Exchange: Getting the Object Data](http://stackoverflow.com/questions/13755220/knockout-js-getting-the-object-data)
 - [Live Search with KnockoutJS](http://opensoul.org/2011/06/23/live-search-with-knockoutjs/) By Brandon Keepers
+- [Developing Large Scale KnockoutJS Applications](http://blog.scottlogic.com/2014/02/28/developing-large-scale-knockoutjs-applications.html) by Robat Williams
 
 ######Foursquare API
 
