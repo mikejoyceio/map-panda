@@ -28,6 +28,17 @@ var ViewModel = function() {
 	this.appViewportWidth = ko.observable();
 	this.appWheelNav = null;
 
+	// App Constants
+	this.appConstants = {
+		DEFAULT_IMAGE_LARGE: 'dist/images/default-large.png',
+		DEFAULT_IMAGE_SMALL: 'dist/images/default-small.png',
+		FOURSQUARE_URL: 'https://foursquare.com/v/',
+		SEARCH_RADIUS_MAX: 10000,
+		SEARCH_RADIUS_MIN: 1000,
+		UBER_CLIENT_ID: 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn',
+		UBER_URL: 'https://m.uber.com/sign-up?'
+	}
+
 	// Notifcation Observables
 	this.notificationFadeDuration = ko.observable(1000);
 	this.notificationKeepAlive = ko.observable(false);
@@ -74,7 +85,7 @@ var ViewModel = function() {
 
 	// Search Observables
 	this.searchQuery = ko.observable();
-	this.searchRadius = ko.observable(5000);
+	this.searchRadius = ko.observable(this.appConstants.SEARCH_RADIUS_MAX / 2);
 
 	// Place Constructor
 	var Place = function(data) {
@@ -187,7 +198,7 @@ var ViewModel = function() {
 
 	  response.then(function(data) {
 			if (data.response.venues.length > 0) {		
-				self.modalFoursquareURL('https://foursquare.com/v/'+data.response.venues[0]['id']);
+				self.modalFoursquareURL(self.appConstants.FOURSQUARE_URL + data.response.venues[0]['id']);
 		  	self.modalFoursquareVisibility(true);
 			}	else {
 				self.modalFoursquareURL('#');
@@ -232,8 +243,8 @@ var ViewModel = function() {
 	this.uberRideRequest = function() {
 		var uberDeepLink;
 
-		uberDeepLink = 'https://m.uber.com/sign-up?';
-		uberDeepLink += 'client_id=' + 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn';
+		uberDeepLink = self.appConstants.UBER_URL;
+		uberDeepLink += 'client_id=' + self.appConstants.UBER_CLIENT_ID;
 		uberDeepLink += 'pickup_latitude=' + self.mapCurrentLat();
 		uberDeepLink += 'pickup_longitude=' + self.mapCurrentLng();
 		uberDeepLink += 'dropoff_latitude=' + self.modalInfoLat();
@@ -455,7 +466,7 @@ ko.bindingHandlers.map = {
 	    		position: viewModel.mapPlaces()[i].geometry.location,
 	    		photo: typeof viewModel.mapPlaces()[i].photos !== 'undefined'
 	    					 ? viewModel.mapPlaces()[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
-	    					 : 'dist/images/default-small.png'
+	    					 : viewModel.appConstants.DEFAULT_IMAGE_SMALL
 	    	}
 
 	    	// Add an Info Box
@@ -593,7 +604,7 @@ ko.bindingHandlers.map = {
 							lng: place.geometry.location.lng(),
 							phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'No Number',
 							phoneCall: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number.replace(/ /g, '') : false,
-							photo: typeof place.photos !== 'undefined' ? "url('"+place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300})+"')" : 'url("dist/images/default-large.png")',
+							photo: typeof place.photos !== 'undefined' ? "url('"+place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300})+"')" : 'url('+viewModel.appConstants.DEFAULT_IMAGE_LARGE+')',
 							rating: typeof place.rating !== 'undefined' ? 'rating-0'+Math.round(place.rating) : 'rating-00',
 							price: typeof place.price_level !== 'undefined' ? 'price-0'+place.price_level : 'price-00'
 						};
@@ -731,12 +742,16 @@ ko.bindingHandlers.notification = {
 ko.bindingHandlers.rangeSlider = {
 
 	// Init - called when the binding is first applied 
-	init: function(element, valueAccessor, allBindingsAccessor) {
+	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+
+  	// Set a reference to the view model object
+  	var viewModel = bindingContext.$root;
+
 		$(element).ionRangeSlider({
-		    min: 1000,
-		    max: 10000,
-		    from: 5000,
-		    step: 1000,
+		    min: viewModel.appConstants.SEARCH_RADIUS_MIN,
+		    max: viewModel.appConstants.SEARCH_RADIUS_MAX,
+		    from: viewModel.appConstants.SEARCH_RADIUS_MAX / 2,
+		    step: viewModel.appConstants.SEARCH_RADIUS_MIN,
 		    postfix: ' km',
 		    hide_min_max: true,
 		    prettify_enabled: true,
@@ -744,7 +759,7 @@ ko.bindingHandlers.rangeSlider = {
 		    	return num / 1000;
 		    }
 		});
-		ko.bindingHandlers.value.init(element, valueAccessor, allBindingsAccessor);
+		ko.bindingHandlers.value.init(element, valueAccessor, allBindings);
 	},
 
 	// Update - called once when the binding is first applied, and again when any observables that are accessed change 
@@ -834,26 +849,33 @@ ko.bindingHandlers.wheelNav = {
   	// Set a reference to the view model object
   	var viewModel = bindingContext.$root;
 
+  	// An array to hold the wheelNav options
+		var wheelNavOptions = [];
+
 		viewModel.appWheelNav = new wheelnav(element.id);
     viewModel.appWheelNav.slicePathFunction = slicePath().DonutSlice;
-			viewModel.appWheelNav.sliceInitPathFunction = viewModel.appWheelNav.slicePathFunction;
+		viewModel.appWheelNav.sliceInitPathFunction = viewModel.appWheelNav.slicePathFunction;
     viewModel.appWheelNav.initPercent = 0.1;
     viewModel.appWheelNav.navAngle = 270;
 		viewModel.appWheelNav.wheelRadius = viewModel.appWheelNav.wheelRadius * 0.83;
 		viewModel.appWheelNav.cssMode = true;
 		viewModel.appWheelNav.markerEnable = true;
 		viewModel.appWheelNav.markerPathFunction = markerPath().DropMarker;
-    viewModel.appWheelNav.createWheel(['1','2','3','4','5','6','7','8','9','10']);
-    viewModel.appWheelNav.navItems[0].navigateFunction = function () { bindingContext.$root.searchRadius(1000) };
-    viewModel.appWheelNav.navItems[1].navigateFunction = function () { bindingContext.$root.searchRadius(2000) };
-    viewModel.appWheelNav.navItems[2].navigateFunction = function () { bindingContext.$root.searchRadius(3000) };
-    viewModel.appWheelNav.navItems[3].navigateFunction = function () { bindingContext.$root.searchRadius(4000) };
-    viewModel.appWheelNav.navItems[4].navigateFunction = function () { bindingContext.$root.searchRadius(5000) };
-    viewModel.appWheelNav.navItems[5].navigateFunction = function () { bindingContext.$root.searchRadius(6000) };
-  	viewModel.appWheelNav.navItems[6].navigateFunction = function () { bindingContext.$root.searchRadius(7000) };
- 	 	viewModel.appWheelNav.navItems[7].navigateFunction = function () { bindingContext.$root.searchRadius(8000) };
- 	 	viewModel.appWheelNav.navItems[8].navigateFunction = function () { bindingContext.$root.searchRadius(9000) };
- 	  viewModel.appWheelNav.navItems[9].navigateFunction = function () { bindingContext.$root.searchRadius(10000) };
+
+		for (i=1;i <= viewModel.appConstants.SEARCH_RADIUS_MAX / 1000;i++) {
+			wheelNavOptions.push(i.toString());
+		}
+
+		viewModel.appWheelNav.createWheel(wheelNavOptions);
+
+		for (i=0;i < wheelNavOptions.length; i++) {
+			createNavigateFunction(i);
+		} 
+
+		function createNavigateFunction(index) {
+			viewModel.appWheelNav.navItems[index].navigateFunction = function() { bindingContext.$root.searchRadius((index + 1) * 1000)};
+		}
+
 	},
 
 	// Update - called once when the binding is first applied, and again when any observables that are accessed change 
