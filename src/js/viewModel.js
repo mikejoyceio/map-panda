@@ -844,26 +844,33 @@ ko.bindingHandlers.wheelNav = {
   	// Set a reference to the view model object
   	var viewModel = bindingContext.$root;
 
+  	// An array to hold the wheelNav options
+		var wheelNavOptions = [];
+
 		viewModel.appWheelNav = new wheelnav(element.id);
     viewModel.appWheelNav.slicePathFunction = slicePath().DonutSlice;
-			viewModel.appWheelNav.sliceInitPathFunction = viewModel.appWheelNav.slicePathFunction;
+		viewModel.appWheelNav.sliceInitPathFunction = viewModel.appWheelNav.slicePathFunction;
     viewModel.appWheelNav.initPercent = 0.1;
     viewModel.appWheelNav.navAngle = 270;
 		viewModel.appWheelNav.wheelRadius = viewModel.appWheelNav.wheelRadius * 0.83;
 		viewModel.appWheelNav.cssMode = true;
 		viewModel.appWheelNav.markerEnable = true;
 		viewModel.appWheelNav.markerPathFunction = markerPath().DropMarker;
-    viewModel.appWheelNav.createWheel(['1','2','3','4','5','6','7','8','9','10']);
-    viewModel.appWheelNav.navItems[0].navigateFunction = function () { bindingContext.$root.searchRadius(1000) };
-    viewModel.appWheelNav.navItems[1].navigateFunction = function () { bindingContext.$root.searchRadius(2000) };
-    viewModel.appWheelNav.navItems[2].navigateFunction = function () { bindingContext.$root.searchRadius(3000) };
-    viewModel.appWheelNav.navItems[3].navigateFunction = function () { bindingContext.$root.searchRadius(4000) };
-    viewModel.appWheelNav.navItems[4].navigateFunction = function () { bindingContext.$root.searchRadius(5000) };
-    viewModel.appWheelNav.navItems[5].navigateFunction = function () { bindingContext.$root.searchRadius(6000) };
-  	viewModel.appWheelNav.navItems[6].navigateFunction = function () { bindingContext.$root.searchRadius(7000) };
- 	 	viewModel.appWheelNav.navItems[7].navigateFunction = function () { bindingContext.$root.searchRadius(8000) };
- 	 	viewModel.appWheelNav.navItems[8].navigateFunction = function () { bindingContext.$root.searchRadius(9000) };
- 	  viewModel.appWheelNav.navItems[9].navigateFunction = function () { bindingContext.$root.searchRadius(10000) };
+
+		for (i=1;i <= viewModel.appConstants.SEARCH_RADIUS_MAX / 1000;i++) {
+			wheelNavOptions.push(i.toString());
+		}
+
+		viewModel.appWheelNav.createWheel(wheelNavOptions);
+
+		for (i=0;i < wheelNavOptions.length; i++) {
+			createNavigateFunction(i);
+		} 
+
+		function createNavigateFunction(index) {
+			viewModel.appWheelNav.navItems[index].navigateFunction = function() { bindingContext.$root.searchRadius((index + 1) * 1000)};
+		}
+
 	},
 
 	// Update - called once when the binding is first applied, and again when any observables that are accessed change 
