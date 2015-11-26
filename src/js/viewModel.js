@@ -30,11 +30,13 @@ var ViewModel = function() {
 
 	// App Constants
 	this.appConstants = {
-		SEARCH_RADIUS_MIN: 1000,
-		SEARCH_RADIUS_MAX: 10000,
+		DEFAULT_IMAGE_LARGE: 'dist/images/default-large.png',
+		DEFAULT_IMAGE_SMALL: 'dist/images/default-small.png',
 		FOURSQUARE_URL: 'https://foursquare.com/v/',
-		UBER_URL: 'https://m.uber.com/sign-up?',
-		UBER_CLIENT_ID: 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn'
+		SEARCH_RADIUS_MAX: 10000,
+		SEARCH_RADIUS_MIN: 1000,
+		UBER_CLIENT_ID: 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn',
+		UBER_URL: 'https://m.uber.com/sign-up?'
 	}
 
 	// Notifcation Observables
@@ -464,7 +466,7 @@ ko.bindingHandlers.map = {
 	    		position: viewModel.mapPlaces()[i].geometry.location,
 	    		photo: typeof viewModel.mapPlaces()[i].photos !== 'undefined'
 	    					 ? viewModel.mapPlaces()[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
-	    					 : 'dist/images/default-small.png'
+	    					 : viewModel.appConstants.DEFAULT_IMAGE_SMALL
 	    	}
 
 	    	// Add an Info Box
@@ -602,7 +604,7 @@ ko.bindingHandlers.map = {
 							lng: place.geometry.location.lng(),
 							phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'No Number',
 							phoneCall: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number.replace(/ /g, '') : false,
-							photo: typeof place.photos !== 'undefined' ? "url('"+place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300})+"')" : 'url("dist/images/default-large.png")',
+							photo: typeof place.photos !== 'undefined' ? "url('"+place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300})+"')" : 'url('+viewModel.appConstants.DEFAULT_IMAGE_LARGE+')',
 							rating: typeof place.rating !== 'undefined' ? 'rating-0'+Math.round(place.rating) : 'rating-00',
 							price: typeof place.price_level !== 'undefined' ? 'price-0'+place.price_level : 'price-00'
 						};
