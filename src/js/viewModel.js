@@ -33,7 +33,8 @@ var ViewModel = function() {
 		SEARCH_RADIUS_MIN: 1000,
 		SEARCH_RADIUS_MAX: 10000,
 		FOURSQUARE_URL: 'https://foursquare.com/v/',
-		UBER_URL: 'https://m.uber.com/sign-up?'
+		UBER_URL: 'https://m.uber.com/sign-up?',
+		UBER_CLIENT_ID: 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn'
 	}
 
 	// Notifcation Observables
@@ -241,7 +242,7 @@ var ViewModel = function() {
 		var uberDeepLink;
 
 		uberDeepLink = self.appConstants.UBER_URL;
-		uberDeepLink += 'client_id=' + 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn';
+		uberDeepLink += 'client_id=' + self.appConstants.UBER_CLIENT_ID;
 		uberDeepLink += 'pickup_latitude=' + self.mapCurrentLat();
 		uberDeepLink += 'pickup_longitude=' + self.mapCurrentLng();
 		uberDeepLink += 'dropoff_latitude=' + self.modalInfoLat();
