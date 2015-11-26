@@ -28,6 +28,12 @@ var ViewModel = function() {
 	this.appViewportWidth = ko.observable();
 	this.appWheelNav = null;
 
+	// App Constants
+	this.appConstants = {
+		SEARCH_RADIUS_MIN: 1000,
+		SEARCH_RADIUS_MAX: 10000
+	}
+
 	// Notifcation Observables
 	this.notificationFadeDuration = ko.observable(1000);
 	this.notificationKeepAlive = ko.observable(false);
@@ -731,12 +737,16 @@ ko.bindingHandlers.notification = {
 ko.bindingHandlers.rangeSlider = {
 
 	// Init - called when the binding is first applied 
-	init: function(element, valueAccessor, allBindingsAccessor) {
+	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+
+  	// Set a reference to the view model object
+  	var viewModel = bindingContext.$root;
+
 		$(element).ionRangeSlider({
-		    min: 1000,
-		    max: 10000,
-		    from: 5000,
-		    step: 1000,
+		    min: viewModel.appConstants.SEARCH_RADIUS_MIN,
+		    max: viewModel.appConstants.SEARCH_RADIUS_MAX,
+		    from: viewModel.appConstants.SEARCH_RADIUS_MAX / 2,
+		    step: viewModel.appConstants.SEARCH_RADIUS_MIN,
 		    postfix: ' km',
 		    hide_min_max: true,
 		    prettify_enabled: true,
@@ -744,7 +754,7 @@ ko.bindingHandlers.rangeSlider = {
 		    	return num / 1000;
 		    }
 		});
-		ko.bindingHandlers.value.init(element, valueAccessor, allBindingsAccessor);
+		ko.bindingHandlers.value.init(element, valueAccessor, allBindings);
 	},
 
 	// Update - called once when the binding is first applied, and again when any observables that are accessed change 
