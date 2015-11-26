@@ -31,7 +31,8 @@ var ViewModel = function() {
 	// App Constants
 	this.appConstants = {
 		SEARCH_RADIUS_MIN: 1000,
-		SEARCH_RADIUS_MAX: 10000
+		SEARCH_RADIUS_MAX: 10000,
+		FOURSQUARE_URL: 'https://foursquare.com/v/'
 	}
 
 	// Notifcation Observables
@@ -193,7 +194,7 @@ var ViewModel = function() {
 
 	  response.then(function(data) {
 			if (data.response.venues.length > 0) {		
-				self.modalFoursquareURL('https://foursquare.com/v/'+data.response.venues[0]['id']);
+				self.modalFoursquareURL(self.appConstants.FOURSQUARE_URL + data.response.venues[0]['id']);
 		  	self.modalFoursquareVisibility(true);
 			}	else {
 				self.modalFoursquareURL('#');
