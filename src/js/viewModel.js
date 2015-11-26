@@ -83,7 +83,7 @@ var ViewModel = function() {
 
 	// Search Observables
 	this.searchQuery = ko.observable();
-	this.searchRadius = ko.observable(5000);
+	this.searchRadius = ko.observable(this.appConstants.SEARCH_RADIUS_MAX / 2);
 
 	// Place Constructor
 	var Place = function(data) {
