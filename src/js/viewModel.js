@@ -32,7 +32,8 @@ var ViewModel = function() {
 	this.appConstants = {
 		SEARCH_RADIUS_MIN: 1000,
 		SEARCH_RADIUS_MAX: 10000,
-		FOURSQUARE_URL: 'https://foursquare.com/v/'
+		FOURSQUARE_URL: 'https://foursquare.com/v/',
+		UBER_URL: 'https://m.uber.com/sign-up?'
 	}
 
 	// Notifcation Observables
@@ -239,7 +240,7 @@ var ViewModel = function() {
 	this.uberRideRequest = function() {
 		var uberDeepLink;
 
-		uberDeepLink = 'https://m.uber.com/sign-up?';
+		uberDeepLink = self.appConstants.UBER_URL;
 		uberDeepLink += 'client_id=' + 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn';
 		uberDeepLink += 'pickup_latitude=' + self.mapCurrentLat();
 		uberDeepLink += 'pickup_longitude=' + self.mapCurrentLng();
