@@ -26,6 +26,7 @@
     "google-maps-infobox": "git://github.com/mikejoyceio/google-maps-infobox",
     "clipboard": "~1.5.3",
     "wheelnav": "~1.6.1",
-    "compass.js": "https://github.com/ai/compass.js.git#~0.1.1"
+    "compass.js": "https://github.com/ai/compass.js.git#~0.1.1",
+    "fontawesome-markers": "https://github.com/mikejoyceio/fontawesome-markers.git"
   }
 }
