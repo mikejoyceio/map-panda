@@ -93,7 +93,7 @@ var ViewModel = function() {
 		this.marker = ko.observable(data.marker);
 		this.isActive = ko.observable(false);
 		this.isHidden = ko.observable(false);
-	}
+	};
 
 	// Loop through each place object in the dataModel.places array
 	dataModel.places.forEach(function(placeItem) {
