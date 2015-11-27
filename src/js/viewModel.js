@@ -1,6 +1,3 @@
-
-// View Model
-
 /**
  * @file overview : Map project for Udacity's FEND
  * @author : contact@mikejoyce.io (Mike Joyce)
@@ -267,9 +264,6 @@ ko.bindingHandlers.map = {
 	// Init - called when the binding is first applied 
   init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
-  	// Set a reference to the view model object
-  	var viewModel = bindingContext.$root;
-
     var mapOptions = {
       zoom: 15,
       zoomControl: false,
@@ -279,7 +273,7 @@ ko.bindingHandlers.map = {
       styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}]
     };
 
-    viewModel.map = new google.maps.Map(element, mapOptions);
+    bindingContext.$root.map = new google.maps.Map(element, mapOptions);
 
 	  // Try HTML5 geolocation
 	  if(navigator.geolocation) {
@@ -290,15 +284,15 @@ ko.bindingHandlers.map = {
 	    		bindingContext.$root.mapCurrentLng(position.coords.longitude);
 	
 					// Instantiate a new Google Map object	
-		      viewModel.mapLatLang = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);	
+		      bindingContext.$root.mapLatLang = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);	
 
 	    		// Center map on current location
-		      viewModel.map.setCenter(viewModel.mapLatLang);
+		      bindingContext.$root.map.setCenter(bindingContext.$root.mapLatLang);
 
 		      // Add a custom HTML current position marker to the map
 			    var marker = new RichMarker({
-			    	position: viewModel.mapLatLang,
-			    	map: viewModel.map,
+			    	position: bindingContext.$root.mapLatLang,
+			    	map: bindingContext.$root.map,
 			    	flat: true,
 			    	content: '<div class="map-current-location"><div class="radial-pulse"></div></div>'
 			    });
@@ -320,7 +314,7 @@ ko.bindingHandlers.map = {
 
 		  if (errorFlag) {
 
-		  	// If the bindingContext.$root.appDebug variable is set to true, console.log the error
+		  	// If the appDebug variable is set to true, console.log the error
 				if (bindingContext.$root.appDebug) console.log('Error: Geolocation service failed.');
 
 				// Show the user notification message 
@@ -329,7 +323,7 @@ ko.bindingHandlers.map = {
 
 		  } else {
 
-		  	// If the bindingContext.$root.appDebug variable is set to true, console.log the error
+		  	// If appDebug variable is set to true, console.log the error
 				if (bindingContext.$root.appDebug) console.log('Error: Browser doesn\'t support geolocation.');
 
 				// Show the user notification message 
@@ -348,9 +342,6 @@ ko.bindingHandlers.map = {
 		// Set a reference to the observable objects bound to this binding
   	var value = valueAccessor();
 
-  	// Set a reference to the view model object
-  	var viewModel = bindingContext.$root;
-
 		// Set a variable to hold error messages for debugging purposes
 		var statusMessage;
 
@@ -363,13 +354,13 @@ ko.bindingHandlers.map = {
 		}
 
   	// If the markers array contains values, clear them from the map
-  	if (viewModel.mapMarkers()) {
+  	if (bindingContext.$root.mapMarkers()) {
   		clearMarkers();
   	}	
 
 		// Google Maps places search request object
     var request = {
-    	location: viewModel.mapLatLang,
+    	location: bindingContext.$root.mapLatLang,
     	radius: value.searchRadius(),
     	types: []
     };
@@ -378,7 +369,7 @@ ko.bindingHandlers.map = {
     request.types.push(value.currentPlace().type());
 
     // Instantiate a new places service object
-    var mapPlaces = new google.maps.places.PlacesService(viewModel.map);
+    var mapPlaces = new google.maps.places.PlacesService(bindingContext.$root.map);
 
     // Search nearby places
     mapPlaces.nearbySearch(request, nearbySearchCallback);
@@ -393,21 +384,21 @@ ko.bindingHandlers.map = {
     	if (status === statusCode.OK) {
 
     		// Show the map loader
-    		viewModel.mapLoaderVisibility(true);
+    		bindingContext.$root.mapLoaderVisibility(true);
 
     		// Clear all markers from the map
     		clearMarkers();
 
     		// Set the places array length to 0
-    		viewModel.mapPlaces().length = 0;
+    		bindingContext.$root.mapPlaces().length = 0;
 
     		// Hide user notification messages
-    		viewModel.notificationKeepAlive(false);
-    		viewModel.notificationFadeDuration(0);
+    		bindingContext.$root.notificationKeepAlive(false);
+    		bindingContext.$root.notificationFadeDuration(0);
 
     		// Loop through the results and push intot the places array
     		for (var i=0; i < results.length; i++) {
-    			viewModel.mapPlaces().push(results[i]);
+    			bindingContext.$root.mapPlaces().push(results[i]);
     		}	
 
     		// Set place markers, info windows and modals	
@@ -415,7 +406,7 @@ ko.bindingHandlers.map = {
 
     		// Hide the map loading animation
   			setTimeout(function() {
-  				viewModel.mapLoaderVisibility(false);
+  				bindingContext.$root.mapLoaderVisibility(false);
   			}, 1000);
 
     	/* Callback Error Handling
@@ -442,31 +433,31 @@ ko.bindingHandlers.map = {
     function setPlaces() {
 
     	// Loop thought the places array
-	    for (var i=0; i < viewModel.mapPlaces().length; i++) {
+	    for (var i=0; i < bindingContext.$root.mapPlaces().length; i++) {
 
 	    	// Create a marker and set marker's icon
-	    	viewModel.mapMarkers()[i] = new google.maps.Marker({
-	    		map: viewModel.map,
-	    		position: viewModel.mapPlaces()[i].geometry.location,
+	    	bindingContext.$root.mapMarkers()[i] = new google.maps.Marker({
+	    		map: bindingContext.$root.map,
+	    		position: bindingContext.$root.mapPlaces()[i].geometry.location,
 	    		icon: value.currentPlace().marker()
 	    	});
 
 	    	// Add the marker to the map
-	    	viewModel.mapMarkers()[i].setMap(viewModel.map);
+	    	bindingContext.$root.mapMarkers()[i].setMap(bindingContext.$root.map);
 
 	    	// Create an object to hold data for the place
 	    	var placeData = {
-	    		marker: viewModel.mapMarkers()[i],
-	    		id: viewModel.mapPlaces()[i].id,
-	    		placeId: viewModel.mapPlaces()[i].place_id,
-	    		name: viewModel.mapPlaces()[i].name,
+	    		marker: bindingContext.$root.mapMarkers()[i],
+	    		id: bindingContext.$root.mapPlaces()[i].id,
+	    		placeId: bindingContext.$root.mapPlaces()[i].place_id,
+	    		name: bindingContext.$root.mapPlaces()[i].name,
 	    		icon: value.currentPlace().icon(),
-	    		vicinity: viewModel.mapPlaces()[i].vicinity,
-	    		rating: typeof viewModel.mapPlaces()[i].rating !== 'undefined' ? Math.round(viewModel.mapPlaces()[i].rating) : 0,
-	    		position: viewModel.mapPlaces()[i].geometry.location,
-	    		photo: typeof viewModel.mapPlaces()[i].photos !== 'undefined'
-	    					 ? viewModel.mapPlaces()[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
-	    					 : viewModel.appConstants.DEFAULT_IMAGE_SMALL
+	    		vicinity: bindingContext.$root.mapPlaces()[i].vicinity,
+	    		rating: typeof bindingContext.$root.mapPlaces()[i].rating !== 'undefined' ? Math.round(bindingContext.$root.mapPlaces()[i].rating) : 0,
+	    		position: bindingContext.$root.mapPlaces()[i].geometry.location,
+	    		photo: typeof bindingContext.$root.mapPlaces()[i].photos !== 'undefined'
+	    					 ? bindingContext.$root.mapPlaces()[i].photos[0].getUrl({'maxWidth': 100, 'maxHeight': 100})
+	    					 : bindingContext.$root.appConstants.DEFAULT_IMAGE_SMALL
 	    	}
 
 	    	// Add an Info Box
@@ -480,10 +471,10 @@ ko.bindingHandlers.map = {
 	    // Automagically zoom the map in / out to show all the markers 
 	    var bounds = new google.maps.LatLngBounds();
 
-	    for(i=0; i<viewModel.mapMarkers().length; i++) {
-	    	bounds.extend(viewModel.mapMarkers()[i].getPosition());
+	    for(i=0; i<bindingContext.$root.mapMarkers().length; i++) {
+	    	bounds.extend(bindingContext.$root.mapMarkers()[i].getPosition());
 	    }
-	    viewModel.map.fitBounds(bounds);
+	    bindingContext.$root.map.fitBounds(bounds);
 
 	 	}
 
@@ -529,12 +520,12 @@ ko.bindingHandlers.map = {
 
 			// Add event listener to show Info Box on marker mouseover
 		 	google.maps.event.addListener(data.marker, 'mouseover', function() {
-		 		infoBox.open(viewModel.map, this);
+		 		infoBox.open(bindingContext.$root.map, this);
 		  });
 
 		 	// Add event listener to hide Info Box on marker mouseout
 		  google.maps.event.addListener(data.marker, 'mouseout', function() {
-		  	infoBox.close(viewModel.map, this);
+		  	infoBox.close(bindingContext.$root.map, this);
 		  });
 
 		}
@@ -546,8 +537,8 @@ ko.bindingHandlers.map = {
 			google.maps.event.addListener(data.marker, 'click', function() {
 
 				// Reset the marker icons
-				for (i=0; i < viewModel.mapMarkers().length; i++) {
-					viewModel.mapMarkers()[i].setIcon(value.currentPlace().marker());
+				for (i=0; i < bindingContext.$root.mapMarkers().length; i++) {
+					bindingContext.$root.mapMarkers()[i].setIcon(value.currentPlace().marker());
 				}
 
 				// Set the selected marker icon
@@ -560,22 +551,22 @@ ko.bindingHandlers.map = {
 				});
 
 				// // Pan to the markers position on the map
-				// viewModel.map.panTo(data.position);
+				// bindingContext.$root.map.panTo(data.position);
 
 				// Show the modal
-				viewModel.modalVisibilty(true);
+				bindingContext.$root.modalVisibilty(true);
 
 				// Hide the modal photo
-				viewModel.modalInfoPhotoVisibility(false);
+				bindingContext.$root.modalInfoPhotoVisibility(false);
 
 				// Hide the modal overlay
-				viewModel.modalOverlayVisibility(false);
+				bindingContext.$root.modalOverlayVisibility(false);
 
 				// Hide Uber estimate
-				viewModel.modalUberEstimateVisibility(false);
+				bindingContext.$root.modalUberEstimateVisibility(false);
 				
 				// Show the modal loading animation
-				viewModel.modalLoading(true);
+				bindingContext.$root.modalLoading(true);
 
 				// Google Maps places search request object 
 				var request = { 
@@ -583,7 +574,7 @@ ko.bindingHandlers.map = {
 				};
 
 				// Instatiate a Google Maps Places Service object
-				var service = new google.maps.places.PlacesService(viewModel.map);
+				var service = new google.maps.places.PlacesService(bindingContext.$root.map);
 				service.getDetails(request, placeDetailsCallback);
 
 				// Google Maps places search callback function
@@ -604,34 +595,34 @@ ko.bindingHandlers.map = {
 							lng: place.geometry.location.lng(),
 							phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'No Number',
 							phoneCall: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number.replace(/ /g, '') : false,
-							photo: typeof place.photos !== 'undefined' ? "url('"+place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300})+"')" : 'url('+viewModel.appConstants.DEFAULT_IMAGE_LARGE+')',
+							photo: typeof place.photos !== 'undefined' ? "url('"+place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300})+"')" : 'url('+bindingContext.$root.appConstants.DEFAULT_IMAGE_LARGE+')',
 							rating: typeof place.rating !== 'undefined' ? 'rating-0'+Math.round(place.rating) : 'rating-00',
 							price: typeof place.price_level !== 'undefined' ? 'price-0'+place.price_level : 'price-00'
 						};
 
-						viewModel.modalInfoName(placeInfo.name);
-						viewModel.modalInfoAddress(placeInfo.address);
-						viewModel.modalInfoWebsite(placeInfo.website);
-						viewModel.modalInfoLat(placeInfo.lat);							
-						viewModel.modalInfoLng(placeInfo.lng);
-						viewModel.modalInfoPhone(placeInfo.phone);
-						viewModel.modalInfoPhoneCall(placeInfo.phoneCall);									
-						viewModel.modalInfoPhoto(placeInfo.photo);
-						viewModel.modalInfoPrice(placeInfo.price);
-						viewModel.modalInfoRating(placeInfo.rating);
+						bindingContext.$root.modalInfoName(placeInfo.name);
+						bindingContext.$root.modalInfoAddress(placeInfo.address);
+						bindingContext.$root.modalInfoWebsite(placeInfo.website);
+						bindingContext.$root.modalInfoLat(placeInfo.lat);							
+						bindingContext.$root.modalInfoLng(placeInfo.lng);
+						bindingContext.$root.modalInfoPhone(placeInfo.phone);
+						bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);									
+						bindingContext.$root.modalInfoPhoto(placeInfo.photo);
+						bindingContext.$root.modalInfoPrice(placeInfo.price);
+						bindingContext.$root.modalInfoRating(placeInfo.rating);
 
 						// Search Foursquare
-						viewModel.searchFoursquare();
+						bindingContext.$root.searchFoursquare();
 
 						// Grab Uber ride estimate 
-						viewModel.getUberRideEstimate();
+						bindingContext.$root.getUberRideEstimate();
 
 						setTimeout(function() {
-							viewModel.modalLoading(false);
-							viewModel.modalInfoPhotoVisibility(true);
+							bindingContext.$root.modalLoading(false);
+							bindingContext.$root.modalInfoPhotoVisibility(true);
 						}, 1000);
 
-					// If the request failed, console log the error if the bindingContext.$root.appDebug variable is set to true
+					// If the request failed, console log the error if the appDebug variable is set to true
 				  } else {
 
 			  		if (bindingContext.$root.appDebug) console.log(status);
@@ -645,10 +636,10 @@ ko.bindingHandlers.map = {
 
 		// Clear map markers function
 		function clearMarkers() {
-			for (var i=0; i < viewModel.mapMarkers().length; i++) {
-				viewModel.mapMarkers()[i].setMap(null);
+			for (var i=0; i < bindingContext.$root.mapMarkers().length; i++) {
+				bindingContext.$root.mapMarkers()[i].setMap(null);
 			}
-			viewModel.mapMarkers().length = 0;
+			bindingContext.$root.mapMarkers().length = 0;
 		}
 
 		/* Callback Error Function
@@ -657,13 +648,13 @@ ko.bindingHandlers.map = {
      */
     function callbackError(statusMessage, notificationMessage) {
 
-    	// If the bindingContext.$root.appDebug variable is set to true, console log the error
+    	// If the appDebug variable is set to true, console log the error
     	if (bindingContext.$root.appDebug) console.log(statusMessage);
 
     	// Show the user notification message
-	    viewModel.mapLoaderVisibility(false);
-	   	viewModel.notificationKeepAlive(true);
-  		viewModel.notificationMessage(notificationMessage);	  	    	
+	    bindingContext.$root.mapLoaderVisibility(false);
+	   	bindingContext.$root.notificationKeepAlive(true);
+  		bindingContext.$root.notificationMessage(notificationMessage);	  	    	
 
     }
 
@@ -744,14 +735,11 @@ ko.bindingHandlers.rangeSlider = {
 	// Init - called when the binding is first applied 
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
-  	// Set a reference to the view model object
-  	var viewModel = bindingContext.$root;
-
 		$(element).ionRangeSlider({
-		    min: viewModel.appConstants.SEARCH_RADIUS_MIN,
-		    max: viewModel.appConstants.SEARCH_RADIUS_MAX,
-		    from: viewModel.appConstants.SEARCH_RADIUS_MAX / 2,
-		    step: viewModel.appConstants.SEARCH_RADIUS_MIN,
+		    min: bindingContext.$root.appConstants.SEARCH_RADIUS_MIN,
+		    max: bindingContext.$root.appConstants.SEARCH_RADIUS_MAX,
+		    from: bindingContext.$root.appConstants.SEARCH_RADIUS_MAX / 2,
+		    step: bindingContext.$root.appConstants.SEARCH_RADIUS_MIN,
 		    postfix: ' km',
 		    hide_min_max: true,
 		    prettify_enabled: true,
@@ -764,8 +752,8 @@ ko.bindingHandlers.rangeSlider = {
 
 	// Update - called once when the binding is first applied, and again when any observables that are accessed change 
 	update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+
 		var value = valueAccessor();
-		if (bindingContext.$root.appDebug) console.log(ko.unwrap(value));
 
 		var rangeSlider = $(element).data('ionRangeSlider');
 
@@ -846,34 +834,31 @@ ko.bindingHandlers.wheelNav = {
 	// Init - called when the binding is first applied 
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
-  	// Set a reference to the view model object
-  	var viewModel = bindingContext.$root;
-
   	// An array to hold the wheelNav options
 		var wheelNavOptions = [];
 
-		viewModel.appWheelNav = new wheelnav(element.id);
-    viewModel.appWheelNav.slicePathFunction = slicePath().DonutSlice;
-		viewModel.appWheelNav.sliceInitPathFunction = viewModel.appWheelNav.slicePathFunction;
-    viewModel.appWheelNav.initPercent = 0.1;
-    viewModel.appWheelNav.navAngle = 270;
-		viewModel.appWheelNav.wheelRadius = viewModel.appWheelNav.wheelRadius * 0.83;
-		viewModel.appWheelNav.cssMode = true;
-		viewModel.appWheelNav.markerEnable = true;
-		viewModel.appWheelNav.markerPathFunction = markerPath().DropMarker;
+		bindingContext.$root.appWheelNav = new wheelnav(element.id);
+    bindingContext.$root.appWheelNav.slicePathFunction = slicePath().DonutSlice;
+		bindingContext.$root.appWheelNav.sliceInitPathFunction = bindingContext.$root.appWheelNav.slicePathFunction;
+    bindingContext.$root.appWheelNav.initPercent = 0.1;
+    bindingContext.$root.appWheelNav.navAngle = 270;
+		bindingContext.$root.appWheelNav.wheelRadius = bindingContext.$root.appWheelNav.wheelRadius * 0.83;
+		bindingContext.$root.appWheelNav.cssMode = true;
+		bindingContext.$root.appWheelNav.markerEnable = true;
+		bindingContext.$root.appWheelNav.markerPathFunction = markerPath().DropMarker;
 
-		for (i=1;i <= viewModel.appConstants.SEARCH_RADIUS_MAX / 1000;i++) {
+		for (i=1;i <= bindingContext.$root.appConstants.SEARCH_RADIUS_MAX / 1000;i++) {
 			wheelNavOptions.push(i.toString());
 		}
 
-		viewModel.appWheelNav.createWheel(wheelNavOptions);
+		bindingContext.$root.appWheelNav.createWheel(wheelNavOptions);
 
 		for (i=0;i < wheelNavOptions.length; i++) {
 			createNavigateFunction(i);
 		} 
 
 		function createNavigateFunction(index) {
-			viewModel.appWheelNav.navItems[index].navigateFunction = function() { bindingContext.$root.searchRadius((index + 1) * 1000)};
+			bindingContext.$root.appWheelNav.navItems[index].navigateFunction = function() { bindingContext.$root.searchRadius((index + 1) * 1000)};
 		}
 
 	},
@@ -881,12 +866,9 @@ ko.bindingHandlers.wheelNav = {
 	// Update - called once when the binding is first applied, and again when any observables that are accessed change 
 	update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
-		// Set a reference to the view model object
-  	var viewModel = bindingContext.$root;
-
    	var searchRadius = ko.unwrap(valueAccessor()) / 1000 - 1;
 
-		viewModel.appWheelNav.navigateWheel(searchRadius);
+		bindingContext.$root.appWheelNav.navigateWheel(searchRadius);
              
 	}
 };
@@ -916,6 +898,7 @@ ko.bindingHandlers.viewportWidth = {
 
 	// Init - called when the binding is first applied 
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+
 		$(window).resize(function() {
 			var viewportWidth = $(this).width();
 			bindingContext.$root.appViewportWidth(viewportWidth);
