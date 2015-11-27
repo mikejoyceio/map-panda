@@ -1,0 +1,15 @@
+{
+  "name": "fontawesome-markers",
+  "homepage": "https://github.com/mikejoyceio/fontawesome-markers",
+  "main": "fontawesome-markers.min.js",
+  "_release": "8853cd8cff",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "8853cd8cff85425473ba272fbc28c057d9ee70c9"
+  },
+  "_source": "https://github.com/mikejoyceio/fontawesome-markers.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/mikejoyceio/fontawesome-markers.git",
+  "_direct": true
+}
