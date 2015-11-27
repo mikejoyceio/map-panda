@@ -73,6 +73,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [How to emulate touch events in Chrome](https://frontify.com/blog/how-to-emulate-touch-events-in-chrome/)
 - [Reddit: JavaScript - Naming conventions for AJAX request callbacks](https://www.reddit.com/r/javascript/comments/16zuth/what_are_your_conventions_for_naming_callbacks/)
 - [Pragmatic Standards: JavaScript Coding Standards and Best Practices](https://github.com/stevekwan/best-practices/blob/master/javascript/best-practices.md)
+- [Google: JavaScript Style Guide](https://google.github.io/styleguide/javascriptguide.xml)
 
 ######jQuery 
 
