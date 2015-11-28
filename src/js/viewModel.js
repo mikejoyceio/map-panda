@@ -16,8 +16,6 @@
  * - Add error handling to Foursquare and Uber API request functions
  * - Test Uber deep linking
  * - Update viewportWidth and preventSwipeTap bindings
- * - improve HTML5 Geolocation error handling
- * - replace error handling if/else with switch?
  */
 
 /**
@@ -698,28 +696,38 @@ ko.bindingHandlers.map = {
 		 * Handle no Geo-location
 		 * @param  {object}
 		 */
-		function handleNoGeolocation(errorFlag) {
+		function handleNoGeolocation(error) {
 
-		  if (errorFlag) {
-
-		  	/** If the appDebug variable is set to true, console.log the error */
-				if (bindingContext.$root.appDebug) console.log('Error: Geolocation service failed.');
-
-				/** Show the user notification message  */
-				bindingContext.$root.notificationKeepAlive(true);
-				bindingContext.$root.notificationMessage('Geolocation failed.');
-
-		  } else {
-
-		  	/** If the appDebug variable is set to true, console.log the error */
-				if (bindingContext.$root.appDebug) console.log('Error: Browser doesn\'t support geolocation.');
-
-				/** Show the user notification message  */
-				bindingContext.$root.notificationKeepAlive(true);
-				bindingContext.$root.notificationMessage('Gelocation unsupported');
-
-		  }
-
+	    switch (error.code) {
+        case error.PERMISSION_DENIED:
+					/** If the appDebug variable is set to true, console.log the error */
+					if (bindingContext.$root.appDebug) console.log('User denied the request for Geolocation.');
+					/** Show the user notification message  */
+					bindingContext.$root.notificationKeepAlive(true);
+					bindingContext.$root.notificationMessage('User denied the request for Geolocation.');
+					break;
+        case error.POSITION_UNAVAILABLE:
+					/** If the appDebug variable is set to true, console.log the error */
+					if (bindingContext.$root.appDebug) console.log('Location information is unavailable.');
+					/** Show the user notification message  */
+					bindingContext.$root.notificationKeepAlive(true);
+					bindingContext.$root.notificationMessage('Location information is unavailable.');
+					break;
+        case error.TIMEOUT:
+					/** If the appDebug variable is set to true, console.log the error */
+					if (bindingContext.$root.appDebug) console.log('The request to get user location timed out.');
+					/** Show the user notification message  */
+					bindingContext.$root.notificationKeepAlive(true);
+					bindingContext.$root.notificationMessage('The request to get user location timed out.');
+					break;
+        case error.UNKNOWN_ERROR:
+					/** If the appDebug variable is set to true, console.log the error */
+					if (bindingContext.$root.appDebug) console.log('An unknown error occurred.');
+					/** Show the user notification message  */
+					bindingContext.$root.notificationKeepAlive(true);
+					bindingContext.$root.notificationMessage('An unknown error occurred.');
+					break;
+	    }
 		}
 
 	},
