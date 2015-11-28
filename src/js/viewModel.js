@@ -115,7 +115,7 @@ var ViewModel = function() {
 		self.notificationFadeDuration(0);
 		self.currentPlace(place);
 
-		for(i=0;i<self.placeList().length;i++) {
+		for (var i=0,j=self.placeList().length;i<j;i++) {
 			self.placeList()[i].isActive(false);
 			self.mapInfo(false);
 		}
@@ -126,7 +126,7 @@ var ViewModel = function() {
 
 	// Filter place types in the place list
 	this.search = function(value) {
-	 for (i=0;i<self.placeList().length;i++) {
+	 for (var i=0,j=self.placeList().length;i<j;i++) {
 	 	self.placeList()[i].isHidden(false);
 	 	if (value.toLowerCase() === self.placeList()[i].name().toLowerCase()) {
 	 		self.selectPlace(self.placeList()[i]);
@@ -141,7 +141,7 @@ var ViewModel = function() {
 
 	// Clear the filter
 	this.clearSearch = function() {
-		for (i=0;i<self.placeList().length;i++) {
+		for (var i=0,j=self.placeList().length;i<j;i++) {
 			self.placeList()[i].isHidden(false);
 		}
 	}
@@ -396,8 +396,8 @@ ko.bindingHandlers.map = {
     		bindingContext.$root.notificationKeepAlive(false);
     		bindingContext.$root.notificationFadeDuration(0);
 
-    		// Loop through the results and push intot the places array
-    		for (var i=0; i < results.length; i++) {
+    		// Loop through the results and push into the places array
+    		for (var i=0,j=results.length;i<j;i++) {
     			bindingContext.$root.mapPlaces().push(results[i]);
     		}	
 
@@ -433,7 +433,7 @@ ko.bindingHandlers.map = {
     function setPlaces() {
 
     	// Loop thought the places array
-	    for (var i=0; i < bindingContext.$root.mapPlaces().length; i++) {
+	    for (var i=0,j=bindingContext.$root.mapPlaces().length;i<j;i++) {
 
 	    	// Create a marker and set marker's icon
 	    	bindingContext.$root.mapMarkers()[i] = new google.maps.Marker({
@@ -537,7 +537,7 @@ ko.bindingHandlers.map = {
 			google.maps.event.addListener(data.marker, 'click', function() {
 
 				// Reset the marker icons
-				for (i=0; i < bindingContext.$root.mapMarkers().length; i++) {
+				for (var i=0,j=bindingContext.$root.mapMarkers().length;i<j;i++) {
 					bindingContext.$root.mapMarkers()[i].setIcon(value.currentPlace().marker());
 				}
 
@@ -636,7 +636,7 @@ ko.bindingHandlers.map = {
 
 		// Clear map markers function
 		function clearMarkers() {
-			for (var i=0; i < bindingContext.$root.mapMarkers().length; i++) {
+			for (var i=0,j=bindingContext.$root.mapMarkers().length;i<j;i++) {
 				bindingContext.$root.mapMarkers()[i].setMap(null);
 			}
 			bindingContext.$root.mapMarkers().length = 0;
@@ -847,13 +847,13 @@ ko.bindingHandlers.wheelNav = {
 		bindingContext.$root.appWheelNav.markerEnable = true;
 		bindingContext.$root.appWheelNav.markerPathFunction = markerPath().DropMarker;
 
-		for (i=1;i <= bindingContext.$root.appConstants.SEARCH_RADIUS_MAX / 1000;i++) {
+		for (var i=1,j=bindingContext.$root.appConstants.SEARCH_RADIUS_MAX / 1000;i<=j;i++) {
 			wheelNavOptions.push(i.toString());
 		}
 
 		bindingContext.$root.appWheelNav.createWheel(wheelNavOptions);
 
-		for (i=0;i < wheelNavOptions.length; i++) {
+		for (i=0,j=wheelNavOptions.length;i<j;i++) {
 			createNavigateFunction(i);
 		} 
 
