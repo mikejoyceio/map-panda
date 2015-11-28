@@ -10,7 +10,6 @@
  * - Add help panel
  * - Move place constructor outside of viewModel 
  * - Rename mapInfo visiblity observable
- * - Rename modalInfoPhoto observable
  * - Test Uber deep linking
  * - Update viewportWidth and preventSwipeTap bindings
  */
@@ -133,10 +132,10 @@ var ViewModel = function() {
 	 */
 	this.mapCurrentLng = ko.observable();
 	/**
-	 * Map Info
+	 * Map Info Visibility
 	 * @type {boolean}
 	 */
-	this.mapInfo = ko.observable(false);
+	this.mapInfoVisibility = ko.observable(false);
 	/**
 	 * Map Loader Visibility
 	 * @type {boolean}
@@ -336,14 +335,14 @@ var ViewModel = function() {
 		/** Deselect each Place List item hide Map Info */
 		for (var i=0,j=self.placeList().length;i<j;i++) {
 			self.placeList()[i].isActive(false);
-			self.mapInfo(false);
+			self.mapInfoVisibility(false);
 		}
 
 		/** Set the Current Place to active */
 		place.isActive(!place.isActive());
 
 		/** Show Map Info */
-		self.mapInfo(true);	
+		self.mapInfoVisibility(true);	
 	}
 
 	/**
