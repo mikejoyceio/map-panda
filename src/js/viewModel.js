@@ -18,7 +18,6 @@
  * - Update viewportWidth and preventSwipeTap bindings
  * - improve HTML5 Geolocation error handling
  * - replace error handling if/else with switch?
- * - optimize pushing in to KO observable arrays (line 823)
  */
 
 /**
@@ -821,10 +820,19 @@ ko.bindingHandlers.map = {
     		bindingContext.$root.notificationKeepAlive(false);
     		bindingContext.$root.notificationFadeDuration(0);
 
-    		/** Loop through the results and push into the places array */
+    		/**
+    		 * Map Places
+    		 * @type {Array.<Object>}
+    		 */
+    		var mapPlaces = [];
+
+    		/** Loop through the results and push into the places array */	
     		for (var i=0,j=results.length;i<j;i++) {
-    			bindingContext.$root.mapPlaces().push(results[i]);
+    			mapPlaces.push(results[i]);
     		}	
+
+    		/** Set the mapPlaces observable */
+    		bindingContext.$root.mapPlaces(mapPlaces)
 
     		/** Set Place Markers, Info Windows and Modals	 */
     		setPlaces();
