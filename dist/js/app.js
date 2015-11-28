@@ -22542,7 +22542,7 @@ ko.bindingHandlers.map = {
 
     	} else {
 	  		/**
-	  		 * Callback Error Handling. Error status and messages will be passed the the callbackError function.
+	  		 * Callback Error Handling. Error status and messages are passed the the callbackError function.
 	  		 */
 	    	switch (status) {
 
@@ -22559,8 +22559,8 @@ ko.bindingHandlers.map = {
 						callbackError(status+' This webpage is not allowed to use the PlacesService.', 'Error. Please try again.');	
 						break;
 					case statusCode.UNKNOWN_ERROR:
-					   callbackError(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.', 'Server Error. Please try again.');	
-					   break;
+						callbackError(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.', 'Server Error. Please try again.');	
+						break;
 					case statusCode.ZERO_RESULTS:
 						callbackError(status+' No result was found for this request.', 'No Results');	
 						break;
