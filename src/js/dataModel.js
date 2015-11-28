@@ -1,6 +1,5 @@
 /**
  * @file Data Model
- * @file overview Map project for Udacity's FEND
  * @version 1.0
  * @author Mike Joyce [hello@mikejoyce.io]
  */
@@ -11,20 +10,39 @@
  */
 var dataModel = {};
 
-/* Places Data
- * - Name: The name of the place
- * - Description: A short description of the place
- * - Type: The has to be from the Google Places API
- * - Icon: Font Awesome CSS class
- * - Marker: Font Awesome SVG map marker
+/**
+ * Places Array
+ * @type {Array.<Object>}
  */
-
 dataModel.places = [
 	{
+		/**
+		 * Place Name
+		 * @type {String}
+		 */
 		name: 'Airports',
-		description: 'description text',
+		/**
+		 * Place Description
+		 * @type {String}
+		 */
+		description: 'description',
+		/**
+		 * Place Type. Set to a supported value for the types property in the Google Places API
+		 * @type {String}
+		 * @see {@link https://developers.google.com/places/supported_types}
+		 */
 		type: 'airport', 
+		/**
+		 * Place Icon. Set to a Font Awesome CSS class.
+		 * @type {String}
+		 * @see {@link https://fortawesome.github.io/Font-Awesome/icons/}
+		 */
 		icon: 'fa-plane',
+		/**
+		 * Marker Icon. Set to Font Awesome SVG marker.
+		 * @type {Object}
+		 * @see {@link https://github.com/mikejoyceio/fontawesome-markers}
+		 */
 		marker: { path: fontawesome.markers.PLANE,
 								fillColor: '#2c3e50',
 								fillOpacity: 1,
@@ -34,7 +52,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Amusement Parks',
-		description: 'description text',
+		description: 'description',
 		type: 'amusement_park',
 		icon: 'fa-ticket',
 		marker: { path: fontawesome.markers.TICKET,
@@ -46,7 +64,7 @@ dataModel.places = [
 	},	
 	{
 		name: 'Art Galleries',
-		description: 'description text',
+		description: 'description',
 		type: 'art_gallery',
 		icon: 'fa-paint-brush',
 		marker: { path: fontawesome.markers.PAINT_BRUSH,
@@ -58,7 +76,7 @@ dataModel.places = [
 	},
 	{
 		name: 'ATMs',
-		description: 'description text',
+		description: 'description',
 		type: 'atm',
 		icon: 'fa-credit-card',
 		marker: { path: fontawesome.markers.CREDIT_CARD,
@@ -70,7 +88,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Banks',
-		description: 'description text',
+		description: 'description',
 		type: 'bank',
 		icon: 'fa-university',
 		marker: { path: fontawesome.markers.UNIVERSITY,
@@ -82,7 +100,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Bars',
-		description: 'description text',
+		description: 'description',
 		type: 'bar',
 		icon: 'fa-beer',
 		marker: { path: fontawesome.markers.BEER,
@@ -94,7 +112,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Bicycle Stores',
-		description: 'description text',
+		description: 'description',
 		type: 'bicycle_store',
 		icon: 'fa-bicycle',
 		marker: { path: fontawesome.markers.BICYCLE,
@@ -106,7 +124,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Book Stores',
-		description: 'description text',
+		description: 'description',
 		type: 'book_store',
 		icon: 'fa-book',
 		marker: { path: fontawesome.markers.BOOK,
@@ -118,7 +136,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Bus Stations',
-		description: 'description text',
+		description: 'description',
 		type: 'bus_station',
 		icon: 'fa-bus',
 		marker: { path: fontawesome.markers.BUS,
@@ -130,7 +148,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Cafes',
-		description: 'description text',
+		description: 'description',
 		type: 'cafe',
 		icon: 'fa-coffee',
 		marker: { path: fontawesome.markers.COFFEE,
@@ -142,7 +160,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Car Parks',
-		description: 'description text',
+		description: 'description',
 		type: 'parking',
 		icon: 'fa-car',
 		marker: { path: fontawesome.markers.CAR,
@@ -154,7 +172,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Car Repair',
-		description: 'description text',
+		description: 'description',
 		type: 'car_repair',
 		icon: 'fa-wrench',
 		marker: { path: fontawesome.markers.WRENCH,
@@ -166,7 +184,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Car Washes',
-		description: 'description text',
+		description: 'description',
 		type: 'car_wash',
 		icon: 'fa-tint',
 		marker: { path: fontawesome.markers.TINT,
@@ -178,7 +196,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Department Stores',
-		description: 'description text',
+		description: 'description',
 		type: 'department_store',
 		icon: 'fa-building-o',
 		marker: { path: fontawesome.markers.BUILDING_O,
@@ -190,7 +208,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Doctors',
-		description: 'description text',
+		description: 'description',
 		type: 'doctor',
 		icon: 'fa-stethoscope',
 		marker: { path: fontawesome.markers.STETHOSCOPE,
@@ -202,7 +220,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Electricians',
-		description: 'description text',
+		description: 'description',
 		type: 'electrician',
 		icon: 'fa-flash',
 		marker: { path: fontawesome.markers.FLASH,
@@ -214,7 +232,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Electronic Stores',
-		description: 'description text',
+		description: 'description',
 		type: 'electronics_store',
 		icon: 'fa-laptop',
 		marker: { path: fontawesome.markers.LAPTOP,
@@ -226,7 +244,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Fire Stations',
-		description: 'description text',
+		description: 'description',
 		type: 'fire_station',
 		icon: 'fa-fire-extinguisher',
 		marker: { path: fontawesome.markers.FIRE_EXTINGUISHER,
@@ -238,7 +256,7 @@ dataModel.places = [
 	},	
 	{
 		name: 'Groceries',
-		description: 'description text',
+		description: 'description',
 		type: 'grocery_or_supermarket',
 		icon: 'fa-shopping-cart',
 		marker: { path: fontawesome.markers.SHOPPING_CART,
@@ -250,7 +268,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Hairdressers',
-		description: 'description text',
+		description: 'description',
 		type: 'hair_care',
 		icon: 'fa-scissors',
 		marker: { path: fontawesome.markers.SCISSORS,
@@ -262,7 +280,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Hospitals',
-		description: 'description text',
+		description: 'description',
 		type: 'hospital',
 		icon: 'fa-h-square',
 		marker: { path: fontawesome.markers.H_SQUARE,
@@ -274,7 +292,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Jewelry Stores',
-		description: 'description text',
+		description: 'description',
 		type: 'jewelry_store',
 		icon: 'fa-diamond',
 		marker: { path: fontawesome.markers.DIAMOND,
@@ -286,7 +304,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Lawyers',
-		description: 'description text',
+		description: 'description',
 		type: 'lawyer',
 		icon: 'fa-legal',
 		marker: { path: fontawesome.markers.LEGAL,
@@ -298,7 +316,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Locksmiths',
-		description: 'description text',
+		description: 'description',
 		type: 'locksmith',
 		icon: 'fa-key',
 		marker: { path: fontawesome.markers.KEY,
@@ -310,7 +328,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Lodgings',
-		description: 'description text',
+		description: 'description',
 		type: 'lodging',
 		icon: 'fa-bed',
 		marker: { path: fontawesome.markers.HOTEL,
@@ -322,7 +340,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Movie Theaters',
-		description: 'description text',
+		description: 'description',
 		type: 'movie_theater',
 		icon: 'fa-film',
 		marker: { path: fontawesome.markers.FILM,
@@ -334,7 +352,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Moving Companies',
-		description: 'description text',
+		description: 'description',
 		type: 'moving_company',
 		icon: 'fa-truck',
 		marker: { path: fontawesome.markers.TRUCK,
@@ -346,7 +364,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Night Clubs',
-		description: 'description text',
+		description: 'description',
 		type: 'night_club',
 		icon: 'fa-glass',
 		marker: { path: fontawesome.markers.GLASS,
@@ -358,7 +376,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Parks',
-		description: 'description text',
+		description: 'description',
 		type: 'park',
 		icon: 'fa-tree',
 		marker: { path: fontawesome.markers.TREE,
@@ -370,7 +388,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Pharmacies',
-		description: 'description text',
+		description: 'description',
 		type: 'pharmacy',
 		icon: 'fa-medkit',
 		marker: { path: fontawesome.markers.MEDKIT,
@@ -382,7 +400,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Restaurants',
-		description: 'description text',
+		description: 'description',
 		type: 'restaurant',
 		icon: 'fa-cutlery',
 		marker: { path: fontawesome.markers.CUTLERY,
@@ -394,7 +412,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Stadiums',
-		description: 'description text',
+		description: 'description',
 		type: 'stadium',
 		icon: 'fa-trophy',
 		marker: { path: fontawesome.markers.TROPHY,
@@ -406,7 +424,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Subway Stations',
-		description: 'description text',
+		description: 'description',
 		type: 'pharmacy',
 		icon: 'fa-subway',
 		marker: { path: fontawesome.markers.SUBWAY,
@@ -418,7 +436,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Taxi Stands',
-		description: 'description text',
+		description: 'description',
 		type: 'taxi_stand',
 		icon: 'fa-taxi',
 		marker: { path: fontawesome.markers.TAXI,
@@ -430,7 +448,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Train Stations',
-		description: 'description text',
+		description: 'description',
 		type: 'train_station',
 		icon: 'fa-train',
 		marker: { path: fontawesome.markers.TRAIN,
@@ -442,7 +460,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Travel Agencies',
-		description: 'description text',
+		description: 'description',
 		type: 'travel_agency',
 		icon: 'fa-map-signs',
 		marker: { path: fontawesome.markers.MAP_SIGNS,
@@ -454,7 +472,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Universities',
-		description: 'description text',
+		description: 'description',
 		type: 'university',
 		icon: 'fa-mortar-board',
 		marker: { path: fontawesome.markers.MORTAR_BOARD,
@@ -466,7 +484,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Vets',
-		description: 'description text',
+		description: 'description',
 		type: 'veterinary_care',
 		icon: 'fa-paw',
 		marker: { path: fontawesome.markers.PAW,
@@ -478,11 +496,27 @@ dataModel.places = [
 	}
 ]
 
-// Foursquare Data
+/**
+ * Foursquare API Request
+ * @param  {Object} request
+ * @return {Object} 
+ */
 dataModel.foursquare = function(request) {
 
+	/**
+	 * Foursquare API URL
+	 * @type {String}
+	 * @see {@link https://developer.foursquare.com/docs/venues/search}
+	 */
 	var foursquareAPI = 'https://api.foursquare.com/v2/venues/search';
 
+	/**
+	 * Return
+	 * @external 'Promise.resolve'
+	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve}
+	 * @external '$.ajax'
+	 * @see {@link http://api.jquery.com/jquery.ajax/}
+	 */
 	return Promise.resolve($.ajax({
 		url: foursquareAPI,
 		dataType: 'json',
@@ -499,13 +533,29 @@ dataModel.foursquare = function(request) {
 
 }
 
-// Uber Data 
+/**
+ * Ubder API Request
+ * @param  {Object} request
+ * @return {Object}
+ */
 dataModel.uber = function(request) {
 
+	/**
+	 * Uber API URL
+	 * @type {String}
+	 * @see {@link https://developer.uber.com/v1/endpoints/}
+	 */
 	var uberAPI = 'https://api.uber.com/v1/estimates/price';
 	var uberClientId = 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn';
 	var uberServerToken = 'YXPNrYuvPMqZT5LYF_xIWzjs-yxFQfCRSLbve56l';
 
+	/**
+	 * Return
+	 * @external 'Promise.resolve'
+	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve}
+	 * @external '$.ajax'
+	 * @see {@link http://api.jquery.com/jquery.ajax/}
+	 */
 	return Promise.resolve($.ajax({
 		url: uberAPI,
 		headers: {
