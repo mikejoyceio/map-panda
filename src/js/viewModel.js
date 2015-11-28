@@ -1,130 +1,358 @@
 /**
- * @file overview : Map project for Udacity's FEND
- * @author : contact@mikejoyce.io (Mike Joyce)
+ * @file View Model
+ * @file overview Map project for Udacity's FEND
+ * @version 1.0
+ * @author Mike Joyce [hello@mikejoyce.io]
  */
 
 /* TODO:
  * - Add javascript promise polypill
  * - Add help panel
+ * - Move place constructor outside of viewModel 
+ * - Rename mapInfo visiblity observable
+ * - Rename modalInfoPhoto observable
+ * - Rename modalCopyButtonVisibility
+ * - Rename search and clearSearch functions
+ * - Add error handling to Foursquare and Uber API request functions
+ * - Test Uber deep linking
+ * - Update viewportWidth and preventSwipeTap bindings
  */
 
-// View Model 
+/**
+ * View Model
+ * @constructor
+ */
 var ViewModel = function() {
 
-	// Invoke strict mode
+	/** Invoke strict mode */
 	'use strict';
 
-	// Set a pointer reference to 'this'
+	/** Set a pointer reference to 'this' */
 	var self = this;
 
-	// App Observables
+	/**
+	 * App Debug
+	 * @type {boolean}
+	 */
 	this.appDebug = false;		
+	/**
+	 * App Name
+	 * @type {string}
+	 */
 	this.appName = "Map Panda";
+	/**
+	 * Add Description
+	 * @type {string}
+	 */
 	this.appDescription = "Description";
+	/**
+	 * App Swiping - true if user is swiping on a touch screen
+	 * @type {boolean}
+	 */
 	this.appSwiping = ko.observable(false);
+	/**
+	 * App Viewport Width - stores the width of the browser viewport width
+	 * @type {number}
+	 */
 	this.appViewportWidth = ko.observable();
+	/**
+	 * App WheelNav - stores a global instance of the wheel navigation menu
+	 * @type {object}
+	 */
 	this.appWheelNav = null;
-
-	// App Constants
-	this.appConstants = {
+	/**
+	 * App Constants
+	 * @type {Object}
+	 */
+	this.appConstants = {	
+		/** 
+		 * Default large image 
+		 * @const {string} 
+		 */
 		DEFAULT_IMAGE_LARGE: 'dist/images/default-large.png',
+		/**
+		 * Default small image
+		 * @const {string} 
+		 */
 		DEFAULT_IMAGE_SMALL: 'dist/images/default-small.png',
+		/**
+		 * Foursquare API URL
+		 * @const {string}
+		 */
 		FOURSQUARE_URL: 'https://foursquare.com/v/',
+		/**
+		 * Max map search radius
+		 * @const {number}
+		 */
 		SEARCH_RADIUS_MAX: 10000,
+		/** 
+		 * Min map search radius
+		 * @const {number}
+		 */
 		SEARCH_RADIUS_MIN: 1000,
+		/**
+		 * Uber client ID 
+		 * @const {string}
+		 */
 		UBER_CLIENT_ID: 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn',
+		/** 
+		 * Uber sign up URL
+		 * @const {string}
+		 */
 		UBER_URL: 'https://m.uber.com/sign-up?'
 	}
 
-	// Notifcation Observables
+
+	/**
+	 * Notification Fade Duration - default fade duration for user notification visibility
+	 * @type {number}
+	 */
 	this.notificationFadeDuration = ko.observable(1000);
+	/**
+	 * Notification Keep Alive - 
+	 * @type {boolean}
+	 */
 	this.notificationKeepAlive = ko.observable(false);
+	/**
+	 * Notification Message - holds the user notification message
+	 * @type {string}
+	 */
 	this.notificationMessage = ko.observable();
 
-	// Map Observables
+
+	/**
+	 * Map - holds the Google map instance
+	 * @type {Object}
+	 */
 	this.map = null;	
+	/**
+	 * Map Current Latitude
+	 * @type {number}
+	 */
 	this.mapCurrentLat = ko.observable();
+	/**
+	 * Map Current Longitude
+	 * @type {number}
+	 */
 	this.mapCurrentLng = ko.observable();
+	/**
+	 * Map Info
+	 * @type {boolean}
+	 */
 	this.mapInfo = ko.observable(false);
+	/**
+	 * Map Loader Visibility
+	 * @type {boolean}
+	 */
 	this.mapLoaderVisibility = ko.observable(false);
+	/**
+	 * Map Markers
+	 * @type {Array.<object>}
+	 */
 	this.mapMarkers = ko.observableArray();
+	/**
+	 * Map Latitude & Longitude
+	 * @type {number}
+	 */
 	this.mapLatLang = null;
+	/**
+	 * Map Places
+	 * @type {Object}
+	 */
 	this.mapPlaces = ko.observableArray();
 
-	// Modal Observables
+	
+	/**
+	 * Modal Visibility
+	 * @type {boolean}
+	 */
 	this.modalVisibilty = ko.observable(false);
+	/**
+	 * Modal Loading
+	 * @type {boolean}
+	 */
 	this.modalLoading = ko.observable(true);
+	/**
+	 * Modal Foursquare URL
+	 * @type {string}
+	 */
 	this.modalFoursquareURL = ko.observable();
+	/**
+	 * Modal Foursquare Visibility
+	 * @type {string}
+	 */
 	this.modalFoursquareVisibility = ko.observable(false);
+	/**
+	 * Modal Info Address
+	 * @type {string}
+	 */
 	this.modalInfoAddress = ko.observable();
+	/**
+	 * Modal Info Latitude
+	 * @type {number}
+	 */
 	this.modalInfoLat = ko.observable();
+	/**
+	 * Modal Info Longitude
+	 * @type {number}
+	 */
 	this.modalInfoLng = ko.observable();
+	/**
+	 * Modal Info Name
+	 * @type {string}
+	 */
 	this.modalInfoName = ko.observable();
+	/**
+	 * Modal Info Phone
+	 * @type {string}
+	 */
 	this.modalInfoPhone = ko.observable();
+	/**
+	 * Modal Info Phone Call
+	 * @type {string}
+	 */
 	this.modalInfoPhoneCall = ko.observable();
+	/**
+	 * Modal Info Photo
+	 * @type {string}
+	 */
 	this.modalInfoPhoto = ko.observable();
+	/**
+	 * Modal Info Photo Visibility
+	 * @type {boolean}
+	 */
 	this.modalInfoPhotoVisibility = ko.observable(false);
+	/**
+	 * Modal Info Price
+	 * @type {string}
+	 */
 	this.modalInfoPrice = ko.observable();
+	/**
+	 * Modal Info Rating
+	 * @type {string}
+	 */
 	this.modalInfoRating = ko.observable();
+	/**
+	 * Modal Info Website
+	 * @type {string}
+	 */
 	this.modalInfoWebsite = ko.observable();
+	/**
+	 * Modal Overlay Copy Button Visiblity
+	 * @type {boolean}
+	 */
 	this.modalOverlayCopyButtonVisibility = ko.observable();
+	/**
+	 * Modal Overlay Group Buttons
+	 * @type {number}
+	 */
 	this.modalOverlayGroupButtons = ko.observable();
+	/**
+	 * Modal Overlay Message
+	 * @type {string}
+	 */
 	this.modalOverlayMessage = ko.observable();
+	/**
+	 * Modal Overlay Message Visibility
+	 * @type {boolean}
+	 */
 	this.modalOverlayMessageVisibility = ko.observable(false);
+	/**
+	 * Modal Overlay Visibility
+	 * @type {boolean}
+	 */
 	this.modalOverlayVisibility = ko.observable(false);
+	/**
+	 * Modal Uber Deep link
+	 * @type {string}
+	 */
 	this.modalUberDeepLink = ko.observable(false);
+	/**
+	 * Modal Uber Estimate
+	 * @type {string}
+	 */
 	this.modalUberEstimate = ko.observable();
+	/**
+	 * Modal Uber Estimate Visibility
+	 * @type {boolean}
+	 */
 	this.modalUberEstimateVisibility = ko.observable(false);
+	/**
+	 * Modal Uber Loading
+	 * @type {boolean}
+	 */
 	this.modalUberLoading = ko.observable(false);
 
-	// Place List Observable
+	
+	/**
+	 * Place List
+	 * @type {Array.<object>}
+	 */
 	this.placeList = ko.observableArray([]); 
 
-	// Search Observables
+
+	/**
+	 * Search Query
+	 * @type {string}
+	 */
 	this.searchQuery = ko.observable();
+	/**
+	 * Search Radius
+	 * @type {number}
+	 */
 	this.searchRadius = ko.observable(this.appConstants.SEARCH_RADIUS_MAX / 2);
 
-	// Place Constructor
-	var Place = function(data) {
-		this.name = ko.observable(data.name);
-		this.description = ko.observable(data.description);
-		this.type = ko.observable(data.type);	
-		this.icon = ko.observable(data.icon);
-		this.marker = ko.observable(data.marker);
-		this.isActive = ko.observable(false);
-		this.isHidden = ko.observable(false);
-	};
-
-	// Loop through each place object in the dataModel.places array
+	/**
+	 * Loop through each Object in the dataModel places array
+	 * @param  {Object}
+	 * @return {Object}
+	 * @see dataModel.places
+	 */
 	dataModel.places.forEach(function(placeItem) {
 		self.placeList.push(new Place(placeItem));
 	});
 
-	// Set the current place
+	/**
+	 * Set the default Current Place value
+	 * @type {Object}
+	 */
 	this.currentPlace = ko.observable( this.placeList()[0] );
 
-	// Select the current place
+	/**
+	 * Select the Current Place
+	 * @param  {Object} place
+	 */
 	this.selectPlace = function(place) {
 
-		// If the user is swiping, prevent place from being selected
+		/** If the user is swiping on a touch screen, return the function to prevent place from being selected */
 		if (self.appSwiping()) {
 			return;
 		}
 
+		/** Hide the Notification Message */
 		self.notificationKeepAlive(false);
 		self.notificationFadeDuration(0);
+
+		/** Set the Current Place value */
 		self.currentPlace(place);
 
+		/** Deselect each Place List item hide Map Info */
 		for (var i=0,j=self.placeList().length;i<j;i++) {
 			self.placeList()[i].isActive(false);
 			self.mapInfo(false);
 		}
 
+		/** Set the Current Place to active */
 		place.isActive(!place.isActive());
-		self.mapInfo(true);
+
+		/** Show Map Info */
+		self.mapInfo(true);	
 	}
 
-	// Filter place types in the place list
+	/**
+	 * Filter place types in the place list
+	 * @param  {String} value
+	 */
 	this.search = function(value) {
 	 for (var i=0,j=self.placeList().length;i<j;i++) {
 	 	self.placeList()[i].isHidden(false);
@@ -139,33 +367,48 @@ var ViewModel = function() {
 	}
 	this.searchQuery.subscribe(this.search);
 
-	// Clear the filter
+	/**
+	 * Clear the Filter. Clear the search filter.
+	 */
 	this.clearSearch = function() {
 		for (var i=0,j=self.placeList().length;i<j;i++) {
 			self.placeList()[i].isHidden(false);
 		}
 	}
 
-	// Pan to the current location on the map
+	/**
+	 * Map Pan To. Pan to and center the map to the Current Location
+	 * @see this.mapLatLang
+	 */
 	this.mapPanTo = function() {
 		self.map.panTo(self.mapLatLang);
 	}
 
-	// Zoom the map in
+	/**
+	 * Zoom Map In
+	 * @external 'getZoom()'
+	 * @see {@link https://developers.google.com/maps/documentation/javascript/reference#Map}
+	 */
 	this.mapZoomIn = function() {
 		var currentZoomLevel = self.map.getZoom();
 		if(currentZoomLevel != 21){
 		self.map.setZoom(currentZoomLevel + 1);}
 	}
 
-	// Zoom the map out
+	/**
+	 * Zoom Map Out
+	 * @external 'getZoom()'
+	 * @see {@link https://developers.google.com/maps/documentation/javascript/reference#Map}
+	 */
 	this.mapZoomOut = function() {
 		var currentZoomLevel = self.map.getZoom();
 		if(currentZoomLevel != 0){
 		self.map.setZoom(currentZoomLevel - 1);}
 	}
 
-	// Close modal 
+	/**
+	 * Close Modal
+	 */
  	this.closeModal = function() {
  		self.modalVisibilty(false);
  		self.modalInfoPhotoVisibility(false);
@@ -173,44 +416,89 @@ var ViewModel = function() {
  		self.modalUberEstimateVisibility(false);
  	} 
 
- 	// Open modal overlay
+ 	/**
+ 	 * Open Modal Overlay
+ 	 */
  	this.openModalOverlay = function() {
  		self.modalOverlayVisibility(true);
  	}
 
- 	// Close modal overlay
+ 	/**
+ 	 * Close modal Overlay
+ 	 */
  	this.closeModalOverlay = function() {
  		self.modalOverlayVisibility(false);
  	}
 
+ 	/**
+ 	 * Search Foursquare Venues
+ 	 */
 	this.searchFoursquare = function() {
 
+		/**
+		 * API Request
+		 * @type {Object}
+		 */
 		var request = {
 			venueLat: self.modalInfoLat(),
 			venueLng: self.modalInfoLng(),
 			venueName: self.modalInfoName()
 		}
 
+		/**
+		 * Make a Foursquare API request
+		 * @see dataModel.foursquare
+		 */
 	  var response = dataModel.foursquare(request);
 
+	  /**
+	   * Handle the response
+	   * @param {Object}
+	   * @external '.then'
+	   * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then}
+	   */
 	  response.then(function(data) {
 			if (data.response.venues.length > 0) {		
+				/** Set the Foursquare button URL */
 				self.modalFoursquareURL(self.appConstants.FOURSQUARE_URL + data.response.venues[0]['id']);
+				/** Show the Foursquare button */
 		  	self.modalFoursquareVisibility(true);
 			}	else {
+				/** Set the Foursquare URL blank */
 				self.modalFoursquareURL('#');
+				/** Hide the Foursquare button */
 				self.modalFoursquareVisibility(false);
 			}
-	  }, function(xhrObj) {
-	  	console.log(xhrObj);
+
+			/**
+			 * Request failed
+			 * @param  {Object} xhrObj
+			 */
+	  }, function(xhrObj) {	 	
+				/** If the appDebug variable is set to true, console.log the error */
+				if (self.appDebug) console.log(xhrObj);
+				/** Set the Foursquare URL blank */
+				self.modalFoursquareURL('#');
+				/** Hide the Foursquare button */
+				self.modalFoursquareVisibility(false);
 	  });
 
 	}
 
+	/**
+	 * Get an Uber Ride Estimate
+	 */
 	this.getUberRideEstimate = function() {
+
+		/** Hide the loading animation */
 		self.modalUberLoading(true);
+		/** Hide the price estimate */
 		self.modalUberEstimateVisibility(false);
 
+		/**
+		 * API Request
+		 * @type {Object}
+		 */
 		var request = {
 			startLat: self.mapCurrentLat(),
 			startLng: self.mapCurrentLng(),
@@ -218,26 +506,65 @@ var ViewModel = function() {
 			endLng: self.modalInfoLng() 
 		}
 
+		/**
+		 * Make an Uber API request
+		 * @see dataModel.uber
+		 */
 		var response = dataModel.uber(request);
 
+	  /**
+	   * Handle the response
+	   * @param {Object}
+	   * @external '.then'
+	   * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then}
+	   */
 		response.then(function(data) {
+
+			/**
+			 * Uber Estimate
+			 * @type {string}
+			 */
 			var uberEstimate;
 
+			/** If the array contatains prices estimates, grab the cheapest */
 			data['prices'].length > 0 ? uberEstimate = data['prices'][0]['estimate'] : uberEstimate = 'Unavailable';
 
+			/** Set the estimate price in the modal */
 			self.modalUberEstimate(uberEstimate);
 
+			/** If a price estimate exists, add Uber deep link */
 			uberEstimate !== 'Unavailable' ? self.modalUberDeepLink(true) : self.modalUberDeepLink(false);
 
+			/** Hide the loading animation */
 			self.modalUberLoading(false);
+			/** Show the price estimate */
 			self.modalUberEstimateVisibility(true);
+
+			/**
+			 * Request failed
+			 * @param  {Object} xhrObj
+			 */
 		}, function(xhrObj) {
-			console.log(xhrObj);
+				/** If the appDebug variable is set to true, console.log the error */
+				if (self.appDebug) console.log(xhrObj);
+				/** Hide the loading animation */
+				self.modalUberLoading(false);
+				/** Hide the price estimate */
+				self.modalUberEstimateVisibility(false);
 		});
 
 	};
 
+	/**
+	 * Request Uber Ride Deep Link
+	 */
 	this.uberRideRequest = function() {
+
+		/**
+		 * Uber Deep Link
+		 * @type {string}
+		 * @see {@link https://developer.uber.com/v1/deep-linking/}
+		 */
 		var uberDeepLink;
 
 		uberDeepLink = self.appConstants.UBER_URL;
@@ -248,17 +575,35 @@ var ViewModel = function() {
 		uberDeepLink += 'dropoff_longitude=' + self.modalInfoLng();
 		uberDeepLink += 'dropoff_nickname=' + self.modalInfoName();
 
+		/** If modalUberDeepLink isn't empty, open the link */
 		if (self.modalUberDeepLink()) {
 			window.open(uberDeepLink);
-		} else {
-			return false
 		}
-
 	}
 
 }
 
-// KO Custom Google Map Binding
+/**
+ * Place Constructor
+ * @param {Object} data
+ * @constructor
+ */
+var Place = function(data) {
+	this.name = ko.observable(data.name);
+	this.description = ko.observable(data.description);
+	this.type = ko.observable(data.type);	
+	this.icon = ko.observable(data.icon);
+	this.marker = ko.observable(data.marker);
+	this.isActive = ko.observable(false);
+	this.isHidden = ko.observable(false);
+};
+
+/**
+ * Knockout Custom Google Map Binding
+ * @type {Object}
+ * @external 'ko.bindingHandlers'
+ * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
+ */
 ko.bindingHandlers.map = {
 
 	// Init - called when the binding is first applied 
@@ -662,79 +1007,160 @@ ko.bindingHandlers.map = {
 
 };
 
-// KO Custom Binding for Notifications
+/**
+ * Knockout Custom Notification Binding
+ * @type {Object}
+ * @external 'ko.bindingHandlers'
+ * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
+ */
 ko.bindingHandlers.notification = {
 
-	// Update - called once when the binding is first applied, and again when any observables that are accessed change 
+	/**
+	 * Update: Called when the binding is first applied and again whenever any observables change
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
 	update: function(element, valueAccessor, allBindingsAccessor, viewModel) {
 
-		var rawValue = valueAccessor(),
+		var value = valueAccessor();	
 
-		/* The Notification binding can be passed a string or an object with properties: 
-		 * - message
-		 * - duration (default fade out is 4 seconds)
-		 * - fadeoutDuration (default duration is 200 miliseconds)
-		 * - hide (hidden by default)
-		 * - fade (fade out by default if jQuery is present)
-		 * - callback 
+		/**
+		 * The notifcation binding can be passed a string or an object with properties
+		 * @type {[type]}
 		 */
-		options = typeof rawValue == 'object' ? rawValue : {message: rawValue},
-		message = ko.utils.unwrapObservable(options.message),
-		duration = options.duration !== undefined ? ko.utils.unwrapObservable(options.duration) : 5000,
-		fadeoutDuration = options.fadeoutDuration !== undefined ? ko.utils.unwrapObservable(options.fadeoutDuration) : 200,
-		hide = options.hide !== undefined ? ko.utils.unwrapObservable(options.hide) : true, 
-		fade = options.fade !== undefined ? ko.utils.unwrapObservable(options.fade) : true,
-          callback = options.callback !== undefined ? ko.utils.unwrapObservable(options.callback) : function() {},
-		jQueryExists = typeof jQuery != 'undefined';
+		var options = typeof value == 'object' ? value : { message: value };
 
-		// Set the element's text to the value of the message
-		if (message === null || message === undefined)
+		/**
+		 * Notication message
+		 * @type {string}
+		 */
+		var message = ko.utils.unwrapObservable(options.message);
+
+		/**
+		 * Notification default fade out duration
+		 * @type {number}
+		 */
+		var duration = options.duration !== undefined ? ko.utils.unwrapObservable(options.duration) : 5000;
+
+		/**
+		 * Notification fade out duration
+		 * @type {number}
+		 */
+		var fadeoutDuration = options.fadeoutDuration !== undefined ? ko.utils.unwrapObservable(options.fadeoutDuration) : 200;
+
+		/**
+		 * Notifcation hide
+		 * @type {boolean}
+		 */
+		var hide = options.hide !== undefined ? ko.utils.unwrapObservable(options.hide) : true;
+
+		/**
+		 * Notification show
+		 * @type {boolean}
+		 */
+		var fade = options.fade !== undefined ? ko.utils.unwrapObservable(options.fade) : true;
+
+		/** Set the value of the message */
+		if (message === null || message === undefined) {
 			message = "";
+		}
 
-		element.innerHTML = message;
+		/**
+		 * Set the notification message
+		 * @external '$().html'
+		 * @see {@link http://api.jquery.com/html/}
+		 */
+		$(element).html(message);	
 
-		// Clear any outstanding timeouts
+		/**
+		 * Clear any outstanding timeouts
+		 * @external 'clearTimeout'
+		 * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearTimeout}
+		 */
 		clearTimeout(element.notificationTimer);
 
 		if (message == '') {
-			element.style.display = 'none';
+
+		/**
+		 * Hide the notification
+		 * @external '$().hide'
+		 * @see {@link http://api.jquery.com/hide/}
+		 */
+			$(element).hide();
 			return;
 		}
-
-		// If there are any animations going on, stop them and show the element, otherwise just show the element
-
+		
+		/**
+		 * If there are any animations running, stop them and show the notification, otherwise show it
+		 * @external '$().stop'
+		 * @see {@link https://api.jquery.com/stop/}
+		 */
 		$(element).stop(true, true).show();
 
 		if (!hide) {
 
-			// Run a timeout to make it disappear
+			/**
+			 * Run a timeout to hide the notification
+			 * @external 'setTimeout'
+			 * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout#Callback_arguments}
+			 */
 			element.notificationTimer = setTimeout(function() {
 
-				// Run jQuery fadeOut
-				if (fade)
+				if (fade) {
+
+					/**
+					 * Fade the notification out
+					 * @external '$().fadeOut'
+					 * @see {@link http://api.jquery.com/fadeout/}
+					 */
 					jQuery(element).fadeOut(fadeoutDuration, function() {
             options.message('');
-            callback();
+
           });
-				else {
+
+				} else {
+
+					/**
+					 * Hide the notification
+					 * @external '$().hide'
+					 * @see {@link http://api.jquery.com/hide/}
+					 */
 					jQuery(element).hide();
 					options.message('');
-          callback();
+
 				}
 			}, duration);
 
-		} else {
-      callback();
-		}
+		} 
 	}
 };
 
-// KO Custom Range Slider Binding
+/**
+ * Knockout Custom Range Slider Binding
+ * @type {Object}
+ * @external 'ko.bindingHandlers'
+ * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
+ */
 ko.bindingHandlers.rangeSlider = {
 
-	// Init - called when the binding is first applied 
+	/**
+	 * Init: Called when the binding is first applied.
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
+		/**
+		 * Ion Range Slider
+		 * @external '$().ionRangeSlider'
+		 * @see {@link https://github.com/IonDen/ion.rangeSlider}
+		 */
 		$(element).ionRangeSlider({
 		    min: bindingContext.$root.appConstants.SEARCH_RADIUS_MIN,
 		    max: bindingContext.$root.appConstants.SEARCH_RADIUS_MAX,
@@ -747,60 +1173,131 @@ ko.bindingHandlers.rangeSlider = {
 		    	return num / 1000;
 		    }
 		});
+
+		/** Bind to the input value */
 		ko.bindingHandlers.value.init(element, valueAccessor, allBindings);
 	},
 
-	// Update - called once when the binding is first applied, and again when any observables that are accessed change 
+	/**
+	 * Update: Called when the binding is first applied and again whenever any observables change
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
 	update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
-		var value = valueAccessor();
-
+		/**
+		 * Grab the Ion Range Slider DOM object
+		 * @type {Object}
+		 */
 		var rangeSlider = $(element).data('ionRangeSlider');
 
+		/**
+		 * Update Ion Range Slider
+		 */
 		rangeSlider.update({
-			from: ko.unwrap(value)
+			from: ko.unwrap(valueAccessor())
 		});
 
+		/** Update the input value */
 		ko.bindingHandlers.value.update(element, valueAccessor)
+
 	}
 };
 
-// KO Custom Scroll Bar Binding
+/**
+ * Knockout Custom Scroll Bar Binding
+ * @type {Object}
+ * @external 'ko.bindingHandlers'
+ * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
+ */
 ko.bindingHandlers.scrollBar = {
 
-	// Update - called once when the binding is first applied, and again when any observables that are accessed change 
+	/**
+	 * Update: Called when the binding is first applied and again whenever any observables change
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
 	update: function(element, valueAccessor, allBindingsAccessor) {
 
+		/**
+		 * Viewport Width
+		 * @type {number}
+		 */
 		var viewportWidth = ko.unwrap(valueAccessor());
 
-		// If the viewport width is greater than 1024px instantiate the custom scrollbar, else destroy it
+		/** If the viewport width is greater than 1024px instantiate the custom scrollbar, else destroy it */
 		if (viewportWidth > 1024) {
+
+			/**
+			 * M Custom Scrollbar
+			 * @external '$().mCustomScrollbar'
+			 * @see {@link http://manos.malihu.gr/jquery-custom-content-scroller/}
+			 */
 			$(element).mCustomScrollbar({
 				keyboard: { scrollType:'stepped' },
 				mouseWheel: { scrollAmount:10 }
 			});
+
 		} else {
 			$(element).mCustomScrollbar('destroy');
 		}
 	}
 };
 
-// KO Custom Clipboard Binding
+/**
+ * Knockout Custom Clipboard Binding
+ * @type {Object}
+ * @external 'ko.bindingHandlers'
+ * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
+ */
 ko.bindingHandlers.clipboard = {
 
-	// Init - called when the binding is first applied 
+	/**
+	 * Init: Called when the binding is first applied.
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 	
-		// Check for mobile devices
+		/**
+		 * Check for mobile devices
+		 * @type {RegExp}
+		 * @external 'navigator.userAgent'
+		 * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/navigator}
+		 */
 		var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;	
 
+		/** If isMobile is false */
 		if (!isMobile) {
 
+			/** Show the modal overlay copy button */
 			bindingContext.$root.modalOverlayCopyButtonVisibility(true);
+
+			/** Set the modal overlay group group buttons CSS class to two */
 			bindingContext.$root.modalOverlayGroupButtons('two')
 
+			/**
+			 * Clipboard
+			 * @type {Object}
+			 * @external 'new Clipboard'
+			 * @see {@link http://zenorocha.github.io/clipboard.js/}
+			 */
 			var clipboard = new Clipboard(element);	
 
+			/**
+			 * Clipboard Success
+			 * @external '$().on'
+			 * @see {@link http://api.jquery.com/on/}
+			 */
 			clipboard.on('success', function(e) {
 				bindingContext.$root.modalOverlayMessage('Copied!');
 				bindingContext.$root.modalOverlayMessageVisibility(true);
@@ -809,34 +1306,76 @@ ko.bindingHandlers.clipboard = {
 				}, 1000);
 			});
 
+			/**
+			 * Clipboard Error
+			 * @external '$().on'
+			 * @see {@link http://api.jquery.com/on/}
+			 */
 			clipboard.on('error', function(e) {
-				if (navigator.appVersion.indexOf("Mac")!=-1) {
+
+				/**
+				 * App Version
+				 * @type {string}
+				 */
+				var appVersion = navigator.appVersion.indexOf("Mac");
+
+				/** Check the operating system */
+				if (appVersion!=-1) {
+
+					/** Set the overlay message text for Mac */
 					bindingContext.$root.modalOverlayMessage('Press ⌘+C to copy');
 				} else {
+
+					/** Set the overlay message text for all other operating systems */
 					bindingContext.$root.modalOverlayMessage('Press Ctrl+C to copy');	
 				}
+
+				/** Show the overlay message */
 				bindingContext.$root.modalOverlayMessageVisibility(true);
+
+				/** After a short timeout, hide the overlay message */
 				setTimeout(function() {
 					bindingContext.$root.modalOverlayMessageVisibility(false);					
 				}, 2000);
+
 			});
 
 		} else {
+
+			/** Hide the modal overlay copy button */
 			bindingContext.$root.modalOverlayCopyButtonVisibility(false);
+
+			/** Set the modal overlay group buttons CSS class to one */
 			bindingContext.$root.modalOverlayGroupButtons('one')
+
 		}
 	}	
 };
 
-// KO Custom WheelNav Binding
+/**
+ * Knockout Custom WheelNav Binding
+ * @type {Object}
+ * @external 'ko.bindingHandlers'
+ * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
+ */
 ko.bindingHandlers.wheelNav = {
 
-	// Init - called when the binding is first applied 
+	/**
+	 * Init: Called when the binding is first applied.
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
-  	// An array to hold the wheelNav options
-		var wheelNavOptions = [];
-
+		/**
+		 * WheelNav
+		 * @type {object}
+		 * @external 'new wheelNav'
+		 * @see {@link http://wheelnavjs.softwaretailoring.net/documentation.html}
+		 */
 		bindingContext.$root.appWheelNav = new wheelnav(element.id);
     bindingContext.$root.appWheelNav.slicePathFunction = slicePath().DonutSlice;
 		bindingContext.$root.appWheelNav.sliceInitPathFunction = bindingContext.$root.appWheelNav.slicePathFunction;
@@ -847,40 +1386,91 @@ ko.bindingHandlers.wheelNav = {
 		bindingContext.$root.appWheelNav.markerEnable = true;
 		bindingContext.$root.appWheelNav.markerPathFunction = markerPath().DropMarker;
 
+		/**
+		 * An array to hold the wheelNav options
+		 * @type {Array}
+		 */
+		var wheelNavOptions = [];
+
+		/** Divide the max search radius by 1000 and push the index into the wheelNavOptions array */
 		for (var i=1,j=bindingContext.$root.appConstants.SEARCH_RADIUS_MAX / 1000;i<=j;i++) {
 			wheelNavOptions.push(i.toString());
 		}
 
 		bindingContext.$root.appWheelNav.createWheel(wheelNavOptions);
 
+		/** Create fucntions for each wheelNav options, fired on click and touchend */
 		for (i=0,j=wheelNavOptions.length;i<j;i++) {
 			createNavigateFunction(i);
 		} 
 
+		/**
+		 * Create Navigate Function
+		 * @param  {number} index Index of the wheelNav option
+		 */
 		function createNavigateFunction(index) {
 			bindingContext.$root.appWheelNav.navItems[index].navigateFunction = function() { bindingContext.$root.searchRadius((index + 1) * 1000)};
 		}
 
 	},
 
-	// Update - called once when the binding is first applied, and again when any observables that are accessed change 
+	/**
+	 * Update: Called when the binding is first applied and again whenever any observables change
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
 	update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
+		/** Grab the current value of the binding */
    	var searchRadius = ko.unwrap(valueAccessor()) / 1000 - 1;
 
+   	/** Set the wheelNav option */
 		bindingContext.$root.appWheelNav.navigateWheel(searchRadius);
              
 	}
 };
 
-// KO Custom Compass Binding
+/**
+ * Knockout Custom Compass Binding
+ * @type {Object}
+ * @external 'ko.bindingHandlers'
+ * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
+ */
 ko.bindingHandlers.compass = {
 
-	// Init - called when the binding is first applied 
+	/**
+	 * Init: Called when the binding is first applied.
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
+		/**
+		 * Compass Watch
+		 * @param  {number} heading
+		 * @external 'Compass.watch'
+		 * @see {@link https://github.com/ai/compass.js}
+		 */
 		Compass.watch(function (heading) {
+
+			/**
+			 * Show the element
+			 * @external '$().show'
+			 * @see {@link http://api.jquery.com/show/}
+			 */
 			$(element).show();
+
+			/**
+			 * Set CSS transform rotation
+			 * @external '$().css'
+			 * @see {@link http://api.jquery.com/css/}
+			 */
 		  $(element).css({
 		  	'-webkit-transform': 'rotate(' + (-heading) + 'deg)',
 		  	'-moz-transform': 'rotate(' + (-heading) + 'deg)',
@@ -888,17 +1478,35 @@ ko.bindingHandlers.compass = {
 		  	'-o-transform': 'rotate(' + (-heading) + 'deg)',
 		  	'transform': 'rotate(' + (-heading) + 'deg)'
 		  });
+
 		});
 
 	}	
 };
 
-// KO Custom Viewport Width Binding 
+/**
+ * Knockout Custom Viewport Width Binding
+ * @type {Object}
+ * @external 'ko.bindingHandlers'
+ * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
+ */
 ko.bindingHandlers.viewportWidth = {
 
-	// Init - called when the binding is first applied 
+	/**
+	 * Init: Called when the binding is first applied.
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
+		/** 
+		 * When the browser window is resized, set the binding to the windows width in pixels 
+		 * @external '$().resize'
+		 * @see {@link https://api.jquery.com/resize/} 
+		 */
 		$(window).resize(function() {
 			var viewportWidth = $(this).width();
 			bindingContext.$root.appViewportWidth(viewportWidth);
@@ -906,16 +1514,42 @@ ko.bindingHandlers.viewportWidth = {
 	}
 };
 
-// KO Custom Swipe Tap Binding
+/**
+ * Knockout Custom Prevent SwipeTap Binding.
+ * @type {Object}
+ * @external 'ko.bindingHandlers'
+ * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
+ */
 ko.bindingHandlers.preventSwipeTap = {
 
-	// Init - called when the binding is first applied 
+	/**
+	 * Init: Called when the binding is first applied.
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
+		/** 
+		 * When the touchmove event is fired on the element, set the binding to true
+		 * @param {string}
+		 * @param {function}
+		 * @external '$().on'
+		 * @see {@link http://api.jquery.com/on/}
+		 */
 		$(element).on("touchmove", function(){
 			bindingContext.$root.appSwiping(true);
 		});
 
+		/** 
+		 * When the touchstart event is fired on the element, set the binding to false 
+		 * @param {string}
+		 * @param {function}
+		 * @external '$().on'
+		 * @see {@link http://api.jquery.com/on/}
+		 */
 		$(element).on("touchstart", function(){
 	  	bindingContext.$root.appSwiping(false);
 		});
@@ -923,16 +1557,42 @@ ko.bindingHandlers.preventSwipeTap = {
 	}	
 };
 
-// KO Custom Hover State Binding
+/**
+ * Knockout Custom Hover State Binding
+ * @type {Object}
+ * @external 'ko.bindingHandlers'
+ * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
+ */
 ko.bindingHandlers.hover = { 
 
-	// Init - called when the binding is first applied 
+	/**
+	 * Init: Called when the binding is first applied.
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
+		/** 
+		 * When the mouseover event is fired on the element, add the 'hover' CSS class from the element
+		 * @param {string}
+		 * @param {function}
+		 * @external '$().on'
+		 * @see {@link http://api.jquery.com/on/}
+		 */
 		$(element).on("mouseover", function(){
 			$(element).addClass('hover');
 		});
 
+		/** 
+		 * When the mouseout event is fired on the element, remove the 'hover' CSS class from the element
+		 * @param {string}
+		 * @param {function}
+		 * @external '$().on'
+		 * @see {@link http://api.jquery.com/on/}
+		 */
 		$(element).on("mouseout", function(){
 	  	$(element).removeClass('hover');
 		});
@@ -940,6 +1600,10 @@ ko.bindingHandlers.hover = {
 	}	
 };
 
-// Apply Knockout Bindings
+/**
+ * Apply Knockout Bindings
+ * @param {Object}
+ * @external 'ko.applyBindings'
+ * @see {@link http://knockoutjs.com/documentation/observables.html}
+ */
 ko.applyBindings(new ViewModel());
-
