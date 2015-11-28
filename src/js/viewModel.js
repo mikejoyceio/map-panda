@@ -16,6 +16,9 @@
  * - Add error handling to Foursquare and Uber API request functions
  * - Test Uber deep linking
  * - Update viewportWidth and preventSwipeTap bindings
+ * - improve HTML5 Geolocation error handling
+ * - replace error handling if/else with switch?
+ * - optimize pushing in to KO observable arrays (line 823)
  */
 
 /**
@@ -606,9 +609,20 @@ var Place = function(data) {
  */
 ko.bindingHandlers.map = {
 
-	// Init - called when the binding is first applied 
+	/**
+	 * Init: Called when the binding is first applied.
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
   init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
+  	/**
+  	 * Google Map Options
+  	 * @type {Object}
+  	 */
     var mapOptions = {
       zoom: 15,
       zoomControl: false,
@@ -618,60 +632,90 @@ ko.bindingHandlers.map = {
       styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}]
     };
 
+    /**
+     * Instantiate a new Google Map object
+     * @type {Object}
+     * @external 'new google.maps.Map'
+     * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#Map}
+     */
     bindingContext.$root.map = new google.maps.Map(element, mapOptions);
 
-	  // Try HTML5 geolocation
+
+	  /** Try HTML5 Geolocation */
 	  if(navigator.geolocation) {
+
+	  	/**
+	  	 * Get current position with HTML Geolocation
+	  	 * @external 'navigator.geolocation.getCurrentPosition'
+	  	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition}
+	  	 */
 	    navigator.geolocation.getCurrentPosition(function(position) {
 
-	    		// Update the current lat / long
+	    		/** Update the current latitude & longitude */
 	    		bindingContext.$root.mapCurrentLat(position.coords.latitude);
 	    		bindingContext.$root.mapCurrentLng(position.coords.longitude);
 	
-					// Instantiate a new Google Map object	
+					/** Set the map's current LatLng */
 		      bindingContext.$root.mapLatLang = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);	
 
-	    		// Center map on current location
+	    		/** Center map on current LatLng */
 		      bindingContext.$root.map.setCenter(bindingContext.$root.mapLatLang);
 
-		      // Add a custom HTML current position marker to the map
+		      /**
+		       * Add a custom HTML current position marker to the map
+		       * @external 'new RichMarker'
+		       * @see {@link https://github.com/mikejoyceio/js-rich-marker}
+		       */
 			    var marker = new RichMarker({
 			    	position: bindingContext.$root.mapLatLang,
 			    	map: bindingContext.$root.map,
 			    	flat: true,
-			    	content: '<div class="map-current-location"><div class="radial-pulse"></div></div>'
+			    	content: '<div class="map-current-location">' +
+			    							'<div class="radial-pulse"></div>' +
+			    					 '</div>'
 			    });
 
 		  }, function() {
-	  		// Browser supports Geo-location but hasn't been enabled
+
+	  		/** Browser supports Geolocation but hasn't been enabled */
 	      handleNoGeolocation(true);
+
 		}, 
-			// Enable high accuracy Geo-location
-			{maximumAge:600000, timeout:5000, enableHighAccuracy: true});
+			/**
+			 * Enable high accuracy Geolocation
+			 * @external 'enableHighAccuracy'
+			 * @see {@link http://www.w3.org/TR/geolocation-API/#enablehighaccuracy} 
+			 */
+			{ maximumAge:600000, timeout:5000, enableHighAccuracy: true });
 		  
 		} else {
-	    // Browser doesn't support Geo-location
+
+	    /** Browser doesn't support Geolocation */
 	    handleNoGeolocation(false);
+
 		}
 
-		// Handle no Geo-location
+		/**
+		 * Handle no Geo-location
+		 * @param  {object}
+		 */
 		function handleNoGeolocation(errorFlag) {
 
 		  if (errorFlag) {
 
-		  	// If the appDebug variable is set to true, console.log the error
+		  	/** If the appDebug variable is set to true, console.log the error */
 				if (bindingContext.$root.appDebug) console.log('Error: Geolocation service failed.');
 
-				// Show the user notification message 
+				/** Show the user notification message  */
 				bindingContext.$root.notificationKeepAlive(true);
 				bindingContext.$root.notificationMessage('Geolocation failed.');
 
 		  } else {
 
-		  	// If appDebug variable is set to true, console.log the error
+		  	/** If the appDebug variable is set to true, console.log the error */
 				if (bindingContext.$root.appDebug) console.log('Error: Browser doesn\'t support geolocation.');
 
-				// Show the user notification message 
+				/** Show the user notification message  */
 				bindingContext.$root.notificationKeepAlive(true);
 				bindingContext.$root.notificationMessage('Gelocation unsupported');
 
@@ -681,82 +725,118 @@ ko.bindingHandlers.map = {
 
 	},
 
-	// Update - called once when the binding is first applied, and again when any observables that are accessed change 
+	/**
+	 * Update: Called when the binding is first applied and again whenever any observables change
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
 	update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
-		// Set a reference to the observable objects bound to this binding
   	var value = valueAccessor();
 
-		// Set a variable to hold error messages for debugging purposes
+		/**
+		 * Decalare a variable to hold error messages for debugging purposes
+		 * @type {string}
+		 */
 		var statusMessage;
 
-		// Set a variable to hold error messages visible to the user
+		/**
+		 * Declare variable to hold error messages visible to the user
+		 * @type {string}
+		 */
 		var notificationMessage;
 
-		// If the current place isn't active, return the function
+		/** If the currentPlace isn't active, return the function */
 		if(!value.currentPlace().isActive()) {
 			return 
 		}
 
-  	// If the markers array contains values, clear them from the map
+  	/** If the mapMarkers array contains values, clear the markers from the map */
   	if (bindingContext.$root.mapMarkers()) {
   		clearMarkers();
   	}	
 
-		// Google Maps places search request object
+		/**
+		 * Google Maps places search request object
+		 * @type {Object}
+		 */
     var request = {
     	location: bindingContext.$root.mapLatLang,
     	radius: value.searchRadius(),
     	types: []
     };
 
-    // Push the current place type into the request object types array
+    /**
+     * Push the currentPlace type into the request object types array
+     */
     request.types.push(value.currentPlace().type());
 
-    // Instantiate a new places service object
+    /**
+     * Instantiate a new Google Places Service object
+     * @type {object}
+     * @external 'new google.maps.places.PlacesService'
+     * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#PlacesService}
+     */
     var mapPlaces = new google.maps.places.PlacesService(bindingContext.$root.map);
 
-    // Search nearby places
+    /**
+     * Search nearby places
+     * @external 'nearbySearch()'
+     * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#PlacesService}
+     */
     mapPlaces.nearbySearch(request, nearbySearchCallback);
 
-    // Google Maps places search callback function
+    /**
+     * Google Maps PlacesService callback function
+     * @param  {Array.<Object>} results
+     * @param  {Object} status
+     * @see {@link https://developers.google.com/maps/documentation/javascript/places#place_search_responses}
+     */
     function nearbySearchCallback(results, status) {
 
-    	// Set a reference to Google Maps Service Status object
+    	/**
+    	 * Set a reference to Google Maps Service Status object
+    	 * @type {Object}
+    	 * @external 'google.maps.places.PlacesServiceStatus'
+    	 * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#PlacesServiceStatus}
+    	 */
     	var statusCode = google.maps.places.PlacesServiceStatus;
 
-    	// If the status is OK
+    	/** If the statusCode is OK */
     	if (status === statusCode.OK) {
 
-    		// Show the map loader
+    		/** Show the map loader */
     		bindingContext.$root.mapLoaderVisibility(true);
 
-    		// Clear all markers from the map
+    		/** Clear all markers from the map */
     		clearMarkers();
 
-    		// Set the places array length to 0
+    		/** Reset the places array length to 0 */
     		bindingContext.$root.mapPlaces().length = 0;
 
-    		// Hide user notification messages
+    		/** Hide user notification messages */
     		bindingContext.$root.notificationKeepAlive(false);
     		bindingContext.$root.notificationFadeDuration(0);
 
-    		// Loop through the results and push into the places array
+    		/** Loop through the results and push into the places array */
     		for (var i=0,j=results.length;i<j;i++) {
     			bindingContext.$root.mapPlaces().push(results[i]);
     		}	
 
-    		// Set place markers, info windows and modals	
+    		/** Set Place Markers, Info Windows and Modals	 */
     		setPlaces();
 
-    		// Hide the map loading animation
+    		/** Hide the map loading animation */
   			setTimeout(function() {
   				bindingContext.$root.mapLoaderVisibility(false);
   			}, 1000);
 
-    	/* Callback Error Handling
-			 * Error status and messages will be passed the the callbackError function.
-			 */
+  		/**
+  		 * Callback Error Handling. Error status and messages will be passed the the callbackError function.
+  		 */
     	} else if (status === statusCode.ERROR) {
     		callbackError(status+' There was a problem contacting the Google servers.', 'Connection error');
     	} else if (status === statusCode.INVALID_REQUEST) {
@@ -774,23 +854,28 @@ ko.bindingHandlers.map = {
     	}
     }
 
-    // Set places function
+    /**
+     * Set Places
+     */
     function setPlaces() {
 
-    	// Loop thought the places array
+    	/** Loop thought the places array */
 	    for (var i=0,j=bindingContext.$root.mapPlaces().length;i<j;i++) {
 
-	    	// Create a marker and set marker's icon
+	    	/** Instantiate a new marker and set marker's icon */
 	    	bindingContext.$root.mapMarkers()[i] = new google.maps.Marker({
 	    		map: bindingContext.$root.map,
 	    		position: bindingContext.$root.mapPlaces()[i].geometry.location,
 	    		icon: value.currentPlace().marker()
 	    	});
 
-	    	// Add the marker to the map
+	    	/** Add the marker to the map */
 	    	bindingContext.$root.mapMarkers()[i].setMap(bindingContext.$root.map);
 
-	    	// Create an object to hold data for the place
+	    	/**
+	    	 * Place Data. Create an object to hold data for the place.
+	    	 * @type {Object}
+	    	 */
 	    	var placeData = {
 	    		marker: bindingContext.$root.mapMarkers()[i],
 	    		id: bindingContext.$root.mapPlaces()[i].id,
@@ -805,28 +890,36 @@ ko.bindingHandlers.map = {
 	    					 : bindingContext.$root.appConstants.DEFAULT_IMAGE_SMALL
 	    	}
 
-	    	// Add an Info Box
+	    	/** Add an Info Box for the place */
 	    	addInfoBox(placeData);
 
-	    	// Add a Modal
+	    	/** Add a Modal for the place */
 	    	addModal(placeData);
 
 	    }
 
-	    // Automagically zoom the map in / out to show all the markers 
+	    /** 
+	     * Automagically zoom the map in / out to show all the markers in the browser window 
+			 * @external 'LatLngBounds()'
+			 * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#LatLngBounds}
+	     */
 	    var bounds = new google.maps.LatLngBounds();
 
 	    for(i=0; i<bindingContext.$root.mapMarkers().length; i++) {
 	    	bounds.extend(bindingContext.$root.mapMarkers()[i].getPosition());
 	    }
+
 	    bindingContext.$root.map.fitBounds(bounds);
 
 	 	}
 
-	 	// Add Info Box function
+	 	/**
+	 	 * Add Info Box function
+	 	 * @param {Object} data
+	 	 */
 		function addInfoBox(data) {
 
-			// InfoBox content
+			/** InfoBox HTML content */
 			var infoBoxContent = '<div class="info-box-content">' + 
 											'<div class="info-box-title">'+data.name+'</div>' + 
 											'<div class="info-box-image" style="background-image: url('+data.photo+');"></div>' + 
@@ -840,7 +933,7 @@ ko.bindingHandlers.map = {
 											'<i class="info-box-icon fa '+data.icon+'"></i>' +
 								 		'</div>';
 
-			// InfoBox options
+			/** InfoBox options */
 			var infoBoxOptions = {
 				boxClass: 'info-box',
 				content: infoBoxContent,
@@ -860,33 +953,62 @@ ko.bindingHandlers.map = {
 				enableEventPropagation: false
 			};
 
-			// Instantiate an new infoBox
+			/**
+			 * Instantiate an new infoBox
+			 * @type {Object}
+			 * @external 'new InfoBox'
+			 * @see {@link http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/docs/examples.html}
+			 */
 			var infoBox = new InfoBox(infoBoxOptions);
 
-			// Add event listener to show Info Box on marker mouseover
+			/**
+			 * Show Info Box on marker mouseover
+			 * @param {Object} data.marker
+			 * @param {string} event
+			 * @param {function} handler
+			 * @external 'google.maps.event.addListener'
+			 * @see {@link https://developers.google.com/maps/documentation/javascript/events}
+			 */
 		 	google.maps.event.addListener(data.marker, 'mouseover', function() {
 		 		infoBox.open(bindingContext.$root.map, this);
 		  });
 
-		 	// Add event listener to hide Info Box on marker mouseout
+			/**
+			 * Hide Info Box on marker mouseout
+			 * @param {Object} data.marker
+			 * @param {string} event
+			 * @param {function} handler
+			 * @external 'google.maps.event.addListener'
+			 * @see {@link https://developers.google.com/maps/documentation/javascript/events}
+			 */
 		  google.maps.event.addListener(data.marker, 'mouseout', function() {
 		  	infoBox.close(bindingContext.$root.map, this);
 		  });
 
 		}
 
-		// Add Modal function
+		/**
+		 * Add Modal
+		 * @param {Object} data
+		 */
 		function addModal(data) {
 
-			// Add event listener to show Modal on marker click
+			/**
+			 * Show Modal on map marker click
+			 * @param {Object} data.marker
+			 * @param {string} event
+			 * @param {function} handler
+			 * @external 'google.maps.event.addListener'
+			 * @see {@link https://developers.google.com/maps/documentation/javascript/events}
+			 */
 			google.maps.event.addListener(data.marker, 'click', function() {
 
-				// Reset the marker icons
+				/** Reset the marker icons */
 				for (var i=0,j=bindingContext.$root.mapMarkers().length;i<j;i++) {
 					bindingContext.$root.mapMarkers()[i].setIcon(value.currentPlace().marker());
 				}
 
-				// Set the selected marker icon
+				/** Set the selected marker icon */
 		 		data.marker.setIcon({ path: fontawesome.markers.CIRCLE,
 					fillColor: '#ed5565',
 					fillOpacity: 1,
@@ -895,42 +1017,67 @@ ko.bindingHandlers.map = {
 					strokeWeight: 3
 				});
 
-				// // Pan to the markers position on the map
-				// bindingContext.$root.map.panTo(data.position);
-
-				// Show the modal
+				/** Show the modal */
 				bindingContext.$root.modalVisibilty(true);
 
-				// Hide the modal photo
+				/** Hide the modal photo */
 				bindingContext.$root.modalInfoPhotoVisibility(false);
 
-				// Hide the modal overlay
+				/** Hide the modal overlay */
 				bindingContext.$root.modalOverlayVisibility(false);
 
-				// Hide Uber estimate
+				/** Hide Uber estimate */
 				bindingContext.$root.modalUberEstimateVisibility(false);
 				
-				// Show the modal loading animation
+				/** Show Modal loading animation */
 				bindingContext.$root.modalLoading(true);
 
-				// Google Maps places search request object 
+				/**
+				 * Google Maps places search request object 
+				 * @type {Object}
+				 */
 				var request = { 
 		  		placeId: data.placeId
 				};
 
-				// Instatiate a Google Maps Places Service object
+				/**
+				 * Instatiate a Google Maps Places Service object
+				 * @type {Object}
+				 * @external 'new google.maps.places.PlacesService'
+				 * @see {@link https://developers.google.com/maps/documentation/javascript/places#place_searches}
+				 */
 				var service = new google.maps.places.PlacesService(bindingContext.$root.map);
+
+				/**
+				 * Request place details
+				 * @external 'getDetails'
+				 * @see {@link https://developers.google.com/maps/documentation/javascript/places#place_details_requests}
+				 */
 				service.getDetails(request, placeDetailsCallback);
 
-				// Google Maps places search callback function
+				/**
+				 * Google Maps places search callback function
+				 * @param  {Object} place
+				 * @param  {Object} status
+				 * @see {@link https://developers.google.com/maps/documentation/javascript/places#place_details_responses}
+				 */
 				function placeDetailsCallback(place, status) {
 
-					// Set a reference to Google Maps Service Status object
+		    	/**
+		    	 * Set a reference to Google Maps Service Status object
+		    	 * @type {Object}
+		    	 * @external 'google.maps.places.PlacesServiceStatus'
+		    	 * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#PlacesServiceStatus}
+		    	 */
     			var statusCode = google.maps.places.PlacesServiceStatus;
 
-					// If the request if OK, set the Info Window content
+					/** If the statusCode is OK, set the Info Window content */
 				  if (status == statusCode.OK) {
 
+				  	/**
+				  	 * Place Info. Create an object to hold data for the place.
+				  	 * @type {Object}
+				  	 */
 				  	var placeInfo = {
 							id: place.id,
 							name: place.name,
@@ -945,31 +1092,44 @@ ko.bindingHandlers.map = {
 							price: typeof place.price_level !== 'undefined' ? 'price-0'+place.price_level : 'price-00'
 						};
 
+						/** Update the place name */
 						bindingContext.$root.modalInfoName(placeInfo.name);
+						/** Update the place address */
 						bindingContext.$root.modalInfoAddress(placeInfo.address);
+						/** Update the place website */
 						bindingContext.$root.modalInfoWebsite(placeInfo.website);
+						/** Update the place latitude */
 						bindingContext.$root.modalInfoLat(placeInfo.lat);							
+						/** Update the place longitude */
 						bindingContext.$root.modalInfoLng(placeInfo.lng);
+						/** Update the place phone number */
 						bindingContext.$root.modalInfoPhone(placeInfo.phone);
+						/** Update the place html 'tel:' link */
 						bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);									
+						/** Update the place image */
 						bindingContext.$root.modalInfoPhoto(placeInfo.photo);
+						/** Update the place price */
 						bindingContext.$root.modalInfoPrice(placeInfo.price);
+						/** Update the place rating */
 						bindingContext.$root.modalInfoRating(placeInfo.rating);
 
-						// Search Foursquare
+						/** Search Foursquare venues */
 						bindingContext.$root.searchFoursquare();
 
-						// Grab Uber ride estimate 
+						/** Request and Uber ride price estimate */
 						bindingContext.$root.getUberRideEstimate();
 
 						setTimeout(function() {
+							/** Hide the Modal loading animation */
 							bindingContext.$root.modalLoading(false);
+							/** Show the place image */
 							bindingContext.$root.modalInfoPhotoVisibility(true);
 						}, 1000);
 
-					// If the request failed, console log the error if the appDebug variable is set to true
+					/** The Places Details request failed */
 				  } else {
 
+				  	/** If the appDebug variable is set to true, console log the error */
 			  		if (bindingContext.$root.appDebug) console.log(status);
 
 				  }
@@ -979,24 +1139,34 @@ ko.bindingHandlers.map = {
 
 		}
 
-		// Clear map markers function
+		/**
+		 * Clear Map Markers
+		 * @external 'setMap(null)'
+		 * @see {@link https://developers.google.com/maps/documentation/javascript/markers#remove}
+		 */
 		function clearMarkers() {
+
+			/** Loop through each marker and set it to 'null' */
 			for (var i=0,j=bindingContext.$root.mapMarkers().length;i<j;i++) {
 				bindingContext.$root.mapMarkers()[i].setMap(null);
 			}
+
+			/** Reset the mapMarkers array length to 0 */
 			bindingContext.$root.mapMarkers().length = 0;
 		}
 
-		/* Callback Error Function
-     * This function will create both an error message for debugging purposes and a
-		 * more readable, jargon-free error message for the user.
-     */
+		/**
+		 * Callback Error. This function will create both a developer-friendly error message for debugging purposes and a more readable, 
+		 * user-friendly error message for the user.
+		 * @param  {string} statusMessage       Developer-friendly error message
+		 * @param  {string} notificationMessage User-friendly notification message
+		 */
     function callbackError(statusMessage, notificationMessage) {
 
-    	// If the appDebug variable is set to true, console log the error
+    	/** If the appDebug variable is set to true, console log the error */
     	if (bindingContext.$root.appDebug) console.log(statusMessage);
 
-    	// Show the user notification message
+    	/** Show the user notification message */
 	    bindingContext.$root.mapLoaderVisibility(false);
 	   	bindingContext.$root.notificationKeepAlive(true);
   		bindingContext.$root.notificationMessage(notificationMessage);	  	    	
