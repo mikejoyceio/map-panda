@@ -13,7 +13,6 @@
  * - Rename modalInfoPhoto observable
  * - Rename modalCopyButtonVisibility
  * - Rename search and clearSearch functions
- * - Add error handling to Foursquare and Uber API request functions
  * - Test Uber deep linking
  * - Update viewportWidth and preventSwipeTap bindings
  */
@@ -353,7 +352,7 @@ var ViewModel = function() {
 	 * Filter place types in the place list
 	 * @param  {String} value
 	 */
-	this.search = function(value) {
+	this.filter = function(value) {
 	 for (var i=0,j=self.placeList().length;i<j;i++) {
 	 	self.placeList()[i].isHidden(false);
 	 	if (value.toLowerCase() === self.placeList()[i].name().toLowerCase()) {
@@ -365,12 +364,12 @@ var ViewModel = function() {
 	 	}
 	 }
 	}
-	this.searchQuery.subscribe(this.search);
+	this.searchQuery.subscribe(this.filter);
 
 	/**
-	 * Clear the Filter. Clear the search filter.
+	 * Clear the Filter.
 	 */
-	this.clearSearch = function() {
+	this.clearFilter = function() {
 		for (var i=0,j=self.placeList().length;i<j;i++) {
 			self.placeList()[i].isHidden(false);
 		}
