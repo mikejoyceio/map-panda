@@ -75,6 +75,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Pragmatic Standards: JavaScript Coding Standards and Best Practices](https://github.com/stevekwan/best-practices/blob/master/javascript/best-practices.md)
 - [Google: JavaScript Style Guide](https://google.github.io/styleguide/javascriptguide.xml)
 - [JSDoc](http://usejsdoc.org/tags-file.html)
+- [An Introduction to JSDoc](http://www.2ality.com/2011/08/jsdoc-intro.html)
 
 ######jQuery 
 
