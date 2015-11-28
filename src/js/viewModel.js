@@ -11,8 +11,6 @@
  * - Move place constructor outside of viewModel 
  * - Rename mapInfo visiblity observable
  * - Rename modalInfoPhoto observable
- * - Rename modalCopyButtonVisibility
- * - Rename search and clearSearch functions
  * - Test Uber deep linking
  * - Update viewportWidth and preventSwipeTap bindings
  */
@@ -212,15 +210,15 @@ var ViewModel = function() {
 	 */
 	this.modalInfoPhoneCall = ko.observable();
 	/**
-	 * Modal Info Photo
+	 * Modal Info Image
 	 * @type {string}
 	 */
-	this.modalInfoPhoto = ko.observable();
+	this.modalInfoImage = ko.observable();
 	/**
-	 * Modal Info Photo Visibility
+	 * Modal Info Image Visibility
 	 * @type {boolean}
 	 */
-	this.modalInfoPhotoVisibility = ko.observable(false);
+	this.modalInfoImageVisibility = ko.observable(false);
 	/**
 	 * Modal Info Price
 	 * @type {string}
@@ -410,7 +408,7 @@ var ViewModel = function() {
 	 */
  	this.closeModal = function() {
  		self.modalVisibilty(false);
- 		self.modalInfoPhotoVisibility(false);
+ 		self.modalInfoImageVisibility(false);
  		self.modalFoursquareVisibility(false);
  		self.modalUberEstimateVisibility(false);
  	} 
@@ -1047,7 +1045,7 @@ ko.bindingHandlers.map = {
 				bindingContext.$root.modalVisibilty(true);
 
 				/** Hide the modal photo */
-				bindingContext.$root.modalInfoPhotoVisibility(false);
+				bindingContext.$root.modalInfoImageVisibility(false);
 
 				/** Hide the modal overlay */
 				bindingContext.$root.modalOverlayVisibility(false);
@@ -1133,7 +1131,7 @@ ko.bindingHandlers.map = {
 						/** Update the place html 'tel:' link */
 						bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);									
 						/** Update the place image */
-						bindingContext.$root.modalInfoPhoto(placeInfo.photo);
+						bindingContext.$root.modalInfoImage(placeInfo.photo);
 						/** Update the place price */
 						bindingContext.$root.modalInfoPrice(placeInfo.price);
 						/** Update the place rating */
@@ -1149,7 +1147,7 @@ ko.bindingHandlers.map = {
 							/** Hide the Modal loading animation */
 							bindingContext.$root.modalLoading(false);
 							/** Show the place image */
-							bindingContext.$root.modalInfoPhotoVisibility(true);
+							bindingContext.$root.modalInfoImageVisibility(true);
 						}, 1000);
 
 					/** The Places Details request failed */
