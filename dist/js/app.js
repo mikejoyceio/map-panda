@@ -21123,7 +21123,6 @@ and dependencies (minified).
 }))}));
 /**
  * @file Data Model
- * @file overview Map project for Udacity's FEND
  * @version 1.0
  * @author Mike Joyce [hello@mikejoyce.io]
  */
@@ -21134,20 +21133,39 @@ and dependencies (minified).
  */
 var dataModel = {};
 
-/* Places Data
- * - Name: The name of the place
- * - Description: A short description of the place
- * - Type: The has to be from the Google Places API
- * - Icon: Font Awesome CSS class
- * - Marker: Font Awesome SVG map marker
+/**
+ * Places Array
+ * @type {Array.<Object>}
  */
-
 dataModel.places = [
 	{
+		/**
+		 * Place Name
+		 * @type {String}
+		 */
 		name: 'Airports',
-		description: 'description text',
+		/**
+		 * Place Description
+		 * @type {String}
+		 */
+		description: 'description',
+		/**
+		 * Place Type. Set to a supported value for the types property in the Google Places API
+		 * @type {String}
+		 * @see {@link https://developers.google.com/places/supported_types}
+		 */
 		type: 'airport', 
+		/**
+		 * Place Icon. Set to a Font Awesome CSS class.
+		 * @type {String}
+		 * @see {@link https://fortawesome.github.io/Font-Awesome/icons/}
+		 */
 		icon: 'fa-plane',
+		/**
+		 * Marker Icon. Set to Font Awesome SVG marker.
+		 * @type {Object}
+		 * @see {@link https://github.com/mikejoyceio/fontawesome-markers}
+		 */
 		marker: { path: fontawesome.markers.PLANE,
 								fillColor: '#2c3e50',
 								fillOpacity: 1,
@@ -21157,7 +21175,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Amusement Parks',
-		description: 'description text',
+		description: 'description',
 		type: 'amusement_park',
 		icon: 'fa-ticket',
 		marker: { path: fontawesome.markers.TICKET,
@@ -21169,7 +21187,7 @@ dataModel.places = [
 	},	
 	{
 		name: 'Art Galleries',
-		description: 'description text',
+		description: 'description',
 		type: 'art_gallery',
 		icon: 'fa-paint-brush',
 		marker: { path: fontawesome.markers.PAINT_BRUSH,
@@ -21181,7 +21199,7 @@ dataModel.places = [
 	},
 	{
 		name: 'ATMs',
-		description: 'description text',
+		description: 'description',
 		type: 'atm',
 		icon: 'fa-credit-card',
 		marker: { path: fontawesome.markers.CREDIT_CARD,
@@ -21193,7 +21211,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Banks',
-		description: 'description text',
+		description: 'description',
 		type: 'bank',
 		icon: 'fa-university',
 		marker: { path: fontawesome.markers.UNIVERSITY,
@@ -21205,7 +21223,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Bars',
-		description: 'description text',
+		description: 'description',
 		type: 'bar',
 		icon: 'fa-beer',
 		marker: { path: fontawesome.markers.BEER,
@@ -21217,7 +21235,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Bicycle Stores',
-		description: 'description text',
+		description: 'description',
 		type: 'bicycle_store',
 		icon: 'fa-bicycle',
 		marker: { path: fontawesome.markers.BICYCLE,
@@ -21229,7 +21247,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Book Stores',
-		description: 'description text',
+		description: 'description',
 		type: 'book_store',
 		icon: 'fa-book',
 		marker: { path: fontawesome.markers.BOOK,
@@ -21241,7 +21259,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Bus Stations',
-		description: 'description text',
+		description: 'description',
 		type: 'bus_station',
 		icon: 'fa-bus',
 		marker: { path: fontawesome.markers.BUS,
@@ -21253,7 +21271,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Cafes',
-		description: 'description text',
+		description: 'description',
 		type: 'cafe',
 		icon: 'fa-coffee',
 		marker: { path: fontawesome.markers.COFFEE,
@@ -21265,7 +21283,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Car Parks',
-		description: 'description text',
+		description: 'description',
 		type: 'parking',
 		icon: 'fa-car',
 		marker: { path: fontawesome.markers.CAR,
@@ -21277,7 +21295,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Car Repair',
-		description: 'description text',
+		description: 'description',
 		type: 'car_repair',
 		icon: 'fa-wrench',
 		marker: { path: fontawesome.markers.WRENCH,
@@ -21289,7 +21307,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Car Washes',
-		description: 'description text',
+		description: 'description',
 		type: 'car_wash',
 		icon: 'fa-tint',
 		marker: { path: fontawesome.markers.TINT,
@@ -21301,7 +21319,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Department Stores',
-		description: 'description text',
+		description: 'description',
 		type: 'department_store',
 		icon: 'fa-building-o',
 		marker: { path: fontawesome.markers.BUILDING_O,
@@ -21313,7 +21331,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Doctors',
-		description: 'description text',
+		description: 'description',
 		type: 'doctor',
 		icon: 'fa-stethoscope',
 		marker: { path: fontawesome.markers.STETHOSCOPE,
@@ -21325,7 +21343,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Electricians',
-		description: 'description text',
+		description: 'description',
 		type: 'electrician',
 		icon: 'fa-flash',
 		marker: { path: fontawesome.markers.FLASH,
@@ -21337,7 +21355,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Electronic Stores',
-		description: 'description text',
+		description: 'description',
 		type: 'electronics_store',
 		icon: 'fa-laptop',
 		marker: { path: fontawesome.markers.LAPTOP,
@@ -21349,7 +21367,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Fire Stations',
-		description: 'description text',
+		description: 'description',
 		type: 'fire_station',
 		icon: 'fa-fire-extinguisher',
 		marker: { path: fontawesome.markers.FIRE_EXTINGUISHER,
@@ -21361,7 +21379,7 @@ dataModel.places = [
 	},	
 	{
 		name: 'Groceries',
-		description: 'description text',
+		description: 'description',
 		type: 'grocery_or_supermarket',
 		icon: 'fa-shopping-cart',
 		marker: { path: fontawesome.markers.SHOPPING_CART,
@@ -21373,7 +21391,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Hairdressers',
-		description: 'description text',
+		description: 'description',
 		type: 'hair_care',
 		icon: 'fa-scissors',
 		marker: { path: fontawesome.markers.SCISSORS,
@@ -21385,7 +21403,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Hospitals',
-		description: 'description text',
+		description: 'description',
 		type: 'hospital',
 		icon: 'fa-h-square',
 		marker: { path: fontawesome.markers.H_SQUARE,
@@ -21397,7 +21415,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Jewelry Stores',
-		description: 'description text',
+		description: 'description',
 		type: 'jewelry_store',
 		icon: 'fa-diamond',
 		marker: { path: fontawesome.markers.DIAMOND,
@@ -21409,7 +21427,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Lawyers',
-		description: 'description text',
+		description: 'description',
 		type: 'lawyer',
 		icon: 'fa-legal',
 		marker: { path: fontawesome.markers.LEGAL,
@@ -21421,7 +21439,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Locksmiths',
-		description: 'description text',
+		description: 'description',
 		type: 'locksmith',
 		icon: 'fa-key',
 		marker: { path: fontawesome.markers.KEY,
@@ -21433,7 +21451,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Lodgings',
-		description: 'description text',
+		description: 'description',
 		type: 'lodging',
 		icon: 'fa-bed',
 		marker: { path: fontawesome.markers.HOTEL,
@@ -21445,7 +21463,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Movie Theaters',
-		description: 'description text',
+		description: 'description',
 		type: 'movie_theater',
 		icon: 'fa-film',
 		marker: { path: fontawesome.markers.FILM,
@@ -21457,7 +21475,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Moving Companies',
-		description: 'description text',
+		description: 'description',
 		type: 'moving_company',
 		icon: 'fa-truck',
 		marker: { path: fontawesome.markers.TRUCK,
@@ -21469,7 +21487,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Night Clubs',
-		description: 'description text',
+		description: 'description',
 		type: 'night_club',
 		icon: 'fa-glass',
 		marker: { path: fontawesome.markers.GLASS,
@@ -21481,7 +21499,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Parks',
-		description: 'description text',
+		description: 'description',
 		type: 'park',
 		icon: 'fa-tree',
 		marker: { path: fontawesome.markers.TREE,
@@ -21493,7 +21511,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Pharmacies',
-		description: 'description text',
+		description: 'description',
 		type: 'pharmacy',
 		icon: 'fa-medkit',
 		marker: { path: fontawesome.markers.MEDKIT,
@@ -21505,7 +21523,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Restaurants',
-		description: 'description text',
+		description: 'description',
 		type: 'restaurant',
 		icon: 'fa-cutlery',
 		marker: { path: fontawesome.markers.CUTLERY,
@@ -21517,7 +21535,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Stadiums',
-		description: 'description text',
+		description: 'description',
 		type: 'stadium',
 		icon: 'fa-trophy',
 		marker: { path: fontawesome.markers.TROPHY,
@@ -21529,7 +21547,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Subway Stations',
-		description: 'description text',
+		description: 'description',
 		type: 'pharmacy',
 		icon: 'fa-subway',
 		marker: { path: fontawesome.markers.SUBWAY,
@@ -21541,7 +21559,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Taxi Stands',
-		description: 'description text',
+		description: 'description',
 		type: 'taxi_stand',
 		icon: 'fa-taxi',
 		marker: { path: fontawesome.markers.TAXI,
@@ -21553,7 +21571,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Train Stations',
-		description: 'description text',
+		description: 'description',
 		type: 'train_station',
 		icon: 'fa-train',
 		marker: { path: fontawesome.markers.TRAIN,
@@ -21565,7 +21583,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Travel Agencies',
-		description: 'description text',
+		description: 'description',
 		type: 'travel_agency',
 		icon: 'fa-map-signs',
 		marker: { path: fontawesome.markers.MAP_SIGNS,
@@ -21577,7 +21595,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Universities',
-		description: 'description text',
+		description: 'description',
 		type: 'university',
 		icon: 'fa-mortar-board',
 		marker: { path: fontawesome.markers.MORTAR_BOARD,
@@ -21589,7 +21607,7 @@ dataModel.places = [
 	},
 	{
 		name: 'Vets',
-		description: 'description text',
+		description: 'description',
 		type: 'veterinary_care',
 		icon: 'fa-paw',
 		marker: { path: fontawesome.markers.PAW,
@@ -21601,11 +21619,27 @@ dataModel.places = [
 	}
 ]
 
-// Foursquare Data
+/**
+ * Foursquare API Request
+ * @param  {Object} request
+ * @return {Object} 
+ */
 dataModel.foursquare = function(request) {
 
+	/**
+	 * Foursquare API URL
+	 * @type {String}
+	 * @see {@link https://developer.foursquare.com/docs/venues/search}
+	 */
 	var foursquareAPI = 'https://api.foursquare.com/v2/venues/search';
 
+	/**
+	 * Return
+	 * @external 'Promise.resolve'
+	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve}
+	 * @external '$.ajax'
+	 * @see {@link http://api.jquery.com/jquery.ajax/}
+	 */
 	return Promise.resolve($.ajax({
 		url: foursquareAPI,
 		dataType: 'json',
@@ -21622,13 +21656,29 @@ dataModel.foursquare = function(request) {
 
 }
 
-// Uber Data 
+/**
+ * Ubder API Request
+ * @param  {Object} request
+ * @return {Object}
+ */
 dataModel.uber = function(request) {
 
+	/**
+	 * Uber API URL
+	 * @type {String}
+	 * @see {@link https://developer.uber.com/v1/endpoints/}
+	 */
 	var uberAPI = 'https://api.uber.com/v1/estimates/price';
 	var uberClientId = 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn';
 	var uberServerToken = 'YXPNrYuvPMqZT5LYF_xIWzjs-yxFQfCRSLbve56l';
 
+	/**
+	 * Return
+	 * @external 'Promise.resolve'
+	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve}
+	 * @external '$.ajax'
+	 * @see {@link http://api.jquery.com/jquery.ajax/}
+	 */
 	return Promise.resolve($.ajax({
 		url: uberAPI,
 		headers: {
@@ -21654,12 +21704,6 @@ dataModel.uber = function(request) {
 /* TODO:
  * - Add javascript promise polypill
  * - Add help panel
- * - Move place constructor outside of viewModel 
- * - Rename mapInfo visiblity observable
- * - Rename modalInfoPhoto observable
- * - Rename modalCopyButtonVisibility
- * - Rename search and clearSearch functions
- * - Add error handling to Foursquare and Uber API request functions
  * - Test Uber deep linking
  * - Update viewportWidth and preventSwipeTap bindings
  */
@@ -21782,10 +21826,10 @@ var ViewModel = function() {
 	 */
 	this.mapCurrentLng = ko.observable();
 	/**
-	 * Map Info
+	 * Map Info Visibility
 	 * @type {boolean}
 	 */
-	this.mapInfo = ko.observable(false);
+	this.mapInfoVisibility = ko.observable(false);
 	/**
 	 * Map Loader Visibility
 	 * @type {boolean}
@@ -21859,15 +21903,15 @@ var ViewModel = function() {
 	 */
 	this.modalInfoPhoneCall = ko.observable();
 	/**
-	 * Modal Info Photo
+	 * Modal Info Image
 	 * @type {string}
 	 */
-	this.modalInfoPhoto = ko.observable();
+	this.modalInfoImage = ko.observable();
 	/**
-	 * Modal Info Photo Visibility
+	 * Modal Info Image Visibility
 	 * @type {boolean}
 	 */
-	this.modalInfoPhotoVisibility = ko.observable(false);
+	this.modalInfoImageVisibility = ko.observable(false);
 	/**
 	 * Modal Info Price
 	 * @type {string}
@@ -21985,21 +22029,21 @@ var ViewModel = function() {
 		/** Deselect each Place List item hide Map Info */
 		for (var i=0,j=self.placeList().length;i<j;i++) {
 			self.placeList()[i].isActive(false);
-			self.mapInfo(false);
+			self.mapInfoVisibility(false);
 		}
 
 		/** Set the Current Place to active */
 		place.isActive(!place.isActive());
 
 		/** Show Map Info */
-		self.mapInfo(true);	
+		self.mapInfoVisibility(true);	
 	}
 
 	/**
 	 * Filter place types in the place list
 	 * @param  {String} value
 	 */
-	this.search = function(value) {
+	this.filter = function(value) {
 	 for (var i=0,j=self.placeList().length;i<j;i++) {
 	 	self.placeList()[i].isHidden(false);
 	 	if (value.toLowerCase() === self.placeList()[i].name().toLowerCase()) {
@@ -22011,12 +22055,12 @@ var ViewModel = function() {
 	 	}
 	 }
 	}
-	this.searchQuery.subscribe(this.search);
+	this.searchQuery.subscribe(this.filter);
 
 	/**
-	 * Clear the Filter. Clear the search filter.
+	 * Clear the Filter.
 	 */
-	this.clearSearch = function() {
+	this.clearFilter = function() {
 		for (var i=0,j=self.placeList().length;i<j;i++) {
 			self.placeList()[i].isHidden(false);
 		}
@@ -22057,7 +22101,7 @@ var ViewModel = function() {
 	 */
  	this.closeModal = function() {
  		self.modalVisibilty(false);
- 		self.modalInfoPhotoVisibility(false);
+ 		self.modalInfoImageVisibility(false);
  		self.modalFoursquareVisibility(false);
  		self.modalUberEstimateVisibility(false);
  	} 
@@ -22252,9 +22296,20 @@ var Place = function(data) {
  */
 ko.bindingHandlers.map = {
 
-	// Init - called when the binding is first applied 
+	/**
+	 * Init: Called when the binding is first applied.
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
   init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
+  	/**
+  	 * Google Map Options
+  	 * @type {Object}
+  	 */
     var mapOptions = {
       zoom: 15,
       zoomControl: false,
@@ -22264,179 +22319,280 @@ ko.bindingHandlers.map = {
       styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}]
     };
 
+    /**
+     * Instantiate a new Google Map object
+     * @type {Object}
+     * @external 'new google.maps.Map'
+     * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#Map}
+     */
     bindingContext.$root.map = new google.maps.Map(element, mapOptions);
 
-	  // Try HTML5 geolocation
+
+	  /** Try HTML5 Geolocation */
 	  if(navigator.geolocation) {
+
+	  	/**
+	  	 * Get current position with HTML Geolocation
+	  	 * @external 'navigator.geolocation.getCurrentPosition'
+	  	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition}
+	  	 */
 	    navigator.geolocation.getCurrentPosition(function(position) {
 
-	    		// Update the current lat / long
+	    		/** Update the current latitude & longitude */
 	    		bindingContext.$root.mapCurrentLat(position.coords.latitude);
 	    		bindingContext.$root.mapCurrentLng(position.coords.longitude);
 	
-					// Instantiate a new Google Map object	
+					/** Set the map's current LatLng */
 		      bindingContext.$root.mapLatLang = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);	
 
-	    		// Center map on current location
+	    		/** Center map on current LatLng */
 		      bindingContext.$root.map.setCenter(bindingContext.$root.mapLatLang);
 
-		      // Add a custom HTML current position marker to the map
+		      /**
+		       * Add a custom HTML current position marker to the map
+		       * @external 'new RichMarker'
+		       * @see {@link https://github.com/mikejoyceio/js-rich-marker}
+		       */
 			    var marker = new RichMarker({
 			    	position: bindingContext.$root.mapLatLang,
 			    	map: bindingContext.$root.map,
 			    	flat: true,
-			    	content: '<div class="map-current-location"><div class="radial-pulse"></div></div>'
+			    	content: '<div class="map-current-location">' +
+			    							'<div class="radial-pulse"></div>' +
+			    					 '</div>'
 			    });
 
 		  }, function() {
-	  		// Browser supports Geo-location but hasn't been enabled
+
+	  		/** Browser supports Geolocation but hasn't been enabled */
 	      handleNoGeolocation(true);
+
 		}, 
-			// Enable high accuracy Geo-location
-			{maximumAge:600000, timeout:5000, enableHighAccuracy: true});
+			/**
+			 * Enable high accuracy Geolocation
+			 * @external 'enableHighAccuracy'
+			 * @see {@link http://www.w3.org/TR/geolocation-API/#enablehighaccuracy} 
+			 */
+			{ maximumAge:600000, timeout:5000, enableHighAccuracy: true });
 		  
 		} else {
-	    // Browser doesn't support Geo-location
+
+	    /** Browser doesn't support Geolocation */
 	    handleNoGeolocation(false);
+
 		}
 
-		// Handle no Geo-location
-		function handleNoGeolocation(errorFlag) {
+		/**
+		 * Handle no Geo-location
+		 * @param  {object}
+		 */
+		function handleNoGeolocation(error) {
 
-		  if (errorFlag) {
-
-		  	// If the appDebug variable is set to true, console.log the error
-				if (bindingContext.$root.appDebug) console.log('Error: Geolocation service failed.');
-
-				// Show the user notification message 
-				bindingContext.$root.notificationKeepAlive(true);
-				bindingContext.$root.notificationMessage('Geolocation failed.');
-
-		  } else {
-
-		  	// If appDebug variable is set to true, console.log the error
-				if (bindingContext.$root.appDebug) console.log('Error: Browser doesn\'t support geolocation.');
-
-				// Show the user notification message 
-				bindingContext.$root.notificationKeepAlive(true);
-				bindingContext.$root.notificationMessage('Gelocation unsupported');
-
-		  }
-
+	    switch (error.code) {
+        case error.PERMISSION_DENIED:
+					/** If the appDebug variable is set to true, console.log the error */
+					if (bindingContext.$root.appDebug) console.log('User denied the request for Geolocation.');
+					/** Show the user notification message  */
+					bindingContext.$root.notificationKeepAlive(true);
+					bindingContext.$root.notificationMessage('User denied the request for Geolocation.');
+					break;
+        case error.POSITION_UNAVAILABLE:
+					/** If the appDebug variable is set to true, console.log the error */
+					if (bindingContext.$root.appDebug) console.log('Location information is unavailable.');
+					/** Show the user notification message  */
+					bindingContext.$root.notificationKeepAlive(true);
+					bindingContext.$root.notificationMessage('Location information is unavailable.');
+					break;
+        case error.TIMEOUT:
+					/** If the appDebug variable is set to true, console.log the error */
+					if (bindingContext.$root.appDebug) console.log('The request to get user location timed out.');
+					/** Show the user notification message  */
+					bindingContext.$root.notificationKeepAlive(true);
+					bindingContext.$root.notificationMessage('The request to get user location timed out.');
+					break;
+        case error.UNKNOWN_ERROR:
+					/** If the appDebug variable is set to true, console.log the error */
+					if (bindingContext.$root.appDebug) console.log('An unknown error occurred.');
+					/** Show the user notification message  */
+					bindingContext.$root.notificationKeepAlive(true);
+					bindingContext.$root.notificationMessage('An unknown error occurred.');
+					break;
+	    }
 		}
 
 	},
 
-	// Update - called once when the binding is first applied, and again when any observables that are accessed change 
+	/**
+	 * Update: Called when the binding is first applied and again whenever any observables change
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
 	update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
-		// Set a reference to the observable objects bound to this binding
   	var value = valueAccessor();
 
-		// Set a variable to hold error messages for debugging purposes
+		/**
+		 * Decalare a variable to hold error messages for debugging purposes
+		 * @type {string}
+		 */
 		var statusMessage;
 
-		// Set a variable to hold error messages visible to the user
+		/**
+		 * Declare variable to hold error messages visible to the user
+		 * @type {string}
+		 */
 		var notificationMessage;
 
-		// If the current place isn't active, return the function
+		/** If the currentPlace isn't active, return the function */
 		if(!value.currentPlace().isActive()) {
 			return 
 		}
 
-  	// If the markers array contains values, clear them from the map
+  	/** If the mapMarkers array contains values, clear the markers from the map */
   	if (bindingContext.$root.mapMarkers()) {
   		clearMarkers();
   	}	
 
-		// Google Maps places search request object
+		/**
+		 * Google Maps places search request object
+		 * @type {Object}
+		 */
     var request = {
     	location: bindingContext.$root.mapLatLang,
     	radius: value.searchRadius(),
     	types: []
     };
 
-    // Push the current place type into the request object types array
+    /**
+     * Push the currentPlace type into the request object types array
+     */
     request.types.push(value.currentPlace().type());
 
-    // Instantiate a new places service object
+    /**
+     * Instantiate a new Google Places Service object
+     * @type {object}
+     * @external 'new google.maps.places.PlacesService'
+     * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#PlacesService}
+     */
     var mapPlaces = new google.maps.places.PlacesService(bindingContext.$root.map);
 
-    // Search nearby places
+    /**
+     * Search nearby places
+     * @external 'nearbySearch()'
+     * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#PlacesService}
+     */
     mapPlaces.nearbySearch(request, nearbySearchCallback);
 
-    // Google Maps places search callback function
+    /**
+     * Google Maps PlacesService callback function
+     * @param  {Array.<Object>} results
+     * @param  {Object} status
+     * @see {@link https://developers.google.com/maps/documentation/javascript/places#place_search_responses}
+     */
     function nearbySearchCallback(results, status) {
 
-    	// Set a reference to Google Maps Service Status object
+    	/**
+    	 * Set a reference to Google Maps Service Status object
+    	 * @type {Object}
+    	 * @external 'google.maps.places.PlacesServiceStatus'
+    	 * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#PlacesServiceStatus}
+    	 */
     	var statusCode = google.maps.places.PlacesServiceStatus;
 
-    	// If the status is OK
+    	/** If the statusCode is OK */
     	if (status === statusCode.OK) {
 
-    		// Show the map loader
+    		/** Show the map loader */
     		bindingContext.$root.mapLoaderVisibility(true);
 
-    		// Clear all markers from the map
+    		/** Clear all markers from the map */
     		clearMarkers();
 
-    		// Set the places array length to 0
+    		/** Reset the places array length to 0 */
     		bindingContext.$root.mapPlaces().length = 0;
 
-    		// Hide user notification messages
+    		/** Hide user notification messages */
     		bindingContext.$root.notificationKeepAlive(false);
     		bindingContext.$root.notificationFadeDuration(0);
 
-    		// Loop through the results and push into the places array
+    		/**
+    		 * Map Places
+    		 * @type {Array.<Object>}
+    		 */
+    		var mapPlaces = [];
+
+    		/** Loop through the results and push into the places array */	
     		for (var i=0,j=results.length;i<j;i++) {
-    			bindingContext.$root.mapPlaces().push(results[i]);
+    			mapPlaces.push(results[i]);
     		}	
 
-    		// Set place markers, info windows and modals	
+    		/** Set the mapPlaces observable */
+    		bindingContext.$root.mapPlaces(mapPlaces)
+
+    		/** Set Place Markers, Info Windows and Modals	 */
     		setPlaces();
 
-    		// Hide the map loading animation
+    		/** Hide the map loading animation */
   			setTimeout(function() {
   				bindingContext.$root.mapLoaderVisibility(false);
   			}, 1000);
 
-    	/* Callback Error Handling
-			 * Error status and messages will be passed the the callbackError function.
-			 */
-    	} else if (status === statusCode.ERROR) {
-    		callbackError(status+' There was a problem contacting the Google servers.', 'Connection error');
-    	} else if (status === statusCode.INVALID_REQUEST) {
-    		callbackError(status+' This request was invalid.', 'Error. Please try again.');
-    	} else if (status === statusCode.OVER_QUERY_LIMIT) {
-    		callbackError(status+' The webpage has gone over its request quota.', 'Slow down!');		    		
-    	} else if (status === statusCode.REQUEST_DENIED) {
-    		callbackError(status+' This webpage is not allowed to use the PlacesService.', 'Error. Please try again.');	
-    	} else if (status === statusCode.UNKNOWN_ERROR) {
-    		callbackError(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.', 'Server Error. Please try again.');	
-    	} else if (status === statusCode.ZERO_RESULTS) { 
-    		callbackError(status+' No result was found for this request.', 'No Results');	
     	} else {
-    		callbackError('Unknown error', 'Error. Please try again.');
+	  		/**
+	  		 * Callback Error Handling. Error status and messages will be passed the the callbackError function.
+	  		 */
+	    	switch (status) {
+
+	    		case statusCode.ERROR:
+						callbackError(status+' There was a problem contacting the Google servers.', 'Connection error');
+						break;
+					case statusCode.INVALID_REQUEST:
+						callbackError(status+' This request was invalid.', 'Error. Please try again.');
+						break;
+					case statusCode.OVER_QUERY_LIMIT:
+						callbackError(status+' The webpage has gone over its request quota.', 'Slow down!');	
+						break;
+					case statusCode.REQUEST_DENIED:
+						callbackError(status+' This webpage is not allowed to use the PlacesService.', 'Error. Please try again.');	
+						break;
+					case statusCode.UNKNOWN_ERROR:
+					   callbackError(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.', 'Server Error. Please try again.');	
+					   break;
+					case statusCode.ZERO_RESULTS:
+						callbackError(status+' No result was found for this request.', 'No Results');	
+						break;
+					default: 
+						callbackError('Unknown error', 'Error. Please try again.');
+	    	}
     	}
+
     }
 
-    // Set places function
+    /**
+     * Set Places
+     */
     function setPlaces() {
 
-    	// Loop thought the places array
+    	/** Loop thought the places array */
 	    for (var i=0,j=bindingContext.$root.mapPlaces().length;i<j;i++) {
 
-	    	// Create a marker and set marker's icon
+	    	/** Instantiate a new marker and set marker's icon */
 	    	bindingContext.$root.mapMarkers()[i] = new google.maps.Marker({
 	    		map: bindingContext.$root.map,
 	    		position: bindingContext.$root.mapPlaces()[i].geometry.location,
 	    		icon: value.currentPlace().marker()
 	    	});
 
-	    	// Add the marker to the map
+	    	/** Add the marker to the map */
 	    	bindingContext.$root.mapMarkers()[i].setMap(bindingContext.$root.map);
 
-	    	// Create an object to hold data for the place
+	    	/**
+	    	 * Place Data. Create an object to hold data for the place.
+	    	 * @type {Object}
+	    	 */
 	    	var placeData = {
 	    		marker: bindingContext.$root.mapMarkers()[i],
 	    		id: bindingContext.$root.mapPlaces()[i].id,
@@ -22451,28 +22607,36 @@ ko.bindingHandlers.map = {
 	    					 : bindingContext.$root.appConstants.DEFAULT_IMAGE_SMALL
 	    	}
 
-	    	// Add an Info Box
+	    	/** Add an Info Box for the place */
 	    	addInfoBox(placeData);
 
-	    	// Add a Modal
+	    	/** Add a Modal for the place */
 	    	addModal(placeData);
 
 	    }
 
-	    // Automagically zoom the map in / out to show all the markers 
+	    /** 
+	     * Automagically zoom the map in / out to show all the markers in the browser window 
+			 * @external 'LatLngBounds()'
+			 * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#LatLngBounds}
+	     */
 	    var bounds = new google.maps.LatLngBounds();
 
 	    for(i=0; i<bindingContext.$root.mapMarkers().length; i++) {
 	    	bounds.extend(bindingContext.$root.mapMarkers()[i].getPosition());
 	    }
+
 	    bindingContext.$root.map.fitBounds(bounds);
 
 	 	}
 
-	 	// Add Info Box function
+	 	/**
+	 	 * Add Info Box function
+	 	 * @param {Object} data
+	 	 */
 		function addInfoBox(data) {
 
-			// InfoBox content
+			/** InfoBox HTML content */
 			var infoBoxContent = '<div class="info-box-content">' + 
 											'<div class="info-box-title">'+data.name+'</div>' + 
 											'<div class="info-box-image" style="background-image: url('+data.photo+');"></div>' + 
@@ -22486,7 +22650,7 @@ ko.bindingHandlers.map = {
 											'<i class="info-box-icon fa '+data.icon+'"></i>' +
 								 		'</div>';
 
-			// InfoBox options
+			/** InfoBox options */
 			var infoBoxOptions = {
 				boxClass: 'info-box',
 				content: infoBoxContent,
@@ -22506,33 +22670,62 @@ ko.bindingHandlers.map = {
 				enableEventPropagation: false
 			};
 
-			// Instantiate an new infoBox
+			/**
+			 * Instantiate an new infoBox
+			 * @type {Object}
+			 * @external 'new InfoBox'
+			 * @see {@link http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/docs/examples.html}
+			 */
 			var infoBox = new InfoBox(infoBoxOptions);
 
-			// Add event listener to show Info Box on marker mouseover
+			/**
+			 * Show Info Box on marker mouseover
+			 * @param {Object} data.marker
+			 * @param {string} event
+			 * @param {function} handler
+			 * @external 'google.maps.event.addListener'
+			 * @see {@link https://developers.google.com/maps/documentation/javascript/events}
+			 */
 		 	google.maps.event.addListener(data.marker, 'mouseover', function() {
 		 		infoBox.open(bindingContext.$root.map, this);
 		  });
 
-		 	// Add event listener to hide Info Box on marker mouseout
+			/**
+			 * Hide Info Box on marker mouseout
+			 * @param {Object} data.marker
+			 * @param {string} event
+			 * @param {function} handler
+			 * @external 'google.maps.event.addListener'
+			 * @see {@link https://developers.google.com/maps/documentation/javascript/events}
+			 */
 		  google.maps.event.addListener(data.marker, 'mouseout', function() {
 		  	infoBox.close(bindingContext.$root.map, this);
 		  });
 
 		}
 
-		// Add Modal function
+		/**
+		 * Add Modal
+		 * @param {Object} data
+		 */
 		function addModal(data) {
 
-			// Add event listener to show Modal on marker click
+			/**
+			 * Show Modal on map marker click
+			 * @param {Object} data.marker
+			 * @param {string} event
+			 * @param {function} handler
+			 * @external 'google.maps.event.addListener'
+			 * @see {@link https://developers.google.com/maps/documentation/javascript/events}
+			 */
 			google.maps.event.addListener(data.marker, 'click', function() {
 
-				// Reset the marker icons
+				/** Reset the marker icons */
 				for (var i=0,j=bindingContext.$root.mapMarkers().length;i<j;i++) {
 					bindingContext.$root.mapMarkers()[i].setIcon(value.currentPlace().marker());
 				}
 
-				// Set the selected marker icon
+				/** Set the selected marker icon */
 		 		data.marker.setIcon({ path: fontawesome.markers.CIRCLE,
 					fillColor: '#ed5565',
 					fillOpacity: 1,
@@ -22541,42 +22734,67 @@ ko.bindingHandlers.map = {
 					strokeWeight: 3
 				});
 
-				// // Pan to the markers position on the map
-				// bindingContext.$root.map.panTo(data.position);
-
-				// Show the modal
+				/** Show the modal */
 				bindingContext.$root.modalVisibilty(true);
 
-				// Hide the modal photo
-				bindingContext.$root.modalInfoPhotoVisibility(false);
+				/** Hide the modal photo */
+				bindingContext.$root.modalInfoImageVisibility(false);
 
-				// Hide the modal overlay
+				/** Hide the modal overlay */
 				bindingContext.$root.modalOverlayVisibility(false);
 
-				// Hide Uber estimate
+				/** Hide Uber estimate */
 				bindingContext.$root.modalUberEstimateVisibility(false);
 				
-				// Show the modal loading animation
+				/** Show Modal loading animation */
 				bindingContext.$root.modalLoading(true);
 
-				// Google Maps places search request object 
+				/**
+				 * Google Maps places search request object 
+				 * @type {Object}
+				 */
 				var request = { 
 		  		placeId: data.placeId
 				};
 
-				// Instatiate a Google Maps Places Service object
+				/**
+				 * Instatiate a Google Maps Places Service object
+				 * @type {Object}
+				 * @external 'new google.maps.places.PlacesService'
+				 * @see {@link https://developers.google.com/maps/documentation/javascript/places#place_searches}
+				 */
 				var service = new google.maps.places.PlacesService(bindingContext.$root.map);
+
+				/**
+				 * Request place details
+				 * @external 'getDetails'
+				 * @see {@link https://developers.google.com/maps/documentation/javascript/places#place_details_requests}
+				 */
 				service.getDetails(request, placeDetailsCallback);
 
-				// Google Maps places search callback function
+				/**
+				 * Google Maps places search callback function
+				 * @param  {Object} place
+				 * @param  {Object} status
+				 * @see {@link https://developers.google.com/maps/documentation/javascript/places#place_details_responses}
+				 */
 				function placeDetailsCallback(place, status) {
 
-					// Set a reference to Google Maps Service Status object
+		    	/**
+		    	 * Set a reference to Google Maps Service Status object
+		    	 * @type {Object}
+		    	 * @external 'google.maps.places.PlacesServiceStatus'
+		    	 * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#PlacesServiceStatus}
+		    	 */
     			var statusCode = google.maps.places.PlacesServiceStatus;
 
-					// If the request if OK, set the Info Window content
+					/** If the statusCode is OK, set the Info Window content */
 				  if (status == statusCode.OK) {
 
+				  	/**
+				  	 * Place Info. Create an object to hold data for the place.
+				  	 * @type {Object}
+				  	 */
 				  	var placeInfo = {
 							id: place.id,
 							name: place.name,
@@ -22591,31 +22809,44 @@ ko.bindingHandlers.map = {
 							price: typeof place.price_level !== 'undefined' ? 'price-0'+place.price_level : 'price-00'
 						};
 
+						/** Update the place name */
 						bindingContext.$root.modalInfoName(placeInfo.name);
+						/** Update the place address */
 						bindingContext.$root.modalInfoAddress(placeInfo.address);
+						/** Update the place website */
 						bindingContext.$root.modalInfoWebsite(placeInfo.website);
+						/** Update the place latitude */
 						bindingContext.$root.modalInfoLat(placeInfo.lat);							
+						/** Update the place longitude */
 						bindingContext.$root.modalInfoLng(placeInfo.lng);
+						/** Update the place phone number */
 						bindingContext.$root.modalInfoPhone(placeInfo.phone);
+						/** Update the place html 'tel:' link */
 						bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);									
-						bindingContext.$root.modalInfoPhoto(placeInfo.photo);
+						/** Update the place image */
+						bindingContext.$root.modalInfoImage(placeInfo.photo);
+						/** Update the place price */
 						bindingContext.$root.modalInfoPrice(placeInfo.price);
+						/** Update the place rating */
 						bindingContext.$root.modalInfoRating(placeInfo.rating);
 
-						// Search Foursquare
+						/** Search Foursquare venues */
 						bindingContext.$root.searchFoursquare();
 
-						// Grab Uber ride estimate 
+						/** Request and Uber ride price estimate */
 						bindingContext.$root.getUberRideEstimate();
 
 						setTimeout(function() {
+							/** Hide the Modal loading animation */
 							bindingContext.$root.modalLoading(false);
-							bindingContext.$root.modalInfoPhotoVisibility(true);
+							/** Show the place image */
+							bindingContext.$root.modalInfoImageVisibility(true);
 						}, 1000);
 
-					// If the request failed, console log the error if the appDebug variable is set to true
+					/** The Places Details request failed */
 				  } else {
 
+				  	/** If the appDebug variable is set to true, console log the error */
 			  		if (bindingContext.$root.appDebug) console.log(status);
 
 				  }
@@ -22625,24 +22856,34 @@ ko.bindingHandlers.map = {
 
 		}
 
-		// Clear map markers function
+		/**
+		 * Clear Map Markers
+		 * @external 'setMap(null)'
+		 * @see {@link https://developers.google.com/maps/documentation/javascript/markers#remove}
+		 */
 		function clearMarkers() {
+
+			/** Loop through each marker and set it to 'null' */
 			for (var i=0,j=bindingContext.$root.mapMarkers().length;i<j;i++) {
 				bindingContext.$root.mapMarkers()[i].setMap(null);
 			}
+
+			/** Reset the mapMarkers array length to 0 */
 			bindingContext.$root.mapMarkers().length = 0;
 		}
 
-		/* Callback Error Function
-     * This function will create both an error message for debugging purposes and a
-		 * more readable, jargon-free error message for the user.
-     */
+		/**
+		 * Callback Error. This function will create both a developer-friendly error message for debugging purposes and a more readable, 
+		 * user-friendly error message for the user.
+		 * @param  {string} statusMessage       Developer-friendly error message
+		 * @param  {string} notificationMessage User-friendly notification message
+		 */
     function callbackError(statusMessage, notificationMessage) {
 
-    	// If the appDebug variable is set to true, console log the error
+    	/** If the appDebug variable is set to true, console log the error */
     	if (bindingContext.$root.appDebug) console.log(statusMessage);
 
-    	// Show the user notification message
+    	/** Show the user notification message */
 	    bindingContext.$root.mapLoaderVisibility(false);
 	   	bindingContext.$root.notificationKeepAlive(true);
   		bindingContext.$root.notificationMessage(notificationMessage);	  	    	
