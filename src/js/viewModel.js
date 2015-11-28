@@ -8,8 +8,6 @@
 /* TODO:
  * - Add javascript promise polypill
  * - Add help panel
- * - Move place constructor outside of viewModel 
- * - Rename mapInfo visiblity observable
  * - Test Uber deep linking
  * - Update viewportWidth and preventSwipeTap bindings
  */
