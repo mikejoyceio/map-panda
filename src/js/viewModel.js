@@ -842,24 +842,35 @@ ko.bindingHandlers.map = {
   				bindingContext.$root.mapLoaderVisibility(false);
   			}, 1000);
 
-  		/**
-  		 * Callback Error Handling. Error status and messages will be passed the the callbackError function.
-  		 */
-    	} else if (status === statusCode.ERROR) {
-    		callbackError(status+' There was a problem contacting the Google servers.', 'Connection error');
-    	} else if (status === statusCode.INVALID_REQUEST) {
-    		callbackError(status+' This request was invalid.', 'Error. Please try again.');
-    	} else if (status === statusCode.OVER_QUERY_LIMIT) {
-    		callbackError(status+' The webpage has gone over its request quota.', 'Slow down!');		    		
-    	} else if (status === statusCode.REQUEST_DENIED) {
-    		callbackError(status+' This webpage is not allowed to use the PlacesService.', 'Error. Please try again.');	
-    	} else if (status === statusCode.UNKNOWN_ERROR) {
-    		callbackError(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.', 'Server Error. Please try again.');	
-    	} else if (status === statusCode.ZERO_RESULTS) { 
-    		callbackError(status+' No result was found for this request.', 'No Results');	
     	} else {
-    		callbackError('Unknown error', 'Error. Please try again.');
+	  		/**
+	  		 * Callback Error Handling. Error status and messages will be passed the the callbackError function.
+	  		 */
+	    	switch (status) {
+
+	    		case statusCode.ERROR:
+						callbackError(status+' There was a problem contacting the Google servers.', 'Connection error');
+						break;
+					case statusCode.INVALID_REQUEST:
+						callbackError(status+' This request was invalid.', 'Error. Please try again.');
+						break;
+					case statusCode.OVER_QUERY_LIMIT:
+						callbackError(status+' The webpage has gone over its request quota.', 'Slow down!');	
+						break;
+					case statusCode.REQUEST_DENIED:
+						callbackError(status+' This webpage is not allowed to use the PlacesService.', 'Error. Please try again.');	
+						break;
+					case statusCode.UNKNOWN_ERROR:
+					   callbackError(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.', 'Server Error. Please try again.');	
+					   break;
+					case statusCode.ZERO_RESULTS:
+						callbackError(status+' No result was found for this request.', 'No Results');	
+						break;
+					default: 
+						callbackError('Unknown error', 'Error. Please try again.');
+	    	}
     	}
+
     }
 
     /**
