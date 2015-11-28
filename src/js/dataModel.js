@@ -1,6 +1,14 @@
+/**
+ * @file Data Model
+ * @file overview Map project for Udacity's FEND
+ * @version 1.0
+ * @author Mike Joyce [hello@mikejoyce.io]
+ */
 
-// Data Model
-
+/**
+ * Data Model
+ * @type {Object}
+ */
 var dataModel = {};
 
 /* Places Data
