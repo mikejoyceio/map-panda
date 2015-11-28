@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>Map Panda</title>
+
 	<!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="57x57" href="/dist/images/apple-touch-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="/dist/images/apple-touch-icon-60x60.png">
@@ -24,8 +25,10 @@
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="msapplication-TileImage" content="/dist/images/mstile-144x144.png">
 	<meta name="theme-color" content="#ffffff">
+
 	<!-- App CSS -->
 	<link rel="stylesheet" href="dist/css/app.css">
+
 </head>
 <body data-bind="viewportWidth, preventSwipeTap">
 
@@ -52,7 +55,7 @@
 
 		<!-- Search Filter -->
 		<div class="search-filter">
-			<input class="search-input" type="search" id="filter" placeholder="Filter" data-bind="value: searchQuery, valueUpdate: 'keyup', event: { search: clearSearch }">
+			<input class="search-input" type="search" id="filter" placeholder="Filter" data-bind="value: searchQuery, valueUpdate: 'keyup', event: { search: clearFilter }">
 		</div>
 		<!-- /Search Filter -->
 
@@ -86,7 +89,7 @@
 		<!-- Map Info -->
 		<div class="map-info">
 			<div class="content">
-				<div data-bind="visible: mapInfo">
+				<div data-bind="visible: mapInfoVisibility">
 					<!-- ko with: currentPlace -->
 					<h2 class="content-header" data-bind="text: name"></h2>	
 					<!-- /ko -->
@@ -136,7 +139,11 @@
 
 	<!-- Modal -->
 	<div class="modal" data-bind="modal: { modal: modalVisibilty, overlay: modalOverlayVisibility, loading: modalLoading }, cssAnimateVisible: modalVisibilty, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 200, durationOut: 100">
+
+		<!-- Modal Content -->
 		<div class="modal-content">
+			
+			<!-- Modal Header -->
 			<div class="modal-header">
 				<div class="top-bar">
 					<span class="close-modal" data-bind="event: { click: closeModal, touchend: closeModal }">
@@ -146,7 +153,7 @@
 					</span>
 					</span>
 				</div>
-				<div class="image" data-bind="style: { backgroundImage: modalInfoPhoto }, cssAnimateVisible: modalInfoPhotoVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300"></div>
+				<div class="image" data-bind="style: { backgroundImage: modalInfoImage }, cssAnimateVisible: modalInfoImageVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300"></div>
 				<div class="place-price" data-bind="css: modalInfoPrice">
 					<span class="dollar dollar-01"></span>
 					<span class="dollar dollar-02"></span>
@@ -156,6 +163,9 @@
 				<div class="bottom-bar">
 				</div>
 			</div>
+			<!-- /Modal Header -->
+
+			<!-- Modal Body -->
 			<div class="modal-body">
 				<div class="place-rating rating" data-bind="css: modalInfoRating">
 					<span class="star star-01"></span>
@@ -189,6 +199,9 @@
 					</div>
 				</div>
 			</div>
+			<!-- /Modal Body -->
+
+			<!-- Modal Overlay -->
 			<div class="modal-overlay" data-bind="cssAnimateVisible: modalOverlayVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
 				<div class="modal-overlay-message" data-bind="cssAnimateVisible: modalOverlayMessageVisibility, animation: 'bounceIn', animationOut: 'fadeOut', duration: 300, durationOut: 100, text: modalOverlayMessage"></div>
 				<div id="clipboardTarget" class="place-phone" data-bind="text: modalInfoPhone"></div>			
@@ -200,16 +213,26 @@
 					<button class="button cancel radius expand" data-bind="event: { click: closeModalOverlay, touchend: closeModalOverlay }">Close</button>
 				</div>
 			</div>
+			<!-- /Modal Overlay -->
+
+			<!-- Modal Footer -->
 			<div class="modal-footer">
 				<a class="button-foursquare" data-bind="visible: modalFoursquareVisibility(), attr: { href: modalFoursquareURL() }" target="_blank">
 					<span class="icon fa fa-foursquare"></span>
 					<span>View in Foursquare</span>
 				</a>
 			</div>
+			<!-- /Modal Footer -->
+
+			<!-- Modal Loader -->
 			<div class="modal-loading" data-bind="cssAnimateVisible: modalLoading, animation: 'bounceIn', animationOut: 'zoomOut', duration: 300, durationOut: 300">
 				<div class="modal-loader"></div>
 			</div>
+			<!-- /Modal Loader -->
+
 		</div>
+		<!-- /Modal Content -->
+		
 	</div>
 	<!-- /Modal -->
 
@@ -221,6 +244,7 @@
 	
 	<!-- Google Maps API -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KC7nmHmDdz1n0H9xy9rm_B9YAUPeo_A&libraries=places"></script>
+
 	<!-- App JS -->
 	<script src="dist/js/app.js"></script>
 

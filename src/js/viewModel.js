@@ -8,17 +8,8 @@
 /* TODO:
  * - Add javascript promise polypill
  * - Add help panel
- * - Move place constructor outside of viewModel 
- * - Rename mapInfo visiblity observable
- * - Rename modalInfoPhoto observable
- * - Rename modalCopyButtonVisibility
- * - Rename search and clearSearch functions
- * - Add error handling to Foursquare and Uber API request functions
  * - Test Uber deep linking
  * - Update viewportWidth and preventSwipeTap bindings
- * - improve HTML5 Geolocation error handling
- * - replace error handling if/else with switch?
- * - optimize pushing in to KO observable arrays (line 823)
  */
 
 /**
@@ -139,10 +130,10 @@ var ViewModel = function() {
 	 */
 	this.mapCurrentLng = ko.observable();
 	/**
-	 * Map Info
+	 * Map Info Visibility
 	 * @type {boolean}
 	 */
-	this.mapInfo = ko.observable(false);
+	this.mapInfoVisibility = ko.observable(false);
 	/**
 	 * Map Loader Visibility
 	 * @type {boolean}
@@ -216,15 +207,15 @@ var ViewModel = function() {
 	 */
 	this.modalInfoPhoneCall = ko.observable();
 	/**
-	 * Modal Info Photo
+	 * Modal Info Image
 	 * @type {string}
 	 */
-	this.modalInfoPhoto = ko.observable();
+	this.modalInfoImage = ko.observable();
 	/**
-	 * Modal Info Photo Visibility
+	 * Modal Info Image Visibility
 	 * @type {boolean}
 	 */
-	this.modalInfoPhotoVisibility = ko.observable(false);
+	this.modalInfoImageVisibility = ko.observable(false);
 	/**
 	 * Modal Info Price
 	 * @type {string}
@@ -342,21 +333,21 @@ var ViewModel = function() {
 		/** Deselect each Place List item hide Map Info */
 		for (var i=0,j=self.placeList().length;i<j;i++) {
 			self.placeList()[i].isActive(false);
-			self.mapInfo(false);
+			self.mapInfoVisibility(false);
 		}
 
 		/** Set the Current Place to active */
 		place.isActive(!place.isActive());
 
 		/** Show Map Info */
-		self.mapInfo(true);	
+		self.mapInfoVisibility(true);	
 	}
 
 	/**
 	 * Filter place types in the place list
 	 * @param  {String} value
 	 */
-	this.search = function(value) {
+	this.filter = function(value) {
 	 for (var i=0,j=self.placeList().length;i<j;i++) {
 	 	self.placeList()[i].isHidden(false);
 	 	if (value.toLowerCase() === self.placeList()[i].name().toLowerCase()) {
@@ -368,12 +359,12 @@ var ViewModel = function() {
 	 	}
 	 }
 	}
-	this.searchQuery.subscribe(this.search);
+	this.searchQuery.subscribe(this.filter);
 
 	/**
-	 * Clear the Filter. Clear the search filter.
+	 * Clear the Filter.
 	 */
-	this.clearSearch = function() {
+	this.clearFilter = function() {
 		for (var i=0,j=self.placeList().length;i<j;i++) {
 			self.placeList()[i].isHidden(false);
 		}
@@ -414,7 +405,7 @@ var ViewModel = function() {
 	 */
  	this.closeModal = function() {
  		self.modalVisibilty(false);
- 		self.modalInfoPhotoVisibility(false);
+ 		self.modalInfoImageVisibility(false);
  		self.modalFoursquareVisibility(false);
  		self.modalUberEstimateVisibility(false);
  	} 
@@ -699,28 +690,38 @@ ko.bindingHandlers.map = {
 		 * Handle no Geo-location
 		 * @param  {object}
 		 */
-		function handleNoGeolocation(errorFlag) {
+		function handleNoGeolocation(error) {
 
-		  if (errorFlag) {
-
-		  	/** If the appDebug variable is set to true, console.log the error */
-				if (bindingContext.$root.appDebug) console.log('Error: Geolocation service failed.');
-
-				/** Show the user notification message  */
-				bindingContext.$root.notificationKeepAlive(true);
-				bindingContext.$root.notificationMessage('Geolocation failed.');
-
-		  } else {
-
-		  	/** If the appDebug variable is set to true, console.log the error */
-				if (bindingContext.$root.appDebug) console.log('Error: Browser doesn\'t support geolocation.');
-
-				/** Show the user notification message  */
-				bindingContext.$root.notificationKeepAlive(true);
-				bindingContext.$root.notificationMessage('Gelocation unsupported');
-
-		  }
-
+	    switch (error.code) {
+        case error.PERMISSION_DENIED:
+					/** If the appDebug variable is set to true, console.log the error */
+					if (bindingContext.$root.appDebug) console.log('User denied the request for Geolocation.');
+					/** Show the user notification message  */
+					bindingContext.$root.notificationKeepAlive(true);
+					bindingContext.$root.notificationMessage('User denied the request for Geolocation.');
+					break;
+        case error.POSITION_UNAVAILABLE:
+					/** If the appDebug variable is set to true, console.log the error */
+					if (bindingContext.$root.appDebug) console.log('Location information is unavailable.');
+					/** Show the user notification message  */
+					bindingContext.$root.notificationKeepAlive(true);
+					bindingContext.$root.notificationMessage('Location information is unavailable.');
+					break;
+        case error.TIMEOUT:
+					/** If the appDebug variable is set to true, console.log the error */
+					if (bindingContext.$root.appDebug) console.log('The request to get user location timed out.');
+					/** Show the user notification message  */
+					bindingContext.$root.notificationKeepAlive(true);
+					bindingContext.$root.notificationMessage('The request to get user location timed out.');
+					break;
+        case error.UNKNOWN_ERROR:
+					/** If the appDebug variable is set to true, console.log the error */
+					if (bindingContext.$root.appDebug) console.log('An unknown error occurred.');
+					/** Show the user notification message  */
+					bindingContext.$root.notificationKeepAlive(true);
+					bindingContext.$root.notificationMessage('An unknown error occurred.');
+					break;
+	    }
 		}
 
 	},
@@ -821,10 +822,19 @@ ko.bindingHandlers.map = {
     		bindingContext.$root.notificationKeepAlive(false);
     		bindingContext.$root.notificationFadeDuration(0);
 
-    		/** Loop through the results and push into the places array */
+    		/**
+    		 * Map Places
+    		 * @type {Array.<Object>}
+    		 */
+    		var mapPlaces = [];
+
+    		/** Loop through the results and push into the places array */	
     		for (var i=0,j=results.length;i<j;i++) {
-    			bindingContext.$root.mapPlaces().push(results[i]);
+    			mapPlaces.push(results[i]);
     		}	
+
+    		/** Set the mapPlaces observable */
+    		bindingContext.$root.mapPlaces(mapPlaces)
 
     		/** Set Place Markers, Info Windows and Modals	 */
     		setPlaces();
@@ -834,24 +844,35 @@ ko.bindingHandlers.map = {
   				bindingContext.$root.mapLoaderVisibility(false);
   			}, 1000);
 
-  		/**
-  		 * Callback Error Handling. Error status and messages will be passed the the callbackError function.
-  		 */
-    	} else if (status === statusCode.ERROR) {
-    		callbackError(status+' There was a problem contacting the Google servers.', 'Connection error');
-    	} else if (status === statusCode.INVALID_REQUEST) {
-    		callbackError(status+' This request was invalid.', 'Error. Please try again.');
-    	} else if (status === statusCode.OVER_QUERY_LIMIT) {
-    		callbackError(status+' The webpage has gone over its request quota.', 'Slow down!');		    		
-    	} else if (status === statusCode.REQUEST_DENIED) {
-    		callbackError(status+' This webpage is not allowed to use the PlacesService.', 'Error. Please try again.');	
-    	} else if (status === statusCode.UNKNOWN_ERROR) {
-    		callbackError(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.', 'Server Error. Please try again.');	
-    	} else if (status === statusCode.ZERO_RESULTS) { 
-    		callbackError(status+' No result was found for this request.', 'No Results');	
     	} else {
-    		callbackError('Unknown error', 'Error. Please try again.');
+	  		/**
+	  		 * Callback Error Handling. Error status and messages will be passed the the callbackError function.
+	  		 */
+	    	switch (status) {
+
+	    		case statusCode.ERROR:
+						callbackError(status+' There was a problem contacting the Google servers.', 'Connection error');
+						break;
+					case statusCode.INVALID_REQUEST:
+						callbackError(status+' This request was invalid.', 'Error. Please try again.');
+						break;
+					case statusCode.OVER_QUERY_LIMIT:
+						callbackError(status+' The webpage has gone over its request quota.', 'Slow down!');	
+						break;
+					case statusCode.REQUEST_DENIED:
+						callbackError(status+' This webpage is not allowed to use the PlacesService.', 'Error. Please try again.');	
+						break;
+					case statusCode.UNKNOWN_ERROR:
+					   callbackError(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.', 'Server Error. Please try again.');	
+					   break;
+					case statusCode.ZERO_RESULTS:
+						callbackError(status+' No result was found for this request.', 'No Results');	
+						break;
+					default: 
+						callbackError('Unknown error', 'Error. Please try again.');
+	    	}
     	}
+
     }
 
     /**
@@ -1021,7 +1042,7 @@ ko.bindingHandlers.map = {
 				bindingContext.$root.modalVisibilty(true);
 
 				/** Hide the modal photo */
-				bindingContext.$root.modalInfoPhotoVisibility(false);
+				bindingContext.$root.modalInfoImageVisibility(false);
 
 				/** Hide the modal overlay */
 				bindingContext.$root.modalOverlayVisibility(false);
@@ -1107,7 +1128,7 @@ ko.bindingHandlers.map = {
 						/** Update the place html 'tel:' link */
 						bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);									
 						/** Update the place image */
-						bindingContext.$root.modalInfoPhoto(placeInfo.photo);
+						bindingContext.$root.modalInfoImage(placeInfo.photo);
 						/** Update the place price */
 						bindingContext.$root.modalInfoPrice(placeInfo.price);
 						/** Update the place rating */
@@ -1123,7 +1144,7 @@ ko.bindingHandlers.map = {
 							/** Hide the Modal loading animation */
 							bindingContext.$root.modalLoading(false);
 							/** Show the place image */
-							bindingContext.$root.modalInfoPhotoVisibility(true);
+							bindingContext.$root.modalInfoImageVisibility(true);
 						}, 1000);
 
 					/** The Places Details request failed */
