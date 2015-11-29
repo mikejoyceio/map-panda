@@ -111,6 +111,8 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Stack Exchange: Getting the Object Data](http://stackoverflow.com/questions/13755220/knockout-js-getting-the-object-data)
 - [Live Search with KnockoutJS](http://opensoul.org/2011/06/23/live-search-with-knockoutjs/) By Brandon Keepers
 - [Developing Large Scale KnockoutJS Applications](http://blog.scottlogic.com/2014/02/28/developing-large-scale-knockoutjs-applications.html) by Robat Williams
+- [Mozilla Developer Network: String.length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length)
+- [Mozilla Developer Network: String.prototype.charAt()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt)
 
 ######Foursquare API
 
