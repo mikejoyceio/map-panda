@@ -570,3 +570,29 @@ dataModel.uber = function(request) {
 	}));
 
 }
+
+/**
+ * Get Local Storage Value
+ * @param  {string} item Name of the item  
+ * @return {string}
+ * @external 'localStorage.getItem()'
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem}
+ */
+dataModel.get = function(item) {
+
+	return localStorage.getItem(item);
+
+}
+
+/**
+ * Set Local Storage value
+ * @param {string} item Name of the item
+ * @param {string} value Value of the item
+ * @external 'localStorage.setItem()'
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem}
+ */
+dataModel.set = function(item, value) {
+
+	localStorage.setItem(item, value);	
+
+}
