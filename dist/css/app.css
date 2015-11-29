@@ -5860,6 +5860,16 @@ Copyright (c) 2015 Daniel Eden
   padding: 1px;
 }
 
+.landing {
+  background: #fff;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 99999999;
+}
+
 .loader, .main-loader, .modal-loader, .uber-loader {
   -webkit-box-sizing: border-box;
   border-style: solid;

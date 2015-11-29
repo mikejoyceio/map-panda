@@ -21695,6 +21695,32 @@ dataModel.uber = function(request) {
 }
 
 /**
+ * Get Local Storage Value
+ * @param  {string} item Name of the item  
+ * @return {string}
+ * @external 'localStorage.getItem()'
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem}
+ */
+dataModel.get = function(item) {
+
+	return localStorage.getItem(item);
+
+}
+
+/**
+ * Set Local Storage value
+ * @param {string} item Name of the item
+ * @param {string} value Value of the item
+ * @external 'localStorage.setItem()'
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem}
+ */
+dataModel.set = function(item, value) {
+
+	localStorage.setItem(item, value);	
+
+}
+
+/**
  * @file View Model
  * @file overview Map project for Udacity's FEND
  * @version 1.0
@@ -21735,6 +21761,11 @@ var ViewModel = function() {
 	 * @type {string}
 	 */
 	this.appDescription = "Description";
+	/**
+	 * App Landing Visibility
+	 * @type {boolean}
+	 */
+	this.appLandingVisbility = ko.observable();
 	/**
 	 * App Swiping - true if user is swiping on a touch screen
 	 * @type {boolean}
@@ -22312,6 +22343,190 @@ var ViewModel = function() {
 		}
 	}
 
+	/**
+	 * Get Location. Grab the user's current location
+	 */
+	this.getLocation = function() {
+
+	  /** Try HTML5 Geolocation */
+	  if(navigator.geolocation) {
+
+	  	/**
+	  	 * Get current position with HTML Geolocation
+	  	 * @external 'navigator.geolocation.getCurrentPosition'
+	  	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition}
+	  	 */
+	    navigator.geolocation.getCurrentPosition(function(position) {
+
+	    		/** Update the current latitude & longitude */
+	    		self.mapCurrentLat(position.coords.latitude);
+	    		self.mapCurrentLng(position.coords.longitude);
+
+	    		/** Set the location on the map */
+	    		self.setLocation();
+
+	    		/** Hide the landing */
+			    self.appLandingVisbility(false);
+
+		  }, function() {
+
+	  		/** Browser supports Geolocation but hasn't been enabled */
+	      handleNoGeolocation(true);
+
+		}, 
+			/**
+			 * Enable high accuracy Geolocation
+			 * @external 'enableHighAccuracy'
+			 * @see {@link http://www.w3.org/TR/geolocation-API/#enablehighaccuracy} 
+			 */
+			{ maximumAge:600000, timeout:5000, enableHighAccuracy: true });
+		  
+		} else {
+
+	    /** Browser doesn't support Geolocation */
+	    handleNoGeolocation(false);
+
+		}
+
+		/**
+		 * Handle no Geo-location
+		 * @param  {object}
+		 */
+		function handleNoGeolocation(error) {
+
+	    switch (error.code) {
+        case error.PERMISSION_DENIED:
+					/** If the appDebug variable is set to true, console.log the error */
+					if (self.appDebug) console.log('User denied the request for Geolocation.');
+					/** Show the user notification message  */
+					self.notificationKeepAlive(true);
+					self.notificationMessage('User denied the request for Geolocation.');
+					break;
+        case error.POSITION_UNAVAILABLE:
+					/** If the appDebug variable is set to true, console.log the error */
+					if (self.appDebug) console.log('Location information is unavailable.');
+					/** Show the user notification message  */
+					self.notificationKeepAlive(true);
+					self.notificationMessage('Location information is unavailable.');
+					break;
+        case error.TIMEOUT:
+					/** If the appDebug variable is set to true, console.log the error */
+					if (self.appDebug) console.log('The request to get user location timed out.');
+					/** Show the user notification message  */
+					self.notificationKeepAlive(true);
+					self.notificationMessage('The request to get user location timed out.');
+					break;
+        case error.UNKNOWN_ERROR:
+					/** If the appDebug variable is set to true, console.log the error */
+					if (self.appDebug) console.log('An unknown error occurred.');
+					/** Show the user notification message  */
+					self.notificationKeepAlive(true);
+					self.notificationMessage('An unknown error occurred.');
+					break;
+	    }
+		}
+		
+	}
+
+
+	/**
+	 * Set Location. Set the user's current location on the map.
+	 */
+	this.setLocation = function() {
+
+		/** Set the map's current LatLng */
+    self.mapLatLang = new google.maps.LatLng(self.mapCurrentLat(), self.mapCurrentLng());	
+
+		/** Center map on current LatLng */
+    self.map.setCenter(self.mapLatLang);
+
+    /** Save current Latitude and Longitude values to localStorage via dataModel helper methods */
+    dataModel.set('lat', self.mapCurrentLat());
+    dataModel.set('lng', self.mapCurrentLng());
+
+    /**
+     * Add a custom HTML current position marker to the map
+     * @external 'new RichMarker'
+     * @see {@link https://github.com/mikejoyceio/js-rich-marker}
+     */
+    var marker = new RichMarker({
+    	position: self.mapLatLang,
+    	map: self.map,
+    	flat: true,
+    	content: '<div class="map-current-location">' +
+    							'<div class="radial-pulse"></div>' +
+    					 '</div>'
+    });		
+	}
+
+
+	/**
+	 * Local Storage Available.
+	 * Check local storage for Latitude and Longitude values and if 
+	 * they exist, hide the landing and set the position on the map. 
+	 * Else if localStorage isn't available, show the landing.
+	 */
+	this.localStorageAvailable = function() {
+
+		/** localStorage Latitude and Longitude values aren't set, show the landing */
+		if (!dataModel.get('lat') && !dataModel.get('lat')) {
+
+			/** Show the landing */
+			self.appLandingVisbility(true);	
+
+			/** localStorage Latitude and Longitude values are set */
+		} else {
+
+			/**  Hide the landing */
+			self.appLandingVisbility(false);
+
+			/** Grab the Latitude and Longitude values from localStorage via dataModel helper functions */
+			self.mapCurrentLat(dataModel.get('lat'));
+			self.mapCurrentLng(dataModel.get('lng'));
+
+			/**
+			 * Set the position on the map
+			 * @external 'google.maps.event.addDomListener()'
+			 * @see {@link https://developers.google.com/maps/documentation/javascript/events#DomEvents}
+			 */
+			google.maps.event.addDomListener(window, "load", function(){
+				self.setLocation();
+			});
+		}
+
+	}
+
+	/**
+	 * Local Storage Unavailable.
+	 */
+	this.localStorageUnavailable = function() {
+
+		/** Show the landing */
+		self.appLandingVisbility(true);		
+
+	}
+
+	/**
+	 * Local Storage Available. Check if local storage is available
+	 * @param  {string} type
+	 * @return {boolean}
+	 */	
+	this.checkLocalStorage = function(type) {
+		try {
+			var storage = window[type],
+				x = '__storage_test__';
+			storage.setItem(x, x);
+			storage.removeItem(x);
+			self.localStorageAvailable();
+		}
+		catch(e) {
+			self.localStorageUnavailable();
+		}
+	}
+
+	/** Call the checkLocalStorage function */
+	this.checkLocalStorage('localStorage');
+
 }
 
 /**
@@ -22367,99 +22582,6 @@ ko.bindingHandlers.map = {
      * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#Map}
      */
     bindingContext.$root.map = new google.maps.Map(element, mapOptions);
-
-
-	  /** Try HTML5 Geolocation */
-	  if(navigator.geolocation) {
-
-	  	/**
-	  	 * Get current position with HTML Geolocation
-	  	 * @external 'navigator.geolocation.getCurrentPosition'
-	  	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition}
-	  	 */
-	    navigator.geolocation.getCurrentPosition(function(position) {
-
-	    		/** Update the current latitude & longitude */
-	    		bindingContext.$root.mapCurrentLat(position.coords.latitude);
-	    		bindingContext.$root.mapCurrentLng(position.coords.longitude);
-	
-					/** Set the map's current LatLng */
-		      bindingContext.$root.mapLatLang = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);	
-
-	    		/** Center map on current LatLng */
-		      bindingContext.$root.map.setCenter(bindingContext.$root.mapLatLang);
-
-		      /**
-		       * Add a custom HTML current position marker to the map
-		       * @external 'new RichMarker'
-		       * @see {@link https://github.com/mikejoyceio/js-rich-marker}
-		       */
-			    var marker = new RichMarker({
-			    	position: bindingContext.$root.mapLatLang,
-			    	map: bindingContext.$root.map,
-			    	flat: true,
-			    	content: '<div class="map-current-location">' +
-			    							'<div class="radial-pulse"></div>' +
-			    					 '</div>'
-			    });
-
-		  }, function() {
-
-	  		/** Browser supports Geolocation but hasn't been enabled */
-	      handleNoGeolocation(true);
-
-		}, 
-			/**
-			 * Enable high accuracy Geolocation
-			 * @external 'enableHighAccuracy'
-			 * @see {@link http://www.w3.org/TR/geolocation-API/#enablehighaccuracy} 
-			 */
-			{ maximumAge:600000, timeout:5000, enableHighAccuracy: true });
-		  
-		} else {
-
-	    /** Browser doesn't support Geolocation */
-	    handleNoGeolocation(false);
-
-		}
-
-		/**
-		 * Handle no Geo-location
-		 * @param  {object}
-		 */
-		function handleNoGeolocation(error) {
-
-	    switch (error.code) {
-        case error.PERMISSION_DENIED:
-					/** If the appDebug variable is set to true, console.log the error */
-					if (bindingContext.$root.appDebug) console.log('User denied the request for Geolocation.');
-					/** Show the user notification message  */
-					bindingContext.$root.notificationKeepAlive(true);
-					bindingContext.$root.notificationMessage('User denied the request for Geolocation.');
-					break;
-        case error.POSITION_UNAVAILABLE:
-					/** If the appDebug variable is set to true, console.log the error */
-					if (bindingContext.$root.appDebug) console.log('Location information is unavailable.');
-					/** Show the user notification message  */
-					bindingContext.$root.notificationKeepAlive(true);
-					bindingContext.$root.notificationMessage('Location information is unavailable.');
-					break;
-        case error.TIMEOUT:
-					/** If the appDebug variable is set to true, console.log the error */
-					if (bindingContext.$root.appDebug) console.log('The request to get user location timed out.');
-					/** Show the user notification message  */
-					bindingContext.$root.notificationKeepAlive(true);
-					bindingContext.$root.notificationMessage('The request to get user location timed out.');
-					break;
-        case error.UNKNOWN_ERROR:
-					/** If the appDebug variable is set to true, console.log the error */
-					if (bindingContext.$root.appDebug) console.log('An unknown error occurred.');
-					/** Show the user notification message  */
-					bindingContext.$root.notificationKeepAlive(true);
-					bindingContext.$root.notificationMessage('An unknown error occurred.');
-					break;
-	    }
-		}
 
 	},
 
@@ -23430,14 +23552,16 @@ ko.bindingHandlers.viewportWidth = {
 	 */
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
+		/** Set the viewport width on load */
+		bindingContext.$root.appViewportWidth($(window).width());	
+
 		/** 
 		 * When the browser window is resized, set the binding to the windows width in pixels 
 		 * @external '$().resize'
 		 * @see {@link https://api.jquery.com/resize/} 
 		 */
 		$(window).resize(function() {
-			var viewportWidth = $(this).width();
-			bindingContext.$root.appViewportWidth(viewportWidth);
+			bindingContext.$root.appViewportWidth($(this).width());
 		});
 	}
 };
