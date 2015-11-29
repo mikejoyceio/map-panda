@@ -55,7 +55,8 @@
 
 		<!-- Search Filter -->
 		<div class="search-filter">
-			<input class="search-input" type="search" id="filter" placeholder="Filter" data-bind="value: searchQuery, valueUpdate: 'keyup', event: { search: clearFilter }">
+			<div class="search-filter-clear" data-bind="click: clearFilter, visible: searchClearFilterVisibility">X</div>
+			<input class="search-input" type="text" id="filter" placeholder="Filter" data-bind="textInput: searchQuery">
 		</div>
 		<!-- /Search Filter -->
 
@@ -232,7 +233,7 @@
 
 		</div>
 		<!-- /Modal Content -->
-		
+
 	</div>
 	<!-- /Modal -->
 
