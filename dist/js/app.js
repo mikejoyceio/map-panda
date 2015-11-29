@@ -21991,6 +21991,10 @@ var ViewModel = function() {
 	 * @type {number}
 	 */
 	this.searchRadius = ko.observable(this.appConstants.SEARCH_RADIUS_MAX / 2);
+	/**
+	 * Search Clear Filter Visibility
+	 */
+	this.searchClearFilterVisibility = ko.observable(false);
 
 	/**
 	 * Loop through each Object in the dataModel places array
@@ -22041,26 +22045,63 @@ var ViewModel = function() {
 
 	/**
 	 * Filter place types in the place list
-	 * @param  {String} value
+	 * @param  {String} query
 	 */
-	this.filter = function(value) {
-	 for (var i=0,j=self.placeList().length;i<j;i++) {
-	 	self.placeList()[i].isHidden(false);
-	 	if (value.toLowerCase() === self.placeList()[i].name().toLowerCase()) {
-	 		self.selectPlace(self.placeList()[i]);
-	 	} else if (value.length === 0) {
-	 		self.placeList()[i].isHidden(false);
-	 	} else {
-	 		self.placeList()[i].isHidden(true);
-	 	}
-	 }
+	this.filter = function(query) {
+
+		/** Loop through each place in the place list */
+		for (var i=0;i<self.placeList().length;i++) {
+			compareString(query, self.placeList()[i].name().toLowerCase(), self.placeList()[i]);
+		}
+
+		/**
+		 * Compare String
+		 * @param  {string} value       
+		 * @param  {string} placeName   
+		 * @param  {Object} placeObject             
+		 */
+		function compareString(value, placeName, placeObject) {
+
+			/** Loop through the length of the search query string */
+			for (var i=0;i<value.length;i++) {
+
+				/** If characters match in order, show the place type, else hide it */
+				if (placeName.indexOf(value) !== -1 && placeName.charAt(i) === value.charAt(i)) {
+					placeObject.isHidden(false);
+					self.searchClearFilterVisibility(true);
+				} else {
+					placeObject.isHidden(true);
+				}
+			}
+
+			/** If the search query is an exact match, select the place type, else show all place types if the search query is empty */
+			if (value.indexOf(placeName) === 0) {
+				self.selectPlace(placeObject);
+			} else if (value.length === 0) {
+				placeObject.isHidden(false);
+				self.searchClearFilterVisibility(false);
+			}
+
+		}
+
 	}
+
+	/**
+	 * Subscribe to the search query observable
+	 * @external 'subscribe()'
+	 * @see {@link http://knockoutjs.com/documentation/observables.html}
+	 */
 	this.searchQuery.subscribe(this.filter);
 
 	/**
 	 * Clear the Filter.
 	 */
-	this.clearFilter = function() {
+	this.clearFilter = function(data, event) {
+
+		/** Clear the filter input */
+		self.searchQuery('');
+
+		/** Loops through each place type in the place list and show it */
 		for (var i=0,j=self.placeList().length;i<j;i++) {
 			self.placeList()[i].isHidden(false);
 		}
@@ -22542,7 +22583,7 @@ ko.bindingHandlers.map = {
 
     	} else {
 	  		/**
-	  		 * Callback Error Handling. Error status and messages will be passed the the callbackError function.
+	  		 * Callback Error Handling. Error status and messages are passed the the callbackError function.
 	  		 */
 	    	switch (status) {
 
@@ -22559,8 +22600,8 @@ ko.bindingHandlers.map = {
 						callbackError(status+' This webpage is not allowed to use the PlacesService.', 'Error. Please try again.');	
 						break;
 					case statusCode.UNKNOWN_ERROR:
-					   callbackError(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.', 'Server Error. Please try again.');	
-					   break;
+						callbackError(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.', 'Server Error. Please try again.');	
+						break;
 					case statusCode.ZERO_RESULTS:
 						callbackError(status+' No result was found for this request.', 'No Results');	
 						break;

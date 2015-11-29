@@ -29,6 +29,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [CSS Triangle Generator](http://apps.eky.hk/css-triangle-generator/)
 - [Change Browser Highlight Colour](http://www.paulund.co.uk/change-browser-highlight-colour) by Paul Lund
 - [CSS Ellipsis](http://html5hub.com/ellipse-my-text/)
+- [CSS Tricks: appearance](https://css-tricks.com/almanac/properties/a/appearance/)
 - [MDN: CSS Position](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
 - [MDN: CSS Transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
 
@@ -42,6 +43,8 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [HTML5 Doctor: The Main Element](http://html5doctor.com/the-main-element/)
 - [Using WAI-ARIA in HTML](http://w3c.github.io/aria-in-htmlUsing WAI-ARIA in HTML/)
 - [Stack Overflow: How to you detect the clearing of a "search" HTML5 input?](http://stackoverflow.com/questions/2977023/how-do-you-detect-the-clearing-of-a-search-html5-input)
+- [Can I Use: Search input type](http://caniuse.com/#search=search%20input)
+- [HTML input type=search](https://html.spec.whatwg.org/multipage/forms.html#text-(type=text)-state-and-search-state-(type=search))
 
 ######Images
 
@@ -111,6 +114,9 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Stack Exchange: Getting the Object Data](http://stackoverflow.com/questions/13755220/knockout-js-getting-the-object-data)
 - [Live Search with KnockoutJS](http://opensoul.org/2011/06/23/live-search-with-knockoutjs/) By Brandon Keepers
 - [Developing Large Scale KnockoutJS Applications](http://blog.scottlogic.com/2014/02/28/developing-large-scale-knockoutjs-applications.html) by Robat Williams
+- [Mozilla Developer Network: String.length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length)
+- [Mozilla Developer Network: String.prototype.charAt()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt)
+- [Mozilla Developer Network: String.prototype.indexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf)
 
 ######Foursquare API
 
