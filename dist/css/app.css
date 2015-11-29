@@ -6235,13 +6235,30 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .menu-main .search-filter {
-  padding: 10px;
   display: none;
+  height: 30px;
+  margin: 10px 10px 0 10px;
+  position: relative;
+  width: 183px;
 }
 @media only screen and (min-width: 64.0625em) {
   .menu-main .search-filter {
     display: block;
   }
+}
+.menu-main .search-filter .search-filter-clear {
+  color: #ed5565;
+  font-size: 11px;
+  font-weight: bold;
+  height: 20px;
+  position: absolute;
+  right: 2px;
+  text-align: center;
+  top: 2px;
+  width: 20px;
+}
+.menu-main .search-filter .search-filter-clear:hover {
+  cursor: pointer;
 }
 .menu-main .search-filter .search-input {
   -moz-border-radius: 3px;
@@ -6249,10 +6266,13 @@ Copyright (c) 2015 Daniel Eden
   border-radius: 3px;
   background: #fefefe;
   border: 2px solid #fff;
-  height: 23px;
-  outline: none;
-  padding: 0 2px;
+  height: 25px;
+  padding: 0 4px;
   width: 100%;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 .menu-main .search-filter .search-input:focus {
   outline-color: transparent;
