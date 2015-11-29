@@ -45,6 +45,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Stack Overflow: How to you detect the clearing of a "search" HTML5 input?](http://stackoverflow.com/questions/2977023/how-do-you-detect-the-clearing-of-a-search-html5-input)
 - [Can I Use: Search input type](http://caniuse.com/#search=search%20input)
 - [HTML input type=search](https://html.spec.whatwg.org/multipage/forms.html#text-(type=text)-state-and-search-state-(type=search))
+- [Mozilla Developer Network](https://developer.mozilla.org/en/docs/Web/HTML/Element/Input)
 
 ######Images
 
@@ -79,6 +80,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Google: JavaScript Style Guide](https://google.github.io/styleguide/javascriptguide.xml)
 - [JSDoc](http://usejsdoc.org/tags-file.html)
 - [An Introduction to JSDoc](http://www.2ality.com/2011/08/jsdoc-intro.html)
+- [Mozilla Developer Network: Using the Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
 
 ######jQuery 
 
