@@ -1734,14 +1734,16 @@ ko.bindingHandlers.viewportWidth = {
 	 */
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
+		/** Set the viewport width on load */
+		bindingContext.$root.appViewportWidth($(window).width());	
+
 		/** 
 		 * When the browser window is resized, set the binding to the windows width in pixels 
 		 * @external '$().resize'
 		 * @see {@link https://api.jquery.com/resize/} 
 		 */
 		$(window).resize(function() {
-			var viewportWidth = $(this).width();
-			bindingContext.$root.appViewportWidth(viewportWidth);
+			bindingContext.$root.appViewportWidth($(this).width());
 		});
 	}
 };
