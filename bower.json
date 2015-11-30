@@ -21,7 +21,7 @@
     "ionrangeslider": "~2.0.9",
     "js-rich-marker": "https://github.com/googlemaps/js-rich-marker.git#gh-pages",
     "malihu-custom-scrollbar-plugin": "~3.0.9",
-    "font-awesome": "~4.4.0",
+    "font-awesome": "~4.5.0",
     "Knockout-Animate": "git://github.com/TheGAFF/Knockout-Animate",
     "google-maps-infobox": "git://github.com/mikejoyceio/google-maps-infobox",
     "clipboard": "~1.5.3",
