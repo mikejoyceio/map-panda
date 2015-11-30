@@ -29,6 +29,19 @@
   }
 }
 
+.map-notification {
+	top: 75px;
+
+	@media #{$medium-up} {
+		top: 99px;
+	}
+
+	@media #{$large-up} {
+		left: 203px;
+		top: 105px;
+	}
+}
+
 .gm-style-cc:nth-child(n+8) {
     display: none;
 }
