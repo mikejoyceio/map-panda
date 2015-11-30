@@ -32,216 +32,277 @@
 </head>
 <body data-bind="viewportWidth, preventSwipeTap">
 
-	<!-- Notification -->
-	<div class="notification" data-bind="notification: {message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
-	<!-- /Notification -->
+	<!-- View -->
+	<!-- ko template: 'view' --><!-- /ko -->
+	<script	id="view" type="text/html">
 
-	<!-- Brand -->
-	<div class="brand">
-		<a href="/">
-			<div class="brand-image"></div>
-		</a>
-	</div>
-	<!-- /Brand -->
+		<!-- Landing -->
+		<div class="landing" data-bind="visible: appLandingVisbility">
 
-	<!-- Main Menu -->
-	<div class="menu-main" role="menu">
+			<h1 class="landing-header">
+				Map Panda
+			</h1>
 
-		<!-- Search Radius -->
-		<div class="search-radius">
-			<input type="text" class="hidden" data-bind="rangeSlider: searchRadius">
-		</div>
-		<!-- /Search Radius -->
+			<div class="landing-brand">
+				<div class="brand-image"></div>
+			</div>
 
-		<!-- Search Filter -->
-		<div class="search-filter">
-			<div class="search-filter-clear" data-bind="click: clearFilter, visible: searchClearFilterVisibility">X</div>
-			<input class="search-input" type="text" id="filter" placeholder="Filter" data-bind="textInput: searchQuery">
-		</div>
-		<!-- /Search Filter -->
+			<p class="landing-info">
+				Explore popular locations around you.
+			</p>
 
-		<!-- Options -->
-		<ul class="place-list" data-bind="scrollBar: appViewportWidth">
-			<!-- ko foreach: placeList -->
-			<li class="item" data-bind="css: {active: isActive(), hidden: isHidden()}, event: { click: $parent.selectPlace, touchend: $parent.selectPlace }, hover">
-				<span class="icon fa-stack fa-sml">
-					<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>
-					<i class="icon-inner fa fa-stack-1x fa-inverse" data-bind="css: icon"></i>
-				</span>
-				<span data-bind="text: name"></span>
-			</li>
-			<!-- /ko -->
-		</ul>
-		<!-- /Options -->
-
-	</div>
-	<!-- /Main Menu -->
-
-	<!-- Wheel Menu -->
-	<div class="menu-wheel">
-		<div data-bind="wheelNav: searchRadius" id="wheelNav">
-		</div>
-	</div>
-	<!-- /Wheel Menu -->
-
-	<!-- Main Content -->
-	<div class="main-content" role="main">
-
-		<!-- Map Info -->
-		<div class="map-info">
-			<div class="content">
-				<div data-bind="visible: mapInfoVisibility">
-					<!-- ko with: currentPlace -->
-					<h2 class="content-header" data-bind="text: name"></h2>	
-					<!-- /ko -->
+			<div class="landing-loading" data-bind="visible: appLandingLoadingVisibility">
+				<div class="landing-loader">
+					<div class="radial-pulse-outer"></div>
+					<div class="radial-pulse-inner"></div>
 				</div>
 			</div>
-		</div>
-		<!-- /Map Info -->
-
-		<!-- Map Compass -->
-		<div class="map-compass" data-bind="compass">
-     	<div class="north">N</div>
-    	<div class="south"></div>
-    </div>
-		<!-- /Map Compass -->
-
-		<!-- Map -->
-		<div class="map" data-bind="map: { currentPlace: currentPlace, searchRadius: searchRadius }"></div>
-		<!-- /Map -->
-
-		<!-- Map Controls -->
-		<div class="map-pan-to" data-bind="event: { click: mapPanTo, touchend: mapPanTo }">
-			<span class="icon fa fa-crosshairs"></span>
-		</div>
-
-		<div class="map-zoom-buttons">
-	    <div class="map-zoom-button zoom-in" data-bind="event: { click: mapZoomIn, touchend: mapZoomIn }">
-  			<span class="fa fa-plus"></span>	
-  		</div>	
-  		<div class="map-zoom-button zoom-out" data-bind="event: { click: mapZoomOut, touchend: mapZoomOut }">
-   			<span class="fa fa-minus"></span>	
-   		</div>
-		</div>
-   	<!-- /Map Controls -->
-
-	  <!-- Map Loader -->
-		<div class="map-loader" data-bind="visible: mapLoaderVisibility">
-			<div class="content">
-				<div class="icon">
-					<span class="fa fa-compass fa-spin"></span>
-				</div>
+		
+			<div class="landing-action">
+				<button class="button action radius expand" data-bind="click: getLocation">Find Me</button>
 			</div>
+
+			<div class="landing-powered">
+				<h3 class="landing-powered-header">
+					Powered By
+				</h3>
+				<ul class="brand-list">
+					<li class="item foursquare">
+					 <a class="url" href="https://foursquare.com/" target="_blank">
+					 	<span class="icon fa fa-foursquare"></span> 
+					 </a>
+					</li>
+					<li class="item google">
+					 <a class="url" href="https://www.google.com/work/mapsearth/" target="_blank">
+					 	<span class="icon fa fa-google"></span> 
+					 </a>
+					</li>
+					<li class="item uber">
+					 <a class="url" href="https://www.uber.com/" target="_blank">
+					 	<span class="icon fa"></span> 
+					 </a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="landing-notification notification" data-bind="notification: { message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
+
 		</div>
-		<!-- /Map Loader -->
+		<!-- /Landing -->
 
-	</div>
-	<!-- /Main Content -->
+		<!-- Brand -->
+		<div class="brand">
+			<a href="/">
+				<div class="brand-image"></div>
+			</a>
+		</div>
+		<!-- /Brand -->
 
-	<!-- Modal -->
-	<div class="modal" data-bind="cssAnimateVisible: modalVisibilty, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 200, durationOut: 100">
+		<!-- Main Menu -->
+		<div class="menu-main" role="menu">
 
-		<!-- Modal Content -->
-		<div class="modal-content">
-			
-			<!-- Modal Header -->
-			<div class="modal-header">
-				<div class="top-bar">
-					<span class="close-modal" data-bind="event: { click: closeModal, touchend: closeModal }">
+			<!-- Search Radius -->
+			<div class="search-radius">
+				<input type="text" class="hidden" data-bind="rangeSlider: searchRadius">
+			</div>
+			<!-- /Search Radius -->
+
+			<!-- Search Filter -->
+			<div class="search-filter">
+				<div class="search-filter-clear" data-bind="click: clearFilter, visible: searchClearFilterVisibility">X</div>
+				<input class="search-input" type="text" id="filter" placeholder="Filter" data-bind="textInput: searchQuery">
+			</div>
+			<!-- /Search Filter -->
+
+			<!-- Options -->
+			<ul class="place-list" data-bind="scrollBar: appViewportWidth">
+				<!-- ko foreach: placeList -->
+				<li class="item" data-bind="css: {active: isActive(), hidden: isHidden()}, event: { click: $parent.selectPlace, touchend: $parent.selectPlace }, hover">
 					<span class="icon fa-stack fa-sml">
 						<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>
-						<i class="icon-inner fa fa-close fa-stack-1x fa-inverse"></i>
+						<i class="icon-inner fa fa-stack-1x fa-inverse" data-bind="css: icon"></i>
 					</span>
-					</span>
-				</div>
-				<div class="image" data-bind="style: { backgroundImage: modalInfoImage }, cssAnimateVisible: modalInfoImageVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300"></div>
-				<div class="place-price" data-bind="css: modalInfoPrice">
-					<span class="dollar dollar-01"></span>
-					<span class="dollar dollar-02"></span>
-					<span class="dollar dollar-03"></span>
-					<span class="dollar dollar-04"></span>	
-				</div>
-				<div class="bottom-bar">
-				</div>
-			</div>
-			<!-- /Modal Header -->
-
-			<!-- Modal Body -->
-			<div class="modal-body">
-				<div class="place-rating rating" data-bind="css: modalInfoRating">
-					<span class="star star-01"></span>
-					<span class="star star-02"></span>
-					<span class="star star-03"></span>
-					<span class="star star-04"></span>
-					<span class="star star-05"></span>	
-				</div>
-				<div class="actions">
-					<div class="action-phone" data-bind="event: { click: openModalOverlay, touchend: openModalOverlay }">
-						<span class="icon fa fa-phone"></span>	
-					</div>	
-					<div class="action-uber" data-bind="click: uberRideRequest">
-						<div class="icon">
-							<span class="uber-loader" data-bind="visible: modalUberLoading"></span>
-						</div>
-						<div class="estimate" data-bind="cssAnimateVisible: modalUberEstimateVisibility, animation: 'slideInDown', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
-							<span data-bind="text: modalUberEstimate"></span>
-						</div>
-					</div>
-				</div>
-				<div class="info">
-					<div class="info-item place-address">
-						<span class="icon fa fa-compass"></span>
-						<p class="place-name" data-bind="text: modalInfoName"></p>
-						<p data-bind="text: modalInfoAddress"></p>	
-					</div>
-					<div class="info-item place-website" data-bind="visible: modalInfoWebsite">
-						<span class="icon fa fa-globe"></span>
-						<p><a class="url" data-bind="attr: { href: modalInfoWebsite }" target="_blank">Website</a></p>
-					</div>
-				</div>
-			</div>
-			<!-- /Modal Body -->
-
-			<!-- Modal Overlay -->
-			<div class="modal-overlay" data-bind="cssAnimateVisible: modalOverlayVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
-				<div class="modal-overlay-message" data-bind="cssAnimateVisible: modalOverlayMessageVisibility, animation: 'bounceIn', animationOut: 'fadeOut', duration: 300, durationOut: 100, text: modalOverlayMessage"></div>
-				<div id="clipboardTarget" class="place-phone" data-bind="text: modalInfoPhone"></div>			
-				<div class="actions">
-					<div class="button-group" data-bind="visible: modalInfoPhoneCall, css: modalOverlayGroupButtons">
-						<button class="button copy default radius" data-bind="visible: modalOverlayCopyButtonVisibility, clipboard" data-clipboard-target="#clipboardTarget">Copy</button>
-						<a class="button call action radius" data-bind="attr: { href: 'tel:'+modalInfoPhoneCall() }">Call</a>
-					</div>
-					<button class="button cancel radius expand" data-bind="event: { click: closeModalOverlay, touchend: closeModalOverlay }">Close</button>
-				</div>
-			</div>
-			<!-- /Modal Overlay -->
-
-			<!-- Modal Footer -->
-			<div class="modal-footer">
-				<a class="button-foursquare" data-bind="visible: modalFoursquareVisibility(), attr: { href: modalFoursquareURL() }" target="_blank">
-					<span class="icon fa fa-foursquare"></span>
-					<span>View in Foursquare</span>
-				</a>
-			</div>
-			<!-- /Modal Footer -->
-
-			<!-- Modal Loader -->
-			<div class="modal-loading" data-bind="cssAnimateVisible: modalLoading, animation: 'bounceIn', animationOut: 'zoomOut', duration: 300, durationOut: 300">
-				<div class="modal-loader"></div>
-			</div>
-			<!-- /Modal Loader -->
+					<span data-bind="text: name"></span>
+				</li>
+				<!-- /ko -->
+			</ul>
+			<!-- /Options -->
 
 		</div>
-		<!-- /Modal Content -->
+		<!-- /Main Menu -->
 
-	</div>
-	<!-- /Modal -->
+		<!-- Wheel Menu -->
+		<div class="menu-wheel">
+			<div data-bind="wheelNav: searchRadius" id="wheelNav">
+			</div>
+		</div>
+		<!-- /Wheel Menu -->
 
-	<!-- Footer -->
-	<footer class="footer" role="contentinfo">
+		<!-- Main Content -->
+		<div class="main-content" role="main">
 
-	</footer>
-	<!-- /Footer -->
+			<!-- Map Info -->
+			<div class="map-info">
+				<div class="content">
+					<div data-bind="visible: mapInfoVisibility">
+						<!-- ko with: currentPlace -->
+						<h2 class="content-header" data-bind="text: name"></h2>	
+						<!-- /ko -->
+					</div>
+				</div>
+			</div>
+			<!-- /Map Info -->
+
+			<!-- Map Compass -->
+			<div class="map-compass" data-bind="compass">
+	     	<div class="north">N</div>
+	    	<div class="south"></div>
+	    </div>
+			<!-- /Map Compass -->
+
+			<!-- Map -->
+			<div class="map" data-bind="map: { currentPlace: currentPlace, searchRadius: searchRadius }"></div>
+			<!-- /Map -->
+
+			<!-- Map Controls -->
+			<div class="map-pan-to" data-bind="event: { click: mapPanTo, touchend: mapPanTo }">
+				<span class="icon fa fa-crosshairs"></span>
+			</div>
+
+			<div class="map-zoom-buttons">
+		    <div class="map-zoom-button zoom-in" data-bind="event: { click: mapZoomIn, touchend: mapZoomIn }">
+	  			<span class="fa fa-plus"></span>	
+	  		</div>	
+	  		<div class="map-zoom-button zoom-out" data-bind="event: { click: mapZoomOut, touchend: mapZoomOut }">
+	   			<span class="fa fa-minus"></span>	
+	   		</div>
+			</div>
+	   	<!-- /Map Controls -->
+
+		  <!-- Map Loader -->
+			<div class="map-loader" data-bind="visible: mapLoaderVisibility">
+				<div class="content">
+					<div class="icon">
+						<span class="fa fa-compass fa-spin"></span>
+					</div>
+				</div>
+			</div>
+			<!-- /Map Loader -->
+
+			<!-- Map Notification -->
+			<div class="map-notification notification" data-bind="notification: { message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
+			<!-- /Map Notification -->
+
+		</div>
+		<!-- /Main Content -->
+
+		<!-- Modal -->
+		<div class="modal" data-bind="cssAnimateVisible: modalVisibilty, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 200, durationOut: 100">
+
+			<!-- Modal Content -->
+			<div class="modal-content">
+				
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<div class="top-bar">
+						<span class="close-modal" data-bind="event: { click: closeModal, touchend: closeModal }">
+						<span class="icon fa-stack fa-sml">
+							<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>
+							<i class="icon-inner fa fa-close fa-stack-1x fa-inverse"></i>
+						</span>
+						</span>
+					</div>
+					<div class="image" data-bind="style: { backgroundImage: modalInfoImage }, cssAnimateVisible: modalInfoImageVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300"></div>
+					<div class="place-price" data-bind="css: modalInfoPrice">
+						<span class="dollar dollar-01"></span>
+						<span class="dollar dollar-02"></span>
+						<span class="dollar dollar-03"></span>
+						<span class="dollar dollar-04"></span>	
+					</div>
+					<div class="bottom-bar">
+					</div>
+				</div>
+				<!-- /Modal Header -->
+
+				<!-- Modal Body -->
+				<div class="modal-body">
+					<div class="place-rating rating" data-bind="css: modalInfoRating">
+						<span class="star star-01"></span>
+						<span class="star star-02"></span>
+						<span class="star star-03"></span>
+						<span class="star star-04"></span>
+						<span class="star star-05"></span>	
+					</div>
+					<div class="actions">
+						<div class="action-phone" data-bind="event: { click: openModalOverlay, touchend: openModalOverlay }">
+							<span class="icon fa fa-phone"></span>	
+						</div>	
+						<div class="action-uber" data-bind="click: uberRideRequest">
+							<div class="icon">
+								<span class="uber-loader" data-bind="visible: modalUberLoading"></span>
+							</div>
+							<div class="estimate" data-bind="cssAnimateVisible: modalUberEstimateVisibility, animation: 'slideInDown', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
+								<span data-bind="text: modalUberEstimate"></span>
+							</div>
+						</div>
+					</div>
+					<div class="info">
+						<div class="info-item place-address">
+							<span class="icon fa fa-compass"></span>
+							<p class="place-name" data-bind="text: modalInfoName"></p>
+							<p data-bind="text: modalInfoAddress"></p>	
+						</div>
+						<div class="info-item place-website" data-bind="visible: modalInfoWebsite">
+							<span class="icon fa fa-globe"></span>
+							<p><a class="url" data-bind="attr: { href: modalInfoWebsite }" target="_blank">Website</a></p>
+						</div>
+					</div>
+				</div>
+				<!-- /Modal Body -->
+
+				<!-- Modal Overlay -->
+				<div class="modal-overlay" data-bind="cssAnimateVisible: modalOverlayVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
+					<div class="modal-overlay-message" data-bind="cssAnimateVisible: modalOverlayMessageVisibility, animation: 'bounceIn', animationOut: 'fadeOut', duration: 300, durationOut: 100, text: modalOverlayMessage"></div>
+					<div id="clipboardTarget" class="place-phone" data-bind="text: modalInfoPhone"></div>			
+					<div class="actions">
+						<div class="button-group" data-bind="visible: modalInfoPhoneCall, css: modalOverlayGroupButtons">
+							<button class="button copy default radius" data-bind="visible: modalOverlayCopyButtonVisibility, clipboard" data-clipboard-target="#clipboardTarget">Copy</button>
+							<a class="button call action radius" data-bind="attr: { href: 'tel:'+modalInfoPhoneCall() }">Call</a>
+						</div>
+						<button class="button cancel radius expand" data-bind="event: { click: closeModalOverlay, touchend: closeModalOverlay }">Close</button>
+					</div>
+				</div>
+				<!-- /Modal Overlay -->
+
+				<!-- Modal Footer -->
+				<div class="modal-footer">
+					<a class="button-foursquare" data-bind="visible: modalFoursquareVisibility(), attr: { href: modalFoursquareURL() }" target="_blank">
+						<span class="icon fa fa-foursquare"></span>
+						<span>View in Foursquare</span>
+					</a>
+				</div>
+				<!-- /Modal Footer -->
+
+				<!-- Modal Loader -->
+				<div class="modal-loading" data-bind="cssAnimateVisible: modalLoading, animation: 'bounceIn', animationOut: 'zoomOut', duration: 300, durationOut: 300">
+					<div class="modal-loader"></div>
+				</div>
+				<!-- /Modal Loader -->
+
+			</div>
+			<!-- /Modal Content -->
+
+		</div>
+		<!-- /Modal -->
+
+		<!-- Footer -->
+		<footer class="footer" role="contentinfo">
+
+		</footer>
+		<!-- /Footer -->
+
+	</script>
+	<!-- /View -->
 	
 	<!-- Google Maps API -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KC7nmHmDdz1n0H9xy9rm_B9YAUPeo_A&libraries=places"></script>
