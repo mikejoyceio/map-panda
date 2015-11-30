@@ -89,3 +89,34 @@
 		}
 	}
 }
+
+.landing-loader {
+	.radial-pulse-outer {
+		@include animation(pulse-fade 2.1s linear infinite);
+		@include border-radius(999px);
+	  background: transparent;
+	  border: 3px solid rgba(51, 149, 255, 0.9);
+	  height: 50px;
+	  margin: auto;
+	  top: 5px;
+	  left: 0;
+	  right: 0;
+	  position: absolute;
+	  width: 50px;
+	  z-index: 1;
+	}
+
+	.radial-pulse-inner {
+		@include animation(pulse-fade 2.1s 0.5s ease-out infinite);
+		@include border-radius(999px);
+	  background: transparent;
+	  border: 3px solid rgba(51, 149, 255, 0.9);
+	  height: 30px;
+	  margin: 15px auto;
+	  left: 0;
+	  right: 0;
+	  position: absolute;
+	  width: 30px;
+	  z-index: 1;		
+	}
+}
