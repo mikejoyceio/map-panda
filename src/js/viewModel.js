@@ -10,6 +10,10 @@
  * - Add help panel
  * - Test Uber deep linking
  * - Update viewportWidth and preventSwipeTap bindings
+ * - Update Font Awesome
+ * - Organize sass color pallete
+ * - Add CSS visibility animation to notification
+ * - Check notification error messages
  */
 
 /**
@@ -43,7 +47,12 @@ var ViewModel = function() {
 	 * App Landing Visibility
 	 * @type {boolean}
 	 */
-	this.appLandingVisbility = ko.observable();
+	this.appLandingVisbility = ko.observable(true);
+	/**
+	 * App Landing Loading Visibility
+	 * @type {boolean}
+	 */	
+	this.appLandingLoadingVisibility = ko.observable(false)
 	/**
 	 * App Swiping - true if user is swiping on a touch screen
 	 * @type {boolean}
@@ -629,6 +638,9 @@ var ViewModel = function() {
 	  /** Try HTML5 Geolocation */
 	  if(navigator.geolocation) {
 
+	  	/** Show landing loading animation */
+	  	self.appLandingLoadingVisibility(true);	
+
 	  	/**
 	  	 * Get current position with HTML Geolocation
 	  	 * @external 'navigator.geolocation.getCurrentPosition'
@@ -643,8 +655,12 @@ var ViewModel = function() {
 	    		/** Set the location on the map */
 	    		self.setLocation();
 
-	    		/** Hide the landing */
-			    self.appLandingVisbility(false);
+	    		setTimeout(function() {
+	    			/** Hide the landing */
+			    	self.appLandingVisbility(false);
+			    	/** Hide the landing loading animation */
+			    	self.appLandingLoadingVisibility(false);
+			  	}, 5000);
 
 		  }, function() {
 
@@ -668,7 +684,7 @@ var ViewModel = function() {
 
 		/**
 		 * Handle no Geo-location
-		 * @param  {object}
+		 * @param {object}
 		 */
 		function handleNoGeolocation(error) {
 
@@ -746,7 +762,7 @@ var ViewModel = function() {
 	 */
 	this.localStorageAvailable = function() {
 
-		/** localStorage Latitude and Longitude values aren't set, show the landing */
+		/** localStorage Latitude and Longitude values aren't set */
 		if (!dataModel.get('lat') && !dataModel.get('lat')) {
 
 			/** Show the landing */
@@ -795,9 +811,13 @@ var ViewModel = function() {
 				x = '__storage_test__';
 			storage.setItem(x, x);
 			storage.removeItem(x);
+
+			/** Call the LocalStorageAvailable function */
 			self.localStorageAvailable();
 		}
 		catch(e) {
+
+			/** Call the LocalStorageUnavailable function */
 			self.localStorageUnavailable();
 		}
 	}

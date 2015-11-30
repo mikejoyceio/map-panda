@@ -16,21 +16,14 @@
   position: absolute;
   right: 0;
   text-align: center;
-  top: 75px;
   width: 200px;
   z-index: 1000;
-
-	@media #{$medium-up} {
-		top: 99px;
-	}
 
   @media #{$large-up} {
     font-size: 14px;
     font-size: 14px;
     height: 15px;
-    left: 203px;
     line-height: 1.1;
     right: 0;
-    top: 105px;
   }
 }

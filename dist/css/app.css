@@ -81,7 +81,7 @@ h3 {
 }
 
 html, body {
-  background-image: url(/dist/images/default-large.png);
+  background-image: url(../images/default-large.png);
   background-repeat: repeat;
   background-size: 15%;
   height: 100%;
@@ -3058,7 +3058,7 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .brand .brand-image {
-  background: url(../images/panda-small.png);
+  background: url(../images/panda-white.png);
   background-size: 100%;
   background-repeat: no-repeat;
   position: absolute;
@@ -3086,6 +3086,7 @@ Copyright (c) 2015 Daniel Eden
 .button {
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
   border-radius: 0;
   border-style: solid;
   border-width: 1px;
@@ -3154,15 +3155,15 @@ Copyright (c) 2015 Daniel Eden
 }
 
 /*!
- *  Font Awesome 4.4.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 /* FONT PATH
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.eot?v=4.4.0");
-  src: url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.4.0") format("embedded-opentype"), url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.woff2?v=4.4.0") format("woff2"), url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.woff?v=4.4.0") format("woff"), url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.ttf?v=4.4.0") format("truetype"), url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular") format("svg");
+  src: url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.eot?v=4.5.0");
+  src: url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.eot?#iefix&v=4.5.0") format("embedded-opentype"), url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.woff2?v=4.5.0") format("woff2"), url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.woff?v=4.5.0") format("woff"), url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.ttf?v=4.5.0") format("truetype"), url("../../src/vendor/font-awesome/fonts/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -5792,6 +5793,86 @@ Copyright (c) 2015 Daniel Eden
   content: "";
 }
 
+.fa-reddit-alien:before {
+  content: "";
+}
+
+.fa-edge:before {
+  content: "";
+}
+
+.fa-credit-card-alt:before {
+  content: "";
+}
+
+.fa-codiepie:before {
+  content: "";
+}
+
+.fa-modx:before {
+  content: "";
+}
+
+.fa-fort-awesome:before {
+  content: "";
+}
+
+.fa-usb:before {
+  content: "";
+}
+
+.fa-product-hunt:before {
+  content: "";
+}
+
+.fa-mixcloud:before {
+  content: "";
+}
+
+.fa-scribd:before {
+  content: "";
+}
+
+.fa-pause-circle:before {
+  content: "";
+}
+
+.fa-pause-circle-o:before {
+  content: "";
+}
+
+.fa-stop-circle:before {
+  content: "";
+}
+
+.fa-stop-circle-o:before {
+  content: "";
+}
+
+.fa-shopping-bag:before {
+  content: "";
+}
+
+.fa-shopping-basket:before {
+  content: "";
+}
+
+.fa-hashtag:before {
+  content: "";
+}
+
+.fa-bluetooth:before {
+  content: "";
+}
+
+.fa-bluetooth-b:before {
+  content: "";
+}
+
+.fa-percent:before {
+  content: "";
+}
+
 .info-box {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -5861,13 +5942,223 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .landing {
-  background: #fff;
   height: 100%;
   left: 0;
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 99999999;
+  z-index: 4000;
+  background: url(../images/landing-bg.png) no-repeat center center fixed #2eb398;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.landing:before {
+  content: '';
+  background: rgba(255, 255, 255, 0.5);
+  border-top: 10px solid #2eb398;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.landing .landing-brand {
+  -moz-border-radius: 999px;
+  -webkit-border-radius: 999px;
+  border-radius: 999px;
+  background: #fff;
+  height: 70px;
+  left: 0;
+  margin: auto;
+  opacity: 0.7;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  width: 70px;
+  z-index: 3000;
+}
+@media only screen and (min-width: 40.0625em) {
+  .landing .landing-brand {
+    height: 82px;
+    width: 82px;
+  }
+}
+.landing .landing-brand .brand-image {
+  background: url(../images/panda-black.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 15px auto;
+  width: 55px;
+  height: 55px;
+}
+@media only screen and (min-width: 40.0625em) {
+  .landing .landing-brand .brand-image {
+    height: 60px;
+    margin: 20px auto;
+    width: 60px;
+  }
+}
+.landing .landing-header {
+  color: #4b4b4b;
+  font-size: 35px;
+  font-weight: 900;
+  left: 0;
+  margin: auto;
+  min-width: 200px;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 150px;
+}
+@media only screen and (min-width: 40.0625em) {
+  .landing .landing-header {
+    font-size: 40px;
+    top: 160px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
+  .landing .landing-header {
+    font-size: 45px;
+    top: 170px;
+  }
+}
+.landing .landing-info {
+  color: grey;
+  font-size: 15px;
+  font-weight: 200;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 45%;
+  width: 300px;
+}
+@media only screen and (min-width: 40.0625em) {
+  .landing .landing-info {
+    font-size: 17px;
+  }
+}
+.landing .landing-loading {
+  height: 100px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 230px;
+  width: 100px;
+}
+@media only screen and (min-width: 40.0625em) {
+  .landing .landing-loading {
+    top: 230px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
+  .landing .landing-loading {
+    top: 240px;
+  }
+}
+.landing .landing-action {
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 51%;
+  width: 240px;
+}
+@media only screen and (min-width: 40.0625em) {
+  .landing .landing-action {
+    width: 270px;
+  }
+}
+.landing .landing-powered {
+  bottom: 15%;
+  height: 25px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  width: 200px;
+}
+.landing .landing-powered .landing-powered-header {
+  color: grey;
+  font-size: 8px;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  top: -20px;
+  width: 200px;
+}
+.landing .landing-powered .brand-list {
+  list-style: none;
+  text-align: center;
+}
+.landing .landing-powered .brand-list .item {
+  background: rgba(255, 255, 255, 0.5);
+  display: inline-block;
+  margin: 0 0 0 -1px;
+  width: 40px;
+}
+.landing .landing-powered .brand-list .item .url {
+  outline: none;
+}
+.landing .landing-powered .brand-list .item .icon {
+  color: #444;
+  font-size: 14px;
+  padding: 3px;
+}
+.landing .landing-powered .brand-list .item.foursquare {
+  -moz-border-radius: 3px 0 0 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px 0 0 3px;
+}
+.landing .landing-powered .brand-list .item.foursquare .icon {
+  color: #f94877;
+}
+.landing .landing-powered .brand-list .item.google {
+  outline: none;
+}
+.landing .landing-powered .brand-list .item.google .icon {
+  color: #EF5350;
+}
+.landing .landing-powered .brand-list .item.uber {
+  -moz-border-radius: 0 3px 3px 0;
+  -webkit-border-radius: 0;
+  border-radius: 0 3px 3px 0;
+  outline: none;
+}
+.landing .landing-powered .brand-list .item.uber .icon {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-image: url(../images/uber-badge.png);
+  height: 11px;
+  width: 11px;
+  position: relative;
+  left: 0;
+  right: 0;
+  display: inline-block;
+  top: 3px;
+}
+.landing .landing-notification {
+  top: 250px;
+  z-index: 5000;
+}
+@media only screen and (min-width: 40.0625em) {
+  .landing .landing-notification {
+    top: 255px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
+  .landing .landing-notification {
+    top: 260px;
+  }
 }
 
 .loader, .main-loader, .modal-loader, .uber-loader {
@@ -5963,6 +6254,42 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 
+.landing-loader .radial-pulse-outer {
+  -moz-animation: pulse-fade 2.1s linear infinite;
+  -webkit-animation: pulse-fade 2.1s linear infinite;
+  animation: pulse-fade 2.1s linear infinite;
+  -moz-border-radius: 999px;
+  -webkit-border-radius: 999px;
+  border-radius: 999px;
+  background: transparent;
+  border: 3px solid rgba(51, 149, 255, 0.9);
+  height: 50px;
+  margin: auto;
+  top: 5px;
+  left: 0;
+  right: 0;
+  position: absolute;
+  width: 50px;
+  z-index: 1;
+}
+.landing-loader .radial-pulse-inner {
+  -moz-animation: pulse-fade 2.1s 0.5s ease-out infinite;
+  -webkit-animation: pulse-fade 2.1s 0.5s ease-out infinite;
+  animation: pulse-fade 2.1s 0.5s ease-out infinite;
+  -moz-border-radius: 999px;
+  -webkit-border-radius: 999px;
+  border-radius: 999px;
+  background: transparent;
+  border: 3px solid rgba(51, 149, 255, 0.9);
+  height: 30px;
+  margin: 15px auto;
+  left: 0;
+  right: 0;
+  position: absolute;
+  width: 30px;
+  z-index: 1;
+}
+
 .map {
   height: 100%;
   padding: 0;
@@ -5996,6 +6323,21 @@ Copyright (c) 2015 Daniel Eden
   position: absolute;
   width: 100px;
   z-index: -1;
+}
+
+.map-notification {
+  top: 75px;
+}
+@media only screen and (min-width: 40.0625em) {
+  .map-notification {
+    top: 99px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
+  .map-notification {
+    left: 203px;
+    top: 105px;
+  }
 }
 
 .gm-style-cc:nth-child(n+8) {
@@ -6496,7 +6838,7 @@ Copyright (c) 2015 Daniel Eden
 .menu-wheel [class|=wheelnav-wheelNav-title] > tspan {
   font-family: "Lato", sans-serif;
   font-size: 9px;
-  font-weight: 600;
+  font-weight: 700;
 }
 @media only screen and (min-width: 40.0625em) {
   .menu-wheel [class|=wheelnav-wheelNav-title] > tspan {
@@ -6969,24 +7311,16 @@ Copyright (c) 2015 Daniel Eden
   position: absolute;
   right: 0;
   text-align: center;
-  top: 75px;
   width: 200px;
   z-index: 1000;
-}
-@media only screen and (min-width: 40.0625em) {
-  .notification {
-    top: 99px;
-  }
 }
 @media only screen and (min-width: 64.0625em) {
   .notification {
     font-size: 14px;
     font-size: 14px;
     height: 15px;
-    left: 203px;
     line-height: 1.1;
     right: 0;
-    top: 105px;
   }
 }
 
