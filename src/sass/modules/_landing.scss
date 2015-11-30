@@ -2,11 +2,222 @@
 // Landing
 
 .landing {
-	background: #fff;
-	height: 100%;
-	left: 0;
-	position: absolute;
-	top: 0;
-	width: 100%;
-	z-index: 99999999;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 4000;
+   background: url(../images/landing-bg.png) no-repeat center center fixed #2eb398; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+	&:before {
+		content: '';
+		background: rgba(255, 255, 255, 0.5);
+		border-top: 10px solid #2eb398;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.landing-brand {
+		@include border-radius(999px);
+	  background: #fff;
+	  height: 70px;
+	  left: 0;
+	  margin: auto;
+	  opacity: 0.7;
+	  position: absolute;
+	  right: 0;
+	  top: 60px;
+	  width: 70px;
+	  z-index: 3000;
+
+		@media #{$medium-up} {
+	    height: 82px;
+	    width: 82px;
+		}
+
+		.brand-image {
+		  background: url(../images/panda-black.png);
+		  background-size: 100%;
+		  background-repeat: no-repeat;
+		  position: absolute;
+		  left: 0;
+		  right: 0;
+		  margin: 15px auto;
+		  width: 55px;
+		  height: 55px;
+			
+			@media #{$medium-up} {
+		    height: 60px;
+		    margin: 20px auto;
+		    width: 60px;
+			}
+		}
+	}
+
+	.landing-header {
+		color: #4b4b4b;
+		font-size: 35px;
+		font-weight: $font-extra-bold;
+		left: 0;
+		margin: auto;
+		min-width: 200px;
+		padding: 10px;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		top: 150px;
+
+	  @media #{$medium-up} {
+	  	font-size: 40px;	
+	  	top: 160px;		
+	  }
+
+	  @media #{$large-up} {
+	  	font-size: 45px;
+	  	top: 170px;
+	  }
+	}
+
+	.landing-info {
+	  color: grey;
+	  font-size: 15px;
+	  font-weight: 200;
+	  left: 0;
+	  margin: auto;
+	  position: absolute;
+	  right: 0;
+	  text-align: center;
+	  top: 45%;
+	  width: 300px;
+
+	  @media #{$medium-up} {
+	  	font-size: 17px;
+	  }
+	}
+
+	.landing-loading {
+		height: 100px;
+		left: 0;
+		margin: auto;
+		position: absolute;
+		right: 0;
+		top: 230px;
+		width: 100px;
+
+		@media #{$medium-up} {
+			top: 230px;
+		}
+
+		@media #{$large-up} {
+			top: 240px;	
+		}
+	}
+
+	.landing-action {
+	  left: 0;
+	  margin: auto;
+	  position: absolute;
+	  right: 0;
+	  top: 51%;
+	  width: 240px;
+
+	  @media #{$medium-up} {
+	  	width: 270px;
+	  }
+	}
+
+	.landing-powered {
+	  bottom: 15%;
+	  height: 25px;
+	  left: 0;
+	  margin: auto;
+	  position: absolute;
+	  right: 0;
+	  width: 200px;
+
+		.landing-powered-header {
+		  color: grey;
+		  font-size: 8px;
+		  position: absolute;
+		  text-align: center;
+		  text-transform: uppercase;
+		  top: -20px;
+		  width: 200px;
+		}
+
+		.brand-list {
+			list-style: none;
+			text-align: center;
+
+			.item {
+			  background: rgba(255, 255, 255, 0.5);
+			  display: inline-block;
+			  margin: 0 0 0 -1px;
+			  width: 40px;
+
+  			.url {
+  				outline: none;
+  			}
+
+  			.icon {
+					color: #444;
+					font-size: 14px;
+					padding: 3px;
+  			}
+
+				&.foursquare {
+					@include border-radius(3px 0 0 3px);
+					.icon {
+  					color: #f94877;
+  				}
+  			}
+
+  			&.google {
+					outline: none;
+  				.icon {
+  					color: #EF5350;
+  				}
+  			}
+
+  			&.uber {
+  				@include border-radius(0 3px 3px 0);
+					outline: none;
+  				.icon {
+						background-position: center;
+						background-repeat: no-repeat;
+						background-size: 15px;
+						background-image: url(../images/uber-badge.png);
+						height: 11px;
+						width: 11px;
+						position: relative;
+						left: 0;
+						right: 0;
+						display: inline-block;
+						top: 3px;
+  				}
+  			}
+			}
+		}
+	}
+
+	.landing-notification {
+		top: 250px;
+		z-index: 5000;
+
+		@media #{$medium-up} {
+			top: 255px;
+		}
+
+		@media #{$large-up} {
+			top: 260px;
+		}
+	}
 }
