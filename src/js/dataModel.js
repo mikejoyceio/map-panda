@@ -546,8 +546,8 @@ dataModel.uber = function(request) {
 	 * @see {@link https://developer.uber.com/v1/endpoints/}
 	 */
 	var uberAPI = 'https://api.uber.com/v1/estimates/price';
-	var uberClientId = 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn';
-	var uberServerToken = 'YXPNrYuvPMqZT5LYF_xIWzjs-yxFQfCRSLbve56l';
+	var uberClientId = 'sF0uXRb14_xpSGdnNlfl8KgOVSgt6IXt';
+	var uberServerToken = 'plxqZ2mJQNIYt0j45Fx7USIDC7QWcSMPoDqg2lGd';
 
 	/**
 	 * Return
