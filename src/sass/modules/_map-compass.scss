@@ -47,7 +47,7 @@
   }
 
   .north {	
-	  @include border-radius(2px 2px 0 0);
+	  @include border-radius(5px 5px 0 0);
 	  background: #ed5565;
 	  color: #fff;
 	  font-size: 5px;
@@ -57,7 +57,7 @@
   }
 
   .south {	
-	  @include border-radius(0 0 2px 2px);
+	  @include border-radius(0 0 5px 5px);
 	  background: #fff;
 	  top: 16px;
   }
