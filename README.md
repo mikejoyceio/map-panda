@@ -32,6 +32,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [CSS Tricks: appearance](https://css-tricks.com/almanac/properties/a/appearance/)
 - [MDN: CSS Position](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
 - [MDN: CSS Transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
+- [Name that Color](http://chir.ag/projects/name-that-color/#8C8C8C) by Chirag Mehta
 
 ######Icon Font
 
