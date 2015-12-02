@@ -34,7 +34,7 @@
 	  opacity: 0.7;
 	  position: absolute;
 	  right: 0;
-	  top: 60px;
+	  top: 70px;
 	  width: 70px;
 	  z-index: 3000;
 
@@ -64,7 +64,7 @@
 
 	.landing-header {
 		color: #4b4b4b;
-		font-size: 35px;
+		font-size: 38px;
 		font-weight: $font-extra-bold;
 		left: 0;
 		margin: auto;
@@ -76,13 +76,13 @@
 		top: 150px;
 
 	  @media #{$medium-up} {
-	  	font-size: 40px;	
-	  	top: 160px;		
+	  	font-size: 45px;	
+	  	top: 170px;		
 	  }
 
 	  @media #{$large-up} {
-	  	font-size: 45px;
-	  	top: 170px;
+	  	font-size: 48px;
+	  	top: 180px;
 	  }
 	}
 
