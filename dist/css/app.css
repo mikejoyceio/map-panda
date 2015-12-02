@@ -3044,7 +3044,7 @@ Copyright (c) 2015 Daniel Eden
   top: 0;
   position: absolute;
   width: 63px;
-  z-index: 3000;
+  z-index: 4000;
 }
 @media only screen and (min-width: 40.0625em) {
   .brand {
@@ -6449,6 +6449,7 @@ Copyright (c) 2015 Daniel Eden
   line-height: 1.8;
   position: absolute;
   width: 100%;
+  z-index: 2000;
 }
 .map-zoom-buttons .map-zoom-button:hover {
   color: #ffffff;
@@ -6479,6 +6480,7 @@ Copyright (c) 2015 Daniel Eden
   text-align: center;
   top: 72px;
   width: 30px;
+  z-index: 2000;
 }
 @media only screen and (min-width: 40.0625em) {
   .map-pan-to {
@@ -6508,7 +6510,7 @@ Copyright (c) 2015 Daniel Eden
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 2000;
+  z-index: 3000;
 }
 .map-info .content {
   height: 52px;
@@ -6552,7 +6554,7 @@ Copyright (c) 2015 Daniel Eden
   position: absolute;
   bottom: 0;
   width: 100%;
-  z-index: 2000;
+  z-index: 3000;
 }
 .menu-main:before {
   -moz-box-shadow: inset -4px 0 5px -5px #404040;

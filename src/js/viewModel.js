@@ -10,9 +10,7 @@
  * - Add help panel
  * - Test Uber deep linking
  * - Organize sass color pallete
- * - Add CSS visibility animation to notification
  * - Check notification error messages
- * - Font Awesome
  * - Create a sprite for all images
  * - Update map theme
  * - Add filter for mobile & tablets

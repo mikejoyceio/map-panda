@@ -10,7 +10,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    z-index: 2000;
+    z-index: 3000;
 		
 		&:before {
 			@include box-shadow(inset -4px 0 5px -5px #404040);
