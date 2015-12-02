@@ -2,13 +2,13 @@
 // Loaders
 
 .loader {
-  -webkit-box-sizing: border-box;
+  @include box-sizing(border-box);
+  @include border-radius(40px);
+  @include animation(spin 1.0s infinite linear);
   border-style: solid;
   border-color: #fff;;
   border-width: 10px;
   border-top-color: transparent;
-  @include border-radius(40px);
-  @include animation(spin 1.0s infinite linear);
   position: absolute;
 }
 
@@ -119,4 +119,22 @@
 	  width: 30px;
 	  z-index: 1;		
 	}
+}
+
+.body-loader {
+	@include border-radius(999px);
+  background: url(../images/panda-black.png);
+  background-color: #fff;
+  background-size: 80%;
+  background-position: center 58%;
+  background-repeat: no-repeat;
+  height: 80px;
+  left: 0;
+  margin: auto;
+  opacity: 0.5;
+  position: absolute;
+  right: 0;
+  top: 41%;
+  width: 80px;
+  z-index: 0;
 }

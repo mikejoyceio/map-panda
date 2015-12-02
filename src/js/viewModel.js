@@ -12,11 +12,10 @@
  * - Organize sass color pallete
  * - Add CSS visibility animation to notification
  * - Check notification error messages
- * - Add loading animation to body background
  * - Font Awesome
  * - Create a sprite for all images
  * - Update map theme
- * - Style compass
+ * - Add filter for mobile & tablets
  */
 
 /**
@@ -35,7 +34,12 @@ var ViewModel = function() {
 	 * App Debug
 	 * @type {boolean}
 	 */
-	this.appDebug = false;		
+	this.appDebug = false;			
+	/**
+	 * App Body Loading Visibility
+	 * @type {boolean}
+	 */	
+	this.appBodyLoadingVisibility = ko.observable(false);
 	/**
 	 * App Name
 	 * @type {string}
