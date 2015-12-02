@@ -9,11 +9,14 @@
  * - Add javascript promise polypill
  * - Add help panel
  * - Test Uber deep linking
- * - Organize sass color pallete
  * - Check notification error messages
  * - Create a sprite for all images
  * - Add filter for mobile & tablets
  * - Add condition for when location has changed
+ * - Clean up sass
+ * - Add Gulp images task
+ * - Add sass images partial
+ * - Compass rbga color mixin?
  */
 
 /**
