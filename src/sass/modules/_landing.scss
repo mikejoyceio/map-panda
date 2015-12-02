@@ -109,16 +109,8 @@
 		margin: auto;
 		position: absolute;
 		right: 0;
-		top: 230px;
+		top: 46%;
 		width: 100px;
-
-		@media #{$medium-up} {
-			top: 230px;
-		}
-
-		@media #{$large-up} {
-			top: 240px;	
-		}
 	}
 
 	.landing-action {

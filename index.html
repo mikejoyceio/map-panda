@@ -47,7 +47,7 @@
 				<div class="brand-image"></div>
 			</div>
 
-			<p class="landing-info">
+			<p class="landing-info" data-bind="visible: appLandingInfoVisibility">
 				Explore popular locations around you.
 			</p>
 
@@ -58,7 +58,7 @@
 				</div>
 			</div>
 		
-			<div class="landing-action">
+			<div class="landing-action" data-bind="visible: appLandingActionVisibility">
 				<button class="button action radius expand" data-bind="click: getLocation">Find Me</button>
 			</div>
 

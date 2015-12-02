@@ -9,11 +9,14 @@
  * - Add javascript promise polypill
  * - Add help panel
  * - Test Uber deep linking
- * - Update viewportWidth and preventSwipeTap bindings
- * - Update Font Awesome
  * - Organize sass color pallete
  * - Add CSS visibility animation to notification
  * - Check notification error messages
+ * - Add loading animation to body background
+ * - Font Awesome
+ * - Create a sprite for all images
+ * - Update map theme
+ * - Style compass
  */
 
 /**
@@ -43,6 +46,16 @@ var ViewModel = function() {
 	 * @type {string}
 	 */
 	this.appDescription = "Description";
+	/**
+	 * App Landing Action Visibility
+	 * @type {boolean}
+	 */		
+	this.appLandingActionVisibility = ko.observable(true);
+	/**
+	 * App Landing Info Visibility
+	 * @type {boolean}
+	 */	
+	this.appLandingInfoVisibility = ko.observable(true);	
 	/**
 	 * App Landing Visibility
 	 * @type {boolean}
@@ -638,6 +651,12 @@ var ViewModel = function() {
 	  /** Try HTML5 Geolocation */
 	  if(navigator.geolocation) {
 
+	  	/** Hide the landing action */
+	  	self.appLandingActionVisibility(false);
+
+	  	/** Hide the landing info */
+	  	self.appLandingInfoVisibility(false);
+
 	  	/** Show landing loading animation */
 	  	self.appLandingLoadingVisibility(true);	
 
@@ -687,6 +706,15 @@ var ViewModel = function() {
 		 * @param {object}
 		 */
 		function handleNoGeolocation(error) {
+
+			/** Show the landing action */
+	  	self.appLandingActionVisibility(true);
+
+	  	/** Show the landing info */
+	  	self.appLandingInfoVisibility(true);
+
+	  	/** Hide landing loading animation */
+	  	self.appLandingLoadingVisibility(false);	
 
 	    switch (error.code) {
         case error.PERMISSION_DENIED:
