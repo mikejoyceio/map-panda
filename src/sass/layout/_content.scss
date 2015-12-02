@@ -18,6 +18,7 @@ html, body {
 	height: 100%;
 	margin: 0;
 	position: relative;
+	z-index: 1000;
 
 	@media #{$large-up} {
 		margin: 0 0 0 203px;

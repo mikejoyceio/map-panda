@@ -97,6 +97,7 @@ html, body {
   height: 100%;
   margin: 0;
   position: relative;
+  z-index: 1000;
 }
 @media only screen and (min-width: 64.0625em) {
   .main-content {
@@ -5975,7 +5976,7 @@ Copyright (c) 2015 Daniel Eden
   opacity: 0.7;
   position: absolute;
   right: 0;
-  top: 60px;
+  top: 70px;
   width: 70px;
   z-index: 3000;
 }
@@ -6005,7 +6006,7 @@ Copyright (c) 2015 Daniel Eden
 }
 .landing .landing-header {
   color: #4b4b4b;
-  font-size: 35px;
+  font-size: 38px;
   font-weight: 900;
   left: 0;
   margin: auto;
@@ -6018,14 +6019,14 @@ Copyright (c) 2015 Daniel Eden
 }
 @media only screen and (min-width: 40.0625em) {
   .landing .landing-header {
-    font-size: 40px;
-    top: 160px;
+    font-size: 45px;
+    top: 170px;
   }
 }
 @media only screen and (min-width: 64.0625em) {
   .landing .landing-header {
-    font-size: 45px;
-    top: 170px;
+    font-size: 48px;
+    top: 180px;
   }
 }
 .landing .landing-info {
@@ -6051,18 +6052,8 @@ Copyright (c) 2015 Daniel Eden
   margin: auto;
   position: absolute;
   right: 0;
-  top: 230px;
+  top: 46%;
   width: 100px;
-}
-@media only screen and (min-width: 40.0625em) {
-  .landing .landing-loading {
-    top: 230px;
-  }
-}
-@media only screen and (min-width: 64.0625em) {
-  .landing .landing-loading {
-    top: 240px;
-  }
 }
 .landing .landing-action {
   left: 0;
@@ -6162,17 +6153,19 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .loader, .main-loader, .modal-loader, .uber-loader {
+  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  border-style: solid;
-  border-color: #fff;
-  border-width: 10px;
-  border-top-color: transparent;
+  box-sizing: border-box;
   -moz-border-radius: 40px;
   -webkit-border-radius: 40px;
   border-radius: 40px;
   -moz-animation: spin 1s infinite linear;
   -webkit-animation: spin 1s infinite linear;
   animation: spin 1s infinite linear;
+  border-style: solid;
+  border-color: #fff;
+  border-width: 10px;
+  border-top-color: transparent;
   position: absolute;
 }
 
@@ -6290,6 +6283,26 @@ Copyright (c) 2015 Daniel Eden
   z-index: 1;
 }
 
+.body-loader {
+  -moz-border-radius: 999px;
+  -webkit-border-radius: 999px;
+  border-radius: 999px;
+  background: url(../images/panda-black.png);
+  background-color: #fff;
+  background-size: 80%;
+  background-position: center 58%;
+  background-repeat: no-repeat;
+  height: 80px;
+  left: 0;
+  margin: auto;
+  opacity: 0.5;
+  position: absolute;
+  right: 0;
+  top: 41%;
+  width: 80px;
+  z-index: 0;
+}
+
 .map {
   height: 100%;
   padding: 0;
@@ -6348,16 +6361,30 @@ Copyright (c) 2015 Daniel Eden
   -moz-border-radius: 999px;
   -webkit-border-radius: 999px;
   border-radius: 999px;
-  background: #fff;
-  border: 2px solid #ed5565;
+  background: #232b2d;
+  border: 2px solid #232b2d;
   display: none;
-  height: 40px;
+  height: 33px;
   left: 10px;
   margin: 20px auto 0 auto;
   position: absolute;
   top: 45px;
-  width: 40px;
+  width: 33px;
   z-index: 1000;
+}
+.map-compass:before {
+  -moz-border-radius: 999px;
+  -webkit-border-radius: 999px;
+  border-radius: 999px;
+  background: #555555;
+  content: '';
+  height: 15px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 9px;
+  width: 15px;
 }
 @media only screen and (min-width: 40.0625em) {
   .map-compass {
@@ -6374,35 +6401,21 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 .map-compass .north, .map-compass .south {
-  height: 17px;
-  left: 16px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  height: 0;
+  left: 12px;
   position: absolute;
-  width: 8px;
+  width: 0;
 }
 .map-compass .north {
-  -moz-border-radius-topleft: 5px;
-  -webkit-border-top-left-radius: 5px;
-  border-top-left-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  -webkit-border-top-right-radius: 5px;
-  border-top-right-radius: 5px;
-  background: #ed5565;
+  border-bottom: 17px solid #ed5565;
   color: #fff;
-  font-size: 11px;
-  font-size: 8px;
-  line-height: 2;
-  text-align: center;
-  top: 3px;
+  top: -1px;
 }
 .map-compass .south {
-  -moz-border-radius-bottomleft: 5px;
-  -webkit-border-bottom-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  -moz-border-radius-bottomright: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  background: #232b2d;
-  top: 20px;
+  border-top: 17px solid #fff;
+  top: 16px;
 }
 
 .map-zoom-buttons {
@@ -6724,7 +6737,7 @@ Copyright (c) 2015 Daniel Eden
 .menu-main .place-list .item .icon .icon-inner {
   color: #667174;
   font-size: 11px;
-  line-height: 2.7;
+  line-height: 2.5;
 }
 .menu-main .place-list .item .icon .icon-outer {
   color: #6f7b7e;

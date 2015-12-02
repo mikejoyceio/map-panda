@@ -47,7 +47,7 @@
 				<div class="brand-image"></div>
 			</div>
 
-			<p class="landing-info">
+			<p class="landing-info" data-bind="visible: appLandingInfoVisibility">
 				Explore popular locations around you.
 			</p>
 
@@ -58,7 +58,7 @@
 				</div>
 			</div>
 		
-			<div class="landing-action">
+			<div class="landing-action" data-bind="visible: appLandingActionVisibility">
 				<button class="button action radius expand" data-bind="click: getLocation">Find Me</button>
 			</div>
 
@@ -155,7 +155,7 @@
 
 			<!-- Map Compass -->
 			<div class="map-compass" data-bind="compass">
-	     	<div class="north">N</div>
+	     	<div class="north"></div>
 	    	<div class="south"></div>
 	    </div>
 			<!-- /Map Compass -->
@@ -303,6 +303,9 @@
 
 	</script>
 	<!-- /View -->
+
+	<!-- Body Loader -->
+	<div class="body-loader animated pulse infinite" data-bind="visible: appBodyLoadingVisibility"></div>
 	
 	<!-- Google Maps API -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KC7nmHmDdz1n0H9xy9rm_B9YAUPeo_A&libraries=places"></script>
