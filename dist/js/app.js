@@ -21736,6 +21736,7 @@ dataModel.set = function(item, value) {
  * - Create a sprite for all images
  * - Update map theme
  * - Add filter for mobile & tablets
+ * - Add condition for when location has changed
  */
 
 /**
