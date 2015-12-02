@@ -3,16 +3,29 @@
 
 .map-compass {
 	@include border-radius(999px);
-	background: #fff;
-	border: 2px solid #ed5565;
-	display: none;
-  height: 40px;
+  background: #232b2d;
+  border: 2px solid #232b2d;
+  display: none;
+  height: 33px;
   left: 10px;
   margin: 20px auto 0 auto;
   position: absolute;
   top: 45px;
-  width: 40px;
-  z-index: 1000;	
+  width: 33px;
+  z-index: 1000;
+
+  &:before {
+		@include border-radius(999px);
+		background: #555555;
+		content: '';
+		height: 15px;
+		left: 0;
+		margin: auto;
+		position: absolute;
+		right: 0;
+		top: 9px;
+		width: 15px;
+	}
 
   @media #{$medium-up} {
   	left: 13px;
@@ -27,26 +40,22 @@
   }
 
   .north, .south {
-	  height: 17px;
-	  left: 16px;
-	  position: absolute;
-	  width: 8px;
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		height: 0; 
+		left: 12px;
+		position: absolute;
+		width: 0; 
   }
 
-  .north {
-		@include border-top-radius(5px);
-	  background: #ed5565;
+  .north {	
+		border-bottom: 17px solid #ed5565;
 	  color: #fff;
-	  font-size: 11px;
-	  font-size: 8px;
-	  line-height: 2;
-	  text-align: center;
-	  top: 3px;
+	  top: -1px;
   }
 
-  .south {
-		@include border-bottom-radius(5px);
-	  background: #232b2d;
-	  top: 20px;
+  .south {	
+		border-top: 17px solid #fff;
+	  top: 16px;
   }
 }
