@@ -3,8 +3,8 @@
 
 .map-compass {
 	@include border-radius(999px);
-  background: #232b2d;
-  border: 2px solid #232b2d;
+  background: $outer-space;
+  border: 2px solid $outer-space;
   display: none;
   height: 32px;
   left: 10px;
@@ -16,7 +16,7 @@
 
   &:before {
 		@include border-radius(999px);
-		background: #555555;
+		background: $emperor;
 		content: '';
 		height: 15px;
 		left: 0;
@@ -48,8 +48,8 @@
 
   .north {	
 	  @include border-radius(5px 5px 0 0);
-	  background: #ed5565;
-	  color: #fff;
+	  background: $mandy;
+	  color: $white;
 	  font-size: 5px;
 	  line-height: 2.4;
 	  text-align: center;
@@ -58,7 +58,7 @@
 
   .south {	
 	  @include border-radius(0 0 5px 5px);
-	  background: #fff;
+	  background: $white;
 	  top: 16px;
   }
 }

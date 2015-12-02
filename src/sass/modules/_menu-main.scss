@@ -2,7 +2,7 @@
 // Main Menu
 
 .menu-main {
-		background: #232b2d;
+		background: $outer-space;
     height: 28px;
     left: 0;
     margin: 0;
@@ -13,11 +13,11 @@
     z-index: 3000;
 		
 		&:before {
-			@include box-shadow(inset -4px 0 5px -5px #404040);
-			@include text-shadow(#404040 1px 1px 0px);
-		  background: #232b2d;
-		  border-right: 1px solid #1e1e1e;
-		  color: #1e1e1e;
+			@include box-shadow(inset -4px 0 5px -5px $tundora);
+			@include text-shadow($tundora 1px 1px 0px);
+		  background: $outer-space;
+		  border-right: 1px solid $cod-gray;
+		  color: $cod-gray;
 		  content: "\f041";
 		  display: inline-block;
 		  font-family: FontAwesome;
@@ -68,7 +68,7 @@
     	}
 
     	.search-filter-clear {
-			  color: #ed5565;
+			  color: $mandy;
 			  font-size: 11px;
 			  font-weight: bold;
 			  height: 20px;
@@ -86,7 +86,7 @@
 			.search-input {
 		    @include border-radius(3px);
 			  background: #fefefe;
-			  border: 2px solid #fff;
+			  border: 2px solid $white;
 			  height: 25px;
 			  padding: 0 4px;
 			  width: 100%;
@@ -112,7 +112,7 @@
     }
 
     .place-list {
-			color: #fff;
+			color: $white;
 			margin: 0 0 0 43px;
 			padding: 0 32px 10px 0;
 			overflow-y: hidden;
@@ -122,7 +122,7 @@
 	
 			&:after {
 				@include border-radius(999px);
-			  background: #ed5565;
+			  background: $mandy;
 			  content: '';
 			  display: inline-block;
 			  height: 25px;
@@ -153,7 +153,7 @@
 			}
 			
     	.item {
-			  color: #667174;
+			  color: $nevada;
 			  display: inline-block;
 			  font-size: 17px;
 			  line-height: 1;
@@ -183,13 +183,13 @@
 					}
 
 	    		.icon-inner {
-						color: #667174;
+						color: $nevada;
 						font-size: 11px;
 						line-height: 2.5;
 	    		}
 
 	    		.icon-outer {
-						color: #6f7b7e;
+						color: $sirocco;
 						font-size: 28px;
 	    		}
     		}	
@@ -197,15 +197,15 @@
 			  &.hover,
 			  &.active {
 					cursor: pointer;
-			  	color: #fff;
+			  	color: $white;
 
 			  	.icon {
 			  		// width: 33px;	
 			  		.icon-outer {
-			  			color: #fff;
+			  			color: $white;
 			  		}
 			  	 	.icon-inner {
-			  			color: #2eb398;
+			  			color: $jungle-green;
 			  		}
 			  	}
 			  }

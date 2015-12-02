@@ -26,21 +26,21 @@
 	}
 
 	&.default {
-		background-color: #dadee3;
-		border-color: #dadee3;
-		color: #666;
+		background-color: $mischka;
+		border-color: $mischka;
+		color: $dove-gray;
 	}
 
 	&.action {
-		background-color: #70b68d;
-		color: #fff;
-		border-color: #70b68d;
+		background-color: $silver-tree;
+		color: $white;
+		border-color: $silver-tree;
 	}
 
 	&.cancel {
-		background-color: #ed5565;
-		color: #fff;
-		border-color: #ed5565;
+		background-color: $mandy;
+		color: $white;
+		border-color: $mandy;
 	}
 
 	&.radius {

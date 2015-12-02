@@ -8,7 +8,7 @@
   top: 0;
   width: 100%;
   z-index: 5000;
-   background: url(../images/landing-bg.png) no-repeat center center fixed #2eb398; 
+   background: url(../images/landing-bg.png) no-repeat center center fixed $jungle-green; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -17,7 +17,7 @@
 	&:before {
 		content: '';
 		background: rgba(255, 255, 255, 0.5);
-		border-top: 10px solid #2eb398;
+		border-top: 10px solid $jungle-green;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -27,7 +27,7 @@
 
 	.landing-brand {
 		@include border-radius(999px);
-	  background: #fff;
+	  background: $white;
 	  height: 70px;
 	  left: 0;
 	  margin: auto;
@@ -63,7 +63,7 @@
 	}
 
 	.landing-header {
-		color: #4b4b4b;
+		color: $tundora;
 		font-size: 38px;
 		font-weight: $font-extra-bold;
 		left: 0;
@@ -87,7 +87,7 @@
 	}
 
 	.landing-info {
-	  color: grey;
+	  color: $gray;
 	  font-size: 15px;
 	  font-weight: 200;
 	  left: 0;
@@ -136,7 +136,7 @@
 	  width: 200px;
 
 		.landing-powered-header {
-		  color: grey;
+		  color: $gray;
 		  font-size: 8px;
 		  position: absolute;
 		  text-align: center;
@@ -160,7 +160,7 @@
   			}
 
   			.icon {
-					color: #444;
+					color: $tundora;
 					font-size: 14px;
 					padding: 3px;
   			}
@@ -168,14 +168,14 @@
 				&.foursquare {
 					@include border-radius(3px 0 0 3px);
 					.icon {
-  					color: #f94877;
+  					color: $violet-red;
   				}
   			}
 
   			&.google {
 					outline: none;
   				.icon {
-  					color: #EF5350;
+  					color: $burnt-sienna;
   				}
   			}
 
