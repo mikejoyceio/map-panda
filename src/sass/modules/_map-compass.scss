@@ -6,13 +6,13 @@
   background: #232b2d;
   border: 2px solid #232b2d;
   display: none;
-  height: 33px;
+  height: 32px;
   left: 10px;
   margin: 20px auto 0 auto;
   position: absolute;
   top: 45px;
-  width: 33px;
-  z-index: 1000;
+  width: 32px;
+  z-index: 2000;
 
   &:before {
 		@include border-radius(999px);
@@ -40,22 +40,25 @@
   }
 
   .north, .south {
-		border-left: 5px solid transparent;
-		border-right: 5px solid transparent;
-		height: 0; 
-		left: 12px;
-		position: absolute;
-		width: 0; 
+	  height: 14px;
+	  left: 13px;
+	  position: absolute;
+	  width: 7px;
   }
 
   .north {	
-		border-bottom: 17px solid #ed5565;
+	  @include border-radius(2px 2px 0 0);
+	  background: #ed5565;
 	  color: #fff;
-	  top: -1px;
+	  font-size: 5px;
+	  line-height: 2.4;
+	  text-align: center;
+	  top: 2px;
   }
 
   .south {	
-		border-top: 17px solid #fff;
+	  @include border-radius(0 0 2px 2px);
+	  background: #fff;
 	  top: 16px;
   }
 }
