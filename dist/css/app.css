@@ -6370,7 +6370,7 @@ Copyright (c) 2015 Daniel Eden
   position: absolute;
   top: 45px;
   width: 32px;
-  z-index: 1000;
+  z-index: 2000;
 }
 .map-compass:before {
   -moz-border-radius: 999px;
@@ -6407,9 +6407,9 @@ Copyright (c) 2015 Daniel Eden
   width: 7px;
 }
 .map-compass .north {
-  -moz-border-radius: 2px 2px 0 0;
-  -webkit-border-radius: 2px;
-  border-radius: 2px 2px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px;
+  border-radius: 5px 5px 0 0;
   background: #ed5565;
   color: #fff;
   font-size: 5px;
@@ -6418,9 +6418,9 @@ Copyright (c) 2015 Daniel Eden
   top: 2px;
 }
 .map-compass .south {
-  -moz-border-radius: 0 0 2px 2px;
+  -moz-border-radius: 0 0 5px 5px;
   -webkit-border-radius: 0;
-  border-radius: 0 0 2px 2px;
+  border-radius: 0 0 5px 5px;
   background: #fff;
   top: 16px;
 }
