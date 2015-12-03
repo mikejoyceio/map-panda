@@ -17,7 +17,6 @@ gulp.task('scripts', function() {
 		.pipe(plugins.concat('app.js'))
 		//.pipe(plugins.uglify())
 		.pipe(gulp.dest('./dist/js'))	
-		.pipe(plugins.livereload())
 });
 
 // Styles Task
@@ -33,21 +32,6 @@ gulp.task('compass', function() {
     }))
     .pipe(plugins.minifyCss())
     .pipe(gulp.dest('../dist/css'))
-    .pipe(plugins.livereload())
 });
 
-// Watch Task
-// Watches for changes in JS / SASS / HTML Files and reloads the page
-// Requires the LiveReload browser extension: http://livereload.com
-gulp.task('watch', function() {
-
-	plugins.livereload.listen();
-
-	gulp.watch('./src/js/*.js', ['scripts']);
-	gulp.watch('./src/sass/*.scss', ['compass']);
-	gulp.watch('*.html').on('change', function(file) {
-		plugins.livereload.changed(file.path);
-	});
-});
-
-gulp.task('default', ['scripts', 'compass', 'watch']);
+gulp.task('default', ['scripts', 'compass']);
