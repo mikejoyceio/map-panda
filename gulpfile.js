@@ -34,11 +34,31 @@ var path = require('path');
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
 gulp.task('scripts', function() {
+	/**
+	 * Gulp Main Bower Files
+	 * @external '.mainBowerFiles'
+	 * @see {@link https://www.npmjs.com/package/gulp-main-bower-files}
+	 */
 	gulp.src(plugins.mainBowerFiles().concat(['src/js/dataModel.js', 'src/js/viewModel.js'])) 		
-		.pipe(plugins.filter('*.js'))
-		.pipe(plugins.concat('app.js'))
-		//.pipe(plugins.uglify())
-		.pipe(gulp.dest('./dist/js'))	
+			/**
+			 * Gulp Filter
+			 * @external '.filter'
+			 * @see {@link https://www.npmjs.com/package/gulp-filter}
+			 */
+			.pipe(plugins.filter('*.js'))
+			/**
+			 * Gulp Concat
+			 * @external '.concat'
+			 * @see {@link https://www.npmjs.com/package/gulp-concat}
+			 */
+			.pipe(plugins.concat('app.js'))
+			/**
+			 * Gulp Uglify
+			 * @external '.uglify'
+			 * @see {@link https://www.npmjs.com/package/gulp-uglify}
+			 */
+			//.pipe(plugins.uglify())
+			.pipe(gulp.dest('./dist/js'))	
 });
 
 /**
@@ -48,15 +68,25 @@ gulp.task('scripts', function() {
  */
 gulp.task('styles', function() {
   gulp.src('./src/sass/*.scss')
-    .pipe(plugins.compass({
-      project: path.join(__dirname, './src'),
-      css: '../dist/css',
-      sass: 'sass',
-      // style: 'compressed',
-      import_path: 'vendor'
-    }))
-    .pipe(plugins.minifyCss())
-    .pipe(gulp.dest('../dist/css'))
+	  	/**
+	  	 * Gulp Compass
+	  	 * @external '.compass'
+	  	 * @see {@link https://www.npmjs.com/package/gulp-compass}
+	  	 */
+	    .pipe(plugins.compass({
+	      project: path.join(__dirname, './src'),
+	      css: '../dist/css',
+	      sass: 'sass',
+	      // style: 'compressed',
+	      import_path: 'vendor'
+	    }))
+	    /**
+	     * Gulp Minify CSS
+	     * @external '.minifyCss'
+	     * @see {@link https://www.npmjs.com/package/gulp-minify-css}
+	     */
+	    .pipe(plugins.minifyCss())
+	    .pipe(gulp.dest('../dist/css'))
 });
 
 /**
@@ -66,6 +96,11 @@ gulp.task('styles', function() {
  */
 gulp.task('image', function() {
 	gulp.src('./src/images/*')	
+		/**
+		 * Gulp Imagemin
+		 * @external '.imagemin()'
+		 * @see {@link https://www.npmjs.com/package/gulp-imagemin}
+		 */
 		.pipe(plugins.imagemin())
 		.pipe(gulp.dest('./dist/images'))
 });
