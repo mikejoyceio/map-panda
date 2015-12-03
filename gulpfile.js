@@ -2,13 +2,13 @@
  * @file Gulpfile
  * @file overview Gulp build configuration
  * @author Mike Joyce [hello@mikejoyce.io]
- * @external 'gulp'
- * @see {@link http://gulpjs.com/}
  */
 
 /**
  * Load Gulp
  * @type {object}
+ * @external 'require('gulp')'
+ * @see {@link http://gulpjs.com/}
  */
 var gulp = require('gulp');
 /**
