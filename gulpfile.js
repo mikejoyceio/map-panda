@@ -110,4 +110,4 @@ gulp.task('image', function() {
  * @external 'gulp.task'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
-gulp.task('default', ['scripts', 'styles', 'image']);
+gulp.task('default', ['scripts', 'styles']);
