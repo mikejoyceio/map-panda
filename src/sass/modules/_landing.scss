@@ -8,7 +8,7 @@
   top: 0;
   width: 100%;
   z-index: 5000;
-   background: url(../images/landing-bg.png) no-repeat center center fixed $jungle-green; 
+   background: $landing-background no-repeat center center fixed $jungle-green; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -44,7 +44,7 @@
 		}
 
 		.brand-image {
-		  background: url(../images/panda-black.png);
+		  background: $brand-black;
 		  background-size: 100%;
 		  background-repeat: no-repeat;
 		  position: absolute;
@@ -186,7 +186,7 @@
 						background-position: center;
 						background-repeat: no-repeat;
 						background-size: 15px;
-						background-image: url(../images/uber-badge.png);
+						background-image: $uber-badge;
 						height: 11px;
 						width: 11px;
 						position: relative;
