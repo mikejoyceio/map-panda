@@ -2,7 +2,7 @@
 // Info Modal
 
 .modal {
-	background: #fff;
+	background: $white;
 	display: none;
 	@include border-radius(7px);
 	width: 200px;
@@ -32,7 +32,7 @@
 		position: relative;
 
 		.modal-header {
-			background: #232b2d;
+			background: $outer-space;
 			position: relative;
 			height: 100px;
 			overflow: hidden;
@@ -43,7 +43,7 @@
 			}
 
 			.top-bar {
-				background: $accent-color;
+				background: $jungle-green;
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -71,11 +71,11 @@
 					}
 
 					.icon-outer {
-						color: #fff;
+						color: $white;
 					}
 
 					.icon-inner {
-						color: #fff;
+						color: $white;
 					}
 				}
 			}
@@ -107,7 +107,7 @@
 					&:before {
 					  content: "\f155";
 					  padding: 1px;
-					  color: #777777;
+					  color: $boulder;
 					}
 				}
 
@@ -118,7 +118,7 @@
 				&.price-01 {
 			  	.dollar-01:before {
 			  		content: "\f155";
-						color: #e3cf7a;
+						color: $chenin;
 			  		display: block;
 			  	}
 			  }
@@ -126,7 +126,7 @@
 			  &.price-02 {
 				  .dollar-01:before, .dollar-02:before {
 			  		content: "\f155";
-						color: #e3cf7a;
+						color: $chenin;
 			  		display: block;
 			  	}			  	
 			  }
@@ -134,7 +134,7 @@
 			  &.price-03 {
 				  .dollar-01:before, .dollar-02:before, .dollar-03:before {
 			  		content: "\f155";
-						color: #e3cf7a;
+						color: $chenin;
 			  		display: block;
 			  	}					  	
 			  }
@@ -142,14 +142,14 @@
 			  &.price-04 {
 				  .dollar-01:before, .dollar-02:before, .dollar-03:before, .dollar-04:before {
 			  		content: "\f155";
-						color: #e3cf7a;
+						color: $chenin;
 			  		display: block;
 			  	}				  	
 			  }				
 			}
 
 			.bottom-bar {
-				background: $accent-color;
+				background: $jungle-green;
 				height: 3px;
 				position: absolute;
 				bottom: 0;
@@ -163,10 +163,10 @@
 			margin: 5px 10px;
 
 			.place-rating {
-			  background: #ffffff;
+			  background: $white;
 			  @include border-radius(4px);
-			  border: 2px solid $accent-color;
-			  color: #fff;
+			  border: 2px solid $jungle-green;
+			  color: $white;
 			  font-size: 7px;
 			  font-weight: 300;
 			  height: 9px;
@@ -189,7 +189,7 @@
 			}
 
 			.actions {
-				border-bottom: 1px solid #e8e6e4;
+				border-bottom: 1px solid $ebb;
 				height: 35px;
 
 				@media #{$medium-up} {
@@ -214,7 +214,7 @@
 				}
 
 				.action-phone {
-					border-right: 1px solid #e8e6e4;
+					border-right: 1px solid $ebb;
 					font-size: 20px;
 					left: 0;
 
@@ -224,7 +224,7 @@
 				}
 
 				.action-uber {
-					border-left: 1px solid #e8e6e4;
+					border-left: 1px solid $ebb;
 					right: 0;
 
 					.url {
@@ -236,7 +236,7 @@
 						background-repeat: no-repeat;
 						background-size: 18px;
 					  @include border-radius(4px);
-					  background-image: url(../images/uber-badge.png);
+					  background-image: $uber-badge;
 					  height: 22px;
 					  width: 22px;
 					  position: relative;
@@ -255,7 +255,7 @@
 					  top: 11px;
 					  text-align: left;
 					  left: 58px;
-					  color: #727b7f;
+					  color: $rolling-stone;
 					  line-height: 1.2;
 
 					  @media #{$medium-up} {
@@ -278,7 +278,7 @@
 				  }
 
 					.icon {
-					  color: #a3a8ab;
+					  color: $gray-chateau;
 					  font-size: 14px;
 					  position: absolute;
 					  left: 0;
@@ -290,7 +290,7 @@
 					}
 
 					p {
-				  	color: #727b7f;
+				  	color: $rolling-stone;
 				  	font-size: 10px;
 				  	line-height: 1.2;
 
@@ -303,17 +303,17 @@
   					min-height: 40px;
 
 						.place-name {
-						  color: #404040;
+						  color: $tundora;
 						  margin-bottom: 4px;
 						  font-weight: 600;
 						}
 					}
 
 					&.place-website {
-						border-top: 1px solid #e8e6e4; 
+						border-top: 1px solid $ebb; 
 
 						.url {
-							color: #404040;
+							color: $tundora;
 							display: inline-block;
 							text-decoration: none;
 							font-weight: 600;
@@ -398,7 +398,7 @@
 		}
 
 		.modal-footer {
-		  border-top: 1px solid #e8e6e4;
+		  border-top: 1px solid $ebb;
 		  height: 28px;
 		  margin: auto 10px;
 		  padding: 6px 0;
@@ -416,7 +416,7 @@
 			.button-foursquare {
 			  @include border-radius(20px);
 			  border: 1px solid;
-			  color: #f84777;
+			  color: $violet-red;
 			  display: block;
 			  font-size: 13px;
 			  font-weight: 400;

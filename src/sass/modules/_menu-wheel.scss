@@ -12,8 +12,8 @@
 
   &:before {
   	@include border-radius(999px);
-  	background: #232b2d;
-  	color: #fff;
+  	background: $outer-space;
+  	color: $white;
 		content: '(KM)';
 		font-family: $base-font-family;
 		font-size: 10px;
@@ -66,33 +66,34 @@
 	}
 
 	[class|=wheelnav-wheelNav-slice-basic] { 
-		fill: $accent-color; 
+		fill: $jungle-green; 
 		stroke: none; 
 	}
 
 	[class|=wheelnav-wheelNav-slice-selected] { 
-		fill: $accent-color; stroke: none; 
+		fill: $jungle-green; 
+		stroke: none; 
 	}
 
 	[class|=wheelnav-wheelNav-slice-hover] { 
-		fill: $accent-color;  
+		fill: $jungle-green;  
 		stroke: none; 
 		fill-opacity: 0.77; 
 		cursor: pointer; 
 	}
 
 	[class|=wheelnav-wheelNav-title-basic] { 
-		fill: #333; 
+		fill: $mine-shaft; 
 		stroke: none; 
 	}
 
 	[class|=wheelnav-wheelNav-title-selected] { 
-		fill: #fff; 
+		fill: $white; 
 		stroke: none; 
 	}
 
 	[class|=wheelnav-wheelNav-title-hover] { 
-		fill: #222; 
+		fill: $mine-shaft; 
 		stroke: none; 
 		cursor: pointer; 
 	}
@@ -112,23 +113,23 @@
 	}
 
 	.wheelnav-wheelNav-marker { 
-		fill: #232b2d; 
-		stroke: #232b2d; 
+		fill: $outer-space; 
+		stroke: $outer-space; 
 		stroke-width: 2;
 	}
 
 	.wheelnav-wheelNav-spreader-in,
 	.wheelnav-wheelNav-spreader-out { 
-		fill: #232b2d; 
-		stroke: #232b2d; 
+		fill: $outer-space; 
+		stroke: $outer-space; 
 		stroke-width: 2; 
 		cursor: pointer; 
 	}
 
 	.wheelnav-wheelNav-spreadertitle-in,
 	.wheelnav-wheelNav-spreadertitle-out { 
-		fill: #eee; 
-		stroke: #232b2d; 
+		fill: $gallery; 
+		stroke: $outer-space; 
 		cursor: pointer; 
 	}
 }

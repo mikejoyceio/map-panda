@@ -3,10 +3,10 @@
 
 @include keyframes(pulse) {
 		from {
-			border: 3px solid #fff;
+			border: 3px solid $white;
 		}
 		to {
-			border: 5px solid #fff;
+			border: 5px solid $white;
 		}
 }
 
@@ -45,12 +45,10 @@
 	100% { opacity: 1 }
 }
 
-/*!
-Animate.css - http://daneden.me/animate
-Licensed under the MIT license - http://opensource.org/licenses/MIT
+// Animate.css - http://daneden.me/animate
+// Licensed under the MIT license - http://opensource.org/licenses/MIT
 
-Copyright (c) 2015 Daniel Eden
-*/
+// Copyright (c) 2015 Daniel Eden
 
 .animated {
   -webkit-animation-duration: 1s;

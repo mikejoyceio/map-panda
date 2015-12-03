@@ -4,6 +4,8 @@ exports.type = 'perItem';
 
 exports.active = true;
 
+exports.description = 'cleanups attributes from newlines, trailing and repeating spaces';
+
 exports.params = {
     newlines: true,
     trim: true,

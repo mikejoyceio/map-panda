@@ -20,7 +20,7 @@
 
 	.info-box-content {
 		@include border-radius(3px);	
-		background: #fff;
+		background: $white;
 		padding: 2px 40px 2px 40px;
 		position: relative;
 		min-height: 35px;
@@ -32,7 +32,7 @@
 		  text-overflow: ellipsis;
 		  overflow: hidden;
 		  white-space: nowrap;
-		  color: #565656;
+		  color: $scorpion;
 		  font-size: 12px;
 		  font-weight: 500;
 		}
@@ -55,7 +55,7 @@
 		.info-box-icon {
 		  @include border-radius(2px);
 		  border: 1px solid;
-		  color: #909090;
+		  color: $gray;
 		  font-size: 14px;
 		  height: 13px;
 		  opacity: 0.3;

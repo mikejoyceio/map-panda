@@ -4,6 +4,8 @@ exports.type = 'perItem';
 
 exports.active = false;
 
+exports.description = 'sorts element attributes (disabled by default)';
+
 exports.params = {
 	order: [
 		'xmlns',

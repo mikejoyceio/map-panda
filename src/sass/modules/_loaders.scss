@@ -6,7 +6,7 @@
   @include border-radius(40px);
   @include animation(spin 1.0s infinite linear);
   border-style: solid;
-  border-color: #fff;;
+  border-color: $white;
   border-width: 10px;
   border-top-color: transparent;
   position: absolute;
@@ -42,7 +42,7 @@
 
 .uber-loader {
 	@extend .loader;
-	background: #1d1e27;
+	background: $shark;
 	width: 16px;
 	height: 16px;
 	border-width: 3px;
@@ -75,7 +75,7 @@
 		.icon {
 			@include border-radius(10px);
 			background: rgba(255, 255, 255, 0.5);
-			color: #ed5565;
+			color: $mandy;
 			font-size: 35px;
 			margin: auto;
 			padding: 3px 5px;
@@ -123,8 +123,8 @@
 
 .body-loader {
 	@include border-radius(999px);
-  background: url(../images/panda-black.png);
-  background-color: #fff;
+  background: $brand-black;
+  background-color: $white;
   background-size: 80%;
   background-position: center 58%;
   background-repeat: no-repeat;
