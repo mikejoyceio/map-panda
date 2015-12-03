@@ -4,6 +4,8 @@ exports.type = 'perItem';
 
 exports.active = false;
 
+exports.description = 'removes raster images (disabled by default)';
+
 /**
  * Remove raster images references in <image>.
  *

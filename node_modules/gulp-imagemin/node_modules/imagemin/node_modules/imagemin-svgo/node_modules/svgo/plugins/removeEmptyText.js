@@ -4,6 +4,8 @@ exports.type = 'perItem';
 
 exports.active = true;
 
+exports.description = 'removes empty <text> elements';
+
 exports.params = {
     text: true,
     tspan: true,
