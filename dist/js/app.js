@@ -21728,17 +21728,15 @@ dataModel.set = function(item, value) {
  */
 
 /* TODO:
- * - Add javascript promise polypill
+ * - Add javascript promise polyfill
  * - Add help panel
  * - Test Uber deep linking
  * - Check notification error messages
- * - Create a sprite for all images
+ * - Combine images into a sprite?
  * - Add filter for mobile & tablets
  * - Add condition for when location has changed
- * - Clean up sass
  * - Add Gulp images task
- * - Add sass images partial
- * - Compass rbga color mixin?
+ * - Reduce size of _animation.scss and convert CSS to SCSS
  */
 
 /**
