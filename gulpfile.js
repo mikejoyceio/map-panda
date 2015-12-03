@@ -60,8 +60,19 @@ gulp.task('styles', function() {
 });
 
 /**
+ * Image Task. Minify images.
+ * @external 'gulp.task'
+ * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
+ */
+gulp.task('image', function() {
+	gulp.src('./src/images/*')	
+		.pipe(plugins.imagemin())
+		.pipe(gulp.dest('./dist/images'))
+});
+
+/**
  * Set the default Gulp task
  * @external 'gulp.task'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
-gulp.task('default', ['scripts', 'styles']);
+gulp.task('default', ['scripts', 'styles', 'image']);
