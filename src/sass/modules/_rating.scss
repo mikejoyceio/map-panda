@@ -17,6 +17,11 @@
 		}
 	}
 
+	.star-icon {
+		content: "\f005";
+		color: $chenin;
+	}
+
 	&.rating-00 {
 		.star {
 			display: none;
@@ -31,36 +36,31 @@
 
 	&.rating-01 {
   	.star-01:before {
-  		content: "\f005";
-			color: $chenin;
+			@extend .star-icon;
   	}
   }
 
   &.rating-02 {
 	  .star-01:before, .star-02:before {
-  		content: "\f005";
-			color: $chenin;
+			@extend .star-icon;
   	}			  	
   }
 
   &.rating-03 {
 	  .star-01:before, .star-02:before, .star-03:before {
-  		content: "\f005";
-			color: $chenin;
+			@extend .star-icon;
   	}					  	
   }
 
   &.rating-04 {
 	  .star-01:before, .star-02:before, .star-03:before, .star-04:before {
-  		content: "\f005";
-			color: $chenin;
+			@extend .star-icon;
   	}				  	
   }
 
   &.rating-05 {
 	  .star-01:before, .star-02:before, .star-03:before, .star-04:before, .star-05:before {
-  		content: "\f005";
-			color: $chenin;
+			@extend .star-icon;
   	}						  	
   }	
 }
