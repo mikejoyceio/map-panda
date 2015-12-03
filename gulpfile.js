@@ -46,7 +46,7 @@ gulp.task('scripts', function() {
  * @external 'gulp.task'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
-gulp.task('compass', function() {
+gulp.task('styles', function() {
   gulp.src('./src/sass/*.scss')
     .pipe(plugins.compass({
       project: path.join(__dirname, './src'),
@@ -64,4 +64,4 @@ gulp.task('compass', function() {
  * @external 'gulp.task'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
-gulp.task('default', ['scripts', 'compass']);
+gulp.task('default', ['scripts', 'styles']);
