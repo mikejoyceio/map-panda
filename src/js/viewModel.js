@@ -707,7 +707,7 @@ var ViewModel = function() {
 
     /** Check if localStorage is available in the browser */
     if (self.checkLocalStorage()) {
-    	
+
 	    /** Save current Latitude and Longitude values to localStorage via dataModel helper methods */
 	    dataModel.set('lat', self.mapCurrentLat());
 	    dataModel.set('lng', self.mapCurrentLng());
@@ -814,9 +814,13 @@ var ViewModel = function() {
 
 				/** 
 				 * If the current latitude and longitude values match the latitude and longitude values in localStorage, set the users location
-				 * on the map and hide the landing.
+				 * on the map and hide the landing. HTML5 Geolocation GPS requests are expensive on mobile devices, and the position coordinates 
+				 * returned from getCurrentPosition may vary down to a few decimal places, so the latitude and longitude values have been rounded 
+				 * to 4 decimal places, which is still accurate (to within around 11 meters) and comparable to the accuracy of most commercial GPS units.
+				 * @external 'toFixed()'
+				 * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed}
 				 */
-				if (self.mapCurrentLat() == position.coords.latitude && self.mapCurrentLng() == position.coords.longitude) {
+				if (self.mapCurrentLat().toFixed(4) == position.coords.latitude.toFixed(4) && self.mapCurrentLng().toFixed(4) == position.coords.longitude.toFixed(4)) {
 
 					/** Set the users location on the map */
 					self.setLocation();
