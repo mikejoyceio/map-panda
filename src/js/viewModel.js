@@ -12,7 +12,6 @@
  * - Check notification error messages
  * - Combine images into a sprite?
  * - Add filter for mobile & tablets
- * - Add condition for when location has changed
  * - Reduce size of _animation.scss and convert CSS to SCSS
  */
 
@@ -314,6 +313,7 @@ var ViewModel = function() {
 	this.placeList = ko.observableArray([]); 
 
 
+	this.searchFilterVisibility = ko.observable(false);
 	/**
 	 * Search Query
 	 * @type {string}
@@ -425,6 +425,13 @@ var ViewModel = function() {
 	 * @see {@link http://knockoutjs.com/documentation/observables.html}
 	 */
 	this.searchQuery.subscribe(this.filter);
+
+	/**
+	 * Toggle Filter. Toggle the visibility of the search filter on mobiles & tablets.
+	 */
+	this.toggleFilter = function() {
+		self.searchFilterVisibility(!self.searchFilterVisibility());
+	}
 
 	/**
 	 * Clear the Filter.
