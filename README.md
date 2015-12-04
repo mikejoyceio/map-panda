@@ -87,6 +87,8 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 ######jQuery 
 
 - [jQuery Docs: .removeClass()](http://api.jquery.com/removeClass/)
+- [jQuery Docs: .blur()](https://api.jquery.com/blur/)
+- [jQuery Docs: .focus()](https://api.jquery.com/focus/)
 
 ######General Programming
 
