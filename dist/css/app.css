@@ -3149,6 +3149,108 @@ html, body {
   display: inline-block;
 }
 
+.filter {
+  bottom: 80px;
+  height: 35px;
+  left: 15px;
+  line-height: 1.9;
+  overflow: hidden;
+  position: absolute;
+  width: 225px;
+}
+.filter:hover {
+  cursor: pointer;
+}
+@media only screen and (min-width: 40.0625em) {
+  .filter {
+    bottom: 90px;
+  }
+}
+@media only screen and (min-width: 64.0625em) {
+  .filter {
+    display: none;
+  }
+}
+.filter .icon {
+  -moz-border-radius: 999px;
+  -webkit-border-radius: 999px;
+  border-radius: 999px;
+  background: #232b2d;
+  color: #ffffff;
+  height: 35px;
+  left: 0;
+  line-height: 2.1;
+  position: absolute;
+  position: relative;
+  top: 0;
+  text-align: center;
+  vertical-align: middle;
+  width: 35px;
+  z-index: 3000;
+}
+.filter .icon.active {
+  color: #ed5565;
+}
+.filter .filter-clear {
+  color: #ed5565;
+  font-size: 11px;
+  font-weight: bold;
+  height: 20px;
+  position: absolute;
+  right: 34px;
+  text-align: center;
+  top: 8px;
+  width: 20px;
+  z-index: 3000;
+}
+.filter .filter-clear:hover {
+  cursor: pointer;
+}
+.filter .filter-input {
+  -moz-border-radius: 0 5px 5px 0;
+  -webkit-border-radius: 0;
+  border-radius: 0 5px 5px 0;
+  background: #232b2d;
+  height: 31px;
+  line-height: 1.7;
+  padding: 2px;
+  position: absolute;
+  right: 20px;
+  text-align: center;
+  top: 0px;
+  width: 180px;
+  z-index: 2000;
+}
+.filter .filter-input input {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #ffffff;
+  border-radius: 3px;
+  border: 1px solid #ffffff;
+  margin: 0;
+  outline: none;
+  padding: 4px;
+  vertical-align: middle;
+  width: 145px;
+}
+.filter .filter-input .filter-input-close {
+  -moz-border-radius: 0 3px 3px 0;
+  -webkit-border-radius: 0;
+  border-radius: 0 3px 3px 0;
+  background: #ed5565;
+  color: #ffffff;
+  font-size: 11px;
+  height: 35px;
+  line-height: 2.9;
+  position: absolute;
+  right: -10px;
+  top: 0;
+  vertical-align: middle;
+  width: 15px;
+  text-align: center;
+}
+
 /*!
  *  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
