@@ -12,7 +12,6 @@
  * - Check notification error messages
  * - Combine images into a sprite?
  * - Add filter for mobile & tablets
- * - Add condition for when location has changed
  * - Reduce size of _animation.scss and convert CSS to SCSS
  */
 
