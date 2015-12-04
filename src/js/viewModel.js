@@ -11,7 +11,6 @@
  * - Test Uber deep linking
  * - Check notification error messages
  * - Combine images into a sprite?
- * - Add filter for mobile & tablets
  * - Reduce size of _animation.scss and convert CSS to SCSS
  */
 
