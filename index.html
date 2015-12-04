@@ -110,7 +110,7 @@
 			<!-- Search Filter -->
 			<div class="search-filter">
 				<div class="search-filter-clear" data-bind="click: clearFilter, visible: searchClearFilterVisibility">X</div>
-				<input class="search-input" type="text" id="filter" placeholder="Filter" data-bind="textInput: searchQuery">
+				<input class="search-input" type="text" id="filter" placeholder="Filter" autocapitalize="off" autocorrect="off" data-bind="textInput: searchQuery">
 			</div>
 			<!-- /Search Filter -->
 
@@ -143,7 +143,7 @@
    		<div class="icon fa fa-search" data-bind="event: { click: toggleFilter, touchend: toggleFilter }"></div>	
 			<div class="filter-clear" data-bind="click: clearFilter, visible: searchClearFilterVisibility">X</div>
 			<div class="filter-input" data-bind="cssAnimateVisible: searchFilterVisibility, animation: 'fadeInLeft', animationOut: 'fadeOutLeft', duration: 400, durationOut: 50">
-				<input type="text" id="filter" placeholder="Filter" data-bind="textInput: searchQuery">
+				<input type="text" id="filter" placeholder="Filter" autocapitalize="off" autocorrect="off" data-bind="textInput: searchQuery">
 				<div class="filter-input-close" data-bind="event: { click: toggleFilter, touchend: toggleFilter }">
 					<div class="fa fa-times"></div>
 				</div>
