@@ -144,8 +144,8 @@
 			<div class="filter-clear" data-bind="click: clearFilter, visible: searchClearFilterVisibility">X</div>
 			<div class="filter-input" data-bind="cssAnimateVisible: searchFilterVisibility, animation: 'fadeInLeft', animationOut: 'fadeOutLeft', duration: 400, durationOut: 50">
 				<input type="text" id="filter" placeholder="Filter" data-bind="textInput: searchQuery">
-				<div class="filter-input-close">
-					<div class="fa fa-times" data-bind="event: { click: toggleFilter, touchend: toggleFilter }"></div>
+				<div class="filter-input-close" data-bind="event: { click: toggleFilter, touchend: toggleFilter }">
+					<div class="fa fa-times"></div>
 				</div>
 			</div>
    	</div>
