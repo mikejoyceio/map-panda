@@ -1,0 +1,104 @@
+
+// Filter
+
+.filter {
+  bottom: 80px;
+  height: 35px;
+  left: 15px;
+  line-height: 1.9;
+  overflow: hidden;
+  position: absolute;
+  width: 225px;
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	@media #{$medium-up} {
+		bottom: 90px;
+	}
+
+	@media #{$large-up} {
+		display: none;
+	}
+	
+	.icon {
+		@include border-radius(999px);
+		background: $outer-space;
+		color: $white;
+		height: 35px;
+		left: 0;
+		line-height: 2.1;
+		position: absolute;
+		position: relative;
+		top: 0;
+		text-align: center;
+		vertical-align: middle;
+		width: 35px;
+		z-index: 3000;
+
+		&.active {
+			color: $mandy;
+		}
+	}
+
+	.filter-clear {
+	  color: $mandy;
+	  font-size: 11px;
+	  font-weight: bold;
+	  height: 20px;
+	  position: absolute;
+	  right: 34px;
+	  text-align: center;
+	  top: 8px;
+	  width: 20px;
+	  z-index: 3000;
+
+	  &:hover {
+	  	cursor: pointer;
+	  }
+	}
+
+	.filter-input {
+		@include border-radius(0 5px 5px 0);
+	  background: #232b2d;
+	  height: 31px;
+	  line-height: 1.7;
+	  padding: 2px;
+	  position: absolute;
+	  right: 20px;
+	  text-align: center;
+	  top: 0px;
+	  width: 180px;
+	  z-index: 2000;
+
+	  input {
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			appearance: none;
+			background: $white;
+			border-radius: 3px;
+			border: 1px solid $white;
+			margin: 0;
+			outline: none;
+			padding: 4px;
+			vertical-align: middle;
+			width: 145px;
+	  }
+
+	  .filter-input-close {
+	  	@include border-radius(0 3px 3px 0);
+		  background: $mandy;
+		  color: $white;
+		  font-size: 11px;
+		  height: 35px;
+		  line-height: 2.9;
+		  position: absolute;
+		  right: -10px;
+		  top: 0;
+		  vertical-align: middle;
+		  width: 15px;
+		  text-align: center;
+		}
+	}
+}
