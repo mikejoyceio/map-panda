@@ -51,12 +51,12 @@ var ViewModel = function() {
 	 * App Landing Action Visibility
 	 * @type {boolean}
 	 */		
-	this.appLandingActionVisibility = ko.observable(true);
+	this.appLandingActionVisibility = ko.observable(false);
 	/**
 	 * App Landing Info Visibility
 	 * @type {boolean}
 	 */	
-	this.appLandingInfoVisibility = ko.observable(true);	
+	this.appLandingInfoVisibility = ko.observable(false);	
 	/**
 	 * App Landing Visibility
 	 * @type {boolean}
@@ -795,6 +795,12 @@ var ViewModel = function() {
 
 			/** Show the landing */
 			self.appLandingVisbility(true);	
+
+			/** Show the landing action */
+	  	self.appLandingActionVisibility(true);
+
+	  	/** Show the landing info */
+	  	self.appLandingInfoVisibility(true);
 
 		/** localStorage Latitude and Longitude values are set */
 		} else {
