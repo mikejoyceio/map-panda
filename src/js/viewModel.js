@@ -6,17 +6,14 @@
  */
 
 /* TODO:
- * - Add javascript promise polypill
+ * - Add javascript promise polyfill
  * - Add help panel
  * - Test Uber deep linking
  * - Check notification error messages
- * - Create a sprite for all images
+ * - Combine images into a sprite?
  * - Add filter for mobile & tablets
  * - Add condition for when location has changed
- * - Clean up sass
- * - Add Gulp images task
- * - Add sass images partial
- * - Compass rbga color mixin?
+ * - Reduce size of _animation.scss and convert CSS to SCSS
  */
 
 /**
@@ -670,7 +667,7 @@ var ViewModel = function() {
 	  	 * @external 'navigator.geolocation.getCurrentPosition'
 	  	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition}
 	  	 */
-	    navigator.geolocation.getCurrentPosition(function(position) {
+	    navigator.geolocation.getCurrentPosition(function (position) {
 
 	    		/** Update the current latitude & longitude */
 	    		self.mapCurrentLat(position.coords.latitude);
@@ -686,75 +683,16 @@ var ViewModel = function() {
 			    	self.appLandingLoadingVisibility(false);
 			  	}, 5000);
 
-		  }, function() {
-
-	  		/** Browser supports Geolocation but hasn't been enabled */
-	      handleNoGeolocation(true);
-
-		}, 
-			/**
-			 * Enable high accuracy Geolocation
-			 * @external 'enableHighAccuracy'
-			 * @see {@link http://www.w3.org/TR/geolocation-API/#enablehighaccuracy} 
-			 */
-			{ maximumAge:600000, timeout:5000, enableHighAccuracy: true });
+			}, self.handleNoGeolocation, { maximumAge:0, timeout:10000, enableHighAccuracy: true });
 		  
 		} else {
 
 	    /** Browser doesn't support Geolocation */
-	    handleNoGeolocation(false);
+	    self.handleNoGeolocation(false);
 
-		}
-
-		/**
-		 * Handle no Geo-location
-		 * @param {object}
-		 */
-		function handleNoGeolocation(error) {
-
-			/** Show the landing action */
-	  	self.appLandingActionVisibility(true);
-
-	  	/** Show the landing info */
-	  	self.appLandingInfoVisibility(true);
-
-	  	/** Hide landing loading animation */
-	  	self.appLandingLoadingVisibility(false);	
-
-	    switch (error.code) {
-        case error.PERMISSION_DENIED:
-					/** If the appDebug variable is set to true, console.log the error */
-					if (self.appDebug) console.log('User denied the request for Geolocation.');
-					/** Show the user notification message  */
-					self.notificationKeepAlive(true);
-					self.notificationMessage('User denied the request for Geolocation.');
-					break;
-        case error.POSITION_UNAVAILABLE:
-					/** If the appDebug variable is set to true, console.log the error */
-					if (self.appDebug) console.log('Location information is unavailable.');
-					/** Show the user notification message  */
-					self.notificationKeepAlive(true);
-					self.notificationMessage('Location information is unavailable.');
-					break;
-        case error.TIMEOUT:
-					/** If the appDebug variable is set to true, console.log the error */
-					if (self.appDebug) console.log('The request to get user location timed out.');
-					/** Show the user notification message  */
-					self.notificationKeepAlive(true);
-					self.notificationMessage('The request to get user location timed out.');
-					break;
-        case error.UNKNOWN_ERROR:
-					/** If the appDebug variable is set to true, console.log the error */
-					if (self.appDebug) console.log('An unknown error occurred.');
-					/** Show the user notification message  */
-					self.notificationKeepAlive(true);
-					self.notificationMessage('An unknown error occurred.');
-					break;
-	    }
 		}
 		
 	}
-
 
 	/**
 	 * Set Location. Set the user's current location on the map.
@@ -767,9 +705,13 @@ var ViewModel = function() {
 		/** Center map on current LatLng */
     self.map.setCenter(self.mapLatLang);
 
-    /** Save current Latitude and Longitude values to localStorage via dataModel helper methods */
-    dataModel.set('lat', self.mapCurrentLat());
-    dataModel.set('lng', self.mapCurrentLng());
+    /** Check if localStorage is available in the browser */
+    if (self.checkLocalStorage()) {
+    	
+	    /** Save current Latitude and Longitude values to localStorage via dataModel helper methods */
+	    dataModel.set('lat', self.mapCurrentLat());
+	    dataModel.set('lng', self.mapCurrentLng());
+  	}
 
     /**
      * Add a custom HTML current position marker to the map
@@ -786,12 +728,58 @@ var ViewModel = function() {
     });		
 	}
 
+	/**
+	 * Handle no Geo-location
+	 * @param {object}
+	 */
+ 	this.handleNoGeolocation = function(error) {
+
+		/** Show the landing action */
+  	self.appLandingActionVisibility(true);
+
+  	/** Show the landing info */
+  	self.appLandingInfoVisibility(true);
+
+  	/** Hide landing loading animation */
+  	self.appLandingLoadingVisibility(false);	
+
+    switch (error.code) {
+      case error.PERMISSION_DENIED:
+				/** If the appDebug variable is set to true, console.log the error */
+				if (self.appDebug) console.log('User denied the request for Geolocation.');
+				/** Show the user notification message  */
+				self.notificationKeepAlive(true);
+				self.notificationMessage('User denied the request for Geolocation.');
+				break;
+      case error.POSITION_UNAVAILABLE:
+				/** If the appDebug variable is set to true, console.log the error */
+				if (self.appDebug) console.log('Location information is unavailable.');
+				/** Show the user notification message  */
+				self.notificationKeepAlive(true);
+				self.notificationMessage('Location information is unavailable.');
+				break;
+      case error.TIMEOUT:
+				/** If the appDebug variable is set to true, console.log the error */
+				if (self.appDebug) console.log('The request to get user location timed out.');
+				/** Show the user notification message  */
+				self.notificationKeepAlive(true);
+				self.notificationMessage('The request to get user location timed out.');
+				break;
+      case error.UNKNOWN_ERROR:
+				/** If the appDebug variable is set to true, console.log the error */
+				if (self.appDebug) console.log('An unknown error occurred.');
+				/** Show the user notification message  */
+				self.notificationKeepAlive(true);
+				self.notificationMessage('An unknown error occurred.');
+				break;
+    }
+	}
+
 
 	/**
 	 * Local Storage Available.
-	 * Check local storage for Latitude and Longitude values and if 
-	 * they exist, hide the landing and set the position on the map. 
-	 * Else if localStorage isn't available, show the landing.
+	 * Check local storage for latitude and longitude values and if 
+	 * they exist, check if the current latitude and longitude match.
 	 */
 	this.localStorageAvailable = function() {
 
@@ -801,24 +789,65 @@ var ViewModel = function() {
 			/** Show the landing */
 			self.appLandingVisbility(true);	
 
-			/** localStorage Latitude and Longitude values are set */
+		/** localStorage Latitude and Longitude values are set */
 		} else {
 
-			/**  Hide the landing */
-			self.appLandingVisbility(false);
+			/** Hide the landing action */
+	  	self.appLandingActionVisibility(false);
+
+	  	/** Hide the landing info */
+	  	self.appLandingInfoVisibility(false);
+
+	  	/** Show landing loading animation */
+	  	self.appLandingLoadingVisibility(true);	
 
 			/** Grab the Latitude and Longitude values from localStorage via dataModel helper functions */
 			self.mapCurrentLat(parseFloat(dataModel.get('lat')));
 			self.mapCurrentLng(parseFloat(dataModel.get('lng')));
 
-			/**
-			 * Set the position on the map
-			 * @external 'google.maps.event.addDomListener()'
-			 * @see {@link https://developers.google.com/maps/documentation/javascript/events#DomEvents}
-			 */
-			google.maps.event.addDomListener(window, "load", function(){
-				self.setLocation();
-			});
+	  	/**
+	  	 * Get current position with HTML Geolocation
+	  	 * @external 'navigator.geolocation.getCurrentPosition'
+	  	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition}
+	  	 */
+			navigator.geolocation.getCurrentPosition(function(position) { 
+
+				/** 
+				 * If the current latitude and longitude values match the latitude and longitude values in localStorage, set the users location
+				 * on the map and hide the landing.
+				 */
+				if (self.mapCurrentLat() == position.coords.latitude && self.mapCurrentLng() == position.coords.longitude) {
+
+					/** Set the users location on the map */
+					self.setLocation();
+
+					setTimeout(function() {
+
+						/** Hide the landing */
+						self.appLandingVisbility(false);	
+					}, 5000);
+
+					/**
+					 * Else, the current location of has changed. 
+					 */
+				} else {
+
+					setTimeout(function() {
+
+						/** Show the landing action */
+				  	self.appLandingActionVisibility(true);
+
+				  	/** Show the landing info */
+				  	self.appLandingInfoVisibility(true);
+
+				  	/** Hide landing loading animation */
+				  	self.appLandingLoadingVisibility(false);						
+			  	}, 3000);
+
+				}
+
+			}, self.handleNoGeolocation, { maximumAge:0, timeout:10000, enableHighAccuracy: true });
+
 		}
 
 	}
@@ -834,29 +863,39 @@ var ViewModel = function() {
 	}
 
 	/**
-	 * Local Storage Available. Check if local storage is available
-	 * @param  {string} type
+	 * Local Storage Available. Check if local storage is available in the browser.
 	 * @return {boolean}
 	 */	
-	this.checkLocalStorage = function(type) {
+	this.checkLocalStorage = function() {
 		try {
-			var storage = window[type],
+			var storage = window['localStorage'],
 				x = '__storage_test__';
 			storage.setItem(x, x);
 			storage.removeItem(x);
-
-			/** Call the LocalStorageAvailable function */
-			self.localStorageAvailable();
+			return true;
 		}
 		catch(e) {
+			return false;
+		}
+	}
 
+	/**
+	 * Init App. Initialize the application by checking if localStorage is available or not.
+	 */
+	this.initApp = function() {
+
+		/** localStorage is available */
+		if (self.checkLocalStorage()) {
+			/** Call the LocalStorageAvailable function */
+			self.localStorageAvailable();
+
+		/** localStorage isn't available */
+		} else {
 			/** Call the LocalStorageUnavailable function */
 			self.localStorageUnavailable();
 		}
 	}
-
-	/** Call the checkLocalStorage function */
-	this.checkLocalStorage('localStorage');
+	this.initApp();
 
 }
 
