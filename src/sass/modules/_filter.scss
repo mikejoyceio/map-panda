@@ -73,11 +73,11 @@
 	  z-index: 2000;
 
 	  input {
+	  	@include border-radius(2px);
 			-moz-appearance: none;
 			-webkit-appearance: none;
 			appearance: none;
 			background: $white;
-			border-radius: 3px;
 			border: 1px solid $white;
 			margin: 0;
 			outline: none;
