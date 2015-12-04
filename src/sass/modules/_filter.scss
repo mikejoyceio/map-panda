@@ -24,7 +24,8 @@
 	
 	.icon {
 		@include border-radius(999px);
-		background: $outer-space;
+		@include transition(all .5s linear);
+		background: $jungle-green;
 		color: $white;
 		height: 35px;
 		left: 0;
@@ -38,7 +39,7 @@
 		z-index: 3000;
 
 		&.active {
-			color: $mandy;
+			background: $outer-space;
 		}
 	}
 
