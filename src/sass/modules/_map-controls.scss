@@ -50,11 +50,14 @@
 	@include transition(all .5s linear);
 	background: $jungle-green;
 	color: $white;
+	display: inline-block;
 	height: 40px;
+	line-height: 40px;
 	position:absolute; 
 	right: 10px; 
 	text-align: center;
 	top: 65px;
+	vertical-align: middle;
 	width: 40px; 
 	z-index: 2000;
 
@@ -65,7 +68,7 @@
 
 	.icon {
 		font-size: 20px;
-		line-height: 2;
+		line-height: inherit;
 	}
 
 	@media #{$medium-up} {
@@ -77,13 +80,13 @@
 	@media #{$large-up} {
 		background: $outer-space;
 		height: 30px;
-		width: 30px;
+		line-height: 30px;
 		right: 21px;
 		top: 105px;		
+		width: 30px;
 
 		.icon {
 			font-size: 18px;
-			line-height: 1.7;
 		}
 	}
 }
