@@ -5,10 +5,11 @@
 	unicode-bidi: bidi-override;	
 
 	span.star {
-		font-family: FontAwesome;
-		font-weight: normal;
-		font-style: normal;
 		display: inline-block;
+		font-family: FontAwesome;
+		font-style: normal;
+		font-weight: normal;
+		line-height: inherit;
 
 		&:before {
 		  content: "\f005";
