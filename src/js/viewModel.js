@@ -2291,28 +2291,105 @@ ko.bindingHandlers.toggleFilter = {
 	 */
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
+		/**
+		 * isMobile. Used to prevent click events firing on touchscreen devices 
+		 * @type {Boolean}
+		 */
+		var isMobile = false;
+
 		/** 
-		 * When the mouseover event is fired on the element, add the 'hover' CSS class from the element
+		 * On element click
 		 * @param {string}
 		 * @param {function}
 		 * @external '$().on'
 		 * @see {@link http://api.jquery.com/on/}
 		 */
-		$(element).on("click", function(){
-				bindingContext.$root.searchFilterVisibility(!bindingContext.$root.searchFilterVisibility());
+		$(element).on('click', function() {
 
-				if (bindingContext.$root.searchFilterVisibility()) {
-					$(element).addClass('active');
+			/** If mobile is set to true, return the function to prevent the event firing on touchscreens */
+			if (isMobile) return
+
+			/** Call eventFunction */
+			eventFunction();
+		});
+
+		/** 
+		 * On element touchend
+		 * @param {string}
+		 * @param {function}
+		 * @external '$().on'
+		 * @see {@link http://api.jquery.com/on/}
+		 */
+		$(element).on('touchend', function() {
+
+			/** Set the isMobile variable to true */
+			isMobile = true;
+
+			/** Call eventFunction */
+			eventFunction();
+		});
+
+
+		function eventFunction() {
+
+			/** Toggle search filter visibility */
+			bindingContext.$root.searchFilterVisibility(!bindingContext.$root.searchFilterVisibility());
+
+			/** If the search filter visibility is true */
+			if (bindingContext.$root.searchFilterVisibility()) {
+
+				/**
+				 * Add active class to element
+				 * @external '.addClass()'
+				 * @see {@link https://api.jquery.com/addclass/}
+				 */
+				$(element).addClass('active');
+
+				/** If the event didn't come from a touchscreen device, focus the text input */
+				if (!isMobile) {
 					setTimeout(function() {
 						$(element).parent().find('input').focus();
 					}, 1000);
-				} else {
-					$(element).removeClass('active');
-					setTimeout(function() {
-						$(element).parent().find('input').blur();
-					}, 1000);
 				}
-		});
+
+			} else {
+
+				/**
+				 * Remove active class from element
+				 * @external '.removeClass()'
+				 * @see {@link: https://api.jquery.com/removeClass/}
+				 */
+				$(element).removeClass('active');
+
+				/**
+				 * Remove focus from text input (closes the keyboard on mobiles and tablets)
+				 * @external '.parent()'
+				 * @see {@link https://api.jquery.com/parent/}
+				 * @external '.find()'
+				 * @see {@link https://api.jquery.com/find/}
+				 * @external '.blur()'
+				 * @see {@link https://api.jquery.com/blur/}
+				 */
+				$(element).parent().find('input').blur();
+
+				/**
+				 * Reset text input value
+				 * @external '.parent()'
+				 * @see {@link https://api.jquery.com/parent/}
+				 * @external '.find()'
+				 * @see {@link https://api.jquery.com/find/}
+				 * @external '.val()'
+				 * @see {@link http://api.jquery.com/val/}
+				 */
+				$(element).parent().find('input').val('');
+
+				/** Loop through each place in the place list and unhide it */
+				for (var i=0;i<bindingContext.$root.placeList().length;i++) {
+					bindingContext.$root.placeList()[i].isHidden(false);
+				}
+
+			}
+		}
 
 	}	
 };
