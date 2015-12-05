@@ -35,29 +35,40 @@
 	<!-- Landing -->
 	<div class="landing" data-bind="visible: appLandingVisbility">
 
+		<!-- Landing Header -->
 		<h1 class="landing-header">
 			Map Panda
 		</h1>
+		<!-- /Landing Header -->
 
+		<!-- Landing Brand -->
 		<div class="landing-brand">
 			<div class="brand-image"></div>
 		</div>
+		<!-- /Landing Brand -->
 
+		<!-- Landing Info -->
 		<p class="landing-info" data-bind="visible: appLandingInfoVisibility" style="display: none;">
 			Explore popular locations around you.
 		</p>
+		<!-- /Landing Info -->
 
+		<!-- Landing Loading -->
 		<div class="landing-loading" data-bind="visible: appLandingLoadingVisibility">
 			<div class="landing-loader">
 				<div class="radial-pulse-outer"></div>
 				<div class="radial-pulse-inner"></div>
 			</div>
 		</div>
-	
+		<!-- /Landing Loading -->
+
+		<!-- Landing Action -->	
 		<div class="landing-action" data-bind="visible: appLandingActionVisibility" style="display: none;">
 			<button class="button action radius expand" data-bind="click: getLocation">Find Me</button>
 		</div>
+		<!-- /Landing Action -->
 
+		<!-- Landing Powered By -->
 		<div class="landing-powered">
 			<h3 class="landing-powered-header">
 				Powered By
@@ -80,12 +91,17 @@
 				</li>
 			</ul>
 		</div>
+		<!-- /Landing Powered By -->
 
+		<!-- Landing Notification -->
 		<div class="landing-notification notification" data-bind="notification: { message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
-		
+		<!-- /Landing Notification -->
+	
+		<!-- Landing Reload -->	
 		<div class="landing-reload reload" data-bind="visible: appReloadVisbility, event: { click: reloadApp, touchend: reloadApp }">
 			<span class="icon fa fa-refresh"></span>Reload Map Panda
 		</div>
+		<!-- /Landing Reload -->
 
 	</div>
 	<!-- /Landing -->
