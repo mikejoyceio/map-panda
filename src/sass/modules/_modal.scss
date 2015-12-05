@@ -88,7 +88,6 @@
 			.place-price {
 			  @include border-radius(3px);
 			  background: rgba(255,255,255,0.3);
-			  display: none;
 			  font-size: 11px;
 			  height: 17px;
 			  left: 7px;
@@ -96,56 +95,7 @@
 			  position: absolute;
 			  text-align: center;
 			  top: 30px;
-			  width: 50px;
-
-				span.dollar {
-					font-family: FontAwesome;
-					font-weight: normal;
-					font-style: normal;
-					display: inline-block;
-
-					&:before {
-					  content: "\f155";
-					  padding: 1px;
-					  color: $boulder;
-					}
-				}
-
-				&.price-00 {
-					display: none;
-				}
-
-				&.price-01 {
-			  	.dollar-01:before {
-			  		content: "\f155";
-						color: $chenin;
-			  		display: block;
-			  	}
-			  }
-
-			  &.price-02 {
-				  .dollar-01:before, .dollar-02:before {
-			  		content: "\f155";
-						color: $chenin;
-			  		display: block;
-			  	}			  	
-			  }
-
-			  &.price-03 {
-				  .dollar-01:before, .dollar-02:before, .dollar-03:before {
-			  		content: "\f155";
-						color: $chenin;
-			  		display: block;
-			  	}					  	
-			  }
-
-			  &.price-04 {
-				  .dollar-01:before, .dollar-02:before, .dollar-03:before, .dollar-04:before {
-			  		content: "\f155";
-						color: $chenin;
-			  		display: block;
-			  	}				  	
-			  }				
+			  width: 50px;			
 			}
 
 			.bottom-bar {
