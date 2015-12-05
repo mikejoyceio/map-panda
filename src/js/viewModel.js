@@ -7,7 +7,6 @@
 
 /* TODO:
  * - Add javascript promise polyfill
- * - Add help panel
  * - Test Uber deep linking
  * - Check notification error messages
  * - Combine images into a sprite?
@@ -751,28 +750,28 @@ var ViewModel = function() {
 				if (self.appDebug) console.log('User denied the request for Geolocation.');
 				/** Show the user notification message  */
 				self.notificationKeepAlive(true);
-				self.notificationMessage('User denied the request for Geolocation.');
+				self.notificationMessage('Please share your location');
 				break;
       case error.POSITION_UNAVAILABLE:
 				/** If the appDebug variable is set to true, console.log the error */
 				if (self.appDebug) console.log('Location information is unavailable.');
 				/** Show the user notification message  */
 				self.notificationKeepAlive(true);
-				self.notificationMessage('Location information is unavailable.');
+				self.notificationMessage('Geolocation unavailable.');
 				break;
       case error.TIMEOUT:
 				/** If the appDebug variable is set to true, console.log the error */
 				if (self.appDebug) console.log('The request to get user location timed out.');
 				/** Show the user notification message  */
 				self.notificationKeepAlive(true);
-				self.notificationMessage('The request to get user location timed out.');
+				self.notificationMessage('Geolocation timed out.');
 				break;
       case error.UNKNOWN_ERROR:
 				/** If the appDebug variable is set to true, console.log the error */
 				if (self.appDebug) console.log('An unknown error occurred.');
 				/** Show the user notification message  */
 				self.notificationKeepAlive(true);
-				self.notificationMessage('An unknown error occurred.');
+				self.notificationMessage('Unknown error.');
 				break;
     }
 	}
