@@ -66,6 +66,11 @@ var ViewModel = function() {
 	 */	
 	this.appLandingLoadingVisibility = ko.observable(false)
 	/**
+	 * App reload visibility
+	 * @type {boolean}
+	 */
+	this.appReloadVisbility = ko.observable(false);
+	/**
 	 * App Swiping - true if user is swiping on a touch screen
 	 * @type {boolean}
 	 */
@@ -493,6 +498,13 @@ var ViewModel = function() {
  	 */
  	this.closeModalOverlay = function() {
  		self.modalOverlayVisibility(false);
+ 	}
+
+ 	/**
+ 	 * Reload App
+ 	 */
+ 	this.reloadApp = function() {
+ 		document.location.reload(true);	
  	}
 
  	/**
