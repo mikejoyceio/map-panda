@@ -443,7 +443,8 @@ var ViewModel = function() {
 
 	/**
 	 * Map Pan To. Pan to and center the map to the Current Location
-	 * @see this.mapLatLang
+	 * @external '.panTo()'
+	 * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#Map}
 	 */
 	this.mapPanTo = function() {
 		self.map.panTo(self.mapLatLang);
