@@ -6,9 +6,7 @@
  */
 
 /* TODO:
- * - Add javascript promise polyfill
  * - Test Uber deep linking
- * - Check notification error messages
  * - Combine images into a sprite?
  * - Reduce size of _animation.scss and convert CSS to SCSS
  */
@@ -21,6 +19,14 @@ var ViewModel = function() {
 
 	/** Invoke strict mode */
 	'use strict';
+
+	/**
+	 * ES6 Promises Polyfill
+	 * @type {object}
+	 * @external 'ES6Promise.Promise;'
+	 * @see {@link https://github.com/jakearchibald/es6-promise}
+	 */
+	var Promise = Promise || ES6Promise.Promise;
 
 	/** Set a pointer reference to 'this' */
 	var self = this;
