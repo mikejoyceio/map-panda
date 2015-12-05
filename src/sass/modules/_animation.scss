@@ -45,6 +45,18 @@
 	100% { opacity: 1 }
 }
 
+@include keyframes(float) {
+	from {
+		@include transform(translate(0, 0px));
+	}
+	65% {
+		@include transform(translate(0, 5px));
+	}
+	to {
+		@include transform(translate(0, -0px));
+	}
+}
+
 // Animate.css - http://daneden.me/animate
 // Licensed under the MIT license - http://opensource.org/licenses/MIT
 
