@@ -403,12 +403,14 @@ var ViewModel = function() {
 					self.searchClearFilterVisibility(true);
 				} else {
 					placeObject.isHidden(true);
+					self.searchClearFilterVisibility(true);
 				}
 			}
 
 			/** If the search query is an exact match, select the place type, else show all place types if the search query is empty */
 			if (value.indexOf(placeName) === 0) {
 				self.selectPlace(placeObject);
+				self.searchClearFilterVisibility(true);
 			} else if (value.length === 0) {
 				placeObject.isHidden(false);
 				self.searchClearFilterVisibility(false);
