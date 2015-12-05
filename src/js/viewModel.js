@@ -2364,13 +2364,6 @@ ko.bindingHandlers.toggleFilter = {
 			/** If the search filter visibility is true */
 			if (bindingContext.$root.searchFilterVisibility()) {
 
-				/**
-				 * Add active class to element
-				 * @external '.addClass()'
-				 * @see {@link https://api.jquery.com/addclass/}
-				 */
-				$(element).addClass('active');
-
 				/** If the event didn't come from a touchscreen device, focus the text input */
 				if (!isMobile) {
 					setTimeout(function() {
@@ -2379,13 +2372,6 @@ ko.bindingHandlers.toggleFilter = {
 				}
 
 			} else {
-
-				/**
-				 * Remove active class from element
-				 * @external '.removeClass()'
-				 * @see {@link: https://api.jquery.com/removeClass/}
-				 */
-				$(element).removeClass('active');
 
 				/**
 				 * Remove focus from text input (closes the keyboard on mobiles and tablets)
