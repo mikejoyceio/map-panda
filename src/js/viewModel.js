@@ -777,6 +777,8 @@ var ViewModel = function() {
 				/** Show the user notification message  */
 				self.notificationKeepAlive(true);
 				self.notificationMessage('Geolocation timed out.');
+				/** Show reload app button */
+				self.appReloadVisbility(true);
 				break;
       case error.UNKNOWN_ERROR:
 				/** If the appDebug variable is set to true, console.log the error */
@@ -784,6 +786,8 @@ var ViewModel = function() {
 				/** Show the user notification message  */
 				self.notificationKeepAlive(true);
 				self.notificationMessage('Unknown error.');
+				/** Show reload app button */
+				self.appReloadVisbility(true);
 				break;
     }
 	}
@@ -1353,6 +1357,8 @@ ko.bindingHandlers.map = {
 						break;
 					case statusCode.REQUEST_DENIED:
 						callbackError(status+' This webpage is not allowed to use the PlacesService.', 'Error. Please try again.');	
+						/** Show reload app button */
+						self.appReloadVisbility(true);
 						break;
 					case statusCode.UNKNOWN_ERROR:
 						callbackError(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.', 'Server Error. Please try again.');	
@@ -1362,6 +1368,8 @@ ko.bindingHandlers.map = {
 						break;
 					default: 
 						callbackError('Unknown error', 'Error. Please try again.');
+						/** Show reload app button */
+						self.appReloadVisbility(true);
 	    	}
     	}
 
