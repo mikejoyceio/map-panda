@@ -82,6 +82,10 @@
 		</div>
 
 		<div class="landing-notification notification" data-bind="notification: { message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
+		
+		<div class="landing-reload reload" data-bind="visible: appReloadVisbility, event: { click: reloadApp, touchend: reloadApp }">
+			<span class="icon fa fa-refresh"></span>Reload Map Panda
+		</div>
 
 	</div>
 	<!-- /Landing -->
@@ -205,6 +209,12 @@
 		<!-- Map Notification -->
 		<div class="map-notification notification" data-bind="notification: { message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
 		<!-- /Map Notification -->
+	
+		<!-- Map Reload -->
+		<div class="map-reload reload" data-bind="visible: appReloadVisbility, event: { click: reloadApp, touchend: reloadApp }">
+			<span class="icon fa fa-refresh"></span>Reload Map Panda
+		</div>
+		<!-- /Map Reload -->
 
 	</div>
 	<!-- /Main Content -->
