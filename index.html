@@ -158,7 +158,7 @@
 
 	<!-- Filter -->
  	<div class="filter">
- 		<div class="icon fa fa-search" data-bind="toggleFilter"></div>	
+ 		<div class="icon fa fa-search" data-bind="toggleFilter, css: { active: searchFilterVisibility }"></div>	
 		<div class="filter-input" data-bind="cssAnimateVisible: searchFilterVisibility, animation: 'fadeInLeft', animationOut: 'fadeOutLeft', duration: 400, durationOut: 50">
 			<input type="text" placeholder="Filter" autocapitalize="off" autocorrect="off" data-bind="textInput: searchQuery">
 			<div class="filter-clear" data-bind="click: clearFilter, visible: searchClearFilterVisibility">
