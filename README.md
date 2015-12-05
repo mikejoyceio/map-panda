@@ -84,6 +84,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Mozilla Developer Network: Using the Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
 - [Stack Exchange GIS: How to measure the accuracy of latitude and longitude?](http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)
 - [Mozilla Developer Network: location.reload()](https://developer.mozilla.org/en-US/docs/Web/API/Location/reload)
+- [Polyfill for ES6-style Promises](https://github.com/jakearchibald/es6-promise)
 
 ######jQuery 
 
