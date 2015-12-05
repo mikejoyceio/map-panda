@@ -11,7 +11,6 @@
  * - Test Uber deep linking
  * - Check notification error messages
  * - Combine images into a sprite?
- * - Add filter for mobile & tablets
  * - Reduce size of _animation.scss and convert CSS to SCSS
  */
 
@@ -51,12 +50,12 @@ var ViewModel = function() {
 	 * App Landing Action Visibility
 	 * @type {boolean}
 	 */		
-	this.appLandingActionVisibility = ko.observable(true);
+	this.appLandingActionVisibility = ko.observable(false);
 	/**
 	 * App Landing Info Visibility
 	 * @type {boolean}
 	 */	
-	this.appLandingInfoVisibility = ko.observable(true);	
+	this.appLandingInfoVisibility = ko.observable(false);	
 	/**
 	 * App Landing Visibility
 	 * @type {boolean}
@@ -404,12 +403,14 @@ var ViewModel = function() {
 					self.searchClearFilterVisibility(true);
 				} else {
 					placeObject.isHidden(true);
+					self.searchClearFilterVisibility(true);
 				}
 			}
 
 			/** If the search query is an exact match, select the place type, else show all place types if the search query is empty */
 			if (value.indexOf(placeName) === 0) {
 				self.selectPlace(placeObject);
+				self.searchClearFilterVisibility(true);
 			} else if (value.length === 0) {
 				placeObject.isHidden(false);
 				self.searchClearFilterVisibility(false);
@@ -425,13 +426,6 @@ var ViewModel = function() {
 	 * @see {@link http://knockoutjs.com/documentation/observables.html}
 	 */
 	this.searchQuery.subscribe(this.filter);
-
-	/**
-	 * Toggle Filter. Toggle the visibility of the search filter on mobiles & tablets.
-	 */
-	this.toggleFilter = function() {
-		self.searchFilterVisibility(!self.searchFilterVisibility());
-	}
 
 	/**
 	 * Clear the Filter.
@@ -795,6 +789,12 @@ var ViewModel = function() {
 
 			/** Show the landing */
 			self.appLandingVisbility(true);	
+
+			/** Show the landing action */
+	  	self.appLandingActionVisibility(true);
+
+	  	/** Show the landing info */
+	  	self.appLandingInfoVisibility(true);
 
 		/** localStorage Latitude and Longitude values are set */
 		} else {
@@ -2268,6 +2268,50 @@ ko.bindingHandlers.hover = {
 		 */
 		$(element).on("mouseout", function(){
 	  	$(element).removeClass('hover');
+		});
+
+	}	
+};
+
+/**
+ * Knockout Custom Toggle Filter Binding. Toggle the visibility of the search filter on mobiles & tablets.
+ * @type {Object}
+ * @external 'ko.bindingHandlers'
+ * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
+ */
+ko.bindingHandlers.toggleFilter = { 
+
+	/**
+	 * Init: Called when the binding is first applied.
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
+	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+
+		/** 
+		 * When the mouseover event is fired on the element, add the 'hover' CSS class from the element
+		 * @param {string}
+		 * @param {function}
+		 * @external '$().on'
+		 * @see {@link http://api.jquery.com/on/}
+		 */
+		$(element).on("click touchend", function(){
+				bindingContext.$root.searchFilterVisibility(!bindingContext.$root.searchFilterVisibility());
+
+				if (bindingContext.$root.searchFilterVisibility()) {
+					$(element).addClass('active');
+					setTimeout(function() {
+						$(element).parent().find('input').focus();
+					}, 1000);
+				} else {
+					$(element).removeClass('active');
+					setTimeout(function() {
+						$(element).parent().find('input').blur();
+					}, 1000);
+				}
 		});
 
 	}	
