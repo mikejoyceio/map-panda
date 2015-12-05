@@ -2298,10 +2298,7 @@ ko.bindingHandlers.toggleFilter = {
 		 * @external '$().on'
 		 * @see {@link http://api.jquery.com/on/}
 		 */
-		$(element).on("click touchend", function(event){
-				event.stopPropogation();
-				event.preventDefault();
-				
+		$(element).on("click", function(){
 				bindingContext.$root.searchFilterVisibility(!bindingContext.$root.searchFilterVisibility());
 
 				if (bindingContext.$root.searchFilterVisibility()) {
