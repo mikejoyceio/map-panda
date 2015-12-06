@@ -81,3 +81,10 @@
 		display: inline-block;
 	}
 }
+
+// Fix for extra padding on buttons in Firefox
+// @see {@link https://bugzilla.mozilla.org/show_bug.cgi?id=140562}
+button::-moz-focus-inner {
+    border:0;
+    padding:0;
+}

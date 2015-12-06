@@ -318,18 +318,20 @@
 		  }
 
 		  .actions {
-			  position: relative;
-			  bottom: 70px;
-			  height:88px;
-
-			  @media #{$medium-up} {
-			  	bottom: -5px;
-			  	height: 90px;
-			  }
-
+			  bottom: -8px;
+			  height: 92px;
+			  left: 0;
+			  margin: 0;
+			  margin: auto;
+			  padding: 0;
+			  position: absolute;
+			  right: 0;
+			  width: 96%;
+			   
 			  .button-group {
 					position: absolute;
 					top: 0;
+					height: 40px;
 
 					.button.copy {
 						display: none;

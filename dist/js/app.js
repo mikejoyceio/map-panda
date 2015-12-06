@@ -22706,7 +22706,6 @@ dataModel.set = function(item, value) {
 /* TODO:
  * - Test Uber deep linking
  * - Combine images into a sprite?
- * - Reduce size of _animation.scss and convert CSS to SCSS
  */
 
 /**
@@ -23906,6 +23905,12 @@ ko.bindingHandlers.map = {
 							        "saturation": "-100"
 							    }, {
 							        "invert_lightness": "false"
+							    }]
+							}, {
+							    "featureType": "road",
+							    "elementType": "labels.icon",
+							    "stylers": [{
+							        "visibility": "off"
 							    }]
 							}, {
 							    "featureType": "road"
