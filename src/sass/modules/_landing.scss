@@ -9,10 +9,6 @@
   width: 100%;
   z-index: 5000;
   background: $landing-background-small no-repeat center center fixed $jungle-green; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 
   @media #{$medium-up} {
 		background: $landing-background-medium no-repeat center center fixed $jungle-green; 
@@ -21,6 +17,11 @@
   @media #{$large-up} {
   	background: $landing-background-large no-repeat center center fixed $jungle-green; 
   }
+  
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
 	&:before {
 		content: '';
