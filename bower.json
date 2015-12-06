@@ -28,6 +28,7 @@
     "wheelnav": "~1.6.1",
     "compass.js": "https://github.com/ai/compass.js.git#~0.1.1",
     "fontawesome-markers": "https://github.com/mikejoyceio/fontawesome-markers.git",
-    "es6-promise": "~3.0.2"
+    "es6-promise": "~3.0.2",
+    "animate-sass": "~0.6.4"
   }
 }
