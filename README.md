@@ -21,6 +21,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Compass: Keyframe animation example](http://codepen.io/dwarcher/pen/yinsq)
 - [Sitepoint: Architecture of a SASS Project](http://www.sitepoint.com/architecture-sass-project/)
 - [The SASS Way: How to Structure a SASS Project](http://thesassway.com/beginner/how-to-structure-a-sass-project)
+- [Animate SASS: A Sassy version of Dan Eden's Animate.css](https://github.com/tgdev/animate-sass)
 
 ######CSS
 
