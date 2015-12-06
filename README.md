@@ -21,6 +21,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Compass: Keyframe animation example](http://codepen.io/dwarcher/pen/yinsq)
 - [Sitepoint: Architecture of a SASS Project](http://www.sitepoint.com/architecture-sass-project/)
 - [The SASS Way: How to Structure a SASS Project](http://thesassway.com/beginner/how-to-structure-a-sass-project)
+- [Animate SASS: A Sassy version of Dan Eden's Animate.css](https://github.com/tgdev/animate-sass)
 
 ######CSS
 
@@ -83,6 +84,8 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [An Introduction to JSDoc](http://www.2ality.com/2011/08/jsdoc-intro.html)
 - [Mozilla Developer Network: Using the Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
 - [Stack Exchange GIS: How to measure the accuracy of latitude and longitude?](http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)
+- [Mozilla Developer Network: location.reload()](https://developer.mozilla.org/en-US/docs/Web/API/Location/reload)
+- [Polyfill for ES6-style Promises](https://github.com/jakearchibald/es6-promise)
 
 ######jQuery 
 

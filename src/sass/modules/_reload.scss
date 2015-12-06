@@ -1,0 +1,29 @@
+
+// Reload
+
+.reload {
+  @include animation(float 5s infinite ease-in-out);
+  @include border-radius(5px);
+  background: $silver-tree;
+  color: $white;
+  font-size: 14px;
+  left: 0;
+  margin: auto;
+  padding: 3px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  width: 180px;
+
+  &:hover {
+  	cursor: pointer;
+  }
+
+	.icon {
+  margin-right: 10px
+	}
+
+	@media #{$large-up} {
+		outline: none;
+	}
+}

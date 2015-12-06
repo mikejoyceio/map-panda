@@ -1,0 +1,59 @@
+
+// Price Level
+
+.price-level {
+	unicode-bidi: bidi-override;	
+	display: none;
+
+	span.dollar {
+		display: inline-block;
+		font-family: FontAwesome;
+		font-style: normal;
+		font-weight: normal;
+		line-height: inherit;
+
+		&:before {
+		  content: "\f155";
+		  padding: 1px;
+		  color: $boulder;
+		}
+	}
+
+	.dollar-icon {
+		content: "\f155";
+		color: $chenin;
+		display: block;	
+	}
+
+	&.price-00 {
+		display: none;
+	}
+
+	&.price-01 {
+		display: block;
+  	.dollar-01:before {
+			@extend .dollar-icon;
+  	}
+  }
+
+  &.price-02 {
+		display: block;
+	  .dollar-01:before, .dollar-02:before {
+			@extend .dollar-icon;
+  	}			  	
+  }
+
+  &.price-03 {
+		display: block;
+	  .dollar-01:before, .dollar-02:before, .dollar-03:before {
+			@extend .dollar-icon;
+  	}					  	
+  }
+
+  &.price-04 {
+		display: block;
+	  .dollar-01:before, .dollar-02:before, .dollar-03:before, .dollar-04:before {
+			@extend .dollar-icon;
+  	}				  	
+  }		
+}

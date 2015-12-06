@@ -11,6 +11,14 @@
 var dataModel = {};
 
 /**
+ * ES6 Promises Polyfill
+ * @type {object}
+ * @external 'ES6Promise.Promise;'
+ * @see {@link https://github.com/jakearchibald/es6-promise}
+ */
+var Promise = Promise || ES6Promise.Promise;
+
+/**
  * Places Array
  * @type {Array.<Object>}
  */

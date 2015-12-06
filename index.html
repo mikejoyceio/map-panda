@@ -35,29 +35,40 @@
 	<!-- Landing -->
 	<div class="landing" data-bind="visible: appLandingVisbility">
 
+		<!-- Landing Header -->
 		<h1 class="landing-header">
 			Map Panda
 		</h1>
+		<!-- /Landing Header -->
 
+		<!-- Landing Brand -->
 		<div class="landing-brand">
 			<div class="brand-image"></div>
 		</div>
+		<!-- /Landing Brand -->
 
+		<!-- Landing Info -->
 		<p class="landing-info" data-bind="visible: appLandingInfoVisibility" style="display: none;">
 			Explore popular locations around you.
 		</p>
+		<!-- /Landing Info -->
 
+		<!-- Landing Loading -->
 		<div class="landing-loading" data-bind="visible: appLandingLoadingVisibility">
 			<div class="landing-loader">
 				<div class="radial-pulse-outer"></div>
 				<div class="radial-pulse-inner"></div>
 			</div>
 		</div>
-	
+		<!-- /Landing Loading -->
+
+		<!-- Landing Action -->	
 		<div class="landing-action" data-bind="visible: appLandingActionVisibility" style="display: none;">
 			<button class="button action radius expand" data-bind="click: getLocation">Find Me</button>
 		</div>
+		<!-- /Landing Action -->
 
+		<!-- Landing Powered By -->
 		<div class="landing-powered">
 			<h3 class="landing-powered-header">
 				Powered By
@@ -80,8 +91,17 @@
 				</li>
 			</ul>
 		</div>
+		<!-- /Landing Powered By -->
 
+		<!-- Landing Notification -->
 		<div class="landing-notification notification" data-bind="notification: { message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
+		<!-- /Landing Notification -->
+	
+		<!-- Landing Reload -->	
+		<div class="landing-reload reload" data-bind="visible: appReloadVisbility, event: { click: reloadApp, touchend: reloadApp }" style="display: none;">
+			<span class="icon fa fa-refresh"></span>Reload Map Panda
+		</div>
+		<!-- /Landing Reload -->
 
 	</div>
 	<!-- /Landing -->
@@ -138,7 +158,7 @@
 
 	<!-- Filter -->
  	<div class="filter">
- 		<div class="icon fa fa-search" data-bind="toggleFilter"></div>	
+ 		<div class="icon fa fa-search" data-bind="toggleFilter, css: { active: searchFilterVisibility }"></div>	
 		<div class="filter-input" data-bind="cssAnimateVisible: searchFilterVisibility, animation: 'fadeInLeft', animationOut: 'fadeOutLeft', duration: 400, durationOut: 50">
 			<input type="text" placeholder="Filter" autocapitalize="off" autocorrect="off" data-bind="textInput: searchQuery">
 			<div class="filter-clear" data-bind="click: clearFilter, visible: searchClearFilterVisibility">
@@ -205,6 +225,12 @@
 		<!-- Map Notification -->
 		<div class="map-notification notification" data-bind="notification: { message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
 		<!-- /Map Notification -->
+	
+		<!-- Map Reload -->
+		<div class="map-reload reload" data-bind="visible: appReloadVisbility, event: { click: reloadApp, touchend: reloadApp }" style="display: none;">
+			<span class="icon fa fa-refresh"></span>Reload Map Panda
+		</div>
+		<!-- /Map Reload -->
 
 	</div>
 	<!-- /Main Content -->
@@ -226,7 +252,7 @@
 					</span>
 				</div>
 				<div class="image" data-bind="style: { backgroundImage: modalInfoImage }, cssAnimateVisible: modalInfoImageVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300"></div>
-				<div class="place-price" data-bind="css: modalInfoPrice">
+				<div class="place-price price-level" data-bind="css: modalInfoPrice">
 					<span class="dollar dollar-01"></span>
 					<span class="dollar dollar-02"></span>
 					<span class="dollar dollar-03"></span>

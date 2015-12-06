@@ -6,12 +6,8 @@
  */
 
 /* TODO:
- * - Add javascript promise polyfill
- * - Add help panel
  * - Test Uber deep linking
- * - Check notification error messages
  * - Combine images into a sprite?
- * - Reduce size of _animation.scss and convert CSS to SCSS
  */
 
 /**
@@ -22,6 +18,14 @@ var ViewModel = function() {
 
 	/** Invoke strict mode */
 	'use strict';
+
+	/**
+	 * ES6 Promises Polyfill
+	 * @type {object}
+	 * @external 'ES6Promise.Promise;'
+	 * @see {@link https://github.com/jakearchibald/es6-promise}
+	 */
+	var Promise = Promise || ES6Promise.Promise;
 
 	/** Set a pointer reference to 'this' */
 	var self = this;
@@ -66,6 +70,11 @@ var ViewModel = function() {
 	 * @type {boolean}
 	 */	
 	this.appLandingLoadingVisibility = ko.observable(false)
+	/**
+	 * App reload visibility
+	 * @type {boolean}
+	 */
+	this.appReloadVisbility = ko.observable(false);
 	/**
 	 * App Swiping - true if user is swiping on a touch screen
 	 * @type {boolean}
@@ -443,7 +452,8 @@ var ViewModel = function() {
 
 	/**
 	 * Map Pan To. Pan to and center the map to the Current Location
-	 * @see this.mapLatLang
+	 * @external '.panTo()'
+	 * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#Map}
 	 */
 	this.mapPanTo = function() {
 		self.map.panTo(self.mapLatLang);
@@ -493,6 +503,13 @@ var ViewModel = function() {
  	 */
  	this.closeModalOverlay = function() {
  		self.modalOverlayVisibility(false);
+ 	}
+
+ 	/**
+ 	 * Reload App
+ 	 */
+ 	this.reloadApp = function() {
+ 		document.location.reload(true);	
  	}
 
  	/**
@@ -750,28 +767,32 @@ var ViewModel = function() {
 				if (self.appDebug) console.log('User denied the request for Geolocation.');
 				/** Show the user notification message  */
 				self.notificationKeepAlive(true);
-				self.notificationMessage('User denied the request for Geolocation.');
+				self.notificationMessage('Please share your location');
 				break;
       case error.POSITION_UNAVAILABLE:
 				/** If the appDebug variable is set to true, console.log the error */
 				if (self.appDebug) console.log('Location information is unavailable.');
 				/** Show the user notification message  */
 				self.notificationKeepAlive(true);
-				self.notificationMessage('Location information is unavailable.');
+				self.notificationMessage('Geolocation unavailable.');
 				break;
       case error.TIMEOUT:
 				/** If the appDebug variable is set to true, console.log the error */
 				if (self.appDebug) console.log('The request to get user location timed out.');
 				/** Show the user notification message  */
 				self.notificationKeepAlive(true);
-				self.notificationMessage('The request to get user location timed out.');
+				self.notificationMessage('Geolocation timed out.');
+				/** Show reload app button */
+				self.appReloadVisbility(true);
 				break;
       case error.UNKNOWN_ERROR:
 				/** If the appDebug variable is set to true, console.log the error */
 				if (self.appDebug) console.log('An unknown error occurred.');
 				/** Show the user notification message  */
 				self.notificationKeepAlive(true);
-				self.notificationMessage('An unknown error occurred.');
+				self.notificationMessage('Unknown error.');
+				/** Show reload app button */
+				self.appReloadVisbility(true);
 				break;
     }
 	}
@@ -1341,6 +1362,8 @@ ko.bindingHandlers.map = {
 						break;
 					case statusCode.REQUEST_DENIED:
 						callbackError(status+' This webpage is not allowed to use the PlacesService.', 'Error. Please try again.');	
+						/** Show reload app button */
+						self.appReloadVisbility(true);
 						break;
 					case statusCode.UNKNOWN_ERROR:
 						callbackError(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.', 'Server Error. Please try again.');	
@@ -1350,6 +1373,8 @@ ko.bindingHandlers.map = {
 						break;
 					default: 
 						callbackError('Unknown error', 'Error. Please try again.');
+						/** Show reload app button */
+						self.appReloadVisbility(true);
 	    	}
     	}
 
@@ -2291,28 +2316,91 @@ ko.bindingHandlers.toggleFilter = {
 	 */
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
+		/**
+		 * isMobile. Used to prevent click events firing on touchscreen devices 
+		 * @type {Boolean}
+		 */
+		var isMobile = false;
+
 		/** 
-		 * When the mouseover event is fired on the element, add the 'hover' CSS class from the element
+		 * On element click
 		 * @param {string}
 		 * @param {function}
 		 * @external '$().on'
 		 * @see {@link http://api.jquery.com/on/}
 		 */
-		$(element).on("click", function(){
-				bindingContext.$root.searchFilterVisibility(!bindingContext.$root.searchFilterVisibility());
+		$(element).on('click', function() {
 
-				if (bindingContext.$root.searchFilterVisibility()) {
-					$(element).addClass('active');
+			/** If mobile is set to true, return the function to prevent the event firing on touchscreens */
+			if (isMobile) return
+
+			/** Call eventFunction */
+			eventFunction();
+		});
+
+		/** 
+		 * On element touchend
+		 * @param {string}
+		 * @param {function}
+		 * @external '$().on'
+		 * @see {@link http://api.jquery.com/on/}
+		 */
+		$(element).on('touchend', function() {
+
+			/** Set the isMobile variable to true */
+			isMobile = true;
+
+			/** Call eventFunction */
+			eventFunction();
+		});
+
+
+		function eventFunction() {
+
+			/** Toggle search filter visibility */
+			bindingContext.$root.searchFilterVisibility(!bindingContext.$root.searchFilterVisibility());
+
+			/** If the search filter visibility is true */
+			if (bindingContext.$root.searchFilterVisibility()) {
+
+				/** If the event didn't come from a touchscreen device, focus the text input */
+				if (!isMobile) {
 					setTimeout(function() {
 						$(element).parent().find('input').focus();
 					}, 1000);
-				} else {
-					$(element).removeClass('active');
-					setTimeout(function() {
-						$(element).parent().find('input').blur();
-					}, 1000);
 				}
-		});
+
+			} else {
+
+				/**
+				 * Remove focus from text input (closes the keyboard on mobiles and tablets)
+				 * @external '.parent()'
+				 * @see {@link https://api.jquery.com/parent/}
+				 * @external '.find()'
+				 * @see {@link https://api.jquery.com/find/}
+				 * @external '.blur()'
+				 * @see {@link https://api.jquery.com/blur/}
+				 */
+				$(element).parent().find('input').blur();
+
+				/**
+				 * Reset text input value
+				 * @external '.parent()'
+				 * @see {@link https://api.jquery.com/parent/}
+				 * @external '.find()'
+				 * @see {@link https://api.jquery.com/find/}
+				 * @external '.val()'
+				 * @see {@link http://api.jquery.com/val/}
+				 */
+				$(element).parent().find('input').val('');
+
+				/** Loop through each place in the place list and unhide it */
+				for (var i=0;i<bindingContext.$root.placeList().length;i++) {
+					bindingContext.$root.placeList()[i].isHidden(false);
+				}
+
+			}
+		}
 
 	}	
 };

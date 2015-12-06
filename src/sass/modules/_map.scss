@@ -42,6 +42,18 @@
 	}
 }
 
+.map-reload {
+	top: 35%;
+
+	@media #{$medium-up} {
+		outline: none;
+	}	
+
+	@media #{$large-up} {
+		top: 160px;
+	}
+}
+
 .gm-style-cc:nth-child(n+8) {
     display: none;
 }

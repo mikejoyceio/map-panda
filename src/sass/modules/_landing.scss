@@ -8,15 +8,32 @@
   top: 0;
   width: 100%;
   z-index: 5000;
-   background: $landing-background no-repeat center center fixed $jungle-green; 
+  background: $landing-background-small no-repeat center center fixed $jungle-green; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 
+  @media #{$medium-up} {
+		background: $landing-background-medium no-repeat center center fixed $jungle-green; 
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+  }
+
+  @media #{$large-up} {
+  	background: $landing-background-large no-repeat center center fixed $jungle-green; 
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+  }
+ 
+
 	&:before {
 		content: '';
-		background: rgba(255, 255, 255, 0.5);
+		background: rgba(255, 255, 255, 0.4);
 		border-top: 10px solid $jungle-green;
 		position: absolute;
 		top: 0;
@@ -201,15 +218,28 @@
 	}
 
 	.landing-notification {
-		top: 250px;
+		top: 220px;
 		z-index: 5000;
-
+	
 		@media #{$medium-up} {
-			top: 255px;
+			top: 250px;
 		}
 
 		@media #{$large-up} {
 			top: 260px;
+		}
+	}
+
+	.landing-reload {
+		top: 155px;
+		z-index: 5000;
+
+		@media #{$medium-up} {
+			top: 177px;
+		}
+
+		@media #{$large-up} {
+			top: 187px;
 		}
 	}
 }
