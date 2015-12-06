@@ -8,7 +8,6 @@
 /* TODO:
  * - Test Uber deep linking
  * - Combine images into a sprite?
- * - Update landing background images
  */
 
 /**
