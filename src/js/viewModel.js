@@ -1209,6 +1209,12 @@ ko.bindingHandlers.map = {
 							        "invert_lightness": "false"
 							    }]
 							}, {
+							    "featureType": "road",
+							    "elementType": "labels.icon",
+							    "stylers": [{
+							        "visibility": "off"
+							    }]
+							}, {
 							    "featureType": "road"
 							}, {
 							    "featureType": "road"
