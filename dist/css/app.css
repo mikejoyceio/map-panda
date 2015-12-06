@@ -490,6 +490,45 @@ body {
   animation-name: fadeInLeft;
 }
 
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-moz-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-o-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  -moz-animation-name: fadeOut;
+  -o-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
 @-webkit-keyframes fadeOutLeft {
   0% {
     opacity: 1;
@@ -794,6 +833,11 @@ body {
 }
 .button-group .button {
   display: inline-block;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
 }
 
 .filter {
@@ -3699,7 +3743,7 @@ body {
   top: 0;
   width: 100%;
   z-index: 5000;
-  background: url(../images/landing-background-small.png) no-repeat center center fixed #2eb398;
+  background: url(../images/landing-bg-small.png) no-repeat center center fixed #2eb398;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -3707,7 +3751,7 @@ body {
 }
 @media only screen and (min-width: 40.0625em) {
   .landing {
-    background: url(../images/landing-background-medium.png) no-repeat center center fixed #2eb398;
+    background: url(../images/landing-bg-medium.png) no-repeat center center fixed #2eb398;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -3716,7 +3760,16 @@ body {
 }
 @media only screen and (min-width: 64.0625em) {
   .landing {
-    background: url(../images/landing-background-large.png) no-repeat center center fixed #2eb398;
+    background: url(../images/landing-bg-large.png) no-repeat center center fixed #2eb398;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+}
+@media only screen and (min-width: 90.0625em) {
+  .landing {
+    background: url(../images/landing-bg-xlarge.png) no-repeat center center fixed #2eb398;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -5009,19 +5062,20 @@ body {
   }
 }
 .modal .modal-content .modal-overlay .actions {
-  position: relative;
-  bottom: 70px;
-  height: 88px;
-}
-@media only screen and (min-width: 40.0625em) {
-  .modal .modal-content .modal-overlay .actions {
-    bottom: -5px;
-    height: 90px;
-  }
+  bottom: -8px;
+  height: 92px;
+  left: 0;
+  margin: 0;
+  margin: auto;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  width: 96%;
 }
 .modal .modal-content .modal-overlay .actions .button-group {
   position: absolute;
   top: 0;
+  height: 40px;
 }
 .modal .modal-content .modal-overlay .actions .button-group .button.copy {
   display: none;
