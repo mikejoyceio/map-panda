@@ -8,7 +8,6 @@
 /* TODO:
  * - Test Uber deep linking
  * - Combine images into a sprite?
- * - Reduce size of _animation.scss and convert CSS to SCSS
  */
 
 /**
