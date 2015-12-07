@@ -80,18 +80,20 @@
 			@extend .loader;
 			border-color: $mandy;
 			border-top-color: transparent;
+			border-width: 4px;
 			width: 30px;
 		  height: 30px;
-			border-width: 4px;
 		  left: 0;
-		  right: 0;
 		  margin: auto;
+		  right: 0;
+		  top: 46%;
 		  z-index: 9999;
 
 		  @media #{$medium-up} {
-		  	width: 40px;
-		  	height: 40px;
 		  	border-width: 5px;
+		  	height: 40px;
+		  	top: auto;
+		  	width: 40px;
 		  }
 		}
 	}

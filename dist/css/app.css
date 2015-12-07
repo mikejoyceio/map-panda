@@ -4095,19 +4095,21 @@ button::-moz-focus-inner {
 .map-loader .content .icon {
   border-color: #ed5565;
   border-top-color: transparent;
+  border-width: 4px;
   width: 30px;
   height: 30px;
-  border-width: 4px;
   left: 0;
-  right: 0;
   margin: auto;
+  right: 0;
+  top: 46%;
   z-index: 9999;
 }
 @media only screen and (min-width: 40.0625em) {
   .map-loader .content .icon {
-    width: 40px;
-    height: 40px;
     border-width: 5px;
+    height: 40px;
+    top: auto;
+    width: 40px;
   }
 }
 
