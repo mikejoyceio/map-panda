@@ -4057,19 +4057,23 @@ button::-moz-focus-inner {
 }
 
 .uber-loader {
-  background: #1d1e27;
-  width: 16px;
-  height: 16px;
-  border-width: 3px;
-  top: 3px;
-  right: 0;
-  left: 1px;
+  background: #09091A;
+  border-color: #1fbad6;
+  border-top-color: transparent;
+  border-width: 2px;
+  height: 15px;
+  left: 5px;
   margin: auto;
+  top: 3px;
+  width: 15px;
   z-index: 9999;
 }
 @media only screen and (min-width: 40.0625em) {
   .uber-loader {
+    height: 16px;
+    left: 7px;
     top: 5px;
+    width: 16px;
   }
 }
 
@@ -4968,6 +4972,7 @@ button::-moz-focus-inner {
   outline: none;
 }
 .modal .modal-content .modal-body .actions .action-uber .icon {
+  background-color: #09091A;
   background-position: 3px;
   background-repeat: no-repeat;
   background-size: 18px;
@@ -4976,30 +4981,51 @@ button::-moz-focus-inner {
   border-radius: 4px;
   background-image: url(../images/uber-badge.png);
   height: 22px;
-  width: 22px;
-  position: relative;
   margin: auto;
+  position: relative;
+  width: 85px;
+}
+.modal .modal-content .modal-body .actions .action-uber .icon:before {
+  color: #C1C1C1;
+  content: 'Ride with Uber';
+  font-size: 7px;
+  height: 10px;
+  left: 25px;
+  line-height: 1;
+  position: absolute;
+  top: 3px;
 }
 @media only screen and (min-width: 40.0625em) {
   .modal .modal-content .modal-body .actions .action-uber .icon {
-    background-size: 22px;
-    height: 25px;
-    width: 28px;
+    height: 26px;
+    width: 117px;
+    background-position: 6px;
+  }
+  .modal .modal-content .modal-body .actions .action-uber .icon:before {
+    font-size: 8px;
+    left: 30px;
   }
 }
 .modal .modal-content .modal-body .actions .action-uber .estimate {
-  font-size: 9px;
-  position: absolute;
-  top: 11px;
-  text-align: left;
-  left: 58px;
-  color: #727b7f;
+  color: #ffffff;
+  font-size: 7px;
+  font-weight: 300;
+  left: 31px;
   line-height: 1.2;
+  overflow: hidden;
+  position: absolute;
+  text-align: left;
+  text-overflow: ellipsis;
+  top: 16px;
+  white-space: nowrap;
+  width: 55px;
 }
 @media only screen and (min-width: 40.0625em) {
   .modal .modal-content .modal-body .actions .action-uber .estimate {
-    top: 13px;
-    left: 77px;
+    font-size: 9px;
+    left: 38px;
+    top: 18px;
+    width: 80px;
   }
 }
 .modal .modal-content .modal-body .info {
