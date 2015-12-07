@@ -35,6 +35,11 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [MDN: CSS Transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
 - [Name that Color](http://chir.ag/projects/name-that-color/#8C8C8C) by Chirag Mehta
 
+######Font
+
+- [HTML5 Rocks: Antialiasing 101](http://www.html5rocks.com/en/tutorials/internals/antialiasing-101/)
+- [Google Fonts: Lato](https://www.google.com/fonts/specimen/Lato)
+
 ######Icon Font
 
 - [Font Awesome](https://fortawesome.github.io/Font-Awesome/examples/#animated)
