@@ -576,6 +576,31 @@ body {
   animation-name: fadeOutLeft;
 }
 
+@-webkit-keyframes slideInDown {
+  0% {
+    -webkit-transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes slideInDown {
+  0% {
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.slideInDown {
+  -webkit-animation-name: slideInDown;
+  -moz-animation-name: slideInDown;
+  -o-animation-name: slideInDown;
+  animation-name: slideInDown;
+}
+
 @-webkit-keyframes slideInUp {
   0% {
     -webkit-transform: translate3d(0, 100%, 0);
@@ -4625,6 +4650,12 @@ button::-moz-focus-inner {
 .menu-main .place-list .item.hidden {
   display: none;
 }
+.menu-main .place-list .item.no-results {
+  color: #ffffff;
+}
+.menu-main .place-list .item.no-results .icon .icon-inner {
+  color: #ed5565;
+}
 
 .menu-wheel {
   bottom: 50px;
@@ -5005,13 +5036,18 @@ button::-moz-focus-inner {
     font-size: 11px;
   }
 }
-.modal .modal-content .modal-body .info .info-item.place-address {
+.modal .modal-content .modal-body .info .info-item.place-info {
   min-height: 40px;
 }
-.modal .modal-content .modal-body .info .info-item.place-address .place-name {
+.modal .modal-content .modal-body .info .info-item.place-info .place-name {
   color: #404040;
   margin-bottom: 4px;
   font-weight: 600;
+}
+.modal .modal-content .modal-body .info .info-item.place-info .place-address {
+  font-size: 10px;
+  max-height: 58px;
+  overflow: hidden;
 }
 .modal .modal-content .modal-body .info .info-item.place-website {
   border-top: 1px solid #e8e6e4;
