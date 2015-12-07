@@ -22,6 +22,7 @@ body {
 	font-size: $base-font-size;
 	font-weight: $font-regular;
 	line-height: $base-line-height;
+	-webkit-font-smoothing: subpixel-antialiased;
 }
 
 // Headings
