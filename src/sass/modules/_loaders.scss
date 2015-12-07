@@ -42,18 +42,22 @@
 
 .uber-loader {
 	@extend .loader;
-	background: $shark;
-	width: 16px;
-	height: 16px;
-	border-width: 3px;
-	top: 3px;
-  right: 0;
-  left: 1px;
+	background: $ebony;
+	border-color: $java;
+	border-top-color: transparent;
+  border-width: 2px;
+  height: 15px;
+  left: 5px;
   margin: auto;
+  top: 3px;
+  width: 15px;
   z-index: 9999;
 
   @media #{$medium-up} {
-  	top: 5px;
+		height: 16px;
+		left: 7px;
+		top: 5px;
+		width: 16px;
   }
 }
 
