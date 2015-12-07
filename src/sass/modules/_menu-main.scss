@@ -214,6 +214,16 @@
     		&.hidden {
     			display: none;
     		}
+
+    		&.no-results {
+    			color: $white;
+
+    			.icon {
+			  	 	.icon-inner {
+			  			color: $mandy;
+			  		}
+    			}
+    		}
     	}
     }
 }

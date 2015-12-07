@@ -143,6 +143,13 @@
 				<span data-bind="text: name"></span>
 			</li>
 			<!-- /ko -->
+			<li class="item no-results" data-bind="visible: searchQueryNoResults, event: { click: clearFilter, touchend: clearFilter }, hover">
+				<span class="icon fa-stack fa-sml">
+					<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>
+					<i class="icon-inner fa fa-stack-1x fa-inverse fa-minus"></i>
+				</span>
+				<span>No Results</span>
+			</li>
 		</ul>
 		<!-- /Options -->
 
