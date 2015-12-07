@@ -143,6 +143,13 @@
 				<span data-bind="text: name"></span>
 			</li>
 			<!-- /ko -->
+			<li class="item no-results" data-bind="visible: searchQueryNoResults, event: { click: clearFilter, touchend: clearFilter }, hover">
+				<span class="icon fa-stack fa-sml">
+					<i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>
+					<i class="icon-inner fa fa-stack-1x fa-inverse fa-minus"></i>
+				</span>
+				<span>No Results</span>
+			</li>
 		</ul>
 		<!-- /Options -->
 
@@ -280,16 +287,16 @@
 						<div class="icon">
 							<span class="uber-loader" data-bind="visible: modalUberLoading"></span>
 						</div>
-						<div class="estimate" data-bind="cssAnimateVisible: modalUberEstimateVisibility, animation: 'slideInDown', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
+						<div class="estimate" data-bind="cssAnimateVisible: modalUberEstimateVisibility, animation: 'fadeInLeft', animationOut: 'fadeOut', duration: 300, durationOut: 300">
 							<span data-bind="text: modalUberEstimate"></span>
 						</div>
 					</div>
 				</div>
 				<div class="info">
-					<div class="info-item place-address">
+					<div class="info-item place-info">
 						<span class="icon fa fa-compass"></span>
 						<p class="place-name" data-bind="text: modalInfoName"></p>
-						<p data-bind="text: modalInfoAddress"></p>	
+						<p class="place-address" data-bind="text: modalInfoAddress"></p>	
 					</div>
 					<div class="info-item place-website" data-bind="visible: modalInfoWebsite">
 						<span class="icon fa fa-globe"></span>

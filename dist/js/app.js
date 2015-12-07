@@ -23019,22 +23019,6 @@ var ViewModel = function() {
 	this.placeList = ko.observableArray([]); 
 
 
-	this.searchFilterVisibility = ko.observable(false);
-	/**
-	 * Search Query
-	 * @type {string}
-	 */
-	this.searchQuery = ko.observable();
-	/**
-	 * Search Radius
-	 * @type {number}
-	 */
-	this.searchRadius = ko.observable(this.appConstants.SEARCH_RADIUS_MAX / 2);
-	/**
-	 * Search Clear Filter Visibility
-	 */
-	this.searchClearFilterVisibility = ko.observable(false);
-
 	/**
 	 * Loop through each Object in the dataModel places array
 	 * @param  {Object}
@@ -23083,6 +23067,31 @@ var ViewModel = function() {
 	}
 
 	/**
+	 * Search Filter Visibility
+	 * @type {string}
+	 */	
+	this.searchFilterVisibility = ko.observable(false);
+	/**
+	 * Search Query
+	 * @type {string}
+	 */
+	this.searchQuery = ko.observable();
+	/**
+	 * Search Query No Results
+	 * @type {string}
+	 */
+	this.searchQueryNoResults = ko.observable(false);
+	/**
+	 * Search Radius
+	 * @type {number}
+	 */
+	this.searchRadius = ko.observable(this.appConstants.SEARCH_RADIUS_MAX / 2);
+	/**
+	 * Search Clear Filter Visibility
+	 */
+	this.searchClearFilterVisibility = ko.observable(false);
+
+	/**
 	 * Filter place types in the place list
 	 * @param  {String} query
 	 */
@@ -23091,6 +23100,19 @@ var ViewModel = function() {
 		/** Loop through each place in the place list */
 		for (var i=0;i<self.placeList().length;i++) {
 			compareString(query, self.placeList()[i].name().toLowerCase(), self.placeList()[i]);
+		}
+
+		/** Loop through each place in the place list, store a count, and if each place is hidden, show the 'no results' list item */
+		var count = 0;
+		for (var i=0;i<self.placeList().length;i++) {
+			if (self.placeList()[i].isHidden()) {
+				count++;
+			}
+			if (count === self.placeList().length) {
+				self.searchQueryNoResults(true);	
+			} else {
+				self.searchQueryNoResults(false);
+			}
 		}
 
 		/**

@@ -184,35 +184,59 @@
 					}
 
 					.icon {
+						background-color: $ebony;
 						background-position: 3px;
 						background-repeat: no-repeat;
 						background-size: 18px;
 					  @include border-radius(4px);
 					  background-image: $uber-badge;
 					  height: 22px;
-					  width: 22px;
-					  position: relative;
 					  margin: auto;
+					  position: relative;
+					  width: 85px;
+
+					  &:before {
+						  color: $silver;
+						  content: 'Ride with Uber';
+						  font-size: 7px;
+						  height: 10px;
+						  left: 25px;
+						  line-height: 1;
+						  position: absolute;
+						  top: 3px;
+					  }
 
 					  @media #{$medium-up} {
-					  	background-size: 22px;
-					  	height: 25px;
-					  	width: 28px;
+					    height: 26px;
+					    width: 117px;
+  						background-position: 6px;
+
+					  	&:before {
+						    font-size: 8px;
+						    left: 30px;
+					  	}
 					  }
 					}
 
 					.estimate {
-					  font-size: 9px;
-					  position: absolute;
-					  top: 11px;
-					  text-align: left;
-					  left: 58px;
-					  color: $rolling-stone;
+					  color: $white;
+					  font-size: 7px;
+					  font-weight: $font-light;
+					  left: 31px;
 					  line-height: 1.2;
+					  overflow: hidden;
+					  position: absolute;
+					  text-align: left;
+					  text-overflow: ellipsis;
+					  top: 16px;
+					  white-space: nowrap;
+					  width: 55px;
 
 					  @media #{$medium-up} {
-					  	top: 13px;
-					  	left: 77px;
+					    font-size: 9px;
+					    left: 38px;
+					    top: 18px;
+					    width: 80px;
 					  }
 					}
 				}
@@ -251,13 +275,19 @@
 				  	}
 					}
 
-					&.place-address {
+					&.place-info {
   					min-height: 40px;
 
 						.place-name {
 						  color: $tundora;
 						  margin-bottom: 4px;
 						  font-weight: 600;
+						}
+
+						.place-address {
+						  font-size: 10px;
+						  max-height: 58px;
+						  overflow: hidden;
 						}
 					}
 

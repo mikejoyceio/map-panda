@@ -87,11 +87,16 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 - [Mozilla Developer Network: location.reload()](https://developer.mozilla.org/en-US/docs/Web/API/Location/reload)
 - [Polyfill for ES6-style Promises](https://github.com/jakearchibald/es6-promise)
 
+######Apache
+
+- [Enable CORS on Apache](http://enable-cors.org/server_apache.html)
+
 ######jQuery 
 
 - [jQuery Docs: .removeClass()](http://api.jquery.com/removeClass/)
 - [jQuery Docs: .blur()](https://api.jquery.com/blur/)
 - [jQuery Docs: .focus()](https://api.jquery.com/focus/)
+- [jQuery Docs: .ajax()](http://api.jquery.com/jQuery.ajax/)
 
 ######General Programming
 
@@ -135,4 +140,5 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 ######Uber API
 
 - [Uber Developer: Tutorials](https://developer.uber.com/v1/tutorials/)
+- [Uber Devloper: Design Guidelines](https://developer.uber.com/v1/design-guidelines/)
 - [Thinkful: Uber API Tutorial](https://www.thinkful.com/learn/uber-api/)
