@@ -195,21 +195,21 @@
 					  position: relative;
 					  width: 85px;
 
-					  &:before {
-						  color: $silver;
-						  content: 'Ride with Uber';
-						  font-size: 7px;
-						  height: 10px;
-						  left: 25px;
-						  line-height: 1;
-						  position: absolute;
-						  top: 3px;
-					  }
-
 					  @media #{$medium-up} {
 					    height: 26px;
 					    width: 117px;
   						background-position: 6px;
+
+	 					  &:before {
+							  color: $silver;
+							  content: 'Ride with Uber';
+							  font-size: 7px;
+							  height: 10px;
+							  left: 25px;
+							  line-height: 1;
+							  position: absolute;
+							  top: 3px;
+						  }
 
 					  	&:before {
 						    font-size: 8px;
@@ -220,7 +220,7 @@
 
 					.estimate {
 					  color: $white;
-					  font-size: 7px;
+					  font-size: 9px;
 					  font-weight: $font-light;
 					  left: 31px;
 					  line-height: 1.2;
@@ -228,7 +228,7 @@
 					  position: absolute;
 					  text-align: left;
 					  text-overflow: ellipsis;
-					  top: 16px;
+					  top: 11px;
 					  white-space: nowrap;
 					  width: 55px;
 
