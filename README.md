@@ -140,4 +140,5 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 ######Uber API
 
 - [Uber Developer: Tutorials](https://developer.uber.com/v1/tutorials/)
+- [Uber Devloper: Design Guidelines](https://developer.uber.com/v1/design-guidelines/)
 - [Thinkful: Uber API Tutorial](https://www.thinkful.com/learn/uber-api/)
