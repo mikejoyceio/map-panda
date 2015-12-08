@@ -5,18 +5,16 @@
  * @author Mike Joyce [hello@mikejoyce.io]
  */
 
-/* TODO:
- * - Test Uber deep linking
- * - Combine images into a sprite?
- */
-
 /**
  * View Model
  * @constructor
  */
 var ViewModel = function() {
 
-	/** Invoke strict mode */
+	/** 
+	 * Invoke strict mode
+	 * @see {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Strict_mode}
+	 */
 	'use strict';
 
 	/**
@@ -31,57 +29,47 @@ var ViewModel = function() {
 	var self = this;
 
 	/**
-	 * App Debug
+	 * App Debug - set to true to console.log errors when debugging
 	 * @type {boolean}
 	 */
 	this.appDebug = false;			
 	/**
-	 * App Body Loading Visibility
+	 * App Body Loading Visibility - show/hide the body loading animation
 	 * @type {boolean}
 	 */	
 	this.appBodyLoadingVisibility = ko.observable(false);
 	/**
-	 * App Name
-	 * @type {string}
-	 */
-	this.appName = "Map Panda";
-	/**
-	 * Add Description
-	 * @type {string}
-	 */
-	this.appDescription = "Description";
-	/**
-	 * App Landing Action Visibility
+	 * App Landing Action Visibility - show/hide the landing action button ('Find Me')
 	 * @type {boolean}
 	 */		
 	this.appLandingActionVisibility = ko.observable(false);
 	/**
-	 * App Landing Info Visibility
+	 * App Landing Info Visibility - show/hide the landing information ('Explore popular locations around you.')
 	 * @type {boolean}
 	 */	
 	this.appLandingInfoVisibility = ko.observable(false);	
 	/**
-	 * App Landing Visibility
+	 * App Landing Visibility - show/hide the landing overlay
 	 * @type {boolean}
 	 */
 	this.appLandingVisbility = ko.observable(true);
 	/**
-	 * App Landing Loading Visibility
+	 * App Landing Loading Visibility - show/hide the landing loading animation
 	 * @type {boolean}
 	 */	
 	this.appLandingLoadingVisibility = ko.observable(false)
 	/**
-	 * App reload visibility
+	 * App reload visibility - show/hide the app reload button ('Reload Map Panda')
 	 * @type {boolean}
 	 */
 	this.appReloadVisbility = ko.observable(false);
 	/**
-	 * App Swiping - true if user is swiping on a touch screen
+	 * App Swiping - set to true if user is swiping on a touch screen
 	 * @type {boolean}
 	 */
 	this.appSwiping = ko.observable(false);
 	/**
-	 * App Viewport Width - stores the width of the browser viewport width
+	 * App Viewport Width - stores the width of the browser viewport
 	 * @type {number}
 	 */
 	this.appViewportWidth = ko.observable();
@@ -111,6 +99,11 @@ var ViewModel = function() {
 		 */
 		FOURSQUARE_URL: 'https://foursquare.com/v/',
 		/**
+		 * Notification fade duration
+		 * @type {number}
+		 */
+		NOTIFICATION_FADE_DURATION: 1000,
+		/**
 		 * Max map search radius
 		 * @const {number}
 		 */
@@ -137,9 +130,9 @@ var ViewModel = function() {
 	 * Notification Fade Duration - default fade duration for user notification visibility
 	 * @type {number}
 	 */
-	this.notificationFadeDuration = ko.observable(1000);
+	this.notificationFadeDuration = ko.observable(this.appConstants.NOTIFICATION_FADE_DURATION);
 	/**
-	 * Notification Keep Alive - 
+	 * Notification Keep Alive - if set to true, the notification will fade out
 	 * @type {boolean}
 	 */
 	this.notificationKeepAlive = ko.observable(false);
@@ -156,49 +149,50 @@ var ViewModel = function() {
 	 */
 	this.map = null;	
 	/**
-	 * Map Current Latitude
+	 * Map Current Latitude - the current latitude coordinate
 	 * @type {number}
 	 */
 	this.mapCurrentLat = ko.observable();
 	/**
-	 * Map Current Longitude
+	 * Map Current Longitude - the current longitude coordinate
 	 * @type {number}
 	 */
 	this.mapCurrentLng = ko.observable();
 	/**
-	 * Map Info Visibility
+	 * Map Info Visibility - show/hide the map information
 	 * @type {boolean}
 	 */
 	this.mapInfoVisibility = ko.observable(false);
 	/**
-	 * Map Loader Visibility
+	 * Map Loader Visibility - shoe/hide the map loading animation
 	 * @type {boolean}
 	 */
 	this.mapLoaderVisibility = ko.observable(false);
 	/**
-	 * Map Markers
+	 * Map Markers - stores an array of the map markers
 	 * @type {Array.<object>}
 	 */
 	this.mapMarkers = ko.observableArray();
 	/**
-	 * Map Latitude & Longitude
+	 * Map LatLng - stores the map's Latitude & Longitude 
 	 * @type {number}
 	 */
 	this.mapLatLang = null;
 	/**
-	 * Map Places
+	 * Map Places - stores the map places objects
+	 * @see 'dataModel.places'
 	 * @type {Object}
 	 */
 	this.mapPlaces = ko.observableArray();
 
 	
 	/**
-	 * Modal Visibility
+	 * Modal Visibility - show/hide the modal
 	 * @type {boolean}
 	 */
 	this.modalVisibilty = ko.observable(false);
 	/**
-	 * Modal Loading
+	 * Modal Loading - show/hide the modal loading animation
 	 * @type {boolean}
 	 */
 	this.modalLoading = ko.observable(true);
@@ -208,87 +202,87 @@ var ViewModel = function() {
 	 */
 	this.modalFoursquareURL = ko.observable();
 	/**
-	 * Modal Foursquare Visibility
+	 * Modal Foursquare Visibility - show/hide the Foursquare button ('View in Foursquare')
 	 * @type {string}
 	 */
 	this.modalFoursquareVisibility = ko.observable(false);
 	/**
-	 * Modal Info Address
+	 * Modal Info Address - holds the place address
 	 * @type {string}
 	 */
 	this.modalInfoAddress = ko.observable();
 	/**
-	 * Modal Info Latitude
+	 * Modal Info Latitude - holds the place latitude
 	 * @type {number}
 	 */
 	this.modalInfoLat = ko.observable();
 	/**
-	 * Modal Info Longitude
+	 * Modal Info Longitude - holds the place longitude
 	 * @type {number}
 	 */
 	this.modalInfoLng = ko.observable();
 	/**
-	 * Modal Info Name
+	 * Modal Info Name - holds the place name
 	 * @type {string}
 	 */
 	this.modalInfoName = ko.observable();
 	/**
-	 * Modal Info Phone
+	 * Modal Info Phone - holds the place phone number
 	 * @type {string}
 	 */
 	this.modalInfoPhone = ko.observable();
 	/**
-	 * Modal Info Phone Call
+	 * Modal Info Phone Call - holds the place phone number with all white space removed, for use with the 'tel:' link
 	 * @type {string}
 	 */
 	this.modalInfoPhoneCall = ko.observable();
 	/**
-	 * Modal Info Image
+	 * Modal Info Image - holds the place image
 	 * @type {string}
 	 */
 	this.modalInfoImage = ko.observable();
 	/**
-	 * Modal Info Image Visibility
+	 * Modal Info Image Visibility - show/hide the place image
 	 * @type {boolean}
 	 */
 	this.modalInfoImageVisibility = ko.observable(false);
 	/**
-	 * Modal Info Price
+	 * Modal Info Price - holds the place price level
 	 * @type {string}
 	 */
 	this.modalInfoPrice = ko.observable();
 	/**
-	 * Modal Info Rating
+	 * Modal Info Rating - holds the place rating
 	 * @type {string}
 	 */
 	this.modalInfoRating = ko.observable();
 	/**
-	 * Modal Info Website
+	 * Modal Info Website - holds the place website
 	 * @type {string}
 	 */
 	this.modalInfoWebsite = ko.observable();
 	/**
-	 * Modal Overlay Copy Button Visiblity
+	 * Modal Overlay Copy Button Visiblity - hide/show the copy button
 	 * @type {boolean}
 	 */
 	this.modalOverlayCopyButtonVisibility = ko.observable();
 	/**
-	 * Modal Overlay Group Buttons
+	 * Modal Overlay Group Buttons - set the group button CSS (one, two)
 	 * @type {number}
 	 */
 	this.modalOverlayGroupButtons = ko.observable();
 	/**
-	 * Modal Overlay Message
+	 * Modal Overlay Message - holds the modal overlay message
 	 * @type {string}
 	 */
 	this.modalOverlayMessage = ko.observable();
 	/**
-	 * Modal Overlay Message Visibility
+	 * Modal Overlay Message Visibility - show/hide the modal overlay message
 	 * @type {boolean}
 	 */
 	this.modalOverlayMessageVisibility = ko.observable(false);
 	/**
-	 * Modal Overlay Visibility
+	 * Modal Overlay Visibility - show/hide the modal overlay
 	 * @type {boolean}
 	 */
 	this.modalOverlayVisibility = ko.observable(false);
@@ -298,31 +292,31 @@ var ViewModel = function() {
 	 */
 	this.modalUberDeepLink = ko.observable(false);
 	/**
-	 * Modal Uber Estimate
+	 * Modal Uber Estimate - holds the Uber ride price estimate
 	 * @type {string}
 	 */
 	this.modalUberEstimate = ko.observable();
 	/**
-	 * Modal Uber Estimate Visibility
+	 * Modal Uber Estimate Visibility - show/hide the Uber price estimate
 	 * @type {boolean}
 	 */
 	this.modalUberEstimateVisibility = ko.observable(false);
 	/**
-	 * Modal Uber Loading
+	 * Modal Uber Loading - show/hide the Uber loading animation
 	 * @type {boolean}
 	 */
 	this.modalUberLoading = ko.observable(false);
 
 	
 	/**
-	 * Place List
+	 * Place List - holds the place objects
 	 * @type {Array.<object>}
 	 */
 	this.placeList = ko.observableArray([]); 
 
 
 	/**
-	 * Loop through each Object in the dataModel places array
+	 * Loop through each Object in the dataModel places array, create a place object and push to the placeList observable array
 	 * @param  {Object}
 	 * @return {Object}
 	 * @see dataModel.places
@@ -343,7 +337,10 @@ var ViewModel = function() {
 	 */
 	this.selectPlace = function(place) {
 
-		/** If the user is swiping on a touch screen, return the function to prevent place from being selected */
+		/** 
+		 * If the user is swiping on a touch screen, return the function to prevent the place type from being selected
+		 * @see 'ko.bindingHandlers.preventSwipeTap'
+		 */
 		if (self.appSwiping()) {
 			return;
 		}
@@ -369,33 +366,33 @@ var ViewModel = function() {
 	}
 
 	/**
-	 * Search Filter Visibility
+	 * Search Filter Visibility - show/hide the search filter
 	 * @type {string}
 	 */	
 	this.searchFilterVisibility = ko.observable(false);
 	/**
-	 * Search Query
+	 * Search Query - holds the filter search query
 	 * @type {string}
 	 */
 	this.searchQuery = ko.observable();
 	/**
-	 * Search Query No Results
+	 * Search Query No Results - shown when there are no results returned from a search query
 	 * @type {string}
 	 */
 	this.searchQueryNoResults = ko.observable(false);
 	/**
-	 * Search Radius
+	 * Search Radius - holds the map search radius (set to 5000 by default)
 	 * @type {number}
 	 */
 	this.searchRadius = ko.observable(this.appConstants.SEARCH_RADIUS_MAX / 2);
 	/**
-	 * Search Clear Filter Visibility
+	 * Search Clear Filter Visibility - show/hide the clear filter button
 	 */
 	this.searchClearFilterVisibility = ko.observable(false);
 
 	/**
 	 * Filter place types in the place list
-	 * @param  {String} query
+	 * @param  {string} query
 	 */
 	this.filter = function(query) {
 
@@ -404,7 +401,7 @@ var ViewModel = function() {
 			compareString(query, self.placeList()[i].name().toLowerCase(), self.placeList()[i]);
 		}
 
-		/** Loop through each place in the place list, store a count, and if each place is hidden, show the 'no results' list item */
+		/** Loop through each place in the place list, store a count, and if each place is hidden, show 'No Results' */
 		var count = 0;
 		for (var i=0;i<self.placeList().length;i++) {
 			if (self.placeList()[i].isHidden()) {
@@ -473,7 +470,7 @@ var ViewModel = function() {
 	}
 
 	/**
-	 * Map Pan To. Pan to and center the map to the Current Location
+	 * Map Pan To - pan to and center the map to the Current Location
 	 * @external '.panTo()'
 	 * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#Map}
 	 */
@@ -482,7 +479,7 @@ var ViewModel = function() {
 	}
 
 	/**
-	 * Zoom Map In
+	 * Map Zoom In - zoom the map in 
 	 * @external 'getZoom()'
 	 * @see {@link https://developers.google.com/maps/documentation/javascript/reference#Map}
 	 */
@@ -493,7 +490,7 @@ var ViewModel = function() {
 	}
 
 	/**
-	 * Zoom Map Out
+	 * Map Zoom Out - zoom the map out
 	 * @external 'getZoom()'
 	 * @see {@link https://developers.google.com/maps/documentation/javascript/reference#Map}
 	 */
@@ -504,7 +501,7 @@ var ViewModel = function() {
 	}
 
 	/**
-	 * Close Modal
+	 * Close Modal - call to close the modal
 	 */
  	this.closeModal = function() {
  		self.modalVisibilty(false);
@@ -514,21 +511,21 @@ var ViewModel = function() {
  	} 
 
  	/**
- 	 * Open Modal Overlay
+ 	 * Open Modal Overlay - call to open the modal overlay
  	 */
  	this.openModalOverlay = function() {
  		self.modalOverlayVisibility(true);
  	}
 
  	/**
- 	 * Close modal Overlay
+ 	 * Close modal Overlay - call to close the modal overlay
  	 */
  	this.closeModalOverlay = function() {
  		self.modalOverlayVisibility(false);
  	}
 
  	/**
- 	 * Reload App
+ 	 * Reload App - call to reload the application
  	 */
  	this.reloadApp = function() {
  		document.location.reload(true);	
@@ -579,10 +576,13 @@ var ViewModel = function() {
 			 * @param  {Object} xhrObj
 			 */
 	  }, function(xhrObj) {	 	
+
 				/** If the appDebug variable is set to true, console.log the error */
 				if (self.appDebug) console.log(xhrObj);
+
 				/** Set the Foursquare URL blank */
 				self.modalFoursquareURL('#');
+
 				/** Hide the Foursquare button */
 				self.modalFoursquareVisibility(false);
 	  });
@@ -649,10 +649,13 @@ var ViewModel = function() {
 			 * @param  {Object} xhrObj
 			 */
 		}, function(xhrObj) {
+
 				/** If the appDebug variable is set to true, console.log the error */
 				if (self.appDebug) console.log(xhrObj);
+
 				/** Hide the loading animation */
 				self.modalUberLoading(false);
+
 				/** Hide the price estimate */
 				self.modalUberEstimateVisibility(false);
 		});
@@ -717,8 +720,10 @@ var ViewModel = function() {
 	    		self.setLocation();
 
 	    		setTimeout(function() {
+
 	    			/** Hide the landing */
 			    	self.appLandingVisbility(false);
+
 			    	/** Hide the landing loading animation */
 			    	self.appLandingLoadingVisibility(false);
 			  	}, 5000);
@@ -969,7 +974,7 @@ var Place = function(data) {
 };
 
 /**
- * Knockout Custom Google Map Binding
+ * Knockout Custom Google Map Binding. Initializes and updates a Google map instance.
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
@@ -1374,8 +1379,10 @@ ko.bindingHandlers.map = {
   			}, 1000);
 
     	} else {
+
 	  		/**
 	  		 * Callback Error Handling. Error status and messages are passed the the callbackError function.
+	  		 * @see 'callbackError()'
 	  		 */
 	    	switch (status) {
 
@@ -1732,7 +1739,7 @@ ko.bindingHandlers.map = {
 };
 
 /**
- * Knockout Custom Notification Binding
+ * Knockout Custom Notification Binding. Creates the user notifications.
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
@@ -1863,7 +1870,7 @@ ko.bindingHandlers.notification = {
 };
 
 /**
- * Knockout Custom Range Slider Binding
+ * Knockout Custom Range Slider Binding. Initializes the custom range slider and updates it's value.
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
@@ -2077,7 +2084,7 @@ ko.bindingHandlers.clipboard = {
 };
 
 /**
- * Knockout Custom WheelNav Binding
+ * Knockout Custom WheelNav Binding. Initializes the wheel menu.
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
@@ -2158,7 +2165,7 @@ ko.bindingHandlers.wheelNav = {
 };
 
 /**
- * Knockout Custom Compass Binding
+ * Knockout Custom Compass Binding. Initializes a small map compass for supported devices.
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
@@ -2191,7 +2198,7 @@ ko.bindingHandlers.compass = {
 			$(element).show();
 
 			/**
-			 * Set CSS transform rotation
+			 * Set CSS transform rotation (rotates the compass)
 			 * @external '$().css'
 			 * @see {@link http://api.jquery.com/css/}
 			 */
@@ -2209,7 +2216,7 @@ ko.bindingHandlers.compass = {
 };
 
 /**
- * Knockout Custom Viewport Width Binding
+ * Knockout Custom Viewport Width Binding. Keeps track of the browser viewport width.
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
@@ -2241,7 +2248,8 @@ ko.bindingHandlers.viewportWidth = {
 };
 
 /**
- * Knockout Custom Prevent SwipeTap Binding.
+ * Knockout Custom Prevent SwipeTap Binding. Prevent tap events from trigging functions when the user is swiping 
+ * on a touch screen device.
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
@@ -2284,7 +2292,8 @@ ko.bindingHandlers.preventSwipeTap = {
 };
 
 /**
- * Knockout Custom Hover State Binding
+ * Knockout Custom Hover State Binding. Add/remove and 'active' CSS class on mouseover/mouseout. 
+ * This prevents issues with hover states getting 'stuck' on touchscreen devices.
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
