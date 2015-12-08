@@ -219,14 +219,18 @@
 		</div>
    	<!-- /Map Controls -->
 
-	  <!-- Map Loader -->
-		<div class="map-loader" data-bind="visible: mapLoaderVisibility">
-			<div class="content">
-				<div class="icon">
+	  <!-- Map Loading -->
+		<div class="map-loading" data-bind="visible: mapLoadingVisibility">
+			<div class="map-loader">
+				<div class="content">
+					<div class="loader-outer">
+						<div class="loader-inner">
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<!-- /Map Loader -->
+		<!-- /Map Loading -->
 
 		<!-- Map Notification -->
 		<div class="map-notification notification" data-bind="notification: { message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>

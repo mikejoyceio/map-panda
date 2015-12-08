@@ -167,7 +167,7 @@ var ViewModel = function() {
 	 * Map Loader Visibility - shoe/hide the map loading animation
 	 * @type {boolean}
 	 */
-	this.mapLoaderVisibility = ko.observable(false);
+	this.mapLoadingVisibility = ko.observable(false);
 	/**
 	 * Map Markers - stores an array of the map markers
 	 * @type {Array.<object>}
@@ -1348,7 +1348,7 @@ ko.bindingHandlers.map = {
     	if (status === statusCode.OK) {
 
     		/** Show the map loader */
-    		bindingContext.$root.mapLoaderVisibility(true);
+    		bindingContext.$root.mapLoadingVisibility(true);
 
     		/** Clear all markers from the map */
     		clearMarkers();
@@ -1379,7 +1379,7 @@ ko.bindingHandlers.map = {
 
     		/** Hide the map loading animation */
   			setTimeout(function() {
-  				bindingContext.$root.mapLoaderVisibility(false);
+  				bindingContext.$root.mapLoadingVisibility(false);
   			}, 1000);
 
     	} else {
@@ -1732,7 +1732,7 @@ ko.bindingHandlers.map = {
     	if (bindingContext.$root.appDebug) console.log(statusMessage);
 
     	/** Show the user notification message */
-	    bindingContext.$root.mapLoaderVisibility(false);
+	    bindingContext.$root.mapLoadingVisibility(false);
 	   	bindingContext.$root.notificationKeepAlive(true);
   		bindingContext.$root.notificationMessage(notificationMessage);	  	    	
 
