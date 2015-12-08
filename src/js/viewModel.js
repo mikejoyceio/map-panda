@@ -436,7 +436,7 @@ var ViewModel = function() {
 			}
 
 			/** If the search query is an exact match, select the place type, else show all place types if the search query is empty */
-			if (value.indexOf(placeName) === 0) {
+			if (value.indexOf(placeName) === 0 && value.length === placeName.length) {
 				self.selectPlace(placeObject);
 				self.searchClearFilterVisibility(true);
 			} else if (value.length === 0) {
