@@ -396,14 +396,14 @@ var ViewModel = function() {
 	 */
 	this.filter = function(query) {
 
-		/** Loop through each place in the place list */
-		for (var i=0;i<self.placeList().length;i++) {
+		/** Loop through each place in the place list and compare the string */
+		for (var i=0,j=self.placeList().length;i<j;i++) {
 			compareString(query, self.placeList()[i].name().toLowerCase(), self.placeList()[i]);
 		}
 
 		/** Loop through each place in the place list, store a count, and if each place is hidden, show 'No Results' */
 		var count = 0;
-		for (var i=0;i<self.placeList().length;i++) {
+		for (var i=0,j=self.placeList().length;i<j;i++) {
 			if (self.placeList()[i].isHidden()) {
 				count++;
 			}
@@ -423,7 +423,7 @@ var ViewModel = function() {
 		function compareString(value, placeName, placeObject) {
 
 			/** Loop through the length of the search query string */
-			for (var i=0;i<value.length;i++) {
+			for (var i=0,j=value.length;i<j;i++) {
 
 				/** If characters match in order, show the place type, else hide it */
 				if (placeName.indexOf(value) !== -1 && placeName.charAt(i) === value.charAt(i)) {
@@ -2432,7 +2432,7 @@ ko.bindingHandlers.toggleFilter = {
 				$(element).parent().find('input').val('');
 
 				/** Loop through each place in the place list and unhide it */
-				for (var i=0;i<bindingContext.$root.placeList().length;i++) {
+				for (var i=0,j=bindingContext.$root.placeList().length;i<j;i++) {
 					bindingContext.$root.placeList()[i].isHidden(false);
 				}
 
