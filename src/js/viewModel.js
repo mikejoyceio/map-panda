@@ -429,6 +429,8 @@ var ViewModel = function() {
 				if (placeName.indexOf(value) !== -1 && placeName.charAt(i) === value.charAt(i)) {
 					placeObject.isHidden(false);
 					self.searchClearFilterVisibility(true);
+					
+					/** Else if there is no match, hide the place type and show the clear filter button */
 				} else {
 					placeObject.isHidden(true);
 					self.searchClearFilterVisibility(true);
@@ -439,6 +441,8 @@ var ViewModel = function() {
 			if (value.indexOf(placeName) === 0 && value.length === placeName.length) {
 				self.selectPlace(placeObject);
 				self.searchClearFilterVisibility(true);
+
+				/** Else if the text input is empty show all place types and hide the clear filter button */
 			} else if (value.length === 0) {
 				placeObject.isHidden(false);
 				self.searchClearFilterVisibility(false);
