@@ -66,6 +66,7 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 h1 {
@@ -326,11 +327,6 @@ html, body {
     transform: translate(0, 0px);
   }
 }
-/*!
-Animate.css - http://daneden.me/animate
-Licensed under the MIT license - http://opensource.org/licenses/MIT
-Copyright (c) 2015 Daniel Eden
-*/
 /*!
 Animate.css - http://daneden.me/animate
 Licensed under the MIT license - http://opensource.org/licenses/MIT
@@ -4012,7 +4008,7 @@ button::-moz-focus-inner {
   }
 }
 
-.loader, .main-loader, .modal-loader, .uber-loader, .map-loader .content .icon {
+.loader, .main-loader, .modal-loader, .uber-loader, .map-loader .content .loader-outer .loader-inner {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -4092,7 +4088,27 @@ button::-moz-focus-inner {
   display: table-cell;
   vertical-align: middle;
 }
-.map-loader .content .icon {
+.map-loader .content .loader-outer {
+  background: rgba(255, 255, 255, 0.5);
+  width: 36px;
+  height: 36px;
+  left: 0;
+  margin: auto;
+  right: 0;
+  top: 46%;
+  z-index: 9999;
+  position: relative;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+@media only screen and (min-width: 40.0625em) {
+  .map-loader .content .loader-outer {
+    width: 50px;
+    height: 50px;
+  }
+}
+.map-loader .content .loader-outer .loader-inner {
   border-color: #ed5565;
   border-top-color: transparent;
   border-width: 4px;
@@ -4101,14 +4117,13 @@ button::-moz-focus-inner {
   left: 0;
   margin: auto;
   right: 0;
-  top: 46%;
-  z-index: 9999;
+  top: 3px;
 }
 @media only screen and (min-width: 40.0625em) {
-  .map-loader .content .icon {
+  .map-loader .content .loader-outer .loader-inner {
     border-width: 5px;
     height: 40px;
-    top: auto;
+    top: 5px;
     width: 40px;
   }
 }
@@ -4987,21 +5002,21 @@ button::-moz-focus-inner {
   position: relative;
   width: 85px;
 }
-.modal .modal-content .modal-body .actions .action-uber .icon:before {
-  color: #C1C1C1;
-  content: 'Ride with Uber';
-  font-size: 7px;
-  height: 10px;
-  left: 25px;
-  line-height: 1;
-  position: absolute;
-  top: 3px;
-}
 @media only screen and (min-width: 40.0625em) {
   .modal .modal-content .modal-body .actions .action-uber .icon {
     height: 26px;
     width: 117px;
     background-position: 6px;
+  }
+  .modal .modal-content .modal-body .actions .action-uber .icon:before {
+    color: #C1C1C1;
+    content: 'Ride with Uber';
+    font-size: 7px;
+    height: 10px;
+    left: 25px;
+    line-height: 1;
+    position: absolute;
+    top: 3px;
   }
   .modal .modal-content .modal-body .actions .action-uber .icon:before {
     font-size: 8px;
@@ -5010,7 +5025,7 @@ button::-moz-focus-inner {
 }
 .modal .modal-content .modal-body .actions .action-uber .estimate {
   color: #ffffff;
-  font-size: 7px;
+  font-size: 9px;
   font-weight: 300;
   left: 31px;
   line-height: 1.2;
@@ -5018,7 +5033,7 @@ button::-moz-focus-inner {
   position: absolute;
   text-align: left;
   text-overflow: ellipsis;
-  top: 16px;
+  top: 11px;
   white-space: nowrap;
   width: 55px;
 }

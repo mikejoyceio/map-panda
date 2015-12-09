@@ -96,13 +96,13 @@ gulp.task('styles', function() {
  */
 gulp.task('image', function() {
 	gulp.src('./src/images/*')	
-		/**
-		 * Gulp Imagemin
-		 * @external '.imagemin()'
-		 * @see {@link https://www.npmjs.com/package/gulp-imagemin}
-		 */
-		.pipe(plugins.imagemin())
-		.pipe(gulp.dest('./dist/images'))
+			/**
+			 * Gulp Imagemin
+			 * @external '.imagemin()'
+			 * @see {@link https://www.npmjs.com/package/gulp-imagemin}
+			 */
+			.pipe(plugins.imagemin())
+			.pipe(gulp.dest('./dist/images'))
 });
 
 /**
