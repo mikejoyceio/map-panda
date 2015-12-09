@@ -2,7 +2,7 @@
 
 ######Project Overview
 
-Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001). The task was to develop a single-page application with KnockoutJS featuring a map of your neighborhood or a neighborhood you would like to visit. Requirements included adding additional functionality to the application, including: map markers to identify popular locations, a search function to easily discover these locations, and a listview to support simple browsing of all locations. Research was also required into how to implement third-party APIs that provide additional information about each location (such as StreetView images, Wikipedia articles, Yelp reviews, etc).
+Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001). The task was to develop a single-page application with [KnockoutJS](knockoutjs.com) featuring a map of your neighborhood or a neighborhood you would like to visit. Requirements included adding additional functionality to the application, including: map markers to identify popular locations, a search function to easily discover these locations, and a listview to support simple browsing of all locations. Research was also required into how to implement third-party APIs that provide additional information about each location (such as StreetView images, Wikipedia articles, Yelp reviews, etc).
 
 ######Project Description
 
@@ -30,17 +30,17 @@ Then point your browser to http://localhost:8000.
 
 Problems? Detailed usage instructions can been found [here](https://docs.python.org/2/library/basehttpserver.html).
 
-(NOTE: If you would like to serve the application locally without Python Simple Server, make sure to serve on the port '8000' otherwise the Uber API will not return ride price estimates)
+NOTE: If you would like to serve the application locally without Python Simple Server, make sure to serve on port 8000 otherwise the Uber API will not return ride price estimates.
 
 ##Build
 
-The [Gulp](http://gulpjs.com/) streaming build system is used in this project to minify, concatenate and move files to the appropriate directories.
+The [Gulp](http://gulpjs.com/) streaming build system is used in this project to minify, concatenate and move files to the appropriate directories. Build files have already been added to the repo and can be found in the [dist](dist) directory.
 
-To be able to run the build system, you will need to have [Node JS](https://nodejs.org/en/download/package-manager/#osx) installed.
+If you would like to run the build yourself locally, you will need to have [Node JS](https://nodejs.org/en/download/package-manager/#osx) installed.
+
+NOTE: All of the following commands need to be ran from the root of the project.
 
 ######Install Gulp
-
-From the root of the project, run the following command in the terminal:
 
 ```
 $ sudo npm install --save-dev gulp
