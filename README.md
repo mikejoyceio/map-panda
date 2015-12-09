@@ -4,13 +4,25 @@
 
 Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001). The task was to develop a single-page application with KnockoutJS featuring a map of your neighborhood or a neighborhood you would like to visit. Requirements included adding additional functionality to the application, including: map markers to identify popular locations, a search function to easily discover these locations, and a listview to support simple browsing of all locations. Research was also required into how to implement third-party APIs that provide additional information about each location (such as StreetView images, Wikipedia articles, Yelp reviews, etc).
 
+##Getting Started
+
+Point your browser to https://mappanda.co. 
+
+If you would like to get it up and running locally, clone this repo and run the following Python command from the root of the project:
+
+```
+python -m SimpleHTTPServer
+```
+
+Then point your browser to http://localhost:8000
+
 ##Build
 
 The [Gulp](http://gulpjs.com/) streaming build system is used in this project to minify, concatenate and move files to the appropriate directories.
 
 To be able to run the build sytem, you will need to have [Node JS](https://nodejs.org/en/download/package-manager/#osx) installed on your system.
 
-Install Gulp:
+######Install Gulp:
 
 From the root of the project, run the following command in the terminal:
 
@@ -18,21 +30,29 @@ From the root of the project, run the following command in the terminal:
 $ npm install --save-dev gulp
 ```
 
-To minify and concatenate CSS and JavaScript files:
+Problems? Detailed installation instructions can been found [here](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md).
+
+######Gulp Commands
+
+- Minify and concatenate CSS and JavaScript files:
 
 ```
 $ gulp
 ```
 
-To optimize images:
+This command runs the default Gulp task in gulpfile.js and runs the both the styles and scripts tasks. The styles task concatenates and minifies all of the [Sass](http://sass-lang.com/) partials in src/scss and compiles to a single file (app.css) in dist/css. The scripts task concatenates and minifies all JavaScript files in src/js and pulls in all of the main Bower package JavaScript in src/vendor and compiles to a single file (app.js) in dist/js.
+
+- Optimize images:
 
 ```
 $ gulp images
 ```
 
+This command runs the images task in gulpfile.js. Images in src/images will be optimized and moved to dist/images.
+
 ##Package Management
 
-[Bower](http://bower.io/) is used to keep track of frameworks, libraries, assets, and utilities. There is no need to run any Bower commands in the terminal as all required packages are added to this repo.
+[Bower](http://bower.io/) is used to keep track of frameworks, libraries, assets, and utilities. There is no need to run any Bower commands in the terminal as all required packages have already been added to this repo.
 
 ##Resources
 
