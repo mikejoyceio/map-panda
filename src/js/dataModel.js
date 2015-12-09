@@ -542,7 +542,7 @@ dataModel.foursquare = function(request) {
 }
 
 /**
- * Ubder API Request
+ * Uber API Request
  * @param  {Object} request
  * @return {Object}
  */
