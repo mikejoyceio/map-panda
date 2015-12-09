@@ -2,7 +2,7 @@
 
 ######Project Overview
 
-Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001). The task was to develop a single-page application with KnockoutJS featuring a map of your neighborhood or a neighborhood you would like to visit. Requirements included adding additional functionality to the application, including: map markers to identify popular locations, a search function to easily discover these locations, and a listview to support simple browsing of all locations. Research was also required into how to implement third-party APIs that provide additional information about each location (such as StreetView images, Wikipedia articles, Yelp reviews, etc).
+Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001). The task was to develop a single-page application with [KnockoutJS](knockoutjs.com) featuring a map of your neighborhood or a neighborhood you would like to visit. Requirements included adding additional functionality to the application, including: map markers to identify popular locations, a search function to easily discover these locations, and a listview to support simple browsing of all locations. Research was also required into how to implement third-party APIs that provide additional information about each location (such as StreetView images, Wikipedia articles, Yelp reviews, etc).
 
 ######Project Description
 
@@ -30,17 +30,17 @@ Then point your browser to http://localhost:8000.
 
 Problems? Detailed usage instructions can been found [here](https://docs.python.org/2/library/basehttpserver.html).
 
-(NOTE: If you would like to serve the application locally without Python Simple Server, make sure to serve on the port '8000' otherwise the Uber API will not return ride price estimates)
+NOTE: If you would like to serve the application locally without Python Simple Server, make sure to serve on port 8000 otherwise the Uber API will not return ride price estimates.
 
-##Build
+##The Build
 
-The [Gulp](http://gulpjs.com/) streaming build system is used in this project to minify, concatenate and move files to the appropriate directories.
+The [Gulp](http://gulpjs.com/) streaming build system is used in this project to minify, concatenate and move files to the appropriate directories. Build files have already been added to the repo and can be found in the [dist](dist) directory.
 
-To be able to run the build system, you will need to have [Node JS](https://nodejs.org/en/download/package-manager/#osx) installed.
+If you would like to run the build yourself locally, you will need to have [Node JS](https://nodejs.org/en/download/package-manager/#osx) installed.
+
+NOTE: All of the following commands need to be ran from the root of the project.
 
 ######Install Gulp
-
-From the root of the project, run the following command in the terminal:
 
 ```
 $ sudo npm install --save-dev gulp
@@ -106,6 +106,40 @@ $ bower install
 
 ##Resources
 
+######Node Modules
+
+- [Gulp](https://www.npmjs.com/package/gulp)
+- [Gulp Compass](https://www.npmjs.com/package/gulp-compass)
+- [Gulp Concat](https://www.npmjs.com/package/gulp-concat)
+- [Gulp Filter](https://www.npmjs.com/package/gulp-filter)
+- [Gulp ImageMin](https://www.npmjs.com/package/gulp-imagemin)
+- [Gulp Live Reload](https://www.npmjs.com/package/gulp-livereload)
+- [Gulp Load Plugins](https://www.npmjs.com/package/gulp-load-plugins)
+- [Gulp MinifyCSS](https://www.npmjs.com/package/gulp-minify-css)
+- [Gulp Plumber](https://www.npmjs.com/package/gulp-plumber)
+- [Gulp Uglify](https://www.npmjs.com/package/gulp-uglify)
+- [Gulp Main Bower Files](https://www.npmjs.com/package/gulp-main-bower-files)
+
+######Bower Packages
+
+- [Animate SASS](https://github.com/tgdev/animate-sass)
+- [Clipboard.js](https://zenorocha.github.io/clipboard.js/)
+- [Compass.js](https://github.com/mikejoyceio/compass.js)
+- [ES6 Promise Polyfill](https://github.com/jakearchibald/es6-promise)
+- [Font Awesome](https://github.com/FortAwesome/Font-Awesome)
+- [Font Awesome Markers](https://github.com/mikejoyceio/fontawesome-markers)
+- [Google Maps Infobox](https://github.com/mikejoyceio/google-maps-infobox)
+- [Ion Range Slider](https://github.com/IonDen/ion.rangeSlider)
+- [jQuery](https://github.com/jquery/jquery)
+- [jQuery Mousewheel](https://github.com/jquery/jquery-mousewheel)
+- [Google Maps Rich Marker](https://github.com/mikejoyceio/js-rich-marker)
+- [KnockoutJS](https://github.com/knockout/knockout)
+- [Knockout Animate](https://github.com/mikejoyceio/Knockout-Animate)
+- [Malihu Custom Scrollbar](https://github.com/malihu/malihu-custom-scrollbar-plugin)
+- [Wheelnav](https://github.com/mikejoyceio/wheelnav)
+
+NOTE: Many of these repos have been forked because the bower.json configuration files were either missing the 'main' property or it was incomplete. [Gulp Load Plugins](https://www.npmjs.com/package/gulp-load-plugins) requires this property to automatically include main JavaScript files in the build. More information can be found in the [bower.json specification](https://github.com/bower/spec/blob/master/json.md).
+
 ######Build Tools
 
 - [A Beginners Guide to Using Bower & Gulp](http://andy-carter.com/blog/a-beginners-guide-to-package-manager-bower-and-using-gulp-to-manage-components) by Andy Carter
@@ -128,12 +162,11 @@ $ bower install
 - [Change Browser Highlight Colour](http://www.paulund.co.uk/change-browser-highlight-colour) by Paul Lund
 - [CSS Ellipsis](http://html5hub.com/ellipse-my-text/)
 - [CSS Transforms and Z-Index](http://daneden.me/2012/04/22/css-transforms-and-z-index/) by Daniel Eden
-- [CSS Triangle Generator](http://apps.eky.hk/css-triangle-generator/)
 - [CSS Tricks: appearance](https://css-tricks.com/almanac/properties/a/appearance/)
 - [Mozilla Developer Network: CSS Position](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
 - [Mozilla Developer Network: CSS Transform](https://developer.mozilla.org/en-US/docs/Web/CSS/transform)
 - [Name that Color](http://chir.ag/projects/name-that-color/#8C8C8C) by Chirag Mehta
-- [Nuttify: “before” pseudo element with Fontawesome ](http://nuttify.com/help/developer-manual/coding-style-guide/css-style-guide/css-tricks-before-pseudo-element-with-fontawesome/) by Ajax McKerral
+- [“before” pseudo element with Font Awesome ](http://nuttify.com/help/developer-manual/coding-style-guide/css-style-guide/css-tricks-before-pseudo-element-with-fontawesome/) by Ajax McKerral
 
 ######Font
 
@@ -150,8 +183,7 @@ $ bower install
 - [Can I Use: Search input type](http://caniuse.com/#search=search%20input)
 - [HTML input type=search](https://html.spec.whatwg.org/multipage/forms.html#text-(type=text)-state-and-search-state-(type=search))
 - [HTML5 Doctor: The Main Element](http://html5doctor.com/the-main-element/)
-- [Mozilla Developer Network](https://developer.mozilla.org/en/docs/Web/HTML/Element/Input)
-- [Stack Overflow: How to you detect the clearing of a "search" HTML5 input?](http://stackoverflow.com/questions/2977023/how-do-you-detect-the-clearing-of-a-search-html5-input)
+- [Mozilla Developer Network: Input Element](https://developer.mozilla.org/en/docs/Web/HTML/Element/Input)
 - [Using WAI-ARIA in HTML](http://w3c.github.io/aria-in-htmlUsing WAI-ARIA in HTML/)
 
 ######Images
@@ -165,7 +197,6 @@ $ bower install
 
 - [An Introduction to JSDoc](http://www.2ality.com/2011/08/jsdoc-intro.html)
 - [Caniuse: Geolocation](http://caniuse.com/#search=geo)
-- [Clipboard.js: A modern approach to copy text to clipboard](https://zenorocha.github.io/clipboard.js/)
 - [Detecting operating system with JavaScript](http://www.javascripter.net/faq/operatin.htm)
 - [Developing Large Scale KnockoutJS Applications](http://blog.scottlogic.com/2014/02/28/developing-large-scale-knockoutjs-applications.html) by Robat Williams
 - [Google: JavaScript Style Guide](https://google.github.io/styleguide/javascriptguide.xml)
@@ -173,9 +204,6 @@ $ bower install
 - [HTML Goodies: HTML5 Geolocation](http://www.htmlgoodies.com/html5/Web-Developer-Class-HTML5-Geolocation-3917596.htm#fbid=H6Q5EbyzCoF)
 - [HTML5 Geolocation](http://html5demos.com/geo)
 - [HTML5 Rocks: JavaScript Promises](http://www.html5rocks.com/en/tutorials/es6/promises/#toc-javascript-promises)
-- [iNoBounce - Stop your iOS webapp from bouncing around when scrolling](https://github.com/lazd/iNoBounce)
-- [Ion Range Slider](https://github.com/IonDen/ion.rangeSlider)
-- [jQuery: Return data after ajax call success](http://stackoverflow.com/questions/5316697/jquery-return-data-after-ajax-call-success)
 - [JSDoc](http://usejsdoc.org/tags-file.html)
 - [Mozilla Developer Network: typeof](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof)
 - [Mozilla Developer Network: Array ForEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
@@ -186,7 +214,6 @@ $ bower install
 - [Mozilla Developer Network: String.prototype.indexOf()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf)
 - [Mozilla Developer Network: Using the Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API)
 - [Named Function Expressions Demystified](http://kangax.github.io/nfe/) by Juriy "Kangax" Zaytsev)
-- [Polyfill for ES6-style Promises](https://github.com/jakearchibald/es6-promise)
 - [Pragmatic Standards: JavaScript Coding Standards and Best Practices](https://github.com/stevekwan/best-practices/blob/master/javascript/best-practices.md)
 - [Programmers Stack Exchange: How can we protect the namespace of an object in JavaScript](http://programmers.stackexchange.com/questions/161436/how-can-we-protect-the-namespace-of-an-object-in-javascript)
 - [Reddit: JavaScript - Naming conventions for AJAX request callbacks](https://www.reddit.com/r/javascript/comments/16zuth/what_are_your_conventions_for_naming_callbacks/)
@@ -194,7 +221,6 @@ $ bower install
 - [Stack Overflow: HTML Geolocation High Accuracy](http://stackoverflow.com/questions/16202077/high-accuracy-geolocation-html5)
 - [Stack Overflow: JavaScript Hoisting in Chrome & Firefox](http://stackoverflow.com/questions/14242399/javascript-hoisting-in-chrome-and-firefox)
 - [Stack Overflow: Returning a variable from $.getJSON](http://stackoverflow.com/questions/31129/how-can-i-return-a-variable-from-a-getjson-function)
-- [The Top 10 Mistakes That KnockoutJS Developers Make](https://www.airpair.com/knockout/posts/top-10-mistakes-knockoutjs) By Mike Mellentin
 
 ######Apache
 
@@ -225,7 +251,6 @@ $ bower install
 - [Stack Overflow: Google Places getUrl() is breaking my JavaScript](http://stackoverflow.com/questions/22459910/google-places-photos-geturl-is-breaking-my-javascript)
 - [Stack Overflow: HTML Geolocation stopped working in Google Chrome Version 44.0.2403.157 (64-bit)](http://stackoverflow.com/questions/32328133/in-new-chrome-44-0-2403-157-geolocations-doesnt-works)
 - [Stack Overflow: Using Icon Fonts as Markers in Google Maps V3](http://stackoverflow.com/questions/16375077/using-icon-fonts-as-markers-in-google-maps-v3)
-- [SVGO: An Nodejs-based tool for optimizing SVG vector graphics files.](https://github.com/nathan-muir/svgo/tree/nathan-svgo)
 
 ######Knockout JS
 
@@ -233,6 +258,7 @@ $ bower install
 - [KnockoutJS: Mapping Plugin](http://knockoutjs.com/documentation/plugins-mapping.html)
 - [KnockoutJS: Notification Plugin](https://github.com/janhartigan/Knockout-Notification)
 - [KnockoutJS: Animate Plugin](https://github.com/TheGAFF/Knockout-Animate)
+- [The Top 10 Mistakes That KnockoutJS Developers Make](https://www.airpair.com/knockout/posts/top-10-mistakes-knockoutjs) By Mike Mellentin
 
 ######Foursquare
 
