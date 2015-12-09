@@ -86,6 +86,14 @@ $ gulp images
 
 This command runs the images task in [gulpfile.js](gulpfile.js). Images in [src/images](src/images) will be optimized and moved to [dist/images](dist/images).
 
+Fonts:
+
+```
+$ gulp fonts
+```
+
+This command runs the fonts task, which transfers the Font Awesome font files to [dist/fonts](dist/fonts).
+
 ##Package Management
 
 [Bower](http://bower.io/) is used to keep track of frameworks, libraries, assets, and utilities. Packages will be installed in [src/vendor](src/vendor).
