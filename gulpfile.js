@@ -94,7 +94,7 @@ gulp.task('styles', function() {
  * @external 'gulp.task'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
-gulp.task('image', function() {
+gulp.task('images', function() {
 	gulp.src('./src/images/*')	
 			/**
 			 * Gulp Imagemin
