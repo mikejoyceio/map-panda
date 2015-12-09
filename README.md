@@ -25,9 +25,10 @@ $ git clone https://github.com/mikejoyceio/map
 ```
 python -m SimpleHTTPServer
 ```
-Problems? Detailed usage instructions can been found [here](https://docs.python.org/2/library/basehttpserver.html).
 
 Then point your browser to http://localhost:8000.
+
+Problems? Detailed usage instructions can been found [here](https://docs.python.org/2/library/basehttpserver.html).
 
 ##Build
 
