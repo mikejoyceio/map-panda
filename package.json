@@ -1,7 +1,7 @@
 {
-  "name": "map",
+  "name": "Map Panda",
   "version": "1.0.0",
-  "description": "Mapping project.",
+  "description": "Explore popular locations around you.",
   "main": "gulpfile.js",
   "scripts": {
     "test": "test"
