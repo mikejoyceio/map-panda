@@ -1,7 +1,8 @@
 {
-  "name": "Map Panda",
+  "name": "Map-Panda",
   "version": "1.0.0",
   "description": "Explore popular locations around you.",
+  "private": true,
   "main": "gulpfile.js",
   "scripts": {
     "test": "test"
