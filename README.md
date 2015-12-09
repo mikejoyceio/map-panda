@@ -14,17 +14,18 @@ Point your browser to https://mappanda.co.
 
 If you would like to get it up and running locally:
 
-1. Clone this repo
+**1.** Clone this repo:
 
 ```
 $ git clone https://github.com/mikejoyceio/map
 ````
 
-2. Run the following Python command from the root of the project:
+**2.** Run the following Python command from the root of the project:
 
 ```
 python -m SimpleHTTPServer
 ```
+Problems? Detailed usage instructions can been found [here](https://docs.python.org/2/library/basehttpserver.html).
 
 Then point your browser to http://localhost:8000.
 
@@ -36,13 +37,13 @@ To be able to run the build system, you will need to have [Node JS](https://node
 
 ######Install Gulp
 
-From the root of the project, run the following commands in the terminal:
+From the root of the project, run the following command in the terminal:
 
 ```
 $ npm install --save-dev gulp
 ```
 
-#####Install Gulp Plugins
+######Install Gulp Plugins
 
 ```
 $ sudo npm install
@@ -77,6 +78,8 @@ This command runs the images task in [gulpfile.js](gulpfile.js). Images in [src/
 ```
 $ npm install -g bower
 ```
+
+Problems? Detailed installation instructions can been found [here](http://bower.io/).
 
 ######Install Bower Packages
 
