@@ -12,7 +12,15 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 
 Point your browser to https://mappanda.co. 
 
-If you would like to get it up and running locally, clone this repo and run the following Python command from the root of the project:
+If you would like to get it up and running locally:
+
+1. Clone this repo
+
+```
+$ git clone https://github.com/mikejoyceio/map
+````
+
+2. Run the following Python command from the root of the project:
 
 ```
 python -m SimpleHTTPServer
@@ -28,10 +36,16 @@ To be able to run the build system, you will need to have [Node JS](https://node
 
 ######Install Gulp
 
-From the root of the project, run the following command in the terminal:
+From the root of the project, run the following commands in the terminal:
 
 ```
 $ npm install --save-dev gulp
+```
+
+#####Install Gulp Plugins
+
+```
+$ sudo npm install
 ```
 
 Problems? Detailed installation instructions can been found [here](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md).
@@ -56,7 +70,19 @@ This command runs the images task in [gulpfile.js](gulpfile.js). Images in [src/
 
 ##Package Management
 
-[Bower](http://bower.io/) is used to keep track of frameworks, libraries, assets, and utilities. There is no need to run any Bower commands in the terminal as all required packages have already been added to this repo. Packages can be found in [src/vendor](src/vendor).
+[Bower](http://bower.io/) is used to keep track of frameworks, libraries, assets, and utilities. Packages will be installed in [src/vendor](src/vendor).
+
+######Install Bower
+
+```
+$ npm install -g bower
+```
+
+######Install Bower Packages
+
+```
+$ bower install
+```
 
 ##Resources
 
