@@ -30,6 +30,8 @@ Then point your browser to http://localhost:8000.
 
 Problems? Detailed usage instructions can been found [here](https://docs.python.org/2/library/basehttpserver.html).
 
+(NOTE: If you would like to serve the application locally without Python Simple Server, make sure to serve on the port '8000' otherwise the Uber API will not return ride price estimates)
+
 ##Build
 
 The [Gulp](http://gulpjs.com/) streaming build system is used in this project to minify, concatenate and move files to the appropriate directories.
