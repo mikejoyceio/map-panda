@@ -57,7 +57,7 @@ gulp.task('scripts', function() {
 			 * @external '.uglify'
 			 * @see {@link https://www.npmjs.com/package/gulp-uglify}
 			 */
-			//.pipe(plugins.uglify())
+			.pipe(plugins.uglify())
 			.pipe(gulp.dest('./dist/js'))	
 });
 
@@ -77,7 +77,7 @@ gulp.task('styles', function() {
 	      project: path.join(__dirname, './src'),
 	      css: '../dist/css',
 	      sass: 'sass',
-	      // style: 'compressed',
+	      style: 'compressed',
 	      import_path: 'vendor'
 	    }))
 	    /**
@@ -94,7 +94,7 @@ gulp.task('styles', function() {
  * @external 'gulp.task'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
-gulp.task('image', function() {
+gulp.task('images', function() {
 	gulp.src('./src/images/*')	
 			/**
 			 * Gulp Imagemin
