@@ -32,7 +32,7 @@ Problems? Detailed usage instructions can been found [here](https://docs.python.
 
 NOTE: If you would like to serve the application locally without Python Simple Server, make sure to serve on port 8000 otherwise the Uber API will not return ride price estimates.
 
-##Build
+##The Build
 
 The [Gulp](http://gulpjs.com/) streaming build system is used in this project to minify, concatenate and move files to the appropriate directories. Build files have already been added to the repo and can be found in the [dist](dist) directory.
 
