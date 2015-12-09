@@ -23,7 +23,7 @@ $ git clone https://github.com/mikejoyceio/map
 **2.** Run the following Python command from the root of the project:
 
 ```
-python -m SimpleHTTPServer
+$ python -m SimpleHTTPServer
 ```
 
 Then point your browser to http://localhost:8000.
