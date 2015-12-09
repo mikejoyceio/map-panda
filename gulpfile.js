@@ -57,7 +57,7 @@ gulp.task('scripts', function() {
 			 * @external '.uglify'
 			 * @see {@link https://www.npmjs.com/package/gulp-uglify}
 			 */
-			//.pipe(plugins.uglify())
+			.pipe(plugins.uglify())
 			.pipe(gulp.dest('./dist/js'))	
 });
 
@@ -77,7 +77,7 @@ gulp.task('styles', function() {
 	      project: path.join(__dirname, './src'),
 	      css: '../dist/css',
 	      sass: 'sass',
-	      // style: 'compressed',
+	      style: 'compressed',
 	      import_path: 'vendor'
 	    }))
 	    /**
