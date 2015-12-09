@@ -30,6 +30,8 @@ Then point your browser to http://localhost:8000.
 
 Problems? Detailed usage instructions can been found [here](https://docs.python.org/2/library/basehttpserver.html).
 
+(NOTE: If you would like to serve the application locally without Python Simple Server, make sure to serve on the port '8000' otherwise the Uber API will not return ride price estimates)
+
 ##Build
 
 The [Gulp](http://gulpjs.com/) streaming build system is used in this project to minify, concatenate and move files to the appropriate directories.
@@ -48,6 +50,20 @@ $ npm install --save-dev gulp
 
 ```
 $ sudo npm install
+```
+
+######Install Bower
+
+```
+$ npm install -g bower
+```
+
+Problems? Detailed installation instructions can been found [here](http://bower.io/).
+
+######Install Bower Packages
+
+```
+$ bower install
 ```
 
 Problems? Detailed installation instructions can been found [here](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md).
