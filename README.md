@@ -20,9 +20,9 @@ Then point your browser to http://localhost:8000.
 
 The [Gulp](http://gulpjs.com/) streaming build system is used in this project to minify, concatenate and move files to the appropriate directories.
 
-To be able to run the build sytem, you will need to have [Node JS](https://nodejs.org/en/download/package-manager/#osx) installed on your system.
+To be able to run the build system, you will need to have [Node JS](https://nodejs.org/en/download/package-manager/#osx) installed.
 
-######Install Gulp:
+######Install Gulp
 
 From the root of the project, run the following command in the terminal:
 
@@ -34,25 +34,25 @@ Problems? Detailed installation instructions can been found [here](https://githu
 
 ######Gulp Commands
 
-- Minify and concatenate CSS and JavaScript files:
+Minify and concatenate CSS and JavaScript files:
 
 ```
 $ gulp
 ```
 
-This command runs the default Gulp task in [gulpfile.js](gulpfile.js) and runs the both the styles and scripts tasks. The styles task concatenates and minifies all of the [Sass](http://sass-lang.com/) partials in src/scss and compiles to a single file (app.css) in dist/css. The scripts task concatenates and minifies all JavaScript files in src/js and pulls in all of the main Bower package JavaScript in src/vendor and compiles to a single file (app.js) in dist/js.
+This command runs the default Gulp task in [gulpfile.js](gulpfile.js) and runs the both the styles and scripts tasks. The styles task concatenates and minifies all of the [Sass](http://sass-lang.com/) partials in [src/scss](src/scss) and compiles to a single file ([app.css](src/css/app.css)) in [dist/css](dist/css). The scripts task concatenates and minifies all JavaScript files in [src/js](src/js) and pulls in all of the main Bower package JavaScript in [src/vendor](src/vendor) and compiles to a single file ([app.js](dist/js/app.js)) in [dist/js](dist/js).
 
-- Optimize images:
+Optimize images:
 
 ```
 $ gulp images
 ```
 
-This command runs the images task in gulpfile.js. Images in src/images will be optimized and moved to dist/images.
+This command runs the images task in [gulpfile.js](gulpfile.js). Images in [src/images](src/images) will be optimized and moved to dist/images.
 
 ##Package Management
 
-[Bower](http://bower.io/) is used to keep track of frameworks, libraries, assets, and utilities. There is no need to run any Bower commands in the terminal as all required packages have already been added to this repo.
+[Bower](http://bower.io/) is used to keep track of frameworks, libraries, assets, and utilities. There is no need to run any Bower commands in the terminal as all required packages have already been added to this repo. Packages can be found in [src/vendor](src/vendor).
 
 ##Resources
 
