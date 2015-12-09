@@ -50,6 +50,20 @@ $ npm install --save-dev gulp
 $ sudo npm install
 ```
 
+######Install Bower
+
+```
+$ npm install -g bower
+```
+
+Problems? Detailed installation instructions can been found [here](http://bower.io/).
+
+######Install Bower Packages
+
+```
+$ bower install
+```
+
 Problems? Detailed installation instructions can been found [here](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md).
 
 ######Gulp Commands
