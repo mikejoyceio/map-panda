@@ -29,6 +29,6 @@
     "compass.js": "git://github.com/mikejoyceio/compass.js#master",
     "fontawesome-markers": "https://github.com/mikejoyceio/fontawesome-markers.git",
     "es6-promise": "~3.0.2",
-    "animate-sass": "~0.6.4"
+    "animate-sass": "git://github.com/mikejoyceio/animate-sass#master"
   }
 }
