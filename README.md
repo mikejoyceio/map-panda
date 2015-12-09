@@ -6,7 +6,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 
 ######Project Description
 
-Map Panda grabs the users location with the [Gelocation API](http://dev.w3.org/geo/api/spec-source.html) and through the Google Maps Places API, a selection for popular location types are available to explore. The Foursquare and Uber APIs are leveraged to provide further functionality to the application.
+Map Panda grabs the users location with the [Gelocation API](http://dev.w3.org/geo/api/spec-source.html) and through the Google Maps Places API, a selection of popular location types are available to explore. The Foursquare and Uber APIs are leveraged to provide further functionality to the application.
 
 ##Getting Started
 
