@@ -46,6 +46,8 @@ From the root of the project, run the following command in the terminal:
 $ npm install --save-dev gulp
 ```
 
+Problems? Detailed installation instructions can been found [here](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md).
+
 ######Install Gulp Plugins
 
 ```
@@ -65,8 +67,6 @@ Problems? Detailed installation instructions can been found [here](http://bower.
 ```
 $ bower install
 ```
-
-Problems? Detailed installation instructions can been found [here](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md).
 
 ######Gulp Commands
 
