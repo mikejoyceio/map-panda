@@ -106,6 +106,16 @@ gulp.task('images', function() {
 });
 
 /**
+ * Fonts Task. Move Font Awesome font files to dist.
+ * @external 'gulp.task'
+ * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
+ */
+gulp.task('fonts', function() {
+	gulp.src('./src/vendor/font-awesome/fonts/fontawesome-webfont.*')	
+			.pipe(gulp.dest('./dist/fonts'))
+});
+
+/**
  * Set the default Gulp task
  * @external 'gulp.task'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
