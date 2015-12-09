@@ -14,7 +14,7 @@ If you would like to get it up and running locally, clone this repo and run the 
 python -m SimpleHTTPServer
 ```
 
-Then point your browser to http://localhost:8000
+Then point your browser to http://localhost:8000.
 
 ##Build
 
@@ -40,7 +40,7 @@ Problems? Detailed installation instructions can been found [here](https://githu
 $ gulp
 ```
 
-This command runs the default Gulp task in gulpfile.js and runs the both the styles and scripts tasks. The styles task concatenates and minifies all of the [Sass](http://sass-lang.com/) partials in src/scss and compiles to a single file (app.css) in dist/css. The scripts task concatenates and minifies all JavaScript files in src/js and pulls in all of the main Bower package JavaScript in src/vendor and compiles to a single file (app.js) in dist/js.
+This command runs the default Gulp task in [gulpfile.js](gulpfile.js) and runs the both the styles and scripts tasks. The styles task concatenates and minifies all of the [Sass](http://sass-lang.com/) partials in src/scss and compiles to a single file (app.css) in dist/css. The scripts task concatenates and minifies all JavaScript files in src/js and pulls in all of the main Bower package JavaScript in src/vendor and compiles to a single file (app.js) in dist/js.
 
 - Optimize images:
 
