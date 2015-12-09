@@ -43,7 +43,7 @@ To be able to run the build system, you will need to have [Node JS](https://node
 From the root of the project, run the following command in the terminal:
 
 ```
-$ npm install --save-dev gulp
+$ sudo npm install --save-dev gulp
 ```
 
 Problems? Detailed installation instructions can been found [here](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md).
