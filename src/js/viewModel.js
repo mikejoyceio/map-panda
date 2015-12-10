@@ -943,20 +943,38 @@ var ViewModel = function() {
 	}
 
 	/**
-	 * Init App. Initialize the application by checking if localStorage is available or not.
+	 * Init App. Initialize the application by checking if the Google Maps API is available
+	 * and if localStorage is available or not.
 	 */
 	this.initApp = function() {
 
-		/** localStorage is available */
-		if (self.checkLocalStorage()) {
-			/** Call the LocalStorageAvailable function */
-			self.localStorageAvailable();
+		/** Check if the Google Maps API is loaded and available to use */
+    if (typeof google === 'object' && typeof google.maps === 'object') {
+    
+	    /** localStorage is available */
+			if (self.checkLocalStorage()) {
 
-		/** localStorage isn't available */
-		} else {
-			/** Call the LocalStorageUnavailable function */
-			self.localStorageUnavailable();
-		}
+				/** Call the LocalStorageAvailable function */
+				self.localStorageAvailable();
+
+			/** localStorage isn't available */
+			} else {
+
+				/** Call the LocalStorageUnavailable function */
+				self.localStorageUnavailable();
+			}
+
+			/** Google Maps API isn't available */
+  	} else {
+
+			/** If the appDebug variable is set to true, console.log the error */
+			if (self.appDebug) console.log('Google Maps API failed to load');
+
+			/** Show the user notification message  */
+			self.notificationKeepAlive(true);
+			self.notificationMessage('Please check your connection');
+  	}
+
 	}
 	this.initApp();
 

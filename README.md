@@ -146,7 +146,7 @@ $ bower install
 - [Malihu Custom Scrollbar](https://github.com/malihu/malihu-custom-scrollbar-plugin)
 - [Wheelnav](https://github.com/mikejoyceio/wheelnav)
 
-NOTE: Many of these repos have been forked because the bower.json configuration files were either missing the 'main' property or it was incomplete. [Gulp Load Plugins](https://www.npmjs.com/package/gulp-load-plugins) requires this property to automatically include main JavaScript files in the build. More information can be found in the [bower.json specification](https://github.com/bower/spec/blob/master/json.md).
+NOTE: Many of these repos have been forked because the bower.json configuration files were either missing the 'main' property or it was incomplete. [Gulp Load Plugins](https://www.npmjs.com/package/gulp-load-plugins) requires this property to automatically include main JavaScript files in the build. Further information can be found in the [bower.json specification](https://github.com/bower/spec/blob/master/json.md).
 
 ######Build Tools
 
@@ -230,9 +230,13 @@ NOTE: Many of these repos have been forked because the bower.json configuration 
 - [Stack Overflow: JavaScript Hoisting in Chrome & Firefox](http://stackoverflow.com/questions/14242399/javascript-hoisting-in-chrome-and-firefox)
 - [Stack Overflow: Returning a variable from $.getJSON](http://stackoverflow.com/questions/31129/how-can-i-return-a-variable-from-a-getjson-function)
 
-######Apache
+######Knockout JS
 
-- [Enable CORS on Apache](http://enable-cors.org/server_apache.html)
+- [KnockoutJS Docs](http://knockoutjs.com/documentation/introduction.html)
+- [KnockoutJS: Mapping Plugin](http://knockoutjs.com/documentation/plugins-mapping.html)
+- [KnockoutJS: Notification Plugin](https://github.com/janhartigan/Knockout-Notification)
+- [KnockoutJS: Animate Plugin](https://github.com/TheGAFF/Knockout-Animate)
+- [The Top 10 Mistakes That KnockoutJS Developers Make](https://www.airpair.com/knockout/posts/top-10-mistakes-knockoutjs) By Mike Mellentin
 
 ######jQuery 
 
@@ -240,10 +244,6 @@ NOTE: Many of these repos have been forked because the bower.json configuration 
 - [jQuery Docs: .blur()](https://api.jquery.com/blur/)
 - [jQuery Docs: .focus()](https://api.jquery.com/focus/)
 - [jQuery Docs: .removeClass()](http://api.jquery.com/removeClass/)
-
-######General Programming
-
-- [Stack Exchange: What is abstraction?](http://programmers.stackexchange.com/questions/16070/what-is-abstraction)
 
 ######Google Maps
 
@@ -260,13 +260,14 @@ NOTE: Many of these repos have been forked because the bower.json configuration 
 - [Stack Overflow: HTML Geolocation stopped working in Google Chrome Version 44.0.2403.157 (64-bit)](http://stackoverflow.com/questions/32328133/in-new-chrome-44-0-2403-157-geolocations-doesnt-works)
 - [Stack Overflow: Using Icon Fonts as Markers in Google Maps V3](http://stackoverflow.com/questions/16375077/using-icon-fonts-as-markers-in-google-maps-v3)
 
-######Knockout JS
 
-- [KnockoutJS Docs](http://knockoutjs.com/documentation/introduction.html)
-- [KnockoutJS: Mapping Plugin](http://knockoutjs.com/documentation/plugins-mapping.html)
-- [KnockoutJS: Notification Plugin](https://github.com/janhartigan/Knockout-Notification)
-- [KnockoutJS: Animate Plugin](https://github.com/TheGAFF/Knockout-Animate)
-- [The Top 10 Mistakes That KnockoutJS Developers Make](https://www.airpair.com/knockout/posts/top-10-mistakes-knockoutjs) By Mike Mellentin
+######Apache HTTP Server
+
+- [Enable CORS on Apache](http://enable-cors.org/server_apache.html)
+
+######General Programming
+
+- [Stack Exchange: What is abstraction?](http://programmers.stackexchange.com/questions/16070/what-is-abstraction)
 
 ######Foursquare
 
