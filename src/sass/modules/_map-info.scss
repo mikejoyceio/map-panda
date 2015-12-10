@@ -25,9 +25,16 @@
 
 		.content-header {
 			color: $gable-green;
-		  font-size: 22px;
 		  font-weight: $font-light;
 		  line-height: 2.4;
+
+		  @media #{$small-only} {
+				font-size: 22px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				width: 180px;
+		  }
 
 			@media #{$medium-up} {
 				font-size: 28px;
