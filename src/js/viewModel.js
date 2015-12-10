@@ -645,6 +645,7 @@ var ViewModel = function() {
 
 			/** Hide the loading animation */
 			self.modalUberLoading(false);
+
 			/** Show the price estimate */
 			self.modalUberEstimateVisibility(true);
 
@@ -660,8 +661,11 @@ var ViewModel = function() {
 				/** Hide the loading animation */
 				self.modalUberLoading(false);
 
+				/** Set the estimate price as 'unavailable' */
+				self.modalUberEstimate('Unavailable');
+
 				/** Hide the price estimate */
-				self.modalUberEstimateVisibility(false);
+				self.modalUberEstimateVisibility(true);
 		});
 
 	};
