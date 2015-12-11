@@ -6,6 +6,12 @@
  */
 
 /**
+ * TODO:
+ * - Add 'not supported' notice for older browsers
+ * - Improve Uber deep-linking
+ */
+
+/**
  * View Model
  * @constructor
  */
