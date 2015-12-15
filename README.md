@@ -96,7 +96,7 @@ This command runs the fonts task, which transfers the Font Awesome font files to
 
 ##Sass
 
-[Sass](), along with the [Compass]() CSS authoring framework, are used to compile and generate cross-browser CSS for this project. You will need to have Ruby installed to be able to compile Sass and utilize Compass.
+[Sass](http://sass-lang.com/), along with the [Compass](http://compass-style.org/) CSS authoring framework, are used to compile and generate cross-browser CSS for this project. You will need to have Ruby installed to be able to compile Sass and utilize Compass.
 
 ##Package Management
 
