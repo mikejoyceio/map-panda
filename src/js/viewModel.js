@@ -9,6 +9,7 @@
  * TODO:
  * - Add 'not supported' notice for older browsers
  * - Improve Uber deep-linking
+ * - Add Geolocation 'watch' position feature
  */
 
 /**
@@ -17,7 +18,7 @@
  */
 var ViewModel = function() {
 
-	/** 
+	/**
 	 * Invoke strict mode
 	 * @see {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Strict_mode}
 	 */
@@ -38,22 +39,22 @@ var ViewModel = function() {
 	 * App Debug - set to true to console.log errors when debugging
 	 * @type {boolean}
 	 */
-	this.appDebug = false;			
+	this.appDebug = false;
 	/**
 	 * App Body Loading Visibility - show/hide the body loading animation
 	 * @type {boolean}
-	 */	
+	 */
 	this.appBodyLoadingVisibility = ko.observable(false);
 	/**
 	 * App Landing Action Visibility - show/hide the landing action button ('Find Me')
 	 * @type {boolean}
-	 */		
+	 */
 	this.appLandingActionVisibility = ko.observable(false);
 	/**
 	 * App Landing Info Visibility - show/hide the landing information ('Explore popular locations around you.')
 	 * @type {boolean}
-	 */	
-	this.appLandingInfoVisibility = ko.observable(false);	
+	 */
+	this.appLandingInfoVisibility = ko.observable(false);
 	/**
 	 * App Landing Visibility - show/hide the landing overlay
 	 * @type {boolean}
@@ -62,7 +63,7 @@ var ViewModel = function() {
 	/**
 	 * App Landing Loading Visibility - show/hide the landing loading animation
 	 * @type {boolean}
-	 */	
+	 */
 	this.appLandingLoadingVisibility = ko.observable(false)
 	/**
 	 * App reload visibility - show/hide the app reload button ('Reload Map Panda')
@@ -88,15 +89,15 @@ var ViewModel = function() {
 	 * App Constants
 	 * @type {Object}
 	 */
-	this.appConstants = {	
-		/** 
-		 * Default large image 
-		 * @const {string} 
+	this.appConstants = {
+		/**
+		 * Default large image
+		 * @const {string}
 		 */
 		DEFAULT_IMAGE_LARGE: 'dist/images/default-large.png',
 		/**
 		 * Default small image
-		 * @const {string} 
+		 * @const {string}
 		 */
 		DEFAULT_IMAGE_SMALL: 'dist/images/default-small.png',
 		/**
@@ -114,17 +115,17 @@ var ViewModel = function() {
 		 * @const {number}
 		 */
 		SEARCH_RADIUS_MAX: 10000,
-		/** 
+		/**
 		 * Min map search radius
 		 * @const {number}
 		 */
 		SEARCH_RADIUS_MIN: 1000,
 		/**
-		 * Uber client ID 
+		 * Uber client ID
 		 * @const {string}
 		 */
 		UBER_CLIENT_ID: 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn',
-		/** 
+		/**
 		 * Uber sign up URL
 		 * @const {string}
 		 */
@@ -153,7 +154,7 @@ var ViewModel = function() {
 	 * Map - holds the Google map instance
 	 * @type {Object}
 	 */
-	this.map = null;	
+	this.map = null;
 	/**
 	 * Map Current Latitude - the current latitude coordinate
 	 * @type {number}
@@ -180,7 +181,7 @@ var ViewModel = function() {
 	 */
 	this.mapMarkers = ko.observableArray();
 	/**
-	 * Map LatLng - stores the map's Latitude & Longitude 
+	 * Map LatLng - stores the map's Latitude & Longitude
 	 * @type {number}
 	 */
 	this.mapLatLang = null;
@@ -191,7 +192,7 @@ var ViewModel = function() {
 	 */
 	this.mapPlaces = ko.observableArray();
 
-	
+
 	/**
 	 * Modal Visibility - show/hide the modal
 	 * @type {boolean}
@@ -313,12 +314,12 @@ var ViewModel = function() {
 	 */
 	this.modalUberLoading = ko.observable(false);
 
-	
+
 	/**
 	 * Place List - holds the place objects
 	 * @type {Array.<object>}
 	 */
-	this.placeList = ko.observableArray([]); 
+	this.placeList = ko.observableArray([]);
 
 
 	/**
@@ -343,7 +344,7 @@ var ViewModel = function() {
 	 */
 	this.selectPlace = function(place) {
 
-		/** 
+		/**
 		 * If the user is swiping on a touch screen, return the function to prevent the place type from being selected
 		 * @see 'ko.bindingHandlers.preventSwipeTap'
 		 */
@@ -368,13 +369,13 @@ var ViewModel = function() {
 		place.isActive(!place.isActive());
 
 		/** Show Map Info */
-		self.mapInfoVisibility(true);	
+		self.mapInfoVisibility(true);
 	}
 
 	/**
 	 * Search Filter Visibility - show/hide the search filter
 	 * @type {string}
-	 */	
+	 */
 	this.searchFilterVisibility = ko.observable(false);
 	/**
 	 * Search Query - holds the filter search query
@@ -414,7 +415,7 @@ var ViewModel = function() {
 				count++;
 			}
 			if (count === self.placeList().length) {
-				self.searchQueryNoResults(true);	
+				self.searchQueryNoResults(true);
 			} else {
 				self.searchQueryNoResults(false);
 			}
@@ -422,9 +423,9 @@ var ViewModel = function() {
 
 		/**
 		 * Compare String
-		 * @param  {string} value       
-		 * @param  {string} placeName   
-		 * @param  {Object} placeObject             
+		 * @param  {string} value
+		 * @param  {string} placeName
+		 * @param  {Object} placeObject
 		 */
 		function compareString(value, placeName, placeObject) {
 
@@ -435,7 +436,7 @@ var ViewModel = function() {
 				if (placeName.indexOf(value) !== -1 && placeName.charAt(i) === value.charAt(i)) {
 					placeObject.isHidden(false);
 					self.searchClearFilterVisibility(true);
-					
+
 					/** Else if there is no match, hide the place type and show the clear filter button */
 				} else {
 					placeObject.isHidden(true);
@@ -489,7 +490,7 @@ var ViewModel = function() {
 	}
 
 	/**
-	 * Map Zoom In - zoom the map in 
+	 * Map Zoom In - zoom the map in
 	 * @external 'getZoom()'
 	 * @see {@link https://developers.google.com/maps/documentation/javascript/reference#Map}
 	 */
@@ -518,7 +519,7 @@ var ViewModel = function() {
  		self.modalInfoImageVisibility(false);
  		self.modalFoursquareVisibility(false);
  		self.modalUberEstimateVisibility(false);
- 	} 
+ 	}
 
  	/**
  	 * Open Modal Overlay - call to open the modal overlay
@@ -538,7 +539,7 @@ var ViewModel = function() {
  	 * Reload App - call to reload the application
  	 */
  	this.reloadApp = function() {
- 		document.location.reload(true);	
+ 		document.location.reload(true);
  	}
 
  	/**
@@ -569,7 +570,7 @@ var ViewModel = function() {
 	   * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then}
 	   */
 	  response.then(function(data) {
-			if (data.response.venues.length > 0) {		
+			if (data.response.venues.length > 0) {
 				/** Set the Foursquare button URL */
 				self.modalFoursquareURL(self.appConstants.FOURSQUARE_URL + data.response.venues[0]['id']);
 				/** Show the Foursquare button */
@@ -585,7 +586,7 @@ var ViewModel = function() {
 			 * Request failed
 			 * @param  {Object} xhrObj
 			 */
-	  }, function(xhrObj) {	 	
+	  }, function(xhrObj) {
 
 				/** If the appDebug variable is set to true, console.log the error */
 				if (self.appDebug) console.log(xhrObj);
@@ -617,7 +618,7 @@ var ViewModel = function() {
 			startLat: self.mapCurrentLat(),
 			startLng: self.mapCurrentLng(),
 			endLat: self.modalInfoLat(),
-			endLng: self.modalInfoLng() 
+			endLng: self.modalInfoLng()
 		}
 
 		/**
@@ -717,7 +718,7 @@ var ViewModel = function() {
 	  	self.appLandingInfoVisibility(false);
 
 	  	/** Show landing loading animation */
-	  	self.appLandingLoadingVisibility(true);	
+	  	self.appLandingLoadingVisibility(true);
 
 	  	/**
 	  	 * Get current position with HTML Geolocation
@@ -743,14 +744,14 @@ var ViewModel = function() {
 			  	}, 5000);
 
 			}, self.handleNoGeolocation, { maximumAge:0, timeout:10000, enableHighAccuracy: true });
-		  
+
 		} else {
 
 	    /** Browser doesn't support Geolocation */
 	    self.handleNoGeolocation(false);
 
 		}
-		
+
 	}
 
 	/**
@@ -759,7 +760,7 @@ var ViewModel = function() {
 	this.setLocation = function() {
 
 		/** Set the map's current LatLng */
-    self.mapLatLang = new google.maps.LatLng(self.mapCurrentLat(), self.mapCurrentLng());	
+    self.mapLatLang = new google.maps.LatLng(self.mapCurrentLat(), self.mapCurrentLng());
 
 		/** Center map on current LatLng */
     self.map.setCenter(self.mapLatLang);
@@ -784,7 +785,7 @@ var ViewModel = function() {
     	content: '<div class="map-current-location">' +
     							'<div class="radial-pulse"></div>' +
     					 '</div>'
-    });		
+    });
 	}
 
 	/**
@@ -800,7 +801,7 @@ var ViewModel = function() {
   	self.appLandingInfoVisibility(true);
 
   	/** Hide landing loading animation */
-  	self.appLandingLoadingVisibility(false);	
+  	self.appLandingLoadingVisibility(false);
 
     switch (error.code) {
       case error.PERMISSION_DENIED:
@@ -841,7 +842,7 @@ var ViewModel = function() {
 
 	/**
 	 * Local Storage Available.
-	 * Check local storage for latitude and longitude values and if 
+	 * Check local storage for latitude and longitude values and if
 	 * they exist, check if the current latitude and longitude match.
 	 */
 	this.localStorageAvailable = function() {
@@ -850,7 +851,7 @@ var ViewModel = function() {
 		if (!dataModel.get('lat') && !dataModel.get('lat')) {
 
 			/** Show the landing */
-			self.appLandingVisbility(true);	
+			self.appLandingVisbility(true);
 
 			/** Show the landing action */
 	  	self.appLandingActionVisibility(true);
@@ -868,7 +869,7 @@ var ViewModel = function() {
 	  	self.appLandingInfoVisibility(false);
 
 	  	/** Show landing loading animation */
-	  	self.appLandingLoadingVisibility(true);	
+	  	self.appLandingLoadingVisibility(true);
 
 			/** Grab the Latitude and Longitude values from localStorage via dataModel helper functions */
 			self.mapCurrentLat(parseFloat(dataModel.get('lat')));
@@ -879,12 +880,12 @@ var ViewModel = function() {
 	  	 * @external 'navigator.geolocation.getCurrentPosition'
 	  	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition}
 	  	 */
-			navigator.geolocation.getCurrentPosition(function(position) { 
+			navigator.geolocation.getCurrentPosition(function(position) {
 
-				/** 
+				/**
 				 * If the current latitude and longitude values match the latitude and longitude values in localStorage, set the users location
-				 * on the map and hide the landing. HTML5 Geolocation GPS requests are expensive on mobile devices, and the position coordinates 
-				 * returned from getCurrentPosition may vary down to a few decimal places, so the latitude and longitude values have been rounded 
+				 * on the map and hide the landing. HTML5 Geolocation GPS requests are expensive on mobile devices, and the position coordinates
+				 * returned from getCurrentPosition may vary down to a few decimal places, so the latitude and longitude values have been rounded
 				 * to 4 decimal places, which is still accurate (to within around 11 meters) and comparable to the accuracy of most commercial GPS units.
 				 * @external 'toFixed()'
 				 * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed}
@@ -897,11 +898,11 @@ var ViewModel = function() {
 					setTimeout(function() {
 
 						/** Hide the landing */
-						self.appLandingVisbility(false);	
+						self.appLandingVisbility(false);
 					}, 5000);
 
 					/**
-					 * Else, the current location of has changed. 
+					 * Else, the current location of has changed.
 					 */
 				} else {
 
@@ -914,7 +915,7 @@ var ViewModel = function() {
 				  	self.appLandingInfoVisibility(true);
 
 				  	/** Hide landing loading animation */
-				  	self.appLandingLoadingVisibility(false);						
+				  	self.appLandingLoadingVisibility(false);
 			  	}, 3000);
 
 				}
@@ -931,14 +932,14 @@ var ViewModel = function() {
 	this.localStorageUnavailable = function() {
 
 		/** Show the landing */
-		self.appLandingVisbility(true);		
+		self.appLandingVisbility(true);
 
 	}
 
 	/**
 	 * Local Storage Available. Check if local storage is available in the browser.
 	 * @return {boolean}
-	 */	
+	 */
 	this.checkLocalStorage = function() {
 		try {
 			var storage = window['localStorage'],
@@ -960,7 +961,7 @@ var ViewModel = function() {
 
 		/** Check if the Google Maps API is loaded and available to use */
     if (typeof google === 'object' && typeof google.maps === 'object') {
-    
+
 	    /** localStorage is available */
 			if (self.checkLocalStorage()) {
 
@@ -998,7 +999,7 @@ var ViewModel = function() {
 var Place = function(data) {
 	this.name = ko.observable(data.name);
 	this.description = ko.observable(data.description);
-	this.type = ko.observable(data.type);	
+	this.type = ko.observable(data.type);
 	this.icon = ko.observable(data.icon);
 	this.marker = ko.observable(data.marker);
 	this.isActive = ko.observable(false);
@@ -1318,13 +1319,13 @@ ko.bindingHandlers.map = {
 
 		/** If the currentPlace isn't active, return the function */
 		if(!value.currentPlace().isActive()) {
-			return 
+			return
 		}
 
   	/** If the mapMarkers array contains values, clear the markers from the map */
   	if (bindingContext.$root.mapMarkers()) {
   		clearMarkers();
-  	}	
+  	}
 
 		/**
 		 * Google Maps places search request object
@@ -1394,10 +1395,10 @@ ko.bindingHandlers.map = {
     		 */
     		var mapPlaces = [];
 
-    		/** Loop through the results and push into the places array */	
+    		/** Loop through the results and push into the places array */
     		for (var i=0,j=results.length;i<j;i++) {
     			mapPlaces.push(results[i]);
-    		}	
+    		}
 
     		/** Set the mapPlaces observable */
     		bindingContext.$root.mapPlaces(mapPlaces)
@@ -1425,20 +1426,20 @@ ko.bindingHandlers.map = {
 						callbackError(status+' This request was invalid.', 'Error. Please try again.');
 						break;
 					case statusCode.OVER_QUERY_LIMIT:
-						callbackError(status+' The webpage has gone over its request quota.', 'Slow down!');	
+						callbackError(status+' The webpage has gone over its request quota.', 'Slow down!');
 						break;
 					case statusCode.REQUEST_DENIED:
-						callbackError(status+' This webpage is not allowed to use the PlacesService.', 'Error. Please try again.');	
+						callbackError(status+' This webpage is not allowed to use the PlacesService.', 'Error. Please try again.');
 						/** Show reload app button */
 						self.appReloadVisbility(true);
 						break;
 					case statusCode.UNKNOWN_ERROR:
-						callbackError(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.', 'Server Error. Please try again.');	
+						callbackError(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.', 'Server Error. Please try again.');
 						break;
 					case statusCode.ZERO_RESULTS:
-						callbackError(status+' No result was found for this request.', 'No Results');	
+						callbackError(status+' No result was found for this request.', 'No Results');
 						break;
-					default: 
+					default:
 						callbackError('Unknown error', 'Error. Please try again.');
 						/** Show reload app button */
 						self.appReloadVisbility(true);
@@ -1491,8 +1492,8 @@ ko.bindingHandlers.map = {
 
 	    }
 
-	    /** 
-	     * Automagically zoom the map in / out to show all the markers in the browser window 
+	    /**
+	     * Automagically zoom the map in / out to show all the markers in the browser window
 			 * @external 'LatLngBounds()'
 			 * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#LatLngBounds}
 	     */
@@ -1513,9 +1514,9 @@ ko.bindingHandlers.map = {
 		function addInfoBox(data) {
 
 			/** InfoBox HTML content */
-			var infoBoxContent = '<div class="info-box-content">' + 
-											'<div class="info-box-title">'+data.name+'</div>' + 
-											'<div class="info-box-image" style="background-image: url('+data.photo+');"></div>' + 
+			var infoBoxContent = '<div class="info-box-content">' +
+											'<div class="info-box-title">'+data.name+'</div>' +
+											'<div class="info-box-image" style="background-image: url('+data.photo+');"></div>' +
 											'<div class="info-box-rating rating rating-0'+data.rating+'">' +
 												'<span class="star star-01"></span>' +
 												'<span class="star star-02"></span>' +
@@ -1535,7 +1536,7 @@ ko.bindingHandlers.map = {
 				maxWidth: 0,
 				pixelOffset: new google.maps.Size(-105, -30),
 				zIndex: null,
-				boxStyle: { 
+				boxStyle: {
 				  opacity: 0.75,
 				  width: "230px"
 				 },
@@ -1621,15 +1622,15 @@ ko.bindingHandlers.map = {
 
 				/** Hide Uber estimate */
 				bindingContext.$root.modalUberEstimateVisibility(false);
-				
+
 				/** Show Modal loading animation */
 				bindingContext.$root.modalLoading(true);
 
 				/**
-				 * Google Maps places search request object 
+				 * Google Maps places search request object
 				 * @type {Object}
 				 */
-				var request = { 
+				var request = {
 		  		placeId: data.placeId
 				};
 
@@ -1692,13 +1693,13 @@ ko.bindingHandlers.map = {
 						/** Update the place website */
 						bindingContext.$root.modalInfoWebsite(placeInfo.website);
 						/** Update the place latitude */
-						bindingContext.$root.modalInfoLat(placeInfo.lat);							
+						bindingContext.$root.modalInfoLat(placeInfo.lat);
 						/** Update the place longitude */
 						bindingContext.$root.modalInfoLng(placeInfo.lng);
 						/** Update the place phone number */
 						bindingContext.$root.modalInfoPhone(placeInfo.phone);
 						/** Update the place html 'tel:' link */
-						bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);									
+						bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);
 						/** Update the place image */
 						bindingContext.$root.modalInfoImage(placeInfo.photo);
 						/** Update the place price */
@@ -1749,7 +1750,7 @@ ko.bindingHandlers.map = {
 		}
 
 		/**
-		 * Callback Error. This function will create both a developer-friendly error message for debugging purposes and a more readable, 
+		 * Callback Error. This function will create both a developer-friendly error message for debugging purposes and a more readable,
 		 * user-friendly error message for the user.
 		 * @param  {string} statusMessage       Developer-friendly error message
 		 * @param  {string} notificationMessage User-friendly notification message
@@ -1762,11 +1763,11 @@ ko.bindingHandlers.map = {
     	/** Show the user notification message */
 	    bindingContext.$root.mapLoadingVisibility(false);
 	   	bindingContext.$root.notificationKeepAlive(true);
-  		bindingContext.$root.notificationMessage(notificationMessage);	  	    	
+  		bindingContext.$root.notificationMessage(notificationMessage);
 
     }
 
-	} 
+	}
 
 };
 
@@ -1788,7 +1789,7 @@ ko.bindingHandlers.notification = {
 	 */
 	update: function(element, valueAccessor, allBindingsAccessor, viewModel) {
 
-		var value = valueAccessor();	
+		var value = valueAccessor();
 
 		/**
 		 * The notifcation binding can be passed a string or an object with properties
@@ -1836,7 +1837,7 @@ ko.bindingHandlers.notification = {
 		 * @external '$().html'
 		 * @see {@link http://api.jquery.com/html/}
 		 */
-		$(element).html(message);	
+		$(element).html(message);
 
 		/**
 		 * Clear any outstanding timeouts
@@ -1855,7 +1856,7 @@ ko.bindingHandlers.notification = {
 			$(element).hide();
 			return;
 		}
-		
+
 		/**
 		 * If there are any animations running, stop them and show the notification, otherwise show it
 		 * @external '$().stop'
@@ -1897,7 +1898,7 @@ ko.bindingHandlers.notification = {
 				}
 			}, duration);
 
-		} 
+		}
 	}
 };
 
@@ -2030,14 +2031,14 @@ ko.bindingHandlers.clipboard = {
 	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
 	 */
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-	
+
 		/**
 		 * Check for mobile devices
 		 * @type {RegExp}
 		 * @external 'navigator.userAgent'
 		 * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/navigator}
 		 */
-		var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;	
+		var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
 
 		/** If isMobile is false */
 		if (!isMobile) {
@@ -2054,7 +2055,7 @@ ko.bindingHandlers.clipboard = {
 			 * @external 'new Clipboard'
 			 * @see {@link http://zenorocha.github.io/clipboard.js/}
 			 */
-			var clipboard = new Clipboard(element);	
+			var clipboard = new Clipboard(element);
 
 			/**
 			 * Clipboard Success
@@ -2065,7 +2066,7 @@ ko.bindingHandlers.clipboard = {
 				bindingContext.$root.modalOverlayMessage('Copied!');
 				bindingContext.$root.modalOverlayMessageVisibility(true);
 				setTimeout(function() {
-					bindingContext.$root.modalOverlayMessageVisibility(false);					
+					bindingContext.$root.modalOverlayMessageVisibility(false);
 				}, 1000);
 			});
 
@@ -2090,7 +2091,7 @@ ko.bindingHandlers.clipboard = {
 				} else {
 
 					/** Set the overlay message text for all other operating systems */
-					bindingContext.$root.modalOverlayMessage('Press Ctrl+C to copy');	
+					bindingContext.$root.modalOverlayMessage('Press Ctrl+C to copy');
 				}
 
 				/** Show the overlay message */
@@ -2098,7 +2099,7 @@ ko.bindingHandlers.clipboard = {
 
 				/** After a short timeout, hide the overlay message */
 				setTimeout(function() {
-					bindingContext.$root.modalOverlayMessageVisibility(false);					
+					bindingContext.$root.modalOverlayMessageVisibility(false);
 				}, 2000);
 
 			});
@@ -2112,7 +2113,7 @@ ko.bindingHandlers.clipboard = {
 			bindingContext.$root.modalOverlayGroupButtons('one')
 
 		}
-	}	
+	}
 };
 
 /**
@@ -2165,7 +2166,7 @@ ko.bindingHandlers.wheelNav = {
 		/** Create fucntions for each wheelNav options, fired on click and touchend */
 		for (i=0,j=wheelNavOptions.length;i<j;i++) {
 			createNavigateFunction(i);
-		} 
+		}
 
 		/**
 		 * Create Navigate Function
@@ -2192,7 +2193,7 @@ ko.bindingHandlers.wheelNav = {
 
    	/** Set the wheelNav option */
 		bindingContext.$root.appWheelNav.navigateWheel(searchRadius);
-             
+
 	}
 };
 
@@ -2244,7 +2245,7 @@ ko.bindingHandlers.compass = {
 
 		});
 
-	}	
+	}
 };
 
 /**
@@ -2266,12 +2267,12 @@ ko.bindingHandlers.viewportWidth = {
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
 		/** Set the viewport width on load */
-		bindingContext.$root.appViewportWidth($(window).width());	
+		bindingContext.$root.appViewportWidth($(window).width());
 
-		/** 
-		 * When the browser window is resized, set the binding to the windows width in pixels 
+		/**
+		 * When the browser window is resized, set the binding to the windows width in pixels
 		 * @external '$().resize'
-		 * @see {@link https://api.jquery.com/resize/} 
+		 * @see {@link https://api.jquery.com/resize/}
 		 */
 		$(window).resize(function() {
 			bindingContext.$root.appViewportWidth($(this).width());
@@ -2280,7 +2281,7 @@ ko.bindingHandlers.viewportWidth = {
 };
 
 /**
- * Knockout Custom Prevent SwipeTap Binding. Prevent tap events from trigging functions when the user is swiping 
+ * Knockout Custom Prevent SwipeTap Binding. Prevent tap events from trigging functions when the user is swiping
  * on a touch screen device.
  * @type {Object}
  * @external 'ko.bindingHandlers'
@@ -2298,7 +2299,7 @@ ko.bindingHandlers.preventSwipeTap = {
 	 */
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
-		/** 
+		/**
 		 * When the touchmove event is fired on the element, set the binding to true
 		 * @param {string}
 		 * @param {function}
@@ -2309,8 +2310,8 @@ ko.bindingHandlers.preventSwipeTap = {
 			bindingContext.$root.appSwiping(true);
 		});
 
-		/** 
-		 * When the touchstart event is fired on the element, set the binding to false 
+		/**
+		 * When the touchstart event is fired on the element, set the binding to false
 		 * @param {string}
 		 * @param {function}
 		 * @external '$().on'
@@ -2320,60 +2321,17 @@ ko.bindingHandlers.preventSwipeTap = {
 	  	bindingContext.$root.appSwiping(false);
 		});
 
-	}	
+	}
 };
 
 /**
- * Knockout Custom Hover State Binding. Add/remove and 'active' CSS class on mouseover/mouseout. 
+ * Knockout Custom Hover State Binding. Add/remove and 'active' CSS class on mouseover/mouseout.
  * This prevents issues with hover states getting 'stuck' on touchscreen devices.
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */
-ko.bindingHandlers.hover = { 
-
-	/**
-	 * Init: Called when the binding is first applied.
-	 * @param  {Object} element         DOM element involved in this binding
-	 * @param  {Function} valueAccessor Function to get the current model property of this binding
-	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
-	 * @param  {Object} viewModel       Access the view model
-	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
-	 */
-	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-
-		/** 
-		 * When the mouseover event is fired on the element, add the 'hover' CSS class from the element
-		 * @param {string}
-		 * @param {function}
-		 * @external '$().on'
-		 * @see {@link http://api.jquery.com/on/}
-		 */
-		$(element).on("mouseover", function(){
-			$(element).addClass('hover');
-		});
-
-		/** 
-		 * When the mouseout event is fired on the element, remove the 'hover' CSS class from the element
-		 * @param {string}
-		 * @param {function}
-		 * @external '$().on'
-		 * @see {@link http://api.jquery.com/on/}
-		 */
-		$(element).on("mouseout", function(){
-	  	$(element).removeClass('hover');
-		});
-
-	}	
-};
-
-/**
- * Knockout Custom Toggle Filter Binding. Toggle the visibility of the search filter on mobiles & tablets.
- * @type {Object}
- * @external 'ko.bindingHandlers'
- * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
- */
-ko.bindingHandlers.toggleFilter = { 
+ko.bindingHandlers.hover = {
 
 	/**
 	 * Init: Called when the binding is first applied.
@@ -2386,12 +2344,55 @@ ko.bindingHandlers.toggleFilter = {
 	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
 		/**
-		 * isMobile. Used to prevent click events firing on touchscreen devices 
+		 * When the mouseover event is fired on the element, add the 'hover' CSS class from the element
+		 * @param {string}
+		 * @param {function}
+		 * @external '$().on'
+		 * @see {@link http://api.jquery.com/on/}
+		 */
+		$(element).on("mouseover", function(){
+			$(element).addClass('hover');
+		});
+
+		/**
+		 * When the mouseout event is fired on the element, remove the 'hover' CSS class from the element
+		 * @param {string}
+		 * @param {function}
+		 * @external '$().on'
+		 * @see {@link http://api.jquery.com/on/}
+		 */
+		$(element).on("mouseout", function(){
+	  	$(element).removeClass('hover');
+		});
+
+	}
+};
+
+/**
+ * Knockout Custom Toggle Filter Binding. Toggle the visibility of the search filter on mobiles & tablets.
+ * @type {Object}
+ * @external 'ko.bindingHandlers'
+ * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
+ */
+ko.bindingHandlers.toggleFilter = {
+
+	/**
+	 * Init: Called when the binding is first applied.
+	 * @param  {Object} element         DOM element involved in this binding
+	 * @param  {Function} valueAccessor Function to get the current model property of this binding
+	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
+	 * @param  {Object} viewModel       Access the view model
+	 * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
+	 */
+	init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+
+		/**
+		 * isMobile. Used to prevent click events firing on touchscreen devices
 		 * @type {Boolean}
 		 */
 		var isMobile = false;
 
-		/** 
+		/**
 		 * On element click
 		 * @param {string}
 		 * @param {function}
@@ -2407,7 +2408,7 @@ ko.bindingHandlers.toggleFilter = {
 			eventFunction();
 		});
 
-		/** 
+		/**
 		 * On element touchend
 		 * @param {string}
 		 * @param {function}
@@ -2471,7 +2472,7 @@ ko.bindingHandlers.toggleFilter = {
 			}
 		}
 
-	}	
+	}
 };
 
 /**
