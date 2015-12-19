@@ -13,6 +13,7 @@
  * - Improve landing overlay
  * - Add animation to brand logo on hover
  * - Add 'click' animations
+ * - Improve Gulpfile
  */
 
 /**
