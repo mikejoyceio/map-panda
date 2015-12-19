@@ -10,7 +10,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 
 ##Getting Started
 
-Point your browser to https://mappanda.co. 
+Point your browser to https://mappanda.co.
 
 If you would like to get it up and running locally:
 
@@ -93,6 +93,10 @@ $ gulp fonts
 ```
 
 This command runs the fonts task, which transfers the Font Awesome font files to [dist/fonts](dist/fonts).
+
+##Sass
+
+[Sass](http://sass-lang.com/), along with the [Compass](http://compass-style.org/) CSS authoring framework, are used to compile and generate cross-browser CSS for this project. You will need to have Ruby installed to be able to compile Sass and utilize Compass.
 
 ##Package Management
 
@@ -238,7 +242,7 @@ NOTE: Many of these repos have been forked because the bower.json configuration 
 - [KnockoutJS: Animate Plugin](https://github.com/TheGAFF/Knockout-Animate)
 - [The Top 10 Mistakes That KnockoutJS Developers Make](https://www.airpair.com/knockout/posts/top-10-mistakes-knockoutjs) By Mike Mellentin
 
-######jQuery 
+######jQuery
 
 - [jQuery Docs: .ajax()](http://api.jquery.com/jQuery.ajax/)
 - [jQuery Docs: .blur()](https://api.jquery.com/blur/)
