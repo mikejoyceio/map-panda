@@ -23,7 +23,7 @@ var plugins = gulpLoadPlugins({
 	replaceString: /\bgulp[\-.]/
 });
 /**
- * Load Gulp Path 
+ * Load Gulp Path
  * @type {object}
  */
 var path = require('path');
@@ -39,7 +39,7 @@ gulp.task('scripts', function() {
 	 * @external '.mainBowerFiles'
 	 * @see {@link https://www.npmjs.com/package/gulp-main-bower-files}
 	 */
-	gulp.src(plugins.mainBowerFiles().concat(['src/js/dataModel.js', 'src/js/viewModel.js'])) 		
+	gulp.src(plugins.mainBowerFiles().concat(['src/js/dataModel.js', 'src/js/viewModel.js']))
 			/**
 			 * Gulp Filter
 			 * @external '.filter'
@@ -58,7 +58,7 @@ gulp.task('scripts', function() {
 			 * @see {@link https://www.npmjs.com/package/gulp-uglify}
 			 */
 			.pipe(plugins.uglify())
-			.pipe(gulp.dest('./dist/js'))	
+			.pipe(gulp.dest('./dist/js'))
 });
 
 /**
@@ -80,12 +80,6 @@ gulp.task('styles', function() {
 	      style: 'compressed',
 	      import_path: 'vendor'
 	    }))
-	    /**
-	     * Gulp Minify CSS
-	     * @external '.minifyCss'
-	     * @see {@link https://www.npmjs.com/package/gulp-minify-css}
-	     */
-	    .pipe(plugins.minifyCss())
 	    .pipe(gulp.dest('../dist/css'))
 });
 
@@ -95,7 +89,7 @@ gulp.task('styles', function() {
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
 gulp.task('images', function() {
-	gulp.src('./src/images/*')	
+	gulp.src('./src/images/*')
 			/**
 			 * Gulp Imagemin
 			 * @external '.imagemin()'
@@ -111,7 +105,7 @@ gulp.task('images', function() {
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
 gulp.task('fonts', function() {
-	gulp.src('./src/vendor/font-awesome/fonts/fontawesome-webfont.*')	
+	gulp.src('./src/vendor/font-awesome/fonts/fontawesome-webfont.*')
 			.pipe(gulp.dest('./dist/fonts'))
 });
 
