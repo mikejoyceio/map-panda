@@ -62,7 +62,7 @@
 		</div>
 		<!-- /Landing Loading -->
 
-		<!-- Landing Action -->	
+		<!-- Landing Action -->
 		<div class="landing-action" data-bind="visible: appLandingActionVisibility" style="display: none;">
 			<button class="button action radius expand" data-bind="click: getLocation">Find Me</button>
 		</div>
@@ -76,17 +76,17 @@
 			<ul class="brand-list">
 				<li class="item foursquare">
 				 <a class="url" href="https://foursquare.com/" target="_blank">
-				 	<span class="icon fa fa-foursquare"></span> 
+				 	<span class="icon fa fa-foursquare"></span>
 				 </a>
 				</li>
 				<li class="item google">
 				 <a class="url" href="https://www.google.com/work/mapsearth/" target="_blank">
-				 	<span class="icon fa fa-google"></span> 
+				 	<span class="icon fa fa-google"></span>
 				 </a>
 				</li>
 				<li class="item uber">
 				 <a class="url" href="https://www.uber.com/" target="_blank">
-				 	<span class="icon fa"></span> 
+				 	<span class="icon fa"></span>
 				 </a>
 				</li>
 			</ul>
@@ -96,8 +96,8 @@
 		<!-- Landing Notification -->
 		<div class="landing-notification notification" data-bind="notification: { message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
 		<!-- /Landing Notification -->
-	
-		<!-- Landing Reload -->	
+
+		<!-- Landing Reload -->
 		<div class="landing-reload reload" data-bind="visible: appReloadVisbility, event: { click: reloadApp, touchend: reloadApp }" style="display: none;">
 			<span class="icon fa fa-refresh"></span>Reload Map Panda
 		</div>
@@ -165,7 +165,7 @@
 
 	<!-- Filter -->
  	<div class="filter">
- 		<div class="icon fa fa-search" data-bind="toggleFilter, css: { active: searchFilterVisibility }"></div>	
+ 		<div class="icon fa fa-search" data-bind="toggleFilter, css: { active: searchFilterVisibility }"></div>
 		<div class="filter-input" data-bind="cssAnimateVisible: searchFilterVisibility, animation: 'fadeInLeft', animationOut: 'fadeOutLeft', duration: 400, durationOut: 50">
 			<input type="text" placeholder="Filter" autocapitalize="off" autocorrect="off" data-bind="textInput: searchQuery">
 			<div class="filter-clear" data-bind="click: clearFilter, visible: searchClearFilterVisibility">
@@ -186,7 +186,7 @@
 			<div class="content">
 				<div data-bind="visible: mapInfoVisibility">
 					<!-- ko with: currentPlace -->
-					<h2 class="content-header" data-bind="text: name"></h2>	
+					<h2 class="content-header" data-bind="text: name"></h2>
 					<!-- /ko -->
 				</div>
 			</div>
@@ -211,10 +211,10 @@
 
 		<div class="map-zoom-buttons">
 	    <div class="map-zoom-button zoom-in" data-bind="event: { click: mapZoomIn, touchend: mapZoomIn }">
-  			<span class="fa fa-plus"></span>	
-  		</div>	
+  			<span class="fa fa-plus"></span>
+  		</div>
   		<div class="map-zoom-button zoom-out" data-bind="event: { click: mapZoomOut, touchend: mapZoomOut }">
-   			<span class="fa fa-minus"></span>	
+   			<span class="fa fa-minus"></span>
    		</div>
 		</div>
    	<!-- /Map Controls -->
@@ -235,7 +235,7 @@
 		<!-- Map Notification -->
 		<div class="map-notification notification" data-bind="notification: { message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
 		<!-- /Map Notification -->
-	
+
 		<!-- Map Reload -->
 		<div class="map-reload reload" data-bind="visible: appReloadVisbility, event: { click: reloadApp, touchend: reloadApp }" style="display: none;">
 			<span class="icon fa fa-refresh"></span>Reload Map Panda
@@ -250,7 +250,7 @@
 
 		<!-- Modal Content -->
 		<div class="modal-content">
-			
+
 			<!-- Modal Header -->
 			<div class="modal-header">
 				<div class="top-bar">
@@ -266,7 +266,7 @@
 					<span class="dollar dollar-01"></span>
 					<span class="dollar dollar-02"></span>
 					<span class="dollar dollar-03"></span>
-					<span class="dollar dollar-04"></span>	
+					<span class="dollar dollar-04"></span>
 				</div>
 				<div class="bottom-bar">
 				</div>
@@ -280,12 +280,12 @@
 					<span class="star star-02"></span>
 					<span class="star star-03"></span>
 					<span class="star star-04"></span>
-					<span class="star star-05"></span>	
+					<span class="star star-05"></span>
 				</div>
 				<div class="actions">
 					<div class="action-phone" data-bind="event: { click: openModalOverlay, touchend: openModalOverlay }">
-						<span class="icon fa fa-phone"></span>	
-					</div>	
+						<span class="icon fa fa-phone"></span>
+					</div>
 					<div class="action-uber" data-bind="click: uberRideRequest">
 						<div class="icon">
 							<span class="uber-loader" data-bind="visible: modalUberLoading"></span>
@@ -299,7 +299,7 @@
 					<div class="info-item place-info">
 						<span class="icon fa fa-compass"></span>
 						<p class="place-name" data-bind="text: modalInfoName"></p>
-						<p class="place-address" data-bind="text: modalInfoAddress"></p>	
+						<p class="place-address" data-bind="text: modalInfoAddress"></p>
 					</div>
 					<div class="info-item place-website" data-bind="visible: modalInfoWebsite">
 						<span class="icon fa fa-globe"></span>
@@ -312,7 +312,7 @@
 			<!-- Modal Overlay -->
 			<div class="modal-overlay" data-bind="cssAnimateVisible: modalOverlayVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
 				<div class="modal-overlay-message" data-bind="cssAnimateVisible: modalOverlayMessageVisibility, animation: 'bounceIn', animationOut: 'fadeOut', duration: 300, durationOut: 100, text: modalOverlayMessage"></div>
-				<div id="clipboardTarget" class="place-phone" data-bind="text: modalInfoPhone"></div>			
+				<div id="clipboardTarget" class="place-phone" data-bind="text: modalInfoPhone"></div>
 				<div class="actions">
 					<div class="button-group" data-bind="visible: modalInfoPhoneCall, css: modalOverlayGroupButtons">
 						<button class="button copy default radius" data-bind="visible: modalOverlayCopyButtonVisibility, clipboard" data-clipboard-target="#clipboardTarget">Copy</button>
@@ -352,7 +352,7 @@
 
 	<!-- Body Loader -->
 	<div class="body-loader animated pulse infinite" data-bind="visible: appBodyLoadingVisibility"></div>
-	
+
 	<!-- Google Maps API -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KC7nmHmDdz1n0H9xy9rm_B9YAUPeo_A&libraries=places"></script>
 

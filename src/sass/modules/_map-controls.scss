@@ -3,6 +3,7 @@
 
 .map-zoom-buttons {
 	@include border-radius(3px);
+	@include box-shadow(0 0 4px 1px rgba(0,0,0,0.3));
 	background: $outer-space;
 	display: none;
 	top: 130px;
@@ -35,30 +36,30 @@
 
 		&.zoom-in {
 			border-bottom: 1px solid $nevada;
-			top: 0;	
+			top: 0;
 		}
 
 		&.zoom-out {
 			border-top: 1px solid $nevada;
-			bottom: 0;	
+			bottom: 0;
 		}
 	}
 }
 
 .map-pan-to {
 	@include border-radius(999px);
+	@include box-shadow(1px 1px 5px 1px rgba(0,0,0,0.3));
 	@include transition(all .5s linear);
-	background: $jungle-green;
-	color: $white;
+	background: $white;
 	display: inline-block;
 	height: 40px;
 	line-height: 40px;
-	position:absolute; 
-	right: 10px; 
+	position:absolute;
+	right: 10px;
 	text-align: center;
 	top: 65px;
 	vertical-align: middle;
-	width: 40px; 
+	width: 40px;
 	z-index: 2000;
 
 	&:hover {
@@ -67,6 +68,7 @@
 	}
 
 	.icon {
+		color: $jungle-green;
 		font-size: 20px;
 		line-height: inherit;
 	}
@@ -78,11 +80,11 @@
 	}
 
 	@media #{$large-up} {
-		background: $outer-space;
+		background: $white;
 		height: 30px;
 		line-height: 30px;
 		right: 21px;
-		top: 105px;		
+		top: 105px;
 		width: 30px;
 
 		.icon {

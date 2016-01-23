@@ -11,7 +11,7 @@
     bottom: 0;
     width: 100%;
     z-index: 3000;
-		
+
 		&:before {
 			@include box-shadow(inset -4px 0 5px -5px $tundora);
 			@include text-shadow($tundora 1px 1px 0px);
@@ -45,7 +45,7 @@
 
     @media #{$large-up} {
     	height: 100%;
-    	top: 0;	
+    	top: 0;
     	margin-top: 82px;
     	padding: 0;
     	width: 203px;
@@ -98,17 +98,17 @@
 
 		    &:focus {
 		    	outline-color: transparent;
-		    	outline-style: none;	
+		    	outline-style: none;
 		    }
 			}
     }
 
     .search-radius {
-  		padding: 10px 10px 5px 10px;	
+  		padding: 10px 10px 5px 10px;
 			display: none;
 
 		  @media #{$large-up} {
-  			display: block;	  	
+  			display: block;
 		  }
     }
 
@@ -120,7 +120,7 @@
 			overflow-x: scroll;
 			-webkit-overflow-scrolling: touch;
 			white-space: nowrap;
-	
+
 			&:after {
 				@include border-radius(999px);
 			  background: $mandy;
@@ -132,7 +132,7 @@
 			}
 
 			@media #{$medium-up} {
-  			margin: 0 0 0 42px; 
+  			margin: 0 0 0 42px;
   			padding: 0 42px 10px 0;
 
   			&:after {
@@ -145,21 +145,21 @@
 				height: 70vh;
 				margin: 20px 0 0 0;
 				padding: 0;
-				width: 200px;				
+				width: 200px;
 				overflow: auto;
 
 				&:after {
 					display: none;
 				}
 			}
-			
+
     	.item {
 			  color: $nevada;
 			  display: inline-block;
 			  font-size: 17px;
 			  line-height: 1;
 			  margin: 0 0 0 18px;
-				
+
 				@media #{$medium-up} {
 					font-size: 18px;
 				}
@@ -174,9 +174,12 @@
 				.icon {
 					@include transition(all .5s ease-in-out);
 					margin: 0 5px 0 0;
+					position: relative;
+					top: 2px;
 
 					@media #{$medium-up} {
 						margin: 6px 5px 0 0;
+						top: 1px;
 					}
 
 					@media #{$large-up} {
@@ -193,7 +196,7 @@
 						color: $sirocco;
 						font-size: 28px;
 	    		}
-    		}	
+    		}
 
 			  &.hover,
 			  &.active {
@@ -201,7 +204,7 @@
 			  	color: $white;
 
 			  	.icon {
-			  		// width: 33px;	
+			  		// width: 33px;
 			  		.icon-outer {
 			  			color: $white;
 			  		}
