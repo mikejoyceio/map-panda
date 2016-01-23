@@ -6,7 +6,6 @@
   height: 35px;
   left: 15px;
   line-height: 1.9;
-  overflow: hidden;
   position: absolute;
   width: 225px;
 
@@ -21,12 +20,13 @@
 	@media #{$large-up} {
 		display: none;
 	}
-	
+
 	.icon {
 		@include border-radius(999px);
+		@include box-shadow(1px 1px 5px 1px rgba(0,0,0,0.3));
 		@include transition(all .5s linear);
-		background: $jungle-green;
-		color: $white;
+		background: $white;
+		color: $jungle-green;
 		height: 35px;
 		left: 0;
 		line-height: 2.1;
@@ -40,6 +40,7 @@
 
 		&.active {
 			background: $outer-space;
+			color: $white;
 		}
 	}
 
