@@ -3,7 +3,7 @@
 
 .map-zoom-buttons {
 	@include border-radius(3px);
-	@include box-shadow(1px 1px 5px 1px rgba(0,0,0,0.3));
+	@include box-shadow(0 0 4px 1px rgba(0,0,0,0.3));
 	background: $outer-space;
 	display: none;
 	top: 130px;
