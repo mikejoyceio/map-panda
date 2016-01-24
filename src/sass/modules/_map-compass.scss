@@ -3,8 +3,8 @@
 
 .map-compass {
 	@include border-radius(999px);
-  background: $outer-space;
-  border: 2px solid $outer-space;
+	@include box-shadow(1px 1px 5px 1px rgba(0,0,0,0.3));
+  background: $white;
   display: none;
   height: 32px;
   left: 10px;
@@ -16,15 +16,16 @@
 
   &:before {
 		@include border-radius(999px);
-		background: $emperor;
+		background: $white;
 		content: '';
-		height: 15px;
+		height: 5px;
 		left: 0;
 		margin: auto;
 		position: absolute;
 		right: 0;
-		top: 9px;
-		width: 15px;
+		top: 14px;
+		width: 5px;
+		z-index: 3000;
 	}
 
   @media #{$medium-up} {
@@ -36,7 +37,7 @@
   @media #{$large-up} {
   	left: 13px;
   	right: auto;
-  	top: 78px;	
+  	top: 78px;
   }
 
   .north, .south {
@@ -46,7 +47,7 @@
 	  width: 7px;
   }
 
-  .north {	
+  .north {
 	  @include border-radius(5px 5px 0 0);
 	  background: $mandy;
 	  color: $white;
@@ -56,9 +57,9 @@
 	  top: 2px;
   }
 
-  .south {	
+  .south {
 	  @include border-radius(0 0 5px 5px);
-	  background: $white;
+	  background: $athens-gray;
 	  top: 16px;
   }
 }
