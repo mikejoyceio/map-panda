@@ -13,7 +13,13 @@
 var gulp = require('gulp');
 
 /**
- * Load Del
+ * Load Gulp Path
+ * @type {object}
+ */
+var path = require('path');
+
+/**
+ * Load Node Del
  * @type {object}
  * @external 'require('del')'
  * @see {@link https://www.npmjs.com/package/del}
@@ -31,12 +37,6 @@ var plugins = gulpLoadPlugins({
 	pattern: ['gulp-*', 'gulp.*', 'main-bower-files'],
 	replaceString: /\bgulp[\-.]/
 });
-
-/**
- * Load Gulp Path
- * @type {object}
- */
-var path = require('path');
 
 /**
  * Clean Task.
