@@ -11,6 +11,15 @@
  * @see {@link http://gulpjs.com/}
  */
 var gulp = require('gulp');
+
+/**
+ * Load Del
+ * @type {object}
+ * @external 'require('del')'
+ * @see {@link https://www.npmjs.com/package/del}
+ */
+var del = require('del');
+
 /**
  * Load Gulp Plugins
  * @type {object}
@@ -22,11 +31,22 @@ var plugins = gulpLoadPlugins({
 	pattern: ['gulp-*', 'gulp.*', 'main-bower-files'],
 	replaceString: /\bgulp[\-.]/
 });
+
 /**
  * Load Gulp Path
  * @type {object}
  */
 var path = require('path');
+
+/**
+ * Clean Task.
+ * Cleans the build directories
+ * @external 'del()'
+ * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulptaskname--deps-fn}
+ */
+gulp.task('clean', function(c) {
+	del(['dist/js/*', 'dist/css/*']);
+});
 
 /**
  * Scripts Task. Uglifies & concatenates JavaScript files
@@ -114,4 +134,4 @@ gulp.task('fonts', function() {
  * @external 'gulp.task'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
-gulp.task('default', ['scripts', 'styles']);
+gulp.task('default', ['clean', 'scripts', 'styles']);
