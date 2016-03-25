@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<title>Map Panda</title>
 
 	<!-- Favicons -->
 	<link rel="apple-touch-icon" sizes="57x57" href="/dist/images/apple-touch-icon-57x57.png">
@@ -37,20 +34,15 @@
 
 		<!-- Landing Header -->
 		<h1 class="landing-header">
-			Map Panda
+			<div class="landing-brand"></div> Map Panda
 		</h1>
 		<!-- /Landing Header -->
 
-		<!-- Landing Brand -->
-		<div class="landing-brand">
-			<div class="brand-image"></div>
-		</div>
-		<!-- /Landing Brand -->
-
 		<!-- Landing Info -->
-		<p class="landing-info" data-bind="visible: appLandingInfoVisibility" style="display: none;">
-			Explore popular locations around you.
-		</p>
+		<div class="landing-info">
+			<p>Explore places to eat, drink, shop, and more around you.</p>
+			<p>Over 50 million places worldwide.</p>
+		</div>
 		<!-- /Landing Info -->
 
 		<!-- Landing Loading -->
@@ -64,7 +56,7 @@
 
 		<!-- Landing Action -->
 		<div class="landing-action" data-bind="visible: appLandingActionVisibility" style="display: none;">
-			<button class="button action radius expand" data-bind="click: getLocation">Find Me</button>
+			<button class="button plain radius border-thick expand" data-bind="click: getLocation">Find Me</button>
 		</div>
 		<!-- /Landing Action -->
 
@@ -82,11 +74,6 @@
 				<li class="item google">
 				 <a class="url" href="https://www.google.com/work/mapsearth/" target="_blank">
 				 	<span class="icon fa fa-google"></span>
-				 </a>
-				</li>
-				<li class="item uber">
-				 <a class="url" href="https://www.uber.com/" target="_blank">
-				 	<span class="icon fa"></span>
 				 </a>
 				</li>
 			</ul>
