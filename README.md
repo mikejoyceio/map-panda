@@ -10,7 +10,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 
 ##Getting Started
 
-Point your browser to https://mappanda.co.
+Point your browser to https://mappanda.co
 
 If you would like to get it up and running locally:
 
@@ -26,9 +26,9 @@ $ git clone https://github.com/mikejoyceio/map
 $ python -m SimpleHTTPServer
 ```
 
-Then point your browser to http://localhost:8000.
+Then point your browser to [http://localhost:8000](http://localhost:8000)
 
-Problems? Detailed usage instructions can been found [here](https://docs.python.org/2/library/basehttpserver.html).
+Detailed Python Simple Server instructions can been found [here](https://docs.python.org/2/library/basehttpserver.html).
 
 NOTE: If you would like to serve the application locally without Python Simple Server, make sure to serve on port 8000 otherwise the Uber API will not return ride price estimates.
 
@@ -36,7 +36,9 @@ NOTE: If you would like to serve the application locally without Python Simple S
 
 The [Gulp](http://gulpjs.com/) streaming build system is used in this project to minify, concatenate and move files to the appropriate directories. Build files have already been added to the repo and can be found in the [dist](dist) directory.
 
-If you would like to run the build yourself locally, you will need to have [Node JS](https://nodejs.org/en/download/package-manager/#osx) installed.
+[Sass](http://sass-lang.com/), along with the [Compass](http://compass-style.org/) CSS authoring framework, are used to compile and generate cross-browser CSS. You will need to have Ruby installed to be able to compile Sass and utilize Compass.
+
+If you're feeling a little adventurous and would like to run the build yourself locally, you will need to have [Node JS](https://nodejs.org/en/download/package-manager/#osx) installed.
 
 NOTE: All of the following commands need to be ran from the root of the project.
 
@@ -93,10 +95,6 @@ $ gulp fonts
 ```
 
 This command runs the fonts task, which transfers the Font Awesome font files to [dist/fonts](dist/fonts).
-
-##Sass
-
-[Sass](http://sass-lang.com/), along with the [Compass](http://compass-style.org/) CSS authoring framework, are used to compile and generate cross-browser CSS for this project. You will need to have Ruby installed to be able to compile Sass and utilize Compass.
 
 ##Package Management
 
