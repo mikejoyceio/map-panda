@@ -30,7 +30,7 @@ $ python -m SimpleHTTPServer
 
 Detailed Python Simple Server instructions can been found [here](https://docs.python.org/2/library/basehttpserver.html).
 
-**3.** Open the application in your default browser:
+**3.** Open the application:
 
 ```
 $ open "http://localhost:8000"
