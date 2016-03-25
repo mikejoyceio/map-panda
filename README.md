@@ -26,6 +26,8 @@ $ git clone https://github.com/mikejoyceio/map
 $ python -m SimpleHTTPServer
 ```
 
+**3.** Open your favorite browser:
+
 Then point your browser to [http://localhost:8000](http://localhost:8000)
 
 Detailed Python Simple Server instructions can been found [here](https://docs.python.org/2/library/basehttpserver.html).
@@ -36,43 +38,54 @@ NOTE: If you would like to serve the application locally without Python Simple S
 
 The [Gulp](http://gulpjs.com/) streaming build system is used in this project to minify, concatenate and move files to the appropriate directories. Build files have already been added to the repo and can be found in the [dist](dist) directory.
 
-[Sass](http://sass-lang.com/), along with the [Compass](http://compass-style.org/) CSS authoring framework, are used to compile and generate cross-browser CSS. You will need to have Ruby installed to be able to compile Sass and utilize Compass.
+[Sass](http://sass-lang.com/), along with the [Compass](http://compass-style.org/) CSS authoring framework, are used to generate cross-browser CSS. You will need to have [Ruby](https://www.ruby-lang.org/) installed (which is preinstalled on OS X) to be able to compile Sass and utilize Compass.
 
-If you're feeling a little adventurous and would like to run the build yourself locally, you will need to have [Node JS](https://nodejs.org/en/download/package-manager/#osx) installed.
+If you're feeling a little adventurous and would like to run the build yourself locally, you will need to:
 
-NOTE: All of the following commands need to be ran from the root of the project.
+**1.** Install Compass:
 
-######Install Gulp
+```
+$ gem update --system
+$ gem install compass
+```
+
+Detailed installation instructions can been found [here](http://compass-style.org/install/).
+
+######Install NodeJS
+
+Download a pre-compiled binary package from [here](https://nodejs.org/en/).
+
+**2.** Install Gulp:
 
 ```
 $ sudo npm install --save-dev gulp
 ```
 
-Problems? Detailed installation instructions can been found [here](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md).
+Detailed installation instructions can been found [here](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md).
 
-######Install Gulp Plugins
+**3.** Install Gulp Plugins:
 
 ```
 $ sudo npm install
 ```
 
-######Install Bower
+**4.** Install Bower:
 
 ```
 $ npm install -g bower
 ```
 
-Problems? Detailed installation instructions can been found [here](http://bower.io/).
+Detailed installation instructions can been found [here](http://bower.io/#getting-started).
 
-######Install Bower Packages
+**5.** Install Bower Packages:
 
 ```
 $ bower install
 ```
 
-######Gulp Commands
+##Running the Build
 
-Minify and concatenate CSS and JavaScript files:
+######Minify and concatenate CSS and JavaScript files
 
 ```
 $ gulp
@@ -80,7 +93,7 @@ $ gulp
 
 This command runs the default Gulp task in [gulpfile.js](gulpfile.js) and runs the both the styles and scripts tasks. The styles task concatenates and minifies all of the [Sass](http://sass-lang.com/) partials in [src/sass](src/sass) and compiles to a single file ([app.css](dist/css/app.css)) in [dist/css](dist/css). The scripts task concatenates and minifies all JavaScript files in [src/js](src/js), including all of the main Bower package JavaScript in [src/vendor](src/vendor) and compiles to a single file ([app.js](dist/js/app.js)) in [dist/js](dist/js).
 
-Optimize images:
+######Optimize Images
 
 ```
 $ gulp images
@@ -88,7 +101,7 @@ $ gulp images
 
 This command runs the images task in [gulpfile.js](gulpfile.js). Images in [src/images](src/images) will be optimized and moved to [dist/images](dist/images).
 
-Fonts:
+######Fonts
 
 ```
 $ gulp fonts
