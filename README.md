@@ -20,17 +20,19 @@ If you would like to get it up and running locally:
 $ git clone https://github.com/mikejoyceio/map
 ````
 
-**2.** Run the following Python command from the root of the project:
+**2.** Serve the application:
 
 ```
 $ python -m SimpleHTTPServer
 ```
 
-**3.** Open your favorite browser:
-
-Then point your browser to [http://localhost:8000](http://localhost:8000)
-
 Detailed Python Simple Server instructions can been found [here](https://docs.python.org/2/library/basehttpserver.html).
+
+**3.** Open the application in your default browser:
+
+```
+$ open "http://localhost:8000"
+```
 
 NOTE: If you would like to serve the application locally without Python Simple Server, make sure to serve on port 8000 otherwise the Uber API will not return ride price estimates.
 
@@ -51,11 +53,11 @@ $ gem install compass
 
 Detailed installation instructions can been found [here](http://compass-style.org/install/).
 
-######Install NodeJS
+**2.** Install NodeJS
 
 Download a pre-compiled binary package from [here](https://nodejs.org/en/).
 
-**2.** Install Gulp:
+**3.** Install Gulp:
 
 ```
 $ sudo npm install --save-dev gulp
@@ -63,13 +65,13 @@ $ sudo npm install --save-dev gulp
 
 Detailed installation instructions can been found [here](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md).
 
-**3.** Install Gulp Plugins:
+**4.** Install Gulp Plugins:
 
 ```
 $ sudo npm install
 ```
 
-**4.** Install Bower:
+**5.** Install Bower:
 
 ```
 $ npm install -g bower
@@ -77,7 +79,7 @@ $ npm install -g bower
 
 Detailed installation instructions can been found [here](http://bower.io/#getting-started).
 
-**5.** Install Bower Packages:
+**6.** Install Bower Packages:
 
 ```
 $ bower install
@@ -85,23 +87,17 @@ $ bower install
 
 ##Running the Build
 
-######Minify and concatenate CSS and JavaScript files
-
 ```
 $ gulp
 ```
 
 This command runs the default Gulp task in [gulpfile.js](gulpfile.js) and runs the both the styles and scripts tasks. The styles task concatenates and minifies all of the [Sass](http://sass-lang.com/) partials in [src/sass](src/sass) and compiles to a single file ([app.css](dist/css/app.css)) in [dist/css](dist/css). The scripts task concatenates and minifies all JavaScript files in [src/js](src/js), including all of the main Bower package JavaScript in [src/vendor](src/vendor) and compiles to a single file ([app.js](dist/js/app.js)) in [dist/js](dist/js).
 
-######Optimize Images
-
 ```
 $ gulp images
 ```
 
 This command runs the images task in [gulpfile.js](gulpfile.js). Images in [src/images](src/images) will be optimized and moved to [dist/images](dist/images).
-
-######Fonts
 
 ```
 $ gulp fonts
