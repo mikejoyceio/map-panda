@@ -12,7 +12,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 
 ######Live
 
-#####https://mappanda.co
+Point your browser to https://mappanda.co
 
 ######Locally
 
