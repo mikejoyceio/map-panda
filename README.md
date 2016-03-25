@@ -10,9 +10,11 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 
 ##Getting Started
 
+######Live
+
 Point your browser to https://mappanda.co
 
-If you would like to get it up and running locally:
+######Locally
 
 **1.** Clone this repo:
 
