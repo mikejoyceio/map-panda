@@ -43,8 +43,18 @@
 		border-color: $mandy;
 	}
 
+	&.plain {
+		background-color: transparent;
+		border-color: $white;
+		color: $white;
+	}
+
 	&.radius {
 		@include border-radius(3px);
+	}
+
+	&.border-thick {
+		border-width: 3px;
 	}
 
 	&.expand {
