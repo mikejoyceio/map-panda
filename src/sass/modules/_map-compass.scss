@@ -4,7 +4,7 @@
 .map-compass {
 	@include border-radius(999px);
 	@include box-shadow(1px 1px 5px 1px rgba(0,0,0,0.3));
-  background: $white;
+  background: $white-transparent;
   display: none;
   height: 32px;
   left: 10px;
