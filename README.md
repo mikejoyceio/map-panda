@@ -30,7 +30,7 @@ $ python -m SimpleHTTPServer
 
 Detailed Python Simple Server instructions can been found [here](https://docs.python.org/2/library/basehttpserver.html).
 
-**3.** Open the application in your default browser:
+**3.** Open the application:
 
 ```
 $ open "http://localhost:8000"
@@ -46,7 +46,7 @@ The [Gulp](http://gulpjs.com/) streaming build system is used in this project to
 
 If you're feeling a little adventurous and would like to run the build yourself locally, you will need to:
 
-**1.** Install Compass:
+######Install Compass:
 
 ```
 $ gem update --system
@@ -55,11 +55,11 @@ $ gem install compass
 
 Detailed installation instructions can been found [here](http://compass-style.org/install/).
 
-**2.** Install NodeJS
+######Install NodeJS
 
 Download a pre-compiled binary package from [here](https://nodejs.org/en/).
 
-**3.** Install Gulp:
+######Install Gulp:
 
 ```
 $ sudo npm install --save-dev gulp
@@ -67,13 +67,13 @@ $ sudo npm install --save-dev gulp
 
 Detailed installation instructions can been found [here](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md).
 
-**4.** Install Gulp Plugins:
+######Install Gulp Plugins:
 
 ```
 $ sudo npm install
 ```
 
-**5.** Install Bower:
+######Install Bower:
 
 ```
 $ npm install -g bower
@@ -81,7 +81,7 @@ $ npm install -g bower
 
 Detailed installation instructions can been found [here](http://bower.io/#getting-started).
 
-**6.** Install Bower Packages:
+######Install Bower Packages:
 
 ```
 $ bower install
