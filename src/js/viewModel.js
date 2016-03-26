@@ -1341,6 +1341,9 @@ ko.bindingHandlers.map = {
     	types: []
     };
 
+    /** Show the map loader */
+    bindingContext.$root.mapLoadingVisibility(true);
+
     /**
      * Push the currentPlace type into the request object types array
      */
@@ -1379,9 +1382,6 @@ ko.bindingHandlers.map = {
 
     	/** If the statusCode is OK */
     	if (status === statusCode.OK) {
-
-    		/** Show the map loader */
-    		bindingContext.$root.mapLoadingVisibility(true);
 
     		/** Clear all markers from the map */
     		clearMarkers();
