@@ -40,8 +40,8 @@
 
 	&:before {
 		content: '';
-		background: rgba(33, 178, 166, 0.65);
-		border-top: 5px solid rgba(46, 56, 66, 0.8);
+		background: rgba(255, 255, 255, 0.4);
+		border-top: 5px solid $jungle-green;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -73,17 +73,17 @@
 		}
 
 		@media #{$large-up} {
-	  	display: inline-block;
-	  	vertical-align: middle;
-	  	position: static;
-	  	top: auto;
+	  	// display: inline-block;
+	  	// vertical-align: middle;
+	  	// position: static;
+	  		top: -110px;
 		}
 	}
 
 	.landing-header {
 		color: rgba(46, 56, 66, 0.8);
 		font-size: 48px;
-		font-weight: $font-extra-bold;
+		font-weight: $font-regular;
 		left: 0;
 		margin: auto;
 		min-width: 200px;
@@ -95,15 +95,15 @@
 
 	  @media #{$medium-up} {
 	  	font-size: 52px;
-	  	top: 28%;
+	  	top: 32%;
 	  	letter-spacing: 3px;
 	  }
 	}
 
 	.landing-info {
-	  color: #fafafa;
+	  color: rgba(46, 56, 66, 0.8);
 	  font-size: 13px;
-	  font-weight: 200;
+	  font-weight: $font-regular;
 	  left: 0;
 	  margin: auto;
 	  padding-bottom: 20px;
@@ -145,8 +145,9 @@
 	  width: 250px;
 
 	  .button {
-	  	background-color: $white;
-	  	color: rgba(33, 178, 166, 1);
+	  	background-color: $silver-tree;
+	  	border-color: $silver-tree;
+	  	color: $white;
 	  	font-weight: 900;
 	  	letter-spacing: 1px;
 	  	text-transform: uppercase;
@@ -169,7 +170,7 @@
 	  width: 200px;
 
 		.landing-powered-header {
-		  color: #c7ebe8;
+		  color: rgba(46, 56, 66, 0.8);
 		  font-size: 8px;
 		  letter-spacing: 1px;
 		  position: absolute;
