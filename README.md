@@ -14,15 +14,15 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 
 Point your browser to https://mappanda.com
 
-###### Locally
+###### Local
 
-###### 1. Clone this repo:
+###### 1. Clone this repo
 
 ```
 $ git clone https://github.com/mikejoyceio/map
 ````
 
-###### 2. Serve the application:
+###### 2. Serve the application
 
 ```
 $ python -m SimpleHTTPServer
@@ -30,7 +30,7 @@ $ python -m SimpleHTTPServer
 
 Detailed Python Simple Server instructions can been found [here](https://docs.python.org/2/library/basehttpserver.html).
 
-###### 3. Open the application:
+###### 3. Open the application
 
 ```
 $ open "http://localhost:8000"
