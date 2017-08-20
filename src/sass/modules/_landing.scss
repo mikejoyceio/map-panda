@@ -4,44 +4,17 @@
 .landing {
   height: 100%;
   left: 0;
-  position: absolute;
+  position: fixed;
   top: 0;
   width: 100%;
   z-index: 5000;
-  background: $landing-bg-small no-repeat center center fixed $jungle-green;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-
-  @media #{$medium-up} {
-		background: $landing-bg-medium no-repeat center center fixed $jungle-green;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
-		background-size: cover;
-  }
-
-  @media #{$large-up} {
-  	background: $landing-bg-large no-repeat center center fixed $jungle-green;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
-		background-size: cover;
-  }
-
-  @media #{$xlarge-up} {
-  	background: $landing-bg-xlarge no-repeat center center fixed $jungle-green;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
-		background-size: cover;
-  }
+  background: $default-large;
+  background-size: 100%;
+  @include animation(100s scroll infinite linear);
 
 	&:before {
 		content: '';
-		background: rgba(255, 255, 255, 0.4);
-		border-top: 5px solid $jungle-green;
+		background: rgba($jungle-green, 0.7);
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -49,41 +22,14 @@
 		height: 100%;
 	}
 
-	.landing-brand {
-		@include border-radius(999px);
-	  background: url(../images/panda-black.png);
-	  background-size: 80%;
-	  background-repeat: no-repeat;
-	  background-position: 50% 60%;
-	  left: 0;
-	  right: 0;
-	  top: -120px;
-	  margin: auto;
-	  opacity: 0.65;
-	  width: 68px;
-	  height: 68px;
-	  background-color: rgba(255, 255, 255, 0.7);
-	  border: 2px solid #fff;
-	  position: absolute;
-
-		@media #{$medium-up} {
-	    // height: 60px;
-	    // margin: 20px auto;
-	    // width: 60px;
-		}
-
-		@media #{$large-up} {
-	  	// display: inline-block;
-	  	// vertical-align: middle;
-	  	// position: static;
-	  		top: -110px;
-		}
+	@media #{$medium-up} {
+		background-size: 50%;
 	}
 
 	.landing-header {
-		color: rgba(46, 56, 66, 0.8);
+		color: $off-white;
 		font-size: 48px;
-		font-weight: $font-regular;
+		font-weight: $font-extra-bold;
 		left: 0;
 		margin: auto;
 		min-width: 200px;
@@ -95,15 +41,15 @@
 
 	  @media #{$medium-up} {
 	  	font-size: 52px;
-	  	top: 32%;
+	  	top: 250px;
 	  	letter-spacing: 3px;
 	  }
 	}
 
 	.landing-info {
-	  color: rgba(46, 56, 66, 0.8);
+	  color: $off-white;
 	  font-size: 13px;
-	  font-weight: $font-regular;
+	  font-weight: $font-light;
 	  left: 0;
 	  margin: auto;
 	  padding-bottom: 20px;
@@ -114,28 +60,29 @@
 	  width: 320px;
 
 	  @media #{$medium-up} {
-	  	font-size: 19px;
-	  	top: 45%;
+	  	font-size: 15px;
+	  	top: 330px;
 	  	width: 500px;
 	  }
 	}
 
 	.landing-loading {
-		height: 100px;
+		height: 250px;
 		left: 0;
 		margin: auto;
 		position: absolute;
 		right: 0;
-		top: 48.2%;
-		width: 100px;
+		top: 35%;
+		width: 250px;
 
 		@media #{$medium-up} {
-			top: 54.5%;
+			height: 400px;
+			width: 400px;
+			top: 200px;
 		}
 	}
 
 	.landing-action {
-		border-top: 1px solid rgba(0, 0, 0, 0.125);
 	  left: 0;
 	  margin: auto;
 	  padding-top: 20px;
@@ -151,12 +98,19 @@
 	  	font-weight: 900;
 	  	letter-spacing: 1px;
 	  	text-transform: uppercase;
+	  	padding: 15px;
 	  	position: relative;
+	  	@include transition(all .5s linear);
+
+	  	&:hover {
+	  		background-color: $boulder;
+	  		border-color: $boulder;
+	  	}
 	  }
 
 	  @media #{$medium-up} {
 	  	width: 270px;
-	  	top: 54%;
+	  	top: 380px;
 	  }
 	}
 
@@ -170,7 +124,7 @@
 	  width: 200px;
 
 		.landing-powered-header {
-		  color: rgba(46, 56, 66, 0.8);
+		  color: $off-white;
 		  font-size: 8px;
 		  letter-spacing: 1px;
 		  position: absolute;

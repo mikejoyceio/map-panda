@@ -122,14 +122,19 @@
 		@include border-radius(999px);
   	background: rgba(51, 149, 255, 0.1);
 	  border: 3px solid rgba(51, 149, 255, 0.95);
-	  height: 60px;
+	  height: 250px;
 	  margin: auto;
 	  top: 5px;
 	  left: 0;
 	  right: 0;
 	  position: absolute;
-	  width: 60px;
+	  width: 250px;
 	  z-index: 1;
+
+	  @media #{$medium-up} {
+	  	width: 400px; 
+	  	height: 400px;
+	  }
 	}
 
 	.radial-pulse-inner {
@@ -137,13 +142,19 @@
 		@include border-radius(999px);
   	background: rgba(51, 149, 255, 0.1);
 	  border: 3px solid rgba(51, 149, 255, 0.9);
-	  height: 40px;
-	  margin: 15px auto;
+	  height: 180px;
+	  margin: 38px auto;
 	  left: 0;
 	  right: 0;
 	  position: absolute;
-	  width: 40px;
+	  width: 180px;
 	  z-index: 1;
+
+	  @media #{$medium-up} {
+	  	margin: 30px auto;
+	  	width: 350px;
+	  	height: 350px;
+	  }
 	}
 }
 
