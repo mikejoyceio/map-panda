@@ -120,8 +120,8 @@
 	.radial-pulse-outer {
 		@include animation(pulse-fade 2.1s linear infinite);
 		@include border-radius(999px);
-  	background: rgba(51, 149, 255, 0.1);
-	  border: 3px solid rgba(51, 149, 255, 0.95);
+  	background: rgba($white, 0.1);
+	  border: 3px solid $gossamer;
 	  height: 250px;
 	  margin: auto;
 	  top: 5px;
@@ -140,8 +140,8 @@
 	.radial-pulse-inner {
 		@include animation(pulse-fade 2.1s 0.5s ease-out infinite);
 		@include border-radius(999px);
-  	background: rgba(51, 149, 255, 0.1);
-	  border: 3px solid rgba(51, 149, 255, 0.9);
+  	background: rgba($white, 0.1);
+	  border: 3px solid $gossamer;
 	  height: 180px;
 	  margin: 38px auto;
 	  left: 0;
