@@ -117,44 +117,48 @@
 }
 
 .landing-loader {
+
 	.radial-pulse-outer {
 		@include animation(pulse-fade 2.1s linear infinite);
 		@include border-radius(999px);
-  	background: rgba($white, 0.1);
-	  border: 3px solid $gossamer;
-	  height: 250px;
-	  margin: auto;
-	  top: 5px;
-	  left: 0;
-	  right: 0;
-	  position: absolute;
-	  width: 250px;
-	  z-index: 1;
+		@include transform(scale(0.2));
+		background: rgba($white, 0.1);
+		border: 3px solid $gossamer;
+		bottom: 0;
+		height: 250px;
+		left: 0;
+		margin: auto;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 250px;
 
-	  @media #{$medium-up} {
-	  	width: 400px; 
-	  	height: 400px;
-	  }
+		@media #{$medium-up} {
+			width: 400px; 
+			height: 400px;
+		}
 	}
 
 	.radial-pulse-inner {
-		@include animation(pulse-fade 2.1s 0.5s ease-out infinite);
+		@include animation(pulse-fade 2.1s -.5s ease-out infinite);
 		@include border-radius(999px);
-  	background: rgba($white, 0.1);
-	  border: 3px solid $gossamer;
-	  height: 180px;
-	  margin: 38px auto;
-	  left: 0;
-	  right: 0;
-	  position: absolute;
-	  width: 180px;
-	  z-index: 1;
+		@include transform(scale(0.2));
+		background: rgba($white, 0.1);
+		border: 3px solid $gossamer;
+		bottom: 0;
+		height: 180px;
+		left: 0;
+		margin: auto;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 180px;
+		z-index: 1;
 
-	  @media #{$medium-up} {
-	  	margin: 30px auto;
-	  	width: 350px;
-	  	height: 350px;
-	  }
+		@media #{$medium-up} {
+			width: 350px;
+			height: 350px;
+		}
 	}
 }
 

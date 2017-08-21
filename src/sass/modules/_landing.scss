@@ -67,19 +67,14 @@
 	}
 
 	.landing-loading {
-		height: 250px;
-		left: 0;
-		margin: auto;
+		width: 100%;
+		height: 100%;
 		position: absolute;
+		left: 0;
 		right: 0;
-		top: 35%;
-		width: 250px;
-
-		@media #{$medium-up} {
-			height: 400px;
-			width: 400px;
-			top: 200px;
-		}
+		top: 0;
+		bottom: 0;
+		margin: auto;
 	}
 
 	.landing-action {
