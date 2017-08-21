@@ -121,7 +121,7 @@
 	  margin: auto;
 	  position: absolute;
 	  right: 0;
-	  width: 200px;
+	  width: 124px;
 
 		.landing-powered-header {
 		  color: $off-white;
@@ -131,42 +131,60 @@
 		  text-align: center;
 		  text-transform: uppercase;
 		  top: -20px;
-		  width: 200px;
+		  width: 100%;
 		}
 
 		.brand-list {
 			list-style: none;
 			text-align: center;
+			width: 100%;
 
 			.item {
-			  background: rgba(255, 255, 255, 0.95);
-			  display: inline-block;
-			  margin: 0 0 0 -1px;
-			  width: 40px;
+				background: rgba(255, 255, 255, 0.95);
+				display: inline-block;
+				width: 40px;
+				float: left;
 
-  			.url {
-  				outline: none;
-  			}
+	  			.url {
+	  				outline: none;
+	  			}
 
-  			.icon {
+	  			.icon {
 					color: $tundora;
 					font-size: 14px;
 					padding: 3px;
-  			}
+	  			}
 
 				&.foursquare {
 					@include border-radius(3px 0 0 3px);
-					.icon {
-  					color: #f94877;
-  				}
-  			}
 
-  			&.google {
-  				@include border-radius(0 3px 3px 0);
-  				.icon {
-  					color: #dd4b39;
-  				}
-  			}
+					.icon {
+	  					color: #f94877;
+	  				}
+	  			}
+
+	  			&.uber {
+					margin: 0 2px; 
+
+	  				.icon {
+						background-image: $uber-badge;
+						background-repeat: no-repeat;
+						background-size: cover;
+						display: inline-block;
+						height: 15px;
+						margin: auto auto -2px;
+						padding: 0;
+						width: 15px;
+	  				}
+	  			}
+
+	  			&.google {
+	  				@include border-radius(0 3px 3px 0);
+
+	  				.icon {
+	  					color: #dd4b39;
+	  				}
+	  			}
 
 			}
 		}
