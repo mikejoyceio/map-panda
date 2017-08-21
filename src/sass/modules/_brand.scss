@@ -3,22 +3,42 @@
 
 .brand {
 	background: $jungle-green;
-  height: 52px;
-  left: 0;
-  top: 0;
-  position: absolute;
-  width: 63px;
-  z-index: 4000;
+	height: 52px;
+	left: 0;
+	top: 0;
+	position: absolute;
+	width: 63px;
+	z-index: 4000;
 
 	@media #{$medium-up} {
 		height: 72px;
 		width: 72px;
 	}
 
-  @media #{$large-up} {
-  	height: 82px;
-  	width: 203px;
-  }
+	@media #{$large-up} {
+		height: 82px;
+		width: 203px;
+	}
+
+	.brand-text {
+		color: $white;
+		display: block;
+		font-size: 10px;
+		font-weight: $font-extra-bold;
+		margin-top: 12px;		
+		text-align: center;
+		text-decoration: none;
+
+		@media #{$medium-up} {
+			font-size: 11px;	
+			margin-top: 23px;
+		}
+
+		@media #{$large-up} {
+			font-size: 20px;	
+			margin-top: 27px;
+		}
+	}
 
 	.brand-image {
 		background: $brand-white;
