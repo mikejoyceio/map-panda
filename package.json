@@ -7,11 +7,8 @@
   "scripts": {
     "test": "test"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mikejoyceio/map.git"
-  },
-  "author": "",
+  "repository": "https://github.com/mikejoyceio/map.git",
+  "author": "Mike Joyce <contact@mikejoyce.me>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mikejoyceio/map/issues"
