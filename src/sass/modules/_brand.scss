@@ -2,7 +2,7 @@
 // Brand
 
 .brand {
-	background: $jungle-green;
+	background: color(jungle-green);
 	height: 52px;
 	left: 0;
 	top: 0;
@@ -21,7 +21,7 @@
 	}
 
 	.brand-text {
-		color: $white;
+		color: color(white);
 		display: block;
 		font-size: 10px;
 		font-weight: $font-extra-bold;

@@ -2,7 +2,7 @@
 // Info Modal
 
 .modal {
-	background: $white;
+	background: color(white);
 	display: none;
 	@include border-radius(7px);
 	@include box-shadow(0 0 1px 1px rgba(0,0,0,0.1));
@@ -33,7 +33,7 @@
 		position: relative;
 
 		.modal-header {
-			background: $outer-space;
+			background: color(outer-space);
 			position: relative;
 			height: 100px;
 			overflow: hidden;
@@ -44,7 +44,7 @@
 			}
 
 			.top-bar {
-				background: $jungle-green;
+				background: color(jungle-green);
 				position: absolute;
 				top: 0;
 				left: 0;
@@ -72,11 +72,11 @@
 					}
 
 					.icon-outer {
-						color: $white;
+						color: color(white);
 					}
 
 					.icon-inner {
-						color: $white;
+						color: color(white);
 					}
 				}
 			}
@@ -100,7 +100,7 @@
 			}
 
 			.bottom-bar {
-				background: $jungle-green;
+				background: color(jungle-green);
 				height: 3px;
 				position: absolute;
 				bottom: 0;
@@ -114,10 +114,10 @@
 			margin: 5px 10px;
 
 			.place-rating {
-			  background: $white;
+			  background: color(white);
 			  @include border-radius(4px);
-			  border: 2px solid $jungle-green;
-			  color: $white;
+			  border: 2px solid color(jungle-green);
+			  color: color(white);
 			  display: inline-block;
 			  font-size: 7px;
 			  font-weight: 300;
@@ -142,7 +142,7 @@
 			}
 
 			.actions {
-				border-bottom: 1px solid $ebb;
+				border-bottom: 1px solid color(ebb);
 				height: 35px;
 
 				@media #{$medium-up} {
@@ -167,7 +167,7 @@
 				}
 
 				.action-phone {
-					border-right: 1px solid $ebb;
+					border-right: 1px solid color(ebb);
 					font-size: 20px;
 					left: 0;
 
@@ -177,7 +177,7 @@
 				}
 
 				.action-uber {
-					border-left: 1px solid $ebb;
+					border-left: 1px solid color(ebb);
 					right: 0;
 
 					.url {
@@ -185,7 +185,7 @@
 					}
 
 					.icon {
-						background-color: $ebony;
+						background-color: color(ebony);
 						background-position: 3px;
 						background-repeat: no-repeat;
 						background-size: 18px;
@@ -202,7 +202,7 @@
   						background-position: 6px;
 
 	 					  &:before {
-							  color: $silver;
+							  color: color(silver);
 							  content: 'Ride with Uber';
 							  font-size: 7px;
 							  height: 10px;
@@ -220,7 +220,7 @@
 					}
 
 					.estimate {
-					  color: $white;
+					  color: color(white);
 					  font-size: 9px;
 					  font-weight: $font-light;
 					  left: 31px;
@@ -255,7 +255,7 @@
 				  }
 
 					.icon {
-					  color: $gray-chateau;
+					  color: color(gray-chateau);
 					  font-size: 14px;
 					  position: absolute;
 					  left: 0;
@@ -267,7 +267,7 @@
 					}
 
 					p {
-				  	color: $rolling-stone;
+				  	color: color(rolling-stone);
 				  	font-size: 10px;
 				  	line-height: 1.2;
 
@@ -280,7 +280,7 @@
   					min-height: 40px;
 
 						.place-name {
-						  color: $tundora;
+						  color: color(tundora);
 						  margin-bottom: 4px;
 						  font-weight: 600;
 						}
@@ -293,10 +293,10 @@
 					}
 
 					&.place-website {
-						border-top: 1px solid $ebb;
+						border-top: 1px solid color(ebb);
 
 						.url {
-							color: $tundora;
+							color: color(tundora);
 							display: inline-block;
 							text-decoration: none;
 							font-weight: 600;
@@ -383,7 +383,7 @@
 		}
 
 		.modal-footer {
-		  border-top: 1px solid $ebb;
+		  border-top: 1px solid color(ebb);
 		  height: 28px;
 		  margin: auto 10px;
 		  padding: 6px 0;
@@ -401,7 +401,7 @@
 			.button-foursquare {
 			  @include border-radius(20px);
 			  border: 1px solid;
-			  color: $violet-red;
+			  color: color(violet-red);
 			  display: block;
 			  font-size: 13px;
 			  font-weight: 400;

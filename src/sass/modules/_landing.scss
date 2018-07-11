@@ -2,7 +2,7 @@
 // Landing
 
 .landing {
-  background-color: $gray;
+  background-color: color(gray);
   background-size: 100%;
   background-image: $default-large;
   height: 100%;
@@ -15,7 +15,7 @@
 
 	&:before {
 		content: '';
-		background: rgba($jungle-green, 0.5);
+		background: rgba(color(jungle-green), 0.5);
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -32,7 +32,7 @@
 	}
 
 	.landing-header {
-		color: $off-white;
+		color: color(off-white);;
 		font-size: 48px;
 		font-weight: $font-extra-bold;
 		left: 0;
@@ -52,7 +52,7 @@
 	}
 
 	.landing-info {
-	  color: $off-white;
+	  color: color(off-white);;
 	  font-size: 13px;
 	  font-weight: $font-light;
 	  left: 0;
@@ -92,9 +92,9 @@
 	  width: 250px;
 
 	  .button {
-	  	background-color: $silver-tree;
-	  	border-color: $silver-tree;
-	  	color: $white;
+	  	background-color: color(silver-tree);
+	  	border-color: color(silver-tree);
+	  	color: color(white);
 	  	font-weight: 900;
 	  	letter-spacing: 1px;
 	  	text-transform: uppercase;
@@ -103,8 +103,8 @@
 	  	@include transition(all .5s linear);
 
 	  	&:hover {
-	  		background-color: $boulder;
-	  		border-color: $boulder;
+	  		background-color: color(boulder);
+	  		border-color: color(boulder);
 	  	}
 	  }
 
@@ -124,7 +124,7 @@
 	  width: 124px;
 
 		.landing-powered-header {
-		  color: $off-white;
+		  color: color(off-white);;
 		  font-size: 8px;
 		  letter-spacing: 1px;
 		  position: absolute;
@@ -150,7 +150,7 @@
 	  			}
 
 	  			.icon {
-					color: $tundora;
+					color: color(tundora);
 					font-size: 14px;
 					padding: 3px;
 	  			}

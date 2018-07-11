@@ -1,40 +1,47 @@
 
 // Colors
 
-$athens-gray: #e1e4e9;
-$background-color: #1b2224;
-$black: #000000;
-$boulder: #777777;
-$burnt-sienna: #EF5350;
-$chenin: #e3cf7a;
-$cod-gray: #1e1e1e;
-$dodger-blue: #3395ff;
-$dove-gray: #666666;
-$dusty-gray: #999999;
-$ebb: #e8e6e4;
-$ebony: #09091A;
-$emperor: #555555;
-$gable-green: #132b2d;
-$gallery: #eeeeee;
-$gray-chateau: #a3a8ab;
-$gray: #909090;
-$gossamer: #39998A;
-$java: #1fbad6;
-$jungle-green: #2eb398;
-$mandy: #ed5565;
-$mine-shaft: #333333;
-$mischka: #dadee3;
-$nevada: #667174;
-$outer-space: #232b2d;
-$rolling-stone: #727b7f;
-$scorpion: #565656;
-$shark: #1d1e27;
-$silver-sand: #c3c5c9;
-$silver-tree: #70b68d;
-$silver: #C1C1C1;
-$sirocco: #6f7b7e;
-$tundora: #404040;
-$violet-red: #f94877;
-$white: #ffffff;
-$off-white: #FEFEFE;
-$white-transparent: rgba(255,255,255,0.7);
+$colors: (
+	athens-gray: #e1e4e9,
+	black: #000000,
+	boulder: #777777,
+	chenin: #e3cf7a,
+	cod-gray: #1e1e1e,
+	dodger-blue: #3395ff,
+	dove-gray: #666666,
+	dusty-gray: #999999,
+	ebb: #e8e6e4,
+	ebony: #09091A,
+	gable-green: #132b2d,
+	gallery: #eeeeee,
+	gray-chateau: #a3a8ab,
+	gray: #909090,
+	gossamer: #39998A,
+	java: #1fbad6,
+	jungle-green: #2eb398,
+	mandy: #ed5565,
+	mine-shaft: #333333,
+	mischka: #dadee3,
+	nevada: #667174,
+	outer-space: #232b2d,
+	rolling-stone: #727b7f,
+	scorpion: #565656,
+	silver-sand: #c3c5c9,
+	silver-tree: #70b68d,
+	silver: #C1C1C1,
+	sirocco: #6f7b7e,
+	tundora: #404040,
+	violet-red: #f94877,
+	white: #ffffff,
+	off-white: #FEFEFE,
+	white-transparent: rgba(255,255,255,0.7)
+);
+
+@function color($key) {
+  @if map-has-key($colors, $key) {
+    @return map-get($colors, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $colors.";
+  @return null;
+}

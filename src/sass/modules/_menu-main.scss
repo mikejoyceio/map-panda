@@ -2,7 +2,7 @@
 // Main Menu
 
 .menu-main {
-		background: $outer-space;
+		background: color(outer-space);
     height: 28px;
     left: 0;
     margin: 0;
@@ -13,11 +13,11 @@
     z-index: 3000;
 
 		&:before {
-			@include box-shadow(inset -4px 0 5px -5px $tundora);
-			@include text-shadow($tundora 1px 1px 0px);
-		  background: $outer-space;
-		  border-right: 1px solid $cod-gray;
-		  color: $cod-gray;
+			@include box-shadow(inset -4px 0 5px -5px color(tundora));
+			@include text-shadow(color(tundora) 1px 1px 0px);
+		  background: color(outer-space);
+		  border-right: 1px solid color(cod-gray);
+		  color: color(cod-gray);
 		  content: "\f041";
 		  display: inline-block;
 		  font-family: FontAwesome;
@@ -68,7 +68,7 @@
     	}
 
     	.search-filter-clear {
-			  color: $silver-sand;
+			  color: color(silver-sand);
 			  font-size: 13px;
 			  font-weight: bold;
 			  height: 20px;
@@ -87,7 +87,7 @@
 			.search-input {
 		    @include border-radius(3px);
 			  background: #fefefe;
-			  border: 2px solid $white;
+			  border: 2px solid color(white);
 			  height: 25px;
 			  padding: 0 4px;
 			  width: 100%;
@@ -113,7 +113,7 @@
     }
 
     .place-list {
-			color: $white;
+			color: color(white);
 			margin: 0 0 0 43px;
 			padding: 0 32px 10px 0;
 			overflow-y: hidden;
@@ -123,7 +123,7 @@
 
 			&:after {
 				@include border-radius(999px);
-			  background: $mandy;
+			  background: color(mandy);
 			  content: '';
 			  display: inline-block;
 			  height: 25px;
@@ -154,7 +154,7 @@
 			}
 
     	.item {
-			  color: $nevada;
+			  color: color(nevada);
 			  display: inline-block;
 			  font-size: 17px;
 			  line-height: 1;
@@ -187,13 +187,13 @@
 					}
 
 	    		.icon-inner {
-						color: $nevada;
+						color: color(nevada);
 						font-size: 11px;
 						line-height: 2.5;
 	    		}
 
 	    		.icon-outer {
-						color: $sirocco;
+						color: color(sirocco);
 						font-size: 28px;
 	    		}
     		}
@@ -201,15 +201,15 @@
 			  &.hover,
 			  &.active {
 					cursor: pointer;
-			  	color: $white;
+			  	color: color(white);
 
 			  	.icon {
 			  		// width: 33px;
 			  		.icon-outer {
-			  			color: $white;
+			  			color: color(white);
 			  		}
 			  	 	.icon-inner {
-			  			color: $jungle-green;
+			  			color: color(jungle-green);
 			  		}
 			  	}
 			  }
@@ -219,11 +219,11 @@
     		}
 
     		&.no-results {
-    			color: $white;
+    			color: color(white);
 
     			.icon {
 			  	 	.icon-inner {
-			  			color: $mandy;
+			  			color: color(mandy);
 			  		}
     			}
     		}

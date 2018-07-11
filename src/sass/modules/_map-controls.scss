@@ -4,7 +4,7 @@
 .map-zoom-buttons {
 	@include border-radius(3px);
 	@include box-shadow(0 0 4px 1px rgba(0,0,0,0.3));
-	background: $outer-space;
+	background: color(outer-space);
 	display: none;
 	top: 130px;
 	height: 60px;
@@ -20,7 +20,7 @@
 	}
 
 	.map-zoom-button {
-		color: $sirocco;
+		color: color(sirocco);
 		@include transition(all .5s linear);
 		height: 29px;
 		left: 0;
@@ -30,17 +30,17 @@
 		z-index: 2000;
 
 		&:hover {
-			color: $white;
+			color: color(white);
 			cursor: pointer;
 		}
 
 		&.zoom-in {
-			border-bottom: 1px solid $nevada;
+			border-bottom: 1px solid color(nevada);
 			top: 0;
 		}
 
 		&.zoom-out {
-			border-top: 1px solid $nevada;
+			border-top: 1px solid color(nevada);
 			bottom: 0;
 		}
 	}
@@ -50,7 +50,7 @@
 	@include border-radius(999px);
 	@include box-shadow(1px 1px 5px 1px rgba(0,0,0,0.3));
 	@include transition(all .5s linear);
-	background: $white;
+	background: color(white);
 	display: inline-block;
 	height: 40px;
 	line-height: 40px;
@@ -63,12 +63,12 @@
 	z-index: 2000;
 
 	&:hover {
-		color: $white;
+		color: color(white);
 		cursor: pointer;
 	}
 
 	.icon {
-		color: $jungle-green;
+		color: color(jungle-green);
 		font-size: 20px;
 		line-height: inherit;
 	}
@@ -80,7 +80,7 @@
 	}
 
 	@media #{$large-up} {
-		background: $white;
+		background: color(white);
 		height: 30px;
 		line-height: 30px;
 		right: 21px;

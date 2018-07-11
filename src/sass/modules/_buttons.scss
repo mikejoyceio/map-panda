@@ -26,27 +26,27 @@
 	}
 
 	&.default {
-		background-color: $mischka;
-		border-color: $mischka;
-		color: $dove-gray;
+		background-color: color(mischka);
+		border-color: color(mischka);
+		color: color(dove-gray);
 	}
 
 	&.action {
-		background-color: $silver-tree;
-		color: $white;
-		border-color: $silver-tree;
+		background-color: color(silver-tree);
+		color: color(white);
+		border-color: color(silver-tree);
 	}
 
 	&.cancel {
-		background-color: $mandy;
-		color: $white;
-		border-color: $mandy;
+		background-color: color(mandy);
+		color: color(white);
+		border-color: color(mandy);
 	}
 
 	&.plain {
 		background-color: transparent;
-		border-color: $white;
-		color: $white;
+		border-color: color(white);
+		color: color(white);
 	}
 
 	&.radius {

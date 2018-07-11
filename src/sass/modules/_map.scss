@@ -9,8 +9,8 @@
 .map-current-location {
 	@include border-radius(999px);
 	@include box-shadow(1px 0px 5px 3px rgba(50, 50, 50, 0.15));
-	background: $dodger-blue;
-	border: 3px solid $white;
+	background: color(dodger-blue);
+	border: 3px solid color(white);
 	box-sizing: border-box;
 	height: 18px;
 	position: relative;

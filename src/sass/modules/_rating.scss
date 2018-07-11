@@ -14,13 +14,13 @@
 		&:before {
 		  content: "\f005";
 		  padding: 1px;
-		  color: $silver-sand;
+		  color: color(silver-sand);
 		}
 	}
 
 	.star-icon {
 		content: "\f005";
-		color: $chenin;
+		color: color(chenin);
 	}
 
 	&.rating-00 {
@@ -30,7 +30,7 @@
 
 		&:before {
 			content: 'No Ratings';
-			color: $gray;
+			color: color(gray);
 		  display: block;
 		}
 	}

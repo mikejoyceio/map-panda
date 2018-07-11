@@ -15,13 +15,13 @@
 		&:before {
 		  content: "\f155";
 		  padding: 1px;
-		  color: $boulder;
+		  color: color(boulder);
 		}
 	}
 
 	.dollar-icon {
 		content: "\f155";
-		color: $chenin;
+		color: color(chenin);
 		display: block;	
 	}
 

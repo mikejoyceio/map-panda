@@ -3,10 +3,10 @@
 
 @include keyframes(pulse) {
 		from {
-			border: 3px solid $white;
+			border: 3px solid color(white);
 		}
 		to {
-			border: 5px solid $white;
+			border: 5px solid color(white);
 		}
 }
 
