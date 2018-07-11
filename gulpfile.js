@@ -47,8 +47,16 @@ var plugins = gulpLoadPlugins({
 });
 
 /**
- * Clean Task.
- * Cleans the build directories
+ * Configuration
+ * @type {object}
+ */
+var config = {
+  source: 'source',
+  dist: 'dist'
+};
+
+/**
+ * Clean Task. Cleans the build directories.
  * @external 'del()'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulptaskname--deps-fn}
  */
@@ -67,12 +75,13 @@ gulp.task('clean', function(c) {
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
 gulp.task('scripts', function() {
+
 	/**
 	 * Gulp Main Bower Files
 	 * @external '.mainBowerFiles'
 	 * @see {@link https://www.npmjs.com/package/gulp-main-bower-files}
 	 */
-	gulp.src(plugins.mainBowerFiles().concat(['src/js/dataModel.js', 'src/js/viewModel.js']))
+	gulp.src(plugins.mainBowerFiles().concat([config.source + '/js/dataModel.js', config.source + '/js/viewModel.js']))
 
 			/**
 			 * Gulp Filter
@@ -95,7 +104,7 @@ gulp.task('scripts', function() {
 			 */
 			.pipe(plugins.uglify())
 
-			.pipe(gulp.dest('./dist/js'))
+			.pipe(gulp.dest(config.dist + '/js'))
 });
 
 /**
@@ -104,7 +113,7 @@ gulp.task('scripts', function() {
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
 gulp.task('styles', function() {
-  gulp.src('./src/sass/*.scss')
+  gulp.src(config.source + '/sass/*.scss')
 
 	  	/**
 	  	 * Gulp Sass
@@ -133,7 +142,7 @@ gulp.task('styles', function() {
        */
       .pipe(plugins.cleanCss())
 
-	    .pipe(gulp.dest('./dist/css'))
+	    .pipe(gulp.dest(config.dist + '/css'))
 });
 
 /**
@@ -142,7 +151,7 @@ gulp.task('styles', function() {
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
 gulp.task('images', function() {
-	gulp.src('./src/images/*')
+	gulp.src(config.source + '/images/*')
 
 			/**
 			 * Gulp Imagemin
@@ -158,7 +167,7 @@ gulp.task('images', function() {
         })
       ]))
 
-			.pipe(gulp.dest('./dist/images'))
+			.pipe(gulp.dest(config.dist + '/images'))
 });
 
 /**
@@ -167,8 +176,8 @@ gulp.task('images', function() {
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
 gulp.task('fonts', function() {
-	gulp.src('./src/vendor/font-awesome/fonts/fontawesome-webfont.*')
-			.pipe(gulp.dest('./dist/fonts'))
+	gulp.src(config.source + '/vendor/font-awesome/fonts/fontawesome-webfont.*')
+			.pipe(gulp.dest(config.dist + '/fonts'))
 });
 
 /**
@@ -177,8 +186,8 @@ gulp.task('fonts', function() {
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpwatchglobs-opts-fn}
  */
 gulp.task('watch', function() {
-  gulp.watch("./src/sass/**/*.scss", ['styles']);
-  gulp.watch("./src/js/**/*.js", ['scripts']);
+  gulp.watch(config.source + '/sass/**/*.scss', ['styles']);
+  gulp.watch(config.source + '/js/**/*.js', ['scripts']);
 });
 
 /**
