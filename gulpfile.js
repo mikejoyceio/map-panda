@@ -186,4 +186,4 @@ gulp.task('watch', function() {
  * @external 'gulp.task'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
-gulp.task('default', ['clean', 'scripts', 'styles', 'images', 'fonts']);
+gulp.task('default', ['clean', 'scripts', 'styles', 'images', 'fonts', 'watch']);
