@@ -73,24 +73,28 @@ gulp.task('scripts', function() {
 	 * @see {@link https://www.npmjs.com/package/gulp-main-bower-files}
 	 */
 	gulp.src(plugins.mainBowerFiles().concat(['src/js/dataModel.js', 'src/js/viewModel.js']))
+
 			/**
 			 * Gulp Filter
 			 * @external '.filter'
 			 * @see {@link https://www.npmjs.com/package/gulp-filter}
 			 */
 			.pipe(plugins.filter('*.js'))
+
 			/**
 			 * Gulp Concat
 			 * @external '.concat'
 			 * @see {@link https://www.npmjs.com/package/gulp-concat}
 			 */
 			.pipe(plugins.concat('app.js'))
+
 			/**
 			 * Gulp Uglify
 			 * @external '.uglify'
 			 * @see {@link https://www.npmjs.com/package/gulp-uglify}
 			 */
 			.pipe(plugins.uglify())
+
 			.pipe(gulp.dest('./dist/js'))
 });
 
@@ -165,6 +169,16 @@ gulp.task('images', function() {
 gulp.task('fonts', function() {
 	gulp.src('./src/vendor/font-awesome/fonts/fontawesome-webfont.*')
 			.pipe(gulp.dest('./dist/fonts'))
+});
+
+/**
+ * Watch Task. Watches for changes in JS and Scss files.
+ * @external 'gulp.watch'
+ * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpwatchglobs-opts-fn}
+ */
+gulp.task('watch', function() {
+  gulp.watch("./src/sass/**/*.scss", ['styles']);
+  gulp.watch("./src/js/**/*.js", ['scripts']);
 });
 
 /**
