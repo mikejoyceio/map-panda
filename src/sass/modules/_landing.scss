@@ -24,7 +24,11 @@
 	}
 
 	@media #{$medium-up} {
-		background-size: 50%;
+		background-size: 85%;
+	}
+
+	@media #{$large-up} {
+		background-size: 35%;
 	}
 
 	.landing-header {
