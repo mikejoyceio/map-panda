@@ -117,6 +117,13 @@ gulp.task('styles', function() {
         browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']
       }))
 
+       /**
+       * Gulp Clean CSS
+       * @external '.cleanCss'
+       * @see {@link https://www.npmjs.com/package/gulp-clean-css}
+       */
+      .pipe(plugins.cleanCss())
+
 	    .pipe(gulp.dest('./dist/css'))
 });
 
