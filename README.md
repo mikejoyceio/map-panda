@@ -48,7 +48,7 @@ If you're feeling a little adventurous and would like to run the build yourself 
 
 ###### Install Yarn
 
-You can install Yarn through the [Homebrew package manager](https://brew.sh/). This will also install [Node.js](https://nodejs.org/) (which is required) if it is not already installed.
+Yarn can be installed through the [Homebrew package manager](https://brew.sh/). This will also install [Node.js](https://nodejs.org/) (which is required) if it is not already installed.
 
 Details installation instructions for all operating systems can be found [here](https://yarnpkg.com/en/docs/install)
 
@@ -84,11 +84,11 @@ This command runs the default Gulp task in [gulpfile.js](gulpfile.js) and runs t
 
 ###### Watch Task
 
-This command runs the watch task, which watches both the [source/scss](source/scss) and [source/js](source/js) directories for changes and runs their respective tasks.
-
 ```
 $ gulp watch
 ```
+
+This command runs the watch task, which watches both the [source/sass](source/sass) and [source/js](source/js) directories for changes and runs their respective tasks.
 
 ###### Images Task
 
@@ -105,24 +105,6 @@ $ gulp fonts
 ```
 
 This command runs the fonts task, which transfers the Font Awesome font files to [dist/fonts](dist/fonts).
-
-## Package Management
-
-[Bower](http://bower.io/) is used to keep track of frameworks, libraries, assets, and utilities. Packages will be installed in [source/vendor](source/vendor).
-
-###### Install Bower
-
-```
-$ npm install -g bower
-```
-
-Problems? Detailed installation instructions can been found [here](http://bower.io/).
-
-###### Install Bower Packages
-
-```
-$ bower install
-```
 
 ## Resources
 
