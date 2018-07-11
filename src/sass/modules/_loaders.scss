@@ -164,7 +164,7 @@
 
 .body-loader {
 	@include border-radius(999px);
-  background: $brand-black;
+  background: image(brand-black);
   background-color: color(white);
   background-size: 80%;
   background-position: center 58%;

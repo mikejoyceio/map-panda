@@ -190,7 +190,7 @@
 						background-repeat: no-repeat;
 						background-size: 18px;
 					  @include border-radius(4px);
-					  background-image: $uber-badge;
+					  background-image: image(uber-badge);
 					  height: 22px;
 					  margin: auto;
 					  position: relative;

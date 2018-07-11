@@ -1,13 +1,23 @@
 
 // Images
 
-$brand-black: url(../images/panda-black.png);
-$brand-white: url(../images/panda-white.png);
-$default-large: url(../images/default-large.png);
-$default-small: url(../images/default-small.png);
-$landing-bg-large: url(../images/landing-bg-large.png);
-$landing-bg-medium: url(../images/landing-bg-medium.png);
-$landing-bg-small: url(../images/landing-bg-small.png);
-$landing-bg-xlarge: url(../images/landing-bg-xlarge.png);
-$uber-badge: url(../images/uber-badge.png);
+$images: (
+	brand-black: url(../images/panda-black.png),
+	brand-white: url(../images/panda-white.png),
+	default-large: url(../images/default-large.png),
+	default-small: url(../images/default-small.png),
+	landing-bg-large: url(../images/landing-bg-large.png),
+	landing-bg-medium: url(../images/landing-bg-medium.png),
+	landing-bg-small: url(../images/landing-bg-small.png),
+	landing-bg-xlarge: url(../images/landing-bg-xlarge.png),
+	uber-badge: url(../images/uber-badge.png)
+);
 
+@function image($key) {
+  @if map-has-key($images, $key) {
+    @return map-get($images, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $images.";
+  @return null;
+}
