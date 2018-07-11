@@ -6,7 +6,7 @@ Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity
 
 ###### Project Description
 
-[Map Panda](https://mappanda.co) grabs the user's location with the [Geolocation API](http://dev.w3.org/geo/api/spec-source.html), and through the [Google Places API](https://developers.google.com/places/) a selection of popular location types are available to explore. The [Foursquare](https://developer.foursquare.com/) and [Uber](https://developer.uber.com/) APIs are leveraged to provide further functionality to the application.
+[Map Panda](https://mappanda.com) grabs the user's location with the [Geolocation API](http://dev.w3.org/geo/api/spec-source.html), and through the [Google Places API](https://developers.google.com/places/) a selection of popular location types are available to explore. The [Foursquare](https://developer.foursquare.com/) and [Uber](https://developer.uber.com/) APIs are leveraged to provide further functionality to the application.
 
 ## Getting Started
 
@@ -42,50 +42,27 @@ NOTE: If you would like to serve the application locally without Python Simple S
 
 The [Gulp](http://gulpjs.com/) streaming build system is used in this project to minify, concatenate and move files to the appropriate directories. Build files have already been added to the repo and can be found in the [dist](dist) directory.
 
-[Sass](http://sass-lang.com/), along with the [Compass](http://compass-style.org/) CSS authoring framework, are used to generate cross-browser CSS. You will need to have [Ruby](https://www.ruby-lang.org/) installed (which is preinstalled on OS X) to be able to compile Sass and utilize Compass.
+[Gulp Sass](https://www.npmjs.com/package/gulp-sass) and [Gulp Autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer) are used to generate cross-browser CSS.
 
 If you're feeling a little adventurous and would like to run the build yourself locally, you will need to:
 
-###### Install Compass
+###### Install Yarn
+
+You can install Yarn through the [Homebrew package manager](https://brew.sh/). This will also install [Node.js](https://nodejs.org/) (which is required) if it is not already installed.
+
+Details installation instructions for all operating systems can be found [here](https://yarnpkg.com/en/docs/install)
+
+To make sure you have Yarn installed, run the following command to check the version:
 
 ```
-$ gem update --system
-$ gem install compass
+$ yarn -v
 ```
 
-Detailed installation instructions can been found [here](http://compass-style.org/install/).
-
-###### Install NodeJS
-
-Download a pre-compiled binary package from [here](https://nodejs.org/en/).
-
-To make sure you have Node installed, run the following command to see what version was installed:
+###### Install Dependencies
 
 ```
-$ node -v
+$ yarn install 
 ```
-
-###### Install Gulp
-
-```
-$ sudo npm install --save-dev gulp
-```
-
-Detailed installation instructions can been found [here](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md).
-
-###### Install Gulp Plugins
-
-```
-$ sudo npm install
-```
-
-###### Install Bower
-
-```
-$ npm install -g bower
-```
-
-Detailed installation instructions can been found [here](http://bower.io/#getting-started).
 
 ###### Install Bower Packages
 
@@ -103,7 +80,15 @@ $ bower install
 $ gulp
 ```
 
-This command runs the default Gulp task in [gulpfile.js](gulpfile.js) and runs the both the styles and scripts tasks. The styles task concatenates and minifies all of the [Sass](http://sass-lang.com/) partials in [src/sass](src/sass) and compiles to a single file ([app.css](dist/css/app.css)) in [dist/css](dist/css). The scripts task concatenates and minifies all JavaScript files in [src/js](src/js), including all of the main Bower package JavaScript in [src/vendor](src/vendor) and compiles to a single file ([app.js](dist/js/app.js)) in [dist/js](dist/js).
+This command runs the default Gulp task in [gulpfile.js](gulpfile.js) and runs the both the styles and scripts tasks. The styles task concatenates and minifies all of the [Sass](http://sass-lang.com/) partials in [source/sass](source/sass) and compiles to a single file ([app.css](dist/css/app.css)) in [dist/css](dist/css). The scripts task concatenates and minifies all JavaScript files in [source/js](source/js), including all of the main Bower package JavaScript in [source/vendor](source/vendor) and compiles to a single file ([app.js](dist/js/app.js)) in [dist/js](dist/js).
+
+###### Watch Task
+
+This command runs the watch task, which watches both the [source/scss](source/scss) and [source/js](source/js) directories for changes and runs their respective tasks.
+
+```
+$ gulp watch
+```
 
 ###### Images Task
 
@@ -111,7 +96,7 @@ This command runs the default Gulp task in [gulpfile.js](gulpfile.js) and runs t
 $ gulp images
 ```
 
-This command runs the images task in [gulpfile.js](gulpfile.js). Images in [src/images](src/images) will be optimized and moved to [dist/images](dist/images).
+This command runs the images task in [gulpfile.js](gulpfile.js). Images in [source/images](source/images) will be optimized and moved to [dist/images](dist/images).
 
 ###### Fonts Task
 
@@ -123,7 +108,7 @@ This command runs the fonts task, which transfers the Font Awesome font files to
 
 ## Package Management
 
-[Bower](http://bower.io/) is used to keep track of frameworks, libraries, assets, and utilities. Packages will be installed in [src/vendor](src/vendor).
+[Bower](http://bower.io/) is used to keep track of frameworks, libraries, assets, and utilities. Packages will be installed in [source/vendor](source/vendor).
 
 ###### Install Bower
 
@@ -143,17 +128,18 @@ $ bower install
 
 ###### Node Modules
 
+- [Bower](https://www.npmjs.com/package/bower)
 - [Gulp](https://www.npmjs.com/package/gulp)
-- [Gulp Compass](https://www.npmjs.com/package/gulp-compass)
+- [Gulp Autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer)
 - [Gulp Concat](https://www.npmjs.com/package/gulp-concat)
 - [Gulp Filter](https://www.npmjs.com/package/gulp-filter)
 - [Gulp ImageMin](https://www.npmjs.com/package/gulp-imagemin)
-- [Gulp Live Reload](https://www.npmjs.com/package/gulp-livereload)
 - [Gulp Load Plugins](https://www.npmjs.com/package/gulp-load-plugins)
-- [Gulp MinifyCSS](https://www.npmjs.com/package/gulp-minify-css)
+- [Gulp Clean CSS](https://www.npmjs.com/package/gulp-clean-css)
 - [Gulp Plumber](https://www.npmjs.com/package/gulp-plumber)
 - [Gulp Uglify](https://www.npmjs.com/package/gulp-uglify)
 - [Gulp Main Bower Files](https://www.npmjs.com/package/gulp-main-bower-files)
+- [Imagemin JPEG Recompress](https://www.npmjs.com/package/imagemin-jpeg-recompress)
 
 ###### Bower Packages
 
