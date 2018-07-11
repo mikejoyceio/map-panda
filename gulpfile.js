@@ -53,7 +53,12 @@ var plugins = gulpLoadPlugins({
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulptaskname--deps-fn}
  */
 gulp.task('clean', function(c) {
-	del(['dist/js/*', 'dist/css/*']);
+	del([
+    'dist/css/*',
+    'dist/fonts/*',
+    'dist/images/*',
+    'dist/js/*'
+  ]);
 });
 
 /**
@@ -167,4 +172,4 @@ gulp.task('fonts', function() {
  * @external 'gulp.task'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
-gulp.task('default', ['clean', 'scripts', 'styles', 'images']);
+gulp.task('default', ['clean', 'scripts', 'styles', 'images', 'fonts']);
