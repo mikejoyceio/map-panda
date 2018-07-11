@@ -27,6 +27,14 @@ var path = require('path');
 var del = require('del');
 
 /**
+ * Load jpeg-recompress imagemin plugin
+ * @type {object}
+ * @external 'require('imagemin-jpeg-recompress')'
+ * @see {@link https://www.npmjs.com/package/imagemin-jpeg-recompress}
+ */
+var imageminJpegRecompress = require('imagemin-jpeg-recompress');
+
+/**
  * Load Gulp Plugins
  * @type {object}
  * @external 'gulpLoadPlugins'
@@ -119,12 +127,21 @@ gulp.task('styles', function() {
  */
 gulp.task('images', function() {
 	gulp.src('./src/images/*')
+
 			/**
 			 * Gulp Imagemin
 			 * @external '.imagemin()'
 			 * @see {@link https://www.npmjs.com/package/gulp-imagemin}
 			 */
-			.pipe(plugins.imagemin())
+			.pipe(plugins.imagemin([
+        imageminJpegRecompress({
+          loops: 4,
+          min: 50,
+          max: 95,
+          quality: 'high'
+        })
+      ]))
+
 			.pipe(gulp.dest('./dist/images'))
 });
 
@@ -143,4 +160,4 @@ gulp.task('fonts', function() {
  * @external 'gulp.task'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
-gulp.task('default', ['clean', 'scripts', 'styles']);
+gulp.task('default', ['clean', 'scripts', 'styles', 'images']);
