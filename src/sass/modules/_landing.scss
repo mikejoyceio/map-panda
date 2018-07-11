@@ -2,14 +2,15 @@
 // Landing
 
 .landing {
+  background-color: $gray;
+  background-size: 100%;
+  background-image: $default-large;
   height: 100%;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 5000;
-  background: $default-large;
-  background-size: 100%;
   @include animation(100s scroll infinite linear);
 
 	&:before {
