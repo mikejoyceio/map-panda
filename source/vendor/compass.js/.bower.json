@@ -1,0 +1,15 @@
+{
+  "name": "compass.js",
+  "homepage": "https://github.com/ai/compass.js",
+  "main": "lib/compass.js",
+  "_release": "f2fa9516df",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f2fa9516df56e2979fe13db5ed1d8a85c85fa9fd"
+  },
+  "_source": "git://github.com/mikejoyceio/compass.js.git",
+  "_target": "master",
+  "_originalSource": "git://github.com/mikejoyceio/compass.js",
+  "_direct": true
+}

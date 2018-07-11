@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="wheelnav.js test page for javascript way">
+        <meta name="author" content="gabor.berkesi@softwaretailoring.net">
+        <link rel="shortcut icon" href="wheelnav_favicon.png">
+
+        <title>wheelnav.js - test page</title>
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <link href="css/index.css" rel="stylesheet">
+
+        <script type="text/javascript" src="js/required/raphael.min.js"></script> 
+        <script type="text/javascript" src="js/required/raphael.icons.js"></script>
+        <script type="text/javascript" src="js/dist/wheelnav.js"></script>
+        <script type="text/javascript">
+
+            window.onload = function () {
+
+                var myWheelnav = new wheelnav("divWheelnav");
+                myWheelnav.slicePathFunction = slicePath().DonutSlice;
+                myWheelnav.colors = new Array("mediumorchid", "royalblue", "darkorange");
+                myWheelnav.createWheel([icon.github, icon.people, icon.smile]);
+
+                var radialWheel = new wheelnav("radialWheel");
+                radialWheel.slicePathFunction = slicePath().MenuSliceWithoutLine;
+                radialWheel.spreaderEnable = true;
+                radialWheel.spreaderInTitle = "imgsrc:wheelnav_demo.gif";
+                radialWheel.spreaderOutTitle = "imgsrc:wheelnav_favicon.png";
+                radialWheel.spreaderOutTitleHeight = 50;
+                radialWheel.spreaderInTitleHeight = 35;
+                
+                radialWheel.spreaderInPercent = 1.5;
+                radialWheel.spreaderOutPercent = 2.5;
+                radialWheel.clickModeRotate = false;
+                radialWheel.cssMode = true;
+                radialWheel.markerEnable = true;
+                radialWheel.markerPathFunction = markerPath().MenuMarker;
+                radialWheel.initWheel([icon.merge, icon.filter, icon.charging, "imgsrc:http://softwaretailoring.net/images/gabor.berkesi.jpg", icon.book, "6"]);
+                radialWheel.titleHeight = 35;
+                radialWheel.titleHoverHeight = 40;
+                radialWheel.titleSelectedHeight = 45;
+                radialWheel.navItems[3].titleWidth = 33;
+                radialWheel.navItems[3].titleHeight = 48;
+                radialWheel.navItems[3].titleHoverWidth = 36;
+                radialWheel.navItems[3].titleHoverHeight = 48;
+                radialWheel.navItems[3].titleSelectedWidth = 36;
+                radialWheel.navItems[3].titleSelectedHeight = 53;
+                radialWheel.createWheel();
+                radialWheel.setTooltips(["merge", "filter", "charging", "author", "book", "six"]);
+
+                var cogWheel = new wheelnav("cogWheel");
+                cogWheel.slicePathFunction = slicePath().CogBasePieSlice;
+                cogWheel.sliceHoverPathFunction = slicePath().CogSlice;
+                cogWheel.sliceSelectedPathFunction = slicePath().CogSlice;
+                cogWheel.wheelRadius = 0.85 * cogWheel.wheelRadius;
+                cogWheel.navAngle = 60;
+                cogWheel.titleRotateAngle = -60;
+                cogWheel.spreaderEnable = true;
+                cogWheel.rotateRound = true;
+                cogWheel.sliceClickablePathFunction = slicePath().CogSlice;
+                cogWheel.clickablePercentMax = 1.3;
+                cogWheel.colors = new Array("315-#ddd-green", "225-#ddd-yellow", "135-#ddd-orange", "45-#ddd-red");
+                cogWheel.sliceTransformFunction = sliceTransform().ScaleTitleTransform;
+                cogWheel.sliceHoverTransformFunction = sliceTransform().ScaleTitleTransform;
+                cogWheel.sliceSelectedTransformFunction = sliceTransform().ScaleTitleTransform;
+                cogWheel.createWheel();
+
+                var textWheelRotatedTitle = new wheelnav("textWheelRotatedTitle");
+                textWheelRotatedTitle.slicePathFunction = slicePath().EyeSlice;
+                textWheelRotatedTitle.sliceSelectedTransformFunction = sliceTransform().CustomTransform;
+                textWheelRotatedTitle.sliceSelectedTransformCustom = new sliceTransformCustomization();
+                textWheelRotatedTitle.sliceSelectedTransformCustom.rotateString = "r450";
+                textWheelRotatedTitle.sliceSelectedTransformCustom.scaleString = "s1.5";
+                textWheelRotatedTitle.sliceSelectedPathFunction = slicePath().MenuSliceWithoutLine;
+                textWheelRotatedTitle.minPercent = 0.5;
+                textWheelRotatedTitle.titleRotateAngle = 270;
+                textWheelRotatedTitle.spreaderEnable = true;
+                textWheelRotatedTitle.titleSpreadScale = true;
+                textWheelRotatedTitle.multiSelect = true;
+                textWheelRotatedTitle.spreaderPathFunction = spreaderPath().StarSpreader;
+                textWheelRotatedTitle.spreaderPathCustom = new StarSpreaderCustomization();
+                textWheelRotatedTitle.spreaderPathCustom.spreaderPercent = 2;
+                textWheelRotatedTitle.initWheel([icon.cross, icon.cross, icon.cross, icon.cross, icon.cross, icon.cross]);
+
+                textWheelRotatedTitle.navItems[0].selectedTitle = icon.check;
+                textWheelRotatedTitle.navItems[1].selectedTitle = icon.check;
+                textWheelRotatedTitle.navItems[2].selectedTitle = icon.check;
+                textWheelRotatedTitle.navItems[3].selectedTitle = icon.check;
+                textWheelRotatedTitle.navItems[4].selectedTitle = icon.check;
+                textWheelRotatedTitle.navItems[5].selectedTitle = icon.check;
+
+                textWheelRotatedTitle.createWheel();
+
+                var pieWheel = new wheelnav("pieWheel");
+                pieWheel.slicePathFunction = slicePath().MenuSlice;
+                pieWheel.sliceSelectedPathFunction = slicePath().MenuSliceSelectedLine;
+                pieWheel.spreaderEnable = true;
+                pieWheel.hoverPercent = 1.05;
+                pieWheel.selectedPercent = 1.1;
+                pieWheel.wheelRadius = 1.4 * pieWheel.wheelRadius;
+                pieWheel.centerX = pieWheel.centerX * 0.4;
+                pieWheel.centerY = pieWheel.centerY * 0.4;
+                pieWheel.clickModeRotate = false;
+                pieWheel.titleRotateAngle = 0;
+                pieWheel.initWheel([icon.check, icon.cloud, icon.raphael, null, null, null, null, null]);
+                pieWheel.navItems[0].tooltip = "icon.check";
+                pieWheel.navItems[1].tooltip = "icon.cloud";
+                pieWheel.navItems[2].tooltip = "icon.raphael";
+                pieWheel.createWheel();
+                
+                var iconWheel = new wheelnav("iconWheel");
+                iconWheel.slicePathFunction = slicePath().LineSlice;
+                iconWheel.sliceSelectedPathFunction = slicePath().FlowerSlice;
+                iconWheel.sliceHoverTransformFunction = sliceTransform().RotateTitleTransform;
+                iconWheel.spreaderEnable = true;
+                iconWheel.minPercent = 0.3;
+                iconWheel.maxPercent = 1;
+                iconWheel.navAngle = 30;
+                iconWheel.initWheel([icon.star, icon.star, icon.star, icon.star, icon.star, icon.star]);
+                iconWheel.navItems[0].minPercent = 0.63;
+                iconWheel.navItems[0].maxPercent = 1;
+                iconWheel.navItems[1].minPercent = 1;
+                iconWheel.navItems[1].maxPercent = 0.63;
+                iconWheel.navItems[1].initPercent = 0.63;
+                iconWheel.navItems[2].minPercent = 0.63;
+                iconWheel.navItems[2].maxPercent = 1;
+                iconWheel.navItems[3].minPercent = 1;
+                iconWheel.navItems[3].maxPercent = 0.63;
+                iconWheel.navItems[3].initPercent = 0.63;
+                iconWheel.navItems[4].minPercent = 0.63;
+                iconWheel.navItems[4].maxPercent = 1;
+                iconWheel.navItems[5].minPercent = 1;
+                iconWheel.navItems[5].maxPercent = 0.63;
+                iconWheel.navItems[5].initPercent = 0.63;
+                iconWheel.createWheel();
+               
+                var textWheel = new wheelnav("textWheel");
+                textWheel.slicePathFunction = slicePath().TabSlice;
+                textWheel.sliceSelectedTransformFunction = sliceTransform().ScaleTransform;
+                textWheel.clickModeRotate = false;
+                textWheel.navAngle = 45;
+                textWheel.animatetime = 1000;
+                textWheel.animateeffect = "elastic";
+                textWheel.initWheel(["0", "1", icon["?"], "3", icon["!"]]);
+                textWheel.navItems[2].titleHover = icon.talke;
+                textWheel.navItems[4].titleHover = icon.talkq;
+                textWheel.createWheel();
+
+                textWheel.navItems[2].navigateFunction = function () {
+                    textWheel.slicePathFunction = slicePath().MenuSliceWithoutLine;
+                    textWheel.sliceClickablePathFunction = slicePath().MenuSliceWithoutLine;
+                    textWheel.refreshWheel(true);
+                };
+
+                textWheel.navItems[4].navigateFunction = function () {
+                    textWheel.slicePathFunction = slicePath().TabSlice;
+                    textWheel.sliceClickablePathFunction = slicePath().TabSlice;
+                    textWheel.refreshWheel(true);
+                };
+            };
+
+        </script>
+    </head>
+    <body>
+        <header>
+            <p>
+                This is a test page for wheelnav.js library. 
+                For more information please visit the <a href="http://wheelnavjs.softwaretailoring.net" target="_blank">project page</a>
+            </p>
+        </header>
+        
+        <div id="divWheelnav" class="wheelNavGitHub"></div>
+        <div id="radialWheel" class="wheelNav"></div>        
+        <div id="cogWheel" class="wheelNav"></div>
+        <div id="textWheelRotatedTitle" class="wheelNav"></div>
+        <div id="pieWheel" class="wheelNav"></div>
+        <div id="iconWheel" class="wheelNav"></div>
+        <div style="height:50px;" ></div>
+        <div id="textWheel" class="wheelNav"></div>
+        <footer>
+            <br />
+            <p>
+                For available slicePaths visit the <a href="slicePathTester.html">slicePathTester</a> page.
+            </p>
+            <p>&copy; 2014-2015 <a href="http://softwaretailoring.net" target="_blank">softwaretailoring.net</a></p>
+        </footer>
+    </body>
+</html>
