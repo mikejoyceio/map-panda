@@ -205,7 +205,7 @@
   top: 22px;
   background-position: 0 -120px;
   background: color(mandy);
-  @include border-radius(2px);
+  border-radius: 2px;
 }
 .irs-slider.state_hover, .irs-slider:hover {
     background-position: 0 -150px;

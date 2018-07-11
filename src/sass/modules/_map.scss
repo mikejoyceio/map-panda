@@ -7,8 +7,8 @@
 }
 
 .map-current-location {
-	@include border-radius(999px);
-	@include box-shadow(1px 0px 5px 3px rgba(50, 50, 50, 0.15));
+	border-radius: 999px;
+	box-shadow: 1px 0px 5px 3px rgba(50, 50, 50, 0.15);
 	background: color(dodger-blue);
 	border: 3px solid color(white);
 	box-sizing: border-box;
@@ -17,8 +17,8 @@
 	width: 18px;
 
   .radial-pulse {
-		@include animation(pulse-fade 3.1s ease-out infinite);
-		@include border-radius(999px);
+		animation: pulse-fade 3.1s ease-out infinite;
+		border-radius: 999px;
 	  background: rgba(51, 149, 255, 0.3);
 	  border-radius: 999px;
 	  height: 100px;
@@ -47,7 +47,7 @@
 
 	@media #{$medium-up} {
 		outline: none;
-	}	
+	}
 
 	@media #{$large-up} {
 		top: 160px;

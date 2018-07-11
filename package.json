@@ -16,7 +16,6 @@
   "homepage": "https://github.com/mikejoyceio/map",
   "devDependencies": {
     "del": "^2.2.2",
-    "gulp-compass": "^2.0.3",
     "gulp-concat": "^2.5.2",
     "gulp-filter": "^2.0.2",
     "gulp-imagemin": "^2.4.0",
@@ -28,6 +27,8 @@
     "main-bower-files": "^2.6.2"
   },
   "dependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-sass": "^4.0.1"
   }
 }

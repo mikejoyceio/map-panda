@@ -13,8 +13,8 @@
     z-index: 3000;
 
 		&:before {
-			@include box-shadow(inset -4px 0 5px -5px color(tundora));
-			@include text-shadow(color(tundora) 1px 1px 0px);
+			box-shadow: inset -4px 0 5px -5px color(tundora);
+			text-shadow: color(tundora) 1px 1px 0px;
 		  background: color(outer-space);
 		  border-right: 1px solid color(cod-gray);
 		  color: color(cod-gray);
@@ -85,7 +85,7 @@
     	}
 
 			.search-input {
-		    @include border-radius(3px);
+		    border-radius: 3px;
 			  background: #fefefe;
 			  border: 2px solid color(white);
 			  height: 25px;
@@ -122,7 +122,7 @@
 			white-space: nowrap;
 
 			&:after {
-				@include border-radius(999px);
+				border-radius: 999px;
 			  background: color(mandy);
 			  content: '';
 			  display: inline-block;
@@ -165,14 +165,14 @@
 				}
 
     		@media #{$large-up} {
-    			@include transition(all .2s linear);
+    			transition: all .2s linear;
     			display: block;
     			font-size: 15px;
     			margin: 0 0 0 8px;
     		}
 
 				.icon {
-					@include transition(all .5s ease-in-out);
+					transition: all .5s ease-in-out;
 					margin: 0 5px 0 0;
 					position: relative;
 					top: 2px;

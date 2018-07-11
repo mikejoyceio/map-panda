@@ -2,8 +2,8 @@
 // Map Compass
 
 .map-compass {
-	@include border-radius(999px);
-	@include box-shadow(1px 1px 5px 1px rgba(0,0,0,0.3));
+	border-radius: 999px;
+	box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.3);
   background: color(white-transparent);
   display: none;
   height: 32px;
@@ -15,7 +15,7 @@
   z-index: 2000;
 
   &:before {
-		@include border-radius(999px);
+		border-radius: 999px;
 		background: color(white);
 		content: '';
 		height: 5px;
@@ -48,7 +48,7 @@
   }
 
   .north {
-	  @include border-radius(5px 5px 0 0);
+	  border-radius: 5px 5px 0 0;
 	  background: color(mandy);
 	  color: color(white);
 	  font-size: 5px;
@@ -58,7 +58,7 @@
   }
 
   .south {
-	  @include border-radius(0 0 5px 5px);
+	  border-radius: 0 0 5px 5px;
 	  background: color(athens-gray);
 	  top: 16px;
   }

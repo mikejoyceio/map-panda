@@ -88,19 +88,28 @@ gulp.task('scripts', function() {
  */
 gulp.task('styles', function() {
   gulp.src('./src/sass/*.scss')
+
 	  	/**
-	  	 * Gulp Compass
-	  	 * @external '.compass'
-	  	 * @see {@link https://www.npmjs.com/package/gulp-compass}
+	  	 * Gulp Sass
+	  	 * @external '.sass'
+	  	 * @see {@link https://www.npmjs.com/package/gulp-sass}
 	  	 */
-	    .pipe(plugins.compass({
-	      project: path.join(__dirname, './src'),
-	      css: '../dist/css',
-	      sass: 'sass',
-	      style: 'compressed',
-	      import_path: 'vendor'
-	    }))
-	    .pipe(gulp.dest('../dist/css'))
+      .pipe(plugins.sass({
+        css: './',
+        style: 'expanded',
+        sourceMap: false
+      }).on('error', plugins.sass.logError))
+
+      /**
+       * Gulp Autoprefixer
+       * @external '.autoprefixer'
+       * @see {@link https://www.npmjs.com/package/gulp-autoprefixer}
+       */
+	    .pipe(plugins.autoprefixer({
+        browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']
+      }))
+
+	    .pipe(gulp.dest('./dist/css'))
 });
 
 /**

@@ -11,7 +11,7 @@
   z-index: 2000;
 
   &:before {
-  	@include border-radius(999px);
+  	border-radius: 999px;
   	background: color(outer-space);
   	color: color(white);
 		content: '(KM)';
@@ -59,47 +59,47 @@
 			width: 42px;
 		}
 	}
-		
+
 	svg {
 		width: 100%;
 		height: 100%;
 	}
 
-	[class|=wheelnav-wheelNav-slice-basic] { 
-		fill: color(jungle-green); 
-		stroke: none; 
+	[class|=wheelnav-wheelNav-slice-basic] {
+		fill: color(jungle-green);
+		stroke: none;
 	}
 
-	[class|=wheelnav-wheelNav-slice-selected] { 
-		fill: color(jungle-green); 
-		stroke: none; 
+	[class|=wheelnav-wheelNav-slice-selected] {
+		fill: color(jungle-green);
+		stroke: none;
 	}
 
-	[class|=wheelnav-wheelNav-slice-hover] { 
-		fill: color(jungle-green);  
-		stroke: none; 
-		fill-opacity: 0.77; 
-		cursor: pointer; 
+	[class|=wheelnav-wheelNav-slice-hover] {
+		fill: color(jungle-green);
+		stroke: none;
+		fill-opacity: 0.77;
+		cursor: pointer;
 	}
 
-	[class|=wheelnav-wheelNav-title-basic] { 
-		fill: color(mine-shaft); 
-		stroke: none; 
+	[class|=wheelnav-wheelNav-title-basic] {
+		fill: color(mine-shaft);
+		stroke: none;
 	}
 
-	[class|=wheelnav-wheelNav-title-selected] { 
-		fill: color(white); 
-		stroke: none; 
+	[class|=wheelnav-wheelNav-title-selected] {
+		fill: color(white);
+		stroke: none;
 	}
 
-	[class|=wheelnav-wheelNav-title-hover] { 
-		fill: color(mine-shaft); 
-		stroke: none; 
-		cursor: pointer; 
+	[class|=wheelnav-wheelNav-title-hover] {
+		fill: color(mine-shaft);
+		stroke: none;
+		cursor: pointer;
 	}
-	
-	[class|=wheelnav-wheelNav-title] > tspan { 
-		font-family: $base-font-family; 
+
+	[class|=wheelnav-wheelNav-title] > tspan {
+		font-family: $base-font-family;
 		font-size: 9px;
 		font-weight: $font-bold;
 
@@ -108,29 +108,29 @@
 		}
 
 		@media #{$large-up} {
-			font-size: 12px; 
+			font-size: 12px;
 		}
 	}
 
-	.wheelnav-wheelNav-marker { 
-		fill: color(outer-space); 
-		stroke: color(outer-space); 
+	.wheelnav-wheelNav-marker {
+		fill: color(outer-space);
+		stroke: color(outer-space);
 		stroke-width: 2;
 	}
 
 	.wheelnav-wheelNav-spreader-in,
-	.wheelnav-wheelNav-spreader-out { 
-		fill: color(outer-space); 
-		stroke: color(outer-space); 
-		stroke-width: 2; 
-		cursor: pointer; 
+	.wheelnav-wheelNav-spreader-out {
+		fill: color(outer-space);
+		stroke: color(outer-space);
+		stroke-width: 2;
+		cursor: pointer;
 	}
 
 	.wheelnav-wheelNav-spreadertitle-in,
-	.wheelnav-wheelNav-spreadertitle-out { 
-		fill: color(gallery); 
-		stroke: color(outer-space); 
-		cursor: pointer; 
+	.wheelnav-wheelNav-spreadertitle-out {
+		fill: color(gallery);
+		stroke: color(outer-space);
+		cursor: pointer;
 	}
 }
 

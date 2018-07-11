@@ -2,8 +2,8 @@
 // Map Controls
 
 .map-zoom-buttons {
-	@include border-radius(3px);
-	@include box-shadow(0 0 4px 1px rgba(0,0,0,0.3));
+	border-radius: 3px;
+	box-shadow: 0 0 4px 1px rgba(0,0,0,0.3);
 	background: color(outer-space);
 	display: none;
 	top: 130px;
@@ -21,7 +21,7 @@
 
 	.map-zoom-button {
 		color: color(sirocco);
-		@include transition(all .5s linear);
+		transition: all .5s linear;
 		height: 29px;
 		left: 0;
 		line-height: 1.8;
@@ -47,9 +47,9 @@
 }
 
 .map-pan-to {
-	@include border-radius(999px);
-	@include box-shadow(1px 1px 5px 1px rgba(0,0,0,0.3));
-	@include transition(all .5s linear);
+	border-radius: 999px;
+	box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.3);
+	transition: all .5s linear;
 	background: color(white);
 	display: inline-block;
 	height: 40px;

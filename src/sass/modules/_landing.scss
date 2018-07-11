@@ -11,7 +11,7 @@
   top: 0;
   width: 100%;
   z-index: 5000;
-  @include animation(100s scroll infinite linear);
+  animation: 100s scroll infinite linear;
 
 	&:before {
 		content: '';
@@ -100,7 +100,7 @@
 	  	text-transform: uppercase;
 	  	padding: 15px;
 	  	position: relative;
-	  	@include transition(all .5s linear);
+	  	transition: all .5s linear;
 
 	  	&:hover {
 	  		background-color: color(boulder);
@@ -156,7 +156,7 @@
 	  			}
 
 				&.foursquare {
-					@include border-radius(3px 0 0 3px);
+					border-radius: 3px 0 0 3px;
 
 					.icon {
 	  					color: #f94877;
@@ -164,7 +164,7 @@
 	  			}
 
 	  			&.uber {
-					margin: 0 2px; 
+					margin: 0 2px;
 
 	  				.icon {
 						background-image: image(uber-badge);
@@ -179,7 +179,7 @@
 	  			}
 
 	  			&.google {
-	  				@include border-radius(0 3px 3px 0);
+	  				border-radius: 0 3px 3px 0;
 
 	  				.icon {
 	  					color: #dd4b39;

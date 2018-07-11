@@ -1,7 +1,7 @@
 
 // Animation
 
-@include keyframes(pulse) {
+@keyframes pulse {
 		from {
 			border: 3px solid color(white);
 		}
@@ -10,54 +10,54 @@
 		}
 }
 
-@include keyframes(pulse-fade) {
+@keyframes pulse-fade {
 		from {
-			@include transform(scale(0.2));
+			transform: scale(0.2);
 			opacity: 1.0;
 		}
 		95% {
-			@include transform(scale(1.5));
+			transform: scale(1.5);
 			opacity: 0;
 		}
 		to {
-			@include transform(scale(0.3));
+		  transform: scale(0.3);
 			opacity: 0;
 		}
 }
 
-@include keyframes(spin) {
+@keyframes spin {
 	100% {
-		@include transform(rotate(360deg));
-	}	
+		transform: rotate(360deg);
+	}
 }
 
-@include keyframes(buzz) {
+@keyframes buzz {
 	50% {
-		@include transform(translateX(1px) rotate(1deg));
+		transform: translateX(1px) rotate(1deg);
 	}
 	100% {
-		@include transform(translateX(-1px) rotate(-1deg));
+		transform: translateX(-1px) rotate(-1deg);
 	}
 }
 
-@include keyframes(fade-in) {
-	0% 	 { opacity: 0 }	
+@keyframes fade-in {
+	0% 	 { opacity: 0 }
 	100% { opacity: 1 }
 }
 
-@include keyframes(float) {
+@keyframes float {
 	from {
-		@include transform(translate(0, 0px));
+		transform: translate(0, 0px);
 	}
 	65% {
-		@include transform(translate(0, 5px));
+		transform: translate(0, 5px);
 	}
 	to {
-		@include transform(translate(0, -0px));
+		transform: translate(0, -0px);
 	}
 }
 
-@include keyframes(scroll) {
+@keyframes scroll {
   100% {
     background-position: 0px -3000px;
   }
@@ -72,8 +72,8 @@ $use-fadeInLeft: true;
 $use-fadeOutLeft: true;
 $use-fadeOut: true;
 $use-slideInDown: true;
-$use-slideInUp: true;	
+$use-slideInUp: true;
 $use-slideOutDown: true;
 $use-zoomOut: true;
 
-@import "animate-sass/animate";
+@import "../vendor/animate-sass/animate";

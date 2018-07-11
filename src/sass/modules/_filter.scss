@@ -22,9 +22,9 @@
 	}
 
 	.icon {
-		@include border-radius(999px);
-		@include box-shadow(0 0 4px 1px rgba(0,0,0,0.3));
-		@include transition(all .5s linear);
+		border-radius: 999px;
+		box-shadow: 0 0 4px 1px rgba(0,0,0,0.3);
+		transition: all .5s linear;
 		background: color(white);;
 		color: color(jungle-green);
 		height: 35px;
@@ -45,7 +45,7 @@
 	}
 
 	.filter-input {
-		@include border-radius(0 5px 5px 0);
+		border-radius: 0 5px 5px 0;
 	  background: #232b2d;
 	  height: 31px;
 	  line-height: 1.7;
@@ -58,7 +58,7 @@
 	  z-index: 2000;
 
 	  input {
-	  	@include border-radius(2px);
+	  	border-radius: 2px;
 			-moz-appearance: none;
 			-webkit-appearance: none;
 			appearance: none;
@@ -90,7 +90,7 @@
 		}
 
 	  .filter-input-close {
-	  	@include border-radius(0 3px 3px 0);
+	  	border-radius: 0 3px 3px 0;
 		  background: color(mandy);
 		  color: color(white);;
 		  font-size: 11px;

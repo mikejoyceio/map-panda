@@ -4,8 +4,8 @@
 .modal {
 	background: color(white);
 	display: none;
-	@include border-radius(7px);
-	@include box-shadow(0 0 1px 1px rgba(0,0,0,0.1));
+	border-radius: 7px;
+	box-shadow: 0 0 1px 1px rgba(0,0,0,0.1);
 	width: 200px;
 	height: 290px;
 	left: 20px;
@@ -87,7 +87,7 @@
 			}
 
 			.place-price {
-			  @include border-radius(3px);
+			  border-radius: 3px;
 			  background: rgba(255,255,255,0.3);
 			  font-size: 11px;
 			  height: 17px;
@@ -115,7 +115,7 @@
 
 			.place-rating {
 			  background: color(white);
-			  @include border-radius(4px);
+			  border-radius: 4px;
 			  border: 2px solid color(jungle-green);
 			  color: color(white);
 			  display: inline-block;
@@ -189,7 +189,7 @@
 						background-position: 3px;
 						background-repeat: no-repeat;
 						background-size: 18px;
-					  @include border-radius(4px);
+					  border-radius: 4px;
 					  background-image: image(uber-badge);
 					  height: 22px;
 					  margin: auto;
@@ -399,7 +399,7 @@
 		  }
 
 			.button-foursquare {
-			  @include border-radius(20px);
+			  border-radius: 20px;
 			  border: 1px solid;
 			  color: color(violet-red);
 			  display: block;

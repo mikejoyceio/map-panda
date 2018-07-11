@@ -2,9 +2,9 @@
 // Loaders
 
 .loader {
-  @include box-sizing(border-box);
-  @include border-radius(40px);
-  @include animation(spin 1.0s infinite linear);
+  box-sizing: border-box;
+  border-radius: 40px;
+  animation: spin 1.0s infinite linear;
   border-style: solid;
   border-color: color(white);
   border-width: 10px;
@@ -86,7 +86,7 @@
 		  top: 46%;
 		  z-index: 9999;
 		  position: relative;
-		  @include border-radius(5px);
+		  border-radius: 5px;
 
 		  @media #{$medium-up} {
 		  	width: 50px;
@@ -119,9 +119,9 @@
 .landing-loader {
 
 	.radial-pulse-outer {
-		@include animation(pulse-fade 2.1s linear infinite);
-		@include border-radius(999px);
-		@include transform(scale(0.2));
+		animation: pulse-fade 2.1s linear infinite;
+		border-radius: 999px;
+		transform: scale(0.2);
 		background: rgba(color(white), 0.1);
 		border: 3px solid color(gossamer);
 		bottom: 0;
@@ -134,15 +134,15 @@
 		width: 250px;
 
 		@media #{$medium-up} {
-			width: 400px; 
+			width: 400px;
 			height: 400px;
 		}
 	}
 
 	.radial-pulse-inner {
-		@include animation(pulse-fade 2.1s -.5s ease-out infinite);
-		@include border-radius(999px);
-		@include transform(scale(0.2));
+		animation: pulse-fade 2.1s -.5s ease-out infinite;
+		border-radius: 999px;
+		transform: scale(0.2);
 		background: rgba(color(white), 0.1);
 		border: 3px solid color(gossamer);
 		bottom: 0;
@@ -163,7 +163,7 @@
 }
 
 .body-loader {
-	@include border-radius(999px);
+	border-radius: 999px;
   background: image(brand-black);
   background-color: color(white);
   background-size: 80%;

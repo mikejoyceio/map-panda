@@ -2,8 +2,8 @@
 // Notification
 
 .notification {
-  @include animation(buzz .2s infinite linear);
-  @include border-radius(5px);
+  animation: buzz .2s infinite linear;
+  border-radius: 5px;
   background: color(mandy);
   display: none;
   color: color(white);

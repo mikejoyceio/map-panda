@@ -2,7 +2,7 @@
 // Info Window
 
 .info-box {
-	@include border-radius(3px);	
+	border-radius: 3px;
 
 	&:before {
 		content: '';
@@ -19,7 +19,7 @@
 	}
 
 	.info-box-content {
-		@include border-radius(3px);	
+		border-radius: 3px;
 		background: color(white);
 		padding: 2px 40px 2px 40px;
 		position: relative;
@@ -38,9 +38,9 @@
 		}
 
 		.info-box-rating {
-		  position: absolute;
-		  top: 16px;
-		  left: 41px;
+      position: absolute;
+      top: 16px;
+      left: 41px;
 		}
 
 		.info-box-image {
@@ -53,7 +53,7 @@
 		}
 
 		.info-box-icon {
-		  @include border-radius(2px);
+		  border-radius: 2px;
 		  border: 1px solid;
 		  color: color(gray);
 		  font-size: 14px;

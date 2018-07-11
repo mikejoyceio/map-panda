@@ -2,8 +2,8 @@
 // Reload
 
 .reload {
-  @include animation(float 5s infinite ease-in-out);
-  @include border-radius(5px);
+  animation: float 5s infinite ease-in-out;
+  border-radius: 5px;
   background: color(silver-tree);
   color: color(white);
   font-size: 14px;
