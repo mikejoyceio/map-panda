@@ -51,7 +51,7 @@ var plugins = gulpLoadPlugins({
  * @type {object}
  */
 var config = {
-  source: 'source',
+  source: 'src',
   dist: 'dist'
 };
 
@@ -60,13 +60,13 @@ var config = {
  * @external 'del()'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulptaskname--deps-fn}
  */
-gulp.task('clean', function(c) {
+gulp.task('clean', function(done) {
 	del([
     'dist/css/*',
     'dist/fonts/*',
     'dist/images/*',
     'dist/js/*'
-  ]);
+  ], done());
 });
 
 /**
@@ -74,7 +74,7 @@ gulp.task('clean', function(c) {
  * @external 'gulp.task'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
-gulp.task('scripts', function() {
+gulp.task('scripts', function(done) {
 
 	/**
 	 * Gulp Main Bower Files
@@ -105,6 +105,8 @@ gulp.task('scripts', function() {
 			.pipe(plugins.uglify())
 
 			.pipe(gulp.dest(config.dist + '/js'))
+
+      done();
 });
 
 /**
@@ -112,7 +114,7 @@ gulp.task('scripts', function() {
  * @external 'gulp.task'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
-gulp.task('styles', function() {
+gulp.task('styles', function(done) {
   gulp.src(config.source + '/sass/*.scss')
 
 	  	/**
@@ -143,6 +145,8 @@ gulp.task('styles', function() {
       .pipe(plugins.cleanCss())
 
 	    .pipe(gulp.dest(config.dist + '/css'))
+
+      done();
 });
 
 /**
@@ -150,7 +154,7 @@ gulp.task('styles', function() {
  * @external 'gulp.task'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
-gulp.task('images', function() {
+gulp.task('images', function(done) {
 	gulp.src(config.source + '/images/*')
 
 			/**
@@ -168,6 +172,8 @@ gulp.task('images', function() {
       ]))
 
 			.pipe(gulp.dest(config.dist + '/images'))
+
+      done();
 });
 
 /**
@@ -175,9 +181,10 @@ gulp.task('images', function() {
  * @external 'gulp.task'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
-gulp.task('fonts', function() {
+gulp.task('fonts', function(done) {
 	gulp.src(config.source + '/vendor/font-awesome/fonts/fontawesome-webfont.*')
 			.pipe(gulp.dest(config.dist + '/fonts'))
+      done();
 });
 
 /**
@@ -185,9 +192,13 @@ gulp.task('fonts', function() {
  * @external 'gulp.watch'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpwatchglobs-opts-fn}
  */
-gulp.task('watch', function() {
-  gulp.watch(config.source + '/sass/**/*.scss', ['styles']);
-  gulp.watch(config.source + '/js/**/*.js', ['scripts']);
+gulp.task('watch', function(done) {
+
+  gulp.watch(config.source + '/sass/**/*.scss', gulp.parallel('styles'));
+
+  gulp.watch(config.source + '/js/**/*.js', gulp.parallel('styles'));
+
+  done();
 });
 
 /**
@@ -195,4 +206,14 @@ gulp.task('watch', function() {
  * @external 'gulp.task'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
-gulp.task('default', ['clean', 'scripts', 'styles', 'images', 'fonts', 'watch']);
+gulp.task('default', gulp.series(
+    'clean',
+    gulp.parallel([
+      'scripts',
+      'styles',
+      'images',
+      'fonts'
+    ]),
+    'watch'
+  )
+);
