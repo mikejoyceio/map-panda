@@ -1134,6 +1134,13 @@ ko.bindingHandlers.map = {
       panControl: false,
 
       /**
+       * Hide fullscreen control
+       * @type {boolean}
+       * @see {@link https://developers.google.com/maps/documentation/javascript/controls}
+       */
+      fullscreenControl: false,
+
+      /**
        * Set a custom styled map
        * @type {Array}
        * @see {@link https://developers.google.com/maps/documentation/javascript/styling}
