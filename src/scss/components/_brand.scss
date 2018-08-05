@@ -25,23 +25,22 @@
 		display: block;
 		font-size: 10px;
 		font-weight: $font-extra-bold;
-		margin-top: 12px;		
+		margin-top: 12px;
 		text-align: center;
 		text-decoration: none;
 
 		@media #{$medium-up} {
-			font-size: 11px;	
+			font-size: 11px;
 			margin-top: 23px;
 		}
 
 		@media #{$large-up} {
-			font-size: 20px;	
+			font-size: 20px;
 			margin-top: 27px;
 		}
 	}
 
 	.brand-image {
-		background: image(brand-white);
 		background-size: 100%;
 		background-repeat: no-repeat;
 		position: absolute;
@@ -50,7 +49,7 @@
 		margin: 13px auto;
 		width: 35px;
 		height: 35px;
-		
+
 		@media #{$medium-up} {
 			height: 48px;
 			margin: 17px auto;
