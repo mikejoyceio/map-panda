@@ -1,5 +1,11 @@
 /**
- * Knockout Custom Clipboard Binding
+ * @file Knockout Custom Clipboard Binding
+ * @version 1.0
+ * @author Mike Joyce [hello@mikejoyce.io]
+ */
+
+/**
+ * Clipboard
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
@@ -36,7 +42,7 @@ ko.bindingHandlers.clipboard = {
       /**
        * Clipboard
        * @type {Object}
-       * @external 'new Clipboard'
+       * @external 'Clipboard'
        * @see {@link http://zenorocha.github.io/clipboard.js/}
        */
       var clipboard = new Clipboard(element);
@@ -65,7 +71,7 @@ ko.bindingHandlers.clipboard = {
          * App Version
          * @type {string}
          */
-        var appVersion = navigator.appVersion.indexOf("Mac");
+        var appVersion = navigator.appVersion.indexOf('Mac');
 
         /** Check the operating system */
         if (appVersion!=-1) {

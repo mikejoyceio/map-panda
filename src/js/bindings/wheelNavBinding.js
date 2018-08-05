@@ -1,5 +1,11 @@
 /**
- * Knockout Custom WheelNav Binding. Initializes the wheel menu.
+ * @file Knockout Custom WheelNav Binding. Initializes the wheel menu.
+ * @version 1.0
+ * @author Mike Joyce [hello@mikejoyce.io]
+ */
+
+/**
+ * WheelNav
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
@@ -39,14 +45,14 @@ ko.bindingHandlers.wheelNav = {
     var wheelNavOptions = [];
 
     /** Divide the max search radius by 1000 and push the index into the wheelNavOptions array */
-    for (var i=1,j=bindingContext.$root.appConstants.SEARCH_RADIUS_MAX / 1000;i<=j;i++) {
+    for (var i = 1, j = bindingContext.$root.appConstants.SEARCH_RADIUS_MAX / 1000; i <= j; i++) {
       wheelNavOptions.push(i.toString());
     }
 
     bindingContext.$root.appWheelNav.createWheel(wheelNavOptions);
 
     /** Create fucntions for each wheelNav options, fired on click and touchend */
-    for (i=0,j=wheelNavOptions.length;i<j;i++) {
+    for (i = 0, j = wheelNavOptions.length; i < j; i++) {
       createNavigateFunction(i);
     }
 

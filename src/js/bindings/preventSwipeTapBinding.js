@@ -1,6 +1,12 @@
 /**
- * Knockout Custom Prevent SwipeTap Binding. Prevent tap events from trigging functions when the user is swiping
- * on a touch screen device.
+ * @file Knockout Custom Prevent SwipeTap Binding.
+ * Prevent tap events from trigging functions when the user is swiping on a touch screen device.
+ * @version 1.0
+ * @author Mike Joyce [hello@mikejoyce.io]
+ */
+
+/**
+ * PreventSwipeTap
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
@@ -24,7 +30,7 @@ ko.bindingHandlers.preventSwipeTap = {
      * @external '$().on'
      * @see {@link http://api.jquery.com/on/}
      */
-    $(element).on("touchmove", function(){
+    $(element).on('touchmove', function(){
       bindingContext.$root.appSwiping(true);
     });
 
@@ -35,7 +41,7 @@ ko.bindingHandlers.preventSwipeTap = {
      * @external '$().on'
      * @see {@link http://api.jquery.com/on/}
      */
-    $(element).on("touchstart", function(){
+    $(element).on('touchstart', function(){
       bindingContext.$root.appSwiping(false);
     });
 

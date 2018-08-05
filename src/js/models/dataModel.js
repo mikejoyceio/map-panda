@@ -24,28 +24,33 @@ var Promise = Promise || ES6Promise.Promise;
  */
 dataModel.places = [
 	{
+
 		/**
 		 * Place Name
 		 * @type {String}
 		 */
 		name: 'Airports',
+
 		/**
 		 * Place Description
 		 * @type {String}
 		 */
 		description: 'description',
+
 		/**
 		 * Place Type. Set to a supported value for the types property in the Google Places API
 		 * @type {String}
 		 * @see {@link https://developers.google.com/places/supported_types}
 		 */
-		type: 'airport', 
+		type: 'airport',
+
 		/**
 		 * Place Icon. Set to a Font Awesome CSS class.
 		 * @type {String}
 		 * @see {@link https://fortawesome.github.io/Font-Awesome/icons/}
 		 */
 		icon: 'fa-plane',
+
 		/**
 		 * Marker Icon. Set to Font Awesome SVG marker.
 		 * @type {Object}
@@ -69,7 +74,7 @@ dataModel.places = [
 								scale: 0.3,
 								strokeColor: '#ffffff',
 								strokeWeight: 0.5 }
-	},	
+	},
 	{
 		name: 'Art Galleries',
 		description: 'description',
@@ -261,7 +266,7 @@ dataModel.places = [
 								scale: 0.3,
 								strokeColor: '#ffffff',
 								strokeWeight: 0.5 }
-	},	
+	},
 	{
 		name: 'Groceries',
 		description: 'description',
@@ -507,7 +512,7 @@ dataModel.places = [
 /**
  * Foursquare API Request
  * @param  {Object} request
- * @return {Object} 
+ * @return {Object}
  */
 dataModel.foursquare = function(request) {
 
@@ -535,7 +540,7 @@ dataModel.foursquare = function(request) {
 			client_id: 'T3NSPSCOLUQ5R0OGEZCKUX0MOEUOEPW1HGFXYOF3ZKCYDQXD',
 			client_secret: 'J2LN1WHKPT2MAQAP3POZP1REU2AWLYGM3S24B0DSLHZNHKJR',
 			v: '20151230',
-			m: 'foursquare' 
+			m: 'foursquare'
 		}
 	}));
 
@@ -581,15 +586,13 @@ dataModel.uber = function(request) {
 
 /**
  * Get Local Storage Value
- * @param  {string} item Name of the item  
+ * @param  {string} item Name of the item
  * @return {string}
  * @external 'localStorage.getItem()'
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem}
  */
 dataModel.get = function(item) {
-
 	return localStorage.getItem(item);
-
 }
 
 /**
@@ -600,7 +603,5 @@ dataModel.get = function(item) {
  * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem}
  */
 dataModel.set = function(item, value) {
-
-	localStorage.setItem(item, value);	
-
+	localStorage.setItem(item, value);
 }

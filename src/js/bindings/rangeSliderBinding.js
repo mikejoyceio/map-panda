@@ -1,5 +1,11 @@
 /**
- * Knockout Custom Range Slider Binding. Initializes the custom range slider and updates it's value.
+ * @file Knockout Custom Range Slider Binding. Initializes the custom range slider and updates it's value.
+ * @version 1.0
+ * @author Mike Joyce [hello@mikejoyce.io]
+ */
+
+/**
+ * RangeSlider
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}

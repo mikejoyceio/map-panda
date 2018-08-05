@@ -1,6 +1,13 @@
 /**
- * Knockout Custom Hover State Binding. Add/remove and 'active' CSS class on mouseover/mouseout.
- * This prevents issues with hover states getting 'stuck' on touchscreen devices.
+ * @file Knockout Custom Hover State Binding.
+ * Add/remove and 'active' CSS class on mouseover/mouseout,
+ * which prevents issues with hover states getting 'stuck' on touchscreen devices.
+ * @version 1.0
+ * @author Mike Joyce [hello@mikejoyce.io]
+ */
+
+/**
+ * Hover
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
@@ -24,7 +31,7 @@ ko.bindingHandlers.hover = {
      * @external '$().on'
      * @see {@link http://api.jquery.com/on/}
      */
-    $(element).on("mouseover", function(){
+    $(element).on('mouseover', function(){
       $(element).addClass('hover');
     });
 
@@ -35,7 +42,7 @@ ko.bindingHandlers.hover = {
      * @external '$().on'
      * @see {@link http://api.jquery.com/on/}
      */
-    $(element).on("mouseout", function(){
+    $(element).on('mouseout', function(){
       $(element).removeClass('hover');
     });
 

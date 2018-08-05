@@ -1,5 +1,11 @@
 /**
- * Knockout Custom Scroll Bar Binding
+ * @file Knockout Custom Scroll Bar Binding.
+ * @version 1.0
+ * @author Mike Joyce [hello@mikejoyce.io]
+ */
+
+/**
+ * ScrollBar
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
@@ -31,8 +37,8 @@ ko.bindingHandlers.scrollBar = {
        * @see {@link http://manos.malihu.gr/jquery-custom-content-scroller/}
        */
       $(element).mCustomScrollbar({
-        keyboard: { scrollType:'stepped' },
-        mouseWheel: { scrollAmount:10 }
+        keyboard: { scrollType: 'stepped' },
+        mouseWheel: { scrollAmount: 10 }
       });
 
     } else {

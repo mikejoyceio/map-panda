@@ -1,5 +1,11 @@
 /**
- * Knockout Custom Viewport Width Binding. Keeps track of the browser viewport width.
+ * @file Knockout Custom Viewport Width Binding. Keeps track of the browser viewport width.
+ * @version 1.0
+ * @author Mike Joyce [hello@mikejoyce.io]
+ */
+
+/**
+ * ViewportWidth
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}

@@ -1,5 +1,11 @@
 /**
- * Knockout Custom Toggle Filter Binding. Toggle the visibility of the search filter on mobiles & tablets.
+ * @file Knockout Custom Toggle Filter Binding. Toggle the visibility of the search filter on mobiles & tablets.
+ * @version 1.0
+ * @author Mike Joyce [hello@mikejoyce.io]
+ */
+
+/**
+ * ToggleFilter
  * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}

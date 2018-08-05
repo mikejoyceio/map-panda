@@ -39,96 +39,115 @@ var ViewModel = function() {
 	 * @type {boolean}
 	 */
 	this.appDebug = false;
+
 	/**
 	 * App Body Loading Visibility - show/hide the body loading animation
 	 * @type {boolean}
 	 */
 	this.appBodyLoadingVisibility = ko.observable(false);
+
 	/**
 	 * App Landing Action Visibility - show/hide the landing action button ('Find Me')
 	 * @type {boolean}
 	 */
 	this.appLandingActionVisibility = ko.observable(false);
+
 	/**
 	 * App Landing Info Visibility - show/hide the landing information ('Explore popular locations around you.')
 	 * @type {boolean}
 	 */
 	this.appLandingInfoVisibility = ko.observable(false);
+
 	/**
 	 * App Landing Visibility - show/hide the landing overlay
 	 * @type {boolean}
 	 */
 	this.appLandingVisbility = ko.observable(true);
+
 	/**
 	 * App Landing Loading Visibility - show/hide the landing loading animation
 	 * @type {boolean}
 	 */
 	this.appLandingLoadingVisibility = ko.observable(false)
+
 	/**
 	 * App reload visibility - show/hide the app reload button ('Reload Map Panda')
 	 * @type {boolean}
 	 */
 	this.appReloadVisbility = ko.observable(false);
+
 	/**
 	 * App Swiping - set to true if user is swiping on a touch screen
 	 * @type {boolean}
 	 */
 	this.appSwiping = ko.observable(false);
+
 	/**
 	 * App Viewport Width - stores the width of the browser viewport
 	 * @type {number}
 	 */
 	this.appViewportWidth = ko.observable();
+
 	/**
 	 * App WheelNav - stores a global instance of the wheel navigation menu
 	 * @type {object}
 	 */
 	this.appWheelNav = null;
+
 	/**
 	 * App Constants
 	 * @type {Object}
 	 */
 	this.appConstants = {
+
 		/**
 		 * Default large image
 		 * @const {string}
 		 */
 		DEFAULT_IMAGE_LARGE: 'dist/images/default-large.png',
+
 		/**
 		 * Default small image
 		 * @const {string}
 		 */
 		DEFAULT_IMAGE_SMALL: 'dist/images/default-small.png',
+
 		/**
 		 * Foursquare API URL
 		 * @const {string}
 		 */
 		FOURSQUARE_URL: 'https://foursquare.com/v/',
+
 		/**
 		 * Notification fade duration
 		 * @type {number}
 		 */
 		NOTIFICATION_FADE_DURATION: 1000,
+
 		/**
 		 * Max map search radius
 		 * @const {number}
 		 */
 		SEARCH_RADIUS_MAX: 10000,
+
 		/**
 		 * Min map search radius
 		 * @const {number}
 		 */
 		SEARCH_RADIUS_MIN: 1000,
+
 		/**
 		 * Uber client ID
 		 * @const {string}
 		 */
 		UBER_CLIENT_ID: 't4nJf4oEHYCwFZ_TvGsnIDc_raF7rFOn',
+
 		/**
 		 * Uber sign up URL
 		 * @const {string}
 		 */
 		UBER_URL: 'https://m.uber.com/sign-up?'
+
 	}
 
 
@@ -137,11 +156,13 @@ var ViewModel = function() {
 	 * @type {number}
 	 */
 	this.notificationFadeDuration = ko.observable(this.appConstants.NOTIFICATION_FADE_DURATION);
+
 	/**
 	 * Notification Keep Alive - if set to true, the notification will fade out
 	 * @type {boolean}
 	 */
 	this.notificationKeepAlive = ko.observable(false);
+
 	/**
 	 * Notification Message - holds the user notification message
 	 * @type {string}
@@ -154,36 +175,43 @@ var ViewModel = function() {
 	 * @type {Object}
 	 */
 	this.map = null;
+
 	/**
 	 * Map Current Latitude - the current latitude coordinate
 	 * @type {number}
 	 */
 	this.mapCurrentLat = ko.observable();
+
 	/**
 	 * Map Current Longitude - the current longitude coordinate
 	 * @type {number}
 	 */
 	this.mapCurrentLng = ko.observable();
+
 	/**
 	 * Map Info Visibility - show/hide the map information
 	 * @type {boolean}
 	 */
 	this.mapInfoVisibility = ko.observable(false);
+
 	/**
 	 * Map Loader Visibility - shoe/hide the map loading animation
 	 * @type {boolean}
 	 */
 	this.mapLoadingVisibility = ko.observable(false);
+
 	/**
 	 * Map Markers - stores an array of the map markers
 	 * @type {Array.<object>}
 	 */
 	this.mapMarkers = ko.observableArray();
+
 	/**
 	 * Map LatLng - stores the map's Latitude & Longitude
 	 * @type {number}
 	 */
 	this.mapLatLang = null;
+
 	/**
 	 * Map Places - stores the map places objects
 	 * @see 'dataModel.places'
@@ -197,116 +225,139 @@ var ViewModel = function() {
 	 * @type {boolean}
 	 */
 	this.modalVisibilty = ko.observable(false);
+
 	/**
 	 * Modal Loading - show/hide the modal loading animation
 	 * @type {boolean}
 	 */
 	this.modalLoading = ko.observable(true);
+
 	/**
 	 * Modal Foursquare URL
 	 * @type {string}
 	 */
 	this.modalFoursquareURL = ko.observable();
+
 	/**
 	 * Modal Foursquare Visibility - show/hide the Foursquare button ('View in Foursquare')
 	 * @type {string}
 	 */
 	this.modalFoursquareVisibility = ko.observable(false);
+
 	/**
 	 * Modal Info Address - holds the place address
 	 * @type {string}
 	 */
 	this.modalInfoAddress = ko.observable();
+
 	/**
 	 * Modal Info Latitude - holds the place latitude
 	 * @type {number}
 	 */
 	this.modalInfoLat = ko.observable();
+
 	/**
 	 * Modal Info Longitude - holds the place longitude
 	 * @type {number}
 	 */
 	this.modalInfoLng = ko.observable();
+
 	/**
 	 * Modal Info Name - holds the place name
 	 * @type {string}
 	 */
 	this.modalInfoName = ko.observable();
+
 	/**
 	 * Modal Info Phone - holds the place phone number
 	 * @type {string}
 	 */
 	this.modalInfoPhone = ko.observable();
+
 	/**
 	 * Modal Info Phone Call - holds the place phone number with all white space removed, for use with the 'tel:' link
 	 * @type {string}
 	 */
 	this.modalInfoPhoneCall = ko.observable();
+
 	/**
 	 * Modal Info Image - holds the place image
 	 * @type {string}
 	 */
 	this.modalInfoImage = ko.observable();
+
 	/**
 	 * Modal Info Image Visibility - show/hide the place image
 	 * @type {boolean}
 	 */
 	this.modalInfoImageVisibility = ko.observable(false);
+
 	/**
 	 * Modal Info Price - holds the place price level
 	 * @type {string}
 	 */
 	this.modalInfoPrice = ko.observable();
+
 	/**
 	 * Modal Info Rating - holds the place rating
 	 * @type {string}
 	 */
 	this.modalInfoRating = ko.observable();
+
 	/**
 	 * Modal Info Website - holds the place website
 	 * @type {string}
 	 */
 	this.modalInfoWebsite = ko.observable();
+
 	/**
 	 * Modal Overlay Copy Button Visiblity - hide/show the copy button
 	 * @type {boolean}
 	 */
 	this.modalOverlayCopyButtonVisibility = ko.observable();
+
 	/**
 	 * Modal Overlay Group Buttons - set the group button CSS (one, two)
 	 * @type {number}
 	 */
 	this.modalOverlayGroupButtons = ko.observable();
+
 	/**
 	 * Modal Overlay Message - holds the modal overlay message
 	 * @type {string}
 	 */
 	this.modalOverlayMessage = ko.observable();
+
 	/**
 	 * Modal Overlay Message Visibility - show/hide the modal overlay message
 	 * @type {boolean}
 	 */
 	this.modalOverlayMessageVisibility = ko.observable(false);
+
 	/**
 	 * Modal Overlay Visibility - show/hide the modal overlay
 	 * @type {boolean}
 	 */
 	this.modalOverlayVisibility = ko.observable(false);
+
 	/**
 	 * Modal Uber Deep link
 	 * @type {string}
 	 */
 	this.modalUberDeepLink = ko.observable(false);
+
 	/**
 	 * Modal Uber Estimate - holds the Uber ride price estimate
 	 * @type {string}
 	 */
 	this.modalUberEstimate = ko.observable();
+
 	/**
 	 * Modal Uber Estimate Visibility - show/hide the Uber price estimate
 	 * @type {boolean}
 	 */
 	this.modalUberEstimateVisibility = ko.observable(false);
+
 	/**
 	 * Modal Uber Loading - show/hide the Uber loading animation
 	 * @type {boolean}
@@ -376,21 +427,25 @@ var ViewModel = function() {
 	 * @type {string}
 	 */
 	this.searchFilterVisibility = ko.observable(false);
+
 	/**
 	 * Search Query - holds the filter search query
 	 * @type {string}
 	 */
 	this.searchQuery = ko.observable();
+
 	/**
 	 * Search Query No Results - shown when there are no results returned from a search query
 	 * @type {string}
 	 */
 	this.searchQueryNoResults = ko.observable(false);
+
 	/**
 	 * Search Radius - holds the map search radius (set to 5000 by default)
 	 * @type {number}
 	 */
 	this.searchRadius = ko.observable(this.appConstants.SEARCH_RADIUS_MAX / 2);
+
 	/**
 	 * Search Clear Filter Visibility - show/hide the clear filter button
 	 */
@@ -804,36 +859,50 @@ var ViewModel = function() {
 
     switch (error.code) {
       case error.PERMISSION_DENIED:
+
 				/** If the appDebug variable is set to true, console.log the error */
 				if (self.appDebug) console.log('User denied the request for Geolocation.');
+
 				/** Show the user notification message  */
 				self.notificationKeepAlive(true);
 				self.notificationMessage('Please share your location');
+
 				break;
       case error.POSITION_UNAVAILABLE:
+
 				/** If the appDebug variable is set to true, console.log the error */
 				if (self.appDebug) console.log('Location information is unavailable.');
+
 				/** Show the user notification message  */
 				self.notificationKeepAlive(true);
 				self.notificationMessage('Geolocation unavailable.');
+
 				break;
       case error.TIMEOUT:
+
 				/** If the appDebug variable is set to true, console.log the error */
 				if (self.appDebug) console.log('The request to get user location timed out.');
+
 				/** Show the user notification message  */
 				self.notificationKeepAlive(true);
 				self.notificationMessage('Geolocation timed out.');
+
 				/** Show reload app button */
 				self.appReloadVisbility(true);
+
 				break;
       case error.UNKNOWN_ERROR:
+
 				/** If the appDebug variable is set to true, console.log the error */
 				if (self.appDebug) console.log('An unknown error occurred.');
+
 				/** Show the user notification message  */
 				self.notificationKeepAlive(true);
 				self.notificationMessage('Unknown error.');
+
 				/** Show reload app button */
 				self.appReloadVisbility(true);
+
 				break;
     }
 	}
@@ -1028,36 +1097,42 @@ ko.bindingHandlers.map = {
   	 * @type {Object}
   	 */
     var mapOptions = {
+
     	/**
     	 * Initial map zoom level
     	 * @type {number}
     	 * @see {@link https://developers.google.com/maps/documentation/static-maps/intro?hl=en#Zoomlevels}
     	 */
       zoom: 15,
+
       /**
        * Hide map zoom controls
        * @type {boolean}
        * @see {@link https://developers.google.com/maps/documentation/javascript/controls}
        */
       zoomControl: false,
+
       /**
        * Hide map type control
        * @type {boolean}
        * @see {@link https://developers.google.com/maps/documentation/javascript/controls}
        */
       mapTypeControl: false,
+
        /**
        * Hide map street view control
        * @type {boolean}
        * @see {@link https://developers.google.com/maps/documentation/javascript/controls}
        */
       streetViewControl: false,
+
       /**
        * Hide map pan control
        * @type {boolean}
        * @see {@link https://developers.google.com/maps/documentation/javascript/controls}
        */
       panControl: false,
+
       /**
        * Set a custom styled map
        * @type {Array}
@@ -1429,8 +1504,10 @@ ko.bindingHandlers.map = {
 						break;
 					case statusCode.REQUEST_DENIED:
 						callbackError(status+' This webpage is not allowed to use the PlacesService.', 'Error. Please try again.');
+
 						/** Show reload app button */
 						self.appReloadVisbility(true);
+
 						break;
 					case statusCode.UNKNOWN_ERROR:
 						callbackError(status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.', 'Server Error. Please try again.');
@@ -1440,8 +1517,10 @@ ko.bindingHandlers.map = {
 						break;
 					default:
 						callbackError('Unknown error', 'Error. Please try again.');
+
 						/** Show reload app button */
 						self.appReloadVisbility(true);
+
 	    	}
     	}
 
@@ -1687,22 +1766,31 @@ ko.bindingHandlers.map = {
 
 						/** Update the place name */
 						bindingContext.$root.modalInfoName(placeInfo.name);
+
 						/** Update the place address */
 						bindingContext.$root.modalInfoAddress(placeInfo.address);
+
 						/** Update the place website */
 						bindingContext.$root.modalInfoWebsite(placeInfo.website);
+
 						/** Update the place latitude */
 						bindingContext.$root.modalInfoLat(placeInfo.lat);
+
 						/** Update the place longitude */
 						bindingContext.$root.modalInfoLng(placeInfo.lng);
+
 						/** Update the place phone number */
 						bindingContext.$root.modalInfoPhone(placeInfo.phone);
+
 						/** Update the place html 'tel:' link */
 						bindingContext.$root.modalInfoPhoneCall(placeInfo.phoneCall);
+
 						/** Update the place image */
 						bindingContext.$root.modalInfoImage(placeInfo.photo);
+
 						/** Update the place price */
 						bindingContext.$root.modalInfoPrice(placeInfo.price);
+
 						/** Update the place rating */
 						bindingContext.$root.modalInfoRating(placeInfo.rating);
 
