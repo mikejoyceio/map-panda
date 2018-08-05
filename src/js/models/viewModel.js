@@ -8,11 +8,7 @@
  * TODO:
  * - Add 'not supported' notice for older browsers
  * - Improve Uber deep-linking
- * - Add Geolocation 'watch' position feature
- * - Improve landing overlay
- * - Add animation to brand logo on hover
  * - Add 'click' animations
- * - Improve Gulpfile
  */
 
 /**
