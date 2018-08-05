@@ -6,29 +6,37 @@
 
 /**
  * Load Gulp
- * @type {object}
- * @external 'require('gulp')'
+ * @type {Object}
+ * @external 'gulp'
  * @see {@link http://gulpjs.com/}
  */
 var gulp = require('gulp');
 
 /**
  * Load Gulp Path
- * @type {object}
+ * @type {Object}
  */
 var path = require('path');
 
 /**
- * Load Node Del
- * @type {object}
- * @external 'require('del')'
+ * Load del
+ * @type {Object}
+ * @external 'del'
  * @see {@link https://www.npmjs.com/package/del}
  */
 var del = require('del');
 
 /**
+ * Load fs
+ * @external 'fs'
+ * @see {@link https://nodejs.org/api/fs.html#fs_file_system}
+ * @type {Object}
+ */
+var fs = require('fs');
+
+/**
  * Load jpeg-recompress imagemin plugin
- * @type {object}
+ * @type {Object}
  * @external 'require('imagemin-jpeg-recompress')'
  * @see {@link https://www.npmjs.com/package/imagemin-jpeg-recompress}
  */
@@ -36,7 +44,7 @@ var imageminJpegRecompress = require('imagemin-jpeg-recompress');
 
 /**
  * Load Gulp Plugins
- * @type {object}
+ * @type {Object}
  * @external 'gulpLoadPlugins'
  * @see {@link https://www.npmjs.com/package/gulp-load-plugins}
  */
@@ -48,7 +56,7 @@ var plugins = gulpLoadPlugins({
 
 /**
  * Configuration
- * @type {object}
+ * @type {Object}
  */
 var config = {
   source: 'src',
@@ -63,6 +71,7 @@ var config = {
 gulp.task('clean', function(done) {
 	del([
     'dist/css/*',
+    'dist/favicons/*',
     'dist/fonts/*',
     'dist/images/*',
     'dist/js/*'
@@ -134,7 +143,11 @@ gulp.task('styles', function(done) {
        * @see {@link https://www.npmjs.com/package/gulp-autoprefixer}
        */
 	    .pipe(plugins.autoprefixer({
-        browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']
+        browsers: [
+          'last 2 versions',
+          'ie >= 9',
+          'and_chr >= 2.3'
+        ]
       }))
 
        /**
@@ -188,16 +201,98 @@ gulp.task('fonts', function(done) {
 });
 
 /**
- * Watch Task. Watches for changes in JS and Scss files.
+ * Favicon Task. Generates a favicon for all major platforms.
+ * @external '.realFavicon'
+ * @see {@link https://www.npmjs.com/package/gulp-real-favicon}
+ */
+gulp.task('favicon', function(done) {
+    plugins.realFavicon.generateFavicon({
+      masterPicture: config.source + '/favicon/favicon.png',
+      dest: config.dist + '/favicons',
+      iconsPath: './',
+      design: {
+        ios: {
+          pictureAspect: 'noChange',
+          assets: {
+            ios6AndPriorIcons: false,
+            ios7AndLaterIcons: false,
+            precomposedIcons: false,
+            declareOnlyDefaultIcon: true
+          }
+        },
+        desktopBrowser: {},
+        windows: {
+          pictureAspect: 'noChange',
+          backgroundColor: '#2eb398',
+          onConflict: 'override',
+          assets: {
+            windows80Ie10Tile: false,
+            windows10Ie11EdgeTiles: {
+              small: false,
+              medium: true,
+              big: false,
+              rectangle: false
+            }
+          }
+        },
+        androidChrome: {
+          pictureAspect: 'noChange',
+          themeColor: '#ffffff',
+          manifest: {
+            name: 'Map Panda',
+            display: 'standalone',
+            orientation: 'notSet',
+            onConflict: 'override',
+            declared: true
+          },
+          assets: {
+            legacyIcon: false,
+            lowResolutionIcons: false
+          }
+        },
+        safariPinnedTab: {
+          pictureAspect: 'blackAndWhite',
+          threshold: 78.125,
+          themeColor: '#2eb398'
+        }
+      },
+      settings: {
+        scalingAlgorithm: 'Mitchell',
+        errorOnImageTooSmall: false,
+        readmeFile: false,
+        htmlCodeFile: false,
+        usePathAsIs: false
+      },
+      markupFile: 'favicon.json'
+    }, function() {
+      done();
+    });
+  }
+);
+
+/**
+ * Favicon Update Task. Check for updates on RealFaviconGenerator.
+ * @external '.realFavicon'
+ * @see {@link https://www.npmjs.com/package/gulp-real-favicon}
+ */
+gulp.task('favicon-update', function(done) {
+  var currentVersion;
+  currentVersion = JSON.parse(fs.readFileSync('favicon.json')).version;
+  plugins.realFavicon.checkForUpdates(currentVersion, function(err) {
+    if (err) {
+      throw err;
+    }
+  });
+});
+
+/**
+ * Watch Task. Watches for changes in JS and SCSS files.
  * @external 'gulp.watch'
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpwatchglobs-opts-fn}
  */
 gulp.task('watch', function(done) {
-
   gulp.watch(config.source + '/sass/**/*.scss', gulp.parallel('styles'));
-
   gulp.watch(config.source + '/js/**/*.js', gulp.parallel('styles'));
-
   done();
 });
 
@@ -209,10 +304,11 @@ gulp.task('watch', function(done) {
 gulp.task('default', gulp.series(
     'clean',
     gulp.parallel([
-      'scripts',
-      'styles',
+      'favicon',
+      'fonts',
       'images',
-      'fonts'
+      'scripts',
+      'styles'
     ]),
     'watch'
   )

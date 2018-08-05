@@ -29,6 +29,7 @@
     "gulp": "next",
     "gulp-autoprefixer": "^5.0.0",
     "gulp-clean-css": "^3.9.4",
+    "gulp-real-favicon": "^0.3.0",
     "gulp-sass": "^4.0.1",
     "imagemin-jpeg-recompress": "^5.1.0"
   }
