@@ -76,7 +76,22 @@ $ bower install
 $ gulp
 ```
 
-This command runs the default Gulp task in [gulpfile.js](gulpfile.js) and runs the both the styles and scripts tasks. The styles task concatenates and minifies all of the [Sass](http://sass-lang.com/) partials in [src/sass](src/sass) and compiles to a single file ([app.css](dist/css/app.css)) in [dist/css](dist/css). The scripts task concatenates and minifies all JavaScript files in [src/js](src/js), including all of the main Bower package JavaScript in [src/vendor](src/vendor) and compiles to a single file ([app.js](dist/js/app.js)) in [dist/js](dist/js).
+Runs the default Gulp task in [gulpfile.js](gulpfile.js).
+
+###### Scripts Task
+
+```
+$ gulp scripts
+```
+Concatenates and minifies all JavaScript files in [src/js](src/js), including all of the main Bower package JavaScript in [src/vendor](src/vendor) and compiles to a single file ([app.js](dist/js/app.js)) in [dist/js](dist/js).
+
+###### Styles Task
+
+```
+$ gulp styles
+```
+
+Concatenates and minifies all of the [Sass](http://sass-lang.com/) partials in [src/sass](src/sass) and compiles to a single file ([app.css](dist/css/app.css)) in [dist/css](dist/css).
 
 ###### Watch Task
 
@@ -84,7 +99,7 @@ This command runs the default Gulp task in [gulpfile.js](gulpfile.js) and runs t
 $ gulp watch
 ```
 
-Runs the watch task, which watches both the [src/sass](src/sass) and [src/js](src/js) directories for changes and runs their respective tasks.
+Watches both the [src/sass](src/sass) and [src/js](src/js) directories for changes and runs their respective tasks.
 
 ###### Images Task
 
@@ -92,7 +107,7 @@ Runs the watch task, which watches both the [src/sass](src/sass) and [src/js](sr
 $ gulp images
 ```
 
-Runs the images task in [gulpfile.js](gulpfile.js). Images in [src/images](src/images) will be optimized and moved to [dist/images](dist/images).
+Images in [src/images](src/images) will be optimized and moved to [dist/images](dist/images).
 
 ###### Fonts Task
 
@@ -100,7 +115,7 @@ Runs the images task in [gulpfile.js](gulpfile.js). Images in [src/images](src/i
 $ gulp fonts
 ```
 
-Runs the fonts task, which transfers the Font Awesome font files to [dist/fonts](dist/fonts).
+Transfers font files to [dist/fonts](dist/fonts).
 
 ###### Favicon Task
 
@@ -108,7 +123,7 @@ Runs the fonts task, which transfers the Font Awesome font files to [dist/fonts]
 $ gulp favicon
 ```
 
-Runs the favicon task, which generates favicons for all major platforms from a master favicon in [src/favicon] to [dist/favicons](dist/favicons).
+Generates favicons for all major platforms from a master favicon in [src/favicon](src/favicon).
 
 ## Resources
 
