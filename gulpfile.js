@@ -90,7 +90,10 @@ gulp.task('scripts', function(done) {
 	 * @external '.mainBowerFiles'
 	 * @see {@link https://www.npmjs.com/package/gulp-main-bower-files}
 	 */
-	gulp.src(plugins.mainBowerFiles().concat([config.source + '/js/dataModel.js', config.source + '/js/viewModel.js']))
+	gulp.src(plugins.mainBowerFiles().concat([
+        config.source + '/js/bindings/*',
+        config.source + '/js/models/*',
+      ]))
 
 			/**
 			 * Gulp Filter
