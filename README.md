@@ -91,7 +91,7 @@ Concatenates and minifies all JavaScript files in [src/js](src/js), including al
 $ gulp styles
 ```
 
-Concatenates and minifies all of the [Sass](http://sass-lang.com/) partials in [src/sass](src/sass) and compiles to a single file ([app.css](dist/css/app.css)) in [dist/css](dist/css).
+Concatenates and minifies all of the [Sass](http://sass-lang.com/) partials in [src/scss](src/scss) and compiles to a single file ([app.css](dist/css/app.css)) in [dist/css](dist/css).
 
 ###### Watch Task
 
@@ -99,7 +99,7 @@ Concatenates and minifies all of the [Sass](http://sass-lang.com/) partials in [
 $ gulp watch
 ```
 
-Watches both the [src/sass](src/sass) and [src/js](src/js) directories for changes and runs their respective tasks.
+Watches both the [src/scss](src/scss) and [src/js](src/js) directories for changes and runs their respective tasks.
 
 ###### Images Task
 

@@ -127,7 +127,7 @@ gulp.task('scripts', function(done) {
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md}
  */
 gulp.task('styles', function(done) {
-  gulp.src(config.source + '/sass/*.scss')
+  gulp.src(config.source + '/scss/*.scss')
 
 	  	/**
 	  	 * Gulp Sass
@@ -294,7 +294,7 @@ gulp.task('favicon-update', function(done) {
  * @see {@link https://github.com/gulpjs/gulp/blob/master/docs/API.md#gulpwatchglobs-opts-fn}
  */
 gulp.task('watch', function(done) {
-  gulp.watch(config.source + '/sass/**/*.scss', gulp.parallel('styles'));
+  gulp.watch(config.source + '/scss/**/*.scss', gulp.parallel('styles'));
   gulp.watch(config.source + '/js/**/*.js', gulp.parallel('styles'));
   done();
 });
