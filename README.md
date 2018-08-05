@@ -2,10 +2,6 @@
 
 ###### Project Overview
 
-Project #5 of Udacity's [Front-End Web Developer Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001). The task was to develop a single-page application with [KnockoutJS](knockoutjs.com) featuring a map of your neighborhood or a neighborhood you would like to visit. Requirements included adding additional functionality to the application, including: map markers to identify popular locations, a search function to easily discover these locations, and a listview to support simple browsing of all locations. Research was also required into how to implement third-party APIs that provide additional information about each location (such as StreetView images, Wikipedia articles, Yelp reviews, etc).
-
-###### Project Description
-
 [Map Panda](https://mappanda.com) grabs the user's location with the [Geolocation API](http://dev.w3.org/geo/api/spec-source.html), and through the [Google Places API](https://developers.google.com/places/) a selection of popular location types are available to explore. The [Foursquare](https://developer.foursquare.com/) and [Uber](https://developer.uber.com/) APIs are leveraged to provide further functionality to the application.
 
 ## Getting Started
@@ -80,7 +76,7 @@ $ bower install
 $ gulp
 ```
 
-This command runs the default Gulp task in [gulpfile.js](gulpfile.js) and runs the both the styles and scripts tasks. The styles task concatenates and minifies all of the [Sass](http://sass-lang.com/) partials in [source/sass](source/sass) and compiles to a single file ([app.css](dist/css/app.css)) in [dist/css](dist/css). The scripts task concatenates and minifies all JavaScript files in [source/js](source/js), including all of the main Bower package JavaScript in [source/vendor](source/vendor) and compiles to a single file ([app.js](dist/js/app.js)) in [dist/js](dist/js).
+This command runs the default Gulp task in [gulpfile.js](gulpfile.js) and runs the both the styles and scripts tasks. The styles task concatenates and minifies all of the [Sass](http://sass-lang.com/) partials in [src/sass](src/sass) and compiles to a single file ([app.css](dist/css/app.css)) in [dist/css](dist/css). The scripts task concatenates and minifies all JavaScript files in [src/js](src/js), including all of the main Bower package JavaScript in [src/vendor](src/vendor) and compiles to a single file ([app.js](dist/js/app.js)) in [dist/js](dist/js).
 
 ###### Watch Task
 
@@ -88,7 +84,7 @@ This command runs the default Gulp task in [gulpfile.js](gulpfile.js) and runs t
 $ gulp watch
 ```
 
-This command runs the watch task, which watches both the [source/sass](source/sass) and [source/js](source/js) directories for changes and runs their respective tasks.
+Runs the watch task, which watches both the [src/sass](src/sass) and [src/js](src/js) directories for changes and runs their respective tasks.
 
 ###### Images Task
 
@@ -96,7 +92,7 @@ This command runs the watch task, which watches both the [source/sass](source/sa
 $ gulp images
 ```
 
-This command runs the images task in [gulpfile.js](gulpfile.js). Images in [source/images](source/images) will be optimized and moved to [dist/images](dist/images).
+Runs the images task in [gulpfile.js](gulpfile.js). Images in [src/images](src/images) will be optimized and moved to [dist/images](dist/images).
 
 ###### Fonts Task
 
@@ -104,7 +100,15 @@ This command runs the images task in [gulpfile.js](gulpfile.js). Images in [sour
 $ gulp fonts
 ```
 
-This command runs the fonts task, which transfers the Font Awesome font files to [dist/fonts](dist/fonts).
+Runs the fonts task, which transfers the Font Awesome font files to [dist/fonts](dist/fonts).
+
+###### Favicon Task
+
+```
+$ gulp favicon
+```
+
+Runs the favicon task, which generates favicons for all major platforms from a master favicon in [src/favicon] to [dist/favicons](dist/favicons).
 
 ## Resources
 
