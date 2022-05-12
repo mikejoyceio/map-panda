@@ -4,6 +4,9 @@
  * @author Mike Joyce [hello@mikejoyce.io]
  */
 
+import ko from 'knockout'
+import mCustomScrollbar from 'malihu-custom-scrollbar-plugin'
+
 /**
  * ScrollBar
  * @type {Object}

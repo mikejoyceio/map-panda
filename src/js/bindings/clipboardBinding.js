@@ -4,6 +4,9 @@
  * @author Mike Joyce [hello@mikejoyce.io]
  */
 
+import ko from 'knockout'
+import Clipboard  from 'clipboard'
+
 /**
  * Clipboard
  * @type {Object}

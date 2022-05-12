@@ -4,6 +4,8 @@
  * @author Mike Joyce [hello@mikejoyce.io]
  */
 
+import ko from 'knockout'
+
 /**
  * ViewportWidth
  * @type {Object}

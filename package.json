@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Explore popular locations around you.",
   "private": true,
-  "main": "gulpfile.js",
   "scripts": {
-    "test": "test"
+    "prod": "webpack",
+    "dev": "webpack serve"
   },
   "repository": "https://github.com/mikejoyceio/map.git",
   "author": "Mike Joyce <contact@mikejoyce.me>",
@@ -15,22 +15,25 @@
   },
   "homepage": "https://github.com/mikejoyceio/map",
   "devDependencies": {
-    "del": "^2.2.2",
-    "gulp-concat": "^2.5.2",
-    "gulp-filter": "^2.0.2",
-    "gulp-imagemin": "^2.4.0",
-    "gulp-load-plugins": "^0.8.1",
-    "gulp-plumber": "^1.0.0",
-    "gulp-uglify": "^1.1.0",
-    "main-bower-files": "^2.6.2"
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss-loader": "^6.2.1",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0",
+    "webpack-dev-server": "^4.9.0",
+    "webpack-mild-compile": "^3.4.0"
   },
   "dependencies": {
-    "bower": "^1.8.4",
-    "gulp": "next",
-    "gulp-autoprefixer": "^5.0.0",
-    "gulp-clean-css": "^3.9.4",
-    "gulp-real-favicon": "^0.3.0",
-    "gulp-sass": "^4.0.1",
-    "imagemin-jpeg-recompress": "^5.1.0"
+    "clipboard": "^2.0.11",
+    "compass.js": "^1.3.0",
+    "google-maps-infobox": "^2.0.0",
+    "jquery": "^3.6.0",
+    "js-rich-marker": "^1.1.2",
+    "knockout": "^3.5.1",
+    "malihu-custom-scrollbar-plugin": "^3.1.5",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "wheelnav": "^1.7.1"
   }
 }

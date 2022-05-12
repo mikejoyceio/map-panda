@@ -6,6 +6,8 @@
  * @author Mike Joyce [hello@mikejoyce.io]
  */
 
+import ko from 'knockout'
+
 /**
  * Hover
  * @type {Object}

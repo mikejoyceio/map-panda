@@ -4,6 +4,9 @@
  * @author Mike Joyce [hello@mikejoyce.io]
  */
 
+import ko from 'knockout'
+import { Compass } from 'compass.js'
+
 /**
  * Compass
  * @type {Object}

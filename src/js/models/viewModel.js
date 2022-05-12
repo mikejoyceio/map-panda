@@ -4,6 +4,11 @@
  * @author Mike Joyce [hello@mikejoyce.io]
  */
 
+ import ko from 'knockout'
+ import dataModel from './dataModel'
+ import { RichMarker } from 'js-rich-marker'
+ import { InfoBox } from 'google-maps-infobox'
+
 /**
  * TODO:
  * - Add 'not supported' notice for older browsers
@@ -22,14 +27,6 @@ var ViewModel = function() {
 	 * @see {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Strict_mode}
 	 */
 	'use strict';
-
-	/**
-	 * ES6 Promises Polyfill
-	 * @type {object}
-	 * @external 'ES6Promise.Promise;'
-	 * @see {@link https://github.com/jakearchibald/es6-promise}
-	 */
-	var Promise = Promise || ES6Promise.Promise;
 
 	/** Set a pointer reference to 'this' */
 	var self = this;
@@ -1688,13 +1685,14 @@ ko.bindingHandlers.map = {
 				}
 
 				/** Set the selected marker icon */
-		 		data.marker.setIcon({ path: fontawesome.markers.CIRCLE,
-					fillColor: '#ed5565',
-					fillOpacity: 1,
-					scale: 0.32,
-					strokeColor: '#ffffff',
-					strokeWeight: 3
-				});
+		 		// data.marker.setIcon({
+        //   //path: fontawesome.markers.CIRCLE,
+				// 	fillColor: '#ed5565',
+				// 	fillOpacity: 1,
+				// 	scale: 0.32,
+				// 	strokeColor: '#ffffff',
+				// 	strokeWeight: 3
+				// });
 
 				/** Show the modal */
 				bindingContext.$root.modalVisibilty(true);
