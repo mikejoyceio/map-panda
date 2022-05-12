@@ -550,7 +550,7 @@ dataModel.uber = function(request) {
 	 * @type {String}
 	 * @see {@link https://developer.uber.com/v1/endpoints/}
 	 */
-	var uberAPI = 'https://api.uber.com/v1/estimates/price';
+	var uberAPI = 'https://api.uber.com/v1.2/estimates/price';
 	var uberClientId = 'sF0uXRb14_xpSGdnNlfl8KgOVSgt6IXt';
 	var uberServerToken = 'AKvxnyDLDHBO86RoOC0vcMNTByH1BRHDgerhfNmh';
 
@@ -572,7 +572,8 @@ dataModel.uber = function(request) {
 			end_latitude: request.endLat,
 			end_longitude: request.endLng
 		}
-	}));
+	}
+));
 
 }
 
