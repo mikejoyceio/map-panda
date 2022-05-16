@@ -115,7 +115,7 @@
 
 		<!-- Search Radius -->
 		<div class="search-radius">
-			<input type="text" class="hidden" data-bind="rangeSlider: searchRadius">
+      <input type="range" class="range-slider" data-bind="rangeSlider: searchRadius">
 		</div>
 		<!-- /Search Radius -->
 
@@ -151,6 +151,13 @@
 
 	</div>
 	<!-- /Main Menu -->
+
+  <!-- Wheel Menu -->
+	<div class="menu-wheel">
+		<div data-bind="wheelNav: searchRadius" id="wheelNav">
+		</div>
+	</div>
+	<!-- /Wheel Menu -->
 
 	<!-- Filter -->
  	<div class="filter">

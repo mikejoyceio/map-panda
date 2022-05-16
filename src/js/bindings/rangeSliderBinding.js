@@ -4,8 +4,7 @@
  * @author Mike Joyce [hello@mikejoyce.io]
  */
 
- import ko from 'knockout'
- import '../vendor/ion.rangeSlider.js'
+import ko from 'knockout'
 
 /**
  * RangeSlider
@@ -25,23 +24,10 @@ ko.bindingHandlers.rangeSlider = {
    */
   init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
-    /**
-     * Ion Range Slider
-     * @external '$().ionRangeSlider'
-     * @see {@link https://github.com/IonDen/ion.rangeSlider}
-     */
-    $(element).ionRangeSlider({
-        min: bindingContext.$root.appConstants.SEARCH_RADIUS_MIN,
-        max: bindingContext.$root.appConstants.SEARCH_RADIUS_MAX,
-        from: bindingContext.$root.appConstants.SEARCH_RADIUS_MAX / 2,
-        step: bindingContext.$root.appConstants.SEARCH_RADIUS_MIN,
-        postfix: ' km',
-        hide_min_max: true,
-        prettify_enabled: true,
-        prettify: function(num) {
-          return num / 1000;
-        }
-    });
+    $(element)
+      .attr('min', bindingContext.$root.appConstants.SEARCH_RADIUS_MIN)
+      .attr('max', bindingContext.$root.appConstants.SEARCH_RADIUS_MAX)
+      .attr('step', bindingContext.$root.appConstants.SEARCH_RADIUS_MIN)
 
     /** Bind to the input value */
     ko.bindingHandlers.value.init(element, valueAccessor, allBindings);
@@ -57,18 +43,7 @@ ko.bindingHandlers.rangeSlider = {
    */
   update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
-    /**
-     * Grab the Ion Range Slider DOM object
-     * @type {Object}
-     */
-    var rangeSlider = $(element).data('ionRangeSlider');
-
-    /**
-     * Update Ion Range Slider
-     */
-    rangeSlider.update({
-      from: ko.unwrap(valueAccessor())
-    });
+    $(element).val(ko.unwrap(valueAccessor()))
 
     /** Update the input value */
     ko.bindingHandlers.value.update(element, valueAccessor)
