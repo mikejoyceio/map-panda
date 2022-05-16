@@ -5,7 +5,8 @@
  */
 
 import ko from 'knockout'
-import mCustomScrollbar from 'malihu-custom-scrollbar-plugin'
+import PerfectScrollbar from 'perfect-scrollbar';
+import 'perfect-scrollbar/css/perfect-scrollbar.css';
 
 /**
  * ScrollBar
@@ -30,22 +31,16 @@ ko.bindingHandlers.scrollBar = {
      * @type {number}
      */
     var viewportWidth = ko.unwrap(valueAccessor());
+    var ps;
 
     /** If the viewport width is greater than 1024px instantiate the custom scrollbar, else destroy it */
     if (viewportWidth > 1024) {
 
-      /**
-       * M Custom Scrollbar
-       * @external '$().mCustomScrollbar'
-       * @see {@link http://manos.malihu.gr/jquery-custom-content-scroller/}
-       */
-      $(element).mCustomScrollbar({
-        keyboard: { scrollType: 'stepped' },
-        mouseWheel: { scrollAmount: 10 }
-      });
+      ps = new PerfectScrollbar(element);
 
     } else {
-      $(element).mCustomScrollbar('destroy');
+      ps.destroy();
+      ps = null;
     }
   }
 };
