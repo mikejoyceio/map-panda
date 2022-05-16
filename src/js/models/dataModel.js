@@ -4,6 +4,8 @@
  * @author Mike Joyce [hello@mikejoyce.io]
  */
 
+import fontawesome from 'fontawesome-markers'
+
 /**
  * Data Model
  * @type {Object}
@@ -48,12 +50,12 @@ dataModel.places = [
 		 * @type {Object}
 		 * @see {@link https://github.com/mikejoyceio/fontawesome-markers}
 		 */
-		// marker: { path: fontawesome.markers.PLANE,
-		// 						fillColor: '#2c3e50',
-		// 						fillOpacity: 1,
-		// 						scale: 0.31,
-		// 						strokeColor: '#ffffff',
-		// 						strokeWeight: 1 }
+		marker: { path: fontawesome.markers.PLANE,
+								fillColor: '#2c3e50',
+								fillOpacity: 1,
+								scale: 0.31,
+								strokeColor: '#ffffff',
+								strokeWeight: 1 }
 	},
 	{
 		name: 'Amusement Parks',

@@ -1,6 +1,7 @@
 
 // Font Awesome
 
-$fa-font-path: "../fonts";
+$fa-font-path: "~fontawesome/webfonts";
 
-//@import "../vendor/font-awesome/scss/font-awesome.scss";
+@import "~fontawesome/scss/fontawesome.scss";
+@import "~fontawesome/scss/solid.scss";
