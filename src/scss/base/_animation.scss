@@ -2,27 +2,27 @@
 // Animation
 
 @keyframes pulse {
-		from {
-			border: 3px solid color(white);
-		}
-		to {
-			border: 5px solid color(white);
-		}
+	from {
+		border: 3px solid color(white);
+	}
+	to {
+		border: 5px solid color(white);
+	}
 }
 
 @keyframes pulse-fade {
-		from {
-			transform: scale(0.2);
-			opacity: 1.0;
-		}
-		95% {
-			transform: scale(1.5);
-			opacity: 0;
-		}
-		to {
-		  transform: scale(0.3);
-			opacity: 0;
-		}
+	from {
+		transform: scale(0.2);
+		opacity: 1.0;
+	}
+	95% {
+		transform: scale(1.5);
+		opacity: 0;
+	}
+	to {
+	  transform: scale(0.3);
+		opacity: 0;
+	}
 }
 
 @keyframes spin {
