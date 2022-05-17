@@ -2,9 +2,11 @@
 // Rating
 
 .rating {
-	unicode-bidi: bidi-override;	
+	$this: &;
 
-	span.star {
+	unicode-bidi: bidi-override;
+
+	&__star {
 		display: inline-block;
 		font-family: FontAwesome;
 		font-style: normal;
@@ -18,13 +20,9 @@
 		}
 	}
 
-	.star-icon {
-		content: "\f005";
-		color: color(chenin);
-	}
+	&--00 {
 
-	&.rating-00 {
-		.star {
+		#{$this}__star {
 			display: none;
 		}
 
@@ -35,33 +33,48 @@
 		}
 	}
 
-	&.rating-01 {
-  	.star-01:before {
-			@extend .star-icon;
+	&--01 {
+
+  	#{$this}__star--01:before {
+			color: color(chenin);
   	}
   }
 
-  &.rating-02 {
-	  .star-01:before, .star-02:before {
-			@extend .star-icon;
-  	}			  	
+  &--02 {
+
+	  #{$this}__star--01:before,
+		#{$this}__star--02:before {
+			color: color(chenin);
+  	}
   }
 
-  &.rating-03 {
-	  .star-01:before, .star-02:before, .star-03:before {
-			@extend .star-icon;
-  	}					  	
+  &--03 {
+
+	  #{$this}__star--01:before,
+		#{$this}__star--02:before,
+		#{$this}__star--03:before {
+			color: color(chenin);
+  	}
   }
 
-  &.rating-04 {
-	  .star-01:before, .star-02:before, .star-03:before, .star-04:before {
-			@extend .star-icon;
-  	}				  	
+  &--04 {
+
+	  #{$this}__star--01:before,
+		#{$this}__star--02:before,
+		#{$this}__star--03:before,
+		#{$this}__star--04:before {
+			color: color(chenin);
+  	}
   }
 
-  &.rating-05 {
-	  .star-01:before, .star-02:before, .star-03:before, .star-04:before, .star-05:before {
-			@extend .star-icon;
-  	}						  	
-  }	
+  &--05 {
+
+	  #{$this}__star--01:before,
+		#{$this}__star--02:before,
+		#{$this}__star--03:before,
+		#{$this}__star--04:before,
+		#{$this}__star--05:before {
+			color: color(chenin);
+  	}
+  }
 }

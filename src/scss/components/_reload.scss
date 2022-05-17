@@ -19,8 +19,8 @@
   	cursor: pointer;
   }
 
-	.icon {
-  margin-right: 10px
+	&__icon {
+    margin-right: 10px
 	}
 
 	@media #{$large-up} {

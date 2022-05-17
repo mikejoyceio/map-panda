@@ -1,0 +1,83 @@
+
+// Uber
+
+.uber {
+
+  &__icon {
+    background-color: color(ebony);
+    background-position: 3px;
+    background-repeat: no-repeat;
+    background-size: 18px;
+    border-radius: 4px;
+    background-image: image(uber-badge);
+    height: 22px;
+    margin: auto;
+    position: relative;
+    width: 85px;
+
+    @media #{$medium-up} {
+      height: 26px;
+      width: 117px;
+      background-position: 6px;
+
+      &:before {
+        color: color(silver);
+        content: 'Ride with Uber';
+        font-size: 7px;
+        height: 10px;
+        left: 25px;
+        line-height: 1;
+        position: absolute;
+        top: 3px;
+      }
+
+      &:before {
+        font-size: 8px;
+        left: 30px;
+      }
+    }
+  }
+
+  &__estimate {
+    color: color(white);
+    font-size: 9px;
+    font-weight: $font-light;
+    left: 31px;
+    line-height: 1.2;
+    overflow: hidden;
+    position: absolute;
+    text-align: left;
+    text-overflow: ellipsis;
+    top: 11px;
+    white-space: nowrap;
+    width: 55px;
+
+    @media #{$medium-up} {
+      font-size: 9px;
+      left: 38px;
+      top: 18px;
+      width: 80px;
+    }
+  }
+
+  &__loader {
+    @extend %loader;
+  	background: color(ebony);
+  	border-color: color(java);
+  	border-top-color: transparent;
+    border-width: 2px;
+    height: 15px;
+    left: 5px;
+    margin: auto;
+    top: 3px;
+    width: 15px;
+    z-index: 9999;
+
+    @media #{$medium-up} {
+  		height: 16px;
+  		left: 7px;
+  		top: 5px;
+  		width: 16px;
+    }
+  }
+}

@@ -2,6 +2,8 @@
 // Landing
 
 .landing {
+  $this: &;
+
   background-color: color(gray);
   background-size: 100%;
   background-image: image(default-large);
@@ -31,7 +33,7 @@
 		background-size: 35%;
 	}
 
-	.landing-header {
+	&__header {
 		color: color(off-white);;
 		font-size: 48px;
 		font-weight: $font-extra-bold;
@@ -51,7 +53,7 @@
 	  }
 	}
 
-	.landing-info {
+	&__info {
 	  color: color(off-white);;
 	  font-size: 13px;
 	  font-weight: $font-light;
@@ -71,8 +73,8 @@
 	  }
 	}
 
-	.landing-loading {
-		width: 100%;
+  &__loader {
+    width: 100%;
 		height: 100%;
 		position: absolute;
 		left: 0;
@@ -80,9 +82,52 @@
 		top: 0;
 		bottom: 0;
 		margin: auto;
-	}
 
-	.landing-action {
+  	&-outer {
+  		animation: pulse-fade 2.1s linear infinite;
+  		border-radius: 999px;
+  		transform: scale(0.2);
+  		background: rgba(color(white), 0.1);
+  		border: 3px solid color(gossamer);
+  		bottom: 0;
+  		height: 250px;
+  		left: 0;
+  		margin: auto;
+  		position: absolute;
+  		right: 0;
+  		top: 0;
+  		width: 250px;
+
+  		@media #{$medium-up} {
+  			width: 400px;
+  			height: 400px;
+  		}
+  	}
+
+  	&-inner {
+  		animation: pulse-fade 2.1s -.5s ease-out infinite;
+  		border-radius: 999px;
+  		transform: scale(0.2);
+  		background: rgba(color(white), 0.1);
+  		border: 3px solid color(gossamer);
+  		bottom: 0;
+  		height: 180px;
+  		left: 0;
+  		margin: auto;
+  		position: absolute;
+  		right: 0;
+  		top: 0;
+  		width: 180px;
+  		z-index: 1;
+
+  		@media #{$medium-up} {
+  			width: 350px;
+  			height: 350px;
+  		}
+  	}
+  }
+
+	&__action {
 	  left: 0;
 	  margin: auto;
 	  padding-top: 20px;
@@ -91,7 +136,12 @@
 	  top: 48%;
 	  width: 250px;
 
-	  .button {
+    @media #{$medium-up} {
+	  	width: 270px;
+	  	top: 380px;
+	  }
+
+	  &-button {
 	  	background-color: color(silver-tree);
 	  	border-color: color(silver-tree);
 	  	color: color(white);
@@ -107,14 +157,9 @@
 	  		border-color: color(boulder);
 	  	}
 	  }
-
-	  @media #{$medium-up} {
-	  	width: 270px;
-	  	top: 380px;
-	  }
 	}
 
-	.landing-powered {
+	&__powered {
 	  bottom: 15%;
 	  height: 25px;
 	  left: 0;
@@ -122,75 +167,74 @@
 	  position: absolute;
 	  right: 0;
 	  width: 124px;
+  }
 
-		.landing-powered-header {
-		  color: color(off-white);;
-		  font-size: 8px;
-		  letter-spacing: 1px;
-		  position: absolute;
-		  text-align: center;
-		  text-transform: uppercase;
-		  top: -20px;
-		  width: 100%;
-		}
-
-		.brand-list {
-			list-style: none;
-			text-align: center;
-			width: 100%;
-
-			.item {
-				background: rgba(255, 255, 255, 0.95);
-				display: inline-block;
-				width: 40px;
-				float: left;
-
-	  			.url {
-	  				outline: none;
-	  			}
-
-	  			.icon {
-					color: color(tundora);
-					font-size: 14px;
-					padding: 3px;
-	  			}
-
-				&.foursquare {
-					border-radius: 3px 0 0 3px;
-
-					.icon {
-	  					color: #f94877;
-	  				}
-	  			}
-
-	  			&.uber {
-					margin: 0 2px;
-
-	  				.icon {
-						background-image: image(uber-badge);
-						background-repeat: no-repeat;
-						background-size: cover;
-						display: inline-block;
-						height: 15px;
-						margin: auto auto -2px;
-						padding: 0;
-						width: 15px;
-	  				}
-	  			}
-
-	  			&.google {
-	  				border-radius: 0 3px 3px 0;
-
-	  				.icon {
-	  					color: #dd4b39;
-	  				}
-	  			}
-
-			}
-		}
+	&__powered-header {
+	  color: color(off-white);;
+	  font-size: 8px;
+	  letter-spacing: 1px;
+	  position: absolute;
+	  text-align: center;
+	  text-transform: uppercase;
+	  top: -20px;
+	  width: 100%;
 	}
 
-	.landing-notification {
+	&__brand-list {
+		list-style: none;
+		text-align: center;
+		width: 100%;
+  }
+
+	&__brand-item {
+		background: rgba(255, 255, 255, 0.95);
+		display: inline-block;
+		width: 40px;
+		float: left;
+
+    &--foursquare {
+			border-radius: 3px 0 0 3px;
+
+			#{$this}__brand-icon {
+				color: #f94877;
+			}
+		}
+
+		&--uber {
+		  margin: 0 2px;
+
+			#{$this}__brand-icon {
+  			background-image: image(uber-badge);
+  			background-repeat: no-repeat;
+  			background-size: cover;
+  			display: inline-block;
+  			height: 15px;
+  			margin: auto auto -2px;
+  			padding: 0;
+  			width: 15px;
+			}
+		}
+
+		&--google {
+			border-radius: 0 3px 3px 0;
+
+			#{$this}__brand-icon {
+				color: #dd4b39;
+			}
+		}
+  }
+
+  &__brand-link {
+    outline: none;
+  }
+
+	&__brand-icon {
+		color: color(tundora);
+		font-size: 14px;
+		padding: 3px;
+	}
+
+	&__notification {
 		top: 220px;
 		z-index: 5000;
 
@@ -203,7 +247,7 @@
 		}
 	}
 
-	.landing-reload {
+	&__reload {
 		top: 155px;
 		z-index: 5000;
 

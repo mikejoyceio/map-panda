@@ -40,7 +40,7 @@ ko.bindingHandlers.clipboard = {
       bindingContext.$root.modalOverlayCopyButtonVisibility(true);
 
       /** Set the modal overlay group group buttons CSS class to two */
-      bindingContext.$root.modalOverlayGroupButtons('two')
+      bindingContext.$root.modalOverlayGroupButtons('button-group--two')
 
       /**
        * Clipboard
@@ -103,7 +103,7 @@ ko.bindingHandlers.clipboard = {
       bindingContext.$root.modalOverlayCopyButtonVisibility(false);
 
       /** Set the modal overlay group buttons CSS class to one */
-      bindingContext.$root.modalOverlayGroupButtons('one')
+      bindingContext.$root.modalOverlayGroupButtons('button-group--one')
 
     }
   }

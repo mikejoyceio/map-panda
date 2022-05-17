@@ -25,71 +25,38 @@
 		outline: 0;
 	}
 
-	&.default {
+	&--default {
 		background-color: color(mischka);
 		border-color: color(mischka);
 		color: color(dove-gray);
 	}
 
-	&.action {
+	&--action {
 		background-color: color(silver-tree);
 		color: color(white);
 		border-color: color(silver-tree);
 	}
 
-	&.cancel {
+	&--cancel {
 		background-color: color(mandy);
 		color: color(white);
 		border-color: color(mandy);
 	}
 
-	&.plain {
+	&--plain {
 		background-color: transparent;
 		border-color: color(white);
 		color: color(white);
 	}
 
-	&.radius {
+	&--radius {
 		border-radius: 3px;
 	}
 
-	&.border-thick {
-		border-width: 3px;
-	}
-
-	&.expand {
+	&--expand {
 		width: 100%;
 	}
 
-}
-
-.button-icon {
-  left: 20px;
-  position: absolute;
-  top: 10px;
-}
-
-.button-group {
-  width: 100%;
-
-	&.one {
-		.button {
-			width: 100%;
-		}
-	}
-
-	&.two {
-		.button {
-			width: 100%;
-			@media #{$medium-up} {
-	  		width: 49.3%
-	  	}
-		}
-	}
-
-	.button {
-		display: inline-block;
-	}
 }
 
 // Fix for extra padding on buttons in Firefox

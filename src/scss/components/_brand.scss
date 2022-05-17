@@ -20,7 +20,7 @@
 		width: 203px;
 	}
 
-	.brand-text {
+	&__text {
 		color: color(white);
 		display: block;
 		font-size: 10px;
@@ -37,29 +37,6 @@
 		@media #{$large-up} {
 			font-size: 20px;
 			margin-top: 27px;
-		}
-	}
-
-	.brand-image {
-		background-size: 100%;
-		background-repeat: no-repeat;
-		position: absolute;
-		left: 0;
-		right: 0;
-		margin: 13px auto;
-		width: 35px;
-		height: 35px;
-
-		@media #{$medium-up} {
-			height: 48px;
-			margin: 17px auto;
-			width: 48px;
-		}
-
-		@media #{$large-up} {
-			margin: 20px auto;
-			width: 50px;
-			height: 50px;
 		}
 	}
 }

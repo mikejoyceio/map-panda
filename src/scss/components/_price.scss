@@ -1,0 +1,71 @@
+
+// Price
+
+.price {
+	$this: &;
+
+	unicode-bidi: bidi-override;
+	display: none;
+
+	&__dollar {
+		display: inline-block;
+		font-family: FontAwesome;
+		font-style: normal;
+		font-weight: normal;
+		line-height: inherit;
+
+		&:before {
+		  content: "\f155";
+		  padding: 1px;
+		  color: color(boulder);
+		}
+	}
+
+	.dollar-icon {
+		content: "\f155";
+		color: color(chenin);
+		display: block;
+	}
+
+	&--00 {
+		display: none;
+	}
+
+	&--01 {
+		display: block;
+
+  	#{$this}__dollar--01:before {
+			color: color(chenin);
+  	}
+  }
+
+  &--02 {
+		display: block;
+
+	  #{$this}__dollar--01:before,
+		#{$this}__dollar--02:before {
+			color: color(chenin);
+  	}
+  }
+
+  &--03 {
+		display: block;
+
+	  #{$this}__dollar--01:before,
+		#{$this}__dollar--02:before,
+		#{$this}__dollar--03:before {
+			color: color(chenin);
+  	}
+  }
+
+  &--04 {
+		display: block;
+
+	  #{$this}__dollar--01:before,
+		#{$this}__dollar--02:before,
+		#{$this}__dollar--03:before,
+		#{$this}__dollar--04:before {
+			color: color(chenin);
+  	}
+  }
+}

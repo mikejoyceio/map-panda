@@ -1,22 +1,20 @@
 
 // All Component Partials
 
-@import "brand";
-@import "buttons";
-@import "filter";
-@import "info-box";
-@import "landing";
-@import "loaders";
-@import "map";
-@import "map-compass";
-@import "map-controls";
-@import "map-info";
-@import "menu-main";
-@import "menu-wheel";
-@import "modal";
-@import "notification";
-@import "price-level";
-@import "range-slider";
-@import "rating";
-@import "reload";
-@import "scrollbar";
+@import
+  'brand',
+  'button-group',
+  'buttons',
+  'filter',
+  'info-box',
+  'landing',
+  'loader',
+  'map',
+  'menu',
+  'modal',
+  'notification',
+  'price',
+  'range-slider',
+  'rating',
+  'reload',
+  'uber';

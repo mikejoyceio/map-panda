@@ -833,8 +833,8 @@ var ViewModel = function() {
     	position: self.mapLatLang,
     	map: self.map,
     	flat: true,
-    	content: '<div class="map-current-location">' +
-    							'<div class="radial-pulse"></div>' +
+    	content: '<div class="map__current-location">' +
+    							'<div class="map__current-location-animation"></div>' +
     					 '</div>'
     });
 	}
@@ -1596,17 +1596,17 @@ ko.bindingHandlers.map = {
 		function addInfoBox(data) {
 
 			/** InfoBox HTML content */
-			var infoBoxContent = '<div class="info-box-content">' +
-											'<div class="info-box-title">'+data.name+'</div>' +
-											'<div class="info-box-image" style="background-image: url('+data.photo+');"></div>' +
-											'<div class="info-box-rating rating rating-0'+data.rating+'">' +
-												'<span class="star star-01"></span>' +
-												'<span class="star star-02"></span>' +
-												'<span class="star star-03"></span>' +
-												'<span class="star star-04"></span>' +
-												'<span class="star star-05"></span>' +
+			var infoBoxContent = '<div class="info-box__content">' +
+											'<div class="info-box__title">'+data.name+'</div>' +
+											'<div class="info-box__image" style="background-image: url('+data.photo+');"></div>' +
+											'<div class="info-box__rating rating rating--0'+data.rating+'">' +
+												'<span class="rating__star rating__star--01"></span>' +
+												'<span class="rating__star rating__star--02"></span>' +
+												'<span class="rating__star rating__star--03"></span>' +
+												'<span class="rating__star rating__star--04"></span>' +
+												'<span class="rating__star rating__star--05"></span>' +
 											'</div>' +
-											'<i class="info-box-icon fa '+data.icon+'"></i>' +
+											'<i class="info-box__icon fa '+data.icon+'"></i>' +
 								 		'</div>';
 
 			/** InfoBox options */
@@ -1765,8 +1765,8 @@ ko.bindingHandlers.map = {
 							phone: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number : 'No Number',
 							phoneCall: typeof place.formatted_phone_number !== 'undefined' ? place.formatted_phone_number.replace(/ /g, '') : false,
 							photo: typeof place.photos !== 'undefined' ? "url('"+place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300})+"')" : 'url('+bindingContext.$root.appConstants.DEFAULT_IMAGE_LARGE+')',
-							rating: typeof place.rating !== 'undefined' ? 'rating-0'+Math.round(place.rating) : 'rating-00',
-							price: typeof place.price_level !== 'undefined' ? 'price-0'+place.price_level : 'price-00'
+							rating: typeof place.rating !== 'undefined' ? 'rating--0'+Math.round(place.rating) : 'rating--00',
+							price: typeof place.price_level !== 'undefined' ? 'price--0'+place.price_level : 'price-00'
 						};
 
 						/** Update the place name */

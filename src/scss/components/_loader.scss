@@ -1,0 +1,13 @@
+
+// Loader
+
+%loader {
+  box-sizing: border-box;
+  border-radius: 40px;
+  animation: spin 1.0s infinite linear;
+  border-style: solid;
+  border-color: color(white);
+  border-width: 10px;
+  border-top-color: transparent;
+  position: absolute;
+}

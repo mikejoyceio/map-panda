@@ -34,7 +34,7 @@ ko.bindingHandlers.hover = {
      * @see {@link http://api.jquery.com/on/}
      */
     $(element).on('mouseover', function(){
-      $(element).addClass('hover');
+      $(element).addClass('menu__list-item--hover');
     });
 
     /**
@@ -45,7 +45,7 @@ ko.bindingHandlers.hover = {
      * @see {@link http://api.jquery.com/on/}
      */
     $(element).on('mouseout', function(){
-      $(element).removeClass('hover');
+      $(element).removeClass('menu__list-item--hover');
     });
 
   }

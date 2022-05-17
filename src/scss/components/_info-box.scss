@@ -1,5 +1,5 @@
 
-// Info Window
+// Info Box
 
 .info-box {
 	border-radius: 3px;
@@ -18,53 +18,53 @@
 		margin: auto;
 	}
 
-	.info-box-content {
+	&__content {
 		border-radius: 3px;
 		background: color(white);
 		padding: 2px 40px 2px 40px;
 		position: relative;
 		min-height: 35px;
+	}
 
-		.info-box-title {
-		  line-height: 1.3;
-		  margin: 2px;
-		  width: 160px;
-		  text-overflow: ellipsis;
-		  overflow: hidden;
-		  white-space: nowrap;
-		  color: color(scorpion);
-		  font-size: 12px;
-		  font-weight: 500;
-		}
+	&__title {
+	  line-height: 1.3;
+	  margin: 2px;
+	  width: 160px;
+	  text-overflow: ellipsis;
+	  overflow: hidden;
+	  white-space: nowrap;
+	  color: color(scorpion);
+	  font-size: 12px;
+	  font-weight: 500;
+	}
 
-		.info-box-rating {
-      position: absolute;
-      top: 16px;
-      left: 41px;
-		}
+	&__rating {
+    position: absolute;
+    top: 16px;
+    left: 41px;
+	}
 
-		.info-box-image {
-			width: 30px;
-			height: 30px;
-			background-size: cover;
-			position: absolute;
-			top: 5px;
-			left: 5px;
-		}
+	&__image {
+		width: 30px;
+		height: 30px;
+		background-size: cover;
+		position: absolute;
+		top: 5px;
+		left: 5px;
+	}
 
-		.info-box-icon {
-		  border-radius: 2px;
-		  border: 1px solid;
-		  color: color(gray);
-		  font-size: 14px;
-		  height: 13px;
-		  opacity: 0.3;
-		  position: absolute;
-		  right: 4px;
-		  text-align: center;
-		  top: 4px;
-		  width: 13px;
-		  padding: 1px;
-		}
+	&__icon {
+	  border-radius: 2px;
+	  border: 1px solid;
+	  color: color(gray);
+	  font-size: 14px;
+	  height: 13px;
+	  opacity: 0.3;
+	  position: absolute;
+	  right: 4px;
+	  text-align: center;
+	  top: 4px;
+	  width: 13px;
+	  padding: 1px;
 	}
 }

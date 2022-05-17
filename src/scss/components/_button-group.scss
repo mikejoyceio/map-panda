@@ -1,0 +1,24 @@
+
+// Button Group
+
+.button-group {
+  $this: &;
+
+  width: 100%;
+
+	&__button {
+		display: inline-block;
+
+    #{$this}--one & {
+      width: 100%;
+    }
+
+    #{$this}--two & {
+      width: 100%;
+
+			@media #{$medium-up} {
+	  		width: 49.3%
+	  	}
+    }
+	}
+}

@@ -1,5 +1,5 @@
 
-// Info Modal
+// Modal
 
 .modal {
 	background: color(white);
@@ -28,410 +28,378 @@
 		top: 110px;
 	}
 
-	.modal-content {
-		height: 100%;
-		position: relative;
+	&__actions {
+		border-bottom: 1px solid color(ebb);
+		height: 35px;
 
-		.modal-header {
-			background: color(outer-space);
-			position: relative;
-			height: 100px;
-			overflow: hidden;
-			z-index: 2;
+		@media #{$medium-up} {
+			height: 50px;
+		}
+
+		&-item {
+			cursor: pointer;
+			padding: 5px 5px;
+			width: 80px;
+			text-align: center;
+			font-size: 25px;
+			top: 1px;
+			position: absolute;
 
 			@media #{$medium-up} {
-				height: 140px;
+				padding: 5px 7px;
+				width: 110px;
+				top: 5px;
 			}
 
-			.top-bar {
-				background: color(jungle-green);
-				position: absolute;
-				top: 0;
+			&--left {
+				border-right: 1px solid color(ebb);
 				left: 0;
-				height: 20px;
-				width: 100%;
-				z-index: 3;
-
-				@media #{$medium-up} {
-					height: 25px;
-				}
-
-				.close-modal {
-					font-size: 8px;
-					position: absolute;
-					top: -3px;
-					right: 3px;
-
-					&:hover {
-						cursor: pointer;
-					}
-
-					@media #{$medium-up} {
-						font-size: 10px;
-						top: 0;
-					}
-
-					.icon-outer {
-						color: color(white);
-					}
-
-					.icon-inner {
-						color: color(white);
-					}
-				}
 			}
 
-			.image {
-				background-size: cover;
-				height: 100%;
-			}
-
-			.place-price {
-			  border-radius: 3px;
-			  background: rgba(255,255,255,0.3);
-			  font-size: 11px;
-			  height: 17px;
-			  left: 7px;
-			  line-height: 1.6;
-			  position: absolute;
-			  text-align: center;
-			  top: 30px;
-			  width: 50px;
-			}
-
-			.bottom-bar {
-				background: color(jungle-green);
-				height: 3px;
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				width: 100%;
-			}
-		}
-
-		.modal-body {
-			position: relative;
-			margin: 5px 10px;
-
-			.place-rating {
-			  background: color(white);
-			  border-radius: 4px;
-			  border: 2px solid color(jungle-green);
-			  color: color(white);
-			  display: inline-block;
-			  font-size: 7px;
-			  font-weight: 300;
-			  height: 9px;
-			  left: 0;
-			  line-height: 9px;
-			  margin: auto;
-			  position: absolute;
-			  right: 0;
-			  text-align: center;
-			  top: -11px;
-			  vertical-align: middle;
-			  width: 60px;
-			  z-index: 2;
-
-			  @media #{$medium-up} {
-			  	font-size: 9px;
-			  	height: 11px;
-			  	line-height: 11px;
-			  	width: 75px;
-			  }
-			}
-
-			.actions {
-				border-bottom: 1px solid color(ebb);
-				height: 35px;
-
-				@media #{$medium-up} {
-					height: 50px;
-				}
-
-				.action-phone,
-				.action-uber {
-					cursor: pointer;
-  				padding: 5px 5px;
-  				width: 80px;
-				  text-align: center;
-				  font-size: 25px;
-				  top: 1px;
-				  position: absolute;
-
-				  @media #{$medium-up} {
-						padding: 5px 7px;
-				  	width: 110px;
-				  	top: 5px;
-				  }
-				}
-
-				.action-phone {
-					border-right: 1px solid color(ebb);
-					font-size: 20px;
-					left: 0;
-
-					@media #{$medium-up} {
-						font-size: 25px;
-					}
-				}
-
-				.action-uber {
-					border-left: 1px solid color(ebb);
-					right: 0;
-
-					.url {
-						outline: none;
-					}
-
-					.icon {
-						background-color: color(ebony);
-						background-position: 3px;
-						background-repeat: no-repeat;
-						background-size: 18px;
-					  border-radius: 4px;
-					  background-image: image(uber-badge);
-					  height: 22px;
-					  margin: auto;
-					  position: relative;
-					  width: 85px;
-
-					  @media #{$medium-up} {
-					    height: 26px;
-					    width: 117px;
-  						background-position: 6px;
-
-	 					  &:before {
-							  color: color(silver);
-							  content: 'Ride with Uber';
-							  font-size: 7px;
-							  height: 10px;
-							  left: 25px;
-							  line-height: 1;
-							  position: absolute;
-							  top: 3px;
-						  }
-
-					  	&:before {
-						    font-size: 8px;
-						    left: 30px;
-					  	}
-					  }
-					}
-
-					.estimate {
-					  color: color(white);
-					  font-size: 9px;
-					  font-weight: $font-light;
-					  left: 31px;
-					  line-height: 1.2;
-					  overflow: hidden;
-					  position: absolute;
-					  text-align: left;
-					  text-overflow: ellipsis;
-					  top: 11px;
-					  white-space: nowrap;
-					  width: 55px;
-
-					  @media #{$medium-up} {
-					    font-size: 9px;
-					    left: 38px;
-					    top: 18px;
-					    width: 80px;
-					  }
-					}
-				}
-			}
-
-			.info {
-	  		position: relative;
-
-				.info-item {
-				  position: relative;
-				  padding: 7px 5px 7px 20px;
-
-				  @media #{$medium-up} {
-				  	padding: 7px 5px 7px 25px;
-				  }
-
-					.icon {
-					  color: color(gray-chateau);
-					  font-size: 14px;
-					  position: absolute;
-					  left: 0;
-					  top: 6px;
-
-					  @media #{$medium-up} {
-							font-size: 15px;
-					  }
-					}
-
-					p {
-				  	color: color(rolling-stone);
-				  	font-size: 10px;
-				  	line-height: 1.2;
-
-				  	@media #{$medium-up} {
-				  		font-size: 11px;
-				  	}
-					}
-
-					&.place-info {
-  					min-height: 40px;
-
-						.place-name {
-						  color: color(tundora);
-						  margin-bottom: 4px;
-						  font-weight: 600;
-						}
-
-						.place-address {
-						  font-size: 10px;
-						  max-height: 58px;
-						  overflow: hidden;
-						}
-					}
-
-					&.place-website {
-						border-top: 1px solid color(ebb);
-
-						.url {
-							color: color(tundora);
-							display: inline-block;
-							text-decoration: none;
-							font-weight: 600;
-							width: 100%;
-						}
-					}
-				}
-			}
-		}
-
-		.modal-overlay {
-		  background: rgba(255, 255, 255, 0.95);
-		  border: 8px solid rgba(218, 222, 227, 0.9);
-		  box-sizing: border-box;
-		  height: 100%;
-		  padding: 5px;
-		  position: absolute;
-		  top: 0;
-		  width: 100%;
-		  z-index: 9999;
-
-		  .modal-overlay-message {
-				left: 0;
-				margin: auto;
-				position: absolute;
+			&--right {
+				border-left: 1px solid color(ebb);
 				right: 0;
-				text-align: center;
-				top: 150px;
-		  }
+			}
+		}
+	}
 
-		  .place-phone {
-		  	height: 130px;
-			  font-family: 'Lato', sans-serif;
-			  font-size: 20px;
-			  font-weight: 300;
-			  margin: 65px 0;
-			  text-align: center;
+	&__body {
+		position: relative;
+		margin: 5px 10px;
+	}
 
-			  &::selection {
-			  	background: none;
-			  }
+	&__close {
+		font-size: 8px;
+		position: absolute;
+		top: -3px;
+		right: 3px;
 
-			  &::-moz-selection {
-			  	background: none;
-			  }
-
-			  @media #{$medium-up} {
-			  	font-size: 25px;
-			  }
-		  }
-
-		  .actions {
-			  bottom: -8px;
-			  height: 92px;
-			  left: 0;
-			  margin: 0;
-			  margin: auto;
-			  padding: 0;
-			  position: absolute;
-			  right: 0;
-			  width: 96%;
-
-			  .button-group {
-					position: absolute;
-					top: 0;
-					height: 40px;
-
-					.button.copy {
-						display: none;
-					}
-
-					@media #{$medium-up} {
-						.button.copy {
-							display: inline-block;
-						}
-					}
-			  }
-
-			  .button.cancel {
-				  position: absolute;
-				  bottom: 0;
-			  }
-		  }
+		&:hover {
+			cursor: pointer;
 		}
 
-		.modal-footer {
-		  border-top: 1px solid color(ebb);
-		  height: 28px;
-		  margin: auto 10px;
-		  padding: 6px 0;
-		  position: absolute;
-		  bottom: 0;
+		@media #{$medium-up} {
+			font-size: 10px;
+			top: 0;
+		}
+
+		&-icon {
+
+			&--outer {
+				color: color(white);
+			}
+
+			&--inner {
+				color: color(white);
+			}
+		}
+	}
+
+	&__content {
+		height: 100%;
+		position: relative;
+	}
+
+	&__footer {
+	  border-top: 1px solid color(ebb);
+	  height: 28px;
+	  margin: auto 10px;
+	  padding: 6px 0;
+	  position: absolute;
+	  bottom: 0;
+	  left: 0;
+	  right: 0;
+	  z-index: 1;
+
+	  @media #{$medium-up} {
+	  	height: 35px;
+	  	padding: 10px 0 12px;
+	  }
+	}
+
+	&__foursquare {
+
+		&-button {
+			border-radius: 20px;
+			border: 1px solid;
+			color: color(violet-red);
+			display: block;
+			font-size: 13px;
+			font-weight: 400;
+			margin: auto;
+			padding: 1px;
+			text-align: center;
+			text-decoration: none;
+			width: 175px;
+
+			@media #{$medium-up} {
+				font-size: 15px;
+				width: 230px;
+				padding: 5px;
+			}
+		}
+
+		&-icon {
+			font-size: 13px;
+			margin-right: 6px;
+		}
+	}
+
+	&__header {
+		background: color(outer-space);
+		position: relative;
+		height: 100px;
+		overflow: hidden;
+		z-index: 2;
+
+		@media #{$medium-up} {
+			height: 140px;
+		}
+
+		&-top-bar {
+			background: color(jungle-green);
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 20px;
+			width: 100%;
+			z-index: 3;
+
+			@media #{$medium-up} {
+				height: 25px;
+			}
+		}
+
+		&-bottom-bar {
+			background: color(jungle-green);
+			height: 3px;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+		}
+	}
+
+	&__image {
+		background-size: cover;
+		height: 100%;
+	}
+
+	&__info {
+		position: relative;
+
+		&-text {
+			color: color(rolling-stone);
+			font-size: 10px;
+			line-height: 1.2;
+
+			@media #{$medium-up} {
+				font-size: 11px;
+			}
+
+			&--address {
+				font-size: 10px;
+				max-height: 58px;
+				overflow: hidden;
+			}
+
+			&--name {
+				color: color(tundora);
+				margin-bottom: 4px;
+				font-weight: 600;
+			}
+
+			&--link {
+				color: color(tundora);
+				display: inline-block;
+				text-decoration: none;
+				font-weight: 600;
+				width: 100%;
+			}
+		}
+
+		&-icon {
+			color: color(gray-chateau);
+			font-size: 14px;
+			position: absolute;
+			left: 0;
+			top: 6px;
+
+			@media #{$medium-up} {
+				font-size: 15px;
+			}
+		}
+
+		&-item {
+			position: relative;
+			padding: 7px 5px 7px 20px;
+
+			@media #{$medium-up} {
+				padding: 7px 5px 7px 25px;
+			}
+
+			&--left {
+				min-height: 40px;
+			}
+
+			&--right {
+				border-top: 1px solid color(ebb);
+			}
+		}
+	}
+
+	&__loading {
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: transparent;
+		z-index: 9999;
+		width: 100%;
+		height: 100%;
+
+		&-loader {
+			@extend %loader;
+			width: 30px;
+		  height: 30px;
+			border-width: 4px;
+		  top: 40px;
 		  left: 0;
 		  right: 0;
-		  z-index: 1;
+		  margin: auto;
+		  z-index: 9999;
 
 		  @media #{$medium-up} {
-		  	height: 35px;
-		  	padding: 10px 0 12px;
+		  	width: 40px;
+		  	height: 40px;
+		  	border-width: 5px;
+		  	top: 57px;
+		  }
+		}
+	}
+
+	&__overlay {
+	  background: rgba(255, 255, 255, 0.95);
+	  border: 8px solid rgba(218, 222, 227, 0.9);
+	  box-sizing: border-box;
+	  height: 100%;
+	  padding: 5px;
+	  position: absolute;
+	  top: 0;
+	  width: 100%;
+	  z-index: 9999;
+
+	  &-message {
+			left: 0;
+			margin: auto;
+			position: absolute;
+			right: 0;
+			text-align: center;
+			top: 150px;
+	  }
+
+	  &-phone {
+	  	height: 130px;
+		  font-family: 'Lato', sans-serif;
+		  font-size: 20px;
+		  font-weight: 300;
+		  margin: 65px 0;
+		  text-align: center;
+
+		  &::selection {
+		  	background: none;
 		  }
 
-			.button-foursquare {
-			  border-radius: 20px;
-			  border: 1px solid;
-			  color: color(violet-red);
-			  display: block;
-			  font-size: 13px;
-			  font-weight: 400;
-			  margin: auto;
-			  padding: 1px;
-			  text-align: center;
-			  text-decoration: none;
-			  width: 175px;
+		  &::-moz-selection {
+		  	background: none;
+		  }
 
-			  @media #{$medium-up} {
-			  	font-size: 15px;
-			  	width: 230px;
-			  	padding: 5px;
-			  }
+		  @media #{$medium-up} {
+		  	font-size: 25px;
+		  }
+	  }
 
-			  .icon {
-			  	font-size: 13px;
-			  	margin-right: 6px;
-			  }
+		&-button {
+			display: inline-block;
+
+			&--cancel {
+			  position: absolute;
+			  bottom: 0;
 			}
-		}
 
-		.modal-loading {
-		  position: absolute;
-		  top: 0;
+			&--copy {
+				display: none;
+
+				@media #{$medium-up} {
+					display: inline-block;
+				}
+			}
+	  }
+
+	  &-actions {
+		  bottom: -8px;
+		  height: 92px;
 		  left: 0;
-		  background: transparent;
-		  z-index: 9999;
-		  width: 100%;
-		  height: 100%;
+		  margin: 0;
+		  margin: auto;
+		  padding: 0;
+		  position: absolute;
+		  right: 0;
+		  width: 96%;
+	  }
+
+		&-button-group {
+			position: absolute;
+			top: 0;
+			height: 40px;
+	  }
+	}
+
+	&__phone {
+		font-size: 20px;
+
+		@media #{$medium-up} {
+			font-size: 25px;
+		}
+	}
+
+	&__price {
+		border-radius: 3px;
+		background: rgba(255,255,255,0.3);
+		font-size: 11px;
+		height: 17px;
+		left: 7px;
+		line-height: 1.6;
+		position: absolute;
+		text-align: center;
+		top: 30px;
+		width: 50px;
+	}
+
+	&__rating {
+		background: color(white);
+		border-radius: 4px;
+		border: 2px solid color(jungle-green);
+		color: color(white);
+		display: inline-block;
+		font-size: 7px;
+		font-weight: 300;
+		height: 9px;
+		left: 0;
+		line-height: 9px;
+		margin: auto;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		top: -11px;
+		vertical-align: middle;
+		width: 60px;
+		z-index: 2;
+
+		@media #{$medium-up} {
+			font-size: 9px;
+			height: 11px;
+			line-height: 11px;
+			width: 75px;
 		}
 	}
 }
