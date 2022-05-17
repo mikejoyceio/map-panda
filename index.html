@@ -36,34 +36,26 @@
 
 	<!-- Landing -->
 	<div class="landing" data-bind="visible: appLandingVisbility">
-
-		<!-- Landing Header -->
 		<h1 class="landing__header">
 			<div class="landing__brand"></div> Map Panda
 		</h1>
-		<!-- /Landing Header -->
-
-		<!-- Landing Info -->
 		<div class="landing__info">
-			<p>Explore places to eat, drink, shop, and more around you.</p>
-			<p>Over 50 million places worldwide.</p>
+			<p>
+        Explore places to eat, drink, shop, and more around you.
+      </p>
+			<p>
+        Over 50 million places worldwide.
+      </p>
 		</div>
-		<!-- /Landing Info -->
-
-		<!-- Landing Loading -->
 		<div class="landing__loader" data-bind="visible: appLandingLoadingVisibility">
 			<div class="landing__loader-outer"></div>
 			<div class="landing__loader-inner"></div>
 		</div>
-		<!-- /Landing Loading -->
-
-		<!-- Landing Action -->
 		<div class="landing__action" data-bind="visible: appLandingActionVisibility" style="display: none;">
-			<button class="landing__action-button button button--plain button--radius button--expand" data-bind="click: getLocation">Get Started!</button>
+			<button class="landing__action-button button button--plain button--radius button--expand" data-bind="click: getLocation">
+        Get Started!
+      </button>
 		</div>
-		<!-- /Landing Action -->
-
-		<!-- Landing Powered By -->
 		<div class="landing__powered">
 			<h3 class="landing__powered-header">
 				Powered By
@@ -85,20 +77,12 @@
 				</li>
 			</ul>
 		</div>
-		<!-- /Landing Powered By -->
-
-		<!-- Landing Notification -->
 		<div class="landing__notification notification" data-bind="notification: { message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
-		<!-- /Landing Notification -->
-
-		<!-- Landing Reload -->
 		<div class="landing__reload reload" data-bind="visible: appReloadVisbility, event: { click: reloadApp, touchend: reloadApp }" style="display: none;">
 			<span class="reload__icon fa fa-refresh"></span>Reload Map Panda
 		</div>
-		<!-- /Landing Reload -->
-
 	</div>
-	<!-- /Landing -->
+	<!-- END Landing -->
 
 	<!-- Brand -->
 	<div class="brand">
@@ -106,27 +90,19 @@
 			Map Panda
 		</a>
 	</div>
-	<!-- /Brand -->
+	<!-- END Brand -->
 
-	<!-- Main Menu -->
+	<!-- Menu -->
 	<div class="menu" role="menu">
-
-		<!-- Search Radius -->
 		<div class="menu__radius">
       <input type="range" class="range-slider" data-bind="rangeSlider: searchRadius">
 		</div>
-		<!-- /Search Radius -->
-
-		<!-- Search Filter -->
 		<div class="menu__filter">
 			<div class="menu__filter-clear" data-bind="click: clearFilter, visible: searchClearFilterVisibility">
 				<span class="fa fa-times-circle"></span>
 			</div>
 			<input class="menu__filter-input" type="text" placeholder="Filter" autocapitalize="off" autocorrect="off" data-bind="textInput: searchQuery">
 		</div>
-		<!-- /Search Filter -->
-
-		<!-- Options -->
 		<ul class="menu__list" data-bind="scrollBar: appViewportWidth">
 			<!-- ko foreach: placeList -->
 			<li class="menu__list-item" data-bind="css: {'menu__list-item--active': isActive(), 'menu__list-item--hidden': isHidden()}, event: { click: $parent.selectPlace, touchend: $parent.selectPlace }, hover">
@@ -145,17 +121,8 @@
 				<span>No Results</span>
 			</li>
 		</ul>
-		<!-- /Options -->
-
 	</div>
-	<!-- /Main Menu -->
-
-  <!-- Wheel Menu -->
-	<div class="menu-wheel">
-		<div data-bind="wheelNav: searchRadius" id="wheelNav">
-		</div>
-	</div>
-	<!-- /Wheel Menu -->
+	<!-- END Menu -->
 
 	<!-- Filter -->
  	<div class="filter">
@@ -175,9 +142,8 @@
 	<!-- Main Content -->
 	<div class="main-content" role="main">
 
+    <!-- Map -->
     <div class="map">
-
-      <!-- Map Info -->
   		<div class="map__info">
   			<div class="map__info-content">
   				<div data-bind="visible: mapInfoVisibility">
@@ -187,25 +153,15 @@
   				</div>
   			</div>
   		</div>
-  		<!-- /Map Info -->
-
-  		<!-- Compass -->
   		<div class="map__compass" data-bind="compass">
        	<div class="map__compass-direction map__compass-direction--north">N</div>
       	<div class="map__compass-direction map__compass-direction--south"></div>
       </div>
-  		<!-- /Compass -->
-
-  		<!-- Map -->
   		<div class="map__container" data-bind="map: { currentPlace: currentPlace, searchRadius: searchRadius }"></div>
-  		<!-- /Map -->
-
-  		<!-- Map Controls -->
       <div class="map__controls">
     		<div class="map__controls-pan-to" data-bind="event: { click: mapPanTo, touchend: mapPanTo }">
     			<span class="map__controls-pan-to-icon fa fa-crosshairs"></span>
     		</div>
-
     		<div class="map__controls-zoom">
     	    <div class="map__controls-button map__controls-button--zoom-in" data-bind="event: { click: mapZoomIn, touchend: mapZoomIn }">
       			<span class="fa fa-plus"></span>
@@ -215,9 +171,6 @@
        		</div>
     		</div>
       </div>
-     	<!-- /Map Controls -->
-
-  	  <!-- Map Loading -->
   		<div class="map__loader" data-bind="visible: mapLoadingVisibility">
   			<div class="map__loader-content">
   				<div class="map__loader-outer">
@@ -226,30 +179,19 @@
   				</div>
   			</div>
   		</div>
-  		<!-- /Map Loading -->
-
-  		<!-- Map Notification -->
   		<div class="map__notification notification" data-bind="notification: { message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
-  		<!-- /Map Notification -->
-
-  		<!-- Map Reload -->
   		<div class="map__reload reload" data-bind="visible: appReloadVisbility, event: { click: reloadApp, touchend: reloadApp }" style="display: none;">
   			<span class="icon fa fa-refresh"></span>Reload Map Panda
   		</div>
-  		<!-- /Map Reload -->
-
     </div>
+    <!-- END Map -->
 
 	</div>
-	<!-- /Main Content -->
+	<!-- END Main Content -->
 
 	<!-- Modal -->
 	<div class="modal" data-bind="cssAnimateVisible: modalVisibilty, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 200, durationOut: 100">
-
-		<!-- Modal Content -->
 		<div class="modal__content">
-
-			<!-- Modal Header -->
 			<div class="modal__header">
 				<div class="modal__header-top-bar">
 					<span class="modal__close" data-bind="event: { click: closeModal, touchend: closeModal }">
@@ -269,9 +211,6 @@
 				<div class="modal__header-bottom-bar">
 				</div>
 			</div>
-			<!-- /Modal Header -->
-
-			<!-- Modal Body -->
 			<div class="modal__body">
 				<div class="modal__rating rating" data-bind="css: modalInfoRating">
 					<span class="rating__star rating__star--01"></span>
@@ -309,9 +248,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- /Modal Body -->
-
-			<!-- Modal Overlay -->
 			<div class="modal__overlay" data-bind="cssAnimateVisible: modalOverlayVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
 				<div class="modal__overlay-message" data-bind="cssAnimateVisible: modalOverlayMessageVisibility, animation: 'bounceIn', animationOut: 'fadeOut', duration: 300, durationOut: 100, text: modalOverlayMessage"></div>
 				<div id="clipboardTarget" class="modal__overlay-phone" data-bind="text: modalInfoPhone"></div>
@@ -323,9 +259,6 @@
 					<button class="modal__overlay-button modal__overlay-button--cancel button button--cancel button--radius button--expand" data-bind="event: { click: closeModalOverlay, touchend: closeModalOverlay }">Close</button>
 				</div>
 			</div>
-			<!-- /Modal Overlay -->
-
-			<!-- Modal Footer -->
 			<div class="modal__footer">
         <div class="modal__foursquare">
   				<a class="modal__foursquare-button" data-bind="visible: modalFoursquareVisibility(), attr: { href: modalFoursquareURL() }" target="_blank">
@@ -334,32 +267,24 @@
   				</a>
         </div>
 			</div>
-			<!-- /Modal Footer -->
-
-			<!-- Modal Loader -->
 			<div class="modal__loading" data-bind="cssAnimateVisible: modalLoading, animation: 'bounceIn', animationOut: 'zoomOut', duration: 300, durationOut: 300">
 				<div class="modal__loading-loader"></div>
 			</div>
-			<!-- /Modal Loader -->
-
 		</div>
-		<!-- /Modal Content -->
-
 	</div>
-	<!-- /Modal -->
+	<!-- END Modal -->
 
 	<!-- Footer -->
 	<footer class="footer" role="contentinfo">
 
 	</footer>
-	<!-- /Footer -->
+	<!-- END Footer -->
 
 	<!-- Body Loader -->
 	<div class="body-loader animated pulse infinite" data-bind="visible: appBodyLoadingVisibility"></div>
 
 	<!-- Google Maps API -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4KC7nmHmDdz1n0H9xy9rm_B9YAUPeo_A&libraries=places"></script>
-
 
 </body>
 </html>

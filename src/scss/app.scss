@@ -1,11 +1,5 @@
 
-// Centralize Imports
-
-// Base
-@import "base";
-
-// Layout
-@import "layout";
-
-// Components
-@import "components";
+@import
+  'base',
+  'layout',
+  'components';
