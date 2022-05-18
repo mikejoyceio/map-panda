@@ -2968,11 +2968,6 @@ whatwg-url@^7.0.0:
     tr46 "^1.0.1"
     webidl-conversions "^4.0.2"
 
-wheelnav@^1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/wheelnav/-/wheelnav-1.7.1.tgz#64edb72e06f8fa5637955afdcacda9bf45959721"
-  integrity sha1-ZO23Lgb4+lY3lVr9ys2pv0WVlyE=
-
 which@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/which/-/which-2.0.2.tgz#7c6a8dd0a636a0327e10b59c9286eee93f3f51b1"
