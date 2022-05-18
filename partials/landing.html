@@ -1,0 +1,48 @@
+
+<div class="landing" data-bind="visible: appLandingVisbility">
+  <h1 class="landing__header">
+    <div class="landing__brand"></div> Map Panda
+  </h1>
+  <div class="landing__info">
+    <p>
+      Explore places to eat, drink, shop, and more around you.
+    </p>
+    <p>
+      Over 50 million places worldwide.
+    </p>
+  </div>
+  <div class="landing__loader" data-bind="visible: appLandingLoadingVisibility">
+    <div class="landing__loader-outer"></div>
+    <div class="landing__loader-inner"></div>
+  </div>
+  <div class="landing__action" data-bind="visible: appLandingActionVisibility" style="display: none;">
+    <button class="landing__action-button button button--plain button--radius button--expand" data-bind="click: getLocation">
+      Get Started!
+    </button>
+  </div>
+  <div class="landing__powered">
+    <h3 class="landing__powered-header">
+      Powered By
+    </h3>
+    <ul class="landing__brand-list">
+      <li class="landing__brand-item landing__brand-item--foursquare">
+       <a class="landing__brand-link" href="https://foursquare.com/" target="_blank">
+        <span class="landing__brand-icon fa fa-foursquare"></span>
+       </a>
+       <li class="landing__brand-item landing__brand-item--uber">
+       <a class="landing__brand-link" href="https://uber.com/" target="_blank">
+        <div class="landing__brand-icon"></div>
+       </a>
+      </li>
+      <li class="landing__brand-item landing__brand-item--google">
+       <a class="landing__brand-link" href="https://www.google.com/work/mapsearth/" target="_blank">
+        <span class="landing__brand-icon fa fa-google"></span>
+       </a>
+      </li>
+    </ul>
+  </div>
+  <div class="landing__notification notification" data-bind="notification: { message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
+  <div class="landing__reload reload" data-bind="visible: appReloadVisbility, event: { click: reloadApp, touchend: reloadApp }" style="display: none;">
+    <span class="reload__icon fa fa-refresh"></span>Reload Map Panda
+  </div>
+</div>

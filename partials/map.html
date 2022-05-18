@@ -1,0 +1,42 @@
+
+<div class="map">
+  <div class="map__info">
+    <div class="map__info-content">
+      <div data-bind="visible: mapInfoVisibility">
+        <!-- ko with: currentPlace -->
+        <h2 class="map__info-heading" data-bind="text: name"></h2>
+        <!-- /ko -->
+      </div>
+    </div>
+  </div>
+  <div class="map__compass" data-bind="compass">
+    <div class="map__compass-direction map__compass-direction--north">N</div>
+    <div class="map__compass-direction map__compass-direction--south"></div>
+  </div>
+  <div class="map__container" data-bind="map: { currentPlace: currentPlace, searchRadius: searchRadius }"></div>
+  <div class="map__controls">
+    <div class="map__controls-pan-to" data-bind="event: { click: mapPanTo, touchend: mapPanTo }">
+      <span class="map__controls-pan-to-icon fa fa-crosshairs"></span>
+    </div>
+    <div class="map__controls-zoom">
+      <div class="map__controls-button map__controls-button--zoom-in" data-bind="event: { click: mapZoomIn, touchend: mapZoomIn }">
+        <span class="fa fa-plus"></span>
+      </div>
+      <div class="map__controls-button map__controls-button--zoom-out" data-bind="event: { click: mapZoomOut, touchend: mapZoomOut }">
+        <span class="fa fa-minus"></span>
+      </div>
+    </div>
+  </div>
+  <div class="map__loader" data-bind="visible: mapLoadingVisibility">
+    <div class="map__loader-content">
+      <div class="map__loader-outer">
+        <div class="map__loader-inner">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="map__notification notification" data-bind="notification: { message: notificationMessage, duration: notificationFadeDuration, hide: notificationKeepAlive }"></div>
+  <div class="map__reload reload" data-bind="visible: appReloadVisbility, event: { click: reloadApp, touchend: reloadApp }" style="display: none;">
+    <span class="icon fa fa-refresh"></span>Reload Map Panda
+  </div>
+</div>

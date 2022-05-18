@@ -1,0 +1,30 @@
+
+<div class="menu" role="menu">
+  <div class="menu__radius">
+    <input type="range" class="range-slider" data-bind="rangeSlider: searchRadius">
+  </div>
+  <div class="menu__filter">
+    <div class="menu__filter-clear" data-bind="click: clearFilter, visible: searchClearFilterVisibility">
+      <span class="fa fa-times-circle"></span>
+    </div>
+    <input class="menu__filter-input" type="text" placeholder="Filter" autocapitalize="off" autocorrect="off" data-bind="textInput: searchQuery">
+  </div>
+  <ul class="menu__list" data-bind="scrollBar: appViewportWidth">
+    <!-- ko foreach: placeList -->
+    <li class="menu__list-item" data-bind="css: {'menu__list-item--active': isActive(), 'menu__list-item--hidden': isHidden()}, event: { click: $parent.selectPlace, touchend: $parent.selectPlace }, hover">
+      <span class="menu__list-item-icon fa-stack fa-sml">
+        <!--<i class="menu__list-item-icon--outer fal fa-circle fa-stack-2x"></i>-->
+        <i class="menu__list-item-icon--inner fa fa-stack-1x fa-inverse" data-bind="css: icon"></i>
+      </span>
+      <span data-bind="text: name"></span>
+    </li>
+    <!-- /ko -->
+    <li class="item item--no-results" data-bind="visible: searchQueryNoResults, event: { click: clearFilter, touchend: clearFilter }, hover">
+      <span class="icon fa-stack fa-sml">
+        <i class="icon-outer fa fa-circle-thin fa-stack-2x"></i>
+        <i class="icon-inner fa fa-stack-1x fa-inverse fa-minus"></i>
+      </span>
+      <span>No Results</span>
+    </li>
+  </ul>
+</div>

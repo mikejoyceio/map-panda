@@ -38,12 +38,6 @@ var ViewModel = function() {
 	this.appDebug = false;
 
 	/**
-	 * App Body Loading Visibility - show/hide the body loading animation
-	 * @type {boolean}
-	 */
-	this.appBodyLoadingVisibility = ko.observable(false);
-
-	/**
 	 * App Landing Action Visibility - show/hide the landing action button ('Find Me')
 	 * @type {boolean}
 	 */
