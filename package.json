@@ -27,6 +27,8 @@
     "postcss-scss": "^4.0.4",
     "sass": "^1.51.0",
     "sass-loader": "^12.6.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.9.0",
     "webpack-mild-compile": "^3.4.0"
   },
@@ -39,8 +41,6 @@
     "jquery": "^3.6.0",
     "js-rich-marker": "^1.1.2",
     "knockout": "^3.5.1",
-    "perfect-scrollbar": "^1.5.5",
-    "webpack": "^5.72.1",
-    "webpack-cli": "^4.9.2"
+    "perfect-scrollbar": "^1.5.5"
   }
 }
