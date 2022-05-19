@@ -7,7 +7,7 @@
     <div class="menu__filter-clear" data-bind="click: clearFilter, visible: searchClearFilterVisibility">
       <span class="fa fa-times-circle"></span>
     </div>
-    <input class="menu__filter-input" type="text" placeholder="Filter" autocapitalize="off" autocorrect="off" data-bind="textInput: searchQuery">
+    <input class="menu__filter-input" type="text" placeholder="Filter" autocapitalize="off" autocorrect="off" data-bind="filter: searchQuery">
   </div>
   <ul class="menu__list" data-bind="scrollBar: appViewportWidth">
     <!-- ko foreach: placeList -->
