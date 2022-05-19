@@ -1,0 +1,22 @@
+/**
+ * Check if local storage is available in the browser.
+ * @return {boolean}
+ */
+
+/**
+ * @return {boolean}
+ */
+function checkLocalStorage() {
+  try {
+    var storage = window['localStorage'],
+      x = '__storage_test__';
+    storage.setItem(x, x);
+    storage.removeItem(x);
+    return true;
+  }
+  catch(e) {
+    return false;
+  }
+}
+
+export default checkLocalStorage;

@@ -15,14 +15,14 @@
   </div>
   <div class="map__container" data-bind="map: { currentPlace: currentPlace, searchRadius: searchRadius }"></div>
   <div class="map__controls">
-    <div class="map__controls-pan-to" data-bind="event: { click: mapPanTo, touchend: mapPanTo }">
+    <div class="map__controls-pan-to" data-bind="event: { click: panTo, touchend: panTo }">
       <span class="map__controls-pan-to-icon fa fa-crosshairs"></span>
     </div>
     <div class="map__controls-zoom">
-      <div class="map__controls-button map__controls-button--zoom-in" data-bind="event: { click: mapZoomIn, touchend: mapZoomIn }">
+      <div class="map__controls-button map__controls-button--zoom-in" data-bind="event: { click: zoomIn, touchend: zoomIn }">
         <span class="fa fa-plus"></span>
       </div>
-      <div class="map__controls-button map__controls-button--zoom-out" data-bind="event: { click: mapZoomOut, touchend: mapZoomOut }">
+      <div class="map__controls-button map__controls-button--zoom-out" data-bind="event: { click: zoomOut, touchend: zoomOut }">
         <span class="fa fa-minus"></span>
       </div>
     </div>
