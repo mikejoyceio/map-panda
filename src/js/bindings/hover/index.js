@@ -11,7 +11,7 @@ import ko from 'knockout'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */
 ko.bindingHandlers.hover = {
-  init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+  init: function(element) {
 
     /**
      * When the mouseover event is fired on the element, add the 'hover' CSS class from the element

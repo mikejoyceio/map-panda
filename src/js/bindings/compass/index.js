@@ -11,19 +11,9 @@ import { Compass } from 'compass.js'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */
 ko.bindingHandlers.compass = {
-
-  /**
-   * Init: Called when the binding is first applied.
-   * @param  {Object} element         DOM element involved in this binding
-   * @param  {Function} valueAccessor Function to get the current model property of this binding
-   * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
-   * @param  {Object} viewModel       Access the view model
-   * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
-   */
-  init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+  init: function(element) {
 
     /**
-     * Compass Watch
      * @param  {number} heading
      * @external 'Compass.watch'
      * @see {@link https://github.com/ai/compass.js}
@@ -49,8 +39,6 @@ ko.bindingHandlers.compass = {
         '-o-transform': 'rotate(' + (-heading) + 'deg)',
         'transform': 'rotate(' + (-heading) + 'deg)'
       });
-
     });
-
   }
 };

@@ -10,10 +10,10 @@ import ko from 'knockout'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */
 ko.bindingHandlers.viewportWidth = {
-  init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+  init: function(element, valueAccessor, allBindings, viewModel) {
 
     /** Set the viewport width on load */
-    bindingContext.$root.appViewportWidth($(window).width());
+    viewModel.appViewportWidth($(window).width());
 
     /**
      * When the browser window is resized, set the binding to the windows width in pixels
@@ -21,7 +21,7 @@ ko.bindingHandlers.viewportWidth = {
      * @see {@link https://api.jquery.com/resize/}
      */
     $(window).resize(function() {
-      bindingContext.$root.appViewportWidth($(this).width());
+      viewModel.appViewportWidth($(this).width());
     });
   }
 };

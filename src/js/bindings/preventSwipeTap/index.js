@@ -10,7 +10,7 @@ import ko from 'knockout'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */
 ko.bindingHandlers.preventSwipeTap = {
-  init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+  init: function(element, valueAccessor, allBindings, viewModel) {
 
     /**
      * When the touchmove event is fired on the element, set the binding to true
@@ -20,7 +20,7 @@ ko.bindingHandlers.preventSwipeTap = {
      * @see {@link http://api.jquery.com/on/}
      */
     $(element).on('touchmove', function(){
-      bindingContext.$root.appSwiping(true);
+      viewModel.appSwiping(true);
     });
 
     /**
@@ -31,7 +31,7 @@ ko.bindingHandlers.preventSwipeTap = {
      * @see {@link http://api.jquery.com/on/}
      */
     $(element).on('touchstart', function(){
-      bindingContext.$root.appSwiping(false);
+      viewModel.appSwiping(false);
     });
   }
 };

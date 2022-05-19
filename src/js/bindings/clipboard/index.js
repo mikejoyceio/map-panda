@@ -10,7 +10,7 @@ import Clipboard  from 'clipboard'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */
 ko.bindingHandlers.clipboard = {
-  init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+  init: function(element, valueAccessor, allBindings, viewModel) {
 
     /**
      * Check for mobile devices
@@ -24,10 +24,10 @@ ko.bindingHandlers.clipboard = {
     if (!isMobile) {
 
       /** Show the modal overlay copy button */
-      bindingContext.$root.modalOverlayCopyButtonVisibility(true);
+      viewModel.modalOverlayCopyButtonVisibility(true);
 
       /** Set the modal overlay group group buttons CSS class to two */
-      bindingContext.$root.modalOverlayGroupButtons('button-group--two')
+      viewModel.modalOverlayGroupButtons('button-group--two')
 
       /**
        * Clipboard
@@ -43,10 +43,10 @@ ko.bindingHandlers.clipboard = {
        * @see {@link http://api.jquery.com/on/}
        */
       clipboard.on('success', function(e) {
-        bindingContext.$root.modalOverlayMessage('Copied!');
-        bindingContext.$root.modalOverlayMessageVisibility(true);
+        viewModel.modalOverlayMessage('Copied!');
+        viewModel.modalOverlayMessageVisibility(true);
         setTimeout(function() {
-          bindingContext.$root.modalOverlayMessageVisibility(false);
+          viewModel.modalOverlayMessageVisibility(false);
         }, 1000);
       });
 
@@ -67,19 +67,19 @@ ko.bindingHandlers.clipboard = {
         if (appVersion!=-1) {
 
           /** Set the overlay message text for Mac */
-          bindingContext.$root.modalOverlayMessage('Press ⌘+C to copy');
+          viewModel.modalOverlayMessage('Press ⌘+C to copy');
         } else {
 
           /** Set the overlay message text for all other operating systems */
-          bindingContext.$root.modalOverlayMessage('Press Ctrl+C to copy');
+          viewModel.modalOverlayMessage('Press Ctrl+C to copy');
         }
 
         /** Show the overlay message */
-        bindingContext.$root.modalOverlayMessageVisibility(true);
+        viewModel.modalOverlayMessageVisibility(true);
 
         /** After a short timeout, hide the overlay message */
         setTimeout(function() {
-          bindingContext.$root.modalOverlayMessageVisibility(false);
+          viewModel.modalOverlayMessageVisibility(false);
         }, 2000);
 
       });
@@ -87,10 +87,10 @@ ko.bindingHandlers.clipboard = {
     } else {
 
       /** Hide the modal overlay copy button */
-      bindingContext.$root.modalOverlayCopyButtonVisibility(false);
+      viewModel.modalOverlayCopyButtonVisibility(false);
 
       /** Set the modal overlay group buttons CSS class to one */
-      bindingContext.$root.modalOverlayGroupButtons('button-group--one')
+      viewModel.modalOverlayGroupButtons('button-group--one')
     }
   }
 };

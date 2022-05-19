@@ -10,7 +10,7 @@ import ko from 'knockout'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */
 ko.bindingHandlers.toggleFilter = {
-  init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+  init: function(element, valueAccessor, allBindings, viewModel) {
 
     /**
      * isMobile. Used to prevent click events firing on touchscreen devices
@@ -53,10 +53,10 @@ ko.bindingHandlers.toggleFilter = {
     function eventFunction() {
 
       /** Toggle search filter visibility */
-      bindingContext.$root.searchFilterVisibility(!bindingContext.$root.searchFilterVisibility());
+      viewModel.searchFilterVisibility(!viewModel.searchFilterVisibility());
 
       /** If the search filter visibility is true */
-      if (bindingContext.$root.searchFilterVisibility()) {
+      if (viewModel.searchFilterVisibility()) {
 
         /** If the event didn't come from a touchscreen device, focus the text input */
         if (!isMobile) {
@@ -90,8 +90,8 @@ ko.bindingHandlers.toggleFilter = {
         $(element).parent().find('input').val('');
 
         /** Loop through each place in the place list and unhide it */
-        for (let i=0, j=bindingContext.$root.placeList().length; i<j; i++) {
-          bindingContext.$root.placeList()[i].isHidden(false);
+        for (let i=0, j=viewModel.placeList().length; i<j; i++) {
+          viewModel.placeList()[i].isHidden(false);
         }
       }
     }

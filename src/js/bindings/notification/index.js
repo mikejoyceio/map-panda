@@ -10,16 +10,7 @@ import ko from 'knockout'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */
 ko.bindingHandlers.notification = {
-
-  /**
-   * Update: Called when the binding is first applied and again whenever any observables change
-   * @param  {Object} element         DOM element involved in this binding
-   * @param  {Function} valueAccessor Function to get the current model property of this binding
-   * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
-   * @param  {Object} viewModel       Access the view model
-   * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
-   */
-  update: function(element, valueAccessor, allBindingsAccessor, viewModel) {
+  update: function(element, valueAccessor) {
     const value = valueAccessor();
 
     /**
