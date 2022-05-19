@@ -5,7 +5,7 @@
  */
 
  import ko from 'knockout'
- import dataModel from './dataModel'
+ import dataModel from '../data'
  import { RichMarker } from 'js-rich-marker'
  import { InfoBox } from 'google-maps-infobox'
 
