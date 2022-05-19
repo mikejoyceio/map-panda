@@ -16,7 +16,7 @@ function getUberRideEstimate(viewModel) {
 	 * API Request
 	 * @type {Object}
 	 */
-	var request = {
+	const request = {
 		startLat: viewModel.mapCurrentLat(),
 		startLng: viewModel.mapCurrentLng(),
 		endLat: viewModel.modalInfoLat(),
@@ -27,7 +27,7 @@ function getUberRideEstimate(viewModel) {
 	 * Make an Uber API request
 	 * @see dataModel.uber
 	 */
-	var response = dataModel.uber(request);
+	const response = dataModel.uber(request);
 
   /**
    * Handle the response
@@ -41,7 +41,7 @@ function getUberRideEstimate(viewModel) {
 		 * Uber Estimate
 		 * @type {string}
 		 */
-		var uberEstimate;
+		let uberEstimate;
 
 		/** If the array contatains prices estimates, grab the cheapest */
 		data['prices'].length > 0 ? uberEstimate = data['prices'][0]['estimate'] : uberEstimate = 'Unavailable';

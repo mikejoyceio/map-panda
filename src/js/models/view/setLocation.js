@@ -26,7 +26,7 @@ function setLocation(viewModel) {
   * @external 'new RichMarker'
   * @see {@link https://github.com/mikejoyceio/js-rich-marker}
   */
-  var marker = new RichMarker({
+  const marker = new RichMarker({
     position: viewModel.mapLatLang,
     map: viewModel.map,
     flat: true,

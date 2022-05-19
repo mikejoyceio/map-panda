@@ -18,7 +18,7 @@ function addModal(data, viewModel) {
   google.maps.event.addListener(data.marker, 'click', function() {
 
     /** Reset the marker icons */
-    for (var i=0,j=viewModel.mapMarkers().length;i<j;i++) {
+    for (let i=0, j=viewModel.mapMarkers().length; i<j; i++) {
       viewModel.mapMarkers()[i].setIcon(viewModel.currentPlace().marker());
     }
 
@@ -51,7 +51,7 @@ function addModal(data, viewModel) {
      * Google Maps places search request object
      * @type {Object}
      */
-    var request = {
+    const request = {
       placeId: data.placeId
     };
 
@@ -61,7 +61,7 @@ function addModal(data, viewModel) {
      * @external 'new google.maps.places.PlacesService'
      * @see {@link https://developers.google.com/maps/documentation/javascript/places#place_searches}
      */
-    var service = new google.maps.places.PlacesService(viewModel.map);
+    const service = new google.maps.places.PlacesService(viewModel.map);
 
     /**
      * Request place details
@@ -84,7 +84,7 @@ function addModal(data, viewModel) {
        * @external 'google.maps.places.PlacesServiceStatus'
        * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#PlacesServiceStatus}
        */
-      var statusCode = google.maps.places.PlacesServiceStatus;
+      const statusCode = google.maps.places.PlacesServiceStatus;
 
       /** If the statusCode is OK, set the Info Window content */
       if (status == statusCode.OK) {
@@ -93,7 +93,7 @@ function addModal(data, viewModel) {
          * Place Info. Create an object to hold data for the place.
          * @type {Object}
          */
-        var placeInfo = {
+        const placeInfo = {
           id: place.id,
           name: place.name,
           address: place.formatted_address,

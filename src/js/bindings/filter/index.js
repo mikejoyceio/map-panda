@@ -18,19 +18,21 @@ ko.bindingHandlers.filter = {
 
     function filter() {
 
-      var query = $(element).val();
+      const query = $(element).val();
 
     	/** Loop through each place in the place list and compare the string */
-    	for (var i=0,j=bindingContext.$root.placeList().length;i<j;i++) {
+    	for (let i=0, j=bindingContext.$root.placeList().length; i<j; i++) {
     		compareString(query, bindingContext.$root.placeList()[i].name().toLowerCase(), bindingContext.$root.placeList()[i]);
     	}
 
     	/** Loop through each place in the place list, store a count, and if each place is hidden, show 'No Results' */
-    	var count = 0;
-    	for (var i=0,j=bindingContext.$root.placeList().length;i<j;i++) {
+    	let count = 0;
+
+    	for (let i=0, j=bindingContext.$root.placeList().length; i<j; i++) {
     		if (bindingContext.$root.placeList()[i].isHidden()) {
     			count++;
     		}
+
     		if (count === bindingContext.$root.placeList().length) {
     			bindingContext.$root.searchQueryNoResults(true);
     		} else {
@@ -48,7 +50,7 @@ ko.bindingHandlers.filter = {
     function compareString(value, placeName, placeObject) {
 
       /** Loop through the length of the search query string */
-      for (var i=0,j=value.length;i<j;i++) {
+      for (let i=0, j=value.length; i<j; i++) {
 
         /** If characters match in order, show the place type, else hide it */
         if (placeName.indexOf(value) !== -1 && placeName.charAt(i) === value.charAt(i)) {

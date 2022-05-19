@@ -8,7 +8,7 @@ import addModal from './addModal'
 function setPlaces(viewModel) {
 
   /** Loop thought the places array */
-  for (var i=0,j=viewModel.mapPlaces().length;i<j;i++) {
+  for (let i=0, j=viewModel.mapPlaces().length; i<j; i++) {
 
     /** Instantiate a new marker and set marker's icon */
     viewModel.mapMarkers()[i] = new google.maps.Marker({
@@ -24,7 +24,7 @@ function setPlaces(viewModel) {
      * Place Data. Create an object to hold data for the place.
      * @type {Object}
      */
-    var placeData = {
+    const placeData = {
       marker: viewModel.mapMarkers()[i],
       id: viewModel.mapPlaces()[i].id,
       placeId: viewModel.mapPlaces()[i].place_id,
@@ -51,9 +51,9 @@ function setPlaces(viewModel) {
    * @external 'LatLngBounds()'
    * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#LatLngBounds}
    */
-  var bounds = new google.maps.LatLngBounds();
+  const bounds = new google.maps.LatLngBounds();
 
-  for(i=0; i<viewModel.mapMarkers().length; i++) {
+  for (let i=0; i<viewModel.mapMarkers().length; i++) {
     bounds.extend(viewModel.mapMarkers()[i].getPosition());
   }
 

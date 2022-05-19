@@ -8,7 +8,7 @@ function clearFilter(viewModel, data, event) {
   viewModel.searchQuery('');
 
   /** Loops through each place type in the place list and show it */
-  for (var i=0,j=viewModel.placeList().length;i<j;i++) {
+  for (let i=0,j=viewModel.placeList().length;i<j;i++) {
     viewModel.placeList()[i].isHidden(false);
   }
 }

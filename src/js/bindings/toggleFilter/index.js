@@ -16,7 +16,7 @@ ko.bindingHandlers.toggleFilter = {
      * isMobile. Used to prevent click events firing on touchscreen devices
      * @type {Boolean}
      */
-    var isMobile = false;
+    const isMobile = false;
 
     /**
      * On element click
@@ -90,7 +90,7 @@ ko.bindingHandlers.toggleFilter = {
         $(element).parent().find('input').val('');
 
         /** Loop through each place in the place list and unhide it */
-        for (var i=0,j=bindingContext.$root.placeList().length;i<j;i++) {
+        for (let i=0, j=bindingContext.$root.placeList().length; i<j; i++) {
           bindingContext.$root.placeList()[i].isHidden(false);
         }
       }

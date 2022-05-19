@@ -20,7 +20,7 @@ function selectPlace(viewModel, place) {
   viewModel.currentPlace(place);
 
   /** Deselect each Place List item hide Map Info */
-  for (var i=0,j=viewModel.placeList().length;i<j;i++) {
+  for (let i=0, j=viewModel.placeList().length; i<j; i++) {
     viewModel.placeList()[i].isActive(false);
     viewModel.mapInfoVisibility(false);
   }

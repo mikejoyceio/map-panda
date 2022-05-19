@@ -5,7 +5,7 @@
 function clearMarkers(viewModel) {
 
   /** Loop through each marker and set it to 'null' */
-  for (var i=0,j=viewModel.mapMarkers().length;i<j;i++) {
+  for (let i=0, j=viewModel.mapMarkers().length; i<j; i++) {
 
   /**
    * @external 'setMap(null)'

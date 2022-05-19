@@ -5,7 +5,7 @@
 /**
  * @type {Object}
  */
-var googleMapConfig = {
+const googleMapConfig = {
 
   /**
    * Initial map zoom level

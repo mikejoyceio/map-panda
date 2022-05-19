@@ -19,7 +19,7 @@ function handleNearbySearchResult(results, status, viewModel) {
    * @external 'google.maps.places.PlacesServiceStatus'
    * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#PlacesServiceStatus}
    */
-  var statusCode = google.maps.places.PlacesServiceStatus;
+  const statusCode = google.maps.places.PlacesServiceStatus;
 
   /** If the statusCode is OK */
   if (status === statusCode.OK) {
@@ -38,10 +38,10 @@ function handleNearbySearchResult(results, status, viewModel) {
      * Map Places
      * @type {Array.<Object>}
      */
-    var mapPlaces = [];
+    const mapPlaces = [];
 
     /** Loop through the results and push into the places array */
-    for (var i=0,j=results.length;i<j;i++) {
+    for (let i=0, j=results.length; i<j; i++) {
       mapPlaces.push(results[i]);
     }
 
@@ -64,32 +64,32 @@ function handleNearbySearchResult(results, status, viewModel) {
      */
     switch (status) {
       case statusCode.ERROR:
-        handleNearbySearchError(viewModel, status+' There was a problem contacting the Google servers.', 'Connection error');
+        handleNearbySearchError(viewModel, `${status} There was a problem contacting the Google servers.`, 'Connection error');
         break;
       case statusCode.INVALID_REQUEST:
-        handleNearbySearchError(viewModel, status+' This request was invalid.', 'Error. Please try again.');
+        handleNearbySearchError(viewModel, `${status} This request was invalid.`, 'Error. Please try again.');
         break;
       case statusCode.OVER_QUERY_LIMIT:
-        handleNearbySearchError(viewModel, status+' The webpage has gone over its request quota.', 'Slow down!');
+        handleNearbySearchError(viewModel, `${status} The webpage has gone over its request quota.`, 'Slow down!');
         break;
       case statusCode.REQUEST_DENIED:
-        handleNearbySearchError(viewModel, status+' This webpage is not allowed to use the PlacesService.', 'Error. Please try again.');
+        handleNearbySearchError(viewModel, `${status} This webpage is not allowed to use the PlacesService.`, 'Error. Please try again.');
 
         /** Show reload app button */
-        self.appReloadVisbility(true);
+        viewModel.appReloadVisbility(true);
 
         break;
       case statusCode.UNKNOWN_ERROR:
-        handleNearbySearchError(viewModel, status+' The PlacesService request could not be processed due to a server error. The request may succeed if you try again.', 'Server Error. Please try again.');
+        handleNearbySearchError(viewModel, `${status} The PlacesService request could not be processed due to a server error. The request may succeed if you try again.`, 'Server Error. Please try again.');
         break;
       case statusCode.ZERO_RESULTS:
-        handleNearbySearchError(viewModel, status+' No result was found for this request.', 'No Results');
+        handleNearbySearchError(viewModel, `${status} No result was found for this request.`, 'No Results');
         break;
       default:
         handleNearbySearchError(viewModel, 'Unknown error', 'Error. Please try again.');
 
         /** Show reload app button */
-        self.appReloadVisbility(true);
+        viewModel.appReloadVisbility(true);
     }
   }
 }

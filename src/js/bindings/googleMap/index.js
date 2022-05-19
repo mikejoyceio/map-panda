@@ -26,22 +26,10 @@ ko.bindingHandlers.map = {
 	},
 	update: function(element, valueAccessor, allBindings, viewModel) {
 
-  	var value = valueAccessor();
-
-		/**
-		 * Decalare a variable to hold error messages for debugging purposes
-		 * @type {string}
-		 */
-		var statusMessage;
-
-		/**
-		 * Declare variable to hold error messages visible to the user
-		 * @type {string}
-		 */
-		var notificationMessage;
+  	const value = valueAccessor();
 
 		/** If the currentPlace isn't active, return the function */
-		if(!value.currentPlace().isActive()) {
+		if (!value.currentPlace().isActive()) {
 			return
 		}
 
@@ -54,7 +42,7 @@ ko.bindingHandlers.map = {
 		 * Google Maps places search request object
 		 * @type {Object}
 		 */
-    var request = {
+    const request = {
     	location: viewModel.mapLatLang,
     	radius: value.searchRadius(),
     	types: []
@@ -74,7 +62,7 @@ ko.bindingHandlers.map = {
      * @external 'new google.maps.places.PlacesService'
      * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#PlacesService}
      */
-    var mapPlaces = new google.maps.places.PlacesService(viewModel.map);
+    const mapPlaces = new google.maps.places.PlacesService(viewModel.map);
 
     /**
      * Search nearby places

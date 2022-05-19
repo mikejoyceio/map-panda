@@ -18,7 +18,7 @@ ko.bindingHandlers.clipboard = {
      * @external 'navigator.userAgent'
      * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Window/navigator}
      */
-    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
 
     /** If isMobile is false */
     if (!isMobile) {
@@ -35,7 +35,7 @@ ko.bindingHandlers.clipboard = {
        * @external 'Clipboard'
        * @see {@link http://zenorocha.github.io/clipboard.js/}
        */
-      var clipboard = new Clipboard(element);
+      const clipboard = new Clipboard(element);
 
       /**
        * Clipboard Success
@@ -61,7 +61,7 @@ ko.bindingHandlers.clipboard = {
          * App Version
          * @type {string}
          */
-        var appVersion = navigator.appVersion.indexOf('Mac');
+        const appVersion = navigator.appVersion.indexOf('Mac');
 
         /** Check the operating system */
         if (appVersion!=-1) {
@@ -91,7 +91,6 @@ ko.bindingHandlers.clipboard = {
 
       /** Set the modal overlay group buttons CSS class to one */
       bindingContext.$root.modalOverlayGroupButtons('button-group--one')
-
     }
   }
 };

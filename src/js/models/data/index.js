@@ -7,7 +7,7 @@ import fontawesome from 'fontawesome-markers'
 /**
  * @type {Object}
  */
-var dataModel = {};
+const dataModel = {};
 
 /**
  * Places Array
@@ -512,7 +512,7 @@ dataModel.foursquare = function(request) {
 	 * @type {String}
 	 * @see {@link https://developer.foursquare.com/docs/venues/search}
 	 */
-	var foursquareAPI = 'https://api.foursquare.com/v2/venues/search';
+	const foursquareAPI = 'https://api.foursquare.com/v2/venues/search';
 
 	/**
 	 * Return
@@ -525,7 +525,7 @@ dataModel.foursquare = function(request) {
 		url: foursquareAPI,
 		dataType: 'json',
 		data: {
-			ll: request.venueLat+','+request.venueLng,
+			ll: `${request.venueLat},${request.venueLng}`,
 			query: request.venueName,
 			intent: 'match',
 			client_id: 'T3NSPSCOLUQ5R0OGEZCKUX0MOEUOEPW1HGFXYOF3ZKCYDQXD',
@@ -549,9 +549,9 @@ dataModel.uber = function(request) {
 	 * @type {String}
 	 * @see {@link https://developer.uber.com/v1/endpoints/}
 	 */
-	var uberAPI = 'https://api.uber.com/v1.2/estimates/price';
-	var uberClientId = 'sF0uXRb14_xpSGdnNlfl8KgOVSgt6IXt';
-	var uberServerToken = 'AKvxnyDLDHBO86RoOC0vcMNTByH1BRHDgerhfNmh';
+	const uberAPI = 'https://api.uber.com/v1.2/estimates/price';
+	const uberClientId = 'sF0uXRb14_xpSGdnNlfl8KgOVSgt6IXt';
+	const uberServerToken = 'AKvxnyDLDHBO86RoOC0vcMNTByH1BRHDgerhfNmh';
 
 	/**
 	 * Return

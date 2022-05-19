@@ -26,14 +26,12 @@ ko.bindingHandlers.scrollBar = {
      * Viewport Width
      * @type {number}
      */
-    var viewportWidth = ko.unwrap(valueAccessor());
-    var ps;
+    const viewportWidth = ko.unwrap(valueAccessor());
+    let ps;
 
     /** If the viewport width is greater than 1024px instantiate the custom scrollbar, else destroy it */
     if (viewportWidth > 1024) {
-
       ps = new PerfectScrollbar(element);
-
     } else {
       ps.destroy();
       ps = null;

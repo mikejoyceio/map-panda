@@ -32,16 +32,13 @@
  * View Model
  * @constructor
  */
-var ViewModel = function() {
+const ViewModel = function() {
 
 	/**
 	 * Invoke strict mode
 	 * @see {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Strict_mode}
 	 */
 	'use strict';
-
-	/** Set a pointer reference to 'this' */
-	var self = this;
 
   /**
 	 * Map - holds the Google map instance
@@ -327,8 +324,8 @@ var ViewModel = function() {
 	 * @return {Object}
 	 * @see dataModel.places
 	 */
-	dataModel.places.forEach(function(placeItem) {
-		self.placeList.push(new place(placeItem));
+	dataModel.places.forEach((placeItem) => {
+		this.placeList.push(new place(placeItem));
 	});
 
 	/**
@@ -341,8 +338,8 @@ var ViewModel = function() {
 	 * Select the Current Place
 	 * @param  {Object} place
 	 */
-	this.selectPlace = function(place) {
-    selectPlace(self, place);
+	this.selectPlace = (place) => {
+    selectPlace(this, place);
   };
 
 	/**
@@ -380,67 +377,67 @@ var ViewModel = function() {
    *
    */
 
-	this.clearFilter = function(data, event) {
-    clearFilter(self, data, event);
+	this.clearFilter = (data, event) => {
+    clearFilter(this, data, event);
 	}
 
-	this.panTo = function() {
-    panTo(self);
+	this.panTo = () => {
+    panTo(this);
 	}
 
-	this.zoomIn = function() {
-    zoomIn(self);
+	this.zoomIn = () => {
+    zoomIn(this);
 	}
 
-	this.zoomOut = function() {
-    zoomOut(self)
+	this.zoomOut = () => {
+    zoomOut(this)
 	}
 
- 	this.closeModal = function() {
-    closeModal(self);
+ 	this.closeModal = () => {
+    closeModal(this);
  	}
 
- 	this.openModalOverlay = function() {
- 		self.modalOverlayVisibility(true);
+ 	this.openModalOverlay = () => {
+ 		this.modalOverlayVisibility(true);
  	}
 
- 	this.closeModalOverlay = function() {
- 		self.modalOverlayVisibility(false);
+ 	this.closeModalOverlay = () => {
+ 		this.modalOverlayVisibility(false);
  	}
 
  	this.reloadApp = function() {
  		document.location.reload(true);
  	}
 
-	this.searchFoursquare = function() {
-    searchFoursquare(self);
+	this.searchFoursquare = () => {
+    searchFoursquare(this);
 	}
 
-	this.getUberRideEstimate = function() {
-    getUberRideEstimate(self)
+	this.getUberRideEstimate = () => {
+    getUberRideEstimate(this)
 	};
 
-	this.uberRideRequest = function() {
-	   uberRideRequest(self);
+	this.uberRideRequest = () => {
+	  uberRideRequest(this);
 	}
 
-	this.getLocation = function() {
-	   getLocation(self);
+	this.getLocation = () => {
+	  getLocation(this);
 	}
 
-	this.setLocation = function() {
-    setLocation(self);
+	this.setLocation = () => {
+    setLocation(this);
 	}
 
- 	this.handleNoGeolocation = function(error) {
-    handleNoGeolocation(self, error);
+ 	this.handleNoGeolocation = (error) => {
+    handleNoGeolocation(this, error);
 	}
 
-	this.localStorageAvailable = function() {
-		localStorageAvailable(self);
+	this.localStorageAvailable = () => {
+		localStorageAvailable(this);
 	}
 
-	this.localStorageUnavailable = function() {
+	this.localStorageUnavailable = () => {
 		self.appLandingVisbility(true);
 	}
 
@@ -450,38 +447,38 @@ var ViewModel = function() {
 	 * Init App. Initialize the application by checking if the Google Maps API is available
 	 * and if localStorage is available or not.
 	 */
-	this.initApp = function() {
+	this.initApp = () => {
 
 		/** Check if the Google Maps API is loaded and available to use */
     if (typeof google === 'object' && typeof google.maps === 'object') {
 
 	    /** localStorage is available */
-			if (self.checkLocalStorage()) {
+			if (this.checkLocalStorage()) {
 
 				/** Call the LocalStorageAvailable function */
-				self.localStorageAvailable();
+				this.localStorageAvailable();
 
 			/** localStorage isn't available */
 			} else {
 
 				/** Call the LocalStorageUnavailable function */
-				self.localStorageUnavailable();
+				this.localStorageUnavailable();
 			}
 
 			/** Google Maps API isn't available */
   	} else {
 
 			/** If the appDebug variable is set to true, console.log the error */
-			if (self.appDebug) console.log('Google Maps API failed to load');
+			if (this.appDebug) console.log('Google Maps API failed to load');
 
 			/** Show the user notification message  */
-			self.notificationKeepAlive(true);
-			self.notificationMessage('Please check your connection');
+			this.notificationKeepAlive(true);
+			this.notificationMessage('Please check your connection');
   	}
 
 	}
-	this.initApp();
 
+	this.initApp();
 }
 
 /**

@@ -20,44 +20,43 @@ ko.bindingHandlers.notification = {
    * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
    */
   update: function(element, valueAccessor, allBindingsAccessor, viewModel) {
-
-    var value = valueAccessor();
+    const value = valueAccessor();
 
     /**
      * The notifcation binding can be passed a string or an object with properties
      * @type {[type]}
      */
-    var options = typeof value == 'object' ? value : { message: value };
+    const options = typeof value == 'object' ? value : { message: value };
 
     /**
      * Notication message
      * @type {string}
      */
-    var message = ko.utils.unwrapObservable(options.message);
+    let message = ko.utils.unwrapObservable(options.message);
 
     /**
      * Notification default fade out duration
      * @type {number}
      */
-    var duration = options.duration !== undefined ? ko.utils.unwrapObservable(options.duration) : 5000;
+    const duration = options.duration !== undefined ? ko.utils.unwrapObservable(options.duration) : 5000;
 
     /**
      * Notification fade out duration
      * @type {number}
      */
-    var fadeoutDuration = options.fadeoutDuration !== undefined ? ko.utils.unwrapObservable(options.fadeoutDuration) : 200;
+    const fadeoutDuration = options.fadeoutDuration !== undefined ? ko.utils.unwrapObservable(options.fadeoutDuration) : 200;
 
     /**
      * Notifcation hide
      * @type {boolean}
      */
-    var hide = options.hide !== undefined ? ko.utils.unwrapObservable(options.hide) : true;
+    const hide = options.hide !== undefined ? ko.utils.unwrapObservable(options.hide) : true;
 
     /**
      * Notification show
      * @type {boolean}
      */
-    var fade = options.fade !== undefined ? ko.utils.unwrapObservable(options.fade) : true;
+    const fade = options.fade !== undefined ? ko.utils.unwrapObservable(options.fade) : true;
 
     /** Set the value of the message */
     if (message === null || message === undefined) {
@@ -86,6 +85,7 @@ ko.bindingHandlers.notification = {
      * @see {@link http://api.jquery.com/hide/}
      */
       $(element).hide();
+
       return;
     }
 
@@ -114,7 +114,6 @@ ko.bindingHandlers.notification = {
            */
           jQuery(element).fadeOut(fadeoutDuration, function() {
             options.message('');
-
           });
 
         } else {
@@ -129,7 +128,6 @@ ko.bindingHandlers.notification = {
 
         }
       }, duration);
-
     }
   }
 };

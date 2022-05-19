@@ -3,13 +3,13 @@
  */
 
 function uberRideRequest(viewModel) {
-  
+
   /**
    * Uber Deep Link
    * @type {string}
    * @see {@link https://developer.uber.com/v1/deep-linking/}
    */
-  var uberDeepLink;
+  let uberDeepLink;
 
   uberDeepLink = viewModel.appConstants.UBER_URL;
   uberDeepLink += 'client_id=' + viewModel.appConstants.UBER_CLIENT_ID;

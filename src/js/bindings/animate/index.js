@@ -1,10 +1,10 @@
 /**
  * @file Knockout binding for animate.css
  */
- 
+
 import ko from 'knockout'
 
-var koAnimate =
+const koAnimate =
 {
     defaults:
     {
@@ -127,7 +127,7 @@ koAnimate.helpers =
 
     isElementInViewport: function(element, offset)
     {
-        var rectangle = element.getBoundingClientRect();
+        const rectangle = element.getBoundingClientRect();
 
         return (
             rectangle.top >= 0 &&
@@ -151,10 +151,10 @@ koAnimate.animations =
     {
         //Overrides the Animate.css animated class
 
-        var seconds = duration / 1000;
+        const seconds = duration / 1000;
 
         $("#koAnimateAnimated").remove();
-        var style = $('<style id="koAnimateAnimated">.animated { ' +
+        const style = $('<style id="koAnimateAnimated">.animated { ' +
             '-webkit-animation-duration: ' + seconds + 's !important; ' +
             'animation-duration: ' + seconds + 's !important' +
             ' }</style>');
@@ -180,7 +180,7 @@ koAnimate.animations =
 
     scale: function (element, scale, duration, easing)
     {
-        var seconds = duration / 1000;
+        const seconds = duration / 1000;
         $.each(koAnimate.helpers.cssVendors, function (index, item)
         {
             $(element).css(item + 'transform', 'scale(' + scale + ')').css(item + 'transition', seconds + 's ' + easing);
@@ -189,7 +189,7 @@ koAnimate.animations =
 
     rotate: function (element, degrees, duration, easing)
     {
-        var seconds = duration / 1000;
+        const seconds = duration / 1000;
         $.each(koAnimate.helpers.cssVendors, function (index, item)
         {
             $(element).css(item + 'transform', 'rotate(' + degrees + 'deg)').css(item + 'transition', seconds + 's ' + easing);
@@ -198,7 +198,7 @@ koAnimate.animations =
 
     opacity: function (element, opacity, duration, easing)
     {
-        var seconds = duration / 1000;
+        const seconds = duration / 1000;
         $.each(koAnimate.helpers.cssVendors, function (index, item)
         {
             $(element).css("opacity", opacity).css(item + 'transition', 'opacity ' + seconds + 's ' + easing);
@@ -207,7 +207,7 @@ koAnimate.animations =
 
     slide: function (element, pixelsX, pixelsY, duration, easing)
     {
-        var seconds = duration / 1000;
+        const seconds = duration / 1000;
         $.each(koAnimate.helpers.cssVendors, function (index, item)
         {
             $(element).css(item + 'transform', 'translate(' + pixelsX + ',' + pixelsY + ')').css(item + 'transition', seconds + 's ' + easing);
@@ -242,12 +242,12 @@ ko.bindingHandlers.hoverScale =
 {
     init: function (element, valueAccessor, allBindings)
     {
-        var duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.hoverScale.duration;
-        var durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.hoverScale.durationOut;
-        var easing = allBindings['has']('easing') ? allBindings.get('easing') : koAnimate.defaults.hoverScale.easing;
-        var easingOut = allBindings['has']('easingOut') ? allBindings.get('easingOut') : koAnimate.defaults.hoverScale.easingOut;
-        var scale = valueAccessor();
-        var scaleOut = allBindings['has']('scaleOut') ? allBindings.get('scaleOut') : koAnimate.defaults.hoverScale.scaleOut;
+        const duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.hoverScale.duration;
+        const durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.hoverScale.durationOut;
+        const easing = allBindings['has']('easing') ? allBindings.get('easing') : koAnimate.defaults.hoverScale.easing;
+        const easingOut = allBindings['has']('easingOut') ? allBindings.get('easingOut') : koAnimate.defaults.hoverScale.easingOut;
+        const scale = valueAccessor();
+        const scaleOut = allBindings['has']('scaleOut') ? allBindings.get('scaleOut') : koAnimate.defaults.hoverScale.scaleOut;
 
         ko.utils.registerEventHandler(element, "mouseenter", function ()
         {
@@ -266,12 +266,12 @@ ko.bindingHandlers.hoverRotate =
 {
     init: function (element, valueAccessor, allBindings)
     {
-        var degrees = valueAccessor();
-        var degreesOut = allBindings['has']('degreesOut') ? allBindings.get('degreesOut') : koAnimate.defaults.hoverRotate.degreesOut;
-        var duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.hoverRotate.duration;
-        var durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.hoverRotate.durationOut;
-        var easing = allBindings['has']('easing') ? allBindings.get('easing') : koAnimate.defaults.hoverRotate.easing;
-        var easingOut = allBindings['has']('easingOut') ? allBindings.get('easingOut') : koAnimate.defaults.hoverRotate.easingOut;
+        const degrees = valueAccessor();
+        const degreesOut = allBindings['has']('degreesOut') ? allBindings.get('degreesOut') : koAnimate.defaults.hoverRotate.degreesOut;
+        const duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.hoverRotate.duration;
+        const durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.hoverRotate.durationOut;
+        const easing = allBindings['has']('easing') ? allBindings.get('easing') : koAnimate.defaults.hoverRotate.easing;
+        const easingOut = allBindings['has']('easingOut') ? allBindings.get('easingOut') : koAnimate.defaults.hoverRotate.easingOut;
 
         ko.utils.registerEventHandler(element, "mouseenter", function ()
         {
@@ -303,12 +303,12 @@ ko.bindingHandlers.fadeVisible =
     },
     update: function (element, valueAccessor, allBindings)
     {
-        var duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.fadeVisible.duration;
-        var durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.fadeVisible.durationOut;
-        var easing = allBindings['has']('easing') ? allBindings.get('easing') : koAnimate.defaults.fadeVisible.easing;
-        var easingOut = allBindings['has']('easingOut') ? allBindings.get('easingOut') : koAnimate.defaults.fadeVisible.easingOut;
-        var delay = allBindings['has']('delay') ? allBindings.get('delay') : koAnimate.defaults.fadeVisible.delay;
-        var delayOut = allBindings['has']('delayOut') ? allBindings.get('delayOut') : koAnimate.defaults.fadeVisible.delayOut;
+        const duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.fadeVisible.duration;
+        const durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.fadeVisible.durationOut;
+        const easing = allBindings['has']('easing') ? allBindings.get('easing') : koAnimate.defaults.fadeVisible.easing;
+        const easingOut = allBindings['has']('easingOut') ? allBindings.get('easingOut') : koAnimate.defaults.fadeVisible.easingOut;
+        const delay = allBindings['has']('delay') ? allBindings.get('delay') : koAnimate.defaults.fadeVisible.delay;
+        const delayOut = allBindings['has']('delayOut') ? allBindings.get('delayOut') : koAnimate.defaults.fadeVisible.delayOut;
 
         $(element).off(koAnimate.animations.transitionEnd);
         clearTimeout(element.koAnimateFadeVisible);
@@ -362,15 +362,15 @@ ko.bindingHandlers.scaleVisible =
     },
     update: function (element, valueAccessor, allBindings)
     {
-        var duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.scaleVisible.duration;
-        var durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.scaleVisible.durationOut;
-        var easing = allBindings['has']('easing') ? allBindings.get('easing') : koAnimate.defaults.scaleVisible.easing;
-        var easingOut = allBindings['has']('easingOut') ? allBindings.get('easingOut') : koAnimate.defaults.scaleVisible.easingOut;
-        var scale = allBindings['has']('scale') ? allBindings.get('scale') : koAnimate.defaults.scaleVisible.scale;
-        var scaleHide = allBindings['has']('scaleHide') ? allBindings.get('scaleHide') : koAnimate.defaults.scaleVisible.scaleHide;
-        var scaleHideOut = allBindings['has']('scaleHideOut') ? allBindings.get('scaleHideOut') : koAnimate.defaults.scaleVisible.scaleHideOut;
-        var delay = allBindings['has']('delay') ? allBindings.get('delay') : koAnimate.defaults.scaleVisible.delay;
-        var delayOut = allBindings['has']('delayOut') ? allBindings.get('delayOut') : koAnimate.defaults.scaleVisible.delayOut;
+        const duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.scaleVisible.duration;
+        const durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.scaleVisible.durationOut;
+        const easing = allBindings['has']('easing') ? allBindings.get('easing') : koAnimate.defaults.scaleVisible.easing;
+        const easingOut = allBindings['has']('easingOut') ? allBindings.get('easingOut') : koAnimate.defaults.scaleVisible.easingOut;
+        const scale = allBindings['has']('scale') ? allBindings.get('scale') : koAnimate.defaults.scaleVisible.scale;
+        const scaleHide = allBindings['has']('scaleHide') ? allBindings.get('scaleHide') : koAnimate.defaults.scaleVisible.scaleHide;
+        const scaleHideOut = allBindings['has']('scaleHideOut') ? allBindings.get('scaleHideOut') : koAnimate.defaults.scaleVisible.scaleHideOut;
+        const delay = allBindings['has']('delay') ? allBindings.get('delay') : koAnimate.defaults.scaleVisible.delay;
+        const delayOut = allBindings['has']('delayOut') ? allBindings.get('delayOut') : koAnimate.defaults.scaleVisible.delayOut;
 
         $(element).off(koAnimate.animations.transitionEnd);
 
@@ -427,15 +427,15 @@ ko.bindingHandlers.slideVisible =
     },
     update: function (element, valueAccessor, allBindings)
     {
-        var value = ko.utils.unwrapObservable(valueAccessor());
+        const value = ko.utils.unwrapObservable(valueAccessor());
 
-        var duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.slideVisible.duration;
-        var durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.slideVisible.durationOut;
-        var easing = allBindings['has']('easing') ? allBindings.get('easing') : koAnimate.defaults.slideVisible.easing;
-        var easingOut = allBindings['has']('easingOut') ? allBindings.get('easingOut') : koAnimate.defaults.slideVisible.easingOut;
-        var directionOut = allBindings['has']('directionOut') ? allBindings.get('directionOut') : koAnimate.defaults.slideVisible.directionOut;
-        var delay = allBindings['has']('delay') ? allBindings.get('delay') : koAnimate.defaults.slideVisible.delay;
-        var delayOut = allBindings['has']('delayOut') ? allBindings.get('delayOut') : koAnimate.defaults.slideVisible.delayOut;
+        const duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.slideVisible.duration;
+        const durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.slideVisible.durationOut;
+        const easing = allBindings['has']('easing') ? allBindings.get('easing') : koAnimate.defaults.slideVisible.easing;
+        const easingOut = allBindings['has']('easingOut') ? allBindings.get('easingOut') : koAnimate.defaults.slideVisible.easingOut;
+        const directionOut = allBindings['has']('directionOut') ? allBindings.get('directionOut') : koAnimate.defaults.slideVisible.directionOut;
+        const delay = allBindings['has']('delay') ? allBindings.get('delay') : koAnimate.defaults.slideVisible.delay;
+        const delayOut = allBindings['has']('delayOut') ? allBindings.get('delayOut') : koAnimate.defaults.slideVisible.delayOut;
 
         $(element).off(koAnimate.animations.transitionEnd);
         clearTimeout(element.koAnimateSlideVisible);
@@ -476,10 +476,10 @@ ko.bindingHandlers.cssAnimate =
 {
     init: function (element, valueAccessor, allBindings)
     {
-        var event = allBindings['has']('event') ? allBindings.get('event') : koAnimate.defaults.cssAnimate.event;
-        var callback = allBindings['has']('callback') ? allBindings.get('callback') : koAnimate.defaults.cssAnimate.callback;
-        var duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.cssAnimate.duration;
-        var animation = valueAccessor();
+        const event = allBindings['has']('event') ? allBindings.get('event') : koAnimate.defaults.cssAnimate.event;
+        const callback = allBindings['has']('callback') ? allBindings.get('callback') : koAnimate.defaults.cssAnimate.callback;
+        const duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.cssAnimate.duration;
+        const animation = valueAccessor();
 
         $(element).on(event, function()
         {
@@ -509,7 +509,7 @@ ko.bindingHandlers.cssAnimateVisible =
 {
     init: function (element, valueAccessor, allBindings)
     {
-        var value = ko.utils.unwrapObservable(valueAccessor());
+        const value = ko.utils.unwrapObservable(valueAccessor());
         if (value)
         {
             $(element).show();
@@ -522,15 +522,15 @@ ko.bindingHandlers.cssAnimateVisible =
 
     update: function (element, valueAccessor, allBindings)
     {
-        var duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.cssAnimateVisible.duration;
-        var durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.cssAnimateVisible.durationOut;
-        var animation = allBindings['has']('animation') ? allBindings.get('animation') : koAnimate.defaults.cssAnimateVisible.animation;
-        var animationOut = allBindings['has']('animationOut') ? allBindings.get('animationOut') : koAnimate.defaults.cssAnimateVisible.animationOut;
-        var delay = allBindings['has']('delay') ? allBindings.get('delay') : koAnimate.defaults.cssAnimateVisible.delay;
-        var delayOut = allBindings['has']('delayOut') ? allBindings.get('delayOut') : koAnimate.defaults.cssAnimateVisible.delayOut;
+        const duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.cssAnimateVisible.duration;
+        const durationOut = allBindings['has']('durationOut') ? allBindings.get('durationOut') : koAnimate.defaults.cssAnimateVisible.durationOut;
+        const animation = allBindings['has']('animation') ? allBindings.get('animation') : koAnimate.defaults.cssAnimateVisible.animation;
+        const animationOut = allBindings['has']('animationOut') ? allBindings.get('animationOut') : koAnimate.defaults.cssAnimateVisible.animationOut;
+        const delay = allBindings['has']('delay') ? allBindings.get('delay') : koAnimate.defaults.cssAnimateVisible.delay;
+        const delayOut = allBindings['has']('delayOut') ? allBindings.get('delayOut') : koAnimate.defaults.cssAnimateVisible.delayOut;
 
-        var value = ko.utils.unwrapObservable(valueAccessor());
-        var isCurrentlyVisible = !(element.style.display == "none");
+        const value = ko.utils.unwrapObservable(valueAccessor());
+        const isCurrentlyVisible = !(element.style.display == "none");
 
 
         $(element).off(koAnimate.animations.animationEnd);
@@ -584,11 +584,11 @@ ko.bindingHandlers.cssAnimateReveal =
 {
     init: function (element, valueAccessor, allBindings)
     {
-        var callback = allBindings['has']('callback') ? allBindings.get('callback') : koAnimate.defaults.cssAnimateReveal.callback;
-        var duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.cssAnimateReveal.duration;
-        var offset = allBindings['has']('offset') ? allBindings.get('offset') : koAnimate.defaults.cssAnimateReveal.offset;
-        var delay = allBindings['has']('delay') ? allBindings.get('delay') : koAnimate.defaults.cssAnimateReveal.delay;
-        var animation = valueAccessor() || koAnimate.defaults.cssAnimateReveal.animation;
+        const callback = allBindings['has']('callback') ? allBindings.get('callback') : koAnimate.defaults.cssAnimateReveal.callback;
+        const duration = allBindings['has']('duration') ? allBindings.get('duration') : koAnimate.defaults.cssAnimateReveal.duration;
+        const offset = allBindings['has']('offset') ? allBindings.get('offset') : koAnimate.defaults.cssAnimateReveal.offset;
+        const delay = allBindings['has']('delay') ? allBindings.get('delay') : koAnimate.defaults.cssAnimateReveal.delay;
+        const animation = valueAccessor() || koAnimate.defaults.cssAnimateReveal.animation;
 
         element.style.visibility = "hidden";
 
