@@ -10,12 +10,12 @@ import ko from 'knockout'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */
 ko.bindingHandlers.notification = {
-  update: function(element, valueAccessor) {
+  update: function($element, valueAccessor) {
     const value = valueAccessor();
 
     /**
      * The notifcation binding can be passed a string or an object with properties
-     * @type {[type]}
+     * @type {Object|string}
      */
     const options = typeof value == 'object' ? value : { message: value };
 
@@ -54,38 +54,27 @@ ko.bindingHandlers.notification = {
       message = "";
     }
 
-    /**
-     * Set the notification message
-     * @external '$().html'
-     * @see {@link http://api.jquery.com/html/}
-     */
-    $(element).html(message);
+    /** Set the notification message */
+    $element.textContent = message;
 
     /**
      * Clear any outstanding timeouts
      * @external 'clearTimeout'
      * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearTimeout}
      */
-    clearTimeout(element.notificationTimer);
+    clearTimeout($element.notificationTimer);
 
     if (message == '') {
 
-    /**
-     * Hide the notification
-     * @external '$().hide'
-     * @see {@link http://api.jquery.com/hide/}
-     */
-      $(element).hide();
+      /** Hide the notification */
+      $element.style.display = 'none';
 
       return;
     }
 
-    /**
-     * If there are any animations running, stop them and show the notification, otherwise show it
-     * @external '$().stop'
-     * @see {@link https://api.jquery.com/stop/}
-     */
-    $(element).stop(true, true).show();
+    /** Show the notifcation */
+    $element.style.display = 'block';
+    $element.style.opacity = 1;
 
     if (!hide) {
 
@@ -94,28 +83,22 @@ ko.bindingHandlers.notification = {
        * @external 'setTimeout'
        * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setTimeout#Callback_arguments}
        */
-      element.notificationTimer = setTimeout(function() {
+      $element.notificationTimer = setTimeout(function() {
 
         if (fade) {
 
-          /**
-           * Fade the notification out
-           * @external '$().fadeOut'
-           * @see {@link http://api.jquery.com/fadeout/}
-           */
-          jQuery(element).fadeOut(fadeoutDuration, function() {
-            options.message('');
-          });
+          /** Fade the notification out and reset the message */
+          $element.style.opacity = 0;
+
+          setTimeout(function() {
+            options.message('')
+          }, 1000)
 
         } else {
 
-          /**
-           * Hide the notification
-           * @external '$().hide'
-           * @see {@link http://api.jquery.com/hide/}
-           */
-          jQuery(element).hide();
-          options.message('');
+          /** Hide the notification and reset the message*/
+          $element.style.display = 'none';
+          options.message('')
 
         }
       }, duration);

@@ -28,7 +28,7 @@
     * @external '.then'
     * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then}
     */
-   response.then(function(data) {
+   response.then(function({ data }) {
      if (data.response.venues.length > 0) {
 
        /** Set the Foursquare button URL */

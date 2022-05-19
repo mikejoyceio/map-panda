@@ -2,6 +2,7 @@
  * @file Data Model
  */
 
+import axios from 'axios'
 import fontawesome from 'fontawesome-markers'
 
 /**
@@ -514,17 +515,11 @@ dataModel.foursquare = function(request) {
 	 */
 	const foursquareAPI = 'https://api.foursquare.com/v2/venues/search';
 
-	/**
-	 * Return
-	 * @external 'Promise.resolve'
-	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve}
-	 * @external '$.ajax'
-	 * @see {@link http://api.jquery.com/jquery.ajax/}
-	 */
-	return Promise.resolve($.ajax({
+	return axios({
+		method: 'GET',
 		url: foursquareAPI,
-		dataType: 'json',
-		data: {
+		headers: {'content-type': 'application/x-www-form-urlencoded'},
+		params: {
 			ll: `${request.venueLat},${request.venueLng}`,
 			query: request.venueName,
 			intent: 'match',
@@ -532,9 +527,8 @@ dataModel.foursquare = function(request) {
 			client_secret: 'J2LN1WHKPT2MAQAP3POZP1REU2AWLYGM3S24B0DSLHZNHKJR',
 			v: '20151230',
 			m: 'foursquare'
-		}
-	}));
-
+		},
+	});
 }
 
 /**
@@ -553,27 +547,19 @@ dataModel.uber = function(request) {
 	const uberClientId = 'sF0uXRb14_xpSGdnNlfl8KgOVSgt6IXt';
 	const uberServerToken = 'AKvxnyDLDHBO86RoOC0vcMNTByH1BRHDgerhfNmh';
 
-	/**
-	 * Return
-	 * @external 'Promise.resolve'
-	 * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve}
-	 * @external '$.ajax'
-	 * @see {@link http://api.jquery.com/jquery.ajax/}
-	 */
-	return Promise.resolve($.ajax({
+	return axios({
 		url: uberAPI,
 		headers: {
-			Authorization: "Token "	+ uberServerToken
+			'Authorization': `Token ${uberServerToken}`,
+			'content-type': 'application/x-www-form-urlencoded'
 		},
 		data: {
 			start_latitude: request.startLat,
 			start_longitude: request.startLng,
 			end_latitude: request.endLat,
 			end_longitude: request.endLng
-		}
-	}
-));
-
+		},
+	});
 }
 
 /**

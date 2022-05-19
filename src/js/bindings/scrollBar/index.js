@@ -11,7 +11,7 @@ import 'perfect-scrollbar/css/perfect-scrollbar.css';
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */
 ko.bindingHandlers.scrollBar = {
-  update: function(element, valueAccessor) {
+  update: function($element, valueAccessor) {
 
     /**
      * Viewport Width
@@ -22,10 +22,13 @@ ko.bindingHandlers.scrollBar = {
 
     /** If the viewport width is greater than 1024px instantiate the custom scrollbar, else destroy it */
     if (viewportWidth > 1024) {
-      ps = new PerfectScrollbar(element);
+      ps = new PerfectScrollbar($element);
     } else {
-      ps.destroy();
-      ps = null;
+
+      if (ps) {
+        ps.destroy();
+        ps = null;
+      }
     }
   }
 };

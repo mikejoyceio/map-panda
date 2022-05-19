@@ -9,16 +9,16 @@ import ko from 'knockout'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */
 ko.bindingHandlers.filter = {
-  init: function(element, valueAccessor, allBindingsAccessor, viewModel) {
+  init: function($element, valueAccessor, allBindingsAccessor, viewModel) {
 
     /** Bind to the input value */
-    ko.bindingHandlers.value.init(element, valueAccessor, allBindingsAccessor);
+    ko.bindingHandlers.value.init($element, valueAccessor, allBindingsAccessor);
 
-    $(element).keyup(filter);
+    $element.addEventListener('keyup', filter);
 
     function filter() {
 
-      const query = $(element).val();
+      const query = $element.value;
 
     	/** Loop through each place in the place list and compare the string */
     	for (let i=0, j=viewModel.placeList().length; i<j; i++) {
@@ -76,7 +76,7 @@ ko.bindingHandlers.filter = {
       }
     }
   },
-  update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-    ko.bindingHandlers.value.update(element, valueAccessor)
+  update: function($element, valueAccessor, allBindings, viewModel, bindingContext) {
+    ko.bindingHandlers.value.update($element, valueAccessor)
   }
 };

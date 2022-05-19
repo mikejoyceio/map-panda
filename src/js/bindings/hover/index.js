@@ -11,28 +11,13 @@ import ko from 'knockout'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */
 ko.bindingHandlers.hover = {
-  init: function(element) {
-
-    /**
-     * When the mouseover event is fired on the element, add the 'hover' CSS class from the element
-     * @param {string}
-     * @param {function}
-     * @external '$().on'
-     * @see {@link http://api.jquery.com/on/}
-     */
-    $(element).on('mouseover', function(){
-      $(element).addClass('menu__list-item--hover');
+  init: function($element) {
+    $element.addEventListener('mouseover', function(event) {
+      $element.classList.add('menu__list-item--hover');
     });
 
-    /**
-     * When the mouseout event is fired on the element, remove the 'hover' CSS class from the element
-     * @param {string}
-     * @param {function}
-     * @external '$().on'
-     * @see {@link http://api.jquery.com/on/}
-     */
-    $(element).on('mouseout', function(){
-      $(element).removeClass('menu__list-item--hover');
+    $element.addEventListener('mouseout', function() {
+      $element.classList.remove('menu__list-item--hover');
     });
   }
 };

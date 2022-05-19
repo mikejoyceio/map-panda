@@ -18,10 +18,6 @@ module.exports = {
      template: 'index.html'
     }),
     new WebpackMildCompile(),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-    })
   ],
   module: {
     rules: [

@@ -71,9 +71,27 @@ $use-bounceIn: true;
 $use-fadeInLeft: true;
 $use-fadeOutLeft: true;
 $use-fadeOut: true;
+$use-fadeIn: true;
+$use-fadeInUp: true;
+$use-fadeOutDown: true;
 $use-slideInDown: true;
 $use-slideInUp: true;
 $use-slideOutDown: true;
 $use-zoomOut: true;
+
+.animated {
+
+	&--100 {
+		animation-duration: 100ms !important;
+	}
+
+	&--200 {
+		animation-duration: 200ms !important;
+	}
+
+	&--300 {
+		animation-duration: 300ms !important;
+	}
+}
 
 @import "~animate-sass/animate";

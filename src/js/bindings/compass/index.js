@@ -11,7 +11,7 @@ import { Compass } from 'compass.js'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */
 ko.bindingHandlers.compass = {
-  init: function(element) {
+  init: function($element) {
 
     /**
      * @param  {number} heading
@@ -19,26 +19,16 @@ ko.bindingHandlers.compass = {
      * @see {@link https://github.com/ai/compass.js}
      */
     Compass.watch(function (heading) {
+      $element.style.display = 'show';
 
-      /**
-       * Show the element
-       * @external '$().show'
-       * @see {@link http://api.jquery.com/show/}
-       */
-      $(element).show();
-
-      /**
-       * Set CSS transform rotation (rotates the compass)
-       * @external '$().css'
-       * @see {@link http://api.jquery.com/css/}
-       */
-      $(element).css({
-        '-webkit-transform': 'rotate(' + (-heading) + 'deg)',
-        '-moz-transform': 'rotate(' + (-heading) + 'deg)',
-        '-ms-transform': 'rotate(' + (-heading) + 'deg)',
-        '-o-transform': 'rotate(' + (-heading) + 'deg)',
-        'transform': 'rotate(' + (-heading) + 'deg)'
-      });
+      /** Set CSS transform rotation (rotates the compass) */
+      // $(element).css({
+      //   '-webkit-transform': 'rotate(' + (-heading) + 'deg)',
+      //   '-moz-transform': 'rotate(' + (-heading) + 'deg)',
+      //   '-ms-transform': 'rotate(' + (-heading) + 'deg)',
+      //   '-o-transform': 'rotate(' + (-heading) + 'deg)',
+      //   'transform': 'rotate(' + (-heading) + 'deg)'
+      // });
     });
   }
 };

@@ -13,7 +13,7 @@ import handleNearbySearchResult from './handleNearbySearchResult'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */
 ko.bindingHandlers.map = {
-  init: function(element, valueAccessor, allBindings, viewModel) {
+  init: function($element, valueAccessor, allBindings, viewModel) {
 
     /**
      * Instantiate a new Google Map object
@@ -21,10 +21,10 @@ ko.bindingHandlers.map = {
      * @external 'new google.maps.Map'
      * @see {@link https://developers.google.com/maps/documentation/javascript/reference?hl=en#Map}
      */
-    viewModel.map = new google.maps.Map(element, googleMapConfig);
+    viewModel.map = new google.maps.Map($element, googleMapConfig);
 
 	},
-	update: function(element, valueAccessor, allBindings, viewModel) {
+	update: function($element, valueAccessor, allBindings, viewModel) {
 
   	const value = valueAccessor();
 

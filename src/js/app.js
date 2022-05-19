@@ -1,4 +1,3 @@
-import '@binding/animate'
 import '@binding/clipboard'
 //import '@binding/compassBinding'
 import '@binding/filter'

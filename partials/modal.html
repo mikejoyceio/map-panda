@@ -1,5 +1,5 @@
 
-<div class="modal" data-bind="cssAnimateVisible: modalVisibilty, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 200, durationOut: 100">
+<div class="modal animated" data-bind="css: modalVisibilty() ? 'fadeInUp animated--200' : 'fadeOutDown animated--100'">
   <div class="modal__content">
     <div class="modal__header">
       <div class="modal__header-top-bar">
@@ -10,7 +10,7 @@
         </span>
         </span>
       </div>
-      <div class="modal__image" data-bind="style: { backgroundImage: modalInfoImage }, cssAnimateVisible: modalInfoImageVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300"></div>
+      <div class="modal__image animated animated--300" data-bind="style: { backgroundImage: modalInfoImage }, css: modalInfoImageVisibility() ? 'slideInUp' : 'slideOutDown'"></div>
       <div class="modal__price price" data-bind="css: modalInfoPrice">
         <span class="price__dollar price__dollar--01"></span>
         <span class="price__dollar price__dollar--02"></span>
@@ -39,7 +39,7 @@
             <div class="uber__icon">
               <span class="uber__loader" data-bind="visible: modalUberLoading"></span>
             </div>
-            <div class="uber__estimate" data-bind="cssAnimateVisible: modalUberEstimateVisibility, animation: 'fadeInLeft', animationOut: 'fadeOut', duration: 300, durationOut: 300">
+            <div class="uber__estimate animated animated--300" data-bind="css: modalUberEstimateVisibility() ? 'fadeInLeft' : 'fadeOut'">
               <span data-bind="text: modalUberEstimate"></span>
             </div>
             </div>
@@ -57,8 +57,8 @@
         </div>
       </div>
     </div>
-    <div class="modal__overlay" data-bind="cssAnimateVisible: modalOverlayVisibility, animation: 'slideInUp', animationOut: 'slideOutDown', duration: 300, durationOut: 300">
-      <div class="modal__overlay-message" data-bind="cssAnimateVisible: modalOverlayMessageVisibility, animation: 'bounceIn', animationOut: 'fadeOut', duration: 300, durationOut: 100, text: modalOverlayMessage"></div>
+    <div class="modal__overlay animated animated--300" data-bind="css: modalOverlayVisibility() ? 'slideInUp' : 'slideOutDown'">
+      <div class="modal__overlay-message animated" data-bind="css: modalOverlayMessageVisibility() ? 'bounceIn' : 'fadeOut'"></div>
       <div id="clipboardTarget" class="modal__overlay-phone" data-bind="text: modalInfoPhone"></div>
       <div class="modal__overlay-actions">
         <div class="modal__overlay-button-group button-group" data-bind="visible: modalInfoPhoneCall, css: modalOverlayGroupButtons">
@@ -76,7 +76,7 @@
         </a>
       </div>
     </div>
-    <div class="modal__loading" data-bind="cssAnimateVisible: modalLoading, animation: 'bounceIn', animationOut: 'zoomOut', duration: 300, durationOut: 300">
+    <div class="modal__loading animated animated--300" data-bind="css: modalLoading() ? 'bounceIn' : 'zoomOut'">
       <div class="modal__loading-loader"></div>
     </div>
   </div>

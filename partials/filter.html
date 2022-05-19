@@ -1,7 +1,7 @@
 
 <div class="filter">
 	<div class="filter__icon fa fa-search" data-bind="toggleFilter, css: { active: searchFilterVisibility }"></div>
-	<div class="filter__input-container" data-bind="cssAnimateVisible: searchFilterVisibility, animation: 'fadeInLeft', animationOut: 'fadeOutLeft', duration: 400, durationOut: 50">
+	<div class="filter__input-container animated animated--300" data-bind="css: searchFilterVisibility() ? 'fadeInLeft' : 'fadeOutLeft'">
 		<input type="text" class="filter__input" placeholder="Filter" autocapitalize="off" autocorrect="off" data-bind="filter: searchQuery">
 		<div class="filter__clear" data-bind="click: clearFilter, visible: searchClearFilterVisibility">
 			<span class="fa fa-times-circle"></span>
