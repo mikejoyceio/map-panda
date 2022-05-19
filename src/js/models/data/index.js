@@ -1,13 +1,10 @@
 /**
  * @file Data Model
- * @version 1.0
- * @author Mike Joyce [hello@mikejoyce.io]
  */
 
 import fontawesome from 'fontawesome-markers'
 
 /**
- * Data Model
  * @type {Object}
  */
 var dataModel = {};

@@ -2,6 +2,9 @@
  * @file View modal constants
  */
 
+/**
+ * @type {Object}
+ */
 const constants = {
   /**
    * Default large image

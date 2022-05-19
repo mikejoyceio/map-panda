@@ -4,10 +4,6 @@
 
 import { InfoBox } from 'google-maps-infobox'
 
-/**
- * Add Info Box function
- * @param {Object} data
- */
 function addInfoBox(data, viewModel) {
 
   /** InfoBox HTML content */
@@ -75,7 +71,6 @@ function addInfoBox(data, viewModel) {
   google.maps.event.addListener(data.marker, 'mouseout', function() {
     infoBox.close(viewModel.map, this);
   });
-
 }
 
 export default addInfoBox;

@@ -1,6 +1,7 @@
-
-//#region "Defaults"
-
+/**
+ * @file Knockout binding for animate.css
+ */
+ 
 import ko from 'knockout'
 
 var koAnimate =
@@ -94,11 +95,6 @@ var koAnimate =
 
 };
 
-
-//#endregion "Defaults"
-
-//#region "Helpers"
-
 koAnimate.helpers =
 {
     cssVendors: ['-webkit-', '-moz-', '-o-,', '-ms-', ''],
@@ -142,10 +138,6 @@ koAnimate.helpers =
     }
 
 };
-
-//#endregion "Helpers"
-
-//#region "Animations"
 
 koAnimate.animations =
 {
@@ -246,10 +238,6 @@ koAnimate.animations =
 
 };
 
-//#endregion "Animations"
-
-//#region "Hovering"
-
 ko.bindingHandlers.hoverScale =
 {
     init: function (element, valueAccessor, allBindings)
@@ -296,11 +284,6 @@ ko.bindingHandlers.hoverRotate =
         });
     }
 };
-
-
-//#endregion "Hovering"
-
-//#region "Visibility"
 
 ko.bindingHandlers.fadeVisible =
 {
@@ -489,10 +472,6 @@ ko.bindingHandlers.slideVisible =
     }
 };
 
-//#endregion "Visibility
-
-//#region "Animate.CSS"
-
 ko.bindingHandlers.cssAnimate =
 {
     init: function (element, valueAccessor, allBindings)
@@ -628,5 +607,3 @@ ko.bindingHandlers.cssAnimateReveal =
         });
     }
 };
-
-//#endregion "Animate.CSS

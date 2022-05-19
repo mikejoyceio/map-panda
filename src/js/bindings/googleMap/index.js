@@ -1,5 +1,6 @@
 /**
- * @file Knockout Google Map Binding. Initializes and updates a Google map instance.
+ * @file Knockout Google Map Binding.
+ * Initializes and updates a Google map instance.
  */
 
 import ko from 'knockout'
@@ -7,16 +8,11 @@ import googleMapConfig from '@config/googleMap'
 import clearMarkers from './clearMarkers'
 import handleNearbySearchResult from './handleNearbySearchResult'
 
+/**
+ * @external 'ko.bindingHandlers'
+ * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
+ */
 ko.bindingHandlers.map = {
-
-	/**
-	 * Init: Called when the binding is first applied.
-	 * @param  {Object} element         DOM element involved in this binding
-	 * @param  {Function} valueAccessor Function to get the current model property of this binding
-	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
-	 * @param  {Object} viewModel       Access the view model
-	 * @param  {Object} viewModel  Holds the binding context available to this DOM elements bindings
-	 */
   init: function(element, valueAccessor, allBindings, viewModel) {
 
     /**
@@ -28,15 +24,6 @@ ko.bindingHandlers.map = {
     viewModel.map = new google.maps.Map(element, googleMapConfig);
 
 	},
-
-	/**
-	 * Update: Called when the binding is first applied and again whenever any observables change
-	 * @param  {Object} element         DOM element involved in this binding
-	 * @param  {Function} valueAccessor Function to get the current model property of this binding
-	 * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
-	 * @param  {Object} viewModel       Access the view model
-	 * @param  {Object} viewModel  Holds the binding context available to this DOM elements bindings
-	 */
 	update: function(element, valueAccessor, allBindings, viewModel) {
 
   	var value = valueAccessor();

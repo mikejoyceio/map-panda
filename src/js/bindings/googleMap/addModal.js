@@ -3,7 +3,7 @@
  */
 
 /**
- * @param {Object} data
+ * @param {Object} data place data
  */
 function addModal(data, viewModel) {
 

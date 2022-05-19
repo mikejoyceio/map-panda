@@ -7,7 +7,6 @@ import setPlaces from './setPlaces'
 import handleNearbySearchError from './handleNearbySearchError'
 
 /**
- * Google Maps PlacesService callback function
  * @param  {Array.<Object>} results
  * @param  {Object} status
  * @see {@link https://developers.google.com/maps/documentation/javascript/places#place_search_responses}
@@ -64,7 +63,6 @@ function handleNearbySearchResult(results, status, viewModel) {
      * @see 'handleNearbySearchError()'
      */
     switch (status) {
-
       case statusCode.ERROR:
         handleNearbySearchError(viewModel, status+' There was a problem contacting the Google servers.', 'Connection error');
         break;
@@ -92,7 +90,6 @@ function handleNearbySearchResult(results, status, viewModel) {
 
         /** Show reload app button */
         self.appReloadVisbility(true);
-
     }
   }
 }

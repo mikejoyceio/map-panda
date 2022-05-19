@@ -1,7 +1,5 @@
 /**
  * @file Knockout Custom Scroll Bar Binding.
- * @version 1.0
- * @author Mike Joyce [hello@mikejoyce.io]
  */
 
 import ko from 'knockout'
@@ -9,8 +7,6 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 
 /**
- * ScrollBar
- * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */

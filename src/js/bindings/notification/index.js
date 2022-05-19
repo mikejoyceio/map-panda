@@ -1,14 +1,11 @@
 /**
- * @file Knockout Custom Notification Binding. Creates user notifications.
- * @version 1.0
- * @author Mike Joyce [hello@mikejoyce.io]
+ * @file Knockout Custom Notification Binding.
+ * Creates user notifications.
  */
 
 import ko from 'knockout'
 
 /**
- * Notification
- * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */

@@ -15,35 +15,35 @@ var googleMapConfig = {
   zoom: 15,
 
   /**
-   * Hide map zoom controls
+   * Show/hide map zoom controls
    * @type {boolean}
    * @see {@link https://developers.google.com/maps/documentation/javascript/controls}
    */
   zoomControl: false,
 
   /**
-   * Hide map type control
+   * Show/hide map type control
    * @type {boolean}
    * @see {@link https://developers.google.com/maps/documentation/javascript/controls}
    */
   mapTypeControl: false,
 
    /**
-   * Hide map street view control
+   * Show/hide map street view control
    * @type {boolean}
    * @see {@link https://developers.google.com/maps/documentation/javascript/controls}
    */
   streetViewControl: false,
 
   /**
-   * Hide map pan control
+   * Show/hide map pan control
    * @type {boolean}
    * @see {@link https://developers.google.com/maps/documentation/javascript/controls}
    */
   panControl: false,
 
   /**
-   * Hide fullscreen control
+   * Show/hide fullscreen control
    * @type {boolean}
    * @see {@link https://developers.google.com/maps/documentation/javascript/controls}
    */

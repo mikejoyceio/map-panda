@@ -1,6 +1,5 @@
 /**
  * Check if local storage is available in the browser.
- * @return {boolean}
  */
 
 /**

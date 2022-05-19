@@ -5,9 +5,6 @@
 import addInfoBox from './addInfoBox'
 import addModal from './addModal'
 
-/**
- * Set Places
- */
 function setPlaces(viewModel) {
 
   /** Loop thought the places array */
@@ -61,7 +58,6 @@ function setPlaces(viewModel) {
   }
 
   viewModel.map.fitBounds(bounds);
-
 }
 
 export default setPlaces;

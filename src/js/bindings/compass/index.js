@@ -1,15 +1,12 @@
 /**
- * @file Knockout Custom Compass Binding. Initializes a small map compass for supported devices.
- * @version 1.0
- * @author Mike Joyce [hello@mikejoyce.io]
+ * @file Knockout Custom Compass Binding.
+ * Initializes a small map compass for supported devices.
  */
 
 import ko from 'knockout'
 import { Compass } from 'compass.js'
 
 /**
- * Compass
- * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */

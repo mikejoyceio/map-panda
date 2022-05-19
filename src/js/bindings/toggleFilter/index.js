@@ -1,27 +1,15 @@
 /**
- * @file Knockout Custom Toggle Filter Binding. Toggle the visibility of the search filter on mobiles & tablets.
- * @version 1.0
- * @author Mike Joyce [hello@mikejoyce.io]
+ * @file Knockout Custom Toggle Filter Binding.
+ * Toggle the visibility of the search filter on mobiles & tablets.
  */
 
 import ko from 'knockout'
 
 /**
- * ToggleFilter
- * @type {Object}
  * @external 'ko.bindingHandlers'
  * @see {@link http://knockoutjs.com/documentation/custom-bindings.html}
  */
 ko.bindingHandlers.toggleFilter = {
-
-  /**
-   * Init: Called when the binding is first applied.
-   * @param  {Object} element         DOM element involved in this binding
-   * @param  {Function} valueAccessor Function to get the current model property of this binding
-   * @param  {Object} allBindings     Object used to access all model values bound to this DOM element
-   * @param  {Object} viewModel       Access the view model
-   * @param  {Object} bindingContext  Holds the binding context available to this DOM elements bindings
-   */
   init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
 
     /**
@@ -61,7 +49,6 @@ ko.bindingHandlers.toggleFilter = {
       /** Call eventFunction */
       eventFunction();
     });
-
 
     function eventFunction() {
 
@@ -106,9 +93,7 @@ ko.bindingHandlers.toggleFilter = {
         for (var i=0,j=bindingContext.$root.placeList().length;i<j;i++) {
           bindingContext.$root.placeList()[i].isHidden(false);
         }
-
       }
     }
-
   }
 };
