@@ -3,7 +3,7 @@
  */
 
 import ko from 'knockout'
-import googleMapConfig from '../../config/googleMapConfig'
+import googleMapConfig from '../../config/googleMap'
 import clearMarkers from './clearMarkers'
 import handleNearbySearchResult from './handleNearbySearchResult'
 
