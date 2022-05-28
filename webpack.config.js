@@ -59,9 +59,9 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '@binding': path.resolve(__dirname, 'src/js/bindings/'),
+      '@bindings': path.resolve(__dirname, 'src/js/bindings/'),
       '@config': path.resolve(__dirname, 'src/js/config/'),
-      '@model': path.resolve(__dirname, 'src/js/models/'),
+      '@models': path.resolve(__dirname, 'src/js/models/'),
       '@scss': path.resolve(__dirname, 'src/scss/')
     }
   }
