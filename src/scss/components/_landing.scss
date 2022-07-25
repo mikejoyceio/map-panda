@@ -202,17 +202,6 @@
 
 		&--uber {
 		  margin: 0 2px;
-
-			#{$this}__brand-icon {
-  			background-image: image(uber-badge);
-  			background-repeat: no-repeat;
-  			background-size: cover;
-  			display: inline-block;
-  			height: 15px;
-  			margin: auto auto -2px;
-  			padding: 0;
-  			width: 15px;
-			}
 		}
 
 		&--google {

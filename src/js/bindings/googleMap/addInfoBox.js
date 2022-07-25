@@ -29,7 +29,7 @@ function addInfoBox(data, viewModel) {
     pixelOffset: new google.maps.Size(-105, -30),
     zIndex: null,
     boxStyle: {
-      opacity: 0.75,
+      opacity: 0.9,
       width: '230px'
      },
     closeBoxURL: "",

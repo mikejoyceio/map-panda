@@ -10,13 +10,13 @@ const constants = {
    * Default large image
    * @const {string}
    */
-  DEFAULT_IMAGE_LARGE: 'dist/images/default-large.png',
+  DEFAULT_IMAGE_LARGE: '/images/default-large.svg',
 
   /**
    * Default small image
    * @const {string}
    */
-  DEFAULT_IMAGE_SMALL: 'dist/images/default-small.png',
+  DEFAULT_IMAGE_SMALL: '/images/default-small.svg',
 
   /**
    * Foursquare API URL

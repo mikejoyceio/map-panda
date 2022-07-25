@@ -4,10 +4,7 @@
     <div class="modal__header">
       <div class="modal__header-top-bar">
         <span class="modal__close" data-bind="event: { click: closeModal, touchend: closeModal }">
-        <span class="icon fa-stack fa-sml">
-          <i class="modal__close-icon modal__close-icon--outer fa fa-circle-thin fa-stack-2x"></i>
-          <i class="modal__close-icon modal__close-icon--inner fa fa-close fa-stack-1x fa-inverse"></i>
-        </span>
+          <i class="modal__close-icon modal__close-icon--outer fal fa-times-circle"></i>
         </span>
       </div>
       <div class="modal__image animated animated--300" data-bind="style: { backgroundImage: modalInfoImage }, css: modalInfoImageVisibility() ? 'slideInUp' : 'slideOutDown'"></div>
@@ -36,7 +33,7 @@
         </div>
         <div class="modal__actions-item modal__actions-item--right" data-bind="click: uberRideRequest">
           <div class="uber">
-            <div class="uber__icon">
+            <div class="uber__icon" data-bind="css: modalUberLoading() ? 'uber__icon--loading' : ''">
               <span class="uber__loader" data-bind="visible: modalUberLoading"></span>
             </div>
             <div class="uber__estimate animated animated--300" data-bind="css: modalUberEstimateVisibility() ? 'fadeInLeft' : 'fadeOut'">
@@ -47,12 +44,12 @@
       </div>
       <div class="modal__info">
         <div class="modal__info-item modal__info-item--left">
-          <span class="modal__info-icon fa fa-compass"></span>
+          <span class="modal__info-icon fal fa-info-circle"></span>
           <p class="modal__info-text modal__info-text--name" data-bind="text: modalInfoName"></p>
           <p class="modal__info-text modal__info-text--address" data-bind="text: modalInfoAddress"></p>
         </div>
         <div class="modal__info-item modal__info-item--right" data-bind="visible: modalInfoWebsite">
-          <span class="modal__info-icon fa fa-globe"></span>
+          <span class="modal__info-icon fal fa-globe"></span>
           <p><a class="modal__info-text modal__info-text--link" data-bind="attr: { href: modalInfoWebsite }" target="_blank">Website</a></p>
         </div>
       </div>
@@ -71,7 +68,7 @@
     <div class="modal__footer">
       <div class="modal__foursquare">
         <a class="modal__foursquare-button" data-bind="visible: modalFoursquareVisibility(), attr: { href: modalFoursquareURL() }" target="_blank">
-          <span class="modal__foursquare-icon fa fa-foursquare"></span>
+          <span class="modal__foursquare-icon fab fa-foursquare"></span>
           <span>View in Foursquare</span>
         </a>
       </div>

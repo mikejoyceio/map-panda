@@ -3,8 +3,7 @@
 
 $images: (
 	default-large: url(../images/default-large.svg),
-	default-small: url(../images/default-small.svg),
-	uber-badge: url(../images/uber-badge.png)
+	default-small: url(../images/default-small.svg)
 );
 
 @function image($key) {

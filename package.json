@@ -7,18 +7,19 @@
     "prod": "webpack",
     "dev": "webpack serve"
   },
-  "repository": "https://github.com/mikejoyceio/map.git",
+  "repository": "https://github.com/mikejoyceio/map-panda.git",
   "author": "Mike Joyce <contact@mikejoyce.me>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mikejoyceio/map/issues"
+    "url": "https://github.com/mikejoyceio/map-panda/issues"
   },
-  "homepage": "https://github.com/mikejoyceio/map",
+  "homepage": "https://github.com/mikejoyceio/map-panda",
   "devDependencies": {
     "@babel/core": "^7.18.0",
     "@babel/preset-env": "^7.18.0",
     "animate-sass": "^0.8.2",
     "babel-loader": "^8.2.5",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.1",
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",

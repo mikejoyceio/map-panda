@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMildCompile = require('webpack-mild-compile').Plugin;
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   mode: 'development',
@@ -18,6 +19,16 @@ module.exports = {
      template: 'index.html'
     }),
     new WebpackMildCompile(),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.join(__dirname, 'src/images/**/*'),
+          to({ context, absoluteFilename }) {
+            return "images/[name][ext]";
+          },
+        },
+      ],
+    }),
   ],
   module: {
     rules: [

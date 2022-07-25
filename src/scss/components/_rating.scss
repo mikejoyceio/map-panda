@@ -8,13 +8,14 @@
 
 	&__star {
 		display: inline-block;
-		font-family: FontAwesome;
+		font-family: 'Font Awesome 5 Pro';
 		font-style: normal;
 		font-weight: normal;
 		line-height: inherit;
 
 		&:before {
 		  content: "\f005";
+			font-weight: bold;
 		  padding: 1px;
 		  color: color(silver-sand);
 		}

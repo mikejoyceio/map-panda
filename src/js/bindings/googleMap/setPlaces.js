@@ -7,6 +7,14 @@ import addModal from './addModal'
 
 function setPlaces(viewModel) {
 
+  const baseIcon = {
+    fillColor: '#e74c3c',
+    fillOpacity: 1,
+    strokeColor: '#ffffff',
+		strokeWeight: 0.5,
+    scale: 0.045
+  };
+
   /** Loop thought the places array */
   for (let i=0, j=viewModel.mapPlaces().length; i<j; i++) {
 
@@ -14,7 +22,7 @@ function setPlaces(viewModel) {
     viewModel.mapMarkers()[i] = new google.maps.Marker({
       map: viewModel.map,
       position: viewModel.mapPlaces()[i].geometry.location,
-      icon: viewModel.currentPlace().marker()
+      icon: { ...viewModel.currentPlace().marker(), ...baseIcon }
     });
 
     /** Add the marker to the map */

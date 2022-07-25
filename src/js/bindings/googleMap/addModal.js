@@ -17,21 +17,6 @@ function addModal(data, viewModel) {
    */
   google.maps.event.addListener(data.marker, 'click', function() {
 
-    /** Reset the marker icons */
-    for (let i=0, j=viewModel.mapMarkers().length; i<j; i++) {
-      viewModel.mapMarkers()[i].setIcon(viewModel.currentPlace().marker());
-    }
-
-    /** Set the selected marker icon */
-    // data.marker.setIcon({
-    //   //path: fontawesome.markers.CIRCLE,
-    // 	fillColor: '#ed5565',
-    // 	fillOpacity: 1,
-    // 	scale: 0.32,
-    // 	strokeColor: '#ffffff',
-    // 	strokeWeight: 3
-    // });
-
     /** Show the modal */
     viewModel.modalVisibilty(true);
 

@@ -2,18 +2,32 @@
 // Uber
 
 .uber {
+  $this: &;
 
   &__icon {
     background-color: color(ebony);
-    background-position: 3px;
-    background-repeat: no-repeat;
-    background-size: 18px;
     border-radius: 4px;
-    background-image: image(uber-badge);
     height: 22px;
     margin: auto;
     position: relative;
     width: 85px;
+
+    &--loading {
+
+      &:after {
+        display: none;
+      }
+    }
+
+    &:after {
+      position: absolute;
+      font-family: 'Font Awesome 5 Brands';
+      content: "\f402";
+      color: color(white);
+      font-size: 14px;
+      left: 5px;
+      top: 0;
+    }
 
     @media #{$medium-up} {
       height: 26px;
@@ -23,17 +37,17 @@
       &:before {
         color: color(silver);
         content: 'Ride with Uber';
-        font-size: 7px;
+        font-size: 8px;
         height: 10px;
-        left: 25px;
+        left: 30px;
         line-height: 1;
         position: absolute;
         top: 3px;
       }
 
-      &:before {
-        font-size: 8px;
-        left: 30px;
+      &:after {
+        font-size: 18px;
+        top: 1px;
       }
     }
   }
