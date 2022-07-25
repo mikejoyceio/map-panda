@@ -33,44 +33,76 @@
 		background-size: 35%;
 	}
 
+  &__content {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    left: 0;
+    margin: auto;
+
+    @media #{$xlarge-up} {
+      top: 280px;
+    }
+
+    @media #{$xxlarge-up} {
+      top: 300px;
+    }
+  }
+
 	&__header {
 		color: color(off-white);;
 		font-size: 48px;
 		font-weight: $font-extra-bold;
-		left: 0;
 		margin: auto;
+    margin-bottom: 40px;
 		min-width: 200px;
 		padding: 10px;
-		position: absolute;
-		right: 0;
 		text-align: center;
-		top: 27.5%;
 
 	  @media #{$medium-up} {
 	  	font-size: 52px;
-	  	top: 250px;
 	  	letter-spacing: 3px;
 	  }
+
+    @media #{$large-up} {
+      font-size: 62px;
+    }
+
+    @media #{$xlarge-up} {
+      font-size: 72px;
+      margin-bottom: 82px;
+    }
+
+    @media #{$xxlarge-up} {
+      font-size: 80px;
+      margin-bottom: 92px;
+    }
 	}
 
 	&__info {
 	  color: color(off-white);;
-	  font-size: 13px;
+	  font-size: 18px;
 	  font-weight: $font-light;
-	  left: 0;
 	  margin: auto;
-	  padding-bottom: 20px;
-	  position: absolute;
-	  right: 0;
+    margin-bottom: 20px;
 	  text-align: center;
-	  top: 38%;
-	  width: 320px;
+	  max-width: 280px;
 
 	  @media #{$medium-up} {
-	  	font-size: 15px;
-	  	top: 330px;
-	  	width: 500px;
+	  	font-size: 19px;
+	  	max-width: 500px;
 	  }
+
+    @media #{$xlarge-up} {
+      font-size: 23px;
+      max-width: 700px;
+      margin-bottom: 48px;
+    }
+
+    @media #{$xxlarge-up} {
+      font-size: 25px;
+      margin-bottom: 50px;
+    }
 	}
 
   &__loader {
@@ -128,17 +160,12 @@
   }
 
 	&__action {
-	  left: 0;
 	  margin: auto;
 	  padding-top: 20px;
-	  position: absolute;
-	  right: 0;
-	  top: 48%;
 	  width: 250px;
 
     @media #{$medium-up} {
 	  	width: 270px;
-	  	top: 380px;
 	  }
 
 	  &-button {

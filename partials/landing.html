@@ -1,24 +1,24 @@
 
 <div class="landing" data-bind="visible: appLandingVisbility">
-  <h1 class="landing__header">
-    <div class="landing__brand"></div> Map Panda
-  </h1>
-  <div class="landing__info">
-    <p>
-      Explore places to eat, drink, shop, and more around you.
-    </p>
-    <p>
-      Over 50 million places worldwide.
-    </p>
+  <div class="landing__content">
+    <h1 class="landing__header">
+      <div class="landing__brand"></div> Map Panda
+    </h1>
+    <div class="landing__info">
+      <p>
+        Explore places to eat, drink, shop, and more around you.
+      </p>
+    </div>
+    <div class="landing__action" data-bind="visible: appLandingActionVisibility" style="display: none;">
+      <button class="landing__action-button button button--plain button--radius button--expand" data-bind="click: getLocation">
+        Get Started!
+      </button>
+    </div>
   </div>
+
   <div class="landing__loader" data-bind="visible: appLandingLoadingVisibility">
     <div class="landing__loader-outer"></div>
     <div class="landing__loader-inner"></div>
-  </div>
-  <div class="landing__action" data-bind="visible: appLandingActionVisibility" style="display: none;">
-    <button class="landing__action-button button button--plain button--radius button--expand" data-bind="click: getLocation">
-      Get Started!
-    </button>
   </div>
   <div class="landing__powered">
     <h3 class="landing__powered-header">
