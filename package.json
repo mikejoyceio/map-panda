@@ -42,7 +42,6 @@
     "clipboard": "^2.0.11",
     "compass.js": "^1.3.0",
     "fontawesome": "file:fontawesome",
-    "fontawesome-markers": "file:fontawesome-markers",
     "google-maps-infobox": "^2.0.0",
     "js-rich-marker": "^1.1.2",
     "knockout": "^3.5.1",

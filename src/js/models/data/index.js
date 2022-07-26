@@ -3,7 +3,6 @@
  */
 
 import axios from 'axios'
-import fontawesome from 'fontawesome-markers'
 
 /**
  * @type {Object}
